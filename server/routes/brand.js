@@ -6,30 +6,17 @@ var errorHelper = require('../config/errorHelper');
 var brandService = require('../services/brandService');
 
 // Router
-router.get('/items', function* (request, response, next) {
-	var ctx = {};
-	
-	try {
-		ctx = yield dbContext.getConnection();
-		var brands = [];
-		brands = yield brandService.getBrands(ctx);
+router.get('/items', function (request, response, next) {
+	dbContext.getConnection().then(function (result) {
+		ctx = result;
+		return brandService.getBrands(ctx);
+	}).then(function (brands) {
 		response.status(200).json(brands);
-	} catch (err) {
-		next(err);
-	} finally {
+	}).catch(function (error) {
+		next(error);
+	}).done(function () {
 		ctx.release();
-	}
-
-    //dbContext.getConnection().then(function (result) {
-    //    ctx = result;
-    //    return brandService.getBrands(ctx);
-    //}).then(function (brands) {
-    //    response.status(200).json(brands);
-    //}).catch(function (error) {        
-    //    next(error);
-    //}).done(function () {
-    //    ctx.release();
-    //});
+	});
 });
 
 router.get('/items/:id', function (request, response, next) {
