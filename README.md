@@ -1,10 +1,10 @@
 ﻿The solution includes two folders:
 - server  : API and Web Application
 - database: ecargo_demo
-please try to open file: "/ecargo/server/services/config.js" to setup: username & password & database name
+please try to open file: "/demo/server/services/config.js" to setup: username & password & database name
 
 For start review:
-- open command line in folder: "/ecargo/server"
+- open command line in folder: "/demo/server"
 - type:	npm install
 
 - then, api and web application will run on port 3000 by default
