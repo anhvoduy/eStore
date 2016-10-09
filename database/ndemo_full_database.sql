@@ -1,7 +1,7 @@
-DROP SCHEMA IF EXISTS `ecargo_demo` ;
-CREATE SCHEMA `ecargo_demo` ;
+DROP SCHEMA IF EXISTS `ndemo` ;
+CREATE SCHEMA `ndemo` ;
 
-USE `ecargo_demo`;
+USE `ndemo`;
 --
 -- Table structure for table `tblBrand`
 --
@@ -247,78 +247,10 @@ CREATE TABLE `tbluser` (
 --
 INSERT INTO `tbluser` (`UserType`, `UserName`, `Email`, `DateOfBirth`, `Deleted`) VALUES ('CUSTOMER','anhnguyen','anhnguyen@sony.com','1980-06-06',0);
 INSERT INTO `tbluser` (`UserType`, `UserName`, `Email`, `DateOfBirth`, `Deleted`) VALUES ('MERCHANT','hoanganh','hoanganh@ibm.com','1990-03-03',0);
-INSERT INTO `tbluser` (`UserType`, `UserName`, `Email`, `DateOfBirth`, `Deleted`) VALUES ('CUSTOMER','vinhnguyen','vinhnguyen@hvn.com','1990-04-04',1);
+INSERT INTO `tbluser` (`UserType`, `UserName`, `Email`, `DateOfBirth`, `Deleted`) VALUES ('CUSTOMER','vinh','vinhcao@hvn.com','1990-04-04',1);
 INSERT INTO `tbluser` (`UserType`, `UserName`, `Email`, `DateOfBirth`, `Deleted`) VALUES ('CUSTOMER','john','john@microsoft.com','2000-12-26',0);
 INSERT INTO `tbluser` (`UserType`, `UserName`, `Email`, `DateOfBirth`, `Deleted`) VALUES ('CUSTOMER','Duy Anh','avo4@hvn.com','1984-12-22',0);
 INSERT INTO `tbluser` (`UserType`, `UserName`, `Email`, `DateOfBirth`, `Deleted`) VALUES ('MERCHANT','Anh','anhvod@hvn.com','1984-12-24',0);
-
-
---
--- Store Procedure: sp_addreview
---
-DROP procedure IF EXISTS `sp_addreview`;
-DELIMITER $$
-USE `ecargo_demo`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_addreview`(
-	in _rating int,
-    in _comment varchar(200),
-    in _created varchar(45),
-    in _productId int,
-    in _email varchar(45) 
-)
-BEGIN	
-	# create Review
-	INSERT INTO `tblreview` (`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Deleted`) 
-	VALUES (_rating, _comment, NOW(), _productId, _email, '0');
-    
-	# try to get UserName by Email    
-	SET @username:= (SELECT ifnull(UserName,'anonymous') FROM tblUser WHERE Email = _email LIMIT 1);
-	SET @username:= ifnull(@username,'anonymous');	
-
-	# format LatestReviewInfo: '###UserName###Email###Rating###Comment'        
-	# update Latest Review to tblProduct
-	UPDATE tblProduct
-	SET LatestReviewInfo = CONCAT(@username,"###",_email, "###", _rating, "###", _comment)
-	WHERE ProductId = _productId;
-        
-END$$
-DELIMITER ;
-
---
--- Store Procedure: sp_product_bybrand
---
-DROP procedure IF EXISTS `sp_product_bybrand`;
-DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_product_bybrand`(IN _brandId int)
-BEGIN
-	SELECT 	prod.ProductId, prod.ProductName, prod.Description,		
-        prod.Price, prod.Colour, prod.Created, prod.Status,
-        prod.BrandId, bra.Name AS BrandName,
-		prod.LatestReviewInfo
-	FROM tblproduct prod inner join tblbrand bra
-	WHERE	bra.brandId = prod.brandId
-		AND bra.brandId = _brandId
-    ORDER BY prod.ProductId DESC
-    LIMIT 10;    
-END ;;
-DELIMITER ;
-
---
--- Store Procedure: sp_product_byid
---
-DROP procedure IF EXISTS `sp_product_byid`;
-DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_product_byid`(IN _productId int)
-BEGIN
-	SELECT 	prod.ProductId, prod.ProductName, prod.Description,
-		prod.BrandId, bra.Name AS BrandName, 
-        prod.Price, prod.Colour, prod.Created, prod.Status 
-	FROM tblproduct prod inner join tblbrand bra 
-	WHERE 	prod.brandId = bra.brandId
-		AND prod.productId = _productId;
-    
-END ;;
-DELIMITER ;
 
 --
 -- Store Procedure: sp_product_paging
