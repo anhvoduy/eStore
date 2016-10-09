@@ -40,7 +40,21 @@ INSERT INTO `tblbrand` (`Name`,`Description`,`Deleted`) VALUES ('Brand 19 Centur
 INSERT INTO `tblbrand` (`Name`,`Description`,`Deleted`) VALUES ('Coca Cola','Coca Cola',0);
 INSERT INTO `tblbrand` (`Name`,`Description`,`Deleted`) VALUES ('Pepsi Company','Pepsi Company',0);
 INSERT INTO `tblbrand` (`Name`,`Description`,`Deleted`) VALUES ('Facebook','The Facebook',0);
- 
+
+--
+-- Table structure for table `tblcategory`
+--
+
+DROP TABLE IF EXISTS `tblcategory`;
+CREATE TABLE `tblcategory` (
+  `CategoryId` int(11) NOT NULL,
+  `CategoryName` varchar(45) DEFAULT NULL,
+  `Deleted` tinyint(1) DEFAULT '0',
+  PRIMARY KEY (`CategoryId`),
+  UNIQUE KEY `CategoryId_UNIQUE` (`CategoryId`)
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
+
+
 --
 -- Table structure for table `tblproduct`
 --
@@ -233,9 +247,11 @@ CREATE TABLE `tbluser` (
   `UserId` int(11) NOT NULL AUTO_INCREMENT,
   `UserType` varchar(20) NOT NULL,
   `UserName` varchar(45) NOT NULL,
+  `DisplayName` varchar(50) DEFAULT NULL,
   `Email` varchar(20) NOT NULL,
   `DateOfBirth` date DEFAULT NULL,
   `Deleted` tinyint(1) DEFAULT '0',
+  `Hash` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`UserId`),
   UNIQUE KEY `Email_UNIQUE` (`Email`),
   UNIQUE KEY `UserName_UNIQUE` (`UserName`),
