@@ -1,0 +1,24 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "server",
+  "main": "server.js",
+  "author": {
+    "name": "duyanh",
+    "email": "anhvod@harveynash.vn"
+  },
+  "scripts": {
+    "test": "./node_modules/.bin/mocha --reporter spec"
+  },
+  "dependencies": {
+    "body-parser": "^1.15.2",    
+    "express": "^4.14.0",    
+    "mysql": "^2.11.1",
+    "q": "^1.4.1"    
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^2.5.3",
+	  "supertest": "^1.2.0"
+  }
+}
