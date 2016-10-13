@@ -4,11 +4,7 @@
     HomeController.$inject = ['$scope'];        
     function HomeController($scope) {
         // declare models
-        var vm = this;
-        vm.lstBrands = [];
-        vm.messageSuccess = '';
-        vm.messageError = '';
-        vm.getBrands = getBrands;
+        var vm = this;        
 
         // activate
         activate();    
