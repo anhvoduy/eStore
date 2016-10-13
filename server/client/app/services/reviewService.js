@@ -4,8 +4,7 @@
     reviewService.$inject = ['$q', 'baseService'];
     function reviewService($q, baseService) {                        
         // constructor
-        var reviewService = function () {
-            //console.log('instance');
+        var reviewService = function () {            
         }
         reviewService.prototype = new baseService('api/review');
         reviewService.prototype.constructor = reviewService;

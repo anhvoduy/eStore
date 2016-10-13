@@ -1,11 +1,11 @@
 {
-  "name": "server",
-  "version": "1.0.0",
-  "description": "server",
-  "main": "server.js",
+  "name": "eAccounting",
+  "version": "1.1.0",
+  "description": "eAccounting",
+  "main": "app.js",
   "author": {
     "name": "duyanh",
-    "email": "anhvod@harveynash.vn"
+    "email": "voduyanh1984@yahoo.com"
   },
   "scripts": {
     "test": "./node_modules/.bin/mocha --reporter spec"

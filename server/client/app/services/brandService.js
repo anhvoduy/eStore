@@ -4,7 +4,7 @@
     brandService.$inject = ['$q', 'baseService'];
     function brandService($q, baseService) {
         // constructor
-        var brandService = function () {    
+        var brandService = function () {
             //console.log('instance');
         }
         brandService.prototype = new baseService('api/brand');

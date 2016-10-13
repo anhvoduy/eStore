@@ -55,6 +55,14 @@ app.config(function ($stateProvider) {
 				controller: "ReviewProductController as vm"
 			}
 		}
+	}).state('account', {
+		url: "/account",
+		views: {
+			"view": {
+				templateUrl: "/app/views/accounts.html",
+				controller: "AccountController as vm"
+			}
+		}
 	}).state('user', {
 		url: "/user",
 		views: {
