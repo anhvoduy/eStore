@@ -5,14 +5,18 @@ app.config(function ($stateProvider) {
 		url: "",
 		views: {
 			"view": {
-				templateUrl: "/app/views/home.html"
+				templateUrl: "/app/views/home.html",
+				controller: "HomeController",
+				controllerAs: 'vm'
 			}
 		}
 	}).state('home', {
 		url: "/home",
 		views: {
 			"view": {
-				templateUrl: "/app/views/home.html"
+				templateUrl: "/app/views/home.html",
+				controller: "HomeController",
+				controllerAs: 'vm'
 			}
 		}
 	}).state('brand', {
@@ -20,7 +24,8 @@ app.config(function ($stateProvider) {
 		views: {
 			"view": {
 				templateUrl: "/app/views/brands.html",
-				controller: "BrandController as vm"
+				controller: "BrandController",
+				controllerAs: 'vm'
 			}
 		}
 	}).state('brandDetail', {
@@ -28,7 +33,8 @@ app.config(function ($stateProvider) {
 		views: {
 			"view": {
 				templateUrl: "/app/views/brandDetail.html",
-				controller: "BrandDetailController as vm"
+				controller: "BrandDetailController",
+				controllerAs: 'vm'
 			}
 		}
 	}).state('product', {
@@ -36,7 +42,8 @@ app.config(function ($stateProvider) {
 		views: {
 			"view": {
 				templateUrl: "/app/views/products.html",
-				controller: "ProductController as vm"
+				controller: "ProductController",
+				controllerAs: 'vm'
 			}
 		}
 	}).state('productDetail', {
@@ -44,7 +51,8 @@ app.config(function ($stateProvider) {
 		views: {
 			"view": {
 				templateUrl: "/app/views/productDetail.html",
-				controller: "ProductDetailController as vm"
+				controller: "ProductDetailController",
+				controllerAs: 'vm'
 			}
 		}
 	}).state('reviewProduct', {
@@ -52,7 +60,26 @@ app.config(function ($stateProvider) {
 		views: {
 			"view": {
 				templateUrl: "/app/views/reviewProduct.html",
-				controller: "ReviewProductController as vm"
+				controller: "ReviewProductController",
+				controllerAs: 'vm'
+			}
+		}
+	}).state('account', {
+		url: "/account",
+		views: {
+			"view": {
+				templateUrl: "/app/views/accounts.html",
+				controller: "AccountController",
+				controllerAs: 'vm'
+			}
+		}
+	}).state('accountDetail', {
+		url: '/account/:accountID',
+		views: {
+			"view": {
+				templateUrl: "/app/views/accountDetail.html",
+				controller: "AccountDetailController",
+				controllerAs: 'vm'
 			}
 		}
 	}).state('user', {
@@ -60,7 +87,8 @@ app.config(function ($stateProvider) {
 		views: {
 			"view": {
 				templateUrl: "/app/views/users.html",
-				controller: "UserController as vm"
+				controller: "UserController",
+				controllerAs: 'vm'
 			}
 		}
 	}).state('userDetail', {
@@ -68,7 +96,8 @@ app.config(function ($stateProvider) {
 		views: {
 			"view": {
 				templateUrl: "/app/views/userDetail.html",
-				controller: "UserDetailController as vm"
+				controller: "UserDetailController",
+				controllerAs: 'vm'
 			}
 		}
 	}).state('login', {

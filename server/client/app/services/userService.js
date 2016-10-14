@@ -4,8 +4,7 @@
     userService.$inject = ['$http', '$q', 'baseService'];
     function userService($http, $q, baseService) {                
         // constructor
-        var userService = function () {
-            //console.log('instance');
+        var userService = function () {            
         }
         userService.prototype = new baseService('api/user');
         userService.prototype.constructor = userService;

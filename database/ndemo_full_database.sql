@@ -2,10 +2,62 @@ DROP SCHEMA IF EXISTS `ndemo` ;
 CREATE SCHEMA `ndemo` ;
 
 USE `ndemo`;
+
+--
+-- Table structure for table `tblCustomer`
+--
+DROP TABLE IF EXISTS `tblCustomer`;
+CREATE TABLE `tblCustomer` (
+  `CustomerId` int(11) NOT NULL AUTO_INCREMENT,
+  `CustomerNo` varchar(45) NOT NULL,
+  `CustomerName` varchar(45) NOT NULL,
+  `Description` varchar(200) DEFAULT NULL,
+  `Address` varchar(200) DEFAULT NULL,
+  `Mobile` varchar(45) DEFAULT NULL,
+  `Tel` varchar(45) DEFAULT NULL,
+  `Email` varchar(45) DEFAULT NULL,  
+  `Deleted` tinyint(1) DEFAULT '0',
+  PRIMARY KEY (`CustomerId`),
+  UNIQUE KEY `CustomerId_UNIQUE` (`CustomerId`)
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
+
+--
+-- Sample data for table `tblCustomer`
+--
+INSERT INTO `tblCustomer` (`CustomerNo`,`CustomerName`,`Description`,`Deleted`) VALUES (uuid(),'Van Thinh Phat','',0);
+INSERT INTO `tblCustomer` (`CustomerNo`,`CustomerName`,`Description`,`Deleted`) VALUES (uuid(),'Cong ty CP Co Dien Lanh REE','',0);
+INSERT INTO `tblCustomer` (`CustomerNo`,`CustomerName`,`Description`,`Deleted`) VALUES (uuid(),'Cong ty CP FPT','',0);
+
+--
+-- Table structure for table `tblAccount`
+--
+DROP TABLE IF EXISTS `tblAccount`;
+CREATE TABLE `tblAccount` (
+  `AccountId` int(11) NOT NULL AUTO_INCREMENT,
+  `AccountNo` varchar(20) NOT NULL,
+  `AccountName` varchar(45) NOT NULL,
+  `Description` varchar(200) DEFAULT NULL,
+  `Deleted` tinyint(1) DEFAULT '0',
+  PRIMARY KEY (`AccountId`),
+  UNIQUE KEY `AccountId_UNIQUE` (`AccountId`)
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
+
+--
+-- Sample data for table `tblAccount`
+--
+INSERT INTO `tblAccount` (`AccountNo`,`AccountName`,`Description`,`Deleted`) VALUES ('111','Tiền mặt','',0);
+INSERT INTO `tblAccount` (`AccountNo`,`AccountName`,`Description`,`Deleted`) VALUES ('112','Tiền gửi ngân hàng','',0);
+INSERT INTO `tblAccount` (`AccountNo`,`AccountName`,`Description`,`Deleted`) VALUES ('113','Tiền đang chuyển','',0);
+INSERT INTO `tblAccount` (`AccountNo`,`AccountName`,`Description`,`Deleted`) VALUES ('156','Hàng hóa','',0);
+INSERT INTO `tblAccount` (`AccountNo`,`AccountName`,`Description`,`Deleted`) VALUES ('131','Các khoản phải thu','',0);
+INSERT INTO `tblAccount` (`AccountNo`,`AccountName`,`Description`,`Deleted`) VALUES ('331','Các khoản phải trả','',0);
+INSERT INTO `tblAccount` (`AccountNo`,`AccountName`,`Description`,`Deleted`) VALUES ('511','Doanh thu','',0);
+INSERT INTO `tblAccount` (`AccountNo`,`AccountName`,`Description`,`Deleted`) VALUES ('631','Chi phí','',0);
+
 --
 -- Table structure for table `tblBrand`
 --
-DROP TABLE IF EXISTS `tblbrand`;
+DROP TABLE IF EXISTS `tblBrand`;
 CREATE TABLE `tblbrand` (
   `BrandId` int(11) NOT NULL AUTO_INCREMENT,
   `Name` varchar(45) NOT NULL,
