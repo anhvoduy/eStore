@@ -3,10 +3,45 @@ CREATE SCHEMA `ndemo` ;
 
 USE `ndemo`;
 --
+-- Table structure for table `tblTransaction`
+--
+DROP TABLE IF EXISTS `tblTransaction`;
+CREATE TABLE `tblTransaction` (
+  `TransactionId` int(11) NOT NULL AUTO_INCREMENT,
+  `TransactionNo` varchar(45) NOT NULL,
+  `Type` varchar(20) NOT NULL,
+  `Currency` varchar(3) DEFAULT NULL,  
+  `InvoiceNo` varchar(20) DEFAULT NULL,
+  `InvoiceDate` date DEFAULT NULL,
+  `InvoiceDesc` varchar(200) DEFAULT NULL,,  
+  `Description` varchar(200) DEFAULT NULL,  
+  `Deleted` tinyint(1) DEFAULT '0',
+  PRIMARY KEY (`TransactionId`),
+  UNIQUE KEY `TransactionId_UNIQUE` (`TransactionId`)
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
+
+--
+-- Table structure for table `tblTransactionDetail`
+--
+DROP TABLE IF EXISTS `tblTransactionDetail`;
+CREATE TABLE `tblTransactionDetail` (
+  `TransactionDetailId` int(11) NOT NULL AUTO_INCREMENT,
+  `TransactionId` int(11) NOT NULL,  
+  `ProductId` int(11) NOT NULL,  
+  `ProductName` varchar(45) NOT NULL,  
+  `Quantity` int(11) NOT NULL DEFAULT '0',
+  `Amount` int(11) NOT NULL DEFAULT '0',
+  `Total` int(11) NOT NULL DEFAULT '0',
+  `Deleted` tinyint(1) DEFAULT '0',
+  PRIMARY KEY (`TransactionDetailId`),
+  UNIQUE KEY `TransactionDetailId_UNIQUE` (`TransactionDetailId`)
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
+
+--
 -- Table structure for table `tblBrand`
 --
-DROP TABLE IF EXISTS `tblbrand`;
-CREATE TABLE `tblbrand` (
+DROP TABLE IF EXISTS `tblBrand`;
+CREATE TABLE `tblBrand` (
   `BrandId` int(11) NOT NULL AUTO_INCREMENT,
   `Name` varchar(45) NOT NULL,
   `Description` varchar(200) DEFAULT NULL,
