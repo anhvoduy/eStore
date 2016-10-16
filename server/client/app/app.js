@@ -12,7 +12,9 @@ app.config(function ($stateProvider) {
 		url: "/home",
 		views: {
 			"view": {
-				templateUrl: "/app/views/home.html"
+				templateUrl: "/app/views/home.html",
+				controller: "HomeController",
+				controllerAs: "vm"
 			}
 		}
 	}).state('brand', {
@@ -55,7 +57,37 @@ app.config(function ($stateProvider) {
 				controller: "ReviewProductController as vm"
 			}
 		}
-	}).state('user', {
+	})
+	//.state('inventory', {
+	//	url: "/inventory",
+	//	views: {
+	//		"view": {
+	//			templateUrl: "/app/views/inventory.html",
+	//			controller: "InventoryController",
+	//			controllerAs: "vm"
+	//		}
+	//	}
+	//})
+	//.state('inventory', {
+	//	url: '/inventory/input/:inventoryID',
+	//	views: {
+	//		"view": {
+	//			templateUrl: "/app/views/inventoryInputDetail.html",
+	//			controller: "InventoryInputDetail",
+	//			controllerAs: "vm"
+	//		}
+	//	}
+	//}).state('inventory', {
+	//	url: '/inventory/output/:inventoryID',
+	//	views: {
+	//		"view": {
+	//			templateUrl: "/app/views/inventoryOutputDetail.html",
+	//			controller: "InventoryOutputDetail",
+	//			controllerAs: "vm"
+	//		}
+	//	}
+	//})
+	.state('user', {
 		url: "/user",
 		views: {
 			"view": {
