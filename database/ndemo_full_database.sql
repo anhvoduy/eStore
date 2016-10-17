@@ -2,11 +2,101 @@ DROP SCHEMA IF EXISTS `ndemo` ;
 CREATE SCHEMA `ndemo` ;
 
 USE `ndemo`;
+
+
+--
+-- Table structure for table `tblCustomer`
+--
+DROP TABLE IF EXISTS `tblCustomer`;
+CREATE TABLE `tblCustomer` (
+  `CustomerId` int(11) NOT NULL AUTO_INCREMENT,
+  `CustomerNo` varchar(45) NOT NULL,
+  `CustomerName` varchar(45) NOT NULL,
+  `Description` varchar(200) DEFAULT NULL,
+  `Address` varchar(200) DEFAULT NULL,
+  `Mobile` varchar(45) DEFAULT NULL,
+  `Tel` varchar(45) DEFAULT NULL,
+  `Email` varchar(45) DEFAULT NULL,  
+  `Deleted` tinyint(1) DEFAULT '0',
+  PRIMARY KEY (`CustomerId`),
+  UNIQUE KEY `CustomerId_UNIQUE` (`CustomerId`)
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
+
+--
+-- Sample data for table `tblCustomer`
+--
+INSERT INTO `tblCustomer` (`CustomerNo`,`CustomerName`,`Description`,`Deleted`) VALUES (uuid(),'Van Thinh Phat','',0);
+INSERT INTO `tblCustomer` (`CustomerNo`,`CustomerName`,`Description`,`Deleted`) VALUES (uuid(),'Cong ty CP Co Dien Lanh REE','',0);
+INSERT INTO `tblCustomer` (`CustomerNo`,`CustomerName`,`Description`,`Deleted`) VALUES (uuid(),'Cong ty CP FPT','',0);
+
+
+--
+-- Table structure for table `tblAccount`
+--
+DROP TABLE IF EXISTS `tblAccount`;
+CREATE TABLE `tblAccount` (
+  `AccountId` int(11) NOT NULL AUTO_INCREMENT,
+  `AccountNo` varchar(20) NOT NULL,
+  `AccountName` varchar(45) NOT NULL,
+  `Description` varchar(200) DEFAULT NULL,
+  `Deleted` tinyint(1) DEFAULT '0',
+  PRIMARY KEY (`AccountId`),
+  UNIQUE KEY `AccountId_UNIQUE` (`AccountId`)
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
+
+--
+-- Sample data for table `tblAccount`
+--
+INSERT INTO `tblAccount` (`AccountNo`,`AccountName`,`Description`,`Deleted`) VALUES ('111','Ti?n m?t','',0);
+INSERT INTO `tblAccount` (`AccountNo`,`AccountName`,`Description`,`Deleted`) VALUES ('112','Ti?n g?i ngân hàng','',0);
+INSERT INTO `tblAccount` (`AccountNo`,`AccountName`,`Description`,`Deleted`) VALUES ('113','Ti?n dang chuy?n','',0);
+INSERT INTO `tblAccount` (`AccountNo`,`AccountName`,`Description`,`Deleted`) VALUES ('156','Hàng hóa','',0);
+INSERT INTO `tblAccount` (`AccountNo`,`AccountName`,`Description`,`Deleted`) VALUES ('131','Các kho?n ph?i thu','',0);
+INSERT INTO `tblAccount` (`AccountNo`,`AccountName`,`Description`,`Deleted`) VALUES ('331','Các kho?n ph?i tr?','',0);
+INSERT INTO `tblAccount` (`AccountNo`,`AccountName`,`Description`,`Deleted`) VALUES ('511','Doanh thu','',0);
+INSERT INTO `tblAccount` (`AccountNo`,`AccountName`,`Description`,`Deleted`) VALUES ('631','Chi phí','',0);
+
+
+--
+-- Table structure for table `tblTransaction`
+--
+DROP TABLE IF EXISTS `tblTransaction`;
+CREATE TABLE `tblTransaction` (
+  `TransactionId` int(11) NOT NULL AUTO_INCREMENT,
+  `TransactionNo` varchar(45) NOT NULL,
+  `Type` varchar(20) NOT NULL,
+  `Currency` varchar(3) DEFAULT NULL,  
+  `InvoiceNo` varchar(20) DEFAULT NULL,
+  `InvoiceDate` date DEFAULT NULL,
+  `InvoiceDesc` varchar(200) DEFAULT NULL,,  
+  `Description` varchar(200) DEFAULT NULL,  
+  `Deleted` tinyint(1) DEFAULT '0',
+  PRIMARY KEY (`TransactionId`),
+  UNIQUE KEY `TransactionId_UNIQUE` (`TransactionId`)
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
+
+--
+-- Table structure for table `tblTransactionDetail`
+--
+DROP TABLE IF EXISTS `tblTransactionDetail`;
+CREATE TABLE `tblTransactionDetail` (
+  `TransactionDetailId` int(11) NOT NULL AUTO_INCREMENT,
+  `TransactionId` int(11) NOT NULL,  
+  `ProductId` int(11) NOT NULL,  
+  `ProductName` varchar(45) NOT NULL,  
+  `Quantity` int(11) NOT NULL DEFAULT '0',
+  `Amount` int(11) NOT NULL DEFAULT '0',
+  `Total` int(11) NOT NULL DEFAULT '0',
+  `Deleted` tinyint(1) DEFAULT '0',
+  PRIMARY KEY (`TransactionDetailId`),
+  UNIQUE KEY `TransactionDetailId_UNIQUE` (`TransactionDetailId`)
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
+
 --
 -- Table structure for table `tblBrand`
 --
-DROP TABLE IF EXISTS `tblbrand`;
-CREATE TABLE `tblbrand` (
+DROP TABLE IF EXISTS `tblBrand`;
+CREATE TABLE `tblBrand` (
   `BrandId` int(11) NOT NULL AUTO_INCREMENT,
   `Name` varchar(45) NOT NULL,
   `Description` varchar(200) DEFAULT NULL,
@@ -40,7 +130,21 @@ INSERT INTO `tblbrand` (`Name`,`Description`,`Deleted`) VALUES ('Brand 19 Centur
 INSERT INTO `tblbrand` (`Name`,`Description`,`Deleted`) VALUES ('Coca Cola','Coca Cola',0);
 INSERT INTO `tblbrand` (`Name`,`Description`,`Deleted`) VALUES ('Pepsi Company','Pepsi Company',0);
 INSERT INTO `tblbrand` (`Name`,`Description`,`Deleted`) VALUES ('Facebook','The Facebook',0);
- 
+
+--
+-- Table structure for table `tblcategory`
+--
+
+DROP TABLE IF EXISTS `tblcategory`;
+CREATE TABLE `tblcategory` (
+  `CategoryId` int(11) NOT NULL,
+  `CategoryName` varchar(45) DEFAULT NULL,
+  `Deleted` tinyint(1) DEFAULT '0',
+  PRIMARY KEY (`CategoryId`),
+  UNIQUE KEY `CategoryId_UNIQUE` (`CategoryId`)
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
+
+
 --
 -- Table structure for table `tblproduct`
 --
@@ -160,62 +264,8 @@ CREATE TABLE `tblreview` (
 INSERT INTO `tblreview`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Deleted`) VALUES (1,'Not bad','2013-08-25 17:00:00',1,'test@hvn.com',0);
 INSERT INTO `tblreview`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Deleted`) VALUES (5,'Normal','2013-08-25 17:00:00',2,'test@hvn.com',0);
 INSERT INTO `tblreview`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Deleted`) VALUES (6,'Good','2013-08-22 17:00:00',3,'test@hvn.com',0);
-INSERT INTO `tblreview`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Deleted`) VALUES (6,'Good','2013-08-22 17:00:00',3,'test@hvn.com',0);
-INSERT INTO `tblreview`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Deleted`) VALUES (6,'Good','2013-08-22 17:00:00',3,'test@hvn.com',0);
 INSERT INTO `tblreview`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Deleted`) VALUES (3,'Good','2013-08-22 17:00:00',3,'test@hvn.com',0);
 INSERT INTO `tblreview`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Deleted`) VALUES (3,'Bad','2013-08-22 17:00:00',5,'test@hvn.com',0);
-INSERT INTO `tblreview`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Deleted`) VALUES (3,'Bad','2013-08-22 17:00:00',6,'test@hvn.com',0);
-INSERT INTO `tblreview`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Deleted`) VALUES (3,'Bad','2013-08-22 17:00:00',5,'test@hvn.com',0);
-INSERT INTO `tblreview`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Deleted`) VALUES (3,'Bad','2013-08-22 17:00:00',5,'test@hvn.com',0);
-INSERT INTO `tblreview`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Deleted`) VALUES (3,'Bad','2013-08-22 17:00:00',5,'test@hvn.com',0);
-INSERT INTO `tblreview`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Deleted`) VALUES (3,'Very Bad','2013-08-22 17:00:00',5,'test@hvn.com',0);
-INSERT INTO `tblreview`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Deleted`) VALUES (3,'Very Bad','2013-08-22 17:00:00',5,'test@hvn.com',0);
-INSERT INTO `tblreview`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Deleted`) VALUES (3,'Very Bad','2013-08-22 17:00:00',5,'test@hvn.com',0);
-INSERT INTO `tblreview`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Deleted`) VALUES (6,'Very Good','2015-08-22 17:00:00',11,'test@hvn.com',0);
-INSERT INTO `tblreview`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Deleted`) VALUES (6,'Very Good','2015-08-22 17:00:00',11,'test@hvn.com',0);
-INSERT INTO `tblreview`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Deleted`) VALUES (3,'Very Good','2015-08-22 17:00:00',11,'test@hvn.com',0);
-INSERT INTO `tblreview`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Deleted`) VALUES (3,'Good','2015-08-22 17:00:00',11,'test@hvn.com',0);
-INSERT INTO `tblreview`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Deleted`) VALUES (3,'Bad 5321','2013-08-22 17:00:00',5,'test@hvn.com',0);
-INSERT INTO `tblreview`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Deleted`) VALUES (3,'Bad 5321','2013-08-22 17:00:00',5,'test@hvn.com',0);
-INSERT INTO `tblreview`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Deleted`) VALUES (3,'Rate Bad 2016','2013-08-22 17:00:00',5,'test@hvn.com',0);
-INSERT INTO `tblreview`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Deleted`) VALUES (5,'Rate Bad 2016','2013-08-22 17:00:00',5,'test@hvn.com',0);
-INSERT INTO `tblreview`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Deleted`) VALUES (3,'Very Bad','2013-08-22 17:00:00',5,'test@hvn.com',0);
-INSERT INTO `tblreview`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Deleted`) VALUES (3,'Very Bad','2013-08-22 17:00:00',5,'test@hvn.com',0);
-INSERT INTO `tblreview`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Deleted`) VALUES (6,'Very Good','2015-08-22 17:00:00',11,'test@hvn.com',0);
-INSERT INTO `tblreview`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Deleted`) VALUES (4,'Very Good','2015-08-22 17:00:00',11,'test@hvn.com',0);
-INSERT INTO `tblreview`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Deleted`) VALUES (3,'Very Good','2015-08-22 17:00:00',11,'test@hvn.com',0);
-INSERT INTO `tblreview`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Deleted`) VALUES (3,'Bad 5321','2013-08-22 17:00:00',5,'test@hvn.com',0);
-INSERT INTO `tblreview`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Deleted`) VALUES (3,'Bad 5321','2013-08-22 17:00:00',5,'test@hvn.com',0);
-INSERT INTO `tblreview`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Deleted`) VALUES (3,'Bad Rate','2013-08-22 17:00:00',5,'test@hvn.com',0);
-INSERT INTO `tblreview`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Deleted`) VALUES (5,'5555','2016-07-10 15:35:28',12,'test@hvn.com',0);
-INSERT INTO `tblreview`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Deleted`) VALUES (7,'It is good ...','2016-07-10 15:47:40',12,'test@hvn.com',0);
-INSERT INTO `tblreview`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Deleted`) VALUES (3,'It is good','2016-07-10 15:51:46',12,'test@hvn.com',0);
-INSERT INTO `tblreview`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Deleted`) VALUES (4,'It is good','2016-07-10 15:52:16',12,'test@hvn.com',0);
-INSERT INTO `tblreview`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Deleted`) VALUES (5,'It is good','2016-07-10 16:02:46',7,'test@hvn.com',0);
-INSERT INTO `tblreview`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Deleted`) VALUES (2,'It is good','2016-07-10 16:04:12',7,'test@hvn.com',0);
-INSERT INTO `tblreview`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Deleted`) VALUES (5,'Comment 5','2016-07-10 16:26:23',7,'hvn@hvn.net',0);
-INSERT INTO `tblreview`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Deleted`) VALUES (4,'4','2016-07-10 16:57:39',15,'4',0);
-INSERT INTO `tblreview`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Deleted`) VALUES (6,'6','2016-07-10 16:32:05',7,'6',0);
-INSERT INTO `tblreview`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Deleted`) VALUES (3,'Comment','2016-07-10 16:43:40',7,'hvn@hvn.net',0);
-INSERT INTO `tblreview`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Deleted`) VALUES (3,'Comment','2016-07-10 16:43:40',7,'hvn@hvn.net',0);
-INSERT INTO `tblreview`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Deleted`) VALUES (3,'Comment','2016-07-10 16:43:41',7,'hvn@hvn.net',0);
-INSERT INTO `tblreview`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Deleted`) VALUES (3,'Comment','2016-07-10 16:43:41',7,'hvn@hvn.net',0);
-INSERT INTO `tblreview`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Deleted`) VALUES (3,'Comment','2016-07-10 16:43:41',7,'hvn@hvn.net',0);
-INSERT INTO `tblreview`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Deleted`) VALUES (3,'Angola & Nigieria','2016-07-10 16:43:58',7,'hvn@hvn.net',0);
-INSERT INTO `tblreview`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Deleted`) VALUES (2,'Comment','2016-07-10 16:49:55',15,'hvn@hvn.net',0);
-INSERT INTO `tblreview`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Deleted`) VALUES (3,'3','2016-07-10 16:51:22',15,'hvn@hvn.net',0);
-INSERT INTO `tblreview`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Deleted`) VALUES (7,'Rate Bad 2016','2013-08-22 17:00:00',5,'test@hvn.com',0);
-INSERT INTO `tblreview`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Deleted`) VALUES (4,'Good','2016-07-10 15:46:03',2,'test@hvn.com',0);
-INSERT INTO `tblreview`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Deleted`) VALUES (0,'It is good ...','2016-07-10 15:47:55',12,'test@hvn.com',0);
-INSERT INTO `tblreview`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Deleted`) VALUES (3,'It is good','2016-07-10 15:51:48',12,'test@hvn.com',0);
-INSERT INTO `tblreview`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Deleted`) VALUES (7,'Very Bad','2016-07-10 15:52:29',12,'test@hvn.com',0);
-INSERT INTO `tblreview`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Deleted`) VALUES (7,'However, you would be wise to convert the column to the DATE data type instead of using strings','2016-07-10 15:52:58',12,'test@hvn.com',0);
-INSERT INTO `tblreview`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Deleted`) VALUES (2,'It is good','2016-07-10 16:02:21',12,'test@hvn.com',0);
-INSERT INTO `tblreview`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Deleted`) VALUES (1,'It is good','2016-07-10 16:03:49',7,'test@hvn.com',0);
-INSERT INTO `tblreview`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Deleted`) VALUES (8,'It is good','2016-07-10 16:04:52',7,'test@hvn.com',0);
-INSERT INTO `tblreview`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Deleted`) VALUES (5,'Comment 5','2016-07-10 16:26:24',7,'hvn@hvn.net',0);
-INSERT INTO `tblreview`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Deleted`) VALUES (3,'Comment','2016-07-10 16:43:38',7,'hvn@hvn.net',0);
-INSERT INTO `tblreview`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Deleted`) VALUES (3,'Comment','2016-07-10 16:43:40',7,'hvn@hvn.net',0);
 INSERT INTO `tblreview`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Deleted`) VALUES (3,'Comment','2016-07-10 16:43:40',7,'hvn@hvn.net',0);
 INSERT INTO `tblreview`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Deleted`) VALUES (3,'Comment','2016-07-10 16:43:41',7,'hvn@hvn.net',0);
 INSERT INTO `tblreview`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Deleted`) VALUES (3,'Comment','2016-07-10 16:43:41',7,'hvn@hvn.net',0);
@@ -233,9 +283,11 @@ CREATE TABLE `tbluser` (
   `UserId` int(11) NOT NULL AUTO_INCREMENT,
   `UserType` varchar(20) NOT NULL,
   `UserName` varchar(45) NOT NULL,
+  `DisplayName` varchar(50) DEFAULT NULL,
   `Email` varchar(20) NOT NULL,
   `DateOfBirth` date DEFAULT NULL,
   `Deleted` tinyint(1) DEFAULT '0',
+  `Hash` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`UserId`),
   UNIQUE KEY `Email_UNIQUE` (`Email`),
   UNIQUE KEY `UserName_UNIQUE` (`UserName`),
@@ -247,7 +299,7 @@ CREATE TABLE `tbluser` (
 --
 INSERT INTO `tbluser` (`UserType`, `UserName`, `Email`, `DateOfBirth`, `Deleted`) VALUES ('CUSTOMER','anhnguyen','anhnguyen@sony.com','1980-06-06',0);
 INSERT INTO `tbluser` (`UserType`, `UserName`, `Email`, `DateOfBirth`, `Deleted`) VALUES ('MERCHANT','hoanganh','hoanganh@ibm.com','1990-03-03',0);
-INSERT INTO `tbluser` (`UserType`, `UserName`, `Email`, `DateOfBirth`, `Deleted`) VALUES ('CUSTOMER','vinh','vinhcao@hvn.com','1990-04-04',1);
+INSERT INTO `tbluser` (`UserType`, `UserName`, `Email`, `DateOfBirth`, `Deleted`) VALUES ('CUSTOMER','vinhcao','vinhcao@hvn.com','1990-04-04',1);
 INSERT INTO `tbluser` (`UserType`, `UserName`, `Email`, `DateOfBirth`, `Deleted`) VALUES ('CUSTOMER','john','john@microsoft.com','2000-12-26',0);
 INSERT INTO `tbluser` (`UserType`, `UserName`, `Email`, `DateOfBirth`, `Deleted`) VALUES ('CUSTOMER','Duy Anh','avo4@hvn.com','1984-12-22',0);
 INSERT INTO `tbluser` (`UserType`, `UserName`, `Email`, `DateOfBirth`, `Deleted`) VALUES ('MERCHANT','Anh','anhvod@hvn.com','1984-12-24',0);
