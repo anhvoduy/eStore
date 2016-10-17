@@ -16,7 +16,7 @@ app.config(function ($stateProvider) {
 			"view": {
 				templateUrl: "/app/views/home.html",
 				controller: "HomeController",
-				controllerAs: 'vm'
+				controllerAs: "vm"
 			}
 		}
 	}).state('brand', {
@@ -64,25 +64,37 @@ app.config(function ($stateProvider) {
 				controllerAs: 'vm'
 			}
 		}
-	}).state('account', {
-		url: "/account",
-		views: {
-			"view": {
-				templateUrl: "/app/views/accounts.html",
-				controller: "AccountController",
-				controllerAs: 'vm'
-			}
-		}
-	}).state('accountDetail', {
-		url: '/account/:accountID',
-		views: {
-			"view": {
-				templateUrl: "/app/views/accountDetail.html",
-				controller: "AccountDetailController",
-				controllerAs: 'vm'
-			}
-		}
-	}).state('user', {
+	})
+	//.state('inventory', {
+	//	url: "/inventory",
+	//	views: {
+	//		"view": {
+	//			templateUrl: "/app/views/inventory.html",
+	//			controller: "InventoryController",
+	//			controllerAs: "vm"
+	//		}
+	//	}
+	//})
+	//.state('inventory', {
+	//	url: '/inventory/input/:inventoryID',
+	//	views: {
+	//		"view": {
+	//			templateUrl: "/app/views/inventoryInputDetail.html",
+	//			controller: "InventoryInputDetail",
+	//			controllerAs: "vm"
+	//		}
+	//	}
+	//}).state('inventory', {
+	//	url: '/inventory/output/:inventoryID',
+	//	views: {
+	//		"view": {
+	//			templateUrl: "/app/views/inventoryOutputDetail.html",
+	//			controller: "InventoryOutputDetail",
+	//			controllerAs: "vm"
+	//		}
+	//	}
+	//})
+	.state('user', {
 		url: "/user",
 		views: {
 			"view": {

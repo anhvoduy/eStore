@@ -45,20 +45,55 @@ CREATE TABLE `tblAccount` (
 --
 -- Sample data for table `tblAccount`
 --
-INSERT INTO `tblAccount` (`AccountNo`,`AccountName`,`Description`,`Deleted`) VALUES ('111','Tiền mặt','',0);
-INSERT INTO `tblAccount` (`AccountNo`,`AccountName`,`Description`,`Deleted`) VALUES ('112','Tiền gửi ngân hàng','',0);
-INSERT INTO `tblAccount` (`AccountNo`,`AccountName`,`Description`,`Deleted`) VALUES ('113','Tiền đang chuyển','',0);
-INSERT INTO `tblAccount` (`AccountNo`,`AccountName`,`Description`,`Deleted`) VALUES ('156','Hàng hóa','',0);
-INSERT INTO `tblAccount` (`AccountNo`,`AccountName`,`Description`,`Deleted`) VALUES ('131','Các khoản phải thu','',0);
-INSERT INTO `tblAccount` (`AccountNo`,`AccountName`,`Description`,`Deleted`) VALUES ('331','Các khoản phải trả','',0);
+INSERT INTO `tblAccount` (`AccountNo`,`AccountName`,`Description`,`Deleted`) VALUES ('111','Ti?n m?t','',0);
+INSERT INTO `tblAccount` (`AccountNo`,`AccountName`,`Description`,`Deleted`) VALUES ('112','Ti?n g?i ng�n h�ng','',0);
+INSERT INTO `tblAccount` (`AccountNo`,`AccountName`,`Description`,`Deleted`) VALUES ('113','Ti?n dang chuy?n','',0);
+INSERT INTO `tblAccount` (`AccountNo`,`AccountName`,`Description`,`Deleted`) VALUES ('156','H�ng h�a','',0);
+INSERT INTO `tblAccount` (`AccountNo`,`AccountName`,`Description`,`Deleted`) VALUES ('131','C�c kho?n ph?i thu','',0);
+INSERT INTO `tblAccount` (`AccountNo`,`AccountName`,`Description`,`Deleted`) VALUES ('331','C�c kho?n ph?i tr?','',0);
 INSERT INTO `tblAccount` (`AccountNo`,`AccountName`,`Description`,`Deleted`) VALUES ('511','Doanh thu','',0);
-INSERT INTO `tblAccount` (`AccountNo`,`AccountName`,`Description`,`Deleted`) VALUES ('631','Chi phí','',0);
+INSERT INTO `tblAccount` (`AccountNo`,`AccountName`,`Description`,`Deleted`) VALUES ('631','Chi ph�','',0);
+
+--
+-- Table structure for table `tblTransaction`
+--
+DROP TABLE IF EXISTS `tblTransaction`;
+CREATE TABLE `tblTransaction` (
+  `TransactionId` int(11) NOT NULL AUTO_INCREMENT,
+  `TransactionNo` varchar(45) NOT NULL,
+  `Type` varchar(20) NOT NULL,
+  `Currency` varchar(3) DEFAULT NULL,  
+  `InvoiceNo` varchar(20) DEFAULT NULL,
+  `InvoiceDate` date DEFAULT NULL,
+  `InvoiceDesc` varchar(200) DEFAULT NULL,,  
+  `Description` varchar(200) DEFAULT NULL,  
+  `Deleted` tinyint(1) DEFAULT '0',
+  PRIMARY KEY (`TransactionId`),
+  UNIQUE KEY `TransactionId_UNIQUE` (`TransactionId`)
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
+
+--
+-- Table structure for table `tblTransactionDetail`
+--
+DROP TABLE IF EXISTS `tblTransactionDetail`;
+CREATE TABLE `tblTransactionDetail` (
+  `TransactionDetailId` int(11) NOT NULL AUTO_INCREMENT,
+  `TransactionId` int(11) NOT NULL,  
+  `ProductId` int(11) NOT NULL,  
+  `ProductName` varchar(45) NOT NULL,  
+  `Quantity` int(11) NOT NULL DEFAULT '0',
+  `Amount` int(11) NOT NULL DEFAULT '0',
+  `Total` int(11) NOT NULL DEFAULT '0',
+  `Deleted` tinyint(1) DEFAULT '0',
+  PRIMARY KEY (`TransactionDetailId`),
+  UNIQUE KEY `TransactionDetailId_UNIQUE` (`TransactionDetailId`)
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 
 --
 -- Table structure for table `tblBrand`
 --
 DROP TABLE IF EXISTS `tblBrand`;
-CREATE TABLE `tblbrand` (
+CREATE TABLE `tblBrand` (
   `BrandId` int(11) NOT NULL AUTO_INCREMENT,
   `Name` varchar(45) NOT NULL,
   `Description` varchar(200) DEFAULT NULL,
