@@ -37,7 +37,7 @@ DROP TABLE IF EXISTS `tblAccount`;
 CREATE TABLE `tblAccount` (
   `AccountId` int(11) NOT NULL AUTO_INCREMENT,
   `AccountNo` varchar(20) NOT NULL,
-  `AccountName` varchar(45) NOT NULL,
+  `AccountName` varchar(100) NOT NULL,
   `Description` varchar(200) DEFAULT NULL,
   `Deleted` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`AccountId`),
@@ -47,10 +47,10 @@ CREATE TABLE `tblAccount` (
 --
 -- Sample data for table `tblAccount`
 --
-INSERT INTO `tblAccount` (`AccountNo`,`AccountName`,`Description`,`Deleted`) VALUES ('111','Ti?n m?t','',0);
-INSERT INTO `tblAccount` (`AccountNo`,`AccountName`,`Description`,`Deleted`) VALUES ('112','Ti?n g?i ngân hàng','',0);
-INSERT INTO `tblAccount` (`AccountNo`,`AccountName`,`Description`,`Deleted`) VALUES ('113','Ti?n dang chuy?n','',0);
-INSERT INTO `tblAccount` (`AccountNo`,`AccountName`,`Description`,`Deleted`) VALUES ('156','Hàng hóa','',0);
+INSERT INTO `tblAccount` (`AccountNo`,`AccountName`,`Description`,`Deleted`) VALUES ('111','Cash','',0);
+INSERT INTO `tblAccount` (`AccountNo`,`AccountName`,`Description`,`Deleted`) VALUES ('112','Cash in bank','',0);
+INSERT INTO `tblAccount` (`AccountNo`,`AccountName`,`Description`,`Deleted`) VALUES ('113','Cash transfer ','',0);
+INSERT INTO `tblAccount` (`AccountNo`,`AccountName`,`Description`,`Deleted`) VALUES ('156','Goods','',0);
 INSERT INTO `tblAccount` (`AccountNo`,`AccountName`,`Description`,`Deleted`) VALUES ('131','Các kho?n ph?i thu','',0);
 INSERT INTO `tblAccount` (`AccountNo`,`AccountName`,`Description`,`Deleted`) VALUES ('331','Các kho?n ph?i tr?','',0);
 INSERT INTO `tblAccount` (`AccountNo`,`AccountName`,`Description`,`Deleted`) VALUES ('511','Doanh thu','',0);
@@ -68,7 +68,7 @@ CREATE TABLE `tblTransaction` (
   `Currency` varchar(3) DEFAULT NULL,  
   `InvoiceNo` varchar(20) DEFAULT NULL,
   `InvoiceDate` date DEFAULT NULL,
-  `InvoiceDesc` varchar(200) DEFAULT NULL,,  
+  `InvoiceDesc` varchar(200) DEFAULT NULL,
   `Description` varchar(200) DEFAULT NULL,  
   `Deleted` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`TransactionId`),

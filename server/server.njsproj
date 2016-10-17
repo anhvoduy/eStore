@@ -12,7 +12,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>a3398bd7-005d-4c8e-b265-2ba4bf983802</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>server.js</StartupFile>
+    <StartupFile>app.js</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -55,6 +55,8 @@
     <Compile Include="client\app\modules\authentication\controllers.js" />
     <Compile Include="client\app\modules\authentication\services.js" />
     <Compile Include="client\app\modules\home\controllers.js" />
+    <Compile Include="client\app\services\accountService.js" />
+    <Compile Include="client\app\services\authenticationService.js" />
     <Compile Include="client\app\services\baseService.js" />
     <Compile Include="client\app\services\brandService.js" />
     <Compile Include="client\app\services\productService.js" />
@@ -208,6 +210,7 @@
     <Folder Include="client\libs\jquery\" />
     <Folder Include="client\libs\moment\" />
     <Folder Include="client\libs\require\" />
+    <Folder Include="client\test\" />
     <Folder Include="config\" />
     <Folder Include="services\" />
     <Folder Include="routes\" />

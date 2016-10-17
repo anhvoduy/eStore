@@ -94,6 +94,26 @@ app.config(function ($stateProvider) {
 	//		}
 	//	}
 	//})
+	.state('account', {
+		url: "/account",
+		views: {
+			"view": {
+				templateUrl: "/app/views/account.html",
+				controller: "AccountController",
+				controllerAs: 'vm'
+			}
+		}
+	})
+	.state('accountDetail', {
+		url: '/account/:accountID',
+		views: {
+			"view": {
+				templateUrl: "/app/views/accountDetail.html",
+				controller: "AccountDetailController",
+				controllerAs: 'vm'
+			}
+		}
+	})
 	.state('user', {
 		url: "/user",
 		views: {
@@ -103,7 +123,8 @@ app.config(function ($stateProvider) {
 				controllerAs: 'vm'
 			}
 		}
-	}).state('userDetail', {
+	})
+	.state('userDetail', {
 		url: '/user/:userID',
 		views: {
 			"view": {
