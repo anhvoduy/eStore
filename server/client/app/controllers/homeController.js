@@ -5,6 +5,8 @@
     function HomeController($scope) {
         // declare models
         var vm = this;        
+        vm.messageSuccess = '';
+        vm.messageError = '';        
 
         // activate
         activate();    
