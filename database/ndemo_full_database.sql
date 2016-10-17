@@ -3,6 +3,7 @@ CREATE SCHEMA `ndemo` ;
 
 USE `ndemo`;
 
+
 --
 -- Table structure for table `tblCustomer`
 --
@@ -27,6 +28,7 @@ CREATE TABLE `tblCustomer` (
 INSERT INTO `tblCustomer` (`CustomerNo`,`CustomerName`,`Description`,`Deleted`) VALUES (uuid(),'Van Thinh Phat','',0);
 INSERT INTO `tblCustomer` (`CustomerNo`,`CustomerName`,`Description`,`Deleted`) VALUES (uuid(),'Cong ty CP Co Dien Lanh REE','',0);
 INSERT INTO `tblCustomer` (`CustomerNo`,`CustomerName`,`Description`,`Deleted`) VALUES (uuid(),'Cong ty CP FPT','',0);
+
 
 --
 -- Table structure for table `tblAccount`
@@ -53,6 +55,7 @@ INSERT INTO `tblAccount` (`AccountNo`,`AccountName`,`Description`,`Deleted`) VAL
 INSERT INTO `tblAccount` (`AccountNo`,`AccountName`,`Description`,`Deleted`) VALUES ('331','Các kho?n ph?i tr?','',0);
 INSERT INTO `tblAccount` (`AccountNo`,`AccountName`,`Description`,`Deleted`) VALUES ('511','Doanh thu','',0);
 INSERT INTO `tblAccount` (`AccountNo`,`AccountName`,`Description`,`Deleted`) VALUES ('631','Chi phí','',0);
+
 
 --
 -- Table structure for table `tblTransaction`
