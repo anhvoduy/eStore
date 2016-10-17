@@ -7,19 +7,21 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>Brand Id</th>
-                    <th>Brand Name</th>
+                    <th>Account Id</th>
+                    <th>Account No</th>
+                    <th>Account Name</th>
                     <th>Description</th>
                     <th>Edit</th>
                     <!--<th>Delete</th>-->
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="brand in vm.lstBrands">
-                    <td>{{ brand.BrandId }}</td>
-                    <td>{{ brand.Name }}</td>
-                    <td>{{ brand.Description }}</td>
-                    <td><a ui-sref="brandDetail({ brandID: brand.BrandId })">Edit</a></td>                        
+                <tr ng-repeat="acct in vm.lstAccounts">
+                    <td>{{ acct.AccountId }}</td>
+                    <td>{{ acct.AccountNo }}</td>
+                    <td>{{ acct.AccountName }}</td>
+                    <td>{{ acct.Description }}</td>
+                    <td><a ui-sref="accountDetail({ accountID: acct.AccountId })">Edit</a></td>                        
                 </tr>
             </tbody>
         </table>
