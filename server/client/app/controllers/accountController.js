@@ -1,19 +1,19 @@
 (function () {
     'use strict';        
-    app.controller('BrandController', BrandController);
-    BrandController.$inject = ['brandService'];        
-	function BrandController(brandService) {
+    app.controller('AccountController', AccountController);
+    AccountController.$inject = ['accountService'];        
+	function AccountController(accountService) {
 		// models
 		var vm = this;
-		vm.lstBrands = [];
+		vm.lstAccounts = [];
 		vm.messageSuccess = '';
 		vm.messageError = '';
 		
 		// functions
 		function activate() {
-			brandService.getBrands().then(function (result) {
-				vm.lstBrands = result;
-				vm.messageSuccess = String.format("Get Brands is successful. Total: {0} rows", vm.lstBrands.length);
+			accountService.getAccounts().then(function (result) {
+				vm.lstAccounts = result;
+				vm.messageSuccess = String.format("Get Accounts is successful. Total: {0} rows", vm.lstAccounts.length);
 			}, function (error) {
 				vm.messageError = error.message;
 			});
