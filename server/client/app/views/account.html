@@ -1,0 +1,30 @@
+﻿<div class="container" ng-cloak>
+    <div class="row">
+        <h2>All Brands</h2>
+    </div>
+            
+    <div class="row row-table">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Brand Id</th>
+                    <th>Brand Name</th>
+                    <th>Description</th>
+                    <th>Edit</th>
+                    <!--<th>Delete</th>-->
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="brand in vm.lstBrands">
+                    <td>{{ brand.BrandId }}</td>
+                    <td>{{ brand.Name }}</td>
+                    <td>{{ brand.Description }}</td>
+                    <td><a ui-sref="brandDetail({ brandID: brand.BrandId })">Edit</a></td>                        
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="row message-error" ng-show='(vm.messageError.length > 0)'>{{ vm.messageError }}</div>
+    <div class="row message-success" ng-show='(vm.messageSuccess.length > 0)'>{{ vm.messageSuccess }}</div>       
+</div>
