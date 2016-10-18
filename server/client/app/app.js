@@ -138,7 +138,7 @@ app.config(function ($stateProvider) {
 		views: {
 			"view": {
 				templateUrl: "/app/views/login.html",
-				controller: "LoginController as vm"
+				controller: "LoginController"
 			}
 		}
 	}).state("otherwise", {

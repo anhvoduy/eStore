@@ -1,25 +1,21 @@
-﻿// Constructor
-var errorHelper = function () { 
+﻿/*
+200 OK Standard response for successful HTTP requests
+201 Created Request has been fulfilled.New resource created
+204 No Content Request processed.No content returned
+301 Moved Permanently This and all future requests directed to the given URI
+304 Not Modified Resource has not been modified since last requested
+400 Bad Request Request cannot be fulfilled due to bad syntax
+401 Unauthorized Authentication is possible, but has failed
+403 Forbidden Server refuses to respond to request
+404 Not Found Requested resource could not be found
+500 Internal Server Error Generic error message when server fails
+501 Not Implemented Server does not recognize method or lacks ability to fulfill
+503 Service Unavailable Server is currently unavailable
+*/
+
+// Constructor
+var constant = function () { 
 }
-
-errorHelper.prototype.errorHandler = function (error) {	
-    var _error = {
-        code: error.code,
-        message: error.message,
-    }
-	return _error;
-}
-
-// Error Lists
-errorHelper.prototype.Error_Existed_BrandId = { code: 'ERROR_BRANDID', message: 'Brand Id does not existed.' };
-errorHelper.prototype.Error_Existed_ProductId = { code: 'ERROR_PRODUCTID', message: 'Product Id does not existed.' };
-errorHelper.prototype.Error_Existed_UserId = { code: 'ERROR_USERID', message: 'User Id does not existed.' };
-errorHelper.prototype.Error_Existed_Email = { code: 'ERROR_EMAIL', message: 'Email Account does not existed.' };
-
-errorHelper.prototype.Error_Invalid_Rating = { code: 'ERROR_VALID_RATING', message: "Rating is invalid" };
-errorHelper.prototype.Error_Invalid_Email = { code: 'ERROR_VALID_EMAIL', message: "Email is invalid" };
-
-errorHelper.prototype.Error_Connection = { code: 'ERROR_CONNECTION', message: 'Error: the current connection is closed or undefined.' };
 
 // Export
 module.exports = new errorHelper;
