@@ -1,29 +1,38 @@
 ﻿<div class="container" ng-cloak>
-	<h2>Brand Detail</h2>
+	<h2>Account Management</h2>
 
-    <form name="frmBrand" class="form-horizontal">
+    <form name="frmAccount" class="form-horizontal">
         <div class="form-group">
             <div class='control-label col-sm-8 message-error'
                  ng-show='(vm.messageError.length > 0)'>{{ vm.messageError }}</div>
         </div>
 
         <div class="form-group">
-            <label for="brandName" class="col-sm-2 control-label">Name</label>
+            <label for="acctNo" class="col-sm-2 control-label">Account No</label>
             <div class="col-sm-6">
-                <input name="brandName" ng-model="vm.brand.Name" class="form-control" placeholder="name" required maxlength="20" />
+                <input name="acctNo" ng-model="vm.account.AccountNo" class="form-control" placeholder="account no" required maxlength="20" />
             </div>
             <div class='control-label col-sm-8 message-error'
-                 ng-show='frmBrand.brandName.$dirty && frmBrand.brandName.$invalid'>Please input name</div>
+                 ng-show='frmAccount.acctNo.$dirty && frmAccount.acctNo.$invalid'>Please input Acct No</div>
+        </div>
+
+        <div class="form-group">
+            <label for="acctName" class="col-sm-2 control-label">Account Name</label>
+            <div class="col-sm-6">
+                <input name="acctName" ng-model="vm.account.AccountName" class="form-control" placeholder="account name" required maxlength="45" />
+            </div>
+            <div class='control-label col-sm-8 message-error'
+                 ng-show='frmAccount.acctName.$dirty && frmAccount.acctName.$invalid'>Please input Acct Name</div>
         </div>
 
 
         <div class="form-group">
-            <label for="brandDescription" class="col-sm-2 control-label">Description</label>
+            <label for="acctDescription" class="col-sm-2 control-label">Description</label>
             <div class="col-sm-6">
-                <input name="brandDescription" ng-model="vm.brand.Description" class="form-control" placeholder="description" required maxlength="50" />
+                <input name="acctDescription" ng-model="vm.account.Description" class="form-control" placeholder="description" required maxlength="50" />
             </div>
             <div class='control-label col-sm-8 message-error'
-                 ng-show='frmBrand.brandDescription.$dirty && frmBrand.brandDescription.$invalid'>Please input description</div>
+                 ng-show='frmAccount.acctDescription.$dirty && frmAccount.acctDescription.$invalid'>Please input description</div>
         </div>
 
         <div class="form-group">
@@ -38,51 +47,14 @@
                        value="Save" 
                        ng-click="vm.save()" 
                        ng-disabled="vm.disabledButton"/>
-            </div>
+
+                <input type="button" 
+                       class="btn" 
+                       value="Cancel" 
+                       ng-click="vm.cancel()" 
+                       ng-disabled="vm.disabledButton"/>
+            </div>            
         </div>
     </form>
 </div>
-
-<div class="container">
-    <h2>Brand's Products</h2>             
-
-    <div class="row row-table">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Product Id</th>
-                    <th>Product Name</th>
-                    <th>Description</th>
-                    <th>Brand Name</th>
-                    <th>UserName</th>
-                    <th>Email</th>
-                    <th>Rating</th>
-                    <th>Comment</th>                        
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="product in vm.lstProducts">
-                    <td>{{ product.ProductId }}</td>
-                    <td>{{ product.ProductName }}</td>
-                    <td>{{ product.Description }}</td>
-                    <td>{{ product.BrandName }}</td>
-                    <td>{{ product.Review.UserName }}</td>
-                    <td>{{ product.Review.Email }}</td>
-                    <td>{{ product.Review.Rating }}</td>
-                    <td>{{ product.Review.Comment }}</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>    
-    
-    <div class="row">
-        <div class="form-group">
-            <div class='control-label col-sm-8 message-error'
-                 ng-show='(vm.messageErrorProduct.length > 0)'>{{ vm.messageErrorProduct }}</div>
-        </div>
-        <div class="form-group">
-            <div class='control-label col-sm-8 message-success'
-                 ng-show='(vm.messageSuccessProduct.length > 0)'>{{ vm.messageSuccessProduct }}</div>
-        </div>
-    </div>       
-</div>
+   
