@@ -10,7 +10,8 @@ app.config(function ($stateProvider) {
 				controllerAs: 'vm'
 			}
 		}
-	}).state('home', {
+	})
+	.state('home', {
 		url: "/home",
 		views: {
 			"view": {
@@ -19,7 +20,8 @@ app.config(function ($stateProvider) {
 				controllerAs: "vm"
 			}
 		}
-	}).state('brand', {
+	})
+	.state('brand', {
 		url: "/brand",
 		views: {
 			"view": {
@@ -28,7 +30,8 @@ app.config(function ($stateProvider) {
 				controllerAs: 'vm'
 			}
 		}
-	}).state('brandDetail', {
+	})
+	.state('brandDetail', {
 		url: '/brand/:brandID',
 		views: {
 			"view": {
@@ -37,7 +40,8 @@ app.config(function ($stateProvider) {
 				controllerAs: 'vm'
 			}
 		}
-	}).state('product', {
+	})
+	.state('product', {
 		url: "/product",
 		views: {
 			"view": {
@@ -65,16 +69,16 @@ app.config(function ($stateProvider) {
 			}
 		}
 	})
-	//.state('inventory', {
-	//	url: "/inventory",
-	//	views: {
-	//		"view": {
-	//			templateUrl: "/app/views/inventory.html",
-	//			controller: "InventoryController",
-	//			controllerAs: "vm"
-	//		}
-	//	}
-	//})
+	.state('inventory', {
+		url: "/inventory",
+		views: {
+			"view": {
+				templateUrl: "/app/views/inventory.html",
+				controller: "InventoryController",
+				controllerAs: "vm"
+			}
+		}
+	})
 	//.state('inventory', {
 	//	url: '/inventory/input/:inventoryID',
 	//	views: {
@@ -133,16 +137,18 @@ app.config(function ($stateProvider) {
 				controllerAs: 'vm'
 			}
 		}
-	}).state('login', {
+	})
+	.state('login', {
 		url: '/login',
 		views: {
 			"view": {
 				templateUrl: "/app/views/login.html",
-                controller: "LoginController",                
-                hideMenus: true
+				controller: "LoginController",                
+				hideMenus: true
 			}
 		}
-	}).state("otherwise", {
+	})
+	.state("otherwise", {
 		url: "/home",
 		views: {
 			"view": {
