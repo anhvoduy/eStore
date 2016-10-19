@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 /* ----------- Register API -----------*/
-//app.use('/api', require('./routes/api'));
+app.use('/api', require('./routes/api'));
 app.use('/api/authenticate', require('./routes/authenticate'));
 app.use('/api/brand', require('./routes/brand'));
 app.use('/api/product', require('./routes/product'));

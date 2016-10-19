@@ -1,13 +1,10 @@
 (function () {
-    'use strict';        
-    app.controller('AccountController', AccountController);
-    AccountController.$inject = ['accountService'];        
-	function AccountController(accountService) {
-		// models
+	'use strict';
+	app.controller('accountController', accountController);
+	accountController.$inject = ['accountService'];
+	function accountController(accountService) {
+		// view-model
 		var vm = this;
-		vm.lstAccounts = [];
-		vm.messageSuccess = '';
-		vm.messageError = '';
 		
 		// functions
 		function activate() {

@@ -1,8 +1,8 @@
 (function () {
     'use strict';        
-    app.controller('BrandController', BrandController);
-    BrandController.$inject = ['brandService'];        
-	function BrandController(brandService) {
+    app.controller('brandController', brandController);
+    brandController.$inject = ['brandService'];        
+	function brandController(brandService) {
 		// models
 		var vm = this;
 		vm.lstBrands = [];
