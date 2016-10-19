@@ -62,8 +62,6 @@
     <Compile Include="client\app\services\productService.js" />
     <Compile Include="client\app\services\reviewService.js" />
     <Compile Include="client\app\services\userService.js" />
-    <Compile Include="client\libs\angular\angular-animate.js" />
-    <Compile Include="client\libs\angular\angular-animate.min.js" />
     <Compile Include="client\libs\angular\angular-aria.js" />
     <Compile Include="client\libs\angular\angular-aria.min.js" />
     <Compile Include="client\libs\angular\angular-cookies.js" />
@@ -74,18 +72,8 @@
     <Compile Include="client\libs\angular\angular-message-format.min.js" />
     <Compile Include="client\libs\angular\angular-messages.js" />
     <Compile Include="client\libs\angular\angular-messages.min.js" />
-    <Compile Include="client\libs\angular\angular-mocks.js" />
-    <Compile Include="client\libs\angular\angular-parse-ext.js" />
-    <Compile Include="client\libs\angular\angular-parse-ext.min.js" />
-    <Compile Include="client\libs\angular\angular-resource.js" />
-    <Compile Include="client\libs\angular\angular-resource.min.js" />
     <Compile Include="client\libs\angular\angular-route.js" />
     <Compile Include="client\libs\angular\angular-route.min.js" />
-    <Compile Include="client\libs\angular\angular-sanitize.js" />
-    <Compile Include="client\libs\angular\angular-sanitize.min.js" />
-    <Compile Include="client\libs\angular\angular-scenario.js" />
-    <Compile Include="client\libs\angular\angular-touch.js" />
-    <Compile Include="client\libs\angular\angular-touch.min.js" />
     <Compile Include="client\libs\angular\angular-ui-router.js" />
     <Compile Include="client\libs\angular\angular-ui-router.min.js" />
     <Compile Include="client\libs\angular\angular.js" />
@@ -103,10 +91,8 @@
     <Compile Include="config\dbContext.js" />
     <Compile Include="config\dbHelper.js" />
     <Compile Include="config\errorHelper.js" />
-    <Compile Include="gulp.config.js" />
-    <Compile Include="gulpfile.js" />
-    <Compile Include="receive.js" />
     <Compile Include="routes\account.js" />
+    <Compile Include="routes\authenticate.js" />
     <Compile Include="routes\transaction.js" />
     <Compile Include="routes\reporting.js" />
     <Compile Include="routes\journal.js" />
@@ -116,7 +102,6 @@
     <Compile Include="routes\brand.js" />
     <Compile Include="routes\customer.js" />
     <Compile Include="routes\product.js" />
-    <Compile Include="send.js" />
     <Compile Include="server.js" />
     <Compile Include="routes\review.js" />
     <Compile Include="routes\user.js" />
@@ -152,19 +137,6 @@
     <Content Include="client\app\views\userDetail.html" />
     <Content Include="client\app\views\users.html" />
     <Content Include="client\index.html" />
-    <Content Include="client\libs\angular\angular-animate.min.js.map" />
-    <Content Include="client\libs\angular\angular-aria.min.js.map" />
-    <Content Include="client\libs\angular\angular-cookies.min.js.map" />
-    <Content Include="client\libs\angular\angular-csp.css" />
-    <Content Include="client\libs\angular\angular-loader.min.js.map" />
-    <Content Include="client\libs\angular\angular-message-format.min.js.map" />
-    <Content Include="client\libs\angular\angular-messages.min.js.map" />
-    <Content Include="client\libs\angular\angular-parse-ext.min.js.map" />
-    <Content Include="client\libs\angular\angular-resource.min.js.map" />
-    <Content Include="client\libs\angular\angular-route.min.js.map" />
-    <Content Include="client\libs\angular\angular-sanitize.min.js.map" />
-    <Content Include="client\libs\angular\angular-touch.min.js.map" />
-    <Content Include="client\libs\angular\angular.min.js.map" />
     <Content Include="client\libs\bootstrap\css\bootstrap-theme.css" />
     <Content Include="client\libs\bootstrap\css\bootstrap-theme.css.map" />
     <Content Include="client\libs\bootstrap\css\bootstrap-theme.min.css" />
@@ -173,13 +145,12 @@
     <Content Include="client\libs\bootstrap\css\bootstrap.css.map" />
     <Content Include="client\libs\bootstrap\css\bootstrap.min.css" />
     <Content Include="client\libs\bootstrap\css\bootstrap.min.css.map" />
-    <Content Include="client\libs\bootstrap\css\custom-style.css" />
+    <Content Include="client\libs\custom\css\custom-style.css" />
     <Content Include="client\libs\bootstrap\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="client\libs\bootstrap\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="client\libs\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="client\libs\bootstrap\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="client\libs\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="client\login.html" />
     <Content Include="package.json" />
   </ItemGroup>
   <ItemGroup>
@@ -207,14 +178,37 @@
     <Folder Include="client\libs\bootstrap\css\" />
     <Folder Include="client\libs\bootstrap\fonts\" />
     <Folder Include="client\libs\bootstrap\js\" />
+    <Folder Include="client\libs\custom\css\" />
     <Folder Include="client\libs\jquery\" />
     <Folder Include="client\libs\moment\" />
+    <Folder Include="client\libs\custom\" />
     <Folder Include="client\libs\require\" />
     <Folder Include="client\test\" />
     <Folder Include="config\" />
     <Folder Include="services\" />
     <Folder Include="routes\" />
     <Folder Include="test\" />
+    <Folder Include="typings\" />
+    <Folder Include="typings\globals\" />
+    <Folder Include="typings\globals\body-parser\" />
+    <Folder Include="typings\globals\chai\" />
+    <Folder Include="typings\globals\express\" />
+    <Folder Include="typings\globals\mocha\" />
+    <Folder Include="typings\globals\mysql\" />
+    <Folder Include="typings\globals\node\" />
+    <Folder Include="typings\globals\q\" />
+    <Folder Include="typings\globals\supertest\" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="typings\globals\body-parser\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\chai\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\express\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\mocha\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\mysql\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\node\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\q\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\supertest\index.d.ts" />
+    <TypeScriptCompile Include="typings\index.d.ts" />
   </ItemGroup>
   <!-- Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them. -->
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="False" />
