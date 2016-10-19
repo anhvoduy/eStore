@@ -1,4 +1,4 @@
-var app = angular.module('cargo', ['ui.router', 'cargo.directives.customDirectives']);
+var app = angular.module('cargo', ['ngCookies', 'ui.router', 'cargo.directives.customDirectives']);
 
 app.config(function ($stateProvider) {
 	$stateProvider.state('/', {
@@ -138,7 +138,8 @@ app.config(function ($stateProvider) {
 		views: {
 			"view": {
 				templateUrl: "/app/views/login.html",
-				controller: "LoginController"
+                controller: "LoginController",                
+                hideMenus: true
 			}
 		}
 	}).state("otherwise", {

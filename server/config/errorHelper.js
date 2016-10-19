@@ -11,6 +11,7 @@ errorHelper.prototype.errorHandler = function (error) {
 }
 
 // Error Lists
+errorHelper.prototype.Error_Wrong_Authentication = { code: 'ERROR_AUTHENTICATION', message: 'Username and Password is invalid.' };
 errorHelper.prototype.Error_Existed_BrandId = { code: 'ERROR_BRANDID', message: 'Brand Id does not existed.' };
 errorHelper.prototype.Error_Existed_ProductId = { code: 'ERROR_PRODUCTID', message: 'Product Id does not existed.' };
 errorHelper.prototype.Error_Existed_UserId = { code: 'ERROR_USERID', message: 'User Id does not existed.' };

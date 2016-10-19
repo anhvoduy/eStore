@@ -1,26 +1,22 @@
 (function (){
     'use strict';
-	app.controller('BrandDetailController', BrandDetailController);
-    BrandDetailController.$inject = ['$timeout', 'brandService', 'productService', '$state', '$stateParams'];    
-	function BrandDetailController($timeout, brandService, productService, $state, $stateParams) {
+	app.controller('AccountDetailController', AccountDetailController);
+    AccountDetailController.$inject = ['$timeout', 'accountService', '$state', '$stateParams'];    
+    function AccountDetailController($timeout, accountService, $state, $stateParams) {
 		// models
 		var vm = this;
-		vm.brandId = $stateParams.brandID;
-		vm.brand = {};
-		vm.lstProducts = [];
+        vm.accountId = $stateParams.accountID;		
 		vm.disabledButton = false;
 		vm.messageSuccess = '';
-		vm.messageError = '';
-		vm.messageSuccessProduct = '';
-		vm.messageErrorProduct = '';
+        vm.messageError = '';
 		vm.save = save;
 		
 		// functions
 		function activate() {
-			brandService.getBrandById(vm.brandId).then(function (result) {
-				vm.brand = result;
-				if (vm.brand === undefined) {
-					vm.messageError = String.format("The brand id: {0} not found.", vm.brandId);
+            accountService.getAccountById(vm.accountId).then(function (result) {
+                vm.account = result;
+				if (vm.account === undefined) {
+                    vm.messageError = String.format("The account: {0} not found.", vm.accountId);
 					vm.disabledButton = true;
 				} else {
 					vm.disabledButton = false;
@@ -28,19 +24,7 @@
 			}, function (error) {
 				vm.messageError = error.message;
 				vm.disabledButton = true;
-			});
-			
-			productService.getProductByBrand(vm.brandId).then(function (result) {
-				vm.lstProducts = result;
-				if (vm.lstProducts === undefined || vm.lstProducts.length === 0) {
-					vm.messageErrorProduct = String.format("The list of products belongs to brand id: {0} not found.", vm.brandId);
-				} else {
-					vm.messageSuccessProduct = String.format("Get Products is successful. Total: {0} rows", vm.lstProducts.length);
-				}
-			}, function (error) {
-				vm.messageErrorProduct = error.message;
-				vm.disabledButton = true;
-			});
+			});			
 		}
 		
 		// if update brand success/failed -> reset status after 5s  
@@ -53,18 +37,18 @@
 		}
 		
 		// buttons
-		function save() {
-			if (vm.brand === undefined) return;
-			
-			vm.disabledButton = true;
-			brandService.updateBrand(vm.brand).then(function (result) {				
+        function save() {
+            if (vm.account === undefined) return;
+
+            vm.disabledButton = true;
+            accountService.updateAccount(vm.account).then(function (result) {
                 vm.messageSuccess = result.message;
-				resetFormStatus();
-			}, function (error) {
-				vm.messageError = error.message;
-				resetFormStatus();
-			});
-		}
+                resetFormStatus();
+            }, function (error) {
+                vm.messageError = error.message;
+                resetFormStatus();
+            });
+        }
 		
 		/* start */
 		activate();

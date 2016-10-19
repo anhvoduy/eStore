@@ -20,5 +20,9 @@ userService.prototype.getUserByEmail = function (ctx, email) {
 	return ctx.queryCommand(sql);
 }
 
+userService.prototype.authenticate = function (username, password) {
+    return (username === 'admin' && password === '@dmin');
+}
+
 // Export
 module.exports = new userService;
