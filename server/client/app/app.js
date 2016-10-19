@@ -148,6 +148,14 @@ app.config(function ($stateProvider) {
 			}
 		}
 	})
+	.state("help", {
+		url: "/help",
+		views: {
+			"view": {
+				templateUrl: "/app/views/help.html"
+			}
+		}
+	})
 	.state("otherwise", {
 		url: "/help",
 		views: {
