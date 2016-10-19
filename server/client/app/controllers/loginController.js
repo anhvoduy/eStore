@@ -1,8 +1,8 @@
 (function () {
     'use strict';        
-    app.controller('LoginController', LoginController);
-    LoginController.$inject = ['$scope', '$rootScope', '$location', 'authenticationService'];        
-    function LoginController($scope, $rootScope, $location, authenticationService) {
+    app.controller('loginController', loginController);
+    loginController.$inject = ['$scope', '$rootScope', '$location', 'authenticationService'];        
+    function loginController($scope, $rootScope, $location, authenticationService) {
 		// reset login status
         authenticationService.clearCredentials();
 		

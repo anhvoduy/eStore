@@ -6,7 +6,7 @@ app.config(function ($stateProvider) {
 		views: {
 			"view": {
 				templateUrl: "/app/views/home.html",
-				controller: "HomeController",
+				controller: "homeController",
 				controllerAs: 'vm'
 			}
 		}
@@ -16,7 +16,7 @@ app.config(function ($stateProvider) {
 		views: {
 			"view": {
 				templateUrl: "/app/views/home.html",
-				controller: "HomeController",
+				controller: "homeController",
 				controllerAs: "vm"
 			}
 		}
@@ -26,7 +26,7 @@ app.config(function ($stateProvider) {
 		views: {
 			"view": {
 				templateUrl: "/app/views/brands.html",
-				controller: "BrandController",
+				controller: "brandController",
 				controllerAs: 'vm'
 			}
 		}
@@ -103,7 +103,7 @@ app.config(function ($stateProvider) {
 		views: {
 			"view": {
 				templateUrl: "/app/views/account.html",
-				controller: "AccountController",
+				controller: "accountController",
 				controllerAs: 'vm'
 			}
 		}
@@ -113,7 +113,7 @@ app.config(function ($stateProvider) {
 		views: {
 			"view": {
 				templateUrl: "/app/views/accountDetail.html",
-				controller: "AccountDetailController",
+				controller: "accountDetailController",
 				controllerAs: 'vm'
 			}
 		}
@@ -143,16 +143,24 @@ app.config(function ($stateProvider) {
 		views: {
 			"view": {
 				templateUrl: "/app/views/login.html",
-				controller: "LoginController",                
+				controller: "loginController",                
 				hideMenus: true
 			}
 		}
 	})
-	.state("otherwise", {
-		url: "/home",
+	.state("help", {
+		url: "/help",
 		views: {
 			"view": {
-				templateUrl: "/app/views/home.html"
+				templateUrl: "/app/views/help.html"
+			}
+		}
+	})
+	.state("otherwise", {
+		url: "/help",
+		views: {
+			"view": {
+				templateUrl: "/app/views/help.html"
 			}
 		}
 	});

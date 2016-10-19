@@ -32,6 +32,7 @@
   <ItemGroup>
     <Compile Include="app.js" />
     <Compile Include="client\app\app.js" />
+    <Compile Include="client\app\common\appContext.js" />
     <Compile Include="client\app\common\common.js" />
     <Compile Include="client\app\controllers\accountController.js" />
     <Compile Include="client\app\controllers\brandController.js" />
@@ -58,6 +59,7 @@
     <Compile Include="client\app\services\accountService.js" />
     <Compile Include="client\app\services\authenticationService.js" />
     <Compile Include="client\app\services\baseService.js" />
+    <Compile Include="client\app\services\inventoryService.js" />
     <Compile Include="client\app\services\brandService.js" />
     <Compile Include="client\app\services\productService.js" />
     <Compile Include="client\app\services\reviewService.js" />
@@ -126,6 +128,7 @@
     <Content Include="client\app\views\brandDetail.html" />
     <Content Include="client\app\views\account.html" />
     <Content Include="client\app\views\brands.html" />
+    <Content Include="client\app\views\help.html" />
     <Content Include="client\app\views\home.html" />
     <Content Include="client\app\views\inventory.html" />
     <Content Include="client\app\views\inventoryInputDetail.html" />

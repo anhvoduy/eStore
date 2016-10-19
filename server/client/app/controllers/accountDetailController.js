@@ -1,8 +1,8 @@
 (function (){
     'use strict';
-	app.controller('AccountDetailController', AccountDetailController);
-    AccountDetailController.$inject = ['$timeout', 'accountService', '$state', '$stateParams'];    
-    function AccountDetailController($timeout, accountService, $state, $stateParams) {
+	app.controller('accountDetailController', accountDetailController);
+    accountDetailController.$inject = ['$timeout', 'accountService', '$state', '$stateParams'];    
+    function accountDetailController($timeout, accountService, $state, $stateParams) {
 		// models
 		var vm = this;
         vm.accountId = $stateParams.accountID;		
