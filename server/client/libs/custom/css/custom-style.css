@@ -1,1 +1,20 @@
-/* custom style */
+﻿.row.row-table {
+    margin-right: 50px;
+}
+.message-error {
+    color: red;    
+}
+.message-success {
+    color: green;    
+}
+.control-readonly {
+    background-color: white !important;
+}
+
+.main-content {
+    padding-top: 80px;
+}
+
+.btn-login {
+    float: left;
+}
