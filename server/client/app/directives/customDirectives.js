@@ -19,16 +19,19 @@
                 }
             };
         })
-        .directive('mainMenu', [function () {
+        .directive('mainMenu', ['$rootScope', '$cookieStore', function ($rootScope, $cookieStore) {
             return {
-                restrict: 'EA',
-                replace: true,
-                templateUrl: function () {
-                    return "/app/directives/templates/mainMenu.html";
-                },
-                link: function (scope, element, attrs, ngCtrl) {
-                }
-            };
+				restrict: 'EA',
+				replace: true,				
+				templateUrl: function () {
+					return "/app/directives/templates/mainMenu.html";
+				},
+				link: function (scope, element, attrs, ngCtrl) {
+					//if (angular.isUndefined($cookieStore.get('globals'))) scope.authorized = false;
+					//else scope.authorized = true;
+					scope.authorized = true
+				}
+			};
         }])
         .directive('mainTitle', [function () {
             return {
