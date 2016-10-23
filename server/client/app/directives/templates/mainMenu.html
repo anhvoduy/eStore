@@ -1,4 +1,4 @@
-﻿<div class="navbar navbar-inverse navbar-fixed-top">
+﻿<div class="navbar navbar-inverse navbar-fixed-top" ng-show="authorized">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -17,9 +17,9 @@
                 <li><a ui-sref="user">Users</a></li>
                 <li><a ui-sref="help">Help</a></li>
             </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a ui-sref="register" id="registerLink">Register</a></li>
-                <li><a ui-sref="login" id="loginLink">Login</a></li>
+            <ul class="nav navbar-nav navbar-right">                
+                <li><a ui-sref="login" id="loginLink" ng-show="!authorized">Login</a></li>
+                <li><a ui-sref="logout" id="logoutLink" ng-show="authorized">Logout</a></li>                
             </ul>
         </div>
     </div>

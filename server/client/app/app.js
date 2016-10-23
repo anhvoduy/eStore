@@ -1,18 +1,19 @@
 var app = angular.module('cargo', ['ngCookies', 'ui.router', 'cargo.directives.customDirectives']);
 
 app.config(function ($stateProvider) {
-	$stateProvider.state('/', {
-		url: "",
+	$stateProvider
+	.state('/', {
+		url: '/',
 		views: {
 			"view": {
 				templateUrl: "/app/views/home.html",
 				controller: "homeController",
-				controllerAs: 'vm'
+				controllerAs: "vm"
 			}
 		}
 	})
 	.state('home', {
-		url: "/home",
+		url: '/home',
 		views: {
 			"view": {
 				templateUrl: "/app/views/home.html",
@@ -142,12 +143,22 @@ app.config(function ($stateProvider) {
 		url: '/login',
 		views: {
 			"view": {
-				templateUrl: "/app/views/login.html",
-				controller: "loginController",                
+				templateUrl: "/app/components/authentication/views/login.html",
+				controller: "loginController",
 				hideMenus: true
 			}
 		}
 	})
+	.state('logout', {
+		url: '/logout',
+		views: {
+			"view": {
+				templateUrl: "/app/components/authentication/views/login.html",
+				controller: "loginController",
+				hideMenus: true
+			}
+		}
+	})	
 	.state("help", {
 		url: "/help",
 		views: {
@@ -157,11 +168,30 @@ app.config(function ($stateProvider) {
 		}
 	})
 	.state("otherwise", {
-		url: "/help",
+		url: '/login',
 		views: {
 			"view": {
-				templateUrl: "/app/views/help.html"
+				templateUrl: "/app/components/authentication/views/login.html",
+				controller: "loginController",
+				hideMenus: true
 			}
 		}
 	});
 });
+
+app.run(['$rootScope', '$location', '$cookieStore', '$http', 
+	function ($rootScope, $location, $cookieStore, $http) {
+		// keep user logged in after page refresh
+		$rootScope.globals = $cookieStore.get('globals') || {};
+		if ($rootScope.globals.currentUser) {
+			$http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata; // jshint ignore:line
+		}
+		
+		$rootScope.$on('$locationChangeStart', function (event, next, current) {
+			// redirect to login page if not logged in
+			//if ($location.path() !== '/login' && !$rootScope.globals.currentUser) {
+			//	$location.path('/login');
+			//}
+		});
+	}
+]);

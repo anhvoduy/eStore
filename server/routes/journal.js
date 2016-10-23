@@ -8,7 +8,7 @@ var brandService = require('../services/brandService');
 // Router
 router.get('/items', function (request, response, next) {
 	dbContext.getConnection().then(function (result) {
-		ctx = result;
+		var ctx = result;
 		return brandService.getBrands(ctx);
 	}).then(function (brands) {
 		response.status(200).json(brands);
@@ -20,11 +20,10 @@ router.get('/items', function (request, response, next) {
 });
 
 router.get('/items/:id', function (request, response, next) {
-    var brandId = request.params.id;
-
-	var ctx = {};        
+	var brandId = request.params.id;
+		
 	dbContext.getConnection().then(function (result) {
-		ctx = result;
+		var ctx = result;
 		return brandService.getBrandById(ctx, brandId);
 	}).then(function (brands) {
 		if (brands.length == 0) {
