@@ -31,6 +31,7 @@ server.use(function (error, request, response, next) {
 
 /* ----------- Register Angular serverlication -----------*/
 server.use('/app', express.static(path.join(__dirname, 'client/app')));
+server.use('/img', express.static(path.join(__dirname, 'client/img')));
 server.use('/libs', express.static(path.join(__dirname, 'client/libs')));
 
 

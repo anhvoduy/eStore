@@ -6,7 +6,7 @@ app.config(function ($stateProvider) {
 		url: '/',
         views: {
             "view": {
-                templateUrl: "/app/components/home/views/home.tpl.html"
+                templateUrl: "/app/views/home.tpl.html"
             }
         }
 	})	
@@ -124,7 +124,7 @@ app.config(function ($stateProvider) {
 		url: "/help",
 		views: {
 			"view": {
-                templateUrl: "/app/components/help/views/help.tpl.html"
+                templateUrl: "/app/views/help.tpl.html"
 			}
 		}
 	})
@@ -144,6 +144,7 @@ app.run(['$rootScope', '$location', '$cookieStore', '$http',
 		// keep user logged in after page refresh
 		$rootScope.globals = $cookieStore.get('globals') || {};
 		if ($rootScope.globals.currentUser) {
+			$rootScope.globals.authorized = true;
 			$http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata; // jshint ignore:line
 		}
 
