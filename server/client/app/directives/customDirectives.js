@@ -19,17 +19,28 @@
                 }
             };
         })
-        .directive('mainMenu', ['$rootScope', '$cookieStore', function ($rootScope, $cookieStore) {
+        .directive('mainMenu', ['$rootScope', '$http', '$cookieStore', function ($rootScope, $http, $cookieStore) {
+			var logout = function(){
+				console.log('logout & clear credential...');
+				$rootScope.globals = {};
+				$cookieStore.remove('globals');
+				$http.defaults.headers.common.Authorization = 'Basic ';	
+			};			
+			
             return {
 				restrict: 'EA',
-				replace: true,				
+				replace: true,
 				templateUrl: function () {
 					return "/app/directives/templates/mainMenu.html";
 				},
-				link: function (scope, element, attrs, ngCtrl) {
-					//if (angular.isUndefined($cookieStore.get('globals'))) scope.authorized = false;
-					//else scope.authorized = true;
-					scope.authorized = true
+				link: function (scope, element, attrs, ngCtrl) {					
+					scope.logout = logout();
+					console.log('init main-menu');
+					if(!angular.isUndefined(scope.globals) && !angular.isUndefined(scope.globals.currentUser)){
+						scope.authorized = true;
+					}else{
+						scope.authorized = false;
+					};					
 				}
 			};
         }])
