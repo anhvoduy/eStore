@@ -103,7 +103,7 @@ app.config(function ($stateProvider) {
 		url: "/account",
 		views: {
 			"view": {
-				templateUrl: "/app/views/account.html",
+                templateUrl: "/app/components/account/views/account.tpl.html",
 				controller: "accountController",
 				controllerAs: 'vm'
 			}
@@ -113,7 +113,7 @@ app.config(function ($stateProvider) {
 		url: '/account/:accountID',
 		views: {
 			"view": {
-				templateUrl: "/app/views/accountDetail.html",
+                templateUrl: "/app/components/account/views/accountDetail.tpl.html",
 				controller: "accountDetailController",
 				controllerAs: 'vm'
 			}
@@ -123,7 +123,7 @@ app.config(function ($stateProvider) {
 		url: "/user",
 		views: {
 			"view": {
-				templateUrl: "/app/views/users.html",
+                templateUrl: "/app/components/user/views/users.html",
 				controller: "UserController",
 				controllerAs: 'vm'
 			}
@@ -133,7 +133,7 @@ app.config(function ($stateProvider) {
 		url: '/user/:userID',
 		views: {
 			"view": {
-				templateUrl: "/app/views/userDetail.html",
+                templateUrl: "/app/components/user/views/userDetail.html",
 				controller: "UserDetailController",
 				controllerAs: 'vm'
 			}
@@ -144,8 +144,7 @@ app.config(function ($stateProvider) {
 		views: {
 			"view": {
 				templateUrl: "/app/components/authentication/views/login.html",
-				controller: "loginController",
-				hideMenus: true
+				controller: "loginController"
 			}
 		}
 	})
@@ -153,9 +152,8 @@ app.config(function ($stateProvider) {
 		url: '/logout',
 		views: {
 			"view": {
-				templateUrl: "/app/components/authentication/views/login.html",
-				controller: "loginController",
-				hideMenus: true
+                templateUrl: "/app/components/authentication/views/logout.html",
+				controller: "loginController"
 			}
 		}
 	})	
