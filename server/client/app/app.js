@@ -1,32 +1,20 @@
 var app = angular.module('cargo', ['ngCookies', 'ui.router', 'cargo.directives.customDirectives']);
 
-app.config(function ($stateProvider) {
-	$stateProvider
+app.config(function ($stateProvider) {	
+	$stateProvider	
 	.state('/', {
 		url: '/',
-		views: {
-			"view": {
-				templateUrl: "/app/views/home.html",
-				controller: "homeController",
-				controllerAs: "vm"
-			}
-		}
-	})
-	.state('home', {
-		url: '/home',
-		views: {
-			"view": {
-				templateUrl: "/app/views/home.html",
-				controller: "homeController",
-				controllerAs: "vm"
-			}
-		}
-	})
+        views: {
+            "view": {
+                templateUrl: "/app/components/home/views/home.tpl.html"
+            }
+        }
+	})	
 	.state('brand', {
 		url: "/brand",
 		views: {
 			"view": {
-				templateUrl: "/app/views/brands.html",
+                templateUrl: "/app/components/brand/views/brand.tpl.html",
 				controller: "brandController",
 				controllerAs: 'vm'
 			}
@@ -36,7 +24,7 @@ app.config(function ($stateProvider) {
 		url: '/brand/:brandID',
 		views: {
 			"view": {
-				templateUrl: "/app/views/brandDetail.html",
+                templateUrl: "/app/components/brand/views/brandDetail.tpl.html",
 				controller: "BrandDetailController",
 				controllerAs: 'vm'
 			}
@@ -46,7 +34,7 @@ app.config(function ($stateProvider) {
 		url: "/product",
 		views: {
 			"view": {
-				templateUrl: "/app/views/products.html",
+				templateUrl: "/app/components/product/views/product.tpl.html",
 				controller: "ProductController",
 				controllerAs: 'vm'
 			}
@@ -55,18 +43,14 @@ app.config(function ($stateProvider) {
 		url: "/product/:productID",
 		views: {
 			"view": {
-				templateUrl: "/app/views/productDetail.html",
-				controller: "ProductDetailController",
-				controllerAs: 'vm'
+				templateUrl: "/app/components/product/views/productDetail.tpl.html"
 			}
 		}
 	}).state('reviewProduct', {
 		url: "/review/:productID",
 		views: {
 			"view": {
-				templateUrl: "/app/views/reviewProduct.html",
-				controller: "ReviewProductController",
-				controllerAs: 'vm'
+				templateUrl: "/app/components/product/views/productReview.tpl.html"
 			}
 		}
 	})
@@ -74,36 +58,15 @@ app.config(function ($stateProvider) {
 		url: "/inventory",
 		views: {
 			"view": {
-				templateUrl: "/app/views/inventory.html",
-				controller: "InventoryController",
-				controllerAs: "vm"
+				templateUrl: "/app/components/inventory/views/inventory.tpl.html"
 			}
 		}
-	})
-	//.state('inventory', {
-	//	url: '/inventory/input/:inventoryID',
-	//	views: {
-	//		"view": {
-	//			templateUrl: "/app/views/inventoryInputDetail.html",
-	//			controller: "InventoryInputDetail",
-	//			controllerAs: "vm"
-	//		}
-	//	}
-	//}).state('inventory', {
-	//	url: '/inventory/output/:inventoryID',
-	//	views: {
-	//		"view": {
-	//			templateUrl: "/app/views/inventoryOutputDetail.html",
-	//			controller: "InventoryOutputDetail",
-	//			controllerAs: "vm"
-	//		}
-	//	}
-	//})
+	})	
 	.state('account', {
 		url: "/account",
 		views: {
 			"view": {
-				templateUrl: "/app/views/account.html",
+                templateUrl: "/app/components/account/views/account.tpl.html",
 				controller: "accountController",
 				controllerAs: 'vm'
 			}
@@ -113,7 +76,7 @@ app.config(function ($stateProvider) {
 		url: '/account/:accountID',
 		views: {
 			"view": {
-				templateUrl: "/app/views/accountDetail.html",
+                templateUrl: "/app/components/account/views/accountDetail.tpl.html",
 				controller: "accountDetailController",
 				controllerAs: 'vm'
 			}
@@ -123,7 +86,7 @@ app.config(function ($stateProvider) {
 		url: "/user",
 		views: {
 			"view": {
-				templateUrl: "/app/views/users.html",
+                templateUrl: "/app/components/user/views/user.tpl.html",
 				controller: "UserController",
 				controllerAs: 'vm'
 			}
@@ -133,7 +96,7 @@ app.config(function ($stateProvider) {
 		url: '/user/:userID',
 		views: {
 			"view": {
-				templateUrl: "/app/views/userDetail.html",
+                templateUrl: "/app/components/user/views/userDetail.tpl.html",
 				controller: "UserDetailController",
 				controllerAs: 'vm'
 			}
@@ -143,40 +106,37 @@ app.config(function ($stateProvider) {
 		url: '/login',
 		views: {
 			"view": {
-				templateUrl: "/app/components/authentication/views/login.html",
-				controller: "loginController",
-				hideMenus: true
+				templateUrl: "/app/components/authentication/views/login.tpl.html",
+				controller: "loginController"				
 			}
-		}
+		},
+		showMenus: false
 	})
 	.state('logout', {
 		url: '/logout',
 		views: {
 			"view": {
-				templateUrl: "/app/components/authentication/views/login.html",
-				controller: "loginController",
-				hideMenus: true
+                templateUrl: "/app/components/authentication/views/logout.tpl.html",
 			}
 		}
-	})	
+	})
 	.state("help", {
 		url: "/help",
 		views: {
 			"view": {
-				templateUrl: "/app/views/help.html"
+                templateUrl: "/app/components/help/views/help.tpl.html"
 			}
 		}
 	})
 	.state("otherwise", {
-		url: '/login',
+		url: '/404',
 		views: {
 			"view": {
-				templateUrl: "/app/components/authentication/views/login.html",
-				controller: "loginController",
+				templateUrl: "/app/views/404.tpl.html",				
 				hideMenus: true
 			}
 		}
-	});
+	});	
 });
 
 app.run(['$rootScope', '$location', '$cookieStore', '$http', 
@@ -186,12 +146,21 @@ app.run(['$rootScope', '$location', '$cookieStore', '$http',
 		if ($rootScope.globals.currentUser) {
 			$http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata; // jshint ignore:line
 		}
+
+		$rootScope.logout = function(){
+			$rootScope.globals = {};
+			$cookieStore.remove('globals');
+			$http.defaults.headers.common.Authorization = 'Basic ';	
+		};
 		
 		$rootScope.$on('$locationChangeStart', function (event, next, current) {
+			console.log('$locationChangeStart');			
 			// redirect to login page if not logged in
-			//if ($location.path() !== '/login' && !$rootScope.globals.currentUser) {
-			//	$location.path('/login');
-			//}
+			if ($location.path() !== '/login' && !$rootScope.globals.currentUser) {
+				$location.path('/login');
+			}else if($location.path() === ''){
+				$location.path('/login');
+			}
 		});
 	}
 ]);
