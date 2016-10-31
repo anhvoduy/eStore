@@ -1,6 +1,16 @@
 var app = angular.module('cargo', ['ngCookies', 'ui.router', 'cargo.directives.customDirectives']);
 
 app.config(function ($stateProvider) {
+	$stateProvider.state("otherwise", {
+		url: '/404',
+		views: {
+			"view": {
+				templateUrl: "/app/views/404.html",				
+				hideMenus: true
+			}
+		}
+	});
+	
 	$stateProvider
 	.state('/', {
 		url: '/',
@@ -143,8 +153,9 @@ app.config(function ($stateProvider) {
 		url: '/login',
 		views: {
 			"view": {
-				templateUrl: "/app/components/authentication/views/login.html",
-				controller: "loginController"
+				templateUrl: "/app/components/authentication/views/login.tpl.html",
+				controller: "loginController",
+				hideMenus: true
 			}
 		}
 	})
@@ -152,7 +163,7 @@ app.config(function ($stateProvider) {
 		url: '/logout',
 		views: {
 			"view": {
-                templateUrl: "/app/components/authentication/views/logout.html"
+                templateUrl: "/app/components/authentication/views/logout.tpl.html"
 			}
 		}
 	})	
@@ -160,20 +171,10 @@ app.config(function ($stateProvider) {
 		url: "/help",
 		views: {
 			"view": {
-                templateUrl: "/app/components/help/views/help.html"
+                templateUrl: "/app/components/help/views/help.tpl.html"
 			}
 		}
-	})
-	.state("otherwise", {
-		url: '/login',
-		views: {
-			"view": {
-				templateUrl: "/app/components/authentication/views/login.html",
-				controller: "loginController",
-				hideMenus: true
-			}
-		}
-	});
+	});	
 });
 
 app.run(['$rootScope', '$location', '$cookieStore', '$http', 
@@ -185,6 +186,7 @@ app.run(['$rootScope', '$location', '$cookieStore', '$http',
 		}
 		
 		$rootScope.$on('$locationChangeStart', function (event, next, current) {
+			console.log('$locationChangeStart');
 			// redirect to login page if not logged in
 			//if ($location.path() !== '/login' && !$rootScope.globals.currentUser) {
 			//	$location.path('/login');
