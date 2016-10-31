@@ -26,7 +26,7 @@ CREATE TABLE `tblCustomer` (
 -- Sample data for table `tblCustomer`
 --
 INSERT INTO `tblCustomer` (`CustomerNo`,`CustomerName`,`Description`,`Deleted`) VALUES (uuid(),'Van Thinh Phat','',0);
-INSERT INTO `tblCustomer` (`CustomerNo`,`CustomerName`,`Description`,`Deleted`) VALUES (uuid(),'Cong ty CP Co Dien Lanh REE','',0);
+INSERT INTO `tblCustomer` (`CustomerNo`,`CustomerName`,`Description`,`Deleted`) VALUES (uuid(),'Cong ty CP REE','',0);
 INSERT INTO `tblCustomer` (`CustomerNo`,`CustomerName`,`Description`,`Deleted`) VALUES (uuid(),'Cong ty CP FPT','',0);
 
 
@@ -51,8 +51,8 @@ INSERT INTO `tblAccount` (`AccountNo`,`AccountName`,`Description`,`Deleted`) VAL
 INSERT INTO `tblAccount` (`AccountNo`,`AccountName`,`Description`,`Deleted`) VALUES ('112','Cash in bank','',0);
 INSERT INTO `tblAccount` (`AccountNo`,`AccountName`,`Description`,`Deleted`) VALUES ('113','Cash transfer ','',0);
 INSERT INTO `tblAccount` (`AccountNo`,`AccountName`,`Description`,`Deleted`) VALUES ('156','Goods','',0);
-INSERT INTO `tblAccount` (`AccountNo`,`AccountName`,`Description`,`Deleted`) VALUES ('131','Các kho?n ph?i thu','',0);
-INSERT INTO `tblAccount` (`AccountNo`,`AccountName`,`Description`,`Deleted`) VALUES ('331','Các kho?n ph?i tr?','',0);
+INSERT INTO `tblAccount` (`AccountNo`,`AccountName`,`Description`,`Deleted`) VALUES ('131','Cac khoan phai thu','',0);
+INSERT INTO `tblAccount` (`AccountNo`,`AccountName`,`Description`,`Deleted`) VALUES ('331','Cac khoan phai tra','',0);
 INSERT INTO `tblAccount` (`AccountNo`,`AccountName`,`Description`,`Deleted`) VALUES ('511','Doanh thu','',0);
 INSERT INTO `tblAccount` (`AccountNo`,`AccountName`,`Description`,`Deleted`) VALUES ('631','Chi phí','',0);
 
@@ -168,19 +168,19 @@ CREATE TABLE `tblproduct` (
 -- Sample data for table `tblproduct`
 --
 INSERT INTO `tblproduct`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Created`,`Status`,`Deleted`,`LatestReviewInfo`) 
-VALUES ('Sony Vaio','Sony Vaio',1,100,'White','2013-08-25','In',0,'UserName###Email###Rating###Comment');
+VALUES ('Sony Vaio','Sony Vaio',1,100,'White','2013-08-25','In',0,'');
 
 INSERT INTO `tblproduct`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Created`,`Status`,`Deleted`,`LatestReviewInfo`)
-VALUES ('Dell','Dell Vostro',2,2000,'White','2013-08-25','In',1,'anhnguyen###anhnguyen@sony.com###2###Rating 2 - Very Good');
+VALUES ('Dell','Dell Vostro',2,2000,'White','2013-08-25','In',1,'');
 
 INSERT INTO `tblproduct`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Created`,`Status`,`Deleted`,`LatestReviewInfo`)
 VALUES ('HP Note','HP Note',2,100,'Yellow','2013-08-25','In',0,NULL);
 
 INSERT INTO `tblproduct`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Created`,`Status`,`Deleted`,`LatestReviewInfo`)
-VALUES ('Asus','Asus',4,800,'White','2013-08-25','In',0,'hoanganh###hoanganh@ibm.com###4###Rating 4');
+VALUES ('Asus','Asus',4,800,'White','2013-08-25','In',0,'');
 
 INSERT INTO `tblproduct`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Created`,`Status`,`Deleted`,`LatestReviewInfo`)
-VALUES ('Acer','Laptop Acer',4,100,'White','2013-08-25','In',0,'hoanganh###hoanganh@ibm.com###5###Rating 5');
+VALUES ('Acer','Laptop Acer',4,100,'White','2013-08-25','In',0,'');
 
 INSERT INTO `tblproduct`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Created`,`Status`,`Deleted`,`LatestReviewInfo`)
 VALUES ('Sony Xperia','Sony Xperia',6,1200,'White','2015-08-25','Out',0,NULL);
@@ -195,52 +195,7 @@ INSERT INTO `tblproduct`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,
 VALUES ('IBM T400','IBM T400',20,100,'Red','2010-08-25','Out',0,NULL);
 
 INSERT INTO `tblproduct`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Created`,`Status`,`Deleted`,`LatestReviewInfo`)
-VALUES ('Sony Erikson','Sony Erikson',20,1100,'Black','2013-08-25','Out',0,'anhnguyen###anhnguyen@sony.com###4###It is good');
-
-INSERT INTO `tblproduct`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Created`,`Status`,`Deleted`,`LatestReviewInfo`)
-VALUES ('HP Onebook','HP One Book',10,100,'Black','2013-08-25','Out',0,NULL);
-
-INSERT INTO `tblproduct`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Created`,`Status`,`Deleted`,`LatestReviewInfo`)
-VALUES ('HP Thirdbook','HP Thirdbook',10,700,'Blue','2013-08-25','Archive',0,NULL);
-
-INSERT INTO `tblproduct`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Created`,`Status`,`Deleted`,`LatestReviewInfo`)
-VALUES ('HP Thirdbook','HP Thirdbook',7,100,'Green','2013-08-25','Archive',0,NULL);
-
-INSERT INTO `tblproduct`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Created`,`Status`,`Deleted`,`LatestReviewInfo`)
-VALUES ('HP Thirdbook','HP Thirdbook',7,300,'Blue','2013-08-25','Archive',0,NULL);
-
-INSERT INTO `tblproduct`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Created`,`Status`,`Deleted`,`LatestReviewInfo`)
-VALUES ('HP Thirdbook','HP Thirdbook',7,25,'Green','2013-08-25','Archive',0,'Duy Anh###avo4@hvn.com###5###Review with Rating 5');
-
-INSERT INTO `tblproduct`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Created`,`Status`,`Deleted`,`LatestReviewInfo`)
-VALUES ('HP Thirdbook','HP Thirdbook',7,100,'Green','2013-08-25','Archive',0,'Duy Anh###avo4@hvn.com###9###Very Good');
-
-INSERT INTO `tblproduct`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Created`,`Status`,`Deleted`,`LatestReviewInfo`)
-VALUES ('HP 101','HP 101',7,300,'Green','2016-08-25','IN',0,NULL);
-
-INSERT INTO `tblproduct`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Created`,`Status`,`Deleted`,`LatestReviewInfo`)
-VALUES ('HP 102','HP 102',8,4000,'Blue','2016-08-25','IN',0,NULL);
-
-INSERT INTO `tblproduct`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Created`,`Status`,`Deleted`,`LatestReviewInfo`)
-VALUES ('HP 103','HP 103',9,300,'Blue','2016-08-25','OUT',0,NULL);
-
-INSERT INTO `tblproduct`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Created`,`Status`,`Deleted`,`LatestReviewInfo`)
-VALUES ('HP 104','HP 104',10,300,'Blue','2016-08-25','OUT',0,'Duy Anh###avo4@hvn.com###2###MySQL 5.7 is the best release ever of the world most popular open source database and provides a new, advanced feature set designed to enable those who are building the next generation of web-based');
-
-INSERT INTO `tblproduct`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Created`,`Status`,`Deleted`,`LatestReviewInfo`)
-VALUES ('HP 105','HP 105',10,300,'Blue','2016-08-25','OUT',0,NULL);
-
-INSERT INTO `tblproduct`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Created`,`Status`,`Deleted`,`LatestReviewInfo`)
-VALUES ('HP 106','HP 106',10,300,'Blue','2016-08-25','OUT',0,'Duy Anh###avo4@hvn.com###2###Rating 2');
-
-INSERT INTO `tblproduct`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Created`,`Status`,`Deleted`,`LatestReviewInfo`)
-VALUES ('HP 1088','HP 1088',10,200,'Blue','2016-08-25','IN',0,'Duy Anh###avo4@hvn.com###2###Rating 2');
-
-INSERT INTO `tblproduct`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Created`,`Status`,`Deleted`,`LatestReviewInfo`)
-VALUES ('Iphone 6','Iphone 6',10,300,'Green','2016-08-26','OUT',0,'Anh###avo4@hvn.com###5###I this tutorial, you will learn about variables in the stored procedure, how to declare, and use SQL');
-
-INSERT INTO `tblproduct`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Created`,`Status`,`Deleted`,`LatestReviewInfo`)
-VALUES ('Ipad 5','Ipad 5',22,3000,'Green','2016-08-28','OUT',0,'Duy Anh###avo4@hvn.com###7###Rating 7');
+VALUES ('Ipad 5','Ipad 5',22,3000,'Green','2016-08-28','OUT',0,'');
 
 --
 -- Table structure for table `tblreview`
