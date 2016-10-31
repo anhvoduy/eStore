@@ -41,39 +41,44 @@
     <!-- common -->
     <script src="app/common/common.js"></script>
     <script src="app/common/appContext.js"></script>
+	<!-- services -->
+	<script src="app/services/baseService.js"></script>
+	<!-- directives -->
+    <script src="app/directives/customDirectives.js"></script>
+	
 
-    <!-- controllers -->
+    <!-- home -->
     <script src="app/controllers/homeController.js"></script>
-    <script src="app/controllers/accountController.js"></script>
-    <script src="app/controllers/accountDetailController.js"></script>
+	
+	<!-- account -->
+    <script src="app/components/account/accountController.js"></script>
+    <script src="app/components/account/accountDetailController.js"></script>
+	<script src="app/components/account/accountService.js"></script>
 
-    <script src="app/controllers/brandController.js"></script>
-    <script src="app/controllers/brandDetailController.js"></script>
-    
+	<!-- brand -->
+    <script src="app/components/brand/brandController.js"></script>
+    <script src="app/components/brand/brandDetailController.js"></script>
+    <script src="app/components/brand/brandService.js"></script>
+	
+	<!-- user -->
+	<script src="app/components/user/userController.js"></script>
+    <script src="app/components/user/userDetailController.js"></script>
+	<script src="app/components/user/userService.js"></script>
+	
+	<!-- product -->
+	<script src="app/controllers/productController.js"></script>
+    <script src="app/controllers/productDetailController.js"></script>
+    <script src="app/controllers/reviewProductController.js"></script>
+	<script src="app/services/productService.js"></script>
+	<script src="app/services/reviewService.js"></script>
+	
+	<!-- inventory -->
     <script src="app/controllers/inventoryBalanceController.js"></script>
     <script src="app/controllers/inventoryController.js"></script>
     <script src="app/controllers/inventoryInputController.js"></script>
     <script src="app/controllers/inventoryInputDetailController.js"></script>
     <script src="app/controllers/inventoryOutputController.js"></script>
-    <script src="app/controllers/inventoryOutputDetailController.js"></script>
-
-    <script src="app/controllers/productController.js"></script>
-    <script src="app/controllers/productDetailController.js"></script>
-    <script src="app/controllers/reviewProductController.js"></script>       
-
-    <script src="app/controllers/userController.js"></script>
-    <script src="app/controllers/userDetailController.js"></script>
-
-    <!-- services -->
-    <script src="app/services/accountService.js"></script>    
-    <script src="app/services/baseService.js"></script>    
-    <script src="app/services/brandService.js"></script>
-    <script src="app/services/inventoryService.js"></script>
-    <script src="app/services/productService.js"></script>
-    <script src="app/services/userService.js"></script>
-    <script src="app/services/reviewService.js"></script>
-    
-    <!-- directives -->
-    <script src="app/directives/customDirectives.js"></script>
+    <script src="app/controllers/inventoryOutputDetailController.js"></script>    
+    <script src="app/services/inventoryService.js"></script>    
 </body>
 </html>
