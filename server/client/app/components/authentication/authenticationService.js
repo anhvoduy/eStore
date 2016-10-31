@@ -7,27 +7,27 @@
         var authenticationService = function () {
         }                      
 
-        authenticationService.prototype.loginClientSide = function (username, password) {
-            /* Use this for test at client side */
-            var q = $q.defer();
-            var response = { success: username === 'admin' && password === '@dmin' };
-            if (!response.success) {
-                response.message = 'Username or password is incorrect';
-            }
-            q.resolve(response);
-            return q.promise;
-        };
+        //authenticationService.prototype.loginClientSide = function (username, password) {
+        //    /* Use this for test at client side */
+        //    var q = $q.defer();
+        //    var response = { success: username === 'admin' && password === '@dmin' };
+        //    if (!response.success) {
+        //        response.message = 'Username or password is incorrect';
+        //    }
+        //    q.resolve(response);
+        //    return q.promise;
+        //};
 
-        authenticationService.prototype.loginServerSide = function (username, password) {
-            /* Use this for test at server side */
-            var q = $q.defer();
-            $http.post('/api/authenticate', { username: username, password: password }).success(function (result) {
-                q.resolve(result);
-            }).error(function (result) {
-                q.reject(result);
-            });
-            return q.promise;
-        };
+        //authenticationService.prototype.loginServerSide = function (username, password) {
+        //    /* Use this for test at server side */
+        //    var q = $q.defer();
+        //    $http.post('/api/authenticate', { username: username, password: password }).success(function (result) {
+        //        q.resolve(result);
+        //    }).error(function (result) {
+        //        q.reject(result);
+        //    });
+        //    return q.promise;
+        //};
 
         authenticationService.prototype.login = function (username, password) {           
             /* Use this for test at server side */
@@ -46,10 +46,10 @@
                 currentUser: {
                     username: username,
                     authdata: authdata
-                }
-            };
-
-            $http.defaults.headers.common['Authorization'] = 'Basic ' + authdata; // jshint ignore:line
+                },
+				authorized: true
+            };			
+            $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata; // jshint ignore:line			
             $cookieStore.put('globals', $rootScope.globals);
         };
 
