@@ -26,7 +26,7 @@ app.config(function ($stateProvider) {
 		url: "/brand",
 		views: {
 			"view": {
-                templateUrl: "/app/components/home/views/brand.tpl.html",
+                templateUrl: "/app/components/brand/views/brand.tpl.html",
 				controller: "brandController",
 				controllerAs: 'vm'
 			}
@@ -36,7 +36,7 @@ app.config(function ($stateProvider) {
 		url: '/brand/:brandID',
 		views: {
 			"view": {
-                templateUrl: "/app/components/home/views/brandDetail.tpl.html",
+                templateUrl: "/app/components/brand/views/brandDetail.tpl.html",
 				controller: "BrandDetailController",
 				controllerAs: 'vm'
 			}
@@ -46,7 +46,7 @@ app.config(function ($stateProvider) {
 		url: "/product",
 		views: {
 			"view": {
-				templateUrl: "/app/views/products.html",
+				templateUrl: "/app/components/product/views/product.tpl.html",
 				controller: "ProductController",
 				controllerAs: 'vm'
 			}
@@ -55,7 +55,7 @@ app.config(function ($stateProvider) {
 		url: "/product/:productID",
 		views: {
 			"view": {
-				templateUrl: "/app/views/productDetail.html",
+				templateUrl: "/app/components/product/views/productDetail.tpl.html",
 				controller: "ProductDetailController",
 				controllerAs: 'vm'
 			}
@@ -64,7 +64,7 @@ app.config(function ($stateProvider) {
 		url: "/review/:productID",
 		views: {
 			"view": {
-				templateUrl: "/app/views/reviewProduct.html",
+				templateUrl: "/app/components/product/views/productReview.html",
 				controller: "ReviewProductController",
 				controllerAs: 'vm'
 			}
@@ -74,7 +74,7 @@ app.config(function ($stateProvider) {
 		url: "/inventory",
 		views: {
 			"view": {
-				templateUrl: "/app/views/inventory.html",
+				templateUrl: "/app/components/inventory/views/inventory.tpl.html",
 				controller: "InventoryController",
 				controllerAs: "vm"
 			}
@@ -123,7 +123,7 @@ app.config(function ($stateProvider) {
 		url: "/user",
 		views: {
 			"view": {
-                templateUrl: "/app/components/user/views/users.html",
+                templateUrl: "/app/components/user/views/user.tpl.html",
 				controller: "UserController",
 				controllerAs: 'vm'
 			}
@@ -133,7 +133,7 @@ app.config(function ($stateProvider) {
 		url: '/user/:userID',
 		views: {
 			"view": {
-                templateUrl: "/app/components/user/views/userDetail.html",
+                templateUrl: "/app/components/user/views/userDetail.tpl.html",
 				controller: "UserDetailController",
 				controllerAs: 'vm'
 			}
@@ -152,8 +152,7 @@ app.config(function ($stateProvider) {
 		url: '/logout',
 		views: {
 			"view": {
-                templateUrl: "/app/components/authentication/views/logout.html",
-				controller: "loginController"
+                templateUrl: "/app/components/authentication/views/logout.html"
 			}
 		}
 	})	
