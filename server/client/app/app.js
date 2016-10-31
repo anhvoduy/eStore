@@ -4,29 +4,29 @@ app.config(function ($stateProvider) {
 	$stateProvider
 	.state('/', {
 		url: '/',
-		views: {
-			"view": {
-				templateUrl: "/app/views/home.html",
-				controller: "homeController",
-				controllerAs: "vm"
-			}
-		}
+        views: {
+            "view": {
+                templateUrl: "/app/components/home/views/home.tpl.html",
+                controller: "homeController",
+                controllerAs: "vm"
+            }
+        }
 	})
 	.state('home', {
 		url: '/home',
-		views: {
-			"view": {
-				templateUrl: "/app/views/home.html",
-				controller: "homeController",
-				controllerAs: "vm"
-			}
-		}
+        views: {
+            "view": {
+                templateUrl: "/app/components/home/views/home.tpl.html",
+                controller: "homeController",
+                controllerAs: "vm"
+            }
+        }
 	})
 	.state('brand', {
 		url: "/brand",
 		views: {
 			"view": {
-				templateUrl: "/app/views/brands.html",
+                templateUrl: "/app/components/home/views/brand.tpl.html",
 				controller: "brandController",
 				controllerAs: 'vm'
 			}
@@ -36,7 +36,7 @@ app.config(function ($stateProvider) {
 		url: '/brand/:brandID',
 		views: {
 			"view": {
-				templateUrl: "/app/views/brandDetail.html",
+                templateUrl: "/app/components/home/views/brandDetail.tpl.html",
 				controller: "BrandDetailController",
 				controllerAs: 'vm'
 			}
@@ -163,7 +163,7 @@ app.config(function ($stateProvider) {
 		url: "/help",
 		views: {
 			"view": {
-				templateUrl: "/app/views/help.html"
+                templateUrl: "/app/components/help/views/help.html"
 			}
 		}
 	})

@@ -31,14 +31,15 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="app.js" />
+    <Compile Include="client\app\components\brand\brandController.js" />
+    <Compile Include="client\app\components\brand\brandDetailController.js" />
+    <Compile Include="client\app\components\home\homeController.js" />
+    <Compile Include="client\app\config.js" />
     <Compile Include="client\app\app.js" />
     <Compile Include="client\app\common\appContext.js" />
     <Compile Include="client\app\common\common.js" />
     <Compile Include="client\app\controllers\accountController.js" />
-    <Compile Include="client\app\controllers\brandController.js" />
     <Compile Include="client\app\controllers\accountDetailController.js" />
-    <Compile Include="client\app\controllers\brandDetailController.js" />
-    <Compile Include="client\app\controllers\homeController.js" />
     <Compile Include="client\app\controllers\inventoryBalanceController.js" />
     <Compile Include="client\app\controllers\inventoryController.js" />
     <Compile Include="client\app\controllers\inventoryInputController.js" />
@@ -120,16 +121,16 @@
     <Compile Include="test\brands.js" />
     <Compile Include="test\products.js" />
     <Compile Include="test\users.js" />
+    <Content Include="client\app\components\brand\views\brandDetail.tpl.html" />
+    <Content Include="client\app\components\brand\views\brands.tpl.html" />
+    <Content Include="client\app\components\home\views\home.tpl.html" />
     <Content Include="client\app\directives\templates\mainMenu.html" />
     <Content Include="client\app\directives\templates\mainTitle.html" />
     <Content Include="client\app\modules\authentication\views\login.html" />
     <Content Include="client\app\modules\home\views\home.html" />
     <Content Include="client\app\views\accountDetail.html" />
-    <Content Include="client\app\views\brandDetail.html" />
     <Content Include="client\app\views\account.html" />
-    <Content Include="client\app\views\brands.html" />
-    <Content Include="client\app\views\help.html" />
-    <Content Include="client\app\views\home.html" />
+    <Content Include="client\app\components\help\views\help.html" />
     <Content Include="client\app\views\inventory.html" />
     <Content Include="client\app\views\inventoryInputDetail.html" />
     <Content Include="client\app\views\inventoryOutputDetail.html" />
@@ -139,6 +140,7 @@
     <Content Include="client\app\views\reviewProduct.html" />
     <Content Include="client\app\views\userDetail.html" />
     <Content Include="client\app\views\users.html" />
+    <Content Include="client\404.html" />
     <Content Include="client\index.html" />
     <Content Include="client\libs\bootstrap\css\bootstrap-theme.css" />
     <Content Include="client\libs\bootstrap\css\bootstrap-theme.css.map" />
@@ -162,6 +164,12 @@
     <Folder Include="client\app\common\" />
     <Folder Include="client\app\components\authentication\" />
     <Folder Include="client\app\components\authentication\views\" />
+    <Folder Include="client\app\components\brand\" />
+    <Folder Include="client\app\components\brand\views\" />
+    <Folder Include="client\app\components\help\views\" />
+    <Folder Include="client\app\components\home\" />
+    <Folder Include="client\app\components\home\views\" />
+    <Folder Include="client\app\components\help\" />
     <Folder Include="client\app\controllers\" />
     <Folder Include="client\app\directives\" />
     <Folder Include="client\app\directives\templates\" />
