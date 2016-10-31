@@ -129,11 +129,10 @@ app.config(function ($stateProvider) {
 		}
 	})
 	.state("otherwise", {
-		url: '/404',
+		url: '/error',
 		views: {
 			"view": {
-				templateUrl: "/app/views/404.tpl.html",				
-				hideMenus: true
+				templateUrl: "/app/views/error.tpl.html"
 			}
 		}
 	});	
