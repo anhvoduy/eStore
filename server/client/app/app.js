@@ -1,4 +1,9 @@
-var app = angular.module('cargo', ['ngCookies', 'ui.router', 'cargo.directives.customDirectives']);
+var app = angular.module('cargo', [
+    'ngCookies',
+    'ui.router',
+    'cargo.directives.searchControl',
+    'cargo.directives.customDirectives'
+]);
 
 app.config(function ($stateProvider) {	
 	$stateProvider	
