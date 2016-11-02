@@ -6,6 +6,8 @@
     <title>eAccouting Demo</title>
 
     <link href="libs/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="libs/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" />
+	<link href="libs/yamm3/css/yamm.css" rel="stylesheet" />
     <link href="libs/custom/css/custom-style.css" rel="stylesheet" />
 
     <script src="libs/jquery/jquery.js"></script>    
@@ -19,10 +21,12 @@
     <script src="libs/angular/angular-loader.min.js"></script>    
     <script src="libs/angular/angular-ui-router.min.js"></script>
 	<script src="libs/angular-ui/ui-bootstrap-tpls.min.js"></script>
+	<script src="libs/angular-mega-menu/angular-mega-menu.js"></script>	
 </head>
 <body ng-app="cargo">
-    <!--menu-->        
-	<!--<div main-menu></div>-->
+    <!--menu-->
+	<!--<div main-menu></div>-->	
+	
 	<div class="navbar navbar-inverse navbar-fixed-top" ng-cloak>
 		<div class="container" ng-show="globals.authorized">
 			<div class="navbar-header">
@@ -48,10 +52,7 @@
 				</ul>
 			</div>
 		</div>
-	</div>
-
-    <!-- title-->
-    <!--<div main-title></div>-->
+	</div>    
 
     <!-- views-->
     <div class="container body-content main-content">
