@@ -1,6 +1,7 @@
 var app = angular.module('cargo', [
     'ngCookies',
     'ui.router',
+	'mega-menu',
     'cargo.directives.searchControl',
     'cargo.directives.customDirectives'
 ]);
