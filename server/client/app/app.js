@@ -2,6 +2,7 @@ var app = angular.module('cargo', [
     'ngCookies',
     'ui.router',
 	'mega-menu',
+	'cargo.directives.megaMenu',
     'cargo.directives.searchControl',
     'cargo.directives.customDirectives'
 ]);
@@ -60,6 +61,30 @@ app.config(function ($stateProvider) {
 			}
 		}
 	})
+	.state('cash', {
+		url: "/cash",
+		views: {
+			"view": {
+				templateUrl: "/app/components/cash/views/cash.tpl.html"
+			}
+		}
+	})
+	.state('cashIn', {
+		url: "/cash/cashIn",
+		views: {
+			"view": {
+				templateUrl: "/app/components/cash/views/cashIn.tpl.html"
+			}
+		}
+	})
+	.state('cashOut', {
+		url: "/cash/cashOut",
+		views: {
+			"view": {
+				templateUrl: "/app/components/cash/views/cashOut.tpl.html"
+			}
+		}
+	})	
 	.state('inventory', {
 		url: "/inventory",
 		views: {
@@ -67,7 +92,31 @@ app.config(function ($stateProvider) {
 				templateUrl: "/app/components/inventory/views/inventory.tpl.html"
 			}
 		}
-	})	
+	})
+	.state('stockIn', {
+		url: "/stockIn",
+		views: {
+			"view": {
+				templateUrl: "/app/components/inventory/views/stockIn.tpl.html"
+			}
+		}
+	})
+	.state('stockOut', {
+		url: "/stockOut",
+		views: {
+			"view": {
+				templateUrl: "/app/components/inventory/views/stockOut.tpl.html"
+			}
+		}
+	})
+	.state('stockBalance', {
+		url: "/stockBalance",
+		views: {
+			"view": {
+				templateUrl: "/app/components/inventory/views/stockBalance.tpl.html"
+			}
+		}
+	})
 	.state('account', {
 		url: "/account",
 		views: {
@@ -144,14 +193,16 @@ app.config(function ($stateProvider) {
 	});	
 });
 
-app.run(['$rootScope', '$location', '$cookieStore', '$http', 'authenticationService',
-	function ($rootScope, $location, $cookieStore, $http, authenticationService) {
+app.run(['$rootScope', '$location', '$cookieStore', '$http', 'mainService', 'authenticationService',
+	function ($rootScope, $location, $cookieStore, $http, mainService, authenticationService) {		
 		// keep user logged in after page refresh
 		$rootScope.globals = $cookieStore.get('globals') || {};
 		if ($rootScope.globals.currentUser) {			
 			$http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata; // jshint ignore:line
 		}
-			
+		// navigation
+		$rootScope.navigation = mainService.getNavigation();
+		// logout
 		$rootScope.logout = function(){
 			authenticationService.clearCredentials();
 		};

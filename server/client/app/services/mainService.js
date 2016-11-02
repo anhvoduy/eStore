@@ -11,53 +11,51 @@
         mainService.prototype.constructor = mainService;                
 
         // methods
-        mainService.prototype.getBrands = function () {
-            var url = String.format('{0}/items', this.api);
-
-            var q = $q.defer();
-            this.getData(url).then(function (result) {
-                q.resolve(result);
-            }, function (error) {
-                q.reject(error);
-            })
-            return q.promise;            
-        }
-        
-        mainService.prototype.getBrandById = function (brandId) {
-            var url = String.format('{0}/items/{1}', this.api, brandId);
+        mainService.prototype.getNavigation = function () {            
+			var navigation = [
+				{
+					code: 'cash', 
+					name:'Cash',
+					childNodes: [
+						{code: 'cashIn', name:'Cash In'},
+						{code: 'cashOut', name:'Cash Out'}
+					]
+				},
+				{
+					code: 'inventory', 
+					name:'Inventory',
+					childNodes: [
+						{code: 'stockIn', name:'Stock In'},
+						{code: 'stockOut', name:'Stock Out'},
+						{code: 'stockBalance', name:'Stock Balance'}
+					]
+				},
+				{
+					code: 'list', 
+					name:'List',
+					childNodes: [
+						{code: 'brand', name:'Brand'},
+						{code: 'product', name:'Product'},
+						{code: 'account', name:'Account'},
+						{code: 'user', name:'User'}
+					]
+				},
+				//{
+				//	code: 'report', 
+				//	name:'Report'
+				//	//childNodes: [
+				//	//	{code: 'cashReport', name:'Cash Report'},						
+				//	//	{code: 'stockReport', name:'Stock Report'}
+				//	//]
+				//},
+				{
+					code: 'help', 
+					name:'Help'
+				}
+			];
             
-            var q = $q.defer();
-            this.getData(url).then(function (result) {
-                q.resolve(result);
-            }, function (error) {
-                q.reject(error);
-            })
-            return q.promise;
-        }        
-        
-        mainService.prototype.updateBrand = function (brand) {
-            var url = String.format('{0}/update', this.api);
-            
-            var q = $q.defer();
-            this.update(url, brand).then(function (result) {
-                q.resolve(result);
-            }, function (error) {
-                q.reject(error);
-            })
-            return q.promise;
-        }
-        
-        mainService.prototype.deleteBrand = function (brandId) {
-            var url = String.format('{0}/delete/{1}', this.api, brandId);
-            
-            var q = $q.defer();
-            this.delete(url).then(function (result) {
-                q.resolve(result);
-            }, function (error) {
-                q.reject(error);
-            })
-            return q.promise;            
-        }
+            return navigation;
+        };        
         
         return new mainService;
     };
