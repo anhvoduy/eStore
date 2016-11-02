@@ -109,6 +109,14 @@ app.config(function ($stateProvider) {
 			}
 		}
 	})
+	.state('stockBalance', {
+		url: "/stockBalance",
+		views: {
+			"view": {
+				templateUrl: "/app/components/inventory/views/stockBalance.tpl.html"
+			}
+		}
+	})
 	.state('account', {
 		url: "/account",
 		views: {

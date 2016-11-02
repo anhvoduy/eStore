@@ -40,14 +40,14 @@
 						{code: 'user', name:'User'}
 					]
 				},
-				{
-					code: 'report', 
-					name:'Report'
-					//childNodes: [
-					//	{code: 'cashReport', name:'Cash Report'},						
-					//	{code: 'stockReport', name:'Stock Report'}
-					//]
-				},
+				//{
+				//	code: 'report', 
+				//	name:'Report'
+				//	//childNodes: [
+				//	//	{code: 'cashReport', name:'Cash Report'},						
+				//	//	{code: 'stockReport', name:'Stock Report'}
+				//	//]
+				//},
 				{
 					code: 'help', 
 					name:'Help'
