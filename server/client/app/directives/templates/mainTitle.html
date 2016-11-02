@@ -1,4 +1,4 @@
-﻿<div class="navbar navbar-inverse navbar-fixed-top" ng-cloak>
+﻿<div class="navbar yamm navbar-inverse navbar-fixed-top" role="navigation" ng-cloak>            
 	<div class="container" ng-show="globals.authorized">
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -10,12 +10,16 @@
 		</div>
 		<div class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
-				<li><a ui-sref="brand">Brands</a></li>
+				<li ng-repeat="nav in navigation">
+					<a ui-sref="{{nav.code}}">{{ nav.name }}</a>
+				</li>
+				<!--
 				<li><a ui-sref="product">Products</a></li>
 				<li><a ui-sref="account">Accounts</a></li>
 				<li><a ui-sref="inventory">Inventory</a></li>
 				<li><a ui-sref="user">Users</a></li>
 				<li><a ui-sref="help">Help</a></li>
+				-->
 			</ul>
 			<ul class="nav navbar-nav navbar-right">                
 				<li><a ui-sref="login" id="loginLink" ng-show="!globals.authorized">Login</a></li>
