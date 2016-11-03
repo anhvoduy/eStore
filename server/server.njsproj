@@ -111,7 +111,6 @@
     <Compile Include="config\dbContext.js" />
     <Compile Include="config\dbHelper.js" />
     <Compile Include="config\errorHelper.js" />
-    <Compile Include="config\passport.js" />
     <Compile Include="routes\account.js" />
     <Compile Include="routes\transaction.js" />
     <Compile Include="routes\reporting.js" />

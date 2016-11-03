@@ -19,8 +19,11 @@ auth.setup = function (app) {
     ));
 };
 
-auth.verifySecurity = function () {
-    console.log('verifySecurity() ...');
+auth.checkAuthentication = function () {    
+    return function (req, res, next) {
+        console.log('checkAuthentication() ...');
+        next();
+    };
 };
 
 module.exports = auth;
