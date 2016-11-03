@@ -1,12 +1,13 @@
 // Dependencies
 var express = require('express');
 var router = express.Router();
+var auth = require('../config/auth');
 var dbContext = require('../config/dbContext');
 var errorHelper = require('../config/errorHelper');
 var brandService = require('../services/brandService');
 
 // Router
-router.get('/items', function (request, response, next) {
+router.get('/items', auth.checkAuthentication(), function (request, response, next) {
 	dbContext.getConnection().then(function (result) {
 		ctx = result;
 		return brandService.getBrands(ctx);

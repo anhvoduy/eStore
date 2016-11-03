@@ -14,7 +14,6 @@ var errorHelper = require('./config/errorHelper');
 
 // Express
 var server = express();
-var router = express.Router();
 server.use(morgan('dev'));  // log every request to the console
 server.use(cookieParser()); // read cookies (needed for auth)
 server.use(bodyParser.urlencoded({ extended: true }));
