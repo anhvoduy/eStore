@@ -15,10 +15,6 @@ var errorHelper = require('./config/errorHelper');
 // Express
 var server = express();
 var router = express.Router();
-//server.set('port', process.env.PORT || 3000);
-server.set('port', 3000);
-
-// set up Express Application
 server.use(morgan('dev'));  // log every request to the console
 server.use(cookieParser()); // read cookies (needed for auth)
 server.use(bodyParser.urlencoded({ extended: true }));
@@ -27,6 +23,9 @@ server.use(bodyParser.json());
 
 /* ----------- Setup Server -----------*/
 auth.setup(server);
+//server.set('port', process.env.PORT || 3000);
+server.set('port', 3000);
+
 
 /* ----------- Register API -----------*/
 server.use('/api', require('./routes/api'));
