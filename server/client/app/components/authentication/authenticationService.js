@@ -5,7 +5,7 @@
     function authenticationService($http, $rootScope, $q, $cookieStore, Base64) {
         // constructor
         var authenticationService = function () {
-        }                      
+        }
 
         //authenticationService.prototype.loginClientSide = function (username, password) {
         //    /* Use this for test at client side */
@@ -30,9 +30,10 @@
         //};
 
         authenticationService.prototype.login = function (username, password) {           
-            /* Use this for test at server side */
+            /* Use this for test at server side: /api/user/authenticate */
             var q = $q.defer();
-            $http.post('/api/authenticate', { username: username, password: password }).success(function (result) {
+            ///api/user/authenticate || /api/user/login
+            $http.post('/api/user/login', { username: username, password: password }).success(function (result) {
                 q.resolve(result);
             }).error(function (result) {
                 q.reject(result);

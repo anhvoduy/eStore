@@ -9,15 +9,15 @@ USE `ndemo`;
 --
 DROP TABLE IF EXISTS `tblCustomer`;
 CREATE TABLE `tblCustomer` (
-  `CustomerId` int(11) NOT NULL AUTO_INCREMENT,
-  `CustomerNo` varchar(45) NOT NULL,
-  `CustomerName` varchar(45) NOT NULL,
-  `Description` varchar(200) DEFAULT NULL,
-  `Address` varchar(200) DEFAULT NULL,
-  `Mobile` varchar(45) DEFAULT NULL,
-  `Tel` varchar(45) DEFAULT NULL,
-  `Email` varchar(45) DEFAULT NULL,  
-  `Deleted` tinyint(1) DEFAULT '0',
+  `CustomerId` INT(11) NOT NULL AUTO_INCREMENT,
+  `CustomerNo` VARCHAR(45) NOT NULL,
+  `CustomerName` VARCHAR(45) NOT NULL,
+  `Description` VARCHAR(200) DEFAULT NULL,
+  `Address` VARCHAR(200) DEFAULT NULL,
+  `Mobile` VARCHAR(45) DEFAULT NULL,
+  `Tel` VARCHAR(45) DEFAULT NULL,
+  `Email` VARCHAR(45) DEFAULT NULL,  
+  `Deleted` TINYINT(1) DEFAULT '0',
   PRIMARY KEY (`CustomerId`),
   UNIQUE KEY `CustomerId_UNIQUE` (`CustomerId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
@@ -35,11 +35,11 @@ INSERT INTO `tblCustomer` (`CustomerNo`,`CustomerName`,`Description`,`Deleted`) 
 --
 DROP TABLE IF EXISTS `tblAccount`;
 CREATE TABLE `tblAccount` (
-  `AccountId` int(11) NOT NULL AUTO_INCREMENT,
-  `AccountNo` varchar(20) NOT NULL,
-  `AccountName` varchar(100) NOT NULL,
-  `Description` varchar(200) DEFAULT NULL,
-  `Deleted` tinyint(1) DEFAULT '0',
+  `AccountId` INT(11) NOT NULL AUTO_INCREMENT,
+  `AccountNo` VARCHAR(20) NOT NULL,
+  `AccountName` VARCHAR(100) NOT NULL,
+  `Description` VARCHAR(200) DEFAULT NULL,
+  `Deleted` TINYINT(1) DEFAULT '0',
   PRIMARY KEY (`AccountId`),
   UNIQUE KEY `AccountId_UNIQUE` (`AccountId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
@@ -62,15 +62,18 @@ INSERT INTO `tblAccount` (`AccountNo`,`AccountName`,`Description`,`Deleted`) VAL
 --
 DROP TABLE IF EXISTS `tblTransaction`;
 CREATE TABLE `tblTransaction` (
-  `TransactionId` int(11) NOT NULL AUTO_INCREMENT,
-  `TransactionNo` varchar(45) NOT NULL,
-  `Type` varchar(20) NOT NULL,
-  `Currency` varchar(3) DEFAULT NULL,  
-  `InvoiceNo` varchar(20) DEFAULT NULL,
-  `InvoiceDate` date DEFAULT NULL,
-  `InvoiceDesc` varchar(200) DEFAULT NULL,
-  `Description` varchar(200) DEFAULT NULL,  
-  `Deleted` tinyint(1) DEFAULT '0',
+  `TransactionId` INT(11) NOT NULL AUTO_INCREMENT,
+  `TransactionNo` VARCHAR(45) NOT NULL,
+  `TransactionType` VARCHAR(20) NOT NULL,
+  `Currency` VARCHAR(3) DEFAULT NULL,
+  `TotalAmount` DECIMAL(11,4) NOT NULL DEFAULT '0',
+  `CustomerId` INT(11) DEFAULT NULL,
+  `CustomerName` VARCHAR(45) DEFAULT NULL,
+  `InvoiceNo` VARCHAR(20) DEFAULT NULL,
+  `InvoiceDate` DATE DEFAULT NULL,
+  `InvoiceDesc` VARCHAR(200) DEFAULT NULL,
+  `Description` VARCHAR(200) DEFAULT NULL,  
+  `Deleted` TINYINT(1) DEFAULT '0',
   PRIMARY KEY (`TransactionId`),
   UNIQUE KEY `TransactionId_UNIQUE` (`TransactionId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
@@ -80,14 +83,14 @@ CREATE TABLE `tblTransaction` (
 --
 DROP TABLE IF EXISTS `tblTransactionDetail`;
 CREATE TABLE `tblTransactionDetail` (
-  `TransactionDetailId` int(11) NOT NULL AUTO_INCREMENT,
-  `TransactionId` int(11) NOT NULL,  
-  `ProductId` int(11) NOT NULL,  
-  `ProductName` varchar(45) NOT NULL,  
-  `Quantity` int(11) NOT NULL DEFAULT '0',
-  `Amount` int(11) NOT NULL DEFAULT '0',
-  `Total` int(11) NOT NULL DEFAULT '0',
-  `Deleted` tinyint(1) DEFAULT '0',
+  `TransactionDetailId` INT(11) NOT NULL AUTO_INCREMENT,
+  `TransactionId` INT(11) NOT NULL,
+  `ProductId` INT(11) DEFAULT NULL,  
+  `ProductName` VARCHAR(45) DEFAULT NULL,  
+  `Quantity` DECIMAL(11,4) NOT NULL DEFAULT '0',
+  `Amount` DECIMAL(11,4) NOT NULL DEFAULT '0',
+  `TotalAmount` DECIMAL(11,4) NOT NULL DEFAULT '0',
+  `Deleted` TINYINT(1) DEFAULT '0',
   PRIMARY KEY (`TransactionDetailId`),
   UNIQUE KEY `TransactionDetailId_UNIQUE` (`TransactionDetailId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
@@ -97,10 +100,10 @@ CREATE TABLE `tblTransactionDetail` (
 --
 DROP TABLE IF EXISTS `tblBrand`;
 CREATE TABLE `tblBrand` (
-  `BrandId` int(11) NOT NULL AUTO_INCREMENT,
-  `Name` varchar(45) NOT NULL,
-  `Description` varchar(200) DEFAULT NULL,
-  `Deleted` tinyint(1) DEFAULT '0',
+  `BrandId` INT(11) NOT NULL AUTO_INCREMENT,
+  `Name` VARCHAR(45) NOT NULL,
+  `Description` VARCHAR(200) DEFAULT NULL,
+  `Deleted` TINYINT(1) DEFAULT '0',
   PRIMARY KEY (`BrandId`),
   UNIQUE KEY `BrandId_UNIQUE` (`BrandId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
@@ -137,9 +140,9 @@ INSERT INTO `tblbrand` (`Name`,`Description`,`Deleted`) VALUES ('Facebook','The 
 
 DROP TABLE IF EXISTS `tblcategory`;
 CREATE TABLE `tblcategory` (
-  `CategoryId` int(11) NOT NULL,
-  `CategoryName` varchar(45) DEFAULT NULL,
-  `Deleted` tinyint(1) DEFAULT '0',
+  `CategoryId` INT(11) NOT NULL,
+  `CategoryName` VARCHAR(45) DEFAULT NULL,
+  `Deleted` TINYINT(1) DEFAULT '0',
   PRIMARY KEY (`CategoryId`),
   UNIQUE KEY `CategoryId_UNIQUE` (`CategoryId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
@@ -150,16 +153,16 @@ CREATE TABLE `tblcategory` (
 --
 DROP TABLE IF EXISTS `tblproduct`;
 CREATE TABLE `tblproduct` (
-  `ProductId` int(11) NOT NULL AUTO_INCREMENT,
-  `ProductName` varchar(45) NOT NULL,
-  `Description` varchar(200) DEFAULT NULL,
-  `BrandId` int(11) NOT NULL,
-  `Price` decimal(10,0) DEFAULT '0',
-  `Colour` varchar(10) DEFAULT NULL,
-  `Created` date DEFAULT NULL,
-  `Status` varchar(10) DEFAULT NULL,
-  `Deleted` tinyint(1) DEFAULT '0',
-  `LatestReviewInfo` varchar(250) DEFAULT NULL,
+  `ProductId` INT(11) NOT NULL AUTO_INCREMENT,
+  `ProductName` VARCHAR(45) NOT NULL,
+  `Description` VARCHAR(200) DEFAULT NULL,
+  `BrandId` INT(11) NOT NULL,
+  `Price` DECIMAL(10,0) DEFAULT '0',
+  `Colour` VARCHAR(10) DEFAULT NULL,
+  `Created` DATE DEFAULT NULL,
+  `Status` VARCHAR(10) DEFAULT NULL,
+  `Deleted` TINYINT(1) DEFAULT '0',
+  `LatestReviewInfo` VARCHAR(250) DEFAULT NULL,
   PRIMARY KEY (`ProductId`),
   UNIQUE KEY `ProductId_UNIQUE` (`ProductId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8 COMMENT='	';
@@ -202,13 +205,13 @@ VALUES ('Ipad 5','Ipad 5',22,3000,'Green','2016-08-28','OUT',0,'');
 --
 DROP TABLE IF EXISTS `tblreview`;
 CREATE TABLE `tblreview` (
-  `ReviewId` int(11) NOT NULL AUTO_INCREMENT,
+  `ReviewId` INT(11) NOT NULL AUTO_INCREMENT,
   `Rating` int(2) DEFAULT NULL,
-  `Comment` varchar(200) DEFAULT NULL,
+  `Comment` VARCHAR(200) DEFAULT NULL,
   `Created` datetime DEFAULT CURRENT_TIMESTAMP,
-  `ProductId` int(11) NOT NULL,
-  `Email` varchar(45) DEFAULT NULL,
-  `Deleted` tinyint(1) DEFAULT '0',
+  `ProductId` INT(11) NOT NULL,
+  `Email` VARCHAR(45) DEFAULT NULL,
+  `Deleted` TINYINT(1) DEFAULT '0',
   PRIMARY KEY (`ReviewId`),
   UNIQUE KEY `ReviewId_UNIQUE` (`ReviewId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
@@ -231,14 +234,14 @@ INSERT INTO `tblreview`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `D
 --
 DROP TABLE IF EXISTS `tbluser`;
 CREATE TABLE `tbluser` (
-  `UserId` int(11) NOT NULL AUTO_INCREMENT,
-  `UserType` varchar(20) NOT NULL,
-  `UserName` varchar(45) NOT NULL,
-  `DisplayName` varchar(50) DEFAULT NULL,
-  `Email` varchar(20) NOT NULL,
-  `DateOfBirth` date DEFAULT NULL,
-  `Deleted` tinyint(1) DEFAULT '0',
-  `Hash` varchar(200) DEFAULT NULL,
+  `UserId` INT(11) NOT NULL AUTO_INCREMENT,
+  `UserType` VARCHAR(20) NOT NULL,
+  `UserName` VARCHAR(45) NOT NULL,
+  `DisplayName` VARCHAR(50) DEFAULT NULL,
+  `Email` VARCHAR(20) NOT NULL,
+  `DateOfBirth` DATE DEFAULT NULL,
+  `Deleted` TINYINT(1) DEFAULT '0',
+  `Hash` VARCHAR(200) DEFAULT NULL,
   PRIMARY KEY (`UserId`),
   UNIQUE KEY `Email_UNIQUE` (`Email`),
   UNIQUE KEY `UserName_UNIQUE` (`UserName`),

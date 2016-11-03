@@ -8,7 +8,7 @@
             //console.log('instance');
         }
         brandService.prototype = new baseService('api/brand');
-        brandService.prototype.constructor = brandService;                
+        brandService.prototype.constructor = brandService;
 
         // methods
         brandService.prototype.getBrands = function () {
