@@ -193,15 +193,25 @@ app.config(function ($stateProvider) {
 	});	
 });
 
-app.run(['$rootScope', '$location', '$cookieStore', '$http', 'mainService', 'authenticationService',
-	function ($rootScope, $location, $cookieStore, $http, mainService, authenticationService) {		
+app.run(['$rootScope', '$location', '$cookieStore', '$http', 'mainService', 'userService', 'authenticationService',
+    function ($rootScope, $location, $cookieStore, $http, mainService, userService, authenticationService) {		
 		// keep user logged in after page refresh
-		$rootScope.globals = $cookieStore.get('globals') || {};
-		if ($rootScope.globals.currentUser) {			
-			$http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata; // jshint ignore:line
+        $rootScope.globals = $cookieStore.get('globals') || {};
+        $rootScope.settings = $cookieStore.get('settings') || {};
+        if ($rootScope.globals.currentUser) {            
+            $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata; // jshint ignore:line            
 		}
 		// navigation
-		$rootScope.navigation = mainService.getNavigation();
+        $rootScope.navigation = mainService.getNavigation();    
+
+        // user profile        
+        userService.getProfile().then(function (result) {
+            $rootScope.settings = result;
+        }, function (error) {
+            console.log(error);
+        });
+        
+
 		// logout
 		$rootScope.logout = function(){
 			authenticationService.clearCredentials();
