@@ -16,23 +16,11 @@
         //    }
         //    q.resolve(response);
         //    return q.promise;
-        //};
-
-        //authenticationService.prototype.loginServerSide = function (username, password) {
-        //    /* Use this for test at server side */
-        //    var q = $q.defer();
-        //    $http.post('/api/authenticate', { username: username, password: password }).success(function (result) {
-        //        q.resolve(result);
-        //    }).error(function (result) {
-        //        q.reject(result);
-        //    });
-        //    return q.promise;
-        //};
+        //};        
 
         authenticationService.prototype.login = function (username, password) {           
             /* Use this for test at server side: /api/user/authenticate */
-            var q = $q.defer();
-            ///api/user/authenticate || /api/user/login
+            var q = $q.defer();            
             $http.post('/api/user/login', { username: username, password: password }).success(function (result) {
                 q.resolve(result);
             }).error(function (result) {
@@ -41,16 +29,15 @@
             return q.promise;
         };
 
-        authenticationService.prototype.setCredentials = function (username, password) {
-            var authdata = Base64.encode(username + ':' + password);
+        authenticationService.prototype.setCredentials = function (user) {            
             $rootScope.globals = {
                 currentUser: {
-                    username: username,
-                    authdata: authdata
+                    username: user.username,
+                    authdata: user.token
                 },
 				authorized: true
             };			
-            $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata; // jshint ignore:line			
+            $http.defaults.headers.common['Authorization'] = $rootScope.globals.currentUser.authdata; // jshint ignore:line			
             $cookieStore.put('globals', $rootScope.globals);
         };
 

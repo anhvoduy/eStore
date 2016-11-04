@@ -29667,7 +29667,7 @@ var ngRepeatDirective = ['$parse', '$animate', '$compile', function($parse, $ani
   var NG_REMOVED = '$$NG_REMOVED';
   var ngRepeatMinErr = minErr('ngRepeat');
 
-  var updateScope = function(scope, index, valueIdentifier, value, keyIdentifier, key, arrayLength) {
+  var updateScope = function (scope, index, valueIdentifier, value, keyIdentifier, key, arrayLength) {      
     // TODO(perf): generate setters to shave off ~40ms or 1-1.5%
     scope[valueIdentifier] = value;
     if (keyIdentifier) scope[keyIdentifier] = key;

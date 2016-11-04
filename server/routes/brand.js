@@ -20,7 +20,7 @@ router.get('/items', auth.checkAuthentication(), function (request, response, ne
 	});
 });
 
-router.get('/items/:id', function (request, response, next) {
+router.get('/items/:id', auth.checkAuthentication(), function (request, response, next) {
     var brandId = request.params.id;
 
 	var ctx = {};        
@@ -40,7 +40,7 @@ router.get('/items/:id', function (request, response, next) {
 	});
 });
 
-router.put('/update', function (request, response, next) {
+router.put('/update', auth.checkAuthentication(), function (request, response, next) {
     // validate data at server side
     var brand = {
         BrandId: request.body.BrandId,

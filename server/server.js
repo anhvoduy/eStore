@@ -5,11 +5,13 @@ var http = require('http');
 var path = require("path");
 var passport = require('passport');
 var flash = require('connect-flash');
+var jwt = require('jsonwebtoken');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var auth = require('./config/auth');
+var config = require('./config/config');
 var errorHelper = require('./config/errorHelper');
 
 // Express
@@ -24,7 +26,7 @@ server.use(bodyParser.json());
 auth.setup(server);
 //server.set('port', process.env.PORT || 3000);
 server.set('port', 3000);
-
+server.set('secretKey', config.secretKey); // secret variable
 
 /* ----------- Register API -----------*/
 server.use('/api', require('./routes/api'));

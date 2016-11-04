@@ -14,7 +14,7 @@
 			$scope.dataLoading = true;
 			authenticationService.login($scope.username, $scope.password).then(function (result) {
                 if (result.success) {
-                    authenticationService.setCredentials($scope.username, $scope.password);					
+                    authenticationService.setCredentials(result.user);					
                     $location.path('/');
                 } else {
                     $scope.error = result.message;
