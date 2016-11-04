@@ -11,8 +11,13 @@ userService.prototype.getUsers = function (ctx) {
 }
 
 userService.prototype.getUserById = function (ctx, userId) {
-	var sql = dbHelper.prepareQueryCommand("SELECT UserId, UserType, UserName, Email, DateOfBirth, Deleted FROM tbluser WHERE userId = ?", [userId]);
+    var sql = dbHelper.prepareQueryCommand("SELECT UserId, UserType, UserName, Email, DateOfBirth, Deleted FROM tbluser WHERE UserId = ?", [userId]);
 	return ctx.queryCommand(sql);
+}
+
+userService.prototype.getUserByName = function (ctx, userName) {
+    var sql = dbHelper.prepareQueryCommand("SELECT UserId, UserType, UserName, Email, DateOfBirth, Deleted FROM tbluser WHERE UserName = ?", [userName]);
+    return ctx.queryCommand(sql);
 }
 
 userService.prototype.getUserByEmail = function (ctx, email) {

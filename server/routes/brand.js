@@ -8,19 +8,30 @@ var brandService = require('../services/brandService');
 
 // Router
 router.get('/items', auth.checkAuthentication(), function (request, response, next) {
-	dbContext.getConnection().then(function (result) {
-		ctx = result;
-		return brandService.getBrands(ctx);
-	}).then(function (brands) {
-		response.status(200).json(brands);
-	}).catch(function (error) {
-		next(error);
-	}).done(function () {
-		ctx.release();
-	});
+
+    var models = [];
+    for (var i = 0; i < 10000; i++){
+        models.push({
+            BrandId: i,
+            Name: 'Code' + i,
+            Description: 'Name' + i
+        });
+    }
+    
+    response.status(200).json(models);
+	//dbContext.getConnection().then(function (result) {
+	//	ctx = result;
+	//	return brandService.getBrands(ctx);
+	//}).then(function (brands) {
+	//	response.status(200).json(brands);
+	//}).catch(function (error) {
+	//	next(error);
+	//}).done(function () {
+	//	ctx.release();
+	//});
 });
 
-router.get('/items/:id', function (request, response, next) {
+router.get('/items/:id', auth.checkAuthentication(), function (request, response, next) {
     var brandId = request.params.id;
 
 	var ctx = {};        
@@ -40,7 +51,7 @@ router.get('/items/:id', function (request, response, next) {
 	});
 });
 
-router.put('/update', function (request, response, next) {
+router.put('/update', auth.checkAuthentication(), function (request, response, next) {
     // validate data at server side
     var brand = {
         BrandId: request.body.BrandId,
