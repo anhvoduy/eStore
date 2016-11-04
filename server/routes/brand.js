@@ -8,27 +8,16 @@ var brandService = require('../services/brandService');
 
 // Router
 router.get('/items', auth.checkAuthentication(), function (request, response, next) {
-
-    var models = [];
-    for (var i = 0; i < 10000; i++){
-        models.push({
-            BrandId: i,
-            Name: 'Code' + i,
-            Description: 'Name' + i
-        });
-    }
-    
-    response.status(200).json(models);
-	//dbContext.getConnection().then(function (result) {
-	//	ctx = result;
-	//	return brandService.getBrands(ctx);
-	//}).then(function (brands) {
-	//	response.status(200).json(brands);
-	//}).catch(function (error) {
-	//	next(error);
-	//}).done(function () {
-	//	ctx.release();
-	//});
+	dbContext.getConnection().then(function (result) {
+		ctx = result;
+		return brandService.getBrands(ctx);
+	}).then(function (brands) {
+		response.status(200).json(brands);
+	}).catch(function (error) {
+		next(error);
+	}).done(function () {
+		ctx.release();
+	});
 });
 
 router.get('/items/:id', auth.checkAuthentication(), function (request, response, next) {
