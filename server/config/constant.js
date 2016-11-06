@@ -36,5 +36,9 @@ constant.Success_Stock_Create = { code: 'SUCCESS_STOCK_CREATE', message: 'Create
 constant.Success_Stock_Update = { code: 'SUCCESS_STOCK_UPDATE', message: 'Update Stock is success.' };
 constant.Success_Stock_Delete = { code: 'SUCCESS_STOCK_DELETE', message: 'Delete Stock is success.' };
 
+constant.Success_Brand_Create = { code: 'SUCCESS_BRAND_CREATE', message: 'Create Brand is success.' };
+constant.Success_Brand_Update = { code: 'SUCCESS_BRAND_UPDATE', message: 'Update Brand is success.' };
+constant.Success_Brand_Delete = { code: 'SUCCESS_BRAND_DELETE', message: 'Delete Brand is success.' };
+
 // Export
 module.exports = constant;

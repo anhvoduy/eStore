@@ -5,9 +5,9 @@
     
     function baseService($http, $q, $location) {
         // constructor
-		var baseService = function (api) {
-			console.log($location);
-			this.api = String.format('http://localhost:3000/{0}', api);
+		var baseService = function (api) {			
+			var baseUrl = String.format('{0}://{1}:{2}', $location.protocol(), $location.host(), $location.port());
+			this.api = String.format('{0}/{1}', baseUrl, api);
 		}
 
         // GET()
