@@ -147,6 +147,12 @@
     <Content Include="client\app\components\cash\views\cash.tpl.html" />
     <Content Include="client\app\components\cash\views\cashIn.tpl.html" />
     <Content Include="client\app\components\cash\views\cashOut.tpl.html" />
+    <Content Include="client\app\components\inventory\views\inventory.tpl.html" />
+    <Content Include="client\app\components\inventory\views\inventoryInputDetail.tpl.html" />
+    <Content Include="client\app\components\inventory\views\inventoryOutputDetail.tpl.html" />
+    <Content Include="client\app\components\inventory\views\stockBalance.tpl.html" />
+    <Content Include="client\app\components\inventory\views\stockIn.tpl.html" />
+    <Content Include="client\app\components\inventory\views\stockOut.tpl.html" />
     <Content Include="client\app\components\product\views\productDetail.tpl.html" />
     <Content Include="client\app\components\product\views\product.tpl.html" />
     <Content Include="client\app\components\product\views\productReview.tpl.html" />
@@ -159,9 +165,6 @@
     <Content Include="client\app\views\error.tpl.html" />
     <Content Include="client\app\views\help.tpl.html" />
     <Content Include="client\app\views\home.tpl.html" />
-    <Content Include="client\app\components\inventory\views\inventory.html" />
-    <Content Include="client\app\components\inventory\views\inventoryInputDetail.html" />
-    <Content Include="client\app\components\inventory\views\inventoryOutputDetail.html" />
     <Content Include="client\app\components\authentication\views\login.tpl.html" />
     <Content Include="client\app\components\user\views\userDetail.tpl.html" />
     <Content Include="client\app\components\user\views\user.tpl.html" />
