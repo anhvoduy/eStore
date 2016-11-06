@@ -1,0 +1,17 @@
+{
+  "name": "eAccounting",
+  "description": "eAccounting",
+  "main": "app.js",
+  "authors": [
+    "[object Object]"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/anhvodhvn/demo",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
