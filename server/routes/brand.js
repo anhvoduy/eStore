@@ -28,22 +28,25 @@ router.get('/items', auth.checkAuthentication(), function (req, res, next) {
 });
 
 router.get('/items/:id', auth.checkAuthentication(), function (req, res, next) {
-    var brandId = req.params.id;
+	var brandId = req.params.id;
 
-	var ctx = {};        
-	dbContext.getConnection().then(function (result) {
-		ctx = result;
-		return brandService.getBrandById(ctx, brandId);
+	var ctx = {};
+	q.when()
+	.then(function () {
+		return dbContext.getConnection();
+	}).then(function (con) {
+		ctx = con;
+		return brandService.getBrands(ctx);
 	}).then(function (brands) {
 		if (brands.length == 0) {
-            res.status(404).json(errorHelper.Error_Existed_BrandId);
+			res.status(404).json(errorHelper.Error_Existed_BrandId);
 		} else {
 			res.status(200).json(brands[0]);
 		}
 	}).catch(function (error) {
-        next(error);
-	}).done(function () {
-		ctx.release();		
+		next(error);
+	}).finally(function () {
+		ctx.release();
 	});
 });
 
