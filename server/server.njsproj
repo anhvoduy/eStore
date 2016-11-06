@@ -37,8 +37,10 @@
     <Compile Include="client\app\components\brand\brandController.js" />
     <Compile Include="client\app\components\brand\brandDetailController.js" />
     <Compile Include="client\app\components\brand\brandService.js" />
-    <Compile Include="client\app\components\cash\cashController.js" />
-    <Compile Include="client\app\components\cash\cashDetailController.js" />
+    <Compile Include="client\app\components\cash\cashOutDetailController.js" />
+    <Compile Include="client\app\components\cash\cashOutController.js" />
+    <Compile Include="client\app\components\cash\cashInController.js" />
+    <Compile Include="client\app\components\cash\cashInDetailController.js" />
     <Compile Include="client\app\components\cash\cashService.js" />
     <Compile Include="client\app\components\inventory\inventoryService.js" />
     <Compile Include="client\app\components\product\productController.js" />
@@ -58,7 +60,6 @@
     <Compile Include="client\app\components\authentication\loginController.js" />
     <Compile Include="client\app\components\user\userController.js" />
     <Compile Include="client\app\components\user\userDetailController.js" />
-    <Compile Include="client\app\controllers\baseController.js" />
     <Compile Include="client\app\controllers\homeController.js" />
     <Compile Include="client\app\controllers\mainController.js" />
     <Compile Include="client\app\directives\customDirectives.js" />
@@ -108,6 +109,8 @@
     <Compile Include="client\libs\moment\moment.min.js" />
     <Compile Include="client\libs\require\r.js" />
     <Compile Include="client\libs\require\require.js" />
+    <Compile Include="client\libs\ui-grid\ui-grid.js" />
+    <Compile Include="client\libs\ui-grid\ui-grid.min.js" />
     <Compile Include="config\auth.js" />
     <Compile Include="config\config.js" />
     <Compile Include="config\constant.js" />
@@ -198,6 +201,12 @@
     <Content Include="client\libs\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="client\libs\bootstrap\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="client\libs\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="client\libs\fonts\ui-grid.eot" />
+    <Content Include="client\libs\fonts\ui-grid.svg" />
+    <Content Include="client\libs\fonts\ui-grid.ttf" />
+    <Content Include="client\libs\fonts\ui-grid.woff" />
+    <Content Include="client\libs\ui-grid\ui-grid.css" />
+    <Content Include="client\libs\ui-grid\ui-grid.min.css" />
     <Content Include="client\libs\yamm3\css\yamm.css" />
     <Content Include="client\libs\yamm3\css\yamm.less" />
     <Content Include="client\libs\yamm3\css\yamm.styl" />
@@ -244,7 +253,9 @@
     <Folder Include="client\libs\jquery\" />
     <Folder Include="client\libs\moment\" />
     <Folder Include="client\libs\custom\" />
+    <Folder Include="client\libs\fonts\" />
     <Folder Include="client\libs\require\" />
+    <Folder Include="client\libs\ui-grid\" />
     <Folder Include="client\libs\yamm3\" />
     <Folder Include="client\libs\yamm3\css\" />
     <Folder Include="client\libs\yamm3\js\" />

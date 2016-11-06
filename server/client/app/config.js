@@ -62,20 +62,14 @@ app.config(function ($stateProvider) {
 				templateUrl: "/app/components/product/views/productReview.tpl.html"
 			}
 		}
-	})
-	.state('cash', {
-		url: "/cash",
-		views: {
-			"view": {
-				templateUrl: "/app/components/cash/views/cash.tpl.html"
-			}
-		}
-	})
+	})	
 	.state('cashIn', {
 		url: "/cash/cashIn",
 		views: {
 			"view": {
-				templateUrl: "/app/components/cash/views/cashIn.tpl.html"
+				templateUrl: "/app/components/cash/views/cashIn.tpl.html",
+				controller: "cashInController",
+				controllerAs: 'vm'
 			}
 		}
 	})
@@ -83,7 +77,9 @@ app.config(function ($stateProvider) {
 		url: "/cash/cashOut",
 		views: {
 			"view": {
-				templateUrl: "/app/components/cash/views/cashOut.tpl.html"
+				templateUrl: "/app/components/cash/views/cashOut.tpl.html",
+				controller: "cashOutController",
+				controllerAs: 'vm'
 			}
 		}
 	})
