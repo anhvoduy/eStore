@@ -17,5 +17,28 @@
 var constant = function () { 
 }
 
+constant.transactionType = {
+	cashIn: 'CASHIN',
+	cashOut: 'CASHOUT',
+	stockIn: 'STOCKIN',
+	stockOut: 'STOCKOUT',
+	journal: 'JOURNAL',
+};
+
+// Success Lists
+constant.Success_Authentication = { code: 'SUCCESS_UNAUTHENTICATION', message: 'Login is success.' };
+
+constant.Success_Cash_Create = { code: 'SUCCESS_CASH_CREATE', message: 'Create Cash is success.' };
+constant.Success_Cash_Update = { code: 'SUCCESS_CASH_UPDATE', message: 'Update Cash is success.' };
+constant.Success_Cash_Delete = { code: 'SUCCESS_CASH_DELETE', message: 'Delete Cash is success.' };
+
+constant.Success_Stock_Create = { code: 'SUCCESS_STOCK_CREATE', message: 'Create Stock is success.' };
+constant.Success_Stock_Update = { code: 'SUCCESS_STOCK_UPDATE', message: 'Update Stock is success.' };
+constant.Success_Stock_Delete = { code: 'SUCCESS_STOCK_DELETE', message: 'Delete Stock is success.' };
+
+constant.Success_Brand_Create = { code: 'SUCCESS_BRAND_CREATE', message: 'Create Brand is success.' };
+constant.Success_Brand_Update = { code: 'SUCCESS_BRAND_UPDATE', message: 'Update Brand is success.' };
+constant.Success_Brand_Delete = { code: 'SUCCESS_BRAND_DELETE', message: 'Delete Brand is success.' };
+
 // Export
-module.exports = new errorHelper;
+module.exports = constant;

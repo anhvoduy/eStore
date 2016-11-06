@@ -1,13 +1,14 @@
 (function () {
     'use strict';
     app.factory('baseService', baseService);
-    baseService.$inject = ['$http', '$q'];
+    baseService.$inject = ['$http', '$q', '$location'];
     
-    function baseService($http, $q) {
+    function baseService($http, $q, $location) {
         // constructor
-        var baseService = function (api) {
-            this.api = String.format('http://localhost:3000/{0}', api);
-        }                
+		var baseService = function (api) {			
+			var baseUrl = String.format('{0}://{1}:{2}', $location.protocol(), $location.host(), $location.port());
+			this.api = String.format('{0}/{1}', baseUrl, api);
+		}
 
         // GET()
         baseService.prototype.getData = function (url) {
@@ -17,7 +18,8 @@
                 method: 'GET'
             }).success(function (result) {
                 q.resolve(result);
-            }).error(function (error, status) {
+			}).error(function (error, status) {
+				writeLogs(error, status);
                 q.reject(error);
             });
             return q.promise;
@@ -32,7 +34,8 @@
                 data: data
             }).success(function (result) {
                 q.resolve(result);               
-            }).error(function (error, status) {
+			}).error(function (error, status) {
+				writeLogs(error, status);
                 q.reject(error);
             });
             return q.promise;
@@ -47,7 +50,8 @@
                 method: 'PUT'
             }).success(function (result) {
                 q.resolve(result);
-            }).error(function (error, status) {
+			}).error(function (error, status) {
+				writeLogs(error, status);
                 q.reject(error);
             });
             return q.promise;
@@ -61,15 +65,16 @@
                 method: 'DELETE'
             }).success(function (result) {
                 q.resolve(result);
-            }).error(function (error, status) {
+			}).error(function (error, status) {
+				writeLogs(error, status);
                 q.reject(error);
             });
             return q.promise;
         }
 
         // Write Logs
-        var WriteLogs = function (error) {
-            console.log(error);
+        var writeLogs = function (error, status) {
+			console.log(String.format('{0}: {1}', status , error));
         }
         
         return baseService;

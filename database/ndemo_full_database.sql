@@ -1,8 +1,24 @@
+-- MySQL dump 10.13  Distrib 5.7.12, for Win64 (x86_64)
+--
+-- Host: localhost    Database: ndemo
+-- ------------------------------------------------------
+-- Server version	5.7.15-log
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
 DROP SCHEMA IF EXISTS `ndemo` ;
 CREATE SCHEMA `ndemo` ;
 
 USE `ndemo`;
-
 
 --
 -- Table structure for table `tblCustomer`
@@ -10,25 +26,27 @@ USE `ndemo`;
 DROP TABLE IF EXISTS `tblCustomer`;
 CREATE TABLE `tblCustomer` (
   `CustomerId` INT(11) NOT NULL AUTO_INCREMENT,
-  `CustomerNo` VARCHAR(45) NOT NULL,
+  `CustomerKey` VARCHAR(45) NOT NULL,
   `CustomerName` VARCHAR(45) NOT NULL,
   `Description` VARCHAR(200) DEFAULT NULL,
-  `Address` VARCHAR(200) DEFAULT NULL,
+  `Email` VARCHAR(45) DEFAULT NULL,
   `Mobile` VARCHAR(45) DEFAULT NULL,
   `Tel` VARCHAR(45) DEFAULT NULL,
-  `Email` VARCHAR(45) DEFAULT NULL,  
+  `Title` VARCHAR(45) DEFAULT NULL,
+  `Address` VARCHAR(200) DEFAULT NULL,
   `Deleted` TINYINT(1) DEFAULT '0',
   PRIMARY KEY (`CustomerId`),
   UNIQUE KEY `CustomerId_UNIQUE` (`CustomerId`)
-) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;	
 
 --
 -- Sample data for table `tblCustomer`
 --
-INSERT INTO `tblCustomer` (`CustomerNo`,`CustomerName`,`Description`,`Deleted`) VALUES (uuid(),'Van Thinh Phat','',0);
-INSERT INTO `tblCustomer` (`CustomerNo`,`CustomerName`,`Description`,`Deleted`) VALUES (uuid(),'Cong ty CP REE','',0);
-INSERT INTO `tblCustomer` (`CustomerNo`,`CustomerName`,`Description`,`Deleted`) VALUES (uuid(),'Cong ty CP FPT','',0);
-
+INSERT INTO `tblCustomer` (`CustomerKey`,`CustomerName`,`Description`,`Deleted`) VALUES (uuid(),'The Bank of Tokyo and Mitsuibishi','',0);
+INSERT INTO `tblCustomer` (`CustomerKey`,`CustomerName`,`Description`,`Deleted`) VALUES (uuid(),'Cong ty CP REE','',0);
+INSERT INTO `tblCustomer` (`CustomerKey`,`CustomerName`,`Description`,`Deleted`) VALUES (uuid(),'FPT Information System','',0);
+INSERT INTO `tblCustomer` (`CustomerKey`,`CustomerName`,`Description`,`Deleted`) VALUES (uuid(),'Tap doan HAG','',0);
+INSERT INTO `tblCustomer` (`CustomerKey`,`CustomerName`,`Description`,`Deleted`) VALUES (uuid(),'SMC Steel Company','',0);
 
 --
 -- Table structure for table `tblAccount`
@@ -51,11 +69,14 @@ INSERT INTO `tblAccount` (`AccountNo`,`AccountName`,`Description`,`Deleted`) VAL
 INSERT INTO `tblAccount` (`AccountNo`,`AccountName`,`Description`,`Deleted`) VALUES ('112','Cash in bank','',0);
 INSERT INTO `tblAccount` (`AccountNo`,`AccountName`,`Description`,`Deleted`) VALUES ('113','Cash transfer ','',0);
 INSERT INTO `tblAccount` (`AccountNo`,`AccountName`,`Description`,`Deleted`) VALUES ('156','Goods','',0);
-INSERT INTO `tblAccount` (`AccountNo`,`AccountName`,`Description`,`Deleted`) VALUES ('131','Cac khoan phai thu','',0);
-INSERT INTO `tblAccount` (`AccountNo`,`AccountName`,`Description`,`Deleted`) VALUES ('331','Cac khoan phai tra','',0);
-INSERT INTO `tblAccount` (`AccountNo`,`AccountName`,`Description`,`Deleted`) VALUES ('511','Doanh thu','',0);
-INSERT INTO `tblAccount` (`AccountNo`,`AccountName`,`Description`,`Deleted`) VALUES ('631','Chi phí','',0);
-
+INSERT INTO `tblAccount` (`AccountNo`,`AccountName`,`Description`,`Deleted`) VALUES ('131','Account Receivable','',0);
+INSERT INTO `tblAccount` (`AccountNo`,`AccountName`,`Description`,`Deleted`) VALUES ('331','Account Payment','',0);
+INSERT INTO `tblAccount` (`AccountNo`,`AccountName`,`Description`,`Deleted`) VALUES ('511','Revenue','',0);
+INSERT INTO `tblAccount` (`AccountNo`,`AccountName`,`Description`,`Deleted`) VALUES ('632','Cost of Goods Sold','',0);
+INSERT INTO `tblAccount` (`AccountNo`,`AccountName`,`Description`,`Deleted`) VALUES ('642','Selling Cost','',0);
+INSERT INTO `tblAccount` (`AccountNo`,`AccountName`,`Description`,`Deleted`) VALUES ('711','711','',0);
+INSERT INTO `tblAccount` (`AccountNo`,`AccountName`,`Description`,`Deleted`) VALUES ('811','811','',0);
+INSERT INTO `tblAccount` (`AccountNo`,`AccountName`,`Description`,`Deleted`) VALUES ('911','911','',0);
 
 --
 -- Table structure for table `tblTransaction`
@@ -64,15 +85,20 @@ DROP TABLE IF EXISTS `tblTransaction`;
 CREATE TABLE `tblTransaction` (
   `TransactionId` INT(11) NOT NULL AUTO_INCREMENT,
   `TransactionNo` VARCHAR(45) NOT NULL,
+  `TransactionDate` DATE DEFAULT NULL,
   `TransactionType` VARCHAR(20) NOT NULL,
+  `Description` VARCHAR(200) DEFAULT NULL,
   `Currency` VARCHAR(3) DEFAULT NULL,
   `TotalAmount` DECIMAL(11,4) NOT NULL DEFAULT '0',
   `CustomerId` INT(11) DEFAULT NULL,
   `CustomerName` VARCHAR(45) DEFAULT NULL,
   `InvoiceNo` VARCHAR(20) DEFAULT NULL,
   `InvoiceDate` DATE DEFAULT NULL,
-  `InvoiceDesc` VARCHAR(200) DEFAULT NULL,
-  `Description` VARCHAR(200) DEFAULT NULL,  
+  `InvoiceDesc` VARCHAR(200) DEFAULT NULL,  
+  `Created` DATETIME DEFAULT CURRENT_TIMESTAMP,
+  `Updated` DATETIME DEFAULT CURRENT_TIMESTAMP,
+  `Author` VARCHAR(45) NOT NULL,
+  `Editor` VARCHAR(45) NOT NULL,
   `Deleted` TINYINT(1) DEFAULT '0',
   PRIMARY KEY (`TransactionId`),
   UNIQUE KEY `TransactionId_UNIQUE` (`TransactionId`)
@@ -88,11 +114,109 @@ CREATE TABLE `tblTransactionDetail` (
   `ProductId` INT(11) DEFAULT NULL,  
   `ProductName` VARCHAR(45) DEFAULT NULL,  
   `Quantity` DECIMAL(11,4) NOT NULL DEFAULT '0',
+  `Price` DECIMAL(11,4) NOT NULL DEFAULT '0',
   `Amount` DECIMAL(11,4) NOT NULL DEFAULT '0',
-  `TotalAmount` DECIMAL(11,4) NOT NULL DEFAULT '0',
+  `Created` DATETIME DEFAULT CURRENT_TIMESTAMP,
+  `Updated` DATETIME DEFAULT CURRENT_TIMESTAMP,
+  `Author` VARCHAR(45) NOT NULL,
+  `Editor` VARCHAR(45) NOT NULL,
   `Deleted` TINYINT(1) DEFAULT '0',
   PRIMARY KEY (`TransactionDetailId`),
   UNIQUE KEY `TransactionDetailId_UNIQUE` (`TransactionDetailId`)
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
+
+
+--
+-- Table structure for table `tblStock`
+--
+DROP TABLE IF EXISTS `tblStock`;
+CREATE TABLE `tblStock` (
+  `StockId` INT(11) NOT NULL AUTO_INCREMENT,
+  `StockNo` VARCHAR(45) NOT NULL,
+  `StockDate` DATE DEFAULT NULL,
+  `StockType` VARCHAR(20) NOT NULL,
+  `Description` VARCHAR(200) DEFAULT NULL,
+  `Currency` VARCHAR(3) DEFAULT NULL,
+  `TotalAmount` DECIMAL(11,4) NOT NULL DEFAULT '0',
+  `CustomerId` INT(11) DEFAULT NULL,
+  `CustomerName` VARCHAR(45) DEFAULT NULL,
+  `InvoiceNo` VARCHAR(20) DEFAULT NULL,
+  `InvoiceDate` DATE DEFAULT NULL,
+  `InvoiceDesc` VARCHAR(200) DEFAULT NULL,  
+  `Created` DATETIME DEFAULT CURRENT_TIMESTAMP,
+  `Updated` DATETIME DEFAULT CURRENT_TIMESTAMP,
+  `Author` VARCHAR(45) NOT NULL,
+  `Editor` VARCHAR(45) NOT NULL,
+  `Deleted` TINYINT(1) DEFAULT '0',
+  PRIMARY KEY (`StockId`),
+  UNIQUE KEY `StockId_UNIQUE` (`StockId`)
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
+
+--
+-- Table structure for table `tblStockDetail`
+--
+DROP TABLE IF EXISTS `tblStockDetail`;
+CREATE TABLE `tblStockDetail` (
+  `StockDetailId` INT(11) NOT NULL AUTO_INCREMENT,
+  `StockId` INT(11) NOT NULL,  
+  `ProductId` INT(11) DEFAULT NULL,  
+  `ProductName` VARCHAR(45) DEFAULT NULL,  
+  `Quantity` DECIMAL(11,4) NOT NULL DEFAULT '0',
+  `Price` DECIMAL(11,4) NOT NULL DEFAULT '0',
+  `Amount` DECIMAL(11,4) NOT NULL DEFAULT '0',
+  `Created` DATETIME DEFAULT CURRENT_TIMESTAMP,
+  `Updated` DATETIME DEFAULT CURRENT_TIMESTAMP,
+  `Author` VARCHAR(45) NOT NULL,
+  `Editor` VARCHAR(45) NOT NULL,
+  `Deleted` TINYINT(1) DEFAULT '0',
+  PRIMARY KEY (`StockDetailId`),
+  UNIQUE KEY `StockDetailId_UNIQUE` (`StockDetailId`)
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
+
+--
+-- Table structure for table `tblInventory`
+--
+DROP TABLE IF EXISTS `tblInventory`;
+CREATE TABLE `tblInventory` (
+  `InventoryId` INT(11) NOT NULL AUTO_INCREMENT,
+  `StockId` INT(11) DEFAULT NULL,  
+  `StockType` VARCHAR(20) NOT NULL,
+  `ProductId` INT(11) DEFAULT NULL,  
+  `ProductName` VARCHAR(45) DEFAULT NULL,  
+  `QuantityInput` DECIMAL(11,4) NOT NULL DEFAULT '0',
+  `QuantityOutput` DECIMAL(11,4) NOT NULL DEFAULT '0',
+  `QuantityBalance` DECIMAL(11,4) NOT NULL DEFAULT '0',
+  `Amount` DECIMAL(11,4) NOT NULL DEFAULT '0',
+  `Created` DATETIME DEFAULT CURRENT_TIMESTAMP,
+  `Updated` DATETIME DEFAULT CURRENT_TIMESTAMP,
+  `Author` VARCHAR(45) NOT NULL,
+  `Editor` VARCHAR(45) NOT NULL,
+  `Deleted` TINYINT(1) DEFAULT '0',
+  PRIMARY KEY (`InventoryId`),
+  UNIQUE KEY `InventoryId_UNIQUE` (`InventoryId`)
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
+
+--
+-- Table structure for table `tblJournal`
+--
+DROP TABLE IF EXISTS `tblJournal`;
+CREATE TABLE `tblJournal` (
+  `JournalId` INT(11) NOT NULL AUTO_INCREMENT,
+  `JournalNo` VARCHAR(45) NOT NULL,
+  `JournalType` VARCHAR(20) NOT NULL,
+  `JournalDate` DATE DEFAULT NULL,
+  `Description` VARCHAR(200) DEFAULT NULL,
+  `Currency` VARCHAR(3) DEFAULT NULL,
+  `TotalAmount` DECIMAL(11,4) NOT NULL DEFAULT 0,
+  `DebitAcctNo` VARCHAR(20) NOT NULL,
+  `CreditAcctNo` VARCHAR(20) NOT NULL,
+  `Created` DATETIME DEFAULT CURRENT_TIMESTAMP,
+  `Updated` DATETIME DEFAULT CURRENT_TIMESTAMP,
+  `Author` VARCHAR(45) NOT NULL,
+  `Editor` VARCHAR(45) NOT NULL,
+  `Deleted` TINYINT(1) DEFAULT '0',
+  PRIMARY KEY (`JournalId`),
+  UNIQUE KEY `JournalId_UNIQUE` (`JournalId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 
 --
@@ -103,6 +227,10 @@ CREATE TABLE `tblBrand` (
   `BrandId` INT(11) NOT NULL AUTO_INCREMENT,
   `Name` VARCHAR(45) NOT NULL,
   `Description` VARCHAR(200) DEFAULT NULL,
+  `Created` DATETIME DEFAULT CURRENT_TIMESTAMP,
+  `Updated` DATETIME DEFAULT CURRENT_TIMESTAMP,
+  `Author` VARCHAR(45) NOT NULL,
+  `Editor` VARCHAR(45) NOT NULL,
   `Deleted` TINYINT(1) DEFAULT '0',
   PRIMARY KEY (`BrandId`),
   UNIQUE KEY `BrandId_UNIQUE` (`BrandId`)
@@ -133,20 +261,6 @@ INSERT INTO `tblbrand` (`Name`,`Description`,`Deleted`) VALUES ('Brand 19 Centur
 INSERT INTO `tblbrand` (`Name`,`Description`,`Deleted`) VALUES ('Coca Cola','Coca Cola',0);
 INSERT INTO `tblbrand` (`Name`,`Description`,`Deleted`) VALUES ('Pepsi Company','Pepsi Company',0);
 INSERT INTO `tblbrand` (`Name`,`Description`,`Deleted`) VALUES ('Facebook','The Facebook',0);
-
---
--- Table structure for table `tblcategory`
---
-
-DROP TABLE IF EXISTS `tblcategory`;
-CREATE TABLE `tblcategory` (
-  `CategoryId` INT(11) NOT NULL,
-  `CategoryName` VARCHAR(45) DEFAULT NULL,
-  `Deleted` TINYINT(1) DEFAULT '0',
-  PRIMARY KEY (`CategoryId`),
-  UNIQUE KEY `CategoryId_UNIQUE` (`CategoryId`)
-) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
-
 
 --
 -- Table structure for table `tblproduct`
@@ -208,7 +322,7 @@ CREATE TABLE `tblreview` (
   `ReviewId` INT(11) NOT NULL AUTO_INCREMENT,
   `Rating` int(2) DEFAULT NULL,
   `Comment` VARCHAR(200) DEFAULT NULL,
-  `Created` datetime DEFAULT CURRENT_TIMESTAMP,
+  `Created` DATETIME DEFAULT CURRENT_TIMESTAMP,
   `ProductId` INT(11) NOT NULL,
   `Email` VARCHAR(45) DEFAULT NULL,
   `Deleted` TINYINT(1) DEFAULT '0',
@@ -235,13 +349,17 @@ INSERT INTO `tblreview`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `D
 DROP TABLE IF EXISTS `tbluser`;
 CREATE TABLE `tbluser` (
   `UserId` INT(11) NOT NULL AUTO_INCREMENT,
+  `UserKey` VARCHAR(45) NOT NULL,
   `UserType` VARCHAR(20) NOT NULL,
-  `UserName` VARCHAR(45) NOT NULL,
+  `UserName` VARCHAR(45) NOT NULL,  
   `DisplayName` VARCHAR(50) DEFAULT NULL,
-  `Email` VARCHAR(20) NOT NULL,
-  `DateOfBirth` DATE DEFAULT NULL,
-  `Deleted` TINYINT(1) DEFAULT '0',
+  `Email` VARCHAR(45) DEFAULT NULL,
+  `Mobile` VARCHAR(45) DEFAULT NULL,
+  `Tel` VARCHAR(45) DEFAULT NULL,
+  `Title` VARCHAR(45) DEFAULT NULL,
+  `DateOfBirth` DATE DEFAULT NULL,  
   `Hash` VARCHAR(200) DEFAULT NULL,
+  `Deleted` TINYINT(1) DEFAULT '0',
   PRIMARY KEY (`UserId`),
   UNIQUE KEY `Email_UNIQUE` (`Email`),
   UNIQUE KEY `UserName_UNIQUE` (`UserName`),
@@ -251,12 +369,12 @@ CREATE TABLE `tbluser` (
 --
 -- Sample data for table `tbluser`
 --
-INSERT INTO `tbluser` (`UserType`, `UserName`, `Email`, `DateOfBirth`, `Deleted`) VALUES ('CUSTOMER','anhnguyen','anhnguyen@sony.com','1980-06-06',0);
-INSERT INTO `tbluser` (`UserType`, `UserName`, `Email`, `DateOfBirth`, `Deleted`) VALUES ('MERCHANT','hoanganh','hoanganh@ibm.com','1990-03-03',0);
-INSERT INTO `tbluser` (`UserType`, `UserName`, `Email`, `DateOfBirth`, `Deleted`) VALUES ('CUSTOMER','vinhcao','vinhcao@hvn.com','1990-04-04',1);
-INSERT INTO `tbluser` (`UserType`, `UserName`, `Email`, `DateOfBirth`, `Deleted`) VALUES ('CUSTOMER','john','john@microsoft.com','2000-12-26',0);
-INSERT INTO `tbluser` (`UserType`, `UserName`, `Email`, `DateOfBirth`, `Deleted`) VALUES ('CUSTOMER','Duy Anh','avo4@hvn.com','1984-12-22',0);
-INSERT INTO `tbluser` (`UserType`, `UserName`, `Email`, `DateOfBirth`, `Deleted`) VALUES ('MERCHANT','Anh','anhvod@hvn.com','1984-12-24',0);
+INSERT INTO `tbluser` (`UserKey`, `UserType`, `UserName`, `Email`, `DateOfBirth`, `Deleted`) VALUES (uuid(), 'CUSTOMER','anhnguyen','anhnguyen@sony.com','1980-06-06',0);
+INSERT INTO `tbluser` (`UserKey`, `UserType`, `UserName`, `Email`, `DateOfBirth`, `Deleted`) VALUES (uuid(), 'MERCHANT','hoanganh','hoanganh@ibm.com','1990-03-03',0);
+INSERT INTO `tbluser` (`UserKey`, `UserType`, `UserName`, `Email`, `DateOfBirth`, `Deleted`) VALUES (uuid(), 'CUSTOMER','vinhcao','vinhcao@hvn.com','1990-04-04',1);
+INSERT INTO `tbluser` (`UserKey`, `UserType`, `UserName`, `Email`, `DateOfBirth`, `Deleted`) VALUES (uuid(), 'CUSTOMER','john','john@microsoft.com','2000-12-26',0);
+INSERT INTO `tbluser` (`UserKey`, `UserType`, `UserName`, `Email`, `DateOfBirth`, `Deleted`) VALUES (uuid(), 'CUSTOMER','Anh Vo','avo4@hvn.com','1984-12-22',0);
+INSERT INTO `tbluser` (`UserKey`, `UserType`, `UserName`, `Email`, `DateOfBirth`, `Deleted`) VALUES (uuid(), 'MERCHANT','Dzuy Anh','anhvod@hvn.com','1984-12-24',0);
 
 --
 -- Store Procedure: sp_product_paging

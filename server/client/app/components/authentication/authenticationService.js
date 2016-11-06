@@ -21,7 +21,7 @@
         authenticationService.prototype.login = function (username, password) {           
             /* Use this for test at server side: /api/user/authenticate */
             var q = $q.defer();            
-            $http.post('/api/user/login', { username: username, password: password }).success(function (result) {
+            $http.post('/api/login', { username: username, password: password }).success(function (result) {
                 q.resolve(result);
             }).error(function (result) {
                 q.reject(result);

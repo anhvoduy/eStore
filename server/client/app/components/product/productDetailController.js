@@ -1,8 +1,8 @@
 ﻿(function () {
     'use strict';    
-    app.controller('ProductDetailController', ProductDetailController);
-    ProductDetailController.$inject = ['productService', 'reviewService', '$stateParams'];    
-	function ProductDetailController(productService, reviewService, $stateParams) {
+    app.controller('productDetailController', productDetailController);
+    productDetailController.$inject = ['productService', 'reviewService', '$stateParams'];    
+	function productDetailController(productService, reviewService, $stateParams) {
 		// models
 		var vm = this;
 		vm.productId = $stateParams.productID;

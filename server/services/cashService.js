@@ -3,23 +3,23 @@ var dbHelper = require('../config/dbHelper');
 var q = require('q');
 
 // Constructor
-var inventoryService = function () { 
+var transactionService = function () { 
 }
 
-inventoryService.prototype.inputProducts = function (ctx, message) {
+transactionService.prototype.createCash = function (ctx, cash) {
 	var sql = dbHelper.prepareQueryCommand(" ", []);
 	return ctx.queryCommand(sql);
 }
 
-inventoryService.prototype.outputProducts = function (ctx, message) {
+transactionService.prototype.editCash = function (ctx, cash) {
 	var sql = dbHelper.prepareQueryCommand(" ", []);
 	return ctx.queryCommand(sql);
 }
 
-inventoryService.prototype.calculateInventory = function (ctx) {
+transactionService.prototype.deleteCash = function (ctx, cashId) {
 	var sql = dbHelper.prepareQueryCommand("", []);
 	return ctx.queryCommand(sql);
 }
 
 // Export
-module.exports = new inventoryService;
+module.exports = new transactionService;

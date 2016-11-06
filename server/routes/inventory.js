@@ -1,20 +1,45 @@
 // Dependencies
 var express = require('express');
 var router = express.Router();
+var q = require('q');
+var auth = require('../config/auth');
+var constant = require('../config/constant');
 var dbContext = require('../config/dbContext');
 var errorHelper = require('../config/errorHelper');
 
-// Router
-router.put('/input', function (request, response, next) {
-    // stock input
+/* ------------ Stock In ------------ */
+router.get('/stockin', function (request, response, next) {
+    // get items
 });
 
-router.put('/output', function (request, response, next) {
-    // stock output
+router.get('/stockin/:id', function (request, response, next) {
+    // create stock
 });
 
-router.get('/items/:id', function (request, response, next) {
-    // view stock by id
+router.post('/stockin/:id', function (request, response, next) {
+    // create stock
+});
+
+router.put('/stockin/:id', function (request, response, next) {
+    // edit stock
+});
+
+
+/* ------------ Stock Out ------------ */
+router.get('/stockout', function (request, response, next) {
+    // get items
+});
+
+router.get('/stockout/:id', function (request, response, next) {
+    // create stock
+});
+
+router.post('/stockout/:id', function (request, response, next) {
+    // create stock
+});
+
+router.put('/stockout/:id', function (request, response, next) {
+    // edit stock
 });
 
 // return Router

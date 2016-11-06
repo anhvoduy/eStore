@@ -1,22 +1,22 @@
 // Dependencies
-var dbHelper = require('../config/dbHelper');
 var q = require('q');
+var dbHelper = require('../config/dbHelper');
 
 // Constructor
 var inventoryService = function () { 
 }
 
-inventoryService.prototype.inputProducts = function (ctx, message) {
+inventoryService.prototype.createInventory = function (ctx, inventory) {
 	var sql = dbHelper.prepareQueryCommand(" ", []);
 	return ctx.queryCommand(sql);
 }
 
-inventoryService.prototype.outputProducts = function (ctx, message) {
+inventoryService.prototype.editInventory = function (ctx, inventory) {
 	var sql = dbHelper.prepareQueryCommand(" ", []);
 	return ctx.queryCommand(sql);
 }
 
-inventoryService.prototype.calculateInventory = function (ctx) {
+inventoryService.prototype.deleteInventory = function (ctx, inventoryId) {
 	var sql = dbHelper.prepareQueryCommand("", []);
 	return ctx.queryCommand(sql);
 }
