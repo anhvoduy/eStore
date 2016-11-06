@@ -119,7 +119,7 @@ DROP TABLE IF EXISTS `tblStock`;
 CREATE TABLE `tblStock` (
   `StockId` INT(11) NOT NULL AUTO_INCREMENT,
   `StockNo` VARCHAR(45) NOT NULL,
-  `TransactionType` VARCHAR(20) NOT NULL,
+  `StockType` VARCHAR(20) NOT NULL,
   `Currency` VARCHAR(3) DEFAULT NULL,
   `TotalAmount` DECIMAL(11,4) NOT NULL DEFAULT '0',
   `CustomerId` INT(11) DEFAULT NULL,
@@ -139,7 +139,7 @@ CREATE TABLE `tblStock` (
 DROP TABLE IF EXISTS `tblStockDetail`;
 CREATE TABLE `tblStockDetail` (
   `StockDetailId` INT(11) NOT NULL AUTO_INCREMENT,
-  `StockId` INT(11) NOT NULL,
+  `StockId` INT(11) NOT NULL,  
   `ProductId` INT(11) DEFAULT NULL,  
   `ProductName` VARCHAR(45) DEFAULT NULL,  
   `Quantity` DECIMAL(11,4) NOT NULL DEFAULT '0',
@@ -148,6 +148,41 @@ CREATE TABLE `tblStockDetail` (
   `Deleted` TINYINT(1) DEFAULT '0',
   PRIMARY KEY (`StockDetailId`),
   UNIQUE KEY `StockDetailId_UNIQUE` (`StockDetailId`)
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
+
+--
+-- Table structure for table `tblInventory`
+--
+DROP TABLE IF EXISTS `tblInventory`;
+CREATE TABLE `tblInventory` (
+  `InventoryId` INT(11) NOT NULL AUTO_INCREMENT,
+  `StockId` INT(11) DEFAULT NULL,  
+  `StockType` VARCHAR(20) NOT NULL,
+  `ProductId` INT(11) DEFAULT NULL,  
+  `ProductName` VARCHAR(45) DEFAULT NULL,  
+  `QuantityInput` DECIMAL(11,4) NOT NULL DEFAULT '0',
+  `QuantityOutput` DECIMAL(11,4) NOT NULL DEFAULT '0',
+  `QuantityBalance` DECIMAL(11,4) NOT NULL DEFAULT '0',
+  `Amount` DECIMAL(11,4) NOT NULL DEFAULT '0',
+  `Deleted` TINYINT(1) DEFAULT '0',
+  PRIMARY KEY (`InventoryId`),
+  UNIQUE KEY `InventoryId_UNIQUE` (`InventoryId`)
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
+
+--
+-- Table structure for table `tblJournal`
+--
+DROP TABLE IF EXISTS `tblJournal`;
+CREATE TABLE `tblJournal` (
+  `JournalId` INT(11) NOT NULL AUTO_INCREMENT,
+  `JournalNo` VARCHAR(45) NOT NULL,
+  `JournalType` VARCHAR(20) NOT NULL,
+  `Currency` VARCHAR(3) DEFAULT NULL,
+  `TotalAmount` DECIMAL(11,4) NOT NULL DEFAULT '0',  
+  `Description` VARCHAR(200) DEFAULT NULL,  
+  `Deleted` TINYINT(1) DEFAULT '0',
+  PRIMARY KEY (`JournalId`),
+  UNIQUE KEY `JournalId_UNIQUE` (`JournalId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 
 --
