@@ -1,7 +1,9 @@
 // Dependencies
 var express = require('express');
 var router = express.Router();
+var q = require('q');
 var auth = require('../config/auth');
+var constant = require('../config/constant');
 var dbContext = require('../config/dbContext');
 var errorHelper = require('../config/errorHelper');
 var brandService = require('../services/brandService');
@@ -40,6 +42,10 @@ router.get('/items/:id', auth.checkAuthentication(), function (request, response
 	});
 });
 
+router.post('/create', auth.checkAuthentication(), function (request, response, next) {
+	// create brand
+});
+
 router.put('/update', auth.checkAuthentication(), function (request, response, next) {
     // validate data at server side
     var brand = {
@@ -64,6 +70,10 @@ router.put('/update', auth.checkAuthentication(), function (request, response, n
 	}).done(function () {
 		ctx.release();		
 	});
+});
+
+router.delete('/delete', auth.checkAuthentication(), function (request, response, next) {
+	// create brand
 });
 
 // return Router

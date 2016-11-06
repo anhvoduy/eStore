@@ -1,8 +1,24 @@
+-- MySQL dump 10.13  Distrib 5.7.12, for Win64 (x86_64)
+--
+-- Host: localhost    Database: ndemo
+-- ------------------------------------------------------
+-- Server version	5.7.15-log
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
 DROP SCHEMA IF EXISTS `ndemo` ;
 CREATE SCHEMA `ndemo` ;
 
 USE `ndemo`;
-
 
 --
 -- Table structure for table `tblCustomer`
@@ -93,6 +109,45 @@ CREATE TABLE `tblTransactionDetail` (
   `Deleted` TINYINT(1) DEFAULT '0',
   PRIMARY KEY (`TransactionDetailId`),
   UNIQUE KEY `TransactionDetailId_UNIQUE` (`TransactionDetailId`)
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
+
+
+--
+-- Table structure for table `tblStock`
+--
+DROP TABLE IF EXISTS `tblStock`;
+CREATE TABLE `tblStock` (
+  `StockId` INT(11) NOT NULL AUTO_INCREMENT,
+  `StockNo` VARCHAR(45) NOT NULL,
+  `TransactionType` VARCHAR(20) NOT NULL,
+  `Currency` VARCHAR(3) DEFAULT NULL,
+  `TotalAmount` DECIMAL(11,4) NOT NULL DEFAULT '0',
+  `CustomerId` INT(11) DEFAULT NULL,
+  `CustomerName` VARCHAR(45) DEFAULT NULL,
+  `InvoiceNo` VARCHAR(20) DEFAULT NULL,
+  `InvoiceDate` DATE DEFAULT NULL,
+  `InvoiceDesc` VARCHAR(200) DEFAULT NULL,
+  `Description` VARCHAR(200) DEFAULT NULL,  
+  `Deleted` TINYINT(1) DEFAULT '0',
+  PRIMARY KEY (`StockId`),
+  UNIQUE KEY `StockId_UNIQUE` (`StockId`)
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
+
+--
+-- Table structure for table `tblStockDetail`
+--
+DROP TABLE IF EXISTS `tblStockDetail`;
+CREATE TABLE `tblStockDetail` (
+  `StockDetailId` INT(11) NOT NULL AUTO_INCREMENT,
+  `StockId` INT(11) NOT NULL,
+  `ProductId` INT(11) DEFAULT NULL,  
+  `ProductName` VARCHAR(45) DEFAULT NULL,  
+  `Quantity` DECIMAL(11,4) NOT NULL DEFAULT '0',
+  `Amount` DECIMAL(11,4) NOT NULL DEFAULT '0',
+  `TotalAmount` DECIMAL(11,4) NOT NULL DEFAULT '0',
+  `Deleted` TINYINT(1) DEFAULT '0',
+  PRIMARY KEY (`StockDetailId`),
+  UNIQUE KEY `StockDetailId_UNIQUE` (`StockDetailId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 
 --

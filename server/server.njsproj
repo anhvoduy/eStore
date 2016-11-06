@@ -112,11 +112,11 @@
     <Compile Include="config\dbHelper.js" />
     <Compile Include="config\errorHelper.js" />
     <Compile Include="routes\account.js" />
+    <Compile Include="routes\api.js" />
     <Compile Include="routes\transaction.js" />
     <Compile Include="routes\reporting.js" />
     <Compile Include="routes\journal.js" />
     <Compile Include="routes\cash.js" />
-    <Compile Include="routes\api.js" />
     <Compile Include="routes\inventory.js" />
     <Compile Include="routes\brand.js" />
     <Compile Include="routes\customer.js" />
