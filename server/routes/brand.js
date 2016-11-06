@@ -9,21 +9,26 @@ var errorHelper = require('../config/errorHelper');
 var brandService = require('../services/brandService');
 
 // Router
-router.get('/items', auth.checkAuthentication(), function (request, response, next) {
-	dbContext.getConnection().then(function (result) {
-		ctx = result;
+router.get('/items', auth.checkAuthentication(), function (req, res, next) {
+	var ctx = {};
+	
+	q.when()
+	.then(function () {
+		return dbContext.getConnection();
+	}).then(function (con) {
+		ctx = con;
 		return brandService.getBrands(ctx);
 	}).then(function (brands) {
-		response.status(200).json(brands);
+		res.status(200).json(brands);
 	}).catch(function (error) {
 		next(error);
-	}).done(function () {
+	}).finally(function () {
 		ctx.release();
 	});
 });
 
-router.get('/items/:id', auth.checkAuthentication(), function (request, response, next) {
-    var brandId = request.params.id;
+router.get('/items/:id', auth.checkAuthentication(), function (req, res, next) {
+    var brandId = req.params.id;
 
 	var ctx = {};        
 	dbContext.getConnection().then(function (result) {
@@ -31,9 +36,9 @@ router.get('/items/:id', auth.checkAuthentication(), function (request, response
 		return brandService.getBrandById(ctx, brandId);
 	}).then(function (brands) {
 		if (brands.length == 0) {
-            response.status(404).json(errorHelper.Error_Existed_BrandId);
+            res.status(404).json(errorHelper.Error_Existed_BrandId);
 		} else {
-			response.status(200).json(brands[0]);
+			res.status(200).json(brands[0]);
 		}
 	}).catch(function (error) {
         next(error);
@@ -42,16 +47,16 @@ router.get('/items/:id', auth.checkAuthentication(), function (request, response
 	});
 });
 
-router.post('/create', auth.checkAuthentication(), function (request, response, next) {
+router.post('/create', auth.checkAuthentication(), function (req, res, next) {
 	// create brand
 });
 
-router.put('/update', auth.checkAuthentication(), function (request, response, next) {
+router.put('/update', auth.checkAuthentication(), function (req, res, next) {
     // validate data at server side
     var brand = {
-        BrandId: request.body.BrandId,
-        Name: request.body.Name,
-        Description: request.body.Description
+        BrandId: req.body.BrandId,
+        Name: req.body.Name,
+        Description: req.body.Description
     };
     
 	var ctx = {};
@@ -63,7 +68,7 @@ router.put('/update', auth.checkAuthentication(), function (request, response, n
 	}).then(function () {
 		return ctx.commitTransaction();
 	}).then(function () {
-        response.status(200).json({ code: 'UPDATE_BRAND_SUCCESS', message: "Update Brand is success." });
+        res.status(200).json({ code: 'UPDATE_BRAND_SUCCESS', message: "Update Brand is success." });
 	}).catch(function (error) {
 		ctx.rollbackTransaction();        
         next(error);
@@ -72,7 +77,7 @@ router.put('/update', auth.checkAuthentication(), function (request, response, n
 	});
 });
 
-router.delete('/delete', auth.checkAuthentication(), function (request, response, next) {
+router.delete('/delete', auth.checkAuthentication(), function (req, res, next) {
 	// create brand
 });
 
