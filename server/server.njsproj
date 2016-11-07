@@ -60,7 +60,7 @@
     <Compile Include="client\app\components\authentication\loginController.js" />
     <Compile Include="client\app\components\user\userController.js" />
     <Compile Include="client\app\components\user\userDetailController.js" />
-    <Compile Include="client\app\controllers\homeController.js" />
+    <Compile Include="client\app\controllers\baseController.js" />
     <Compile Include="client\app\controllers\mainController.js" />
     <Compile Include="client\app\directives\customDirectives.js" />
     <Compile Include="client\app\components\authentication\authenticationService.js" />

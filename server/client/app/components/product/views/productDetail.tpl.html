@@ -53,6 +53,21 @@
             <div class="row message-error" ng-show='(vm.messageError.length > 0)'>{{ vm.messageError }}</div>
             <div class="row message-success" ng-show='(vm.messageSuccess.length > 0)'>{{ vm.messageSuccess }}</div>
         </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <input type="button"
+                       class="btn"
+                       value="Save"
+                       ng-click="vm.save()"
+                       ng-disabled="vm.disabledButton" />
+                <input type="button"
+                       class="btn"
+                       value="Cancel"
+                       ng-click="vm.cancel()"
+                       ng-disabled="vm.disabledButton" />
+            </div>
+        </div>
     </form>
 
 </div>        

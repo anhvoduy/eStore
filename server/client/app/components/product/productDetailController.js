@@ -1,8 +1,8 @@
 ﻿(function () {
     'use strict';    
     app.controller('productDetailController', productDetailController);
-    productDetailController.$inject = ['productService', 'reviewService', '$stateParams'];    
-	function productDetailController(productService, reviewService, $stateParams) {
+    productDetailController.$inject = ['productService', 'reviewService', '$state', '$stateParams'];    
+    function productDetailController(productService, reviewService, $state, $stateParams) {
 		// models
 		var vm = this;
 		vm.productId = $stateParams.productID;
@@ -10,7 +10,9 @@
 		vm.review = {};
 		vm.isSaving = false;
 		vm.messageSuccess = '';
-		vm.messageError = '';
+        vm.messageError = '';
+        vm.save = save;
+        vm.cancel = cancel;
 		
 		// functions
 		var activate = function () {
@@ -22,7 +24,15 @@
 			}, function (error) {
 				vm.messageError = error.message;
 			});
-		};
+        };
+
+        function save() {
+            console.log('save() ....');
+        }
+
+        function cancel() {            
+            $state.go($state.current.parentState);
+        }
 		
 		/* start */
 		activate();

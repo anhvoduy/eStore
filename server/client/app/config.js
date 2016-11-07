@@ -28,7 +28,8 @@ app.config(function ($stateProvider) {
 		}
 	})
 	.state('brandDetail', {
-		url: '/brand/:brandID',
+        url: '/brand/:brandID',
+        parentState: 'brand',
 		views: {
 			"view": {
 				templateUrl: "/app/components/brand/views/brandDetail.tpl.html",
@@ -47,7 +48,8 @@ app.config(function ($stateProvider) {
 			}
 		}
 	}).state('productDetail', {
-		url: "/product/:productID",
+        url: "/product/:productID",
+        parentState: 'product',
 		views: {
 			"view": {
 				templateUrl: "/app/components/product/views/productDetail.tpl.html",

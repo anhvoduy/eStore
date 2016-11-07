@@ -88,6 +88,8 @@ CREATE TABLE `tblTransaction` (
   `TransactionDate` DATE DEFAULT NULL,
   `TransactionType` VARCHAR(20) NOT NULL,
   `Description` VARCHAR(200) DEFAULT NULL,
+  `DebitAcctNo` VARCHAR(20) NOT NULL,
+  `CreditAcctNo` VARCHAR(20) NOT NULL,
   `Currency` VARCHAR(3) DEFAULT NULL,
   `TotalAmount` DECIMAL(11,4) NOT NULL DEFAULT '0',
   `CustomerId` INT(11) DEFAULT NULL,
@@ -103,6 +105,24 @@ CREATE TABLE `tblTransaction` (
   PRIMARY KEY (`TransactionId`),
   UNIQUE KEY `TransactionId_UNIQUE` (`TransactionId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
+
+--
+-- Sample data for table `tbltransaction`
+--
+INSERT INTO `tbltransaction`(TransactionNo, TransactionDate, TransactionType, Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount, Author, Editor)
+VALUES ('CASHIN20161101','2016-11-07','CASHIN','Cash In ', '111', '642', 'VND',5000000, 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `tbltransaction`(TransactionNo, TransactionDate, TransactionType, Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount, Author, Editor)
+VALUES ('CASHIN20161102','2016-11-07','CASHIN','Cash In ', '111', '642', 'VND',6000000, 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `tbltransaction`(TransactionNo, TransactionDate, TransactionType, Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount, Author, Editor)
+VALUES ('CASHIN20161103','2016-11-07','CASHIN','Cash In ', '111', '642', 'VND',8000000, 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `tbltransaction`(TransactionNo, TransactionDate, TransactionType, Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount, Author, Editor)
+VALUES ('CASHOUT20161111','2016-11-07','CASHOUT','Cash Out', '111', '642', 'VND',1000000, 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `tbltransaction`(TransactionNo, TransactionDate, TransactionType, Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount, Author, Editor)
+VALUES ('CASHOUT20161112','2016-11-07','CASHOUT','Cash Out', '111', '642', 'VND',2000000, 'SYSTEM', 'SYSTEM');
 
 --
 -- Table structure for table `tblTransactionDetail`
