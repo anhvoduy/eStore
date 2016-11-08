@@ -43,20 +43,28 @@
         }                
 
         userService.prototype.getProfile = function () {
-            var url = String.format('{0}/profile', this.api);
-
-            var q = $q.defer();
-            this.getData(url).then(function (result) {
-                // extend models
-                if (result != undefined) {
-                    result.Birthday = new Date(moment(result.DateOfBirth));
-                }
-                q.resolve(result);
-            }, function (error) {
-                q.reject(error);
-            })
-            return q.promise;
-        }
+			var url = String.format('{0}/profile', this.api);
+			
+			var q = $q.defer();
+			this.getData(url).then(function (result) {
+				q.resolve(result);
+			}, function (error) {
+				q.reject(error);
+			})
+			return q.promise;
+		}
+		
+		userService.prototype.getMenu = function () {
+			var url = String.format('{0}/menu', this.api);
+			
+			var q = $q.defer();
+			this.getData(url).then(function (result) {
+				q.resolve(result);
+			}, function (error) {
+				q.reject(error);
+			})
+			return q.promise;
+		}
 
         return new userService;
     };

@@ -15,6 +15,11 @@
     padding-top: 80px;
 }
 
+.form-login {
+    max-width: 600px;
+    margin: auto;
+}
+
 .btn-login {
     float: left;
 }

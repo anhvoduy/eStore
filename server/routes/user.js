@@ -44,18 +44,13 @@ router.get('/items/:id', auth.checkAuthentication(), function (req, res, next) {
 });
 
 router.get('/profile', auth.checkAuthentication(), function (req, res, next) {
-    console.log(' get current user profile ...');
-    var userId = 1;
+    console.log('get current user profile ...');    
     var ctx = {};
     dbContext.getConnection().then(function (result) {
         ctx = result;
-        return userService.getUserById(ctx, userId);
+        return userService.getUserById(ctx, 1);
     }).then(function (users) {
-        if (users.length == 0) {
-            res.status(404).json(errorHelper.Error_Existed_UserId);
-        } else {
-            res.status(200).json(users[0]);
-        }
+		res.status(200).json(users[0]);
     }).catch(function (error) {
         next(error);
     }).done(function () {
@@ -63,6 +58,11 @@ router.get('/profile', auth.checkAuthentication(), function (req, res, next) {
     });
 });
 
+router.get('/menu', auth.checkAuthentication(), function (req, res, next) {
+	console.log('get current menu ...');
+	var menu = userService.getMenu();
+	res.status(200).json(menu);	
+});
 
 router.post('/create', auth.checkAuthentication(), function (req, res, next) {
 	// create user;
