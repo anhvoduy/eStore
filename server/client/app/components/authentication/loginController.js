@@ -7,7 +7,7 @@
 		authenticationService.clearCredentials();
 			
 		$scope.activate = function(){			
-			console.log('activate()...');			
+			//console.log('activate()...');			
 		};
 		
 		$scope.login = function () {

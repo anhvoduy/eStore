@@ -6,39 +6,27 @@ var auth = require('../config/auth');
 var constant = require('../config/constant');
 var dbContext = require('../config/dbContext');
 var errorHelper = require('../config/errorHelper');
-var brandService = require('../services/brandService');
+var journalService = require('../services/journalService');
 
 // Router
-router.get('/items', function (request, response, next) {
-	dbContext.getConnection().then(function (result) {
-		var ctx = result;
-		return brandService.getBrands(ctx);
-	}).then(function (brands) {
-		response.status(200).json(brands);
-	}).catch(function (error) {
-		next(error);
-	}).done(function () {
-		ctx.release();
-	});
+router.get('/items', auth.checkAuthentication(), function (req, res, next) {
+	//	
 });
 
-router.get('/items/:id', function (request, response, next) {
-	var brandId = request.params.id;
-		
-	dbContext.getConnection().then(function (result) {
-		var ctx = result;
-		return brandService.getBrandById(ctx, brandId);
-	}).then(function (brands) {
-		if (brands.length == 0) {
-            response.status(404).json(errorHelper.Error_Existed_BrandId);
-		} else {
-			response.status(200).json(brands[0]);
-		}
-	}).catch(function (error) {
-        next(error);
-	}).done(function () {
-		ctx.release();		
-	});
+router.get('/items/:id', auth.checkAuthentication(), function (req, res, next) {
+	//	
+});
+
+router.post('/create', auth.checkAuthentication(), function (req, res, next) {
+	//
+});
+
+router.put('/update', auth.checkAuthentication(), function (req, res, next) {	
+	// 
+});
+
+router.delete('/delete', auth.checkAuthentication(), function (req, res, next) {
+	//
 });
 
 // return Router

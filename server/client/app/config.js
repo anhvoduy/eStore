@@ -117,6 +117,14 @@ app.config(function ($stateProvider) {
 			}
 		}
 	})
+	.state('stockReport', {
+		url: "/stockReport",
+		views: {
+			"view": {
+				templateUrl: "/app/components/inventory/views/stockReport.tpl.html"
+			}
+		}
+	})
 	.state('account', {
 		url: "/account",
 		views: {

@@ -1,4 +1,5 @@
 ﻿// Dependencies
+var q = require('q');
 var dbHelper = require('../config/dbHelper');
 
 // Constructor

@@ -6,6 +6,7 @@ var auth = require('../config/auth');
 var constant = require('../config/constant');
 var dbContext = require('../config/dbContext');
 var errorHelper = require('../config/errorHelper');
+var transactionService = require('../services/transactionService');
 
 /* ------------ Cash In ------------ */
 router.get('/cashin', function (req, res, next) {
