@@ -19,7 +19,8 @@
 					name: 'Cash',
 					childNodes: [
 						{ code: 'cashIn', name: 'Cash In' },
-						{ code: 'cashOut', name: 'Cash Out' }
+						{ code: 'cashOut', name: 'Cash Out' },
+						{ code: 'cashReport', name: 'Cash Report' }
 					]
 				},
 				{
@@ -28,7 +29,8 @@
 					childNodes: [
 						{ code: 'stockIn', name: 'Stock In' },
 						{ code: 'stockOut', name: 'Stock Out' },
-						{ code: 'stockBalance', name: 'Stock Balance' }
+						{ code: 'stockBalance', name: 'Stock Balance' },
+						{ code: 'stockReport', name: 'Stock Report' }
 					]
 				},
 				{
@@ -40,15 +42,7 @@
 						{ code: 'account', name: 'Account' },
 						{ code: 'user', name: 'User' }
 					]
-				},
-                //{
-                //	code: 'report', 
-                //	name:'Report'
-                //	//childNodes: [
-                //	//	{code: 'cashReport', name:'Cash Report'},						
-                //	//	{code: 'stockReport', name:'Stock Report'}
-                //	//]
-                //},
+				},                
 				{
 					code: 'help',
 					name: 'Help'
