@@ -6,12 +6,12 @@ var userService = function () {
 }
 
 userService.prototype.getUsers = function (ctx) {
-    var sql = 'SELECT UserId, UserType, UserName, Email, DateOfBirth, Deleted FROM tbluser WHERE Deleted = 0 ORDER BY UserId DESC';
+    var sql = 'SELECT UserId, UserKey, UserType, UserName, DisplayName, Email, Mobile, Tel, Title, DateOfBirth FROM tbluser WHERE Deleted = 0 ORDER BY UserId DESC';
 	return ctx.queryCommand(sql);    
 }
 
 userService.prototype.getUserById = function (ctx, userId) {
-    var sql = dbHelper.prepareQueryCommand("SELECT UserId, UserType, UserName, Email, DateOfBirth, Deleted FROM tbluser WHERE UserId = ?", [userId]);
+    var sql = dbHelper.prepareQueryCommand("SELECT UserId, UserKey, UserType, UserName, DisplayName, Email, Mobile, Tel, Title, DateOfBirth FROM tbluser WHERE UserId = ?", [userId]);
 	return ctx.queryCommand(sql);
 }
 

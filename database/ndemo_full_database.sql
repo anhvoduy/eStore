@@ -389,12 +389,13 @@ CREATE TABLE `tbluser` (
 --
 -- Sample data for table `tbluser`
 --
-INSERT INTO `tbluser` (`UserKey`, `UserType`, `UserName`, `Email`, `DateOfBirth`, `Deleted`) VALUES (uuid(), 'CUSTOMER','anhnguyen','anhnguyen@sony.com','1980-06-06',0);
-INSERT INTO `tbluser` (`UserKey`, `UserType`, `UserName`, `Email`, `DateOfBirth`, `Deleted`) VALUES (uuid(), 'MERCHANT','hoanganh','hoanganh@ibm.com','1990-03-03',0);
-INSERT INTO `tbluser` (`UserKey`, `UserType`, `UserName`, `Email`, `DateOfBirth`, `Deleted`) VALUES (uuid(), 'CUSTOMER','vinhcao','vinhcao@hvn.com','1990-04-04',1);
-INSERT INTO `tbluser` (`UserKey`, `UserType`, `UserName`, `Email`, `DateOfBirth`, `Deleted`) VALUES (uuid(), 'CUSTOMER','john','john@microsoft.com','2000-12-26',0);
-INSERT INTO `tbluser` (`UserKey`, `UserType`, `UserName`, `Email`, `DateOfBirth`, `Deleted`) VALUES (uuid(), 'CUSTOMER','Anh Vo','avo4@hvn.com','1984-12-22',0);
-INSERT INTO `tbluser` (`UserKey`, `UserType`, `UserName`, `Email`, `DateOfBirth`, `Deleted`) VALUES (uuid(), 'MERCHANT','Dzuy Anh','anhvod@hvn.com','1984-12-24',0);
+INSERT INTO `tbluser` (`UserKey`, `UserType`, `UserName`, `DisplayName`, `Email`, `DateOfBirth`, `Deleted`) VALUES (uuid(), 'USER','beckham','David Beckham','hoanganh@ibm.com','1990-03-03',0);
+INSERT INTO `tbluser` (`UserKey`, `UserType`, `UserName`, `DisplayName`, `Email`, `DateOfBirth`, `Deleted`) VALUES (uuid(), 'USER','huetran','Hue Tran','huetran@hvn.com','1990-04-04',1);
+INSERT INTO `tbluser` (`UserKey`, `UserType`, `UserName`, `DisplayName`, `Email`, `DateOfBirth`, `Deleted`) VALUES (uuid(), 'ADMIN','john','John Mike','john@microsoft.com','2000-12-26',0);
+INSERT INTO `tbluser` (`UserKey`, `UserType`, `UserName`, `DisplayName`, `Email`, `DateOfBirth`, `Deleted`) VALUES (uuid(), 'USER','Anh Vo','Anh Vo','avo4@hvn.com','1984-12-22',0);
+INSERT INTO `tbluser` (`UserKey`, `UserType`, `UserName`, `DisplayName`, `Email`, `DateOfBirth`, `Deleted`) VALUES (uuid(), 'USER','Dzuy Anh','Vo Duy Anh','anhvod@hvn.com','1984-12-24',0);
+INSERT INTO `tbluser` (`UserKey`, `UserType`, `UserName`, `DisplayName`, `Email`, `DateOfBirth`, `Deleted`) VALUES (uuid(), 'USER','hongocha','Ho Ngoc Ha','hongocha@sony.com','1980-06-06',0);
+INSERT INTO `tbluser` (`UserKey`, `UserType`, `UserName`, `DisplayName`, `Email`, `DateOfBirth`, `Deleted`) VALUES (uuid(), 'USER','thanhhang','Thanh Hang','thanghang@samsung.com','1980-06-06',0);
 
 --
 -- Store Procedure: sp_product_paging
