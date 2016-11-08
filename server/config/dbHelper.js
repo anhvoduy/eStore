@@ -18,8 +18,20 @@ dbHelper.prototype.validateRating = function (rating) {
 
 dbHelper.prototype.validateEmail = function (email) {
     var regex = /\S+@\S+\.\S+/;
-    if (regex.test(email)) return true
+    if (regex.test(email)) return true;
     else return false;
+}
+
+dbHelper.prototype.validateNumber = function (value) {
+    return true;
+}
+
+dbHelper.prototype.validateDate = function (value) {
+    return true;
+}
+
+dbHelper.prototype.validateString = function (value) {
+    return true;
 }
 
 // Export

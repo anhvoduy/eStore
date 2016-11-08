@@ -6,18 +6,23 @@ var dbHelper = require('../config/dbHelper');
 var inventoryService = function () { 
 }
 
+inventoryService.prototype.getInventoryById = function (ctx, inventoryId) {
+    var sql = dbHelper.prepareQueryCommand('', []);
+    return ctx.queryCommand(sql);
+}
+
 inventoryService.prototype.createInventory = function (ctx, inventory) {
-	var sql = dbHelper.prepareQueryCommand(" ", []);
+    var sql = dbHelper.prepareQueryCommand('', []);
 	return ctx.queryCommand(sql);
 }
 
 inventoryService.prototype.editInventory = function (ctx, inventory) {
-	var sql = dbHelper.prepareQueryCommand(" ", []);
+    var sql = dbHelper.prepareQueryCommand('', []);
 	return ctx.queryCommand(sql);
 }
 
 inventoryService.prototype.deleteInventory = function (ctx, inventoryId) {
-	var sql = dbHelper.prepareQueryCommand("", []);
+    var sql = dbHelper.prepareQueryCommand('', []);
 	return ctx.queryCommand(sql);
 }
 

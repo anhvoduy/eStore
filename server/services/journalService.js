@@ -7,14 +7,13 @@ var journalService = function () {
 }
 
 journalService.prototype.getJournals = function (ctx, conditions) {
-	var sql = dbHelper.prepareQueryCommand(
-		"SELECT prod.ProductId, prod.ProductName, prod.Description,	" +
-		"		prod.Price, prod.Colour, prod.Created, prod.Status, " +
-        "		prod.BrandId, bra.Name AS BrandName, prod.LatestReviewInfo " +
-		"FROM tblproduct prod inner join tblbrand bra " +
-		"WHERE bra.brandId = prod.brandId AND bra.brandId = ? " +
-		"ORDER BY prod.ProductId DESC ", [brandId]);
+	var sql = dbHelper.prepareQueryCommand('', [brandId]);
 	return ctx.queryCommand(sql);
+}
+
+journalService.prototype.getJournalById = function (ctx, journalId) {
+    var sql = dbHelper.prepareQueryCommand('', [journalId]);
+    return ctx.queryCommand(sql);
 }
 
 journalService.prototype.createJournal = function (ctx, journal) {
@@ -24,19 +23,19 @@ journalService.prototype.createJournal = function (ctx, journal) {
     var sqlUpdateProduct = dbHelper.prepareQueryCommand("UPDATE tblProduct SET LatestReviewInfo = ? WHERE ProductId = ?",
         [JSON.stringify(review), review.ProductId]);
 
-    return q.when()
-        .then(function () {
-            return ctx.beginTransaction();
-        }).then(function () {
-            return ctx.queryCommand(sqlCreateReview);
-        }).then(function () {
-            return ctx.queryCommand(sqlUpdateProduct);
-        }).then(function () {
-            return ctx.commitTransaction();
-        }).catch(function (error) {
-            ctx.rollbackTransaction();
-            throw error;
-        });
+    //return q.when()
+    //    .then(function () {
+    //        return ctx.beginTransaction();
+    //    }).then(function () {
+    //        return ctx.queryCommand(sqlCreateReview);
+    //    }).then(function () {
+    //        return ctx.queryCommand(sqlUpdateProduct);
+    //    }).then(function () {
+    //        return ctx.commitTransaction();
+    //    }).catch(function (error) {
+    //        ctx.rollbackTransaction();
+    //        throw error;
+    //    });
 }
 
 journalService.prototype.updateJournal = function (ctx, journal) {
@@ -45,20 +44,20 @@ journalService.prototype.updateJournal = function (ctx, journal) {
 	
 	var sqlUpdateProduct = dbHelper.prepareQueryCommand("UPDATE tblProduct SET LatestReviewInfo = ? WHERE ProductId = ?",
         [JSON.stringify(review), review.ProductId]);
-	
-	return q.when()
-        .then(function () {
-		return ctx.beginTransaction();
-	}).then(function () {
-		return ctx.queryCommand(sqlCreateReview);
-	}).then(function () {
-		return ctx.queryCommand(sqlUpdateProduct);
-	}).then(function () {
-		return ctx.commitTransaction();
-	}).catch(function (error) {
-		ctx.rollbackTransaction();
-		throw error;
-	});
+
+    //return q.when()
+    //    .then(function () {
+    //        return ctx.beginTransaction();
+    //    }).then(function () {
+    //        return ctx.queryCommand(sqlCreateReview);
+    //    }).then(function () {
+    //        return ctx.queryCommand(sqlUpdateProduct);
+    //    }).then(function () {
+    //        return ctx.commitTransaction();
+    //    }).catch(function (error) {
+    //        ctx.rollbackTransaction();
+    //        throw error;
+    //    });
 }
 
 journalService.prototype.deleteJournal = function (ctx, transactionId) {
@@ -67,20 +66,20 @@ journalService.prototype.deleteJournal = function (ctx, transactionId) {
 	
 	var sqlUpdateProduct = dbHelper.prepareQueryCommand("UPDATE tblProduct SET LatestReviewInfo = ? WHERE ProductId = ?",
         [JSON.stringify(review), review.ProductId]);
-	
-	return q.when()
-        .then(function () {
-		return ctx.beginTransaction();
-	}).then(function () {
-		return ctx.queryCommand(sqlCreateReview);
-	}).then(function () {
-		return ctx.queryCommand(sqlUpdateProduct);
-	}).then(function () {
-		return ctx.commitTransaction();
-	}).catch(function (error) {
-		ctx.rollbackTransaction();
-		throw error;
-	});
+
+    //return q.when()
+    //    .then(function () {
+    //        return ctx.beginTransaction();
+    //    }).then(function () {
+    //        return ctx.queryCommand(sqlCreateReview);
+    //    }).then(function () {
+    //        return ctx.queryCommand(sqlUpdateProduct);
+    //    }).then(function () {
+    //        return ctx.commitTransaction();
+    //    }).catch(function (error) {
+    //        ctx.rollbackTransaction();
+    //        throw error;
+    //    });
 }
 
 // Export

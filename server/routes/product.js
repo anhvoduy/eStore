@@ -9,17 +9,17 @@ var errorHelper = require('../config/errorHelper');
 var productService = require('../services/productService');
 
 // Router
-router.get('/itemspaging/:id', function (request, response, next) {
-    var pageIndex = request.params.id;
+router.get('/itemspaging/:id', function (req, res, next) {
+    var pageIndex = req.params.id;
     if (pageIndex == undefined) pageIndex = 0;
     
 	var ctx = {};
     dbContext.getConnection().then(function (result) {
 		ctx = result;
-        return productService.getProductsPaging(ctx, pageIndex);
+        return productService.getProducts(ctx, pageIndex);
 	}).then(function (result) {
 		var products = result[0];
-		response.status(200).json(products);      
+		res.status(200).json(products);      
     }).catch(function (error) {        
         next(error);
     }).done(function () {
@@ -27,8 +27,8 @@ router.get('/itemspaging/:id', function (request, response, next) {
     });    
 });
 
-router.get('/items/:id', function (request, response, next) {
-	var productId = request.params.id;
+router.get('/items/:id', function (req, res, next) {
+	var productId = req.params.id;
 	
 	var ctx = {};
 	dbContext.getConnection().then(function (result) {
@@ -36,9 +36,9 @@ router.get('/items/:id', function (request, response, next) {
 		return productService.getProductById(ctx, productId);
 	}).then(function (products) {
 		if (products.length == 0) {
-            response.status(404).json(errorHelper.Error_Existed_ProductId);
+            res.status(404).json(errorHelper.Error_Existed_ProductId);
 		} else {
-			response.status(200).json(products[0]);
+			res.status(200).json(products[0]);
 		}
 	}).catch(function (error) {        
         next(error);
@@ -47,15 +47,15 @@ router.get('/items/:id', function (request, response, next) {
 	});
 });
 
-router.get('/itemsbrand/:id', function (request, response, next) {
-    var brandId = request.params.id;
+router.get('/itemsbrand/:id', function (req, res, next) {
+    var brandId = req.params.id;
 
     var ctx = {};
     dbContext.getConnection().then(function (result) {
         ctx = result;
         return productService.getProductsByBrand(ctx, brandId);
     }).then(function (products) {
-        response.status(200).json(products)
+        res.status(200).json(products)
     }).catch(function (error) {        
         next(error);
     }).done(function () {

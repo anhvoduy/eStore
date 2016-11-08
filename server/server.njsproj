@@ -132,6 +132,7 @@
     <Compile Include="routes\user.js" />
     <Compile Include="services\cashService.js" />
     <Compile Include="services\reportingService.js" />
+    <Compile Include="services\stockService.js" />
     <Compile Include="services\transactionService.js" />
     <Compile Include="services\journalService.js" />
     <Compile Include="services\inventoryService.js" />

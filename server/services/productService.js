@@ -6,7 +6,7 @@ var q = require('q');
 var productService = function () { 
 }
 
-productService.prototype.getProductsPaging = function (ctx, pageIndex) {
+productService.prototype.getProducts = function (ctx, pageIndex) {
 	var sql = dbHelper.prepareQueryCommand("CALL sp_product_paging(?);", [pageIndex]);
 	return ctx.queryCommand(sql);
 }
