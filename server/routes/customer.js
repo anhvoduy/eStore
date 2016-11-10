@@ -36,7 +36,7 @@ router.get('/items/:id', function (request, response, next) {
 		return productService.getProductById(ctx, productId);
 	}).then(function (products) {
 		if (products.length == 0) {
-            response.status(404).json(errorHelper.Error_Existed_ProductId);
+            response.status(404).json(errorHelper.Error_Not_Exist_ProductId);
 		} else {
 			response.status(200).json(products[0]);
 		}

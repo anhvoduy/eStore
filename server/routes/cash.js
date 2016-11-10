@@ -16,9 +16,9 @@ router.get('/items', function (req, res, next) {
             return dbContext.getConnection();
         }).then(function (con) {
             ctx = con;
-            return transactionService.getCashIn(ctx);
-        }).then(function (cashIns) {
-            res.status(200).json(cashIns);
+            return transactionService.getTransactions(ctx);
+        }).then(function (transactions) {
+            res.status(200).json(transactions);
         }).catch(function (error) {
             next(error);
         }).finally(function () {
@@ -27,10 +27,42 @@ router.get('/items', function (req, res, next) {
 });
 
 router.get('/items/:id', function (req, res, next) {
-    // get item
+    var transactionId = req.params.id;
+
+    var ctx = {};
+    q.when()
+        .then(function () {
+            return dbContext.getConnection();
+        }).then(function (con) {
+            ctx = con;
+            return transactionService.getTransactionById(ctx, transactionId);
+        }).then(function (transactions) {
+            if (transactions.length == 0) {
+                res.status(404).json(errorHelper.Error_Not_Exist_TransactionId);
+            } else {
+                res.status(200).json(transactions[0]);
+            }
+        }).catch(function (error) {
+            next(error);
+        }).finally(function () {
+            ctx.release();
+        });
 });
 
-/* ------------ Cash In ------------ */
+router.post('/create', function (req, res, next) {
+    // create cash
+});
+
+router.put('/update', function (req, res, next) {
+    // edit cash
+});
+
+router.delete('/delete', function (req, res, next) {
+    // delete cash
+});
+
+
+/* --- Get CashIn & CashOut ---*/
 router.get('/cashin', function (req, res, next) {
     var ctx = {};
     q.when()
@@ -39,8 +71,8 @@ router.get('/cashin', function (req, res, next) {
         }).then(function (con) {
             ctx = con;
             return transactionService.getCashIn(ctx);
-        }).then(function (cashIns) {
-            res.status(200).json(cashIns);
+        }).then(function (transactions) {
+            res.status(200).json(transactions);
         }).catch(function (error) {
             next(error);
         }).finally(function () {
@@ -48,19 +80,6 @@ router.get('/cashin', function (req, res, next) {
         });
 });
 
-router.post('/cashin/create', function (req, res, next) {
-    // create cash
-});
-
-router.put('/cashin/update', function (req, res, next) {
-    // edit cash
-});
-
-router.delete('/cashin/delete', function (req, res, next) {
-    // delete cash
-});
-
-/* ------------ Cash Out ------------ */
 router.get('/cashout', function (req, res, next) {
     var ctx = {};
     q.when()
@@ -69,25 +88,13 @@ router.get('/cashout', function (req, res, next) {
         }).then(function (con) {
             ctx = con;
             return transactionService.getCashOut(ctx);
-        }).then(function (cashOuts) {
-            res.status(200).json(cashOuts);
+        }).then(function (transactions) {
+            res.status(200).json(transactions);
         }).catch(function (error) {
             next(error);
         }).finally(function () {
             ctx.release();
         });
-});
-
-router.post('/cashout/create', function (req, res, next) {
-    // create cash
-});
-
-router.put('/cashout/update', function (req, res, next) {
-    // edit cash
-});
-
-router.delete('/cashout/delete', function (req, res, next) {
-    // delete cash
 });
 
 // return Router

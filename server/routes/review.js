@@ -40,7 +40,7 @@ router.post('/add', function (request, response, next) {
 			if (users.length > 0) {
 				review.UserName = users[0].UserName; // set UserName if User is existed			
 			}else {
-				throw errorHelper.Error_Existed_Email;
+				throw errorHelper.Error_Not_Exist_Email;
 			}
         }).then(function () {
             return productService.createReview(ctx, review);

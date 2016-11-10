@@ -119,7 +119,6 @@
     <Compile Include="config\errorHelper.js" />
     <Compile Include="routes\account.js" />
     <Compile Include="routes\api.js" />
-    <Compile Include="routes\transaction.js" />
     <Compile Include="routes\reporting.js" />
     <Compile Include="routes\journal.js" />
     <Compile Include="routes\cash.js" />

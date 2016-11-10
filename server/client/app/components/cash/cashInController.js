@@ -11,7 +11,7 @@
 		// functions
         var activate = function () {
             cashService.getCashIn().then(function (result) {
-                vm.cashIns = result;
+                vm.transactions = result;
             }, function (error) {
                 vm.messageError = error.message;
             });

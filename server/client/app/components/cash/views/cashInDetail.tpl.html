@@ -1,46 +1,46 @@
 ﻿<div class="container" ng-cloak>
-    <h2>Cash In</h2>
+    <h2>Cash In's Detail</h2>
 
     <form class="form-horizontal">        
         <div class="form-group">
             <label for="productName" class="col-sm-2 control-label">Transaction No</label>
             <div class="col-sm-6">
-                <input id="productName" ng-model="vm.product.ProductName" class="form-control control-readonly" placeholder="name" readonly />
+                <input id="transactionNo" ng-model="vm.transaction.TransactionNo" class="form-control control-readonly" placeholder="Transaction No" readonly />
             </div>
         </div>
 
         <div class="form-group">
             <label for="productName" class="col-sm-2 control-label">Transaction Type</label>
             <div class="col-sm-6">
-                <input id="productName" ng-model="vm.product.ProductName" class="form-control control-readonly" placeholder="CASH IN" readonly />
+                <input id="transactionType" ng-model="vm.transaction.TransactionType" class="form-control control-readonly" placeholder="CASH IN" readonly />
             </div>
         </div>
 
         <div class="form-group">
             <label for="productName" class="col-sm-2 control-label">Transaction Date</label>
             <div class="col-sm-6">
-                <input id="productName" ng-model="vm.product.ProductName" class="form-control control-readonly" placeholder="name" readonly />
+                <input id="transactionDate" ng-model="vm.transaction.TransactionDate" class="form-control control-readonly" placeholder="Transaction Date" readonly />
             </div>
         </div>
 
         <div class="form-group">
             <label for="BrandId" class="col-sm-2 control-label">Currency</label>
             <div class="col-sm-6">
-                <input id="BrandId" ng-model="vm.product.BrandName" class="form-control control-readonly" placeholder="Brand" readonly />
+                <input id="currency" ng-model="vm.transaction.Currency" class="form-control control-readonly" placeholder="Currency" readonly />
             </div>
         </div>
 
         <div class="form-group">
-            <label for="BrandId" class="col-sm-2 control-label">Amount</label>
+            <label for="BrandId" class="col-sm-2 control-label">Total Amount</label>
             <div class="col-sm-6">
-                <input id="BrandId" ng-model="vm.product.BrandName" class="form-control control-readonly" placeholder="Brand" readonly />
+                <input id="totalAmount" ng-model="vm.transaction.TotalAmount" class="form-control control-readonly" placeholder="Amount" readonly />
             </div>
         </div>        
 
         <div class="form-group">
             <label for="productDescription" class="col-sm-2 control-label">Description</label>
             <div class="col-sm-6">
-                <textarea name="Comment" type="textarea" ng-model="vm.review.Comment" class="form-control" rows="3" maxlength="200" required />
+                <textarea name="description" type="textarea" ng-model="vm.transaction.Description" class="form-control" rows="3" maxlength="200" required />
             </div>
         </div>
 

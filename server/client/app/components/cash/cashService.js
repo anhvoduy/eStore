@@ -6,7 +6,7 @@
         // constructor
         var cashService = function () {            
         }
-        cashService.prototype = new baseService('api/cash');
+        cashService.prototype = new baseService('api/transaction');
         cashService.prototype.constructor = cashService;
         
         // methods
@@ -34,8 +34,8 @@
             return q.promise;
         }
 
-        cashService.prototype.getCashById = function () {
-            var url = String.format('{0}/cashout', this.api);
+        cashService.prototype.getCashById = function (transactionId) {
+            var url = String.format('{0}/items/{1}', this.api, transactionId);
 
             var q = $q.defer();
             this.getData(url).then(function (result) {

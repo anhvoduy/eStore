@@ -21,7 +21,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="cash in vm.cashOuts">
+                <tr ng-repeat="cash in vm.transactions">
                     <td>{{ cash.TransactionId }}</td>
                     <td>{{ cash.TransactionNo }}</td>
                     <td>{{ cash.TransactionDate }}</td>
@@ -29,7 +29,7 @@
                     <td>{{ cash.CreditAcctNo }}</td>
                     <td>{{ cash.Currency }}</td>
                     <td>{{ cash.TotalAmount }}</td>
-                    <td><a ui-sref="cashOutDetail({ cashID: cash.TransactionId })">Edit</a></td>
+                    <td><a ui-sref="cashOutDetail({ transactionID: cash.TransactionId })">Edit</a></td>
                 </tr>
             </tbody>
         </table>
