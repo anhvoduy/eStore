@@ -111,6 +111,7 @@
     <Compile Include="client\libs\require\require.js" />
     <Compile Include="client\libs\ui-grid\ui-grid.js" />
     <Compile Include="client\libs\ui-grid\ui-grid.min.js" />
+    <Compile Include="client\test\karma.js" />
     <Compile Include="config\auth.js" />
     <Compile Include="config\config.js" />
     <Compile Include="config\constant.js" />
@@ -121,11 +122,11 @@
     <Compile Include="routes\api.js" />
     <Compile Include="routes\reporting.js" />
     <Compile Include="routes\journal.js" />
-    <Compile Include="routes\cash.js" />
     <Compile Include="routes\inventory.js" />
     <Compile Include="routes\brand.js" />
     <Compile Include="routes\customer.js" />
     <Compile Include="routes\product.js" />
+    <Compile Include="routes\transaction.js" />
     <Compile Include="server.js" />
     <Compile Include="routes\review.js" />
     <Compile Include="routes\user.js" />
