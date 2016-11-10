@@ -9,13 +9,13 @@
 		vm.messageSuccess = '';
 
 		// functions
-		var activate = function () {
-			//cashService.getCashIn().then(function (result) {
-			//	vm.lstCashIn = result;				
-			//}, function (error) {
-			//	vm.messageError = error.message;
-			//});
-		};
+        var activate = function () {
+            cashService.getCashIn().then(function (result) {
+                vm.cashIns = result;
+            }, function (error) {
+                vm.messageError = error.message;
+            });
+        };
 		
 		/* start */
 		activate();

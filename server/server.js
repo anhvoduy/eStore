@@ -30,6 +30,7 @@ server.set('secretKey', config.secretKey); // secret variable
 
 /* ----------- Register API -----------*/
 server.use('/api', require('./routes/api'));
+server.use('/api/cash', require('./routes/cash'));
 server.use('/api/brand', require('./routes/brand'));
 server.use('/api/product', require('./routes/product'));
 server.use('/api/account', require('./routes/account'));

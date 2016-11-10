@@ -10,11 +10,11 @@
 
 		// functions
 		var activate = function () {
-			//cashService.getCashOut().then(function (result) {
-			//	vm.lstCashOut = result;
-			//}, function (error) {
-			//	vm.messageError = error.message;
-			//});
+			cashService.getCashOut().then(function (result) {
+				vm.cashOuts = result;
+			}, function (error) {
+				vm.messageError = error.message;
+			});
 		};
 		
 		/* start */

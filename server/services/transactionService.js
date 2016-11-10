@@ -11,8 +11,41 @@ transactionService.prototype.getTransactions = function (ctx, conditions) {
 	return ctx.queryCommand(sql);
 }
 
+transactionService.prototype.getCashIn = function (ctx) {
+    var sql = `
+        SELECT TransactionId, TransactionNo, TransactionDate, TransactionType,
+	           Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount,
+               CustomerId, CustomerName, InvoiceNo, InvoiceDate, InvoiceDesc
+        FROM tblTransaction
+        WHERE TransactionType = 'CASHIN' AND Deleted = 0
+        ORDER BY TransactionId DESC
+        LIMIT 10;
+    `;
+    return ctx.queryCommand(sql);
+}
+
+transactionService.prototype.getCashOut = function (ctx) {
+    var sql = `
+        SELECT TransactionId, TransactionNo, TransactionDate, TransactionType,
+	           Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount,
+               CustomerId, CustomerName, InvoiceNo, InvoiceDate, InvoiceDesc
+        FROM tblTransaction
+        WHERE TransactionType = 'CASHOUT' AND Deleted = 0
+        ORDER BY TransactionId DESC
+        LIMIT 10;
+    `;
+    return ctx.queryCommand(sql);
+}
+
 transactionService.prototype.getTransactionById = function (ctx, transactionId) {
-    var sql = dbHelper.prepareQueryCommand('', [transactionId]);
+    var sql = `   
+        SELECT  TransactionId, TransactionNo, TransactionDate, TransactionType,
+	            Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount,
+                CustomerId, CustomerName, InvoiceNo, InvoiceDate, InvoiceDesc
+        FROM tblTransaction
+        WHERE TransactionId = ?;
+    `;
+    sql = dbHelper.prepareQueryCommand(sql, [transactionId]);
     return ctx.queryCommand(sql);
 }
 

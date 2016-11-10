@@ -8,13 +8,44 @@ var dbContext = require('../config/dbContext');
 var errorHelper = require('../config/errorHelper');
 var transactionService = require('../services/transactionService');
 
-/* ------------ Cash In ------------ */
-router.get('/cashin', function (req, res, next) {
-    // get items
+// Routers
+router.get('/items', function (req, res, next) {
+    var ctx = {};
+    q.when()
+        .then(function () {
+            return dbContext.getConnection();
+        }).then(function (con) {
+            ctx = con;
+            return transactionService.getCashIn(ctx);
+        }).then(function (cashIns) {
+            res.status(200).json(cashIns);
+        }).catch(function (error) {
+            next(error);
+        }).finally(function () {
+            ctx.release();
+        });
 });
 
-router.get('/cashin/:id', function (req, res, next) {
+router.get('/items/:id', function (req, res, next) {
     // get item
+});
+
+/* ------------ Cash In ------------ */
+router.get('/cashin', function (req, res, next) {
+    var ctx = {};
+    q.when()
+        .then(function () {
+            return dbContext.getConnection();
+        }).then(function (con) {
+            ctx = con;
+            return transactionService.getCashIn(ctx);
+        }).then(function (cashIns) {
+            res.status(200).json(cashIns);
+        }).catch(function (error) {
+            next(error);
+        }).finally(function () {
+            ctx.release();
+        });
 });
 
 router.post('/cashin/create', function (req, res, next) {
@@ -31,11 +62,20 @@ router.delete('/cashin/delete', function (req, res, next) {
 
 /* ------------ Cash Out ------------ */
 router.get('/cashout', function (req, res, next) {
-    // get items
-});
-
-router.get('/cashout/:id', function (req, res, next) {
-    // create cash
+    var ctx = {};
+    q.when()
+        .then(function () {
+            return dbContext.getConnection();
+        }).then(function (con) {
+            ctx = con;
+            return transactionService.getCashOut(ctx);
+        }).then(function (cashOuts) {
+            res.status(200).json(cashOuts);
+        }).catch(function (error) {
+            next(error);
+        }).finally(function () {
+            ctx.release();
+        });
 });
 
 router.post('/cashout/create', function (req, res, next) {

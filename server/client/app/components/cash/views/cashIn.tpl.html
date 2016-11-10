@@ -1,52 +1,40 @@
-﻿<div class="container" ng-cloak>
-    <h2>Cash In</h2>
+﻿<div search-control></div>
 
-    <form class="form-horizontal">        
-        <div class="form-group">
-            <label for="productName" class="col-sm-2 control-label">Transaction No</label>
-            <div class="col-sm-6">
-                <input id="productName" ng-model="vm.product.ProductName" class="form-control control-readonly" placeholder="name" readonly />
-            </div>
-        </div>
+<div class="container" ng-cloak>
+    <div class="row">
+        <h2>Cash In</h2>
+    </div>
 
-        <div class="form-group">
-            <label for="productName" class="col-sm-2 control-label">Transaction Type</label>
-            <div class="col-sm-6">
-                <input id="productName" ng-model="vm.product.ProductName" class="form-control control-readonly" placeholder="CASH IN" readonly />
-            </div>
-        </div>
+    <div class="row row-table">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Transaction Id</th>
+                    <th>Transaction No</th>
+                    <th>Transaction Date</th>                    
+                    <th>Debit Acct</th>
+                    <th>Credit Acct</th>
+                    <th>Currency</th>
+                    <th>Total Amount</th>
+                    <th>Edit</th>
+                    <!--<th>Delete</th>-->
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="cash in vm.cashIns">
+                    <td>{{ cash.TransactionId }}</td>
+                    <td>{{ cash.TransactionNo }}</td>
+                    <td>{{ cash.TransactionDate }}</td>
+                    <td>{{ cash.DebitAcctNo }}</td>
+                    <td>{{ cash.CreditAcctNo }}</td>
+                    <td>{{ cash.Currency }}</td>
+                    <td>{{ cash.TotalAmount }}</td>
+                    <td><a ui-sref="cashInDetail({ cashID: cash.TransactionId })">Edit</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
-        <div class="form-group">
-            <label for="productName" class="col-sm-2 control-label">Transaction Date</label>
-            <div class="col-sm-6">
-                <input id="productName" ng-model="vm.product.ProductName" class="form-control control-readonly" placeholder="name" readonly />
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="BrandId" class="col-sm-2 control-label">Currency</label>
-            <div class="col-sm-6">
-                <input id="BrandId" ng-model="vm.product.BrandName" class="form-control control-readonly" placeholder="Brand" readonly />
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="BrandId" class="col-sm-2 control-label">Amount</label>
-            <div class="col-sm-6">
-                <input id="BrandId" ng-model="vm.product.BrandName" class="form-control control-readonly" placeholder="Brand" readonly />
-            </div>
-        </div>        
-
-        <div class="form-group">
-            <label for="productDescription" class="col-sm-2 control-label">Description</label>
-            <div class="col-sm-6">
-                <textarea name="Comment" type="textarea" ng-model="vm.review.Comment" class="form-control" rows="3" maxlength="200" required />
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="row message-error" ng-show='(vm.messageError.length > 0)'>{{ vm.messageError }}</div>
-            <div class="row message-success" ng-show='(vm.messageSuccess.length > 0)'>{{ vm.messageSuccess }}</div>
-        </div>
-    </form>
+    <div class="row message-error" ng-show='(vm.messageError.length > 0)'>{{ vm.messageError }}</div>
+    <div class="row message-success" ng-show='(vm.messageSuccess.length > 0)'>{{ vm.messageSuccess }}</div>
 </div>
