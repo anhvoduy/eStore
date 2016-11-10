@@ -6,40 +6,95 @@ var auth = require('../config/auth');
 var constant = require('../config/constant');
 var dbContext = require('../config/dbContext');
 var errorHelper = require('../config/errorHelper');
-var brandService = require('../services/brandService');
+var transactionService = require('../services/transactionService');
 
-// Router
-router.get('/items', function (request, response, next) {
-	dbContext.getConnection().then(function (result) {
-		ctx = result;
-		return brandService.getBrands(ctx);
-	}).then(function (brands) {
-		response.status(200).json(brands);
-	}).catch(function (error) {
-		next(error);
-	}).done(function () {
-		ctx.release();
-	});
+// Routers
+router.get('/items', function (req, res, next) {
+    var ctx = {};
+    q.when()
+        .then(function () {
+            return dbContext.getConnection();
+        }).then(function (con) {
+            ctx = con;
+            return transactionService.getTransactions(ctx);
+        }).then(function (transactions) {
+            res.status(200).json(transactions);
+        }).catch(function (error) {
+            next(error);
+        }).finally(function () {
+            ctx.release();
+        });
 });
 
-router.get('/items/:id', function (request, response, next) {
-    var brandId = request.params.id;
+router.get('/items/:id', function (req, res, next) {
+    var transactionId = req.params.id;
 
-	var ctx = {};        
-	dbContext.getConnection().then(function (result) {
-		ctx = result;
-		return brandService.getBrandById(ctx, brandId);
-	}).then(function (brands) {
-		if (brands.length == 0) {
-            response.status(404).json(errorHelper.Error_Existed_BrandId);
-		} else {
-			response.status(200).json(brands[0]);
-		}
-	}).catch(function (error) {
-        next(error);
-	}).done(function () {
-		ctx.release();		
-	});
+    var ctx = {};
+    q.when()
+        .then(function () {
+            return dbContext.getConnection();
+        }).then(function (con) {
+            ctx = con;
+            return transactionService.getTransactionById(ctx, transactionId);
+        }).then(function (transactions) {
+            if (transactions.length == 0) {
+                res.status(404).json(errorHelper.Error_Not_Exist_TransactionId);
+            } else {
+                res.status(200).json(transactions[0]);
+            }
+        }).catch(function (error) {
+            next(error);
+        }).finally(function () {
+            ctx.release();
+        });
+});
+
+router.post('/create', function (req, res, next) {
+    // create cash
+});
+
+router.put('/update', function (req, res, next) {
+    // edit cash
+});
+
+router.delete('/delete', function (req, res, next) {
+    // delete cash
+});
+
+
+/* --- Get CashIn & CashOut ---*/
+router.get('/cashin', function (req, res, next) {
+    var ctx = {};
+    q.when()
+        .then(function () {
+            return dbContext.getConnection();
+        }).then(function (con) {
+            ctx = con;
+            return transactionService.getCashIn(ctx);
+        }).then(function (transactions) {
+            res.status(200).json(transactions);
+        }).catch(function (error) {
+            next(error);
+        }).finally(function () {
+            ctx.release();
+        });
+});
+
+router.get('/cashout', function (req, res, next) {
+    var ctx = {};
+    q.when()
+        .then(function () {
+            return dbContext.getConnection();
+        }).then(function (con) {
+            ctx = con;
+            return transactionService.getCashOut(ctx);
+        }).then(function (transactions) {
+            res.status(200).json(transactions);
+        }).catch(function (error) {
+            next(error);
+        }).finally(function () {
+            ctx.release();
+        });
 });
 
 // return Router

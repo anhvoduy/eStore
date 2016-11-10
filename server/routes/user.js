@@ -32,7 +32,7 @@ router.get('/items/:id', auth.checkAuthentication(), function (req, res, next) {
         return userService.getUserById(ctx, userId);
 	}).then(function (users) {
 		if (users.length == 0) {
-            res.status(404).json(errorHelper.Error_Existed_UserId);
+            res.status(404).json(errorHelper.Error_Not_Exist_UserId);
 		} else {
 			res.status(200).json(users[0]);
 		}

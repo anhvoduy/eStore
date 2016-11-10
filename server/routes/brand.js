@@ -39,7 +39,7 @@ router.get('/items/:id', auth.checkAuthentication(), function (req, res, next) {
 		return brandService.getBrands(ctx);
 	}).then(function (brands) {
 		if (brands.length == 0) {
-			res.status(404).json(errorHelper.Error_Existed_BrandId);
+			res.status(404).json(errorHelper.Error_Not_Exist_BrandId);
 		} else {
 			res.status(200).json(brands[0]);
 		}

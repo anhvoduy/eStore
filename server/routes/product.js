@@ -36,7 +36,7 @@ router.get('/items/:id', auth.checkAuthentication(), function (req, res, next) {
 		return productService.getProductById(ctx, productId);
 	}).then(function (products) {
 		if (products.length == 0) {
-			res.status(404).json(errorHelper.Error_Existed_ProductId);
+			res.status(404).json(errorHelper.Error_Not_Exist_ProductId);
 		} else {
 			res.status(200).json(products[0]);
 		}

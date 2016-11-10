@@ -64,17 +64,28 @@ app.config(function ($stateProvider) {
 				templateUrl: "/app/components/product/views/productReview.tpl.html"
 			}
 		}
-	})	
-	.state('cashIn', {
-		url: "/cash/cashIn",
-		views: {
-			"view": {
-				templateUrl: "/app/components/cash/views/cashIn.tpl.html",
-				controller: "cashInController",
-				controllerAs: 'vm'
-			}
-		}
 	})
+    .state('cashIn', {
+        url: "/cash/cashIn",
+        views: {
+            "view": {
+                templateUrl: "/app/components/cash/views/cashIn.tpl.html",
+                controller: "cashInController",
+                controllerAs: 'vm'
+            }
+        }
+    })
+    .state('cashInDetail', {
+        url: "/cash/cashIn/:transactionID",
+        parentState: 'cashInDetail',
+        views: {
+            "view": {
+                templateUrl: "/app/components/cash/views/cashInDetail.tpl.html",
+                controller: "cashInDetailController",
+                controllerAs: 'vm'
+            }
+        }
+    })
 	.state('cashOut', {
 		url: "/cash/cashOut",
 		views: {
@@ -84,7 +95,18 @@ app.config(function ($stateProvider) {
 				controllerAs: 'vm'
 			}
 		}
-	})
+    })
+    .state('cashOutDetail', {
+        url: "/cash/cashOut/:transactionID",
+        parentState: 'cashOutDetail',
+        views: {
+            "view": {
+                templateUrl: "/app/components/cash/views/cashOutDetail.tpl.html",
+                controller: "cashOutDetailController",
+                controllerAs: 'vm'
+            }
+        }
+    })
 	.state('inventory', {
 		url: "/inventory",
 		views: {
