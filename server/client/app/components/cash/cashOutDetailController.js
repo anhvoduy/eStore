@@ -6,6 +6,8 @@
         // models		
         var vm = this;
         vm.transactionId = $stateParams.transactionID;
+		vm.save = save;
+		vm.cancel = cancel;
 
         // functions
         var activate = function () {
@@ -21,7 +23,19 @@
                 vm.messageError = error.message;
                 vm.disabledButton = true;
             });
-        };
+		};
+		
+		function save() {			
+			cashService.updateCash(vm.transaction).then(function (result) { 
+				console.log('save() ....');
+			}, function (error) { 
+				console.log(error);
+			});
+		}
+		
+		function cancel() {
+			$state.go($state.current.parentState);
+		}
 
         /* start */
         activate();

@@ -46,7 +46,7 @@
             return q.promise;
         }
 
-        cashService.prototype.create = function (cash) {
+        cashService.prototype.createCash = function (cash) {
             var url = String.format('{0}/create', this.api);
 
             var q = $q.defer();
@@ -62,11 +62,11 @@
             return q.promise;
         }
 		
-		cashService.prototype.update = function (cash) {
+		cashService.prototype.updateCash = function (cash) {
             var url = String.format('{0}/update', this.api);
 
             var q = $q.defer();
-            this.getData(url).then(function (result) {                
+            this.update(url, cash).then(function (result) {                
                 q.resolve(result);
             }, function (error) {
                 q.reject(error);
@@ -74,7 +74,7 @@
             return q.promise;
         }
 		
-		cashService.prototype.delete = function (cashId) {
+		cashService.prototype.deleteCash = function (cashId) {
             var url = String.format('{0}/delete', this.api);
 
             var q = $q.defer();

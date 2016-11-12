@@ -54,7 +54,24 @@ router.post('/create', function (req, res, next) {
 });
 
 router.put('/update', function (req, res, next) {
-    // edit cash
+	var transaction = req.body;
+	transaction.TransactionDate = new Date();
+	transaction.Updated = new Date();
+	transaction.Editor = 'ANH';
+
+	var ctx = {};
+	q.when().then(function () {
+		return dbContext.getConnection();
+	}).then(function (con) {
+		ctx = con;		
+		return transactionService.updateTransaction(ctx, transaction);
+	}).then(function (result) {
+		res.status(200).json(constant.Success_Cash_Update);
+	}).catch(function (error) {
+		next(error);
+	}).finally(function () {
+		ctx.release();
+	});
 });
 
 router.delete('/delete', function (req, res, next) {

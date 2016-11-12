@@ -42,11 +42,11 @@
         }
         
         // PUT()
-        baseService.prototype.update = function (url, brand) {            
+        baseService.prototype.update = function (url, data) {            
             var q = $q.defer();
             $http({
                 url: url,
-                data: brand,
+                data: data,
                 method: 'PUT'
             }).success(function (result) {
                 q.resolve(result);

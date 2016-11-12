@@ -77,7 +77,7 @@ app.config(function ($stateProvider) {
     })
     .state('cashInDetail', {
         url: "/cash/cashIn/:transactionID",
-        parentState: 'cashInDetail',
+        parentState: 'cashIn',
         views: {
             "view": {
                 templateUrl: "/app/components/cash/views/cashInDetail.tpl.html",
@@ -98,7 +98,7 @@ app.config(function ($stateProvider) {
     })
     .state('cashOutDetail', {
         url: "/cash/cashOut/:transactionID",
-        parentState: 'cashOutDetail',
+        parentState: 'cashOut',
         views: {
             "view": {
                 templateUrl: "/app/components/cash/views/cashOutDetail.tpl.html",
