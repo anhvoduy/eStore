@@ -336,6 +336,42 @@ VALUES ('IBM T400','IBM T400',20,100,'Red','2010-08-25','Out',0,NULL);
 INSERT INTO `tblproduct`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Created`,`Status`,`Deleted`,`LatestReviewInfo`)
 VALUES ('Ipad 5','Ipad 5',22,3000,'Green','2016-08-28','OUT',0,'');
 
+INSERT INTO `tblproduct`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Created`,`Status`,`Deleted`,`LatestReviewInfo`)
+VALUES ('IBM T42','IBM T42',20,100,'Red','2013-08-25','Out',0,NULL);
+
+INSERT INTO `tblproduct`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Created`,`Status`,`Deleted`,`LatestReviewInfo`)
+VALUES ('IBM T60','IBM T60',20,100,'Red','2006-08-25','Out',0,NULL);
+
+INSERT INTO `tblproduct`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Created`,`Status`,`Deleted`,`LatestReviewInfo`)
+VALUES ('IBM T400','IBM T400',20,100,'Red','2010-08-25','Out',0,NULL);
+
+INSERT INTO `tblproduct`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Created`,`Status`,`Deleted`,`LatestReviewInfo`)
+VALUES ('Ipad 6','Ipad 6',22,3000,'Green','2016-08-28','OUT',0,'');
+
+INSERT INTO `tblproduct`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Created`,`Status`,`Deleted`,`LatestReviewInfo`)
+VALUES ('IBM T43','IBM T43',20,100,'Red','2013-08-25','Out',0,NULL);
+
+INSERT INTO `tblproduct`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Created`,`Status`,`Deleted`,`LatestReviewInfo`)
+VALUES ('IBM T44','IBM T44',20,100,'Red','2006-08-25','Out',0,NULL);
+
+INSERT INTO `tblproduct`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Created`,`Status`,`Deleted`,`LatestReviewInfo`)
+VALUES ('IBM T45','IBM T45',20,100,'Red','2010-08-25','Out',0,NULL);
+
+INSERT INTO `tblproduct`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Created`,`Status`,`Deleted`,`LatestReviewInfo`)
+VALUES ('Ipad 7','Ipad 7',22,3000,'Green','2016-08-28','OUT',0,'');
+
+INSERT INTO `tblproduct`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Created`,`Status`,`Deleted`,`LatestReviewInfo`)
+VALUES ('IBM T46','IBM T46',20,100,'Red','2013-08-25','Out',0,NULL);
+
+INSERT INTO `tblproduct`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Created`,`Status`,`Deleted`,`LatestReviewInfo`)
+VALUES ('IBM T47','IBM T47',20,100,'Red','2006-08-25','Out',0,NULL);
+
+INSERT INTO `tblproduct`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Created`,`Status`,`Deleted`,`LatestReviewInfo`)
+VALUES ('IBM T2000','IBM T2000',20,100,'Red','2010-08-25','Out',0,NULL);
+
+INSERT INTO `tblproduct`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Created`,`Status`,`Deleted`,`LatestReviewInfo`)
+VALUES ('Ipad 8','Ipad 8',22,3000,'Green','2016-08-28','OUT',0,'');
+
 --
 -- Table structure for table `tblreview`
 --
