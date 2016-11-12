@@ -63,6 +63,10 @@ userService.prototype.getMenu = function () {
 		{
 			code: 'help',
 			name: 'Help'
+		},
+		{
+			code: 'sample',
+			name: 'Sample'
 		}
 	];
 	return navigation;

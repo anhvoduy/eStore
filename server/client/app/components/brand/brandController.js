@@ -1,21 +1,20 @@
 (function () {
     'use strict';        
     app.controller('brandController', brandController);
-    brandController.$inject = ['brandService'];        
-	function brandController(brandService) {
-		// models
-		var vm = this;
-		vm.lstBrands = [];
-		vm.messageSuccess = '';
-		vm.messageError = '';
+    brandController.$inject = ['$scope', 'brandService'];        
+	function brandController($scope, brandService) {
+		// models		
+		$scope.lstBrands = [];
+		$scope.messageSuccess = '';
+		$scope.messageError = '';
 		
 		// functions
 		function activate() {
 			brandService.getBrands().then(function (result) {
-				vm.lstBrands = result;
-				vm.messageSuccess = String.format("Get Brands is successful. Total: {0} rows", vm.lstBrands.length);
+				$scope.lstBrands = result;
+				$scope.messageSuccess = String.format("Get Brands is successful. Total: {0} rows", $scope.lstBrands.length);
 			}, function (error) {
-				vm.messageError = error.message;
+				$scope.messageError = error.message;
 			});
 		}
 		
