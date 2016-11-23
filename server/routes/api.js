@@ -1,9 +1,16 @@
 ﻿// Dependencies
 var express = require('express');
 var router = express.Router();
+
+// sample Authentication
 var jwt = require('jsonwebtoken');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
+
+// sample redis cache
+var cache = require('express-redis-cache')();
+
+// our configuration
 var auth = require('../config/auth');
 var config = require('../config/config');
 var constant = require('../config/constant');
@@ -11,18 +18,24 @@ var dbContext = require('../config/dbContext');
 var errorHelper = require('../config/errorHelper');
 var userService = require('../services/userService');
 
+
+
 // routers: use to test
-router.get('/', function (req, res, next) {
-	res.json({ message: 'eAccounting method GET() is success' });
-	console.log('%s %s — %s', (new Date).toString(), req.method, req.url);
-	return next();
+router.get('/', cache.route({ name: 'get_api' }), function (req, res, next) {
+    res.json({ message: 'eAccounting method GET() is success' });
+    console.log('%s %s — %s', (new Date).toString(), req.method, req.url);
+    next();
 });
 
-router.post('/', function (req, res, next) {
-	res.json({ message: 'eCargo method POST() is success' });
-	console.log('%s %s — %s', (new Date).toString(), req.method, req.url);
-	return next();
+router.post('/', cache.route({ name: 'post_api' }), function (req, res, next) {
+    res.json({ message: 'eCargo method POST() is success' });
+    console.log('%s %s — %s', (new Date).toString(), req.method, req.url);
+    next();
 });
+
+
+
+
 
 
 // routers: use to authenticate
