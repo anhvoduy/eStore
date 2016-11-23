@@ -1,7 +1,7 @@
 {
-  "name": "eAccounting",
+  "name": "accounting",
   "version": "1.1.0",
-  "description": "eAccounting",
+  "description": "accounting",
   "main": "app.js",
   "author": {
     "name": "duyanh",
@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "express": "^4.14.0",
+    "express-redis-cache": "^0.4.2",
     "mysql": "^2.11.1",
     "q": "^1.4.1",    
     "passport": "^0.3.0",

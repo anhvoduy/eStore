@@ -1,6 +1,7 @@
 // Dependencies
 var express = require('express');
 var router = express.Router();
+var cache = require('express-redis-cache')();
 var q = require('q');
 var auth = require('../config/auth');
 var constant = require('../config/constant');
@@ -9,7 +10,7 @@ var errorHelper = require('../config/errorHelper');
 var brandService = require('../services/brandService');
 
 // Router
-router.get('/items', auth.checkAuthentication(), function (req, res, next) {
+router.get('/items', auth.checkAuthentication(), cache.route(), function (req, res, next) {
 	var ctx = {};
 	
 	q.when()
