@@ -1,73 +1,67 @@
 (function (){
     'use strict';
 	app.controller('BrandDetailController', BrandDetailController);
-    BrandDetailController.$inject = ['$timeout', 'brandService', 'productService', '$state', '$stateParams'];    
-	function BrandDetailController($timeout, brandService, productService, $state, $stateParams) {
-		// models
-		var vm = this;
-		vm.brandId = $stateParams.brandID;
-		vm.brand = {};
-		vm.lstProducts = [];
-		vm.disabledButton = false;
-		vm.messageSuccess = '';
-		vm.messageError = '';
-		vm.messageSuccessProduct = '';
-		vm.messageErrorProduct = '';
-        vm.save = save;
-        vm.cancel = cancel;
+	BrandDetailController.$inject = ['$scope', '$state', '$stateParams', '$timeout', 'brandService', 'productService'];
+
+	function BrandDetailController($scope, $state, $stateParams, $timeout, brandService, productService) {
+		// models		
+		$scope.brandId = $stateParams.brandID;
+		$scope.brand = {};
+		$scope.lstProducts = [];
+		$scope.disabledButton = false;		   
 		
 		// functions
 		function activate() {
-			brandService.getBrandById(vm.brandId).then(function (result) {
-				vm.brand = result;
-				if (vm.brand === undefined) {
-					vm.messageError = String.format("The brand id: {0} not found.", vm.brandId);
-					vm.disabledButton = true;
+			brandService.getBrandById($scope.brandId).then(function (result) {
+				$scope.brand = result;
+				if ($scope.brand === undefined) {
+					$scope.messageError = String.format("The brand id: {0} not found.", $scope.brandId);
+					$scope.disabledButton = true;
 				} else {
-					vm.disabledButton = false;
+					$scope.disabledButton = false;
 				}
 			}, function (error) {
-				vm.messageError = error.message;
-				vm.disabledButton = true;
+				$scope.messageError = error.message;
+				$scope.disabledButton = true;
 			});
 			
-			productService.getProductByBrand(vm.brandId).then(function (result) {
-				vm.lstProducts = result;
-				if (vm.lstProducts === undefined || vm.lstProducts.length === 0) {
-					vm.messageErrorProduct = String.format("The list of products belongs to brand id: {0} not found.", vm.brandId);
+			productService.getProductByBrand($scope.brandId).then(function (result) {
+				$scope.lstProducts = result;
+				if ($scope.lstProducts === undefined || $scope.lstProducts.length === 0) {
+					$scope.messageErrorProduct = String.format("The list of products belongs to brand id: {0} not found.", $scope.brandId);
 				} else {
-					vm.messageSuccessProduct = String.format("Get Products is successful. Total: {0} rows", vm.lstProducts.length);
+					$scope.messageSuccessProduct = String.format("Get Products is successful. Total: {0} rows", $scope.lstProducts.length);
 				}
 			}, function (error) {
-				vm.messageErrorProduct = error.message;
-				vm.disabledButton = true;
+				$scope.messageErrorProduct = error.message;
+				$scope.disabledButton = true;
 			});
 		}
 		
 		// if update brand success/failed -> reset status after 5s  
 		function resetFormStatus() {
 			$timeout(function () {
-				vm.disabledButton = false;
-				vm.messageSuccess = '';
-				vm.messageError = '';
+				$scope.disabledButton = false;
+				$scope.messageSuccess = '';
+				$scope.messageError = '';
 			}, 5000);
 		}
 		
 		// buttons
-		function save() {
-			if (vm.brand === undefined) return;
+		$scope.save = function () {
+			if ($scope.brand === undefined) return;
 			
-			vm.disabledButton = true;
-			brandService.updateBrand(vm.brand).then(function (result) {				
-                vm.messageSuccess = result.message;
+			$scope.disabledButton = true;
+			brandService.updateBrand($scope.brand).then(function (result) {
+				$scope.messageSuccess = result.message;
 				resetFormStatus();
 			}, function (error) {
-				vm.messageError = error.message;
+				$scope.messageError = error.message;
 				resetFormStatus();
 			});
-        }
+		}
 
-        function cancel() {            
+		$scope.cancel = function() {            
             $state.go($state.current.parentState);
         }
 		

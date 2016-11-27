@@ -313,6 +313,7 @@
     <Folder Include="test\" />
     <Folder Include="typings\" />
     <Folder Include="typings\globals\" />
+    <Folder Include="typings\globals\axios\" />
     <Folder Include="typings\globals\body-parser\" />
     <Folder Include="typings\globals\chai\" />
     <Folder Include="typings\globals\connect-flash\" />
@@ -328,9 +329,11 @@
     <Folder Include="typings\globals\passport-local\" />
     <Folder Include="typings\globals\passport\" />
     <Folder Include="typings\globals\q\" />
+    <Folder Include="typings\globals\response-time\" />
     <Folder Include="typings\globals\supertest\" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="typings\globals\axios\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\body-parser\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\chai\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\connect-flash\index.d.ts" />
@@ -346,6 +349,7 @@
     <TypeScriptCompile Include="typings\globals\passport-local\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\passport\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\q\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\response-time\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\supertest\index.d.ts" />
     <TypeScriptCompile Include="typings\index.d.ts" />
   </ItemGroup>

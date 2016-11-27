@@ -22,8 +22,7 @@ app.config(function ($stateProvider) {
 		views: {
 			"view": {
 				templateUrl: "/app/components/brand/views/brand.tpl.html",
-				controller: "brandController",
-				controllerAs: 'vm'
+				controller: "brandController"
 			}
 		}
 	})
@@ -33,8 +32,7 @@ app.config(function ($stateProvider) {
 		views: {
 			"view": {
 				templateUrl: "/app/components/brand/views/brandDetail.tpl.html",
-				controller: "BrandDetailController",
-				controllerAs: 'vm'
+				controller: "BrandDetailController"
 			}
 		}
 	})
@@ -210,6 +208,16 @@ app.config(function ($stateProvider) {
 		views: {
 			"view": {
 				templateUrl: "/app/views/help.tpl.html"
+			}
+		}
+	})
+	.state("sample", {
+		url: "/sample",
+		views: {
+			"view": {
+				templateUrl: "/app/views/main.tpl.html",
+				controller: "mainController",
+				controllerAs: 'vm'
 			}
 		}
 	})
