@@ -1,20 +1,37 @@
 (function () {
     'use strict';
-    app.factory('appContext', appContext);
-    appContext.$inject = ['$http', '$q', '$rootScope', '$location', '$cookieStore'];
-
-    function appContext($http, $q, $rootScope, $location, $cookieStore) {
+    app.factory('appContext', appContext);    
+    appContext.$inject = ['$rootScope', '$cookieStore'];
+    function appContext($rootScope, $cookieStore) {
         // constructor        
-        //var appContext = function () {            
-        //    this.http = $http;
-        //    this.rootScope = $rootScope;
-        //    this.q = $q;
-        //    this.location = $location;
-        //    this.cookieStore = $cookieStore;
-        //}
+        var appContext = function () {            
+            //this.http = $http;
+            //this.q = $q;
+            //this.location = $location;
+            //this.rootScope = $rootScope;                        
+            //this.cookieStore = $cookieStore;
+        }
+        
+        appContext.prototype = new appContext();
+        appContext.prototype.constructor = appContext;
 
-
-    };
-
-    return new appContext;
+        // constanst
+        appContext.prototype.formStatus = {
+            isNew: 1,
+            isEdit: 2,
+            isView: 3
+        };
+        
+        // functions
+        appContext.prototype.isUndefined = function(value){
+            if(value === undefined || value === null){
+                return true;
+            }else if(value === 'undefined' || value === 'null'){
+                return true;
+            }else{
+                return false;
+            }
+        }
+        return new appContext;
+    };        
 })();

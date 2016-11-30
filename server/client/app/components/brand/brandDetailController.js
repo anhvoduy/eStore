@@ -1,17 +1,20 @@
 (function (){
     'use strict';
 	app.controller('BrandDetailController', BrandDetailController);
-	BrandDetailController.$inject = ['$scope', '$state', '$stateParams', '$timeout', 'brandService', 'productService'];
+	BrandDetailController.$inject = ['$scope', '$state', '$stateParams', '$timeout', 'appContext', 'brandService', 'productService'];
 
-	function BrandDetailController($scope, $state, $stateParams, $timeout, brandService, productService) {
+	function BrandDetailController($scope, $state, $stateParams, $timeout, appContext, brandService, productService) {
 		// models		
-		$scope.brandId = $stateParams.brandID;
+		$scope.brandId = $stateParams.brandId;
 		$scope.brand = {};
 		$scope.lstProducts = [];
-		$scope.disabledButton = false;		   
-		
+		$scope.disabledButton = false;
+		$scope.formStatus = appContext.isUndefined($scope.brandId) ? appContext.formStatus.isNew : appContext.formStatus.isEdit;
+				
 		// functions
 		function activate() {
+			$scope.formTitle = setFormTitle();
+
 			brandService.getBrandById($scope.brandId).then(function (result) {
 				$scope.brand = result;
 				if ($scope.brand === undefined) {
@@ -37,6 +40,12 @@
 				$scope.disabledButton = true;
 			});
 		}
+
+		function setFormTitle(){
+			if($scope.formStatus === appContext.formStatus.isNew) return 'Create Brand';
+			else if ($scope.formStatus === appContext.formStatus.isEdit) return 'Edit Brand';
+			else return 'Display Brand';			
+		};
 		
 		// if update brand success/failed -> reset status after 5s  
 		function resetFormStatus() {

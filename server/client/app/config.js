@@ -26,8 +26,18 @@ app.config(function ($stateProvider) {
 			}
 		}
 	})
+	.state('brandCreate', {
+        url: '/brand/create',
+        parentState: 'brand',
+		views: {
+			"view": {
+				templateUrl: "/app/components/brand/views/brandDetail.tpl.html",
+				controller: "BrandDetailController"
+			}
+		}
+	})
 	.state('brandDetail', {
-        url: '/brand/:brandID',
+        url: '/brand/:brandId',
         parentState: 'brand',
 		views: {
 			"view": {
