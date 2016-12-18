@@ -1,5 +1,5 @@
 // Dependencies
-var q = require('q');
+var Q = require('q');
 var dbHelper = require('../config/dbHelper');
 
 // Constructor
@@ -16,7 +16,7 @@ inventoryService.prototype.createInventory = function (ctx, inventory) {
 	return ctx.queryCommand(sql);
 }
 
-inventoryService.prototype.editInventory = function (ctx, inventory) {
+inventoryService.prototype.updateInventory = function (ctx, inventory) {
     var sql = dbHelper.prepareQueryCommand('', []);
 	return ctx.queryCommand(sql);
 }
