@@ -213,6 +213,14 @@ app.config(function ($stateProvider) {
 			}
 		}
 	})
+	.state("search", {
+		url: "/search",
+		views: {
+			"view": {
+				templateUrl: "/app/components/search/views/search.tpl.html"
+			}
+		}
+	})
 	.state("help", {
 		url: "/help",
 		views: {
