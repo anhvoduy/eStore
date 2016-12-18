@@ -1,5 +1,5 @@
 ﻿// Dependencies
-var q = require('q');
+var Q = require('q');
 var dbHelper = require('../config/dbHelper');
 
 // Constructor
@@ -14,6 +14,11 @@ brandService.prototype.getBrands = function (ctx) {
 brandService.prototype.getBrandById = function (ctx, brandId) {
 	var sql = dbHelper.prepareQueryCommand('SELECT BrandId, Name, Description FROM tblbrand WHERE brandId = ?', [brandId]);
 	return ctx.queryCommand(sql);    
+}
+
+brandService.prototype.createBrand = function (ctx, brand) {
+	var sql = dbHelper.prepareQueryCommand('', []);
+	return ctx.queryCommand(sql);
 }
 
 brandService.prototype.updateBrand = function (ctx, brand) {
