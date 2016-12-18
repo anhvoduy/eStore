@@ -43,8 +43,7 @@ Crawling.prototype.full = Q.async(function*(){
     	  "dena"
     	]
   	}	
-	//POST: sampleRes TO http://localhost:9200/place/restaurants
-  
+	//POST: sampleRes TO http://localhost:9200/place/restaurants  
 	
 });
 

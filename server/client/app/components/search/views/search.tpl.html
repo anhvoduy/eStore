@@ -7,9 +7,19 @@
 
     <div class="row row-table">
         <table class="table">
-            <thead>               
+            <thead>   
+                <tr>
+                    <th>City</th>
+                    <th>Country</th>                    
+                    <th>Restaurant's Name</th>                    
+                </tr>            
             </thead>
-            <tbody>                
+            <tbody>
+                <tr ng-repeat="row in searchResult">
+                    <td>{{ row.city }}</td>
+                    <td>{{ row.country }}</td>
+                    <td>{{ row.name }}</td>                    
+                </tr>         
             </tbody>
         </table>
     </div>    

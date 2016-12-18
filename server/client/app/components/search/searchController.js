@@ -9,10 +9,15 @@
 			toDate: new Date(),
 			keyword: ''
 		}
+		$scope.searchResult = {}
 		
 		// functions
-		$scope.main = function() {			
-			console.log('start main .....');
+		$scope.main = function() {						
+			searchService.getRestaurants().then(function(result){
+				$scope.searchResult = result;
+			},function(error){
+				console.log(error);
+			})
 		};
 
 		/* start */

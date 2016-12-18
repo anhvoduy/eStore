@@ -11,10 +11,10 @@ var client = new elasticsearch.Client({
 var elasticEndpoint = 'http://localhost:9200';
 
 // Constructor
-var searchService = function () {	
+var searchQuery = function () {	
 }
 
-searchService.prototype.getData = function (url) {	
+searchQuery.prototype.getData = function (url) {	
 	return axios.get(url).then(function(result){
 		if (result && result.data){
 			console.log(result.data.version);
@@ -24,7 +24,7 @@ searchService.prototype.getData = function (url) {
 	});	
 }
 
-searchService.prototype.searchData = function(){
+searchQuery.prototype.searchData = function(){
 	client.search({
   		q: 'pants'
 	}).then(function (body) {
@@ -34,17 +34,16 @@ searchService.prototype.searchData = function(){
 	});
 }
 
-searchService.prototype.getRestaurants = function(){
+searchQuery.prototype.getRestaurants = function(){
 	var url = 'http://localhost:9200/place/restaurants/_search';
-	var defer = q.defer();
-	axios.get(url).then(function(result){
-		defer.resolve(result.data.hits.hits);
+	return axios.get(url).then(function(result){
+		if (result && result.data){
+			console.log(result.data.version);
+		}
 	}, function(error){
 		console.log(error);
-		defer.reject(error);
 	});
-	return defer.promise;
 }
 
 // Export
-module.exports = new searchService;
+module.exports = new searchQuery;
