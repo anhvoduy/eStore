@@ -16,6 +16,11 @@ brandService.prototype.getBrandById = function (ctx, brandId) {
 	return ctx.queryCommand(sql);    
 }
 
+brandService.prototype.createBrand = function (ctx, brand) {
+	var sql = dbHelper.prepareQueryCommand('', []);
+	return ctx.queryCommand(sql);
+}
+
 brandService.prototype.updateBrand = function (ctx, brand) {
 	var sql = dbHelper.prepareQueryCommand('UPDATE tblbrand SET Name = ?, Description = ? WHERE BrandId = ?', 
 		[brand.Name, brand.Description, brand.BrandId]);
