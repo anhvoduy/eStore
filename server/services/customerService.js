@@ -33,11 +33,15 @@ customerService.prototype.getProductsByBrand = function (ctx, brandId) {
 }
 
 customerService.prototype.createReview = function (ctx, review) {
-    var sqlCreateReview = dbHelper.prepareQueryCommand("INSERT INTO tblreview(Rating, Comment, Created, ProductId, Email, Deleted)VALUES(?, ?, ?, ?, ?, 0)",
-        [review.Rating, review.Comment, review.Created, review.ProductId, review.Email]);
+    var sqlCreateReview = dbHelper.prepareQueryCommand(
+        "INSERT INTO tblreview(Rating, Comment, Created, ProductId, Email, Deleted)VALUES(?, ?, ?, ?, ?, 0)",
+        [review.Rating, review.Comment, review.Created, review.ProductId, review.Email]
+    );
 
-    var sqlUpdateProduct = dbHelper.prepareQueryCommand("UPDATE tblProduct SET LatestReviewInfo = ? WHERE ProductId = ?",
-        [JSON.stringify(review), review.ProductId]);
+    var sqlUpdateProduct = dbHelper.prepareQueryCommand(
+        "UPDATE tblProduct SET LatestReviewInfo = ? WHERE ProductId = ?",
+        [JSON.stringify(review), review.ProductId]
+    );
 
     return q.when()
         .then(function () {
