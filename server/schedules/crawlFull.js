@@ -1,5 +1,6 @@
 ﻿// Dependencies
 var Q = require('q');
+var axios = require('axios');
 var elasticsearch = require('elasticsearch');
 var dbContext = require('../config/dbContext');
 var productService = require('../services/productService');
@@ -24,16 +25,16 @@ Crawling.prototype.full = Q.async(function*(){
 		console.log(i + '. Restaurant:  - Country:' + restaurant.country + ' || - Name' + restaurant.name);
 		i++;
 	}
-	console.log(restaurants.length);
+	console.log('COUNT:', restaurants.length);
 
 	// generate Schema
 	var sampleRes = {
     	"geo": "67.34, 68.08",
-    	"city": "Rothera",
+    	"city": "Texas",
     	"country_icon": "https://upload.wikimedia.org/wikipedia/en/thumb/a/ae/Flag_of_the_United_Kingdom.svg/23px-Flag_of_the_United_Kingdom.svg.png",
     	"country": "United Kingdom",
     	"rating": 3.66,
-    	"name": "Earl Run Restaurant",
+    	"name": "Fast Food Run Restaurant",
     	"likes": [
     	  "dulce",
     	  "monty",
@@ -42,9 +43,17 @@ Crawling.prototype.full = Q.async(function*(){
     	  "josephine",
     	  "dena"
     	]
-  	}	
-	//POST: sampleRes TO http://localhost:9200/place/restaurants  
+  	};	
 	
+	//POST: sampleRes TO http://localhost:9200/place/restaurants
+	var url = 'http://localhost:9200/place/restaurants';
+	yield axios.post(url, sampleRes)
+	.then(function (response) {
+    	console.log(response);
+  	})
+  	.catch(function (error) {
+    	console.log(error);
+  	});	
 });
 
 // Schedule
