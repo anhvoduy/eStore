@@ -1,5 +1,5 @@
 ﻿// Dependencies
-var q = require('q');
+var Q = require('q');
 var axios = require('axios');
 var elasticsearch = require('elasticsearch');
 
@@ -36,7 +36,7 @@ searchService.prototype.searchData = function(){
 
 searchService.prototype.getRestaurants = function(){
 	var url = 'http://localhost:9200/place/restaurants/_search';
-	var defer = q.defer();
+	var defer = Q.defer();
 	axios.get(url).then(function(result){
 		defer.resolve(result.data.hits.hits);
 	}, function(error){

@@ -1,6 +1,6 @@
 // Dependencies
+var Q = require('q');
 var dbHelper = require('../config/dbHelper');
-var q = require('q');
 
 // Constructor
 var productService = function () { 

@@ -1,5 +1,5 @@
 // Dependencies
-var q = require('q');
+var Q = require('q');
 var dbHelper = require('../config/dbHelper');
 
 // Constructor
@@ -29,21 +29,7 @@ journalService.prototype.updateJournal = function (ctx, journal) {
         [review.Rating, review.Comment, review.Created, review.ProductId, review.Email]);
 	
 	var sqlUpdateProduct = dbHelper.prepareQueryCommand("UPDATE tblProduct SET LatestReviewInfo = ? WHERE ProductId = ?",
-        [JSON.stringify(review), review.ProductId]);
-
-    //return q.when()
-    //    .then(function () {
-    //        return ctx.beginTransaction();
-    //    }).then(function () {
-    //        return ctx.queryCommand(sqlCreateReview);
-    //    }).then(function () {
-    //        return ctx.queryCommand(sqlUpdateProduct);
-    //    }).then(function () {
-    //        return ctx.commitTransaction();
-    //    }).catch(function (error) {
-    //        ctx.rollbackTransaction();
-    //        throw error;
-    //    });
+        [JSON.stringify(review), review.ProductId]);    
 }
 
 journalService.prototype.deleteJournal = function (ctx, transactionId) {
@@ -51,21 +37,7 @@ journalService.prototype.deleteJournal = function (ctx, transactionId) {
         [review.Rating, review.Comment, review.Created, review.ProductId, review.Email]);
 	
 	var sqlUpdateProduct = dbHelper.prepareQueryCommand("UPDATE tblProduct SET LatestReviewInfo = ? WHERE ProductId = ?",
-        [JSON.stringify(review), review.ProductId]);
-
-    //return q.when()
-    //    .then(function () {
-    //        return ctx.beginTransaction();
-    //    }).then(function () {
-    //        return ctx.queryCommand(sqlCreateReview);
-    //    }).then(function () {
-    //        return ctx.queryCommand(sqlUpdateProduct);
-    //    }).then(function () {
-    //        return ctx.commitTransaction();
-    //    }).catch(function (error) {
-    //        ctx.rollbackTransaction();
-    //        throw error;
-    //    });
+        [JSON.stringify(review), review.ProductId]);    
 }
 
 // Export
