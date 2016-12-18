@@ -19,12 +19,33 @@ Crawling.prototype.connect = Q.async(function*(){
 Crawling.prototype.full = Q.async(function*(){	
 	console.log('start Crawl Schedule in Full Mode ............');
 	var restaurants = require('./data/restaurants');
-	console.log(restaurants.length);
 	var i = 1;
 	for(var restaurant of restaurants){
 		console.log(i + '. Restaurant:  - Country:' + restaurant.country + ' || - Name' + restaurant.name);
 		i++;
-	}	
+	}
+	console.log(restaurants.length);
+
+	// generate Schema
+	var sampleRes = {
+    	"geo": "67.34, 68.08",
+    	"city": "Rothera",
+    	"country_icon": "https://upload.wikimedia.org/wikipedia/en/thumb/a/ae/Flag_of_the_United_Kingdom.svg/23px-Flag_of_the_United_Kingdom.svg.png",
+    	"country": "United Kingdom",
+    	"rating": 3.66,
+    	"name": "Earl Run Restaurant",
+    	"likes": [
+    	  "dulce",
+    	  "monty",
+    	  "maudie",
+    	  "sandy",
+    	  "josephine",
+    	  "dena"
+    	]
+  	}	
+	//POST: sampleRes TO http://localhost:9200/place/restaurants
+  
+	
 });
 
 // Schedule
