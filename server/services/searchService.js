@@ -8,14 +8,15 @@ var client = new elasticsearch.Client({
 	log: 'trace'
 });
 
+var elasticEndpoint = 'http://localhost:9200';
+
 // Constructor
 var searchService = function () {
 	getData();
 	//searchData();
 }
 
-var getData = function () {
-	var elasticEndpoint = 'http://localhost:9200';
+var getData = function () {	
 	return axios.get(elasticEndpoint).then(function(result){
 		if (result && result.data){
 			console.log(result.data.version);
