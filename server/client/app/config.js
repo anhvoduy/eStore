@@ -217,7 +217,8 @@ app.config(function ($stateProvider) {
 		url: "/search",
 		views: {
 			"view": {
-				templateUrl: "/app/components/search/views/search.tpl.html"
+				templateUrl: "/app/components/search/views/search.tpl.html",
+				controller: "searchController",
 			}
 		}
 	})

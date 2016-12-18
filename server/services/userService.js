@@ -59,7 +59,11 @@ userService.prototype.getMenu = function () {
 				{ code: 'account', name: 'Account' },
 				{ code: 'user', name: 'User' }
 			]
-		},                
+		},
+		{
+			code: 'search',
+			name: 'Search'
+		},
 		{
 			code: 'help',
 			name: 'Help'
