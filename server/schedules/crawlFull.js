@@ -19,20 +19,7 @@ Crawling.prototype.connect = Q.async(function*(){
 
 Crawling.prototype.full = Q.async(function*(){
 	console.log('start Crawl Schedule in Full Mode ............');
-	//try{
-	//	var ctx = yield dbContext.getConnection();
-	//	var products = yield productService.getProducts(ctx, 0);
-	//	for(let product of products){
-	//		console.log(product);
-	//	}
-	//}catch(err){
-	//	console.log(err);
-	//	throw err;
-	//}
-});
-
-Crawling.prototype.incremental = Q.async(function*(){
-	console.log('start Crawl Schedule in Incremental Mode ............');
+	
 });
 
 // Schedule
@@ -40,8 +27,7 @@ var main = function* (){
 	var crawling = new Crawling();		
 	try{		
 		yield crawling.connect();
-		yield crawling.full();
-		yield crawling.incremental();
+		yield crawling.full();		
 	}catch(err){
 		console.log(err);
 		throw err;
