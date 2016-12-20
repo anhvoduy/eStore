@@ -6,10 +6,10 @@ var dbContext = require('../config/dbContext');
 var productService = require('../services/productService');
 
 // Crawling
-var Crawling = function(){
+var Crawling = function() {
 };
 
-Crawling.prototype.connect = Q.async(function*(){
+Crawling.connect = Q.async(function*(){
 	var client = new elasticsearch.Client({
 		host: 'localhost:9200',
 		log: 'trace'
@@ -17,7 +17,7 @@ Crawling.prototype.connect = Q.async(function*(){
 	return client;
 });
 
-Crawling.prototype.full = Q.async(function*(){	
+Crawling.full = Q.async(function*(){	
 	console.log('start Crawl Schedule in Full Mode ............');
 	var restaurants = require('./data/restaurants');
 	var i = 1;
@@ -28,7 +28,7 @@ Crawling.prototype.full = Q.async(function*(){
 	console.log('COUNT:', restaurants.length);
 
 	// generate Schema
-	var sampleRes = {
+	var sampleData = {
     	"geo": "67.34, 68.08",
     	"city": "Texas",
     	"country_icon": "https://upload.wikimedia.org/wikipedia/en/thumb/a/ae/Flag_of_the_United_Kingdom.svg/23px-Flag_of_the_United_Kingdom.svg.png",
@@ -43,25 +43,31 @@ Crawling.prototype.full = Q.async(function*(){
     	  "josephine",
     	  "dena"
     	]
-  	};	
-	
-	//POST: sampleRes TO http://localhost:9200/place/restaurants
+  	};		
 	var url = 'http://localhost:9200/place/restaurants';
-	yield axios.post(url, sampleRes)
+	yield Crawling.createItem(url, sampleData);
+});
+
+
+Crawling.deleteItem = function(url, item){
+
+}
+
+Crawling.createItem = function(url, item){
+	return axios.post(url, item)
 	.then(function (response) {
     	console.log(response);
   	})
   	.catch(function (error) {
     	console.log(error);
-  	});	
-});
+  	});
+};
 
 // Schedule
-var main = function* (){
-	var crawling = new Crawling();		
+var main = function* (){	
 	try{		
-		yield crawling.connect();
-		yield crawling.full();		
+		yield Crawling.connect();
+		yield Crawling.full();
 	}catch(err){
 		console.log(err);
 		throw err;
