@@ -9,26 +9,7 @@ var productService = require('../services/productService');
 var Crawling = function() {
 };
 
-Crawling.connect = Q.async(function*(){
-	var client = new elasticsearch.Client({
-		host: 'localhost:9200',
-		log: 'trace'
-	});
-	return client;
-});
-
-Crawling.full = Q.async(function*(){	
-	console.log('3. import data ....');
-	var restaurants = require('./data/restaurants');
-	var i = 1;
-	for(var restaurant of restaurants){
-		console.log(i + '. Restaurant:  - Country:' + restaurant.country + ' || - Name' + restaurant.name);
-		i++;
-	}
-	console.log('COUNT:', restaurants.length);
-
-	// generate Schema
-	var sampleData = {
+var sampleData = {
     	"geo": "67.34, 68.08",
     	"city": "Texas",
     	"country_icon": "https://upload.wikimedia.org/wikipedia/en/thumb/a/ae/Flag_of_the_United_Kingdom.svg/23px-Flag_of_the_United_Kingdom.svg.png",
@@ -43,35 +24,65 @@ Crawling.full = Q.async(function*(){
     	  "josephine",
     	  "dena"
     	]
-  	};		
-	var url = 'http://localhost:9200/place/restaurants';
-	yield Crawling.createItem(url, sampleData);
+};
+
+Crawling.connect = Q.async(function*(){
+	this.client = new elasticsearch.Client({
+		host: 'localhost:9200',
+		log: 'trace'
+	});
 });
 
-Crawling.truncate = function(url, item){
+Crawling.readDataSource = Q.async(function*(){
+	var restaurants = require('./data/restaurants');	
+	console.log('COUNT:', restaurants.length);
+	return restaurants;
+});
+
+Crawling.importData = Q.async(function*(){	
+	console.log('3. import data ....');	
+	// generate Schema	
+	yield Crawling.createItem(url, sampleData);
+
+});
+
+Crawling.truncate = Q.async(function*(){
 	console.log('1. truncate all data ....');
-}
+	return this.client.indices.delete({
+		index: 'place'
+	}, function(err,res,status) { 
+		if(err) {
+			console.log('---------------------------'); 
+			console.log(err); 
+		}
+		console.log("DELETE:",res);
+	});
+});
 
-Crawling.generateSchema = function(url, item){
+Crawling.generateSchema = function(){
 	console.log('2. generate schema ....');
-}
+};
 
-Crawling.createItem = function(url, item){
+Crawling.createItem = Q.async(function*(item){
+	var url = 'http://localhost:9200/place/restaurants';
 	return axios.post(url, item)
 	.then(function (response) {
     	console.log(response);
-  	})
-  	.catch(function (error) {
+  	}).catch(function (error) {
     	console.log(error);
   	});
-};
+});
 
 // Schedule
 var main = function* (){	
 	try{
 		console.log('start Crawl Schedule in Full Mode ............');
 		yield Crawling.connect();
-		yield Crawling.full();
+		yield Crawling.truncate();
+		var restaurants = yield Crawling.readDataSource();		
+		for(var re of restaurants){
+			yield Crawling.createItem(re);
+		}
 	}catch(err){
 		console.log(err);
 		throw err;
