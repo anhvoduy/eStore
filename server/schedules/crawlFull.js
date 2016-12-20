@@ -18,7 +18,7 @@ Crawling.connect = Q.async(function*(){
 });
 
 Crawling.full = Q.async(function*(){	
-	console.log('start Crawl Schedule in Full Mode ............');
+	console.log('3. import data ....');
 	var restaurants = require('./data/restaurants');
 	var i = 1;
 	for(var restaurant of restaurants){
@@ -48,12 +48,12 @@ Crawling.full = Q.async(function*(){
 	yield Crawling.createItem(url, sampleData);
 });
 
-Crawling.generateSchema = function(url, item){
-
+Crawling.truncate = function(url, item){
+	console.log('1. truncate all data ....');
 }
 
-Crawling.deleteItem = function(url, item){
-
+Crawling.generateSchema = function(url, item){
+	console.log('2. generate schema ....');
 }
 
 Crawling.createItem = function(url, item){
@@ -68,7 +68,8 @@ Crawling.createItem = function(url, item){
 
 // Schedule
 var main = function* (){	
-	try{		
+	try{
+		console.log('start Crawl Schedule in Full Mode ............');
 		yield Crawling.connect();
 		yield Crawling.full();
 	}catch(err){
