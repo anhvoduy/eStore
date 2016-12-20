@@ -48,6 +48,9 @@ Crawling.full = Q.async(function*(){
 	yield Crawling.createItem(url, sampleData);
 });
 
+Crawling.generateSchema = function(url, item){
+
+}
 
 Crawling.deleteItem = function(url, item){
 
