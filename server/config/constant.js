@@ -20,8 +20,8 @@ var constant = function () {
 constant.transactionType = {
 	cashIn: 'CASHIN',
 	cashOut: 'CASHOUT',
-	stockIn: 'STOCKIN',
-	stockOut: 'STOCKOUT',
+	STOCKIN: 'STOCKIN',
+	STOCKOUT: 'STOCKOUT',
 	journal: 'JOURNAL',
 };
 

@@ -19,6 +19,16 @@
                 }
             };
         })
+        .directive('ngFormatDate', function(){
+            return {
+                restrict: 'A',                
+                link: function (scope, element, attrs, modelCtrl) {
+                    if(scope.stock !== undefined && scope.stock.StockDate!=undefined){
+                        scope.stock.StockDate = moment(scope.stock.StockDate).format('DD/MM/YYYY');                        
+                    }                    
+                }
+            };
+        })
         .directive('mainMenu', ['$rootScope', '$http', '$cookieStore', function ($rootScope, $http, $cookieStore) {			
             return {
 				restrict: 'EA',

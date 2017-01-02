@@ -137,7 +137,7 @@ app.config(function ($stateProvider) {
 		views: {
 			"view": {
 				templateUrl: "/app/components/inventory/views/stockOut.tpl.html",
-				controller: "inventoryOutputController",
+				controller: "stockOutController",
 			}
 		}
 	})

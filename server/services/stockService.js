@@ -6,8 +6,15 @@ var dbHelper = require('../config/dbHelper');
 var stockService = function () { 
 }
 
-stockService.prototype.getStocks = function (ctx, condition) {
-    var sql = dbHelper.prepareQueryCommand('', []);
+stockService.prototype.getStocks = function (ctx, stockType) {
+    var sql = dbHelper.prepareQueryCommand(`
+		SELECT StockId, StockNo, StockDate, StockType, Description, Currency,
+			TotalAmount, CustomerId, CustomerName, InvoiceNo, InvoiceDate, InvoiceDesc,
+    		Created, Author, Updated, Editor
+		FROM tblstock
+		WHERE StockType = ?
+		ORDER BY StockId;
+	`, [stockType]);
     return ctx.queryCommand(sql);
 }
 
