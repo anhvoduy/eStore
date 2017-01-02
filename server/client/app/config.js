@@ -127,7 +127,8 @@ app.config(function ($stateProvider) {
 		url: "/stockIn",
 		views: {
 			"view": {
-				templateUrl: "/app/components/inventory/views/stockIn.tpl.html"
+				templateUrl: "/app/components/inventory/views/stockIn.tpl.html",
+				controller: "stockInController",
 			}
 		}
 	})
@@ -135,7 +136,8 @@ app.config(function ($stateProvider) {
 		url: "/stockOut",
 		views: {
 			"view": {
-				templateUrl: "/app/components/inventory/views/stockOut.tpl.html"
+				templateUrl: "/app/components/inventory/views/stockOut.tpl.html",
+				controller: "inventoryOutputController",
 			}
 		}
 	})
