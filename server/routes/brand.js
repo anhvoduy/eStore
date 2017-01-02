@@ -1,7 +1,7 @@
 // Dependencies
 var express = require('express');
 var router = express.Router();
-var q = require('q');
+var Q = require('q');
 var auth = require('../config/auth');
 var constant = require('../config/constant');
 var dbContext = require('../config/dbContext');
@@ -9,29 +9,22 @@ var errorHelper = require('../config/errorHelper');
 var brandService = require('../services/brandService');
 
 // Router
-router.get('/items', auth.checkAuthentication(), function (req, res, next) {
-	var ctx = {};
-	
-	q.when()
-	.then(function () {
-		return dbContext.getConnection();
-	}).then(function (con) {
-		ctx = con;
-		return brandService.getBrands(ctx);
-	}).then(function (brands) {
+router.get('/items', auth.checkAuthentication(), Q.async(function* (req, res, next) {
+	var ctx = yield dbContext.getConnection();
+	try{
+		var brands = yield brandService.getBrands(ctx);
 		res.status(200).json(brands);
-	}).catch(function (error) {
-		next(error);
-	}).finally(function () {
+	}catch(err){
 		ctx.release();
-	});
-});
+		next(error);
+	}	
+}));
 
 router.get('/items/:id', auth.checkAuthentication(), function (req, res, next) {
 	var brandId = req.params.id;
 
 	var ctx = {};
-	q.when()
+	stockServicewhen()
 	.then(function () {
 		return dbContext.getConnection();
 	}).then(function (con) {

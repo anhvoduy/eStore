@@ -9,22 +9,16 @@ var errorHelper = require('../config/errorHelper');
 var stockService = require('../services/stockService');
 
 /* ------------ Stock In ------------ */
-router.get('/stockin', function (req, res, next) {
-    var ctx = {};
-    Q.when()
-        .then(function () {
-            return dbContext.getConnection();
-        }).then(function (con) {
-            ctx = con;
-            return stockService.getStocks(ctx, constant.transactionType.STOCKIN);
-        }).then(function (stocks) {
-            res.status(200).json(stocks);
-        }).catch(function (error) {
-            next(error);
-        }).finally(function () {
-            ctx.release();
-        });
-});
+router.get('/stockin', Q.async(function* (req, res, next) {
+    var ctx = yield dbContext.getConnection();
+    try{
+        var stocks = yield stockService.getStocks(ctx, constant.transactionType.STOCKIN);
+        res.status(200).json(stocks);
+    }catch(err){
+        yield ctx.release();
+        next(error);        
+    }    
+}));
 
 router.get('/stockin/:id', function (req, res, next) {
     // create stock
@@ -40,22 +34,16 @@ router.put('/stockin/:id', function (req, res, next) {
 
 
 /* ------------ Stock Out ------------ */
-router.get('/stockout', function (req, res, next) {
-    var ctx = {};
-    Q.when()
-        .then(function () {
-            return dbContext.getConnection();
-        }).then(function (con) {
-            ctx = con;
-            return stockService.getStocks(ctx, constant.transactionType.STOCKOUT);
-        }).then(function (stocks) {
-            res.status(200).json(stocks);
-        }).catch(function (error) {
-            next(error);
-        }).finally(function () {
-            ctx.release();
-        });
-});
+router.get('/stockout', Q.async(function* (req, res, next) {
+    var ctx = yield dbContext.getConnection();
+    try{
+        var stocks = yield stockService.getStocks(ctx, constant.transactionType.STOCKOUT);
+        res.status(200).json(stocks);
+    }catch(err){
+        yield ctx.release();
+        next(error);        
+    }
+}));
 
 router.get('/stockout/:id', function (req, res, next) {
     // create stock
