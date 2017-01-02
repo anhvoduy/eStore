@@ -3,29 +3,29 @@ var Q = require('q');
 var dbHelper = require('../config/dbHelper');
 
 // Constructor
-var brandService = function () { 
-}
+var brandService = function(){	
+ }
 
-brandService.prototype.getBrands = function (ctx) {
+brandService.getBrands = function (ctx) {
 	var sql = 'SELECT BrandId, Name, Description FROM tblbrand WHERE deleted = 0 ORDER BY BrandId DESC';
 	return ctx.queryCommand(sql);
 }
 
-brandService.prototype.getBrandById = function (ctx, brandId) {
+brandService.getBrandById = function (ctx, brandId) {
 	var sql = dbHelper.prepareQueryCommand('SELECT BrandId, Name, Description FROM tblbrand WHERE brandId = ?', [brandId]);
 	return ctx.queryCommand(sql);    
 }
 
-brandService.prototype.createBrand = function (ctx, brand) {
+brandService.createBrand = function (ctx, brand) {
 	var sql = dbHelper.prepareQueryCommand('', []);
 	return ctx.queryCommand(sql);
 }
 
-brandService.prototype.updateBrand = function (ctx, brand) {
+brandService.updateBrand = function (ctx, brand) {
 	var sql = dbHelper.prepareQueryCommand('UPDATE tblbrand SET Name = ?, Description = ? WHERE BrandId = ?', 
 		[brand.Name, brand.Description, brand.BrandId]);
 	return ctx.queryCommand(sql);
 }
 
 // Export
-module.exports = new brandService;
+module.exports = brandService;

@@ -10,6 +10,7 @@
 		vm.messageSuccess = '';
         vm.messageError = '';
 		vm.save = save;
+		vm.cancel = cancel;
 		
 		// functions
 		function activate() {
@@ -48,6 +49,10 @@
                 vm.messageError = error.message;
                 resetFormStatus();
             });
+        }
+
+		function cancel() {            
+            $state.go($state.current.parentState);
         }
 		
 		/* start */

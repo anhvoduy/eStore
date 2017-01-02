@@ -12,17 +12,17 @@ app.config(function ($stateProvider) {
 	.state('/', {
 		url: '/',
 		views: {
-			"view": {
-				templateUrl: "/app/views/home.tpl.html"
+			'view': {
+				templateUrl: '/app/views/home.tpl.html'
 			}
 		}
 	})
 	.state('brand', {
-		url: "/brand",
+		url: '/brand',
 		views: {
-			"view": {
-				templateUrl: "/app/components/brand/views/brand.tpl.html",
-				controller: "brandController"
+			'view': {
+				templateUrl: '/app/components/brand/views/brand.tpl.html',
+				controller: 'brandController'
 			}
 		}
 	})
@@ -30,9 +30,9 @@ app.config(function ($stateProvider) {
         url: '/brand/create',
         parentState: 'brand',
 		views: {
-			"view": {
-				templateUrl: "/app/components/brand/views/brandDetail.tpl.html",
-				controller: "BrandDetailController"
+			'view': {
+				templateUrl: '/app/components/brand/views/brandDetail.tpl.html',
+				controller: 'BrandDetailController'
 			}
 		}
 	})
@@ -40,9 +40,9 @@ app.config(function ($stateProvider) {
         url: '/brand/:brandId',
         parentState: 'brand',
 		views: {
-			"view": {
-				templateUrl: "/app/components/brand/views/brandDetail.tpl.html",
-				controller: "BrandDetailController"
+			'view': {
+				templateUrl: '/app/components/brand/views/brandDetail.tpl.html',
+				controller: 'BrandDetailController'
 			}
 		}
 	})
@@ -127,7 +127,8 @@ app.config(function ($stateProvider) {
 		url: "/stockIn",
 		views: {
 			"view": {
-				templateUrl: "/app/components/inventory/views/stockIn.tpl.html"
+				templateUrl: "/app/components/inventory/views/stockIn.tpl.html",
+				controller: "stockInController",
 			}
 		}
 	})
@@ -135,7 +136,8 @@ app.config(function ($stateProvider) {
 		url: "/stockOut",
 		views: {
 			"view": {
-				templateUrl: "/app/components/inventory/views/stockOut.tpl.html"
+				templateUrl: "/app/components/inventory/views/stockOut.tpl.html",
+				controller: "stockOutController",
 			}
 		}
 	})
@@ -167,6 +169,7 @@ app.config(function ($stateProvider) {
 	})
 	.state('accountDetail', {
 		url: '/account/:accountID',
+		parentState: 'account',
 		views: {
 			"view": {
 				templateUrl: "/app/components/account/views/accountDetail.tpl.html",

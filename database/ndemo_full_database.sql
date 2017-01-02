@@ -173,6 +173,24 @@ CREATE TABLE `tblStock` (
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 
 --
+-- Table structure for table `tblStock`
+--
+INSERT INTO `tblstock` (`StockNo`, `StockDate`, `StockType`, `Description`, `Currency`, `TotalAmount`, `CustomerId`, `CustomerName`, `Author`, `Editor`) 
+VALUES ('STOCKIN-20161201', '2016-12-01', 'STOCKIN', 'Stock In', 'VND', '60000', '1', 'CUSTOMER', '1', '1');
+
+INSERT INTO `tblstock` (`StockNo`, `StockDate`, `StockType`, `Description`, `Currency`, `TotalAmount`, `CustomerId`, `CustomerName`, `Author`, `Editor`) 
+VALUES ('STOCKIN-20161202', '2016-12-02', 'STOCKIN', 'Stock In', 'VND', '60000', '2', 'CUSTOMER', '2', '2');
+
+INSERT INTO `tblstock` (`StockNo`, `StockDate`, `StockType`, `Description`, `Currency`, `TotalAmount`, `CustomerId`, `CustomerName`, `Author`, `Editor`) 
+VALUES ('STOCKIN-20161203', '2016-12-03', 'STOCKIN', 'Stock In', 'VND', '60000', '3', 'CUSTOMER', '3', '3');
+
+INSERT INTO `tblstock` (`StockNo`, `StockDate`, `StockType`, `Description`, `Currency`, `TotalAmount`, `CustomerId`, `CustomerName`, `Author`, `Editor`) 
+VALUES ('STOCKOUT-20161221', '2016-12-21', 'STOCKOUT', 'Stock out', 'VND', '30000', '1', 'CUSTOMER', '1', '1');
+
+INSERT INTO `tblstock` (`StockNo`, `StockDate`, `StockType`, `Description`, `Currency`, `TotalAmount`, `CustomerId`, `CustomerName`, `Author`, `Editor`) 
+VALUES ('STOCKOUT-20161222', '2016-12-22', 'STOCKOUT', 'Stock out', 'VND', '30000', '2', 'CUSTOMER', '2', '2');
+
+--
 -- Table structure for table `tblStockDetail`
 --
 DROP TABLE IF EXISTS `tblStockDetail`;
