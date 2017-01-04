@@ -18,7 +18,7 @@ auth.setup = function (app) {
                 success: userService.authenticate(username, password),
                 user: { username: username, password: password }
             };
-            console.log('Verify Username & Password ...');
+            //console.log('Verify Username & Password ...');
             return done(null, data);
         }
     ));
@@ -26,7 +26,7 @@ auth.setup = function (app) {
 
 auth.checkAuthentication = function () {    
     return function (req, res, next) {        
-        console.log('checkAuthentication() ...');
+        //console.log('checkAuthentication() ...');
         // check header or url parameters or post parameters for token
         var token = req.body.token || req.query.token || req.headers['x-access-token'] || req.headers.authorization;
         if (token) {

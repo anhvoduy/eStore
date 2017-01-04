@@ -44,7 +44,7 @@ router.get('/items/:id', auth.checkAuthentication(), function (req, res, next) {
 });
 
 router.get('/profile', auth.checkAuthentication(), function (req, res, next) {
-    console.log('get current user profile ...');    
+    //console.log('get current user profile ...');    
     var ctx = {};
     dbContext.getConnection().then(function (result) {
         ctx = result;
@@ -59,7 +59,7 @@ router.get('/profile', auth.checkAuthentication(), function (req, res, next) {
 });
 
 router.get('/menu', auth.checkAuthentication(), function (req, res, next) {
-	console.log('get current menu ...');
+	//console.log('get current menu ...');
 	var menu = userService.getMenu();
 	res.status(200).json(menu);	
 });
