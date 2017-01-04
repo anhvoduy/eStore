@@ -20,7 +20,7 @@
 
     "mysql": "^2.11.1",
     "q": "^1.4.1",    
-    
+    "throat": "^2.0.2",
     "passport": "^0.3.0",
     "passport-local": "^1.0.0",    
     "jsonwebtoken": "^7.1.9",
