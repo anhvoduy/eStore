@@ -44,6 +44,12 @@ router.get('/items/:id', auth.checkAuthentication(), function (req, res, next) {
     });
 });
 
+var getPromise = function(item){
+    return dbContext.getConnection().then(function(con){
+        console.log('- item.name:', item.name, ' --- ', item.sex);
+    });
+}
+
 router.get('/profile', auth.checkAuthentication(), function (req, res, next) {
     var peoples = [
         {name: '11', sex: false},
@@ -52,7 +58,7 @@ router.get('/profile', auth.checkAuthentication(), function (req, res, next) {
         {name: '14', sex: false},
         {name: '15', sex: true},
         {name: '16', sex: false},
-        {name: '17', sex: false},
+        {name: '20', sex: true},
         {name: '22', sex: true}
     ];
 
@@ -68,12 +74,13 @@ router.get('/profile', auth.checkAuthentication(), function (req, res, next) {
         user = users[0];		
     })
     .then(function(){
-        var promises = peoples.map(function(item){
+        var promises = peoples.map(throat(1, function(item){
             var timeout = item.sex === true? 0: 1000;
             return q.delay(timeout).then(function(){
-                console.log('- item.name:', item.name);
+                //console.log('- item.name:', item.name);
+                return getPromise(item);
             }).done();            
-        });
+        }));
         return q.allSettled(promises);
     })
     .then(function(){
