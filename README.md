@@ -10,3 +10,4 @@ For start review:
 - then, api and web application will run on port 3000 by default
 - to access web application: http://localhost:3000/
 - download elasticsearch at: https://www.elastic.co/guide/en/elasticsearch/reference/current/windows.html/
+- to access web application: http://localhost:9200/
