@@ -18,13 +18,14 @@ var auth = require('./config/auth');
 var config = require('./config/config');
 var errorHelper = require('./config/errorHelper');
 
+var debugMode = false; // debug mode: default False
+
 // Express
 var server = express();
 //server.use(morgan('dev'));  // log every request to the console
 server.use(cookieParser()); // read cookies (needed for auth)
 server.use(bodyParser.urlencoded({ extended: true }));
 server.use(bodyParser.json());
-
 
 /* ----------- Setup Server -----------*/
 auth.setup(server);
@@ -78,16 +79,26 @@ server.use(function (error, request, response, next) {
 	response.json(errorHelper.errorHandler(error));
 });
 
-
-/* ----------- Register Angular serverlication -----------*/
-server.use('/app', express.static(path.join(__dirname, 'client/app')));
-server.use('/img', express.static(path.join(__dirname, 'client/img')));
-server.use('/libs', express.static(path.join(__dirname, 'client/libs')));
-
+/* ----------- Register Angular App Structure -----------*/
+if(debugMode){
+	server.use('/app', express.static(path.join(__dirname, 'client/app')));
+	server.use('/img', express.static(path.join(__dirname, 'client/img')));
+	server.use('/libs', express.static(path.join(__dirname, 'client/libs')));
+}else{
+	server.use('/app', express.static(path.join(__dirname, 'build/app')));
+	server.use('/img', express.static(path.join(__dirname, 'build/img')));
+	server.use('/libs', express.static(path.join(__dirname, 'build/libs')));
+}
 
 // Render page at Client Side
 server.get('/', function (request, response) {
-	response.sendFile(path.join(__dirname + '/client/index.html'));	
+	if(debugMode){	
+		// debug Mode
+		response.sendFile(path.join(__dirname + '/client/index.html'));
+	}else{	
+		// release Mode
+		response.sendFile(path.join(__dirname + '/build/index.html'));
+	}	
 });
 
 // export
