@@ -18,8 +18,6 @@ var auth = require('./config/auth');
 var config = require('./config/config');
 var errorHelper = require('./config/errorHelper');
 
-var debugMode = false; // debug mode: default False
-
 // Express
 var server = express();
 //server.use(morgan('dev'));  // log every request to the console
@@ -80,7 +78,7 @@ server.use(function (error, request, response, next) {
 });
 
 /* ----------- Register Angular App Structure -----------*/
-if(debugMode){
+if(config.debugMode){
 	server.use('/app', express.static(path.join(__dirname, 'client/app')));
 	server.use('/img', express.static(path.join(__dirname, 'client/img')));
 	server.use('/libs', express.static(path.join(__dirname, 'client/libs')));
@@ -91,8 +89,8 @@ if(debugMode){
 }
 
 // Render page at Client Side
-server.get('/', function (request, response) {
-	if(debugMode){	
+server.get('/', function (request, response) {	
+	if(config.debugMode){	
 		// debug Mode
 		response.sendFile(path.join(__dirname + '/client/index.html'));
 	}else{	
