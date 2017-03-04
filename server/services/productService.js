@@ -3,15 +3,15 @@ var Q = require('q');
 var dbHelper = require('../config/dbHelper');
 
 // Constructor
-var productService = function () { 
+var factory = function () { 
 }
 
-productService.prototype.getProducts = function (ctx, pageIndex) {
+factory.prototype.getProducts = function (ctx, pageIndex) {
 	var sql = dbHelper.prepareQueryCommand("CALL sp_product_paging(?);", [pageIndex]);
 	return ctx.queryCommand(sql);
 }
 
-productService.prototype.getProductById = function (ctx, productId) {
+factory.prototype.getProductById = function (ctx, productId) {
 	var sql = dbHelper.prepareQueryCommand(
 		"SELECT prod.ProductId, prod.ProductName, prod.Description, " +
 		"		prod.BrandId, bra.Name AS BrandName, " + 
@@ -21,7 +21,7 @@ productService.prototype.getProductById = function (ctx, productId) {
 	return ctx.queryCommand(sql);
 }
 
-productService.prototype.getProductsByBrand = function (ctx, brandId) {
+factory.prototype.getProductsByBrand = function (ctx, brandId) {
 	var sql = dbHelper.prepareQueryCommand(
 		"SELECT prod.ProductId, prod.ProductName, prod.Description,	" +
 		"		prod.Price, prod.Colour, prod.Created, prod.Status, " +
@@ -32,7 +32,7 @@ productService.prototype.getProductsByBrand = function (ctx, brandId) {
 	return ctx.queryCommand(sql);
 }
 
-productService.prototype.createReview = function (ctx, review) {
+factory.prototype.createReview = function (ctx, review) {
     var sqlCreateReview = dbHelper.prepareQueryCommand(
         "INSERT INTO tblreview(Rating, Comment, Created, ProductId, Email, Deleted)VALUES(?, ?, ?, ?, ?, 0)",
         [review.Rating, review.Comment, review.Created, review.ProductId, review.Email]
@@ -59,4 +59,4 @@ productService.prototype.createReview = function (ctx, review) {
 }
 
 // Export
-module.exports = new productService;
+module.exports = new factory;

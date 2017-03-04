@@ -5,6 +5,7 @@ var config = {
     database: 'ndemo',
     connectionLimit: 10,
     secretKey: 'ilovejavascript',
+	debugMode: true
 };
 
 module.exports = config;
