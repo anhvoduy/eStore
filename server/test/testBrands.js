@@ -1,7 +1,11 @@
 ﻿'use strict';
+var chai = require('chai');
+var chaiHttp = require('chai-http');
 var expect  = require("chai").expect;
 var supertest = require("supertest");
-var server = 'http://localhost:3000';
+//var server = 'http://localhost:3000';
+var server = require('../app');
+chai.use(chaiHttp);
 
 describe("GET API: /api/brand/", function() {
     it("Get List Brands", function (done) {
