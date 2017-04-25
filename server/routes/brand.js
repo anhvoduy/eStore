@@ -9,22 +9,34 @@ var errorHelper = require('../config/errorHelper');
 var brandService = require('../services/brandService');
 
 // Router
-router.get('/items', auth.checkAuthentication(), Q.async(function* (req, res, next) {
-	var ctx = yield dbContext.getConnection();
-	try{
-		var brands = yield brandService.getBrands(ctx);
+router.get('/items', function (req, res, next) {
+	var brands;
+	var ctx;
+
+	return Q.when()
+	.then(function(){
+		return dbContext.getConnection();
+	})
+	.then(function(ctx){
+		return brandService.getBrands(ctx).then(function(data){
+			brands = data;
+		});
+	})
+	.then(function(){
 		res.status(200).json(brands);
-	}catch(err){
+	})
+	.catch(function(err){
 		ctx.release();
 		next(error);
-	}	
-}));
+	})
+	.done();
+});
 
-router.get('/items/:id', auth.checkAuthentication(), function (req, res, next) {
+router.get('/items/:id', function (req, res, next) {
 	var brandId = req.params.id;
-
 	var ctx = {};
-	stockServicewhen()
+
+	return Q.when()
 	.then(function () {
 		return dbContext.getConnection();
 	}).then(function (con) {

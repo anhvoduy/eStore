@@ -25,7 +25,7 @@ var userService = require('../services/userService');
 // routers: use to test
 router.get('/', cache.route({ name: 'get_api' }), function (req, res, next) {
     res.json({ message: 'eAccounting method GET() is success' });
-    console.log('%s %s — %s', (new Date).toString(), req.method, req.url);
+    console.log('%s %s — %s', (new Date).toString(), req.method, req.url);	
     next();
 });
 
@@ -34,6 +34,11 @@ router.post('/', cache.route({ name: 'post_api' }), function (req, res, next) {
     console.log('%s %s — %s', (new Date).toString(), req.method, req.url);
     next();
 });
+
+router.get('/', function (req, res){
+	var result = [1,2,3,4,5];
+	res.status(200).json(result);
+})
 
 
 
