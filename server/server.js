@@ -1,7 +1,6 @@
 ﻿// Dependencies
 var express = require('express');
 var http = require('http');
-
 var path = require("path");
 var passport = require('passport');
 var flash = require('connect-flash');
@@ -34,25 +33,24 @@ server.set('secretKey', config.secretKey); // secret variable
 
 // create a new redis client and connect to our local redis instance
 var client = redis.createClient();
-
-// if an error occurs, print it to the console
+//if an error occurs, print it to the console
 client.on('error', function (err) {
     console.log("Error " + err);
 });
 
 // call the GitHub API to fetch information about the user's repositories
-function getUserRepositories(user) {
-    var githubEndpoint = 'https://api.github.com/users/' + user + '/repos' + '?per_page=100';
-    console.log('URL:' + githubEndpoint);
-    return axios.get(githubEndpoint);
-}
+// function getUserRepositories(user) {
+//     var githubEndpoint = 'https://api.github.com/users/' + user + '/repos' + '?per_page=100';
+//     console.log('URL:' + githubEndpoint);
+//     return axios.get(githubEndpoint);
+// }
 
 // add up all the stars and return the total number of stars across all repositories
-function computeTotalStars(repositories) {
-    return repositories.data.reduce(function (prev, curr) {
-        return prev + curr.stargazers_count
-    }, 0);
-}
+// function computeTotalStars(repositories) {
+//     return repositories.data.reduce(function (prev, curr) {
+//         return prev + curr.stargazers_count
+//     }, 0);
+// }
 
 // set up the response-time middleware
 server.use(responseTime());
@@ -77,7 +75,7 @@ server.use(function (error, request, response, next) {
 	response.json(errorHelper.errorHandler(error));
 });
 
-/* ----------- Register Angular App Structure -----------*/
+/* ----------- Register Admin Site -----------*/
 if(config.debugMode){
 	server.use('/app', express.static(path.join(__dirname, 'client/app')));
 	server.use('/img', express.static(path.join(__dirname, 'client/img')));
@@ -88,15 +86,20 @@ if(config.debugMode){
 	server.use('/libs', express.static(path.join(__dirname, 'build/libs')));
 }
 
-// Render page at Client Side
-server.get('/', function (request, response) {	
-	if(config.debugMode){	
-		// debug Mode
-		response.sendFile(path.join(__dirname + '/client/index.html'));
-	}else{	
-		// release Mode
-		response.sendFile(path.join(__dirname + '/build/index.html'));
-	}	
+/* ----------- Register Publish Site -----------*/
+server.use('/publish', express.static(path.join(__dirname, 'publish')));
+
+
+// render page at Client Side
+server.get('/', function(req, res, next){
+	res.sendFile(path.join(__dirname + '/publish/default.html'));
+});
+
+server.get('/admin', function (req, res, next) {
+	if(config.debugMode) 
+		res.sendFile(path.join(__dirname + '/client/index.html'));
+	else 
+		res.sendFile(path.join(__dirname + '/build/index.html'));	
 });
 
 // export
