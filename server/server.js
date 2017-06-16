@@ -86,20 +86,24 @@ if(config.debugMode){
 	server.use('/libs', express.static(path.join(__dirname, 'build/libs')));
 }
 
-/* ----------- Register Publish Site -----------*/
-server.use('/publish', express.static(path.join(__dirname, 'publish')));
-
-
-// render page at Client Side
-server.get('/', function(req, res, next){
-	res.sendFile(path.join(__dirname + '/publish/default.html'));
-});
-
-server.get('/admin', function (req, res, next) {
+//register Site Collections
+server.get('/', function (req, res, next) {
 	if(config.debugMode) 
 		res.sendFile(path.join(__dirname + '/client/index.html'));
 	else 
 		res.sendFile(path.join(__dirname + '/build/index.html'));	
+});
+
+//register Publish Site
+server.use('/publish', express.static(path.join(__dirname, 'publish')));
+server.get('/publish', function(req, res, next){
+	res.sendFile(path.join(__dirname + '/publish/default.html'));
+});
+
+//register Admin Site
+server.use('/admin', express.static(path.join(__dirname, 'admin')));
+server.get('/admin', function(req, res, next){
+	res.sendFile(path.join(__dirname + '/admin/index.html'));
 });
 
 // export
