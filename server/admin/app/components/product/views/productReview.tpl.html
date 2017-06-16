@@ -1,0 +1,100 @@
+﻿<div class="container" ng-cloak>
+    <h2>Product Information</h2>
+    <form name="formProduct" class="form-horizontal">
+        <div class="form-group">
+            <label for="productName" class="col-sm-2 control-label">Product Name</label>
+            <div class="col-sm-6">
+                <input id="productName" ng-model="vm.product.ProductName" class="form-control" placeholder="Name" disabled/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="productDescription" class="col-sm-2 control-label">Description</label>
+            <div class="col-sm-6">
+                <input id="productDescription" ng-model="vm.product.Description" class="form-control" placeholder="Description" disabled/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="BrandName" class="col-sm-2 control-label">Brand</label>
+            <div class="col-sm-6">
+                <input id="BrandName" ng-model="vm.product.BrandName" class="form-control" placeholder="Brand" disabled/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="Price" class="col-sm-2 control-label">Price</label>
+            <div class="col-sm-6">
+                <input id="Price" ng-model="vm.product.Price" class="form-control" placeholder="Price" disabled/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="Colour" class="col-sm-2 control-label">Color</label>
+            <div class="col-sm-6">
+                <input id="Colour" ng-model="vm.product.Colour" class="form-control" placeholder="Colour" disabled />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="Colour" class="col-sm-2 control-label">Status</label>
+            <div class="col-sm-6">
+                <input id="Status" ng-model="vm.product.Status" class="form-control" placeholder="Status" disabled />
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="container">
+    <h2>Review</h2>
+
+    <form name="formReview" class="form-horizontal" novalidate>
+        <div class="form-group">
+            <label for="productName" class="col-sm-2 control-label">Rating <span style="color: red">(*)</span></label>
+            <div class="col-sm-6">
+                <input name="Rating" ng-model="vm.review.Rating" class="form-control" maxlength="1" numbers-only required />
+            </div>
+            <div class='control-label col-sm-8 message-error'
+                 ng-show='(formReview.Rating.$dirty && formReview.Rating.$invalid)'>Please input rating (number)</div>
+        </div>
+        <div class="form-group">
+            <label for="Comment" class="col-sm-2 control-label">Comment <span style="color: red">(*)</span></label>
+            <div class="col-sm-6">
+                <textarea name="Comment" type="textarea" ng-model="vm.review.Comment" class="form-control" rows="3" maxlength="200" required/>
+            </div>
+            <div class='control-label col-sm-8 message-error'
+                 ng-show='(formReview.Comment.$dirty && formReview.Comment.$invalid)'>Please input your comment</div>
+        </div>
+        <div class="form-group">
+            <label for="Email" class="col-sm-2 control-label">Email <span style="color: red">(*)</span></label>
+            <div class="col-sm-6">
+                <input name="Email" type="email" ng-model="vm.review.Email" class="form-control" maxlength="30" required/>
+                <br />
+                <span>sample: avo4@hvn.com</span>
+            </div>
+            <div class='control-label col-sm-8 message-error'
+                 ng-show='(formReview.Email.$dirty && formReview.Email.$error.required)'>Please input your email</div>
+            <div class='control-label col-sm-8 message-error'
+                 ng-show='(formReview.Email.$dirty && formReview.Email.$error.email)'>Invalid email format</div> 
+        </div>
+
+        <div class="form-group">
+            <div class='control-label col-sm-8 message-success'
+                 ng-show='(vm.messageSuccess.length > 0)'>{{ vm.messageSuccess }}</div>
+        </div>
+
+        <div class="form-group">
+            <div class='control-label col-sm-8 message-error'
+                 ng-show='(vm.messageError.length > 0)'>{{ vm.messageError }}</div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <input type="button" 
+                       class="btn" 
+                       value="Save" 
+                       ng-click="formReview.$valid && vm.save()"
+                       ng-disabled="vm.disabledButton || formReview.$invalid"/>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,43 @@
+﻿<search-control></search-control>
+
+<div class="container" ng-cloak>
+    <div class="row">
+        <h2>All Products (10)</h2>
+    </div>        
+
+    <div class="row row-table">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Product Id</th>
+                    <th>Product Name</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Colour</th>
+                    <th>Status</th>
+                    <th>Display</th>                        
+                    <th>Add Review</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="product in vm.lstProducts">
+                    <td>{{ product.ProductId }}</td>
+                    <td>{{ product.ProductName }}</td>
+                    <td>{{ product.Description }}</td>
+                    <td>{{ product.Price }}</td>
+                    <td>{{ product.Colour }}</td>
+                    <td>{{ product.Status }}</td>
+                    <td><a ui-sref="productDetail({ productID: product.ProductId })">Display</a></td>                        
+                    <td><a ui-sref="reviewProduct({ productID: product.ProductId })">Add Review</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="row">
+        <a style="cursor: pointer" ng-click="vm.prevItem()" ng-hide="vm.paging.prevIndex == 0">Prev</a>
+        <a style="cursor: pointer" ng-click="vm.nextItem()" ng-hide="vm.paging.nextIndex == 0">Next</a>
+    </div>
+
+    <div class="row message-error" ng-show='(vm.messageError.length > 0)'>{{ vm.messageError }}</div>
+    <div class="row message-success" ng-show='(vm.messageSuccess.length > 0)'>{{ vm.messageSuccess }}</div>
+</div>
