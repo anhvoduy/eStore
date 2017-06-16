@@ -1,7 +1,7 @@
 ﻿// Dependencies
 var uuid = require('uuid');
 var http = require('http');
-var server = require('./config/server');
+var server = require('./server');
 
 /* ----------- Start Server -----------*/
 http.createServer(server).listen(server.get('port'), function () {
