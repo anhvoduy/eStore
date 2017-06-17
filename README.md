@@ -10,7 +10,7 @@ For start review:
 - type: node app
 - then, api and web application will run on port 3000 by default
 - to access web application publish: http://localhost:3000/
-- to access web application admin: http://localhost:3000/publish
+- to access web application admin: http://localhost:3000/admin
 
 - download elasticsearch at: https://www.elastic.co/guide/en/elasticsearch/reference/current/windows.html/
 - to access web application: http://localhost:9200/
