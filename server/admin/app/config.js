@@ -13,7 +13,7 @@ app.config(function ($stateProvider) {
 		url: '/',
 		views: {
 			'view': {
-				templateUrl: '/app/views/home.tpl.html'
+				templateUrl: '/admin/app/views/home.tpl.html'
 			}
 		}
 	})
@@ -21,7 +21,7 @@ app.config(function ($stateProvider) {
 		url: '/brand',
 		views: {
 			'view': {
-				templateUrl: '/app/components/brand/views/brand.tpl.html',
+				templateUrl: '/admin/app/components/brand/views/brand.tpl.html',
 				controller: 'brandController'
 			}
 		}
@@ -31,7 +31,7 @@ app.config(function ($stateProvider) {
         parentState: 'brand',
 		views: {
 			'view': {
-				templateUrl: '/app/components/brand/views/brandDetail.tpl.html',
+				templateUrl: '/admin/app/components/brand/views/brandDetail.tpl.html',
 				controller: 'BrandDetailController'
 			}
 		}
@@ -41,7 +41,7 @@ app.config(function ($stateProvider) {
         parentState: 'brand',
 		views: {
 			'view': {
-				templateUrl: '/app/components/brand/views/brandDetail.tpl.html',
+				templateUrl: '/admin/app/components/brand/views/brandDetail.tpl.html',
 				controller: 'BrandDetailController'
 			}
 		}
@@ -50,7 +50,7 @@ app.config(function ($stateProvider) {
 		url: "/product",
 		views: {
 			"view": {
-				templateUrl: "/app/components/product/views/product.tpl.html",
+				templateUrl: "/admin/app/components/product/views/product.tpl.html",
 				controller: "ProductController",
 				controllerAs: 'vm'
 			}
@@ -60,7 +60,7 @@ app.config(function ($stateProvider) {
         parentState: 'product',
 		views: {
 			"view": {
-				templateUrl: "/app/components/product/views/productDetail.tpl.html",
+				templateUrl: "/admin/app/components/product/views/productDetail.tpl.html",
 				controller: "productDetailController",
 				controllerAs: 'vm'
 			}
@@ -69,7 +69,7 @@ app.config(function ($stateProvider) {
 		url: "/review/:productID",
 		views: {
 			"view": {
-				templateUrl: "/app/components/product/views/productReview.tpl.html"
+				templateUrl: "/admin/app/components/product/views/productReview.tpl.html"
 			}
 		}
 	})
@@ -77,7 +77,7 @@ app.config(function ($stateProvider) {
         url: "/cash/cashIn",
         views: {
             "view": {
-                templateUrl: "/app/components/cash/views/cashIn.tpl.html",
+                templateUrl: "/admin/app/components/cash/views/cashIn.tpl.html",
                 controller: "cashInController",
                 controllerAs: 'vm'
             }
@@ -88,7 +88,7 @@ app.config(function ($stateProvider) {
         parentState: 'cashIn',
         views: {
             "view": {
-                templateUrl: "/app/components/cash/views/cashInDetail.tpl.html",
+                templateUrl: "/admin/app/components/cash/views/cashInDetail.tpl.html",
                 controller: "cashInDetailController",
                 controllerAs: 'vm'
             }
@@ -98,7 +98,7 @@ app.config(function ($stateProvider) {
 		url: "/cash/cashOut",
 		views: {
 			"view": {
-				templateUrl: "/app/components/cash/views/cashOut.tpl.html",
+				templateUrl: "/admin/app/components/cash/views/cashOut.tpl.html",
 				controller: "cashOutController",
 				controllerAs: 'vm'
 			}
@@ -109,7 +109,7 @@ app.config(function ($stateProvider) {
         parentState: 'cashOut',
         views: {
             "view": {
-                templateUrl: "/app/components/cash/views/cashOutDetail.tpl.html",
+                templateUrl: "/admin/app/components/cash/views/cashOutDetail.tpl.html",
                 controller: "cashOutDetailController",
                 controllerAs: 'vm'
             }
@@ -119,7 +119,7 @@ app.config(function ($stateProvider) {
 		url: "/inventory",
 		views: {
 			"view": {
-				templateUrl: "/app/components/inventory/views/inventory.tpl.html"
+				templateUrl: "/admin/app/components/inventory/views/inventory.tpl.html"
 			}
 		}
 	})
@@ -127,7 +127,7 @@ app.config(function ($stateProvider) {
 		url: "/stockIn",
 		views: {
 			"view": {
-				templateUrl: "/app/components/inventory/views/stockIn.tpl.html",
+				templateUrl: "/admin/app/components/inventory/views/stockIn.tpl.html",
 				controller: "stockInController",
 			}
 		}
@@ -136,7 +136,7 @@ app.config(function ($stateProvider) {
 		url: "/stockOut",
 		views: {
 			"view": {
-				templateUrl: "/app/components/inventory/views/stockOut.tpl.html",
+				templateUrl: "/admin/app/components/inventory/views/stockOut.tpl.html",
 				controller: "stockOutController",
 			}
 		}
@@ -145,7 +145,7 @@ app.config(function ($stateProvider) {
 		url: "/stockBalance",
 		views: {
 			"view": {
-				templateUrl: "/app/components/inventory/views/stockBalance.tpl.html"
+				templateUrl: "/admin/app/components/inventory/views/stockBalance.tpl.html"
 			}
 		}
 	})
@@ -153,7 +153,7 @@ app.config(function ($stateProvider) {
 		url: "/stockReport",
 		views: {
 			"view": {
-				templateUrl: "/app/components/inventory/views/stockReport.tpl.html"
+				templateUrl: "/admin/app/components/inventory/views/stockReport.tpl.html"
 			}
 		}
 	})
@@ -161,7 +161,7 @@ app.config(function ($stateProvider) {
 		url: "/account",
 		views: {
 			"view": {
-				templateUrl: "/app/components/account/views/account.tpl.html",
+				templateUrl: "/admin/app/components/account/views/account.tpl.html",
 				controller: "accountController",
 				controllerAs: 'vm'
 			}
@@ -172,7 +172,7 @@ app.config(function ($stateProvider) {
 		parentState: 'account',
 		views: {
 			"view": {
-				templateUrl: "/app/components/account/views/accountDetail.tpl.html",
+				templateUrl: "/admin/app/components/account/views/accountDetail.tpl.html",
 				controller: "accountDetailController",
 				controllerAs: 'vm'
 			}
@@ -182,7 +182,7 @@ app.config(function ($stateProvider) {
 		url: "/user",
 		views: {
 			"view": {
-				templateUrl: "/app/components/user/views/user.tpl.html",
+				templateUrl: "/admin/app/components/user/views/user.tpl.html",
 				controller: "UserController",
 				controllerAs: 'vm'
 			}
@@ -192,7 +192,7 @@ app.config(function ($stateProvider) {
 		url: '/user/:userID',
 		views: {
 			"view": {
-				templateUrl: "/app/components/user/views/userDetail.tpl.html",
+				templateUrl: "/admin/app/components/user/views/userDetail.tpl.html",
 				controller: "UserDetailController",
 				controllerAs: 'vm'
 			}
@@ -202,7 +202,7 @@ app.config(function ($stateProvider) {
 		url: '/login',
 		views: {
 			"view": {
-				templateUrl: "/app/components/authentication/views/login.tpl.html",
+				templateUrl: "/admin/app/components/authentication/views/login.tpl.html",
 				controller: "loginController"
 			}
 		},
@@ -212,7 +212,7 @@ app.config(function ($stateProvider) {
 		url: '/logout',
 		views: {
 			"view": {
-				templateUrl: "/app/components/authentication/views/logout.tpl.html",
+				templateUrl: "/admin/app/components/authentication/views/logout.tpl.html",
 			}
 		}
 	})
@@ -220,7 +220,7 @@ app.config(function ($stateProvider) {
 		url: "/search",
 		views: {
 			"view": {
-				templateUrl: "/app/components/search/views/search.tpl.html",
+				templateUrl: "/admin/app/components/search/views/search.tpl.html",
 				controller: "searchController",
 			}
 		}
@@ -229,7 +229,7 @@ app.config(function ($stateProvider) {
 		url: "/help",
 		views: {
 			"view": {
-				templateUrl: "/app/views/help.tpl.html"
+				templateUrl: "/admin/app/views/help.tpl.html"
 			}
 		}
 	})
@@ -237,7 +237,7 @@ app.config(function ($stateProvider) {
 		url: "/sample",
 		views: {
 			"view": {
-				templateUrl: "/app/views/main.tpl.html",
+				templateUrl: "/admin/app/views/main.tpl.html",
 				controller: "mainController",
 				controllerAs: 'vm'
 			}
@@ -247,7 +247,7 @@ app.config(function ($stateProvider) {
 		url: '/error',
 		views: {
 			"view": {
-				templateUrl: "/app/views/error.tpl.html"
+				templateUrl: "/admin/app/views/error.tpl.html"
 			}
 		}
 	});
