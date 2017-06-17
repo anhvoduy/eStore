@@ -95,9 +95,9 @@ server.use(function (error, request, response, next) {
 // });
 
 //register Publish Site
-server.use('/publish', express.static(path.join(__dirname, 'publish')));
-server.get('/publish', function(req, res, next){
-	res.sendFile(path.join(__dirname + '/publish/default.html'));
+server.use('/', express.static(path.join(__dirname, 'publish')));
+server.get('/', function(req, res, next){
+	res.sendFile(path.join(__dirname + '/default.html'));
 });
 
 //register Admin Site
