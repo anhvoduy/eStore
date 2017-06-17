@@ -31,7 +31,7 @@ app.config(function ($stateProvider) {
 		url: '/logout',
 		views: {
 			"view": {
-				templateUrl: "/admin/app/views/logout.tpl.html",
+				templateUrl: "app/views/logout.tpl.html",
 			}
 		}
 	})
