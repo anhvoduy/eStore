@@ -13,7 +13,7 @@ app.config(function ($stateProvider) {
 		url: '/',
 		views: {
 			'view': {
-				templateUrl: '/admin/app/views/home.tpl.html'
+				templateUrl: 'app/views/home.tpl.html'
 			}
 		}
 	})
@@ -21,7 +21,7 @@ app.config(function ($stateProvider) {
 		url: '/login',
 		views: {
 			"view": {
-				templateUrl: "/admin/app/views/login.tpl.html",
+				templateUrl: "app/views/login.tpl.html",
 				controller: "loginController"
 			}
 		},

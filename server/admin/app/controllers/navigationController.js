@@ -1,13 +1,13 @@
 (function () {
 	'use strict';
 	app.controller('navigationController', navigationController);
-	navigationController.$inject = ['$rootScope'];
-	function navigationController($rootScope) {
+	navigationController.$inject = ['$rootScope', 'navigationService'];
+	function navigationController($rootScope, navigationService) {
 		// view-model
 		var vm = this;
 		
 		// functions
-		function activate() {			
+		function activate() {
 		}
 		
 		/* start */
