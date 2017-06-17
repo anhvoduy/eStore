@@ -17,6 +17,24 @@ app.config(function ($stateProvider) {
 			}
 		}
 	})
+	.state('login', {
+		url: '/login',
+		views: {
+			"view": {
+				templateUrl: "/admin/app/views/login.tpl.html",
+				controller: "loginController"
+			}
+		},
+		showMenus: false
+	})
+	.state('logout', {
+		url: '/logout',
+		views: {
+			"view": {
+				templateUrl: "/admin/app/views/logout.tpl.html",
+			}
+		}
+	})
 	.state('brand', {
 		url: '/brand',
 		views: {
@@ -197,25 +215,7 @@ app.config(function ($stateProvider) {
 				controllerAs: 'vm'
 			}
 		}
-	})
-	.state('login', {
-		url: '/login',
-		views: {
-			"view": {
-				templateUrl: "/admin/app/components/authentication/views/login.tpl.html",
-				controller: "loginController"
-			}
-		},
-		showMenus: false
-	})
-	.state('logout', {
-		url: '/logout',
-		views: {
-			"view": {
-				templateUrl: "/admin/app/components/authentication/views/logout.tpl.html",
-			}
-		}
-	})
+	})	
 	.state("search", {
 		url: "/search",
 		views: {

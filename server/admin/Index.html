@@ -12,6 +12,7 @@
     <link href="libs/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
     <link href="libs/ui-grid/ui-grid.min.css" rel="stylesheet" />
     <link href="libs/yamm3/css/yamm.css" rel="stylesheet" />
+
     <link href="libs/custom/css/custom-style.css" rel="stylesheet" />
 
 
@@ -34,7 +35,7 @@
 <body ng-app="cargo">
 
     <div id="wrapper">        
-        <div id='navigation'>
+        <div id='navigation' ng-show="globals.authorized">
             <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
@@ -191,27 +192,15 @@
             </nav>
         </div>
         
-        <div id='page-wrapper'>
+        <div id='page-wrapper' ng-style="{ 'width' : (globals.authorized === true) ? '100%' : '70%' }">
             <div ui-view="view"></div>            
         </div>
     </div>
-    
-    <!--menu-->
-    <!--<div mega-menu></div>-->
-
-    <!-- views-->
-    
-    
 
 
-
-    <!-- Application -->
+    <!-- application -->
     <script src="app/config.js"></script>
     <script src="app/app.js"></script>
-
-    <!-- authentication -->
-    <script src="app/components/authentication/loginController.js"></script>
-    <script src="app/components/authentication/authenticationService.js"></script>
 
     <!-- common -->
     <script src="app/common/common.js"></script>
@@ -219,9 +208,11 @@
     <!-- services -->
     <script src="app/services/baseService.js"></script>
     <script src="app/services/mainService.js"></script>
+    <script src="app/services/authenticationService.js"></script>
     <!-- controller -->
     <script src="app/controllers/baseController.js"></script>
     <script src="app/controllers/mainController.js"></script>
+    <script src="app/controllers/loginController.js"></script>
     <!-- directives -->
     <script src="app/directives/megaMenu.js"></script>
     <script src="app/directives/searchControl.js"></script>
