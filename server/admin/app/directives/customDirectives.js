@@ -28,7 +28,7 @@
                     }                    
                 }
             };
-        })
+        })        
         .directive('mainMenu', ['$rootScope', '$http', '$cookieStore', function ($rootScope, $http, $cookieStore) {			
             return {
 				restrict: 'EA',
