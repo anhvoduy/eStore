@@ -76,28 +76,28 @@ server.use(function (error, request, response, next) {
 });
 
 /* ----------- Register Admin Site -----------*/
-if(config.debugMode){
-	server.use('/app', express.static(path.join(__dirname, 'client/app')));
-	server.use('/img', express.static(path.join(__dirname, 'client/img')));
-	server.use('/libs', express.static(path.join(__dirname, 'client/libs')));
-}else{
-	server.use('/app', express.static(path.join(__dirname, 'build/app')));
-	server.use('/img', express.static(path.join(__dirname, 'build/img')));
-	server.use('/libs', express.static(path.join(__dirname, 'build/libs')));
-}
+// if(config.debugMode){
+// 	server.use('/app', express.static(path.join(__dirname, 'client/app')));
+// 	server.use('/img', express.static(path.join(__dirname, 'client/img')));
+// 	server.use('/libs', express.static(path.join(__dirname, 'client/libs')));
+// }else{
+// 	server.use('/app', express.static(path.join(__dirname, 'build/app')));
+// 	server.use('/img', express.static(path.join(__dirname, 'build/img')));
+// 	server.use('/libs', express.static(path.join(__dirname, 'build/libs')));
+// }
 
 //register Site Collections
-server.get('/', function (req, res, next) {
-	if(config.debugMode) 
-		res.sendFile(path.join(__dirname + '/client/index.html'));
-	else 
-		res.sendFile(path.join(__dirname + '/build/index.html'));	
-});
+// server.get('/', function (req, res, next) {
+// 	if(config.debugMode) 
+// 		res.sendFile(path.join(__dirname + '/client/index.html'));
+// 	else 
+// 		res.sendFile(path.join(__dirname + '/build/index.html'));	
+// });
 
 //register Publish Site
-server.use('/publish', express.static(path.join(__dirname, 'publish')));
-server.get('/publish', function(req, res, next){
-	res.sendFile(path.join(__dirname + '/publish/default.html'));
+server.use('/', express.static(path.join(__dirname, 'publish')));
+server.get('/', function(req, res, next){
+	res.sendFile(path.join(__dirname + '/default.html'));
 });
 
 //register Admin Site

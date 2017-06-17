@@ -1,0 +1,60 @@
+﻿<div class="container" ng-cloak>
+	<h2>Account Management</h2>
+
+    <form name="frmAccount" class="form-horizontal">
+        <div class="form-group">
+            <div class='control-label col-sm-8 message-error'
+                 ng-show='(vm.messageError.length > 0)'>{{ vm.messageError }}</div>
+        </div>
+
+        <div class="form-group">
+            <label for="acctNo" class="col-sm-2 control-label">Account No</label>
+            <div class="col-sm-6">
+                <input name="acctNo" ng-model="vm.account.AccountNo" class="form-control" placeholder="account no" required maxlength="20" />
+            </div>
+            <div class='control-label col-sm-8 message-error'
+                 ng-show='frmAccount.acctNo.$dirty && frmAccount.acctNo.$invalid'>Please input Acct No</div>
+        </div>
+
+        <div class="form-group">
+            <label for="acctName" class="col-sm-2 control-label">Account Name</label>
+            <div class="col-sm-6">
+                <input name="acctName" ng-model="vm.account.AccountName" class="form-control" placeholder="account name" required maxlength="45" />
+            </div>
+            <div class='control-label col-sm-8 message-error'
+                 ng-show='frmAccount.acctName.$dirty && frmAccount.acctName.$invalid'>Please input Acct Name</div>
+        </div>
+
+
+        <div class="form-group">
+            <label for="acctDescription" class="col-sm-2 control-label">Description</label>
+            <div class="col-sm-6">
+                <input name="acctDescription" ng-model="vm.account.Description" class="form-control" placeholder="description" required maxlength="50" />
+            </div>
+            <div class='control-label col-sm-8 message-error'
+                 ng-show='frmAccount.acctDescription.$dirty && frmAccount.acctDescription.$invalid'>Please input description</div>
+        </div>
+
+        <div class="form-group">
+            <div class='control-label col-sm-8 message-success'
+                 ng-show='(vm.messageSuccess.length > 0)'>{{ vm.messageSuccess }}</div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <input type="button" 
+                       class="btn" 
+                       value="Save" 
+                       ng-click="vm.save()" 
+                       ng-disabled="vm.disabledButton"/>
+
+                <input type="button" 
+                       class="btn" 
+                       value="Cancel" 
+                       ng-click="vm.cancel()" 
+                       ng-disabled="vm.disabledButton"/>
+            </div>            
+        </div>
+    </form>
+</div>
+   

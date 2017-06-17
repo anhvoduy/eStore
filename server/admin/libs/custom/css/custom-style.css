@@ -1,0 +1,33 @@
+﻿.row.row-table {
+    margin-right: 50px;
+}
+.message-error {
+    color: red;    
+}
+.message-success {
+    color: green;    
+}
+.control-readonly {
+    background-color: white !important;
+}
+
+.main-content {
+    padding-top: 80px;
+}
+
+.form-login {
+    max-width: 600px;
+    margin: auto;
+}
+
+.btn-login {
+    float: left;
+}
+
+.home-image {
+	width: 100%;
+}
+
+.loginWidth {
+    width: 100%;
+}

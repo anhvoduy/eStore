@@ -1,0 +1,37 @@
+﻿<div search-control></div>
+
+<div class="container" ng-cloak>
+    <div class="row">
+        <h2>Stock In</h2>
+    </div>
+
+    <div class="row row-table">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Stock Id</th>
+                    <th>Stock No</th>
+                    <th>Stock Date</th>                    
+                    <th>Total Amount</th>                    
+                    <th>Currency</th>                    
+                    <th>Edit</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="stock in stocks">
+                    <td>{{ stock.StockId }}</td>
+                    <td>{{ stock.StockNo }}</td>
+                    <td>
+                        <span ng-format-date>{{ stock.StockDate }}</span>
+                    </td> 
+                    <td>{{ stock.TotalAmount }}</td>
+                    <td>{{ stock.Currency }}</td>
+                    <td><a ui-sref="stockInDetail({ stockId: stock.stockId })">Edit</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="row message-error" ng-show='(messageError.length > 0)'>{{ messageError }}</div>
+    <div class="row message-success" ng-show='(messageSuccess.length > 0)'>{{ messageSuccess }}</div>
+</div>
