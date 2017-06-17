@@ -9,6 +9,36 @@
         navigationService.prototype = new baseService('api/navigation');
         navigationService.prototype.constructor = navigationService;
         
+        var navigation = [
+            {
+                url: '/index',
+                title: 'Dashboard'
+            },
+            {
+                url: '/charts',
+                title: 'Charts'
+            },
+            {
+                url: '/tables',
+                title: 'Tables'
+            },
+            {
+                url: '/forms',
+                title: 'Forms'
+            },
+            {
+                url: '/bootstrap-elements',
+                title: 'Bootstrap Elements'
+            },
+            {
+                url: '/bootstrap-grid',
+                title: 'Bootstrap Grid'
+            },
+            {
+                url: '',
+                title: 'Dropdown'                
+            }
+        ];
         // methods
         navigationService.prototype.getNavigation = function () {
             var url = String.format('{0}', this.api);

@@ -35,6 +35,24 @@ app.config(function ($stateProvider) {
 			}
 		}
 	})
+	.state('dashboard', {
+		url: '/dashboard',
+		views: {
+			'view': {
+				templateUrl: 'app/views/dashboard.tpl.html',
+				controller: 'dashboardController'
+			}
+		}
+	})
+	.state('chart', {
+		url: '/chart',
+		views: {
+			'view': {
+				templateUrl: 'app/views/chart.tpl.html',
+				controller: 'chartController'
+			}
+		}
+	})
 	.state('brand', {
 		url: '/brand',
 		views: {
