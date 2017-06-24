@@ -5,10 +5,11 @@
   "main": "app.js",
   "author": {
     "name": "duyanh",
-    "email": "voduyanh1984@gmail.com"
+    "email": "duyanh2005@gmail.com"
   },
   "scripts": {
-    "test": "./node_modules/.bin/mocha --reporter spec"
+    "test": "./node_modules/.bin/mocha --reporter spec",
+    "start": "node app.js"
   },
   "dependencies": {
     "axios": "^0.15.2",
@@ -38,9 +39,3 @@
     "supertest": "^1.2.0"
   }
 }
-
-/*
-  dependencies
-  "mssql": "^4.0.4",
-  "express-redis-cache": "^0.4.2",
-*/
