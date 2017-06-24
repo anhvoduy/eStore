@@ -103,7 +103,7 @@ server.get('/', function(req, res, next){
 //register Admin Site
 server.use('/admin', express.static(path.join(__dirname, 'admin')));
 server.get('/admin', function(req, res, next){
-	res.sendFile(path.join(__dirname + '/admin/index.html'));
+	res.sendFile(path.join(__dirname + '/admin/default.html'));
 });
 
 // export
