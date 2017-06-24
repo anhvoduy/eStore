@@ -17,4 +17,4 @@ For start review:
 
 - download and install redis at: https://redis.io/
 
-
+- deploy to azure: https://docs.microsoft.com/en-us/azure/app-service-web/app-service-web-tutorial-nodejs-mongodb-app
