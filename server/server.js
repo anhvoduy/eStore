@@ -11,7 +11,7 @@ var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var responseTime = require('response-time');
 var axios = require('axios');
-var redis = require('redis');
+//var redis = require('redis');
 
 var auth = require('./config/auth');
 var config = require('./config/config');
@@ -32,11 +32,11 @@ server.set('secretKey', config.secretKey); // secret variable
 
 
 // create a new redis client and connect to our local redis instance
-var client = redis.createClient();
-//if an error occurs, print it to the console
-client.on('error', function (err) {
-    console.log("Error " + err);
-});
+// var client = redis.createClient();
+// //if an error occurs, print it to the console
+// client.on('error', function (err) {
+//     console.log("Error " + err);
+// });
 
 // call the GitHub API to fetch information about the user's repositories
 // function getUserRepositories(user) {
