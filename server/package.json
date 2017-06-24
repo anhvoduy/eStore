@@ -23,6 +23,7 @@
     "jsonwebtoken": "^7.1.9",
     "method-override": "^1.0.0",
     "morgan": "^1.7.0",
+    "mssql": "^4.0.4",
     "mysql": "^2.11.1",
     "passport": "^0.3.0",
     "passport-local": "^1.0.0",
