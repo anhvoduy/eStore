@@ -32,7 +32,7 @@ router.get('/', function (req, res, next) {
 
 //router.post('/', cache.route({ name: 'post_api' }), function (req, res, next) {
 router.post('/', function (req, res, next) {
-    res.json({ message: 'eCargo method POST() is success' });
+    res.json({ message: 'eAccounting method POST() is success' });
     console.log('%s %s — %s', (new Date).toString(), req.method, req.url);
     next();
 });
