@@ -20,9 +20,9 @@ app.config(function ($stateProvider) {
 	.state('login', {
 		url: '/login',
 		views: {
-			"view": {
-				templateUrl: "app/views/login.tpl.html",
-				controller: "loginController"
+			'view': {
+				templateUrl: 'app/views/login.tpl.html',
+				controller: 'loginController'
 			}
 		},
 		showMenus: false
@@ -30,8 +30,8 @@ app.config(function ($stateProvider) {
 	.state('logout', {
 		url: '/logout',
 		views: {
-			"view": {
-				templateUrl: "app/views/logout.tpl.html",
+			'view': {
+				templateUrl: 'app/views/logout.tpl.html',
 			}
 		}
 	})
@@ -43,7 +43,7 @@ app.config(function ($stateProvider) {
 				controller: 'dashboardController'
 			}
 		}
-	})
+	})	
 	.state('chart', {
 		url: '/chart',
 		views: {
@@ -53,219 +53,20 @@ app.config(function ($stateProvider) {
 			}
 		}
 	})
-	.state('brand', {
-		url: '/brand',
+	.state('form', {
+		url: '/form',
 		views: {
 			'view': {
-				templateUrl: '/admin/app/components/brand/views/brand.tpl.html',
-				controller: 'brandController'
-			}
-		}
-	})
-	.state('brandCreate', {
-        url: '/brand/create',
-        parentState: 'brand',
-		views: {
-			'view': {
-				templateUrl: '/admin/app/components/brand/views/brandDetail.tpl.html',
-				controller: 'BrandDetailController'
-			}
-		}
-	})
-	.state('brandDetail', {
-        url: '/brand/:brandId',
-        parentState: 'brand',
-		views: {
-			'view': {
-				templateUrl: '/admin/app/components/brand/views/brandDetail.tpl.html',
-				controller: 'BrandDetailController'
-			}
-		}
-	})
-	.state('product', {
-		url: "/product",
-		views: {
-			"view": {
-				templateUrl: "/admin/app/components/product/views/product.tpl.html",
-				controller: "ProductController",
-				controllerAs: 'vm'
-			}
-		}
-	}).state('productDetail', {
-        url: "/product/:productID",
-        parentState: 'product',
-		views: {
-			"view": {
-				templateUrl: "/admin/app/components/product/views/productDetail.tpl.html",
-				controller: "productDetailController",
-				controllerAs: 'vm'
-			}
-		}
-	}).state('reviewProduct', {
-		url: "/review/:productID",
-		views: {
-			"view": {
-				templateUrl: "/admin/app/components/product/views/productReview.tpl.html"
-			}
-		}
-	})
-    .state('cashIn', {
-        url: "/cash/cashIn",
-        views: {
-            "view": {
-                templateUrl: "/admin/app/components/cash/views/cashIn.tpl.html",
-                controller: "cashInController",
-                controllerAs: 'vm'
-            }
-        }
-    })
-    .state('cashInDetail', {
-        url: "/cash/cashIn/:transactionID",
-        parentState: 'cashIn',
-        views: {
-            "view": {
-                templateUrl: "/admin/app/components/cash/views/cashInDetail.tpl.html",
-                controller: "cashInDetailController",
-                controllerAs: 'vm'
-            }
-        }
-    })
-	.state('cashOut', {
-		url: "/cash/cashOut",
-		views: {
-			"view": {
-				templateUrl: "/admin/app/components/cash/views/cashOut.tpl.html",
-				controller: "cashOutController",
-				controllerAs: 'vm'
-			}
-		}
-    })
-    .state('cashOutDetail', {
-        url: "/cash/cashOut/:transactionID",
-        parentState: 'cashOut',
-        views: {
-            "view": {
-                templateUrl: "/admin/app/components/cash/views/cashOutDetail.tpl.html",
-                controller: "cashOutDetailController",
-                controllerAs: 'vm'
-            }
-        }
-    })
-	.state('inventory', {
-		url: "/inventory",
-		views: {
-			"view": {
-				templateUrl: "/admin/app/components/inventory/views/inventory.tpl.html"
-			}
-		}
-	})
-	.state('stockIn', {
-		url: "/stockIn",
-		views: {
-			"view": {
-				templateUrl: "/admin/app/components/inventory/views/stockIn.tpl.html",
-				controller: "stockInController",
-			}
-		}
-	})
-	.state('stockOut', {
-		url: "/stockOut",
-		views: {
-			"view": {
-				templateUrl: "/admin/app/components/inventory/views/stockOut.tpl.html",
-				controller: "stockOutController",
-			}
-		}
-	})
-	.state('stockBalance', {
-		url: "/stockBalance",
-		views: {
-			"view": {
-				templateUrl: "/admin/app/components/inventory/views/stockBalance.tpl.html"
-			}
-		}
-	})
-	.state('stockReport', {
-		url: "/stockReport",
-		views: {
-			"view": {
-				templateUrl: "/admin/app/components/inventory/views/stockReport.tpl.html"
-			}
-		}
-	})
-	.state('account', {
-		url: "/account",
-		views: {
-			"view": {
-				templateUrl: "/admin/app/components/account/views/account.tpl.html",
-				controller: "accountController",
-				controllerAs: 'vm'
-			}
-		}
-	})
-	.state('accountDetail', {
-		url: '/account/:accountID',
-		parentState: 'account',
-		views: {
-			"view": {
-				templateUrl: "/admin/app/components/account/views/accountDetail.tpl.html",
-				controller: "accountDetailController",
-				controllerAs: 'vm'
-			}
-		}
-	})
-	.state('user', {
-		url: "/user",
-		views: {
-			"view": {
-				templateUrl: "/admin/app/components/user/views/user.tpl.html",
-				controller: "UserController",
-				controllerAs: 'vm'
-			}
-		}
-	})
-	.state('userDetail', {
-		url: '/user/:userID',
-		views: {
-			"view": {
-				templateUrl: "/admin/app/components/user/views/userDetail.tpl.html",
-				controller: "UserDetailController",
-				controllerAs: 'vm'
+				templateUrl: 'app/views/form.tpl.html',
+				controller: 'formController'
 			}
 		}
 	})	
-	.state("search", {
-		url: "/search",
-		views: {
-			"view": {
-				templateUrl: "/admin/app/components/search/views/search.tpl.html",
-				controller: "searchController",
-			}
-		}
-	})
-	.state("help", {
-		url: "/help",
-		views: {
-			"view": {
-				templateUrl: "/admin/app/views/help.tpl.html"
-			}
-		}
-	})
-	.state("sample", {
-		url: "/sample",
-		views: {
-			"view": {
-				templateUrl: "/admin/app/views/main.tpl.html",
-				controller: "mainController",
-				controllerAs: 'vm'
-			}
-		}
-	})
-	.state("otherwise", {
+	.state('otherwise', {
 		url: '/error',
 		views: {
-			"view": {
-				templateUrl: "/admin/app/views/error.tpl.html"
+			'view': {
+				templateUrl: '/app/views/error.tpl.html'
 			}
 		}
 	});

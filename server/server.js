@@ -11,7 +11,7 @@ var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var responseTime = require('response-time');
 var axios = require('axios');
-var redis = require('redis');
+//var redis = require('redis');
 
 var auth = require('./config/auth');
 var config = require('./config/config');
@@ -32,11 +32,11 @@ server.set('secretKey', config.secretKey); // secret variable
 
 
 // create a new redis client and connect to our local redis instance
-var client = redis.createClient();
-//if an error occurs, print it to the console
-client.on('error', function (err) {
-    console.log("Error " + err);
-});
+// var client = redis.createClient();
+// //if an error occurs, print it to the console
+// client.on('error', function (err) {
+//     console.log("Error " + err);
+// });
 
 // call the GitHub API to fetch information about the user's repositories
 // function getUserRepositories(user) {
@@ -53,7 +53,7 @@ client.on('error', function (err) {
 // }
 
 // set up the response-time middleware
-server.use(responseTime());
+//server.use(responseTime());
 
 /* ----------- Register API -----------*/
 server.use('/api', require('./routes/api'));
@@ -94,17 +94,12 @@ server.use(function (error, request, response, next) {
 // 		res.sendFile(path.join(__dirname + '/build/index.html'));	
 // });
 
+
 //register Publish Site
-server.use('/', express.static(path.join(__dirname, 'publish')));
-server.get('/', function(req, res, next){
-	res.sendFile(path.join(__dirname + '/default.html'));
-});
+server.use('/', express.static(path.join(__dirname, 'publish'), { index: 'default.html' }));
 
 //register Admin Site
-server.use('/admin', express.static(path.join(__dirname, 'admin')));
-server.get('/admin', function(req, res, next){
-	res.sendFile(path.join(__dirname + '/admin/index.html'));
-});
+server.use('/admin', express.static(path.join(__dirname, 'admin'), { index: 'default.html' }));
 
 // export
 module.exports = server;
