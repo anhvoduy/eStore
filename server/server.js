@@ -12,6 +12,11 @@ var session = require('express-session');
 var responseTime = require('response-time');
 var axios = require('axios');
 //var redis = require('redis');
+/*
+  dependencies
+  "mssql": "^4.0.4",
+  "express-redis-cache": "^0.4.2",
+*/
 
 var auth = require('./config/auth');
 var config = require('./config/config');
