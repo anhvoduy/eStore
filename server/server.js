@@ -100,10 +100,8 @@ server.use(function (error, request, response, next) {
 // });
 
 
-//register Publish Site
-server.use('/', express.static(path.join(__dirname, 'publish'), { index: 'default.html' }));
 
-//register Admin Site
+server.use('/', express.static(path.join(__dirname, 'publish'), { index: 'default.html' }));
 server.use('/admin', express.static(path.join(__dirname, 'admin'), { index: 'default.html' }));
 
 // export
