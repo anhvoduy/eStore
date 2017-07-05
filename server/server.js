@@ -3,28 +3,15 @@ var express = require('express');
 var http = require('http');
 var path = require("path");
 var passport = require('passport');
-var flash = require('connect-flash');
 var jwt = require('jsonwebtoken');
-//var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
-var session = require('express-session');
-var responseTime = require('response-time');
-var axios = require('axios');
-//var redis = require('redis');
-/*
-  dependencies:
-  "mssql": "^4.0.4",
-  "express-redis-cache": "^0.4.2",
-*/
-
 var auth = require('./config/auth');
 var config = require('./config/config');
 var errorHelper = require('./config/errorHelper');
 
 // Express
 var server = express();
-//server.use(morgan('dev'));  // log every request to the console
 server.use(cookieParser()); // read cookies (needed for auth)
 server.use(bodyParser.urlencoded({ extended: true }));
 server.use(bodyParser.json());
@@ -35,33 +22,9 @@ auth.setup(server);
 server.set('port', 3000);
 server.set('secretKey', config.secretKey); // secret variable
 
-
-// create a new redis client and connect to our local redis instance
-// var client = redis.createClient();
-// //if an error occurs, print it to the console
-// client.on('error', function (err) {
-//     console.log("Error " + err);
-// });
-
-// call the GitHub API to fetch information about the user's repositories
-// function getUserRepositories(user) {
-//     var githubEndpoint = 'https://api.github.com/users/' + user + '/repos' + '?per_page=100';
-//     console.log('URL:' + githubEndpoint);
-//     return axios.get(githubEndpoint);
-// }
-
-// add up all the stars and return the total number of stars across all repositories
-// function computeTotalStars(repositories) {
-//     return repositories.data.reduce(function (prev, curr) {
-//         return prev + curr.stargazers_count
-//     }, 0);
-// }
-
-// set up the response-time middleware
-//server.use(responseTime());
-
-
-/* ----------- Register API -----------*/
+/**
+ * Register API 
+ */
 server.use('/api', require('./routes/api'));
 server.use('/api/account', require('./routes/account'));
 server.use('/api/brand', require('./routes/brand'));
