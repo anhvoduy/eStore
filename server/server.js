@@ -13,7 +13,7 @@ var responseTime = require('response-time');
 var axios = require('axios');
 //var redis = require('redis');
 /*
-  dependencies
+  dependencies:
   "mssql": "^4.0.4",
   "express-redis-cache": "^0.4.2",
 */
@@ -60,6 +60,7 @@ server.set('secretKey', config.secretKey); // secret variable
 // set up the response-time middleware
 //server.use(responseTime());
 
+
 /* ----------- Register API -----------*/
 server.use('/api', require('./routes/api'));
 server.use('/api/account', require('./routes/account'));
@@ -74,35 +75,41 @@ server.use('/api/search', require('./routes/search'));
 server.use('/api/transaction', require('./routes/transaction'));
 server.use('/api/user', require('./routes/user'));
 
-/* ----------- Error Handling -----------*/
+
+
+/**
+ * Error Handling
+ * this is middleware to handle error
+ */
 server.use(function (error, request, response, next) {
 	response.status(500);
 	response.json(errorHelper.errorHandler(error));
 });
 
-/* ----------- Register Admin Site -----------*/
-// if(config.debugMode){
-// 	server.use('/app', express.static(path.join(__dirname, 'client/app')));
-// 	server.use('/img', express.static(path.join(__dirname, 'client/img')));
-// 	server.use('/libs', express.static(path.join(__dirname, 'client/libs')));
-// }else{
-// 	server.use('/app', express.static(path.join(__dirname, 'build/app')));
-// 	server.use('/img', express.static(path.join(__dirname, 'build/img')));
-// 	server.use('/libs', express.static(path.join(__dirname, 'build/libs')));
-// }
 
-//register Site Collections
-// server.get('/', function (req, res, next) {
-// 	if(config.debugMode) 
-// 		res.sendFile(path.join(__dirname + '/client/index.html'));
-// 	else 
-// 		res.sendFile(path.join(__dirname + '/build/index.html'));	
-// });
+/**
+ * register inventory site
+ * public folder
+ * default page as SPA
+ */
+if(config.debugMode){
+	server.use('/app', express.static(path.join(__dirname, 'client/app')));
+	server.use('/img', express.static(path.join(__dirname, 'client/img')));
+	server.use('/libs', express.static(path.join(__dirname, 'client/libs')));
+}
+else{
+	server.use('/app', express.static(path.join(__dirname, 'build/app')));
+	server.use('/img', express.static(path.join(__dirname, 'build/img')));
+	server.use('/libs', express.static(path.join(__dirname, 'build/libs')));
+}
 
-
-
-server.use('/', express.static(path.join(__dirname, 'publish'), { index: 'default.html' }));
-server.use('/admin', express.static(path.join(__dirname, 'admin'), { index: 'default.html' }));
+// register SPA
+server.get('/', function (req, res, next) {
+	if(config.debugMode) 
+		res.sendFile(path.join(__dirname + '/client/index.html'));
+	else 
+		res.sendFile(path.join(__dirname + '/build/index.html'));	
+});
 
 // export
 module.exports = server;
