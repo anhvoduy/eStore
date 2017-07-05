@@ -2,7 +2,6 @@
 var express = require('express');
 var router = express.Router();
 var q = require('q');
-var throat = require('throat');
 var auth = require('../config/auth');
 var constant = require('../config/constant');
 var dbContext = require('../config/dbContext');
@@ -12,7 +11,8 @@ var userService = require('../services/userService');
 // Routers
 router.get('/items', auth.checkAuthentication(), function (req, res, next) {
 	var ctx = {};
-    dbContext.getConnection().then(function (result) {
+    dbContext.getConnection()
+    .then(function (result) {
 		ctx = result;
         return userService.getUsers(ctx);
     }).then(function (users) {
@@ -73,16 +73,16 @@ router.get('/profile', auth.checkAuthentication(), function (req, res, next) {
     .then(function (users) {
         user = users[0];		
     })
-    .then(function(){
-        var promises = peoples.map(throat(1, function(item){
-            var timeout = item.sex === true? 0: 1000;
-            return q.delay(timeout).then(function(){
-                //console.log('- item.name:', item.name);
-                return getPromise(item);
-            }).done();            
-        }));
-        return q.allSettled(promises);
-    })
+    // .then(function(){
+    //     var promises = peoples.map(throat(1, function(item){
+    //         var timeout = item.sex === true? 0: 1000;
+    //         return q.delay(timeout).then(function(){
+    //             //console.log('- item.name:', item.name);
+    //             return getPromise(item);
+    //         }).done();            
+    //     }));
+    //     return q.allSettled(promises);
+    // })
     .then(function(){
         res.status(200).json(user);
     })

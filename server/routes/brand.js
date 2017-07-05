@@ -13,21 +13,23 @@ router.get('/items', function (req, res, next) {
 	var brands;
 	var ctx;
 
-	return Q.when()
+	Q.when()
 	.then(function(){
-		return dbContext.getConnection();
+		return dbContext.getConnection().then(function(connection){
+			ctx = connection;
+		});
 	})
-	.then(function(ctx){
+	.then(function(){		
 		return brandService.getBrands(ctx).then(function(data){
 			brands = data;
 		});
 	})
-	.then(function(){
-		res.status(200).json(brands);
+	.then(function(){		
+		return res.status(200).json(brands);
 	})
 	.catch(function(err){
-		ctx.release();
-		next(error);
+		ctx.rollbackTransaction();
+		next(err);
 	})
 	.done();
 });
@@ -36,11 +38,12 @@ router.get('/items/:id', function (req, res, next) {
 	var brandId = req.params.id;
 	var ctx = {};
 
-	return Q.when()
+	Q.when()
 	.then(function () {
-		return dbContext.getConnection();
-	}).then(function (con) {
-		ctx = con;
+		return dbContext.getConnection().then(function(connection){
+			ctx = connection;
+		});
+	}).then(function () {
 		return brandService.getBrands(ctx);
 	}).then(function (brands) {
 		if (brands.length == 0) {
@@ -48,11 +51,11 @@ router.get('/items/:id', function (req, res, next) {
 		} else {
 			res.status(200).json(brands[0]);
 		}
-	}).catch(function (error) {
-		next(error);
-	}).finally(function () {
-		ctx.release();
-	});
+	}).catch(function (err) {
+		ctx.rollbackTransaction();
+		next(err);
+	})
+	.done();
 });
 
 router.post('/create', auth.checkAuthentication(), function (req, res, next) {
@@ -77,12 +80,11 @@ router.put('/update', auth.checkAuthentication(), function (req, res, next) {
 		return ctx.commitTransaction();
 	}).then(function () {
         res.status(200).json({ code: 'UPDATE_BRAND_SUCCESS', message: "Update Brand is success." });
-	}).catch(function (error) {
-		ctx.rollbackTransaction();        
-        next(error);
-	}).done(function () {
-		ctx.release();		
-	});
+	}).catch(function (err) {
+		ctx.rollbackTransaction();
+        next(err);
+	})
+	.done();
 });
 
 router.delete('/delete', auth.checkAuthentication(), function (req, res, next) {

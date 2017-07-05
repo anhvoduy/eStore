@@ -3,35 +3,35 @@ var Q = require('q');
 var dbHelper = require('../config/dbHelper');
 
 // Constructor
-var factory = function () { 
+var Factory = function () { 
 }
 
-factory.getAccounts = function (ctx, condition) {
+Factory.prototype.getAccounts = function (ctx, condition) {
 	var sql = 'SELECT AccountId, AccountNo, AccountName, Description FROM tblAccount WHERE Deleted = 0 ORDER BY AccountId ASC';
 	return ctx.queryCommand(sql);
 }
 
-factory.getAccountById = function (ctx, accountId) {
+Factory.prototype.getAccountById = function (ctx, accountId) {
 	var sql = dbHelper.prepareQueryCommand('SELECT AccountId, AccountNo, AccountName, Description FROM tblAccount WHERE AccountId = ?', [accountId]);
 	return ctx.queryCommand(sql);    
 }
 
-factory.createAccount = function (ctx, account) {
+Factory.prototype.createAccount = function (ctx, account) {
     var sql = dbHelper.prepareQueryCommand('UPDATE tblAccount SET Acct = ?, Name = ?, Description = ? WHERE AccountId = ?',
         [account.Acct, account.Name, account.Description, account.AccountId]);
     return ctx.queryCommand(sql);
 }
 
-factory.updateAccount = function (ctx, account) {
+Factory.prototype.updateAccount = function (ctx, account) {
 	var sql = dbHelper.prepareQueryCommand('UPDATE tblAccount SET Acct = ?, Name = ?, Description = ? WHERE AccountId = ?', 
 		[account.Acct, account.Name, account.Description, account.AccountId]);
 	return ctx.queryCommand(sql);
 }
 
-factory.deleteAccount = function (ctx, account) {
+Factory.prototype.deleteAccount = function (ctx, account) {
     var sql = dbHelper.prepareQueryCommand('UPDATE tblAccount SET Acct = ?, Name = ?, Description = ? WHERE AccountId = ?',
         [account.Acct, account.Name, account.Description, account.AccountId]);
     return ctx.queryCommand(sql);
 }
 // Export
-module.exports = factory;
+module.exports = new Factory;
