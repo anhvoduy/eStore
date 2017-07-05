@@ -28,7 +28,7 @@ router.get('/items', function (req, res, next) {
 		return res.status(200).json(brands);
 	})
 	.catch(function(err){
-		ctx.release();
+		ctx.rollbackTransaction();
 		next(err);
 	})
 	.done();
@@ -38,11 +38,12 @@ router.get('/items/:id', function (req, res, next) {
 	var brandId = req.params.id;
 	var ctx = {};
 
-	return Q.when()
+	Q.when()
 	.then(function () {
-		return dbContext.getConnection();
-	}).then(function (con) {
-		ctx = con;
+		return dbContext.getConnection().then(function(connection){
+			ctx = connection;
+		});
+	}).then(function () {
 		return brandService.getBrands(ctx);
 	}).then(function (brands) {
 		if (brands.length == 0) {
@@ -51,10 +52,10 @@ router.get('/items/:id', function (req, res, next) {
 			res.status(200).json(brands[0]);
 		}
 	}).catch(function (err) {
+		ctx.rollbackTransaction();
 		next(err);
-	}).finally(function () {
-		ctx.release();
-	});
+	})
+	.done();
 });
 
 router.post('/create', auth.checkAuthentication(), function (req, res, next) {
@@ -80,11 +81,10 @@ router.put('/update', auth.checkAuthentication(), function (req, res, next) {
 	}).then(function () {
         res.status(200).json({ code: 'UPDATE_BRAND_SUCCESS', message: "Update Brand is success." });
 	}).catch(function (err) {
-		ctx.rollbackTransaction();        
+		ctx.rollbackTransaction();
         next(err);
-	}).done(function () {
-		ctx.release();		
-	});
+	})
+	.done();
 });
 
 router.delete('/delete', auth.checkAuthentication(), function (req, res, next) {

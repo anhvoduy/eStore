@@ -12,7 +12,7 @@ Factory.prototype.getBrands = function (ctx) {
 }
 
 Factory.prototype.getBrandById = function (ctx, brandId) {
-	var sql = dbHelper.prepareQueryCommand(`SELECT BrandId, Name, Description FROM tblbrand WHERE brandId = ?`, [brandId]);
+	var sql = dbHelper.prepareQueryCommand(`SELECT BrandId, Name, Description FROM tblbrand WHERE BrandId = ?`, [brandId]);
 	return ctx.queryCommand(sql);    
 }
 
