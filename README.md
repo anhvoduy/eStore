@@ -9,12 +9,11 @@ For start review:
 - type:	npm install
 - type: node app
 - then, api and web application will run on port 3000 by default
-- to access web application publish: http://localhost:3000/
-- to access web application admin: http://localhost:3000/admin
+- to access web application: http://localhost:3000/
 
 - download elasticsearch at: https://www.elastic.co/guide/en/elasticsearch/reference/current/windows.html/
-- to access web application: http://localhost:9200/
+- to access web application: http://localhost:9200/ (but also not connect to elastic)
 
-- download and install redis at: https://redis.io/
+- download and install redis at: https://redis.io/ (but also remove redis)
 
 - deploy to azure: https://docs.microsoft.com/en-us/azure/app-service-web/app-service-web-tutorial-nodejs-mongodb-app
