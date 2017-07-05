@@ -7,6 +7,9 @@
     "name": "duyanh",
     "email": "duyanh2005@gmail.com"
   },
+  "engines": {
+    "node": ">=6.9.1"
+  },
   "scripts": {
     "test": "./node_modules/.bin/mocha --reporter spec",
     "start": "node app.js"
