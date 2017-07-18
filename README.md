@@ -1,6 +1,6 @@
 ﻿The solution includes two folders:
 - server  : API and Web Application
-- database: ndemo
+- database: estore
 please try to open file: "/demo/server/services/config.js" to setup: username & password & database name
 
 For start review:

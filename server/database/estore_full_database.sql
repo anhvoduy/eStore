@@ -15,10 +15,10 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
-DROP SCHEMA IF EXISTS `ndemo` ;
-CREATE SCHEMA `ndemo` ;
+DROP SCHEMA IF EXISTS `estore` ;
+CREATE SCHEMA `estore` ;
 
-USE `ndemo`;
+USE `estore`;
 
 --
 -- Table structure for table `tblCustomer`
