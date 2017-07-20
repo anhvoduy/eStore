@@ -53,18 +53,16 @@ server.use(function (error, request, response, next) {
  */
 var pathPublic = path.join(__dirname, 'publish');
 server.use('/', express.static(pathPublic, { index: 'index.html' }));
-server.use('/cart', express.static(pathPublic , { index: 'cart.html' }));
-server.use('/checkout', express.static(pathPublic , { index: 'checkout.html' }));
 
 
 var pathAdmin = path.join(__dirname, 'client');// client -> admin
 server.use('/app', express.static(path.join(pathAdmin, 'app')));
 server.use('/img', express.static(path.join(pathAdmin, 'img')));
 server.use('/libs', express.static(path.join(pathAdmin, 'libs')));
+server.use('/admin', express.static(pathAdmin, { index: 'index.html' }));
 
-server.get('/admin', function (req, res, next) {
-	res.sendFile(path.join(pathAdmin, 'index.html'));
-});
+
+
 
 
 // if(config.debugMode){
