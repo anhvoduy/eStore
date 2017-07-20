@@ -1,28 +1,32 @@
-
 (function(){
   'use strict';
-  var data = {
-    title: 'Our Short Story',
-    imageUrl: 'images/bg.jpg',
-    desc: 'Lorem ipsum dolor sit amet.',
-    moreInfo: 'More about info ...'
-  } 
-
+  // var data = {
+  //   title: 'Our Short Story',
+  //   imageUrl: 'images/bg.jpg',
+  //   desc: 'Lorem ipsum dolor sit amet.',
+  //   moreInfo: 'More about info ...'
+  // };  
+    
   var HeaderArea = React.createClass({
     getInitialState: function(){
-      return this.props.data;
+      return {};
+    },
+    componentDidMount: function(){
+      var component = this;
+      return $.get('http://localhost:8080/api/', function(data){
+        //console.log(data);
+        component.setState(data);
+      });
     },
     render: function(){
       return (
         <div>
           <h1>Hello, React!</h1>
-          <h2>{this.state.title}</h2>
-          <p>{this.state.desc}</p>
-          <p>{this.state.desc}</p>
+          <p>{this.state.message}</p>
         </div>        
       );
     }
   });
 
-  ReactDOM.render(<HeaderArea data={data} />, document.getElementById('root'));
+  ReactDOM.render(<HeaderArea />, document.getElementById('root'));
 })();
