@@ -53,6 +53,10 @@ server.use(function (error, request, response, next) {
  */
 var pathPublic = path.join(__dirname, 'publish');
 server.use('/', express.static(pathPublic, { index: 'index.html' }));
+// server.use('/cart', express.static(pathPublic , { index: 'cart.html' }));
+// server.use('/check-out', express.static(pathPublic , { index: 'checkout.html' }));
+// server.use('/e-shop', express.static(pathPublic , { index: 'shop.html' }));
+// server.use('/single-product', express.static(pathPublic , { index: 'single-product.html' }));
 
 
 var pathAdmin = path.join(__dirname, 'client');// client -> admin
