@@ -1,20 +1,13 @@
 (function(){
   'use strict';
-  // var data = {
-  //   title: 'Our Short Story',
-  //   imageUrl: 'images/bg.jpg',
-  //   desc: 'Lorem ipsum dolor sit amet.',
-  //   moreInfo: 'More about info ...'
-  // };  
-    
+      
   var HeaderArea = React.createClass({
     getInitialState: function(){
       return {};
     },
     componentDidMount: function(){
       var component = this;
-      return $.get('http://localhost:8080/api/myprofile', function(data){
-        //console.log(data);
+      return $.get('http://localhost:8080/api/myprofile', function(data){        
         component.setState(data);
       });
     },
