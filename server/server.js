@@ -48,8 +48,8 @@ server.use(function (error, request, response, next) {
 
 /**
  * register inventory site
- * - public site
- * - admin site
+ * - public site: react js & multiple pages
+ * - admin site: angular js & single page
  */
 var pathPublic = path.join(__dirname, 'publish');
 server.use('/', express.static(pathPublic, { index: 'index.html' }));
