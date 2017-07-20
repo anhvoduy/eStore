@@ -1,9 +1,7 @@
-﻿// Dependencies
-var uuid = require('uuid');
-var http = require('http');
+﻿var http = require('http');
 var server = require('./server');
 
 /* ----------- Start Server -----------*/
 http.createServer(server).listen(server.get('port'), function () {
-    console.log('eAccounting Web & API is running on port:' + server.get('port'));    
+    console.log('eStore Web & API is running on port:' + server.get('port'));    
 });
