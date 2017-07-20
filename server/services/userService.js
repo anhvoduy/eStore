@@ -6,6 +6,15 @@ var dbHelper = require('../config/dbHelper');
 var userService = function () { 
 }
 
+userService.prototype.myProfile = function(){
+	return {
+		firstName: 'David',
+		lastName: 'Beckham',
+		fullName: 'David Beckham',
+		club: 'Manchester United'
+	}
+}
+
 userService.prototype.getUsers = function (ctx) {
     var sql = `
 		SELECT UserId, UserKey, UserType, UserName, DisplayName, Email, Mobile, Tel, Title, DateOfBirth 
