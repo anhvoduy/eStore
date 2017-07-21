@@ -5,12 +5,16 @@
       console.log('... getInitialState() ...');
       return {};
     },
+    componentWillMount: function(){
+      console.log('... componentWillMount() ...');
+    },
     componentDidMount: function(){
+      console.log('... componentDidMount() ...');
       var component = this;      
       ProfileService.getData().then(function(data){
         component.setState(data);
       });
-    },
+    },    
     render: function(){
       return (
         <div>
