@@ -1,13 +1,13 @@
 (function(){
-  'use strict';
-      
+  'use strict';  
   var HeaderArea = React.createClass({
     getInitialState: function(){
+      console.log('... getInitialState() ...');
       return {};
     },
     componentDidMount: function(){
-      var component = this;
-      return $.get('http://localhost:8080/api/myprofile', function(data){        
+      var component = this;      
+      ProfileService.getData().then(function(data){
         component.setState(data);
       });
     },
@@ -18,6 +18,7 @@
           <p>{this.state.firstName}</p>
           <p>{this.state.lastName}</p>
           <p>{this.state.club}</p>
+          <p>{this.state.age}</p>
         </div>        
       );
     }
