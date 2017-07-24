@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "npm run build",
-    "build": "webpack -d && copy src\\index.html dist\\index.html && webpack-dev-server --content-base src\\ --inline --hot",
-    "build:prod": "webpack -d && cp src\\index.html dist\\index.html",
+    "build": "webpack -d && copy src\\*.html dist\\*.html && webpack-dev-server --content-base src\\ --inline --hot",
+    "build:prod": "webpack -d && cp src\\*.html dist\\*.html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "duyanh",
