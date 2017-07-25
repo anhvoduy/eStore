@@ -55,7 +55,7 @@ var pathPublic = path.join(__dirname, 'publish');
 server.use('/', express.static(pathPublic, { index: 'index.html' }));
 
 
-var pathAdmin = path.join(__dirname, 'client');// client -> admin
+var pathAdmin = path.join(__dirname, 'admin');
 server.use('/app', express.static(path.join(pathAdmin, 'app')));
 server.use('/img', express.static(path.join(pathAdmin, 'img')));
 server.use('/libs', express.static(path.join(pathAdmin, 'libs')));
