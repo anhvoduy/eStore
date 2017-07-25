@@ -56,10 +56,10 @@ server.use('/', express.static(pathPublic, { index: 'index.html' }));
 
 
 var pathAdmin = path.join(__dirname, 'admin');
+server.use('/admin', express.static(pathAdmin, { index: 'index.html' }));
 server.use('/app', express.static(path.join(pathAdmin, 'app')));
 server.use('/img', express.static(path.join(pathAdmin, 'img')));
 server.use('/libs', express.static(path.join(pathAdmin, 'libs')));
-server.use('/admin', express.static(pathAdmin, { index: 'index.html' }));
 
 
 
