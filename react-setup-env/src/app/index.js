@@ -4,6 +4,8 @@ import ReactDOM from 'react-dom';
 import { Header } from './components/Header';
 import { Home } from './components/Home';
 
+import { HeaderArea } from './components/HeaderArea';
+
 class App extends React.Component {
     render() {
 		var user ={
@@ -41,3 +43,5 @@ class App extends React.Component {
 }
 
 ReactDOM.render(<App/>, document.getElementById('app'));
+
+ReactDOM.render(<HeaderArea/>, document.getElementById('HeaderArea'));
