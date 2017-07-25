@@ -4,41 +4,41 @@
         <div class="form-group">
             <label for="productName" class="col-sm-2 control-label">Product Name</label>
             <div class="col-sm-6">
-                <input id="productName" ng-model="vm.product.ProductName" class="form-control" placeholder="Name" disabled/>
+                <input id="productName" ng-model="product.ProductName" class="form-control" placeholder="Name" disabled/>
             </div>
         </div>
         <div class="form-group">
             <label for="productDescription" class="col-sm-2 control-label">Description</label>
             <div class="col-sm-6">
-                <input id="productDescription" ng-model="vm.product.Description" class="form-control" placeholder="Description" disabled/>
+                <input id="productDescription" ng-model="product.Description" class="form-control" placeholder="Description" disabled/>
             </div>
         </div>
 
         <div class="form-group">
             <label for="BrandName" class="col-sm-2 control-label">Brand</label>
             <div class="col-sm-6">
-                <input id="BrandName" ng-model="vm.product.BrandName" class="form-control" placeholder="Brand" disabled/>
+                <input id="BrandName" ng-model="product.BrandName" class="form-control" placeholder="Brand" disabled/>
             </div>
         </div>
 
         <div class="form-group">
             <label for="Price" class="col-sm-2 control-label">Price</label>
             <div class="col-sm-6">
-                <input id="Price" ng-model="vm.product.Price" class="form-control" placeholder="Price" disabled/>
+                <input id="Price" ng-model="product.Price" class="form-control" placeholder="Price" disabled/>
             </div>
         </div>
 
         <div class="form-group">
             <label for="Colour" class="col-sm-2 control-label">Color</label>
             <div class="col-sm-6">
-                <input id="Colour" ng-model="vm.product.Colour" class="form-control" placeholder="Colour" disabled />
+                <input id="Colour" ng-model="product.Colour" class="form-control" placeholder="Colour" disabled />
             </div>
         </div>
 
         <div class="form-group">
             <label for="Colour" class="col-sm-2 control-label">Status</label>
             <div class="col-sm-6">
-                <input id="Status" ng-model="vm.product.Status" class="form-control" placeholder="Status" disabled />
+                <input id="Status" ng-model="product.Status" class="form-control" placeholder="Status" disabled />
             </div>
         </div>
     </form>
@@ -51,7 +51,7 @@
         <div class="form-group">
             <label for="productName" class="col-sm-2 control-label">Rating <span style="color: red">(*)</span></label>
             <div class="col-sm-6">
-                <input name="Rating" ng-model="vm.review.Rating" class="form-control" maxlength="1" numbers-only required />
+                <input name="Rating" ng-model="review.Rating" class="form-control" maxlength="1" numbers-only required />
             </div>
             <div class='control-label col-sm-8 message-error'
                  ng-show='(formReview.Rating.$dirty && formReview.Rating.$invalid)'>Please input rating (number)</div>
@@ -59,7 +59,7 @@
         <div class="form-group">
             <label for="Comment" class="col-sm-2 control-label">Comment <span style="color: red">(*)</span></label>
             <div class="col-sm-6">
-                <textarea name="Comment" type="textarea" ng-model="vm.review.Comment" class="form-control" rows="3" maxlength="200" required/>
+                <textarea name="Comment" type="textarea" ng-model="review.Comment" class="form-control" rows="3" maxlength="200" required/>
             </div>
             <div class='control-label col-sm-8 message-error'
                  ng-show='(formReview.Comment.$dirty && formReview.Comment.$invalid)'>Please input your comment</div>
@@ -67,7 +67,7 @@
         <div class="form-group">
             <label for="Email" class="col-sm-2 control-label">Email <span style="color: red">(*)</span></label>
             <div class="col-sm-6">
-                <input name="Email" type="email" ng-model="vm.review.Email" class="form-control" maxlength="30" required/>
+                <input name="Email" type="email" ng-model="review.Email" class="form-control" maxlength="30" required/>
                 <br />
                 <span>sample: avo4@hvn.com</span>
             </div>
@@ -79,12 +79,12 @@
 
         <div class="form-group">
             <div class='control-label col-sm-8 message-success'
-                 ng-show='(vm.messageSuccess.length > 0)'>{{ vm.messageSuccess }}</div>
+                 ng-show='(messageSuccess.length > 0)'>{{ messageSuccess }}</div>
         </div>
 
         <div class="form-group">
             <div class='control-label col-sm-8 message-error'
-                 ng-show='(vm.messageError.length > 0)'>{{ vm.messageError }}</div>
+                 ng-show='(messageError.length > 0)'>{{ messageError }}</div>
         </div>
 
         <div class="form-group">
@@ -92,8 +92,8 @@
                 <input type="button" 
                        class="btn" 
                        value="Save" 
-                       ng-click="formReview.$valid && vm.save()"
-                       ng-disabled="vm.disabledButton || formReview.$invalid"/>
+                       ng-click="formReview.$valid && save()"
+                       ng-disabled="disabledButton || formReview.$invalid"/>
             </div>
         </div>
     </form>

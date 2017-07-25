@@ -69,7 +69,8 @@ app.config(function ($stateProvider) {
 		url: "/review/:productID",
 		views: {
 			"view": {
-				templateUrl: "/app/components/product/views/productReview.tpl.html"
+				templateUrl: "/app/components/product/views/productReview.tpl.html",
+				controller: "productReviewController"
 			}
 		}
 	})
@@ -114,7 +115,15 @@ app.config(function ($stateProvider) {
                 controllerAs: 'vm'
             }
         }
-    })
+	})
+	.state('cashReport', {
+		url: "/cashReport",
+		views: {
+			"view": {
+				templateUrl: "/app/components/cash/views/cashReport.tpl.html"
+			}
+		}
+	})
 	.state('inventory', {
 		url: "/inventory",
 		views: {

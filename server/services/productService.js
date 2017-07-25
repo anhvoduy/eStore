@@ -43,7 +43,7 @@ factory.prototype.createReview = function (ctx, review) {
         [JSON.stringify(review), review.ProductId]
     );
 
-    return q.when()
+    return Q.when()
         .then(function () {
             return ctx.beginTransaction();
         }).then(function () {

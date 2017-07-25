@@ -1,7 +1,7 @@
 var configMySql = {
     host: 'localhost',
     user: 'root',
-    password: 'P@ssw0rd',//P@ssw0rd
+    password: '3nations',//P@ssw0rd
     database: 'estore',
     connectionLimit: 10,
     secretKey: 'ilovejavascript',

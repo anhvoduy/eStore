@@ -1,10 +1,11 @@
 ﻿// Dependencies
 var express = require('express');
 var router = express.Router();
-var q = require('q');
+var Q = require('q');
 var auth = require('../config/auth');
 var constant = require('../config/constant');
 var dbContext = require('../config/dbContext');
+var dbHelper = require('../config/dbHelper');
 var errorHelper = require('../config/errorHelper');
 var productService = require('../services/productService');
 var userService = require('../services/userService');
@@ -22,7 +23,7 @@ router.post('/add', function (request, response, next) {
     }
 
     var ctx = {};
-    q.when()
+    Q.when()
         .then(function () {
             if (!dbHelper.validateRating(review.Rating)) {
                 throw errorHelper.Error_Invalid_Rating;

@@ -17,8 +17,8 @@ server.use(bodyParser.json());
 
 // setup Server
 auth.setup(server);
-//server.set('port', process.env.PORT || 8080);
-server.set('port', 8080);
+//server.set('port', process.env.PORT || 3000);
+server.set('port', 3000);
 server.set('secretKey', config.secretKey); // secret variable
 
 // Register API 
@@ -55,11 +55,11 @@ var pathPublic = path.join(__dirname, 'publish');
 server.use('/', express.static(pathPublic, { index: 'index.html' }));
 
 
-var pathAdmin = path.join(__dirname, 'client');// client -> admin
+var pathAdmin = path.join(__dirname, 'admin');
+server.use('/admin', express.static(pathAdmin, { index: 'index.html' }));
 server.use('/app', express.static(path.join(pathAdmin, 'app')));
 server.use('/img', express.static(path.join(pathAdmin, 'img')));
 server.use('/libs', express.static(path.join(pathAdmin, 'libs')));
-server.use('/admin', express.static(pathAdmin, { index: 'index.html' }));
 
 
 
