@@ -1,6 +1,6 @@
 import React from 'react';
 
-export class Home extends React.Component{
+export class SampleHome extends React.Component{
     render(){
         console.log(this.props);
         return (
