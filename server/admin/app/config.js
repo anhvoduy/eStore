@@ -69,7 +69,8 @@ app.config(function ($stateProvider) {
 		url: "/review/:productID",
 		views: {
 			"view": {
-				templateUrl: "/app/components/product/views/productReview.tpl.html"
+				templateUrl: "/app/components/product/views/productReview.tpl.html",
+				controller: "productReviewController"
 			}
 		}
 	})
