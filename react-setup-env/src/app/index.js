@@ -5,6 +5,7 @@ import { Header } from './components/Header';
 import { Home } from './components/Home';
 
 import { HeaderArea } from './components/HeaderArea';
+import { className } from './style.css';
 
 class App extends React.Component {
     render() {
@@ -42,6 +43,5 @@ class App extends React.Component {
     }
 }
 
-ReactDOM.render(<App/>, document.getElementById('app'));
-
 ReactDOM.render(<HeaderArea/>, document.getElementById('HeaderArea'));
+ReactDOM.render(<App/>, document.getElementById('app'));
