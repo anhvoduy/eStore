@@ -5,6 +5,13 @@ import { Header } from './components/Header';
 import { Home } from './components/Home';
 
 import { HeaderArea } from './components/HeaderArea';
+import { SiteBrandingArea } from './components/SiteBrandingArea';
+import { MainMenuArea } from './components/MainMenuArea';
+import { SliderArea } from './components/SliderArea';
+import { PromoArea } from './components/PromoArea';
+import { FooterTopArea } from './components/FooterTopArea';
+import { FooterBottomArea } from './components/FooterBottomArea';
+
 import { className } from './style.css';
 
 class App extends React.Component {
@@ -42,6 +49,12 @@ class App extends React.Component {
         );
     }
 }
+//ReactDOM.render(<App/>, document.getElementById('app'));
 
 ReactDOM.render(<HeaderArea/>, document.getElementById('HeaderArea'));
-ReactDOM.render(<App/>, document.getElementById('app'));
+ReactDOM.render(<MainMenuArea/>, document.getElementById('MainMenuArea'));
+ReactDOM.render(<SiteBrandingArea/>, document.getElementById('SiteBrandingArea'));
+//ReactDOM.render(<SliderArea/>, document.getElementById('SliderArea'));
+//ReactDOM.render(<PromoArea/>, document.getElementById('PromoArea'));
+ReactDOM.render(<FooterTopArea/>, document.getElementById('FooterTopArea'));
+ReactDOM.render(<FooterBottomArea/>, document.getElementById('FooterBottomArea'));
