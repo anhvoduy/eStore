@@ -114,7 +114,15 @@ app.config(function ($stateProvider) {
                 controllerAs: 'vm'
             }
         }
-    })
+	})
+	.state('cashReport', {
+		url: "/cashReport",
+		views: {
+			"view": {
+				templateUrl: "/app/components/cash/views/cashReport.tpl.html"
+			}
+		}
+	})
 	.state('inventory', {
 		url: "/inventory",
 		views: {
