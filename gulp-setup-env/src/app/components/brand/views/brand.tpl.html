@@ -1,0 +1,39 @@
+﻿<div search-control></div>
+
+<div class="container" ng-cloak>
+    <div class="row">
+        <h2>All Brands</h2>
+        <h5>
+            <a ui-sref="brandCreate()">Create Brand</a>                
+        </h5>
+    </div>
+
+    <div class="row row-table">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Brand Id</th>
+                    <th>Brand Name</th>
+                    <th>Description</th>
+                    <!--<th>View</th>-->
+                    <th>Edit</th>                    
+                    <!--<th>Delete</th>-->
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="brand in lstBrands">
+                    <td>{{ brand.BrandId }}</td>
+                    <td>{{ brand.Name }}</td>
+                    <td>{{ brand.Description }}</td>
+                    <!--
+                        <td><a ui-sref="brandDetail({ brandId: brand.BrandId, formStatus: 3 })">View</a></td>
+                    -->
+                    <td><a ui-sref="brandDetail({ brandId: brand.BrandId, formStatus: 2 })">Edit</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="row message-error" ng-show='(messageError.length > 0)'>{{ messageError }}</div>
+    <div class="row message-success" ng-show='(messageSuccess.length > 0)'>{{ messageSuccess }}</div>
+</div>
