@@ -1,6 +1,7 @@
 ﻿// Dependencies
 var express = require('express');
 var router = express.Router();
+var cors = require('cors')
 
 // sample Authentication
 var jwt = require('jsonwebtoken');
@@ -35,7 +36,7 @@ router.post('/', function (req, res, next) {
     next();
 });
 
-router.get('/myprofile', function (req, res, next){
+router.get('/myprofile', cors(), function (req, res, next){
 	var result = userService.myProfile();
 	res.status(200).json(result);
 	next();
