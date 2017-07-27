@@ -1,6 +1,7 @@
 var webpack = require('webpack');
 var path = require('path');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 var DIST_DIR = path.resolve(__dirname, 'dist');
 var SRC_DIR = path.resolve(__dirname, 'src');
@@ -37,7 +38,13 @@ var config = {
     plugins: [
         new ExtractTextPlugin({
 			filename: "[name].css"
-		})
+		}),
+		new CopyWebpackPlugin([
+			{ 
+				from: path.join(SRC_DIR, '\\img'),
+				to: '..\\img'
+			}
+		])
     ]
 }
 
