@@ -41,9 +41,21 @@ var config = {
 		}),
 		new CopyWebpackPlugin([
 			{ 
+				from: path.join(SRC_DIR, '\\css'),
+				to: '..\\css'
+            },
+            { 
+				from: path.join(SRC_DIR, '\\fonts'),
+				to: '..\\fonts'
+            },
+            { 
 				from: path.join(SRC_DIR, '\\img'),
 				to: '..\\img'
-			}
+            },
+            { 
+				from: path.join(SRC_DIR, '\\js'),
+				to: '..\\js'
+            }
 		])
     ]
 }
