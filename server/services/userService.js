@@ -8,9 +8,10 @@ var userService = function () {
 
 userService.prototype.myProfile = function(){
 	return {
-		firstName: 'David',
-		lastName: 'Beckham',
-		fullName: 'David Beckham',
+		firstName: 'Eric',
+		lastName: 'Cantona',
+		number: '7',
+		fullName: 'Eric Cantona',
 		club: 'Manchester United'
 	}
 }
