@@ -25,33 +25,7 @@ export class SampleHome extends React.Component{
         console.log('- componentWillMount()');
     }
 
-    componentDidMount(){
-        console.log('- componentDidMount()');
-    }
-
-    componentWillReceiveProps(){
-        console.log('- componentWillReceiveProps()');
-    }
-
-    shouldComponentUpdate(){
-        console.log('- shouldComponentUpdate()');
-    }
-
-    componentWillUpdate(){
-        console.log('- componentWillUpdate()');
-    }
-
-    componentDidUpdate(){
-        console.log('- componentDidUpdate()');
-    }
-
-    componentWillUnMount(){
-        console.log('- componentWillUnMount()');
-    }
-
-    render(){
-        // console.log('--------');
-        // console.log(this.props);
+    render(){        
         return (
             <div>
                 <p>In a new Component!</p>
@@ -73,5 +47,32 @@ export class SampleHome extends React.Component{
                 </div>
             </div>            
         );
-    }    
+    }
+
+    componentDidMount(){
+        console.log('- componentDidMount()');
+    }
+
+    componentWillReceiveProps(){
+        console.log('- componentWillReceiveProps()');
+    }
+
+    shouldComponentUpdate(nextProps, nextState){
+        console.log('- shouldComponentUpdate()');
+        return false;
+    }
+
+    componentWillUpdate(nextProps, nextState){
+        //componentWillUpdate() will not be invoked if shouldComponentUpdate() returns false.
+        console.log('- componentWillUpdate()');
+    }
+
+    componentDidUpdate(prevProps, prevState){
+        console.log('- componentDidUpdate()');
+    }
+
+    componentWillUnMount(){
+        console.log('- componentWillUnMount()');
+    }
+
 }
