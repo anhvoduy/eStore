@@ -1,5 +1,6 @@
 import React from 'react';
 import dataService from './../services/dataService';
+import moment from 'moment';
 
 /**
  * For understand react's component life cycle
@@ -28,7 +29,7 @@ export class SampleHome extends React.Component{
 
     render(){
         console.log('- render()');
-        console.log('- this.state.date:', this.state.date);
+        console.log('- this.state.date:', moment(this.state.date).format('DD-MMM-YYYY'));
         console.log('- this.state.profile:', this.state.profile);
         return (
             <div>
@@ -48,6 +49,7 @@ export class SampleHome extends React.Component{
                     <p>Number: {this.state.profile.number}</p>
                     <p>Full Name: {this.state.profile.fullName}</p>
                     <p>Club: {this.state.profile.club}</p>
+                    <p>Current Date: {moment(this.state.date).format('DD-MMM-YYYY')}</p>
                 </div>
             </div>            
         );
