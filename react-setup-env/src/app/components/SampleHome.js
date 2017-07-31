@@ -1,6 +1,6 @@
 import React from 'react';
-import dataService from './../services/dataService';
 import moment from 'moment';
+import dataService from './../services/dataService';
 
 /**
  * For understand react's component life cycle
