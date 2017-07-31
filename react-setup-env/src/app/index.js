@@ -12,7 +12,7 @@ import { PromoArea } from './components/PromoArea';
 import { FooterTopArea } from './components/FooterTopArea';
 import { FooterBottomArea } from './components/FooterBottomArea';
 
-import { className } from './style.css';
+//import { className } from './style.css';
 
 class App extends React.Component {
     render() {

@@ -1,23 +1,53 @@
 import React from 'react';
 import dataService from './../services/dataService';
 
+/**
+ * For understand react's component life cycle
+ * https://facebook.github.io/react/docs/react-component.html
+ */
 export class SampleHome extends React.Component{
     constructor(props) {
         super(props);  
-        this.state = {};
-    }
-
-    componentDidMount(){
-    }
+        this.state = {
+            currentDate: Date.now(),
+            profile: {}
+        };
+        console.log('- constructor()');
+    }    
 
     componentWillMount() {
         var component = this;
         return dataService.get('http://localhost:3000/api/myprofile')
         .then(function(profile){
             console.log('- profile:', profile);
-            component.setState(profile);
+            component.setState({profile: profile});
         });
-    }    
+        console.log('- componentWillMount()');
+    }
+
+    componentDidMount(){
+        console.log('- componentDidMount()');
+    }
+
+    componentWillReceiveProps(){
+        console.log('- componentWillReceiveProps()');
+    }
+
+    shouldComponentUpdate(){
+        console.log('- shouldComponentUpdate()');
+    }
+
+    componentWillUpdate(){
+        console.log('- componentWillUpdate()');
+    }
+
+    componentDidUpdate(){
+        console.log('- componentDidUpdate()');
+    }
+
+    componentWillUnMount(){
+        console.log('- componentWillUnMount()');
+    }
 
     render(){
         // console.log('--------');
