@@ -8,6 +8,7 @@ import { HeaderArea } from './components/HeaderArea';
 import { SiteBrandingArea } from './components/SiteBrandingArea';
 import { MainMenuArea } from './components/MainMenuArea';
 import { SliderArea } from './components/SliderArea';
+import { BrandsAreaCarousel } from './components/BrandsAreaCarousel';
 import { PromoArea } from './components/PromoArea';
 import { FooterTopArea } from './components/FooterTopArea';
 import { FooterBottomArea } from './components/FooterBottomArea';
@@ -55,6 +56,7 @@ ReactDOM.render(<HeaderArea/>, document.getElementById('HeaderArea'));
 ReactDOM.render(<MainMenuArea/>, document.getElementById('MainMenuArea'));
 ReactDOM.render(<SiteBrandingArea/>, document.getElementById('SiteBrandingArea'));
 //ReactDOM.render(<SliderArea/>, document.getElementById('SliderArea'));
-//ReactDOM.render(<PromoArea/>, document.getElementById('PromoArea'));
+
+ReactDOM.render(<BrandsAreaCarousel/>, document.getElementById('BrandsAreaCarousel'));
 ReactDOM.render(<FooterTopArea/>, document.getElementById('FooterTopArea'));
 ReactDOM.render(<FooterBottomArea/>, document.getElementById('FooterBottomArea'));
