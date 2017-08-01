@@ -1,6 +1,6 @@
 import React from 'react';
-import Slider from 'react-slick';
-import $ from 'jquery';
+//import Slider from 'react-slick';
+//import $ from 'jquery';
 
 export class BrandsAreaCarousel extends React.Component{
     constructor(props) {
@@ -42,11 +42,11 @@ export class BrandsAreaCarousel extends React.Component{
     }
 
     componentWillMount() {
-        console.log('- componentWillMount()');        
+        //console.log('- componentWillMount()');        
     }
     
     render() {
-        console.log('- render()');             
+        //console.log('- render()');
         return (            
             <div className="brand-wrapper">
                 <div className="brand-list">
@@ -62,27 +62,27 @@ export class BrandsAreaCarousel extends React.Component{
     }
 
     componentDidMount(){
-        console.log('- componentDidMount()');        
+        //console.log('- componentDidMount()');        
     }
 
     componentWillReceiveProps(){
-        console.log('- componentWillReceiveProps()');
+        //console.log('- componentWillReceiveProps()');
     }
 
     shouldComponentUpdate(nextProps, nextState){
-        console.log('- shouldComponentUpdate()');
+        //console.log('- shouldComponentUpdate()');
         return true; //false
     }
     
     componentWillUpdate(nextProps, nextState){     
-        console.log('- componentWillUpdate()');
+        //console.log('- componentWillUpdate()');
     }
 
     componentDidUpdate(prevProps, prevState){
-        console.log('- componentDidUpdate()');        
+        //console.log('- componentDidUpdate()');        
     }
 
     componentWillUnMount(){
-        console.log('- componentWillUnMount()');
-    }    
+        //console.log('- componentWillUnMount()');
+    }
 }
