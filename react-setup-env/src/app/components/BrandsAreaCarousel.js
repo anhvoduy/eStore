@@ -1,6 +1,5 @@
 import React from 'react';
 //import Slider from 'react-slick';
-//import $ from 'jquery';
 
 export class BrandsAreaCarousel extends React.Component{
     constructor(props) {
@@ -41,12 +40,10 @@ export class BrandsAreaCarousel extends React.Component{
         };        
     }
 
-    componentWillMount() {
-        //console.log('- componentWillMount()');        
+    componentWillMount() {        
     }
     
-    render() {
-        //console.log('- render()');
+    render() {        
         return (            
             <div className="brand-wrapper">
                 <div className="brand-list">
@@ -61,28 +58,22 @@ export class BrandsAreaCarousel extends React.Component{
         );
     }
 
-    componentDidMount(){
-        //console.log('- componentDidMount()');        
+    componentDidMount(){        
     }
 
-    componentWillReceiveProps(){
-        //console.log('- componentWillReceiveProps()');
+    componentWillReceiveProps(){        
     }
 
-    shouldComponentUpdate(nextProps, nextState){
-        //console.log('- shouldComponentUpdate()');
+    shouldComponentUpdate(nextProps, nextState){        
         return true; //false
     }
     
-    componentWillUpdate(nextProps, nextState){     
-        //console.log('- componentWillUpdate()');
+    componentWillUpdate(nextProps, nextState){             
     }
 
-    componentDidUpdate(prevProps, prevState){
-        //console.log('- componentDidUpdate()');        
+    componentDidUpdate(prevProps, prevState){        
     }
 
-    componentWillUnMount(){
-        //console.log('- componentWillUnMount()');
+    componentWillUnMount(){        
     }
 }
