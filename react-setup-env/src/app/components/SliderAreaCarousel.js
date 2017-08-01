@@ -44,7 +44,7 @@ export class SliderAreaCarousel extends React.Component {
             slidesToShow: 1,
             slidesToScroll: 1,
             autoplay: true,
-            autoplaySpeed: 200000
+            autoplaySpeed: 2000
         };
         return (
             <Slider {...settings}>
