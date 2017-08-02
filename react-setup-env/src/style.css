@@ -156,7 +156,8 @@ z-index: 999;}
 ---------------------------*/
 .block-slider{
 	border:none;
-	width: 100%;
+    width: 100%;
+    position: relative; /* 20170801 */
 }
 .block-slider ul li{
 	list-style: none;
