@@ -10,25 +10,41 @@ export class SliderAreaCarousel extends React.Component {
                     key: 1,
                     name: 'Slide',
                     path: 'img/h4-slide.png',
-                    title: 'Iphone'
+                    title: 'iPhone',
+                    title1: 'iPhone',
+                    title2: '6',
+                    title3: 'Plus',
+                    subTitle: 'Dual SIM'
                 },
                 {
                     key: 2,
                     name: 'Slide',
                     path: 'img/h4-slide2.png',
-                    title: 'Sony'
+                    title: 'Samsung',
+                    title1: 'by one, get one',
+                    title2: '50%',
+                    title3: 'off',
+                    subTitle: 'school supplies & backpacks.'
                 },
                 {
                     key: 3,
                     name: 'Slide',
                     path: 'img/h4-slide3.png',
-                    title: 'Samsung'
+                    title: 'Ipad',
+                    title1: 'Apple',
+                    title2: 'Store',
+                    title3: 'Ipad',
+                    subTitle: 'Select Item'
                 },
                 {
                     key: 4,
                     name: 'Slide',
                     path: 'img/h4-slide4.png',
-                    title: 'Ipad'
+                    title: 'Ipod',
+                    title1: 'Apple',
+                    title2: 'Store',
+                    title3: 'Ipod',
+                    subTitle: 'Phone'
                 }
             ]
         }
@@ -47,6 +63,7 @@ export class SliderAreaCarousel extends React.Component {
             autoplaySpeed: 2000
         };
         return (
+            // need to verify css btnNext + btnPrev of bxslider
             <Slider {...settings}>
                 {
                     this.state.products.map(function(img)
