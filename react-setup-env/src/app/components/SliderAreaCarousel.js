@@ -40,7 +40,7 @@ export class SliderAreaCarousel extends React.Component {
     render() {        
         var settings = {
             dots: true,
-            infinite: true,            
+            infinite: true,
             slidesToShow: 1,
             slidesToScroll: 1,
             autoplay: true,
