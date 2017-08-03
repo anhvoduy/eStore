@@ -51,7 +51,7 @@ server.use(function (error, request, response, next) {
  * - public site: react js & multiple pages
  * - admin site: angular js & single page
  */
-var pathPublic = path.join(__dirname, 'publish');
+var pathPublic = path.join(__dirname, 'publish/build');
 server.use('/', express.static(pathPublic, { index: 'index.html' }));
 
 
