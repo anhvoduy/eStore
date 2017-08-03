@@ -12,7 +12,8 @@
   },
   "scripts": {
     "test": "./node_modules/.bin/mocha --reporter spec",
-    "start": "node app.js"
+    "start": "node app.js",
+    "publish": "node app.js"
   },
   "dependencies": {
     "axios": "^0.16.2",
