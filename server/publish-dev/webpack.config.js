@@ -3,7 +3,7 @@ var path = require('path');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 
-var DIST_DIR = path.resolve(__dirname, 'dist');
+var BUILD_DIR = path.resolve(__dirname, 'build');
 var SRC_DIR = path.resolve(__dirname, 'src');
 
 var config = {
@@ -12,7 +12,7 @@ var config = {
         sample: SRC_DIR + '\\app\\sample.js'
     },
     output: {
-        path: DIST_DIR + '\\app',
+        path: BUILD_DIR + '\\app',
         filename: '[name].bundle.js',
         publicPath: '/app/'
     },
