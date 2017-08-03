@@ -19,7 +19,7 @@ export class SampleHome extends React.Component{
     componentWillMount() {
         console.log('- componentWillMount()');
         var component = this;
-        return dataService.getProfile()
+        return dataService.getProfile('/api/myprofile')
         .then(function(data){
             component.setState({
                 profile: data
