@@ -3,6 +3,7 @@ import React from 'react';
 var dataService ={};
 dataService.hostName = 'http://localhost:3000';
 
+// this is only api supports cors for test request
 dataService.getProfile = function(url){
     return fetch(this.hostName + url).then( function(response) {
         return response.json();
