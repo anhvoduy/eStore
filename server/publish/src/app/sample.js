@@ -34,7 +34,9 @@ class SampleApp extends React.Component {
 
                 <div className='row'>
                     <div className='col-xs-10 col-xs-offset-1'>
-                        <SampleHome name={'Max'} age={27} user={user} />
+                        <SampleHome name={'Max'} age={27} user={user}>
+                            <p>This is a paragraph! (from reactjs's children like angularjs's directive transclude = true)</p>
+                        </SampleHome>
                     </div>
                 </div>
                 <div className='row'>

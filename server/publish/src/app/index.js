@@ -8,7 +8,6 @@ import { SiteBrandingArea } from './components/SiteBrandingArea';
 import { SliderAreaCarousel } from './components/SliderAreaCarousel';
 import { BrandsAreaCarousel } from './components/BrandsAreaCarousel';
 
-//import { PromoArea } from './components/PromoArea';
 import { FooterTopArea } from './components/FooterTopArea';
 import { FooterBottomArea } from './components/FooterBottomArea';
 
