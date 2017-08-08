@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import { HeaderArea } from './components/HeaderArea';
 import { MainMenuArea } from './components/MainMenuArea';
 import { SiteBrandingArea } from './components/SiteBrandingArea';
-
+import { PromoArea } from './components/PromoArea';
 import { SliderAreaCarousel } from './components/SliderAreaCarousel';
 import { BrandsAreaCarousel } from './components/BrandsAreaCarousel';
 
@@ -16,7 +16,7 @@ import { FooterBottomArea } from './components/FooterBottomArea';
 ReactDOM.render(<HeaderArea/>, document.getElementById('HeaderArea'));
 ReactDOM.render(<MainMenuArea/>, document.getElementById('MainMenuArea'));
 ReactDOM.render(<SiteBrandingArea/>, document.getElementById('SiteBrandingArea'));
-
+ReactDOM.render(<PromoArea/>, document.getElementById('PromoArea'));
 ReactDOM.render(<SliderAreaCarousel/>, document.getElementById('SliderAreaCarousel'));
 ReactDOM.render(<BrandsAreaCarousel/>, document.getElementById('BrandsAreaCarousel'));
 
