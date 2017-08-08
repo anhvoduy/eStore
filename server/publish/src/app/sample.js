@@ -1,11 +1,35 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { Header } from './components/Header';
+import { SampleHeader } from './components/Header';
 import { SampleHome } from './components/SampleHome';
 import { SampleCarousel } from './components/SampleCarousel';
 
 class SampleApp extends React.Component {
+    constructor() {
+        super();
+        this.state = {
+            homeLink: 'Home',
+            aboutLink: 'About Us'
+        };
+    }
+
+    onGreet() {
+        alert('hello');
+    }
+
+    onChangeHomeLinkName(name){
+        this.setState({
+            homeLink: name
+        })
+    }
+
+    onChangeAboutLinkName(name){
+        this.setState({
+            aboutLink: name
+        })
+    }
+
     render() {
         var user ={
             name: 'David',
@@ -28,13 +52,16 @@ class SampleApp extends React.Component {
             <div className='container'>
                 <div className='row'>
                     <div className='col-xs-10 col-xs-offset-1'>
-                        <Header />
+                        <SampleHeader homeLink={this.state.homeLink} aboutLink={this.state.aboutLink}>
+                        </SampleHeader>
                     </div>
                 </div>
-
+                <br />
                 <div className='row'>
                     <div className='col-xs-10 col-xs-offset-1'>
-                        <SampleHome name={'Max'} age={27} user={user}>
+                        <SampleHome name={'Max'} age={27} user={user} greet={this.onGreet} 
+                            changeHomeLink={this.onChangeHomeLinkName.bind(this)} 
+                            changeAboutLink={this.onChangeAboutLinkName.bind(this)}>
                             <p>This is a paragraph! (from reactjs's children like angularjs's directive transclude = true)</p>
                         </SampleHome>
                     </div>
