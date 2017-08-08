@@ -1,6 +1,10 @@
 import React from 'react';
 
 export class MainContentAreaZone extends React.Component {
+    constructor(){
+        super();
+    }
+
     render() {
         return (
             <div className="row">
