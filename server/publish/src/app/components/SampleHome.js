@@ -15,7 +15,9 @@ export class SampleHome extends React.Component{
             date: Date.now(),            
             profile: {},
             name: this.props.name,
-            age: this.props.age
+            age: this.props.age,
+            homeLink: 'Home Changed',
+            aboutLink: 'About Changed'
         };        
         console.log('- constructor()');
     }
@@ -26,6 +28,14 @@ export class SampleHome extends React.Component{
         });
     }
 
+    changeHomeLink(){
+        this.props.changeHomeLink(this.state.homeLink);
+    }
+
+    changeAboutLink(){
+        this.props.changeAboutLink(this.state.aboutLink);
+    }
+    
     componentWillMount() {
         console.log('- componentWillMount()');
         var component = this;
@@ -49,6 +59,18 @@ export class SampleHome extends React.Component{
                 <p>user object => Name: {this.props.user.name}</p>
                 <div>
                     <button className='btn btn-primary' onClick={this.onMakeOlder.bind(this)}>Make me older</button>
+                </div>
+                <p>-----</p>
+                <div>
+                    <button className='btn btn-primary' onClick={this.props.greet}>Greeting</button>
+                </div>
+                <p>-----</p>
+                <div>
+                    <button className='btn btn-primary' onClick={this.changeHomeLink.bind(this)}>Change Home Link</button>
+                </div>
+                <p>-----</p>
+                <div>
+                    <button className='btn btn-primary' onClick={this.changeAboutLink.bind(this)}>Change About Link</button>
                 </div>
                 <div>
                     <h4>Hobbies</h4>
@@ -119,5 +141,6 @@ SampleHome.propTypes = {
     name: React.PropTypes.string,
     age: React.PropTypes.number,
     user: React.PropTypes.object,
+    greet: React.PropTypes.func,
     children: React.PropTypes.element.isRequired // same angularjs directive transclude
 }

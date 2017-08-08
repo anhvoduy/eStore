@@ -1,6 +1,21 @@
 import React from 'react';
 
 export class HeaderArea extends React.Component {
+    constructor(){
+        super();
+        this.state = {
+            header: {
+                account: { title: 'My Account', url: '#' },
+                wishList: { title: 'Wish List', url: '#' },
+                cart: { title: 'My Cart', url: 'cart.html' },
+                checkout: { title: 'Checkout', url: 'checkout.html' },
+                login: { title: 'Login', url: '/admin' }
+            },
+            currencies: ['USD', 'INR', 'GBP', 'VND'],
+            languages: ['English', 'French', 'German', 'Vietnam']
+        }
+    }
+
     render() {
         return (
             <div className="header-area">
@@ -9,11 +24,21 @@ export class HeaderArea extends React.Component {
                         <div className="col-md-8">
                             <div className="user-menu">
                                 <ul>
-                                    <li><a href="#"><i className="fa fa-user"></i> My Account</a></li>
-                                    <li><a href="#"><i className="fa fa-heart"></i> Wishlist</a></li>
-                                    <li><a href="cart.html"><i className="fa fa-user"></i> My Cart</a></li>
-                                    <li><a href="checkout.html"><i className="fa fa-user"></i> Checkout</a></li>
-                                    <li><a href="#"><i className="fa fa-user"></i> Login</a></li>
+                                    <li>
+                                        <a href="#"><i className="fa fa-user"></i>{this.state.header.account.title}</a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i className="fa fa-heart"></i>{this.state.header.wishList.title}</a>
+                                    </li>
+                                    <li>
+                                        <a href="cart.html"><i className="fa fa-user"></i>{this.state.header.cart.title}</a>
+                                    </li>
+                                    <li>
+                                        <a href="checkout.html"><i className="fa fa-user"></i>{this.state.header.checkout.title}</a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i className="fa fa-user"></i>{<this className="state header login"></this>.title}</a>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -28,9 +53,12 @@ export class HeaderArea extends React.Component {
                                             <b className="caret"></b>
                                         </a>
                                         <ul className="dropdown-menu">
-                                            <li><a href="#">USD</a></li>
-                                            <li><a href="#">INR</a></li>
-                                            <li><a href="#">GBP</a></li>
+                                            {
+                                                this.state.currencies.map(function(currency)
+                                                {
+                                                    return <li><a href="#">{currency}</a></li>;                                                     
+                                                })
+                                            }
                                         </ul>
                                     </li>
 
@@ -41,9 +69,12 @@ export class HeaderArea extends React.Component {
                                             <b className="caret"></b>
                                         </a>
                                         <ul className="dropdown-menu">
-                                            <li><a href="#">English</a></li>
-                                            <li><a href="#">French</a></li>
-                                            <li><a href="#">German</a></li>
+                                            {
+                                                this.state.languages.map(function(language)
+                                                {
+                                                    return <li><a href="#">{language}</a></li>;                                                     
+                                                })
+                                            }                                            
                                         </ul>
                                     </li>
                                 </ul>
