@@ -10,6 +10,13 @@ dataService.getProfile = function(url){
     })
 }
 
+// dataService.getMenu = function(url){
+//     return fetch(this.hostName + url)
+//     .then(function(res){
+//         return res.json();
+//     });
+// }
+
 dataService.get = function(url){
     return fetch(this.hostName + url)
     .then(function(res){

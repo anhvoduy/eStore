@@ -11,18 +11,8 @@ export class HeaderArea extends React.Component {
                 checkout: { title: 'Checkout', url: 'checkout.html' },
                 login: { title: 'Login', url: '/admin' }
             },
-            currencies: [
-                {key: 1, name: 'USD'}, 
-                {key: 2, name: 'INR'}, 
-                {key: 3, name: 'GBP'}, 
-                {key: 4, name: 'VND'}
-            ],
-            languages: [
-                {key: 1, name: 'English'}, 
-                {key: 2, name: 'French'}, 
-                {key: 3, name: 'German'}, 
-                {key: 4, name: 'Vietnam'}
-            ]
+            currencies: ['USD', 'INR', 'GBP', 'VND'],
+            languages: ['English', 'French', 'German', 'Vietnam']
         }
     }
 
@@ -63,9 +53,9 @@ export class HeaderArea extends React.Component {
                                     </a>
                                     <ul className="dropdown-menu">
                                         {
-                                            this.state.currencies.map(function(cur)
+                                            this.state.currencies.map(function(item, index)
                                             {
-                                                return <li key={cur.key}><a href="#">{cur.name}</a></li>;                                                     
+                                                return <li key={index}><a href="#">{item}</a></li>;
                                             })
                                         }
                                     </ul>
@@ -78,9 +68,9 @@ export class HeaderArea extends React.Component {
                                     </a>
                                     <ul className="dropdown-menu">
                                         {
-                                            this.state.languages.map(function(lan)
+                                            this.state.languages.map(function(item, index)
                                             {
-                                                return <li key={lan.key}><a href="#">{lan.name}</a></li>;                                                     
+                                                return <li key={index}><a href="#">{item}</a></li>;
                                             })
                                         }
                                     </ul>
