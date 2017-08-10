@@ -11,14 +11,24 @@ export class HeaderArea extends React.Component {
                 checkout: { title: 'Checkout', url: 'checkout.html' },
                 login: { title: 'Login', url: '/admin' }
             },
-            currencies: ['USD', 'INR', 'GBP', 'VND'],
-            languages: ['English', 'French', 'German', 'Vietnam']
+            currencies: [
+                {key: 1, name: 'USD'}, 
+                {key: 2, name: 'INR'}, 
+                {key: 3, name: 'GBP'}, 
+                {key: 4, name: 'VND'}
+            ],
+            languages: [
+                {key: 1, name: 'English'}, 
+                {key: 2, name: 'French'}, 
+                {key: 3, name: 'German'}, 
+                {key: 4, name: 'Vietnam'}
+            ]
         }
     }
 
     render() {
         return (
-            <div className="header-area">
+            
                 <div className="container">
                     <div className="row">
                         <div className="col-md-8">
@@ -28,7 +38,7 @@ export class HeaderArea extends React.Component {
                                         <a href="#"><i className="fa fa-user"></i>{this.state.header.account.title}</a>
                                     </li>
                                     <li>
-                                        <a href="#"><i className="fa fa-heart"></i>{this.state.header.wishList.title}</a>
+                                        <a href="#shop.html"><i className="fa fa-heart"></i>{this.state.header.wishList.title}</a>
                                     </li>
                                     <li>
                                         <a href="cart.html"><i className="fa fa-user"></i>{this.state.header.cart.title}</a>
@@ -37,7 +47,7 @@ export class HeaderArea extends React.Component {
                                         <a href="checkout.html"><i className="fa fa-user"></i>{this.state.header.checkout.title}</a>
                                     </li>
                                     <li>
-                                        <a href="#"><i className="fa fa-user"></i>{<this className="state header login"></this>.title}</a>
+                                        <a href="#"><i className="fa fa-user"></i>{this.state.header.login.title}</a>
                                     </li>
                                 </ul>
                             </div>
@@ -54,9 +64,9 @@ export class HeaderArea extends React.Component {
                                         </a>
                                         <ul className="dropdown-menu">
                                             {
-                                                this.state.currencies.map(function(currency)
+                                                this.state.currencies.map(function(cur)
                                                 {
-                                                    return <li><a href="#">{currency}</a></li>;                                                     
+                                                    return <li key={cur.key}><a href="#">{cur.name}</a></li>;                                                     
                                                 })
                                             }
                                         </ul>
@@ -70,11 +80,11 @@ export class HeaderArea extends React.Component {
                                         </a>
                                         <ul className="dropdown-menu">
                                             {
-                                                this.state.languages.map(function(language)
+                                                this.state.languages.map(function(lan)
                                                 {
-                                                    return <li><a href="#">{language}</a></li>;                                                     
+                                                    return <li key={lan.key}><a href="#">{lan.name}</a></li>;                                                     
                                                 })
-                                            }                                            
+                                            }
                                         </ul>
                                     </li>
                                 </ul>
@@ -82,7 +92,7 @@ export class HeaderArea extends React.Component {
                         </div>
                     </div>
                 </div>
-            </div> 
+            
         );
     }
 }
