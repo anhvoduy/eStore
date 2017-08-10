@@ -17,72 +17,69 @@ export class HeaderArea extends React.Component {
     }
 
     render() {
-        return (
-            <div className="header-area">
-                <div className="container">
-                    <div className="row">
-                        <div className="col-md-8">
-                            <div className="user-menu">
-                                <ul>
-                                    <li>
-                                        <a href="#"><i className="fa fa-user"></i>{this.state.header.account.title}</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i className="fa fa-heart"></i>{this.state.header.wishList.title}</a>
-                                    </li>
-                                    <li>
-                                        <a href="cart.html"><i className="fa fa-user"></i>{this.state.header.cart.title}</a>
-                                    </li>
-                                    <li>
-                                        <a href="checkout.html"><i className="fa fa-user"></i>{this.state.header.checkout.title}</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i className="fa fa-user"></i>{<this className="state header login"></this>.title}</a>
-                                    </li>
-                                </ul>
-                            </div>
+        return (            
+            <div className="container">
+                <div className="row">
+                    <div className="col-md-8">
+                        <div className="user-menu">
+                            <ul>
+                                <li>
+                                    <a href="#"><i className="fa fa-user"></i>{this.state.header.account.title}</a>
+                                </li>
+                                <li>
+                                    <a href="#shop.html"><i className="fa fa-heart"></i>{this.state.header.wishList.title}</a>
+                                </li>
+                                <li>
+                                    <a href="cart.html"><i className="fa fa-user"></i>{this.state.header.cart.title}</a>
+                                </li>
+                                <li>
+                                    <a href="checkout.html"><i className="fa fa-user"></i>{this.state.header.checkout.title}</a>
+                                </li>
+                                <li>
+                                    <a href="#"><i className="fa fa-user"></i>{this.state.header.login.title}</a>
+                                </li>
+                            </ul>
                         </div>
-                        
-                        <div className="col-md-4">
-                            <div className="header-right">
-                                <ul className="list-unstyled list-inline">
-                                    <li className="dropdown dropdown-small">
-                                        <a data-toggle="dropdown" data-hover="dropdown" className="dropdown-toggle" href="#">
-                                            <span className="key">currency :</span>
-                                            <span className="value">USD </span>
-                                            <b className="caret"></b>
-                                        </a>
-                                        <ul className="dropdown-menu">
+                    </div>
+                    
+                    <div className="col-md-4">
+                        <div className="header-right">
+                            <ul className="list-unstyled list-inline">
+                                <li className="dropdown dropdown-small">
+                                    <a data-toggle="dropdown" data-hover="dropdown" className="dropdown-toggle" href="#">
+                                        <span className="key">currency :</span>
+                                        <span className="value">USD </span>
+                                        <b className="caret"></b>
+                                    </a>
+                                    <ul className="dropdown-menu">
+                                        {
+                                            this.state.currencies.map(function(item, index)
                                             {
-                                                this.state.currencies.map(function(currency)
-                                                {
-                                                    return <li><a href="#">{currency}</a></li>;                                                     
-                                                })
-                                            }
-                                        </ul>
-                                    </li>
-
-                                    <li className="dropdown dropdown-small">
-                                        <a data-toggle="dropdown" data-hover="dropdown" className="dropdown-toggle" href="#">
-                                            <span className="key">language :</span>
-                                            <span className="value">English </span>
-                                            <b className="caret"></b>
-                                        </a>
-                                        <ul className="dropdown-menu">
+                                                return <li key={index}><a href="#">{item}</a></li>;
+                                            })
+                                        }
+                                    </ul>
+                                </li>
+                                <li className="dropdown dropdown-small">
+                                    <a data-toggle="dropdown" data-hover="dropdown" className="dropdown-toggle" href="#">
+                                        <span className="key">language :</span>
+                                        <span className="value">English </span>
+                                        <b className="caret"></b>
+                                    </a>
+                                    <ul className="dropdown-menu">
+                                        {
+                                            this.state.languages.map(function(item, index)
                                             {
-                                                this.state.languages.map(function(language)
-                                                {
-                                                    return <li><a href="#">{language}</a></li>;                                                     
-                                                })
-                                            }                                            
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </div>
+                                                return <li key={index}><a href="#">{item}</a></li>;
+                                            })
+                                        }
+                                    </ul>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
-            </div> 
+            </div>            
         );
     }
 }
