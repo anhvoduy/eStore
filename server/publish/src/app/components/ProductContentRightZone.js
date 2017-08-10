@@ -141,7 +141,7 @@ class CartCollaterals extends React.Component {
                     </h2>
                     <section id="calcalute-shipping-wrap" className="shipping-calculator-form collapse">
                         <p className="form-row form-row-wide">
-                        <select rel="calc_shipping_state" className="country_to_state" id="calc_shipping_country" name="calc_shipping_country">
+                        <select rel="calc_shipping_state" className="country_to_state" id="calc_shipping_country" name="calc_shipping_country" value="">
                             <option value="">Select a country…</option>
                             <option value="AX">Aland Islands</option>
                             <option value="AF">Afghanistan</option>
@@ -373,7 +373,7 @@ class CartCollaterals extends React.Component {
                             <option value="UG">Uganda</option>
                             <option value="UA">Ukraine</option>
                             <option value="AE">United Arab Emirates</option>
-                            <option selected="selected" value="GB">United Kingdom (UK)</option>
+                            <option value="GB">United Kingdom (UK)</option>
                             <option value="US">United States (US)</option>
                             <option value="UY">Uruguay</option>
                             <option value="UZ">Uzbekistan</option>
