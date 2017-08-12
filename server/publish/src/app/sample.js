@@ -10,7 +10,8 @@ class SampleApp extends React.Component {
         super();
         this.state = {
             homeLink: 'Home',
-            aboutLink: 'About Us'
+            aboutLink: 'About Us',
+            homeMounted: true
         };
     }
 
@@ -30,24 +31,38 @@ class SampleApp extends React.Component {
         })
     }
 
+    onChangeHomeMounted(){
+        this.setState({
+            homeMounted: !this.state.homeMounted            
+        });
+    }
+
     render() {
         var user ={
             name: 'David',
             hobbies: [
-                {
-                    id: 1,
-                    name: 'Football'
-                }, 
-                {
-                    id: 2,
-                    name: 'Movie'
-                }, 
-                {   
-                    id: 3,
-                    name: 'Music'
-                }
+                { id: 1, name: 'Football' }, 
+                { id: 2, name: 'Movie' }, 
+                { id: 3, name: 'Music' }
             ]
         };
+
+        let homeComponent = '';
+        if(this.state.homeMounted){
+            homeComponent = (
+                <SampleHome 
+                    name={'Max'} 
+                    age={27} 
+                    user={user} 
+                    greet={this.onGreet} 
+                    changeHomeLink={this.onChangeHomeLinkName.bind(this)} 
+                    changeAboutLink={this.onChangeAboutLinkName.bind(this)}
+                    initialHomeLinkName={this.state.homeLink}>
+                    <p>This is a paragraph! (from reactjs's children like angularjs's directive transclude = true)</p>
+                </SampleHome>
+            );
+        }
+
         return (
             <div className='container'>
                 <div className='row'>
@@ -59,16 +74,12 @@ class SampleApp extends React.Component {
                 <br />
                 <div className='row'>
                     <div className='col-xs-10 col-xs-offset-1'>
-                        <SampleHome 
-                            name={'Max'} 
-                            age={27} 
-                            user={user} 
-                            greet={this.onGreet} 
-                            changeHomeLink={this.onChangeHomeLinkName.bind(this)} 
-                            changeAboutLink={this.onChangeAboutLinkName.bind(this)}
-                            initialHomeLinkName={this.state.homeLink}>
-                            <p>This is a paragraph! (from reactjs's children like angularjs's directive transclude = true)</p>
-                        </SampleHome>
+                        {homeComponent}
+                    </div>
+                </div>
+                <div className='row'>
+                    <div className='col-xs-10 col-xs-offset-1'>
+                        <button onClick={this.onChangeHomeMounted.bind(this)} className="btn btn-primary">(Un)Mount HomeComponent</button>
                     </div>
                 </div>
                 <div className='row'>
