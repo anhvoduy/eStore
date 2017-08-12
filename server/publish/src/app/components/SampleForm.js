@@ -24,7 +24,7 @@ export class SampleForm extends React.Component{
     render(){
         console.log('- render()');        
         return (
-            <form id='FormSample'>                
+            <form id='FormSample'>
             </form>            
         );
     }

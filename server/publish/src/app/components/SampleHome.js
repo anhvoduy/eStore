@@ -16,7 +16,7 @@ export class SampleHome extends React.Component{
             profile: {},
             name: this.props.name,
             age: this.props.age,
-            homeLink: 'Home Changed',
+            homeLink: props.initialHomeLinkName,
             aboutLink: 'About Changed'
         };        
         console.log('- constructor()');
@@ -34,6 +34,12 @@ export class SampleHome extends React.Component{
 
     changeAboutLink(){
         this.props.changeAboutLink(this.state.aboutLink);
+    }
+
+    onChangeHomeLinkHandle(event){
+        this.setState({
+            homeLink: event.target.value
+        })
     }
     
     componentWillMount() {
@@ -66,6 +72,9 @@ export class SampleHome extends React.Component{
                 </div>
                 <p>-----</p>
                 <div>
+                    <input  type="text" 
+                            value={this.state.homeLink} 
+                            onChange={(event) => this.onChangeHomeLinkHandle(event)} />
                     <button className='btn btn-primary' onClick={this.changeHomeLink.bind(this)}>Change Home Link</button>
                 </div>
                 <p>-----</p>
@@ -142,5 +151,6 @@ SampleHome.propTypes = {
     age: React.PropTypes.number,
     user: React.PropTypes.object,
     greet: React.PropTypes.func,
+    initialHomeLinkName: React.PropTypes.string,
     children: React.PropTypes.element.isRequired // same angularjs directive transclude
 }

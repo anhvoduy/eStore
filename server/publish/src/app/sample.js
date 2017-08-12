@@ -59,9 +59,14 @@ class SampleApp extends React.Component {
                 <br />
                 <div className='row'>
                     <div className='col-xs-10 col-xs-offset-1'>
-                        <SampleHome name={'Max'} age={27} user={user} greet={this.onGreet} 
+                        <SampleHome 
+                            name={'Max'} 
+                            age={27} 
+                            user={user} 
+                            greet={this.onGreet} 
                             changeHomeLink={this.onChangeHomeLinkName.bind(this)} 
-                            changeAboutLink={this.onChangeAboutLinkName.bind(this)}>
+                            changeAboutLink={this.onChangeAboutLinkName.bind(this)}
+                            initialHomeLinkName={this.state.homeLink}>
                             <p>This is a paragraph! (from reactjs's children like angularjs's directive transclude = true)</p>
                         </SampleHome>
                     </div>
