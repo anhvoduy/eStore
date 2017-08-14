@@ -177,9 +177,9 @@ CREATE TABLE [dbo].[TransactionDetail](
 	[Author] [nvarchar](50) NOT NULL,
 	[Editor] [nvarchar](50) NOT NULL,
     [Deleted] [int] DEFAULT 0
- CONSTRAINT [PK_Transaction] PRIMARY KEY CLUSTERED 
+ CONSTRAINT [PK_TransactionDetail] PRIMARY KEY CLUSTERED 
 (
-	[TransactionId] ASC
+	[TransactionDetailId] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
