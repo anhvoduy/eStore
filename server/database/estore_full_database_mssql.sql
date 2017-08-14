@@ -162,6 +162,27 @@ VALUES (NEWID(),'2016-11-07','CASHOUT','Cash Out', '111', '532', 'USD', 500, 1, 
 
 
 /****** Object:  Table [dbo].[TransactionDetail] ******/
+CREATE TABLE [dbo].[TransactionDetail](
+	[TransactionDetailId] [int] IDENTITY(1,1) NOT NULL,	
+	[TransactionId] [int] NOT NULL,
+    [ProductId] [int] NOT NULL,
+	[ProductName] [nvarchar](50) NOT NULL,	
+	[Quantity] [int] NOT NULL DEFAULT 0,
+	[Price] [decimal](12,4) NOT NULL DEFAULT 0,
+	[Amount] [decimal](12,4) NOT NULL DEFAULT 0,
+	[Currency] [nvarchar](3) NOT NULL,
+	[Description] [nvarchar](250) NULL,	
+	[Created] [datetime] DEFAULT CURRENT_TIMESTAMP,
+	[Updated] [datetime] DEFAULT CURRENT_TIMESTAMP,
+	[Author] [nvarchar](50) NOT NULL,
+	[Editor] [nvarchar](50) NOT NULL,
+    [Deleted] [int] DEFAULT 0
+ CONSTRAINT [PK_Transaction] PRIMARY KEY CLUSTERED 
+(
+	[TransactionId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
 
 
 /****** Object:  Table [dbo].[Inventory] ******/
