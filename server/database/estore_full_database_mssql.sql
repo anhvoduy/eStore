@@ -186,7 +186,30 @@ GO
 
 
 /****** Object:  Table [dbo].[Inventory] ******/
-
+CREATE TABLE [dbo].[Inventory](
+	[InventoryId] [int] IDENTITY(1,1) NOT NULL,	
+	[StockId] [int] NOT NULL,
+    [StockDate] [datetime] NOT NULL,
+	[ProductId] [int] NOT NULL,
+	[ProductName] [nvarchar](50) NOT NULL,	
+	[QuantityInput] [int] NOT NULL DEFAULT 0,
+	[QuantityOutput] [int] NOT NULL DEFAULT 0,
+	[QuantityBalance] [int] NOT NULL DEFAULT 0,
+	[IsPerpetual] [int] NOT NULL DEFAULT 0,	
+	[Currency] [nvarchar](3) NOT NULL,
+	[Price] [decimal](12,4) NOT NULL DEFAULT 0,
+	[TotalAmount] [decimal](12,4) NOT NULL DEFAULT 0,		
+	[Created] [datetime] DEFAULT CURRENT_TIMESTAMP,
+	[Updated] [datetime] DEFAULT CURRENT_TIMESTAMP,
+	[Author] [nvarchar](50) NOT NULL,
+	[Editor] [nvarchar](50) NOT NULL,
+    [Deleted] [int] DEFAULT 0
+ CONSTRAINT [PK_InventoryId] PRIMARY KEY CLUSTERED 
+(
+	[InventoryId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
 
 /****** Object:  Table [dbo].[Stock] ******/
 
