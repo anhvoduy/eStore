@@ -26,13 +26,14 @@ USE `estore`;
 DROP TABLE IF EXISTS `tblCustomer`;
 CREATE TABLE `tblCustomer` (
   `CustomerId` INT(11) NOT NULL AUTO_INCREMENT,
-  `CustomerKey` VARCHAR(45) NOT NULL,
-  `CustomerName` VARCHAR(45) NOT NULL,
+  `CustomerKey` VARCHAR(50) NOT NULL,
+  `CustomerName` VARCHAR(50) NOT NULL,
   `Description` VARCHAR(200) DEFAULT NULL,
-  `Email` VARCHAR(45) DEFAULT NULL,
-  `Mobile` VARCHAR(45) DEFAULT NULL,
-  `Tel` VARCHAR(45) DEFAULT NULL,
-  `Title` VARCHAR(45) DEFAULT NULL,
+  `Email` VARCHAR(50) DEFAULT NULL,
+  `Mobile` VARCHAR(50) DEFAULT NULL,
+  `Tel` VARCHAR(50) DEFAULT NULL,
+  `Fax` VARCHAR(50) DEFAULT NULL,
+  `Title` VARCHAR(50) DEFAULT NULL,
   `Address` VARCHAR(200) DEFAULT NULL,
   `Deleted` TINYINT(1) DEFAULT '0',
   PRIMARY KEY (`CustomerId`),
@@ -43,10 +44,30 @@ CREATE TABLE `tblCustomer` (
 -- Sample data for table `tblCustomer`
 --
 INSERT INTO `tblCustomer` (`CustomerKey`,`CustomerName`,`Description`,`Deleted`) VALUES (uuid(),'The Bank of Tokyo and Mitsuibishi','',0);
-INSERT INTO `tblCustomer` (`CustomerKey`,`CustomerName`,`Description`,`Deleted`) VALUES (uuid(),'Cong ty CP REE','',0);
+INSERT INTO `tblCustomer` (`CustomerKey`,`CustomerName`,`Description`,`Deleted`) VALUES (uuid(),'REE Corporation Group','',0);
 INSERT INTO `tblCustomer` (`CustomerKey`,`CustomerName`,`Description`,`Deleted`) VALUES (uuid(),'FPT Information System','',0);
-INSERT INTO `tblCustomer` (`CustomerKey`,`CustomerName`,`Description`,`Deleted`) VALUES (uuid(),'Tap doan HAG','',0);
+INSERT INTO `tblCustomer` (`CustomerKey`,`CustomerName`,`Description`,`Deleted`) VALUES (uuid(),'HAG Corporation Group','',0);
 INSERT INTO `tblCustomer` (`CustomerKey`,`CustomerName`,`Description`,`Deleted`) VALUES (uuid(),'SMC Steel Company','',0);
+INSERT INTO `tblCustomer` (`CustomerKey`,`CustomerName`,`Description`,`Deleted`) VALUES (uuid(),'Marubeni Itochu Steel Vietnam Co. Ltd.','',0);
+
+--
+-- Table structure for table `tblTruck`
+--
+DROP TABLE IF EXISTS `tblTruck`;
+CREATE TABLE `tblAccount` (
+  `TruckId` INT(11) NOT NULL AUTO_INCREMENT,
+  `TruckKey` VARCHAR(50) NOT NULL,
+  `TruckName` VARCHAR(50) NOT NULL,
+  `TruckNumber` VARCHAR(50) NOT NULL,
+  `Description` VARCHAR(200) DEFAULT NULL,
+  `Deleted` TINYINT(1) DEFAULT '0',
+  PRIMARY KEY (`TruckId`),
+  UNIQUE KEY `TruckId_UNIQUE` (`TruckId`)
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
+
+INSERT INTO `Truck` (`TruckKey`, `TruckName`, `TruckNumber`, `Description`, `Deleted`) VALUES (uuid(), 'TRUCK - LAND CRUISER', 'T-LAND-123456789', 'Land Cruiser 2015');
+INSERT INTO `Truck` (`TruckKey`, `TruckName`, `TruckNumber`, `Description`, `Deleted`) VALUES (uuid(), 'TRUCK - Mercedez', 'T-MERC-123456789', 'Land Cruiser 2015');
+INSERT INTO `Truck` (`TruckKey`, `TruckName`, `TruckNumber`, `Description`, `Deleted`) VALUES (uuid(), 'TRUCK - BMW', 'T-BMW-123456789', 'Land Cruiser 2015');
 
 --
 -- Table structure for table `tblAccount`
@@ -84,7 +105,7 @@ INSERT INTO `tblAccount` (`AccountNo`,`AccountName`,`Description`,`Deleted`) VAL
 DROP TABLE IF EXISTS `tblTransaction`;
 CREATE TABLE `tblTransaction` (
   `TransactionId` INT(11) NOT NULL AUTO_INCREMENT,
-  `TransactionNo` VARCHAR(45) NOT NULL,
+  `TransactionNo` VARCHAR(50) NOT NULL,
   `TransactionDate` DATE DEFAULT NULL,
   `TransactionType` VARCHAR(20) NOT NULL,
   `Description` VARCHAR(200) DEFAULT NULL,
@@ -93,14 +114,14 @@ CREATE TABLE `tblTransaction` (
   `Currency` VARCHAR(3) DEFAULT NULL,
   `TotalAmount` DECIMAL(11,4) NOT NULL DEFAULT '0',
   `CustomerId` INT(11) DEFAULT NULL,
-  `CustomerName` VARCHAR(45) DEFAULT NULL,
+  `CustomerName` VARCHAR(50) DEFAULT NULL,
   `InvoiceNo` VARCHAR(20) DEFAULT NULL,
   `InvoiceDate` DATE DEFAULT NULL,
   `InvoiceDesc` VARCHAR(200) DEFAULT NULL,  
   `Created` DATETIME DEFAULT CURRENT_TIMESTAMP,
   `Updated` DATETIME DEFAULT CURRENT_TIMESTAMP,
-  `Author` VARCHAR(45) NOT NULL,
-  `Editor` VARCHAR(45) NOT NULL,
+  `Author` VARCHAR(50) NOT NULL,
+  `Editor` VARCHAR(50) NOT NULL,
   `Deleted` TINYINT(1) DEFAULT '0',
   PRIMARY KEY (`TransactionId`),
   UNIQUE KEY `TransactionId_UNIQUE` (`TransactionId`)
@@ -132,14 +153,14 @@ CREATE TABLE `tblTransactionDetail` (
   `TransactionDetailId` INT(11) NOT NULL AUTO_INCREMENT,
   `TransactionId` INT(11) NOT NULL,
   `ProductId` INT(11) DEFAULT NULL,  
-  `ProductName` VARCHAR(45) DEFAULT NULL,  
+  `ProductName` VARCHAR(50) DEFAULT NULL,  
   `Quantity` DECIMAL(11,4) NOT NULL DEFAULT '0',
   `Price` DECIMAL(11,4) NOT NULL DEFAULT '0',
   `Amount` DECIMAL(11,4) NOT NULL DEFAULT '0',
   `Created` DATETIME DEFAULT CURRENT_TIMESTAMP,
   `Updated` DATETIME DEFAULT CURRENT_TIMESTAMP,
-  `Author` VARCHAR(45) NOT NULL,
-  `Editor` VARCHAR(45) NOT NULL,
+  `Author` VARCHAR(50) NOT NULL,
+  `Editor` VARCHAR(50) NOT NULL,
   `Deleted` TINYINT(1) DEFAULT '0',
   PRIMARY KEY (`TransactionDetailId`),
   UNIQUE KEY `TransactionDetailId_UNIQUE` (`TransactionDetailId`)
@@ -152,21 +173,21 @@ CREATE TABLE `tblTransactionDetail` (
 DROP TABLE IF EXISTS `tblStock`;
 CREATE TABLE `tblStock` (
   `StockId` INT(11) NOT NULL AUTO_INCREMENT,
-  `StockNo` VARCHAR(45) NOT NULL,
+  `StockNo` VARCHAR(50) NOT NULL,
   `StockDate` DATE DEFAULT NULL,
   `StockType` VARCHAR(20) NOT NULL,
   `Description` VARCHAR(200) DEFAULT NULL,
   `Currency` VARCHAR(3) DEFAULT NULL,
   `TotalAmount` DECIMAL(11,4) NOT NULL DEFAULT '0',
   `CustomerId` INT(11) DEFAULT NULL,
-  `CustomerName` VARCHAR(45) DEFAULT NULL,
+  `CustomerName` VARCHAR(50) DEFAULT NULL,
   `InvoiceNo` VARCHAR(20) DEFAULT NULL,
   `InvoiceDate` DATE DEFAULT NULL,
   `InvoiceDesc` VARCHAR(200) DEFAULT NULL,  
   `Created` DATETIME DEFAULT CURRENT_TIMESTAMP,
   `Updated` DATETIME DEFAULT CURRENT_TIMESTAMP,
-  `Author` VARCHAR(45) NOT NULL,
-  `Editor` VARCHAR(45) NOT NULL,
+  `Author` VARCHAR(50) NOT NULL,
+  `Editor` VARCHAR(50) NOT NULL,
   `Deleted` TINYINT(1) DEFAULT '0',
   PRIMARY KEY (`StockId`),
   UNIQUE KEY `StockId_UNIQUE` (`StockId`)
@@ -198,14 +219,14 @@ CREATE TABLE `tblStockDetail` (
   `StockDetailId` INT(11) NOT NULL AUTO_INCREMENT,
   `StockId` INT(11) NOT NULL,  
   `ProductId` INT(11) DEFAULT NULL,  
-  `ProductName` VARCHAR(45) DEFAULT NULL,  
+  `ProductName` VARCHAR(50) DEFAULT NULL,  
   `Quantity` DECIMAL(11,4) NOT NULL DEFAULT '0',
   `Price` DECIMAL(11,4) NOT NULL DEFAULT '0',
   `Amount` DECIMAL(11,4) NOT NULL DEFAULT '0',
   `Created` DATETIME DEFAULT CURRENT_TIMESTAMP,
   `Updated` DATETIME DEFAULT CURRENT_TIMESTAMP,
-  `Author` VARCHAR(45) NOT NULL,
-  `Editor` VARCHAR(45) NOT NULL,
+  `Author` VARCHAR(50) NOT NULL,
+  `Editor` VARCHAR(50) NOT NULL,
   `Deleted` TINYINT(1) DEFAULT '0',
   PRIMARY KEY (`StockDetailId`),
   UNIQUE KEY `StockDetailId_UNIQUE` (`StockDetailId`)
@@ -220,7 +241,7 @@ CREATE TABLE `tblInventory` (
   `StockId` INT(11) DEFAULT NULL,
   `StockDate` DATE DEFAULT NULL,  
   `ProductId` INT(11) DEFAULT NULL,  
-  `ProductName` VARCHAR(45) DEFAULT NULL,  
+  `ProductName` VARCHAR(50) DEFAULT NULL,  
   `QuantityInput` DECIMAL(11,4) NOT NULL DEFAULT '0',
   `QuantityOutput` DECIMAL(11,4) NOT NULL DEFAULT '0',
   `QuantityBalance` DECIMAL(11,4) NOT NULL DEFAULT '0',
@@ -229,8 +250,8 @@ CREATE TABLE `tblInventory` (
   `TotalAmount` DECIMAL(11,4) NOT NULL DEFAULT '0',
   `Created` DATETIME DEFAULT CURRENT_TIMESTAMP,
   `Updated` DATETIME DEFAULT CURRENT_TIMESTAMP,
-  `Author` VARCHAR(45) NOT NULL,
-  `Editor` VARCHAR(45) NOT NULL,  
+  `Author` VARCHAR(50) NOT NULL,
+  `Editor` VARCHAR(50) NOT NULL,  
   `Deleted` TINYINT(1) DEFAULT '0',
   PRIMARY KEY (`InventoryId`),
   UNIQUE KEY `InventoryId_UNIQUE` (`InventoryId`)
@@ -242,7 +263,7 @@ CREATE TABLE `tblInventory` (
 DROP TABLE IF EXISTS `tblJournal`;
 CREATE TABLE `tblJournal` (
   `JournalId` INT(11) NOT NULL AUTO_INCREMENT,
-  `JournalNo` VARCHAR(45) NOT NULL,
+  `JournalNo` VARCHAR(50) NOT NULL,
   `JournalType` VARCHAR(20) NOT NULL,
   `JournalDate` DATE DEFAULT NULL,
   `Description` VARCHAR(200) DEFAULT NULL,
@@ -252,8 +273,8 @@ CREATE TABLE `tblJournal` (
   `CreditAcctNo` VARCHAR(20) NOT NULL,
   `Created` DATETIME DEFAULT CURRENT_TIMESTAMP,
   `Updated` DATETIME DEFAULT CURRENT_TIMESTAMP,
-  `Author` VARCHAR(45) NOT NULL,
-  `Editor` VARCHAR(45) NOT NULL,
+  `Author` VARCHAR(50) NOT NULL,
+  `Editor` VARCHAR(50) NOT NULL,
   `Deleted` TINYINT(1) DEFAULT '0',
   PRIMARY KEY (`JournalId`),
   UNIQUE KEY `JournalId_UNIQUE` (`JournalId`)
@@ -265,12 +286,12 @@ CREATE TABLE `tblJournal` (
 DROP TABLE IF EXISTS `tblBrand`;
 CREATE TABLE `tblBrand` (
   `BrandId` INT(11) NOT NULL AUTO_INCREMENT,
-  `Name` VARCHAR(45) NOT NULL,
+  `Name` VARCHAR(50) NOT NULL,
   `Description` VARCHAR(200) DEFAULT NULL,
   `Created` DATETIME DEFAULT CURRENT_TIMESTAMP,
   `Updated` DATETIME DEFAULT CURRENT_TIMESTAMP,
-  `Author` VARCHAR(45) NOT NULL,
-  `Editor` VARCHAR(45) NOT NULL,
+  `Author` VARCHAR(50) NOT NULL,
+  `Editor` VARCHAR(50) NOT NULL,
   `Deleted` TINYINT(1) DEFAULT '0',
   PRIMARY KEY (`BrandId`),
   UNIQUE KEY `BrandId_UNIQUE` (`BrandId`)
@@ -308,7 +329,7 @@ INSERT INTO `tblbrand` (`Name`,`Description`,`Deleted`) VALUES ('Facebook','The 
 DROP TABLE IF EXISTS `tblproduct`;
 CREATE TABLE `tblproduct` (
   `ProductId` INT(11) NOT NULL AUTO_INCREMENT,
-  `ProductName` VARCHAR(45) NOT NULL,
+  `ProductName` VARCHAR(50) NOT NULL,
   `Description` VARCHAR(200) DEFAULT NULL,
   `BrandId` INT(11) NOT NULL,
   `Price` DECIMAL(10,0) DEFAULT '0',
@@ -400,7 +421,7 @@ CREATE TABLE `tblreview` (
   `Comment` VARCHAR(200) DEFAULT NULL,
   `Created` DATETIME DEFAULT CURRENT_TIMESTAMP,
   `ProductId` INT(11) NOT NULL,
-  `Email` VARCHAR(45) DEFAULT NULL,
+  `Email` VARCHAR(50) DEFAULT NULL,
   `Deleted` TINYINT(1) DEFAULT '0',
   PRIMARY KEY (`ReviewId`),
   UNIQUE KEY `ReviewId_UNIQUE` (`ReviewId`)
@@ -425,14 +446,14 @@ INSERT INTO `tblreview`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `D
 DROP TABLE IF EXISTS `tbluser`;
 CREATE TABLE `tbluser` (
   `UserId` INT(11) NOT NULL AUTO_INCREMENT,
-  `UserKey` VARCHAR(45) NOT NULL,
+  `UserKey` VARCHAR(50) NOT NULL,
   `UserType` VARCHAR(20) NOT NULL,
-  `UserName` VARCHAR(45) NOT NULL,  
+  `UserName` VARCHAR(50) NOT NULL,  
   `DisplayName` VARCHAR(50) DEFAULT NULL,
-  `Email` VARCHAR(45) DEFAULT NULL,
-  `Mobile` VARCHAR(45) DEFAULT NULL,
-  `Tel` VARCHAR(45) DEFAULT NULL,
-  `Title` VARCHAR(45) DEFAULT NULL,
+  `Email` VARCHAR(50) DEFAULT NULL,
+  `Mobile` VARCHAR(50) DEFAULT NULL,
+  `Tel` VARCHAR(50) DEFAULT NULL,
+  `Title` VARCHAR(50) DEFAULT NULL,
   `DateOfBirth` DATE DEFAULT NULL,  
   `Hash` VARCHAR(200) DEFAULT NULL,
   `Deleted` TINYINT(1) DEFAULT '0',
