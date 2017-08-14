@@ -14,7 +14,7 @@ CREATE TABLE [dbo].[Customer](
     [Title] [nvarchar](50) NULL,
 	[Address] [nvarchar](250) NULL,	
     [Deleted] [INT] DEFAULT 0
- CONSTRAINT [PK_Customer] PRIMARY KEY CLUSTERED 
+ CONSTRAINT [PK_Customer] PRIMARY KEY CLUSTERED
 (
 	[CustomerId] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
@@ -144,3 +144,57 @@ VALUES (NEWID(),'2016-11-07','CASHOUT','Cash Out', '111', '532', 'USD', 500, 1, 
 
 
 /****** Object:  Table [dbo].[TransactionDetail] ******/
+
+
+/****** Object:  Table [dbo].[Inventory] ******/
+
+
+/****** Object:  Table [dbo].[Stock] ******/
+
+
+/****** Object:  Table [dbo].[StockDetail] ******/
+
+
+/****** Object:  Table [dbo].[Journal] ******/
+
+
+/****** Object:  Table [dbo].[Brand] ******/
+
+
+/****** Object:  Table [dbo].[Product] ******/
+
+
+/****** Object:  Table [dbo].[Review] ******/
+
+
+/****** Object:  Table [dbo].[User] ******/
+CREATE TABLE [dbo].[User](
+	[UserId] [int] IDENTITY(1,1) NOT NULL,
+	[UserKey] [nvarchar](50) NOT NULL,	
+    [UserType] [nvarchar](20) NULL,
+	[UserName] [nvarchar](50) NULL,
+	[DisplayName] [nvarchar](50) NULL,
+	[Email] [nvarchar](50) NULL,
+	[Mobile] [nvarchar](50) NULL,
+	[Tel] [nvarchar](50) NULL,
+	[Title] [nvarchar](50) NULL,
+	[DateOfBirth] [datetime] DEFAULT CURRENT_TIMESTAMP,  	
+	[Created] [datetime] DEFAULT CURRENT_TIMESTAMP,
+	[Updated] [datetime] DEFAULT CURRENT_TIMESTAMP,
+	[Author] [nvarchar](50) DEFAULT NULL,
+	[Editor] [nvarchar](50) DEFAULT NULL,
+    [Deleted] [int] DEFAULT 0
+ CONSTRAINT [PK_User] PRIMARY KEY CLUSTERED 
+(
+	[UserId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+INSERT INTO [dbo].[User] (UserKey, UserType, UserName, DisplayName, Email, DateOfBirth, Deleted) VALUES (NEWID(), 'USER','beckham','David Beckham','hoanganh@ibm.com','1990-03-03',0);
+INSERT INTO [dbo].[User] (UserKey, UserType, UserName, DisplayName, Email, DateOfBirth, Deleted) VALUES (NEWID(), 'USER','huetran','Hue Tran','huetran@hvn.com','1990-04-04',1);
+INSERT INTO [dbo].[User] (UserKey, UserType, UserName, DisplayName, Email, DateOfBirth, Deleted) VALUES (NEWID(), 'ADMIN','john','John Mike','john@microsoft.com','2000-12-26',0);
+INSERT INTO [dbo].[User] (UserKey, UserType, UserName, DisplayName, Email, DateOfBirth, Deleted) VALUES (NEWID(), 'USER','avo4','Anh Vo','avo4@csc.com','1984-12-22',0);
+INSERT INTO [dbo].[User] (UserKey, UserType, UserName, DisplayName, Email, DateOfBirth, Deleted) VALUES (NEWID(), 'USER','anhvod','Vo Duy Anh','anhvod@hvn.com','1984-12-24',0);
+INSERT INTO [dbo].[User] (UserKey, UserType, UserName, DisplayName, Email, DateOfBirth, Deleted) VALUES (NEWID(), 'USER','lukaku','Lukaku','lukaku@sony.com','1980-06-06',0);
+INSERT INTO [dbo].[User] (UserKey, UserType, UserName, DisplayName, Email, DateOfBirth, Deleted) VALUES (NEWID(), 'USER','pogba','Pogba','pogba@samsung.com','1980-06-06',0);
