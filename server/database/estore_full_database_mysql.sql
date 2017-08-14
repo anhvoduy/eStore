@@ -387,12 +387,12 @@ CREATE TABLE `Product` (
   `Price` DECIMAL(10,0) DEFAULT '0',
   `Colour` VARCHAR(10) DEFAULT NULL,  
   `Status` VARCHAR(10) DEFAULT NULL,
+  `LatestReviewInfo` VARCHAR(250) DEFAULT NULL,
   `Created` DATETIME DEFAULT CURRENT_TIMESTAMP,
   `Updated` DATETIME DEFAULT CURRENT_TIMESTAMP,
   `Author` VARCHAR(50) NOT NULL,
   `Editor` VARCHAR(50) NOT NULL,
   `Deleted` TINYINT(1) DEFAULT '0',
-  `LatestReviewInfo` VARCHAR(250) DEFAULT NULL,
   PRIMARY KEY (`ProductId`),
   UNIQUE KEY `ProductId_UNIQUE` (`ProductId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8 COMMENT='	';
@@ -400,81 +400,80 @@ CREATE TABLE `Product` (
 --
 -- Sample data for table `Product`
 --
-INSERT INTO `Product`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Created`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES ('Sony Vaio','Sony Vaio',1,100,'White','2013-08-25','IN','SYSTEM','SYSTEM');
+INSERT INTO `Product`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
+VALUES ('Sony Vaio','Sony Vaio',1,100,'White','IN','Cool','SYSTEM','SYSTEM');
 
-INSERT INTO `Product`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Created`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES ('Dell','Dell Vostro',2,2000,'White','2013-08-25','IN','SYSTEM','SYSTEM');
+INSERT INTO `Product`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
+VALUES ('Dell','Dell Vostro',2,2000,'White','IN','Cool','SYSTEM','SYSTEM');
 
-INSERT INTO `Product`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Created`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES ('HP Note','HP Note',2,100,'Yellow','2013-08-25','IN','SYSTEM','SYSTEM');
+INSERT INTO `Product`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
+VALUES ('HP Note','HP Note',2,100,'Yellow','IN','Cool','SYSTEM','SYSTEM');
 
-INSERT INTO `Product`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Created`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES ('Asus','Asus',4,800,'White','2013-08-25','IN','SYSTEM','SYSTEM');
+INSERT INTO `Product`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
+VALUES ('Asus','Asus',4,800,'White','IN','Cool','SYSTEM','SYSTEM');
 
-INSERT INTO `Product`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Created`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES ('Acer','Laptop Acer',4,100,'White','2013-08-25','IN','SYSTEM','SYSTEM');
+INSERT INTO `Product`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
+VALUES ('Acer','Laptop Acer',4,100,'White','IN','Cool','SYSTEM','SYSTEM');
 
-INSERT INTO `Product`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Created`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES ('Sony Xperia','Sony Xperia',6,1200,'White','2015-08-25','OUT','SYSTEM','SYSTEM');
+INSERT INTO `Product`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
+VALUES ('Sony Xperia','Sony Xperia',6,1200,'White','OUT','Cool','SYSTEM','SYSTEM');
 
-INSERT INTO `Product`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Created`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES ('IBM T42','IBM T42',20,100,'Red','2013-08-25','OUT','SYSTEM','SYSTEM');
+INSERT INTO `Product`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
+VALUES ('IBM T42','IBM T42',20,100,'Red','OUT','Cool','SYSTEM','SYSTEM');
 
-INSERT INTO `Product`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Created`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES ('IBM T60','IBM T60',20,100,'Red','2006-08-25','OUT','SYSTEM','SYSTEM');
+INSERT INTO `Product`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
+VALUES ('IBM T60','IBM T60',20,100,'Red','IN','Cool','SYSTEM','SYSTEM');
 
-INSERT INTO `Product`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Created`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES ('IBM T400','IBM T400',20,100,'Red','2010-08-25','OUT','SYSTEM','SYSTEM');
+INSERT INTO `Product`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
+VALUES ('IBM T400','IBM T400',20,100,'Red','IN','Cool','SYSTEM','SYSTEM');
 
-INSERT INTO `Product`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Created`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES ('Ipad 5','Ipad 5',22,3000,'Green','2016-08-28','OUT','SYSTEM','SYSTEM');
+INSERT INTO `Product`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
+VALUES ('Ipad 5','Ipad 5',22,3000,'Green','OUT','Cool','SYSTEM','SYSTEM');
 
-INSERT INTO `Product`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Created`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES ('IBM T42','IBM T42',20,100,'Red','2013-08-25','OUT','SYSTEM','SYSTEM');
+INSERT INTO `Product`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
+VALUES ('IBM T42','IBM T42',20,100,'Red','IN','Cool','SYSTEM','SYSTEM');
 
-INSERT INTO `Product`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Created`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES ('IBM T60','IBM T60',20,100,'Red','2006-08-25','OUT','SYSTEM','SYSTEM');
+INSERT INTO `Product`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
+VALUES ('IBM T60','IBM T60',20,100,'Red','OUT','Cool','SYSTEM','SYSTEM');
 
-INSERT INTO `Product`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Created`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES ('IBM T400','IBM T400',20,100,'Red','2010-08-25','OUT','SYSTEM','SYSTEM');
+INSERT INTO `Product`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
+VALUES ('IBM T400','IBM T400',20,100,'Red','IN','Cool','SYSTEM','SYSTEM');
 
-INSERT INTO `Product`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Created`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES ('Ipad 6','Ipad 6',22,3000,'Green','2016-08-28','OUT','SYSTEM','SYSTEM');
+INSERT INTO `Product`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
+VALUES ('Ipad 6','Ipad 6',22,3000,'Green','IN','Cool','SYSTEM','SYSTEM');
 
-INSERT INTO `Product`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Created`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES ('IBM T43','IBM T43',20,100,'Red','2013-08-25','OUT','SYSTEM','SYSTEM');
+INSERT INTO `Product`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
+VALUES ('IBM T43','IBM T43',20,100,'Red','IN','Cool','SYSTEM','SYSTEM');
 
-INSERT INTO `Product`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Created`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES ('IBM T44','IBM T44',20,100,'Red','2006-08-25','OUT','SYSTEM','SYSTEM');
+INSERT INTO `Product`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
+VALUES ('IBM T44','IBM T44',20,100,'Red','OUT','Cool','SYSTEM','SYSTEM');
 
-INSERT INTO `Product`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Created`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES ('IBM T45','IBM T45',20,100,'Red','2010-08-25','OUT','SYSTEM','SYSTEM');
+INSERT INTO `Product`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
+VALUES ('IBM T45','IBM T45',20,100,'Red','IN','Cool','SYSTEM','SYSTEM');
 
-INSERT INTO `Product`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Created`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES ('Ipad 7','Ipad 7',22,3000,'Green','2016-08-28','OUT','SYSTEM','SYSTEM');
+INSERT INTO `Product`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
+VALUES ('Ipad 7','Ipad 7',22,3000,'Green','OUT','Cool','SYSTEM','SYSTEM');
 
-INSERT INTO `Product`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Created`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES ('IBM T46','IBM T46',20,100,'Red','2013-08-25','OUT','SYSTEM','SYSTEM');
+INSERT INTO `Product`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
+VALUES ('IBM T46','IBM T46',20,100,'Red','IN','Cool','SYSTEM','SYSTEM');
 
-INSERT INTO `Product`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Created`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES ('IBM T47','IBM T47',20,100,'Red','2006-08-25','OUT','SYSTEM','SYSTEM');
+INSERT INTO `Product`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
+VALUES ('IBM T47','IBM T47',20,100,'Red','OUT','Cool','SYSTEM','SYSTEM');
 
-INSERT INTO `Product`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Created`,`Status`,`LatestReviewInfo`)
-VALUES ('IBM T2000','IBM T2000',20,100,'Red','2010-08-25','OUT','SYSTEM','SYSTEM');
+INSERT INTO `Product`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
+VALUES ('IBM T2000','IBM T2000',20,100,'Red','IN','Cool','SYSTEM','SYSTEM');
 
-INSERT INTO `Product`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Created`,`Status`,`LatestReviewInfo`)
-VALUES ('Ipad 8','Ipad 8',22,3000,'Green','2016-08-28','OUT','SYSTEM','SYSTEM');
+INSERT INTO `Product`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
+VALUES ('Ipad 8','Ipad 8',22,3000,'Green','IN','Cool','SYSTEM','SYSTEM');
 
 --
--- Table structure for table `tblreview`
+-- Table structure for table `Review`
 --
-DROP TABLE IF EXISTS `tblreview`;
-CREATE TABLE `tblreview` (
+DROP TABLE IF EXISTS `Review`;
+CREATE TABLE `Review` (
   `ReviewId` INT(11) NOT NULL AUTO_INCREMENT,
   `Rating` int(2) DEFAULT NULL,
-  `Comment` VARCHAR(250) DEFAULT NULL,
-  `Created` DATETIME DEFAULT CURRENT_TIMESTAMP,
+  `Comment` VARCHAR(250) DEFAULT NULL,  
   `ProductId` INT(11) NOT NULL,
   `Email` VARCHAR(50) DEFAULT NULL,
   `Created` DATETIME DEFAULT CURRENT_TIMESTAMP,
@@ -489,15 +488,15 @@ CREATE TABLE `tblreview` (
 --
 -- Sample data for table `User`
 --
-INSERT INTO `tblreview`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Author`, `Editor`) VALUES (1,'Not bad','2013-08-25 17:00:00',1,'test@hvn.com','SYSTEM','SYSTEM');
-INSERT INTO `tblreview`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Author`, `Editor`) VALUES (5,'Normal','2013-08-25 17:00:00',2,'test@hvn.com','SYSTEM','SYSTEM');
-INSERT INTO `tblreview`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Author`, `Editor`) VALUES (6,'Good','2013-08-22 17:00:00',3,'test@hvn.com','SYSTEM','SYSTEM');
-INSERT INTO `tblreview`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Author`, `Editor`) VALUES (3,'Good','2013-08-22 17:00:00',3,'test@hvn.com','SYSTEM','SYSTEM');
-INSERT INTO `tblreview`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Author`, `Editor`) VALUES (3,'Bad','2013-08-22 17:00:00',5,'test@hvn.com','SYSTEM','SYSTEM');
-INSERT INTO `tblreview`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Author`, `Editor`) VALUES (3,'Comment','2016-07-10 16:43:40',7,'hvn@hvn.net','SYSTEM','SYSTEM');
-INSERT INTO `tblreview`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Author`, `Editor`) VALUES (3,'Comment','2016-07-10 16:43:41',7,'hvn@hvn.net','SYSTEM','SYSTEM');
-INSERT INTO `tblreview`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Author`, `Editor`) VALUES (3,'Comment','2016-07-10 16:43:41',7,'hvn@hvn.net','SYSTEM','SYSTEM');
-INSERT INTO `tblreview`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Author`, `Editor`) VALUES (2,'2222','2016-07-10 16:59:04',15,'hvn@hvn.net','SYSTEM','SYSTEM');
+INSERT INTO `Review`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Author`, `Editor`) VALUES (1,'Not bad','2013-08-25 17:00:00',1,'test@hvn.com','SYSTEM','SYSTEM');
+INSERT INTO `Review`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Author`, `Editor`) VALUES (5,'Normal','2013-08-25 17:00:00',2,'test@hvn.com','SYSTEM','SYSTEM');
+INSERT INTO `Review`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Author`, `Editor`) VALUES (6,'Good','2013-08-22 17:00:00',3,'test@hvn.com','SYSTEM','SYSTEM');
+INSERT INTO `Review`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Author`, `Editor`) VALUES (3,'Good','2013-08-22 17:00:00',3,'test@hvn.com','SYSTEM','SYSTEM');
+INSERT INTO `Review`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Author`, `Editor`) VALUES (3,'Bad','2013-08-22 17:00:00',5,'test@hvn.com','SYSTEM','SYSTEM');
+INSERT INTO `Review`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Author`, `Editor`) VALUES (3,'Comment','2016-07-10 16:43:40',7,'hvn@hvn.net','SYSTEM','SYSTEM');
+INSERT INTO `Review`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Author`, `Editor`) VALUES (3,'Comment','2016-07-10 16:43:41',7,'hvn@hvn.net','SYSTEM','SYSTEM');
+INSERT INTO `Review`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Author`, `Editor`) VALUES (3,'Comment','2016-07-10 16:43:41',7,'hvn@hvn.net','SYSTEM','SYSTEM');
+INSERT INTO `Review`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Author`, `Editor`) VALUES (2,'2222','2016-07-10 16:59:04',15,'hvn@hvn.net','SYSTEM','SYSTEM');
 
 --
 -- Table structure for table `User`
