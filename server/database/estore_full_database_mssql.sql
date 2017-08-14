@@ -12,7 +12,11 @@ CREATE TABLE [dbo].[Customer](
     [Tel] [nvarchar](50) NULL,
     [Fax] [nvarchar](50) NULL,
     [Title] [nvarchar](50) NULL,
-	[Address] [nvarchar](250) NULL,	
+	[Address] [nvarchar](250) NULL,
+	[Created] [datetime] DEFAULT CURRENT_TIMESTAMP,
+	[Updated] [datetime] DEFAULT CURRENT_TIMESTAMP,
+	[Author] [nvarchar](50) NOT NULL,
+	[Editor] [nvarchar](50) NOT NULL,	
     [Deleted] [INT] DEFAULT 0
  CONSTRAINT [PK_Customer] PRIMARY KEY CLUSTERED
 (
@@ -21,23 +25,23 @@ CREATE TABLE [dbo].[Customer](
 ) ON [PRIMARY]
 GO
 
-INSERT INTO [dbo].[Customer] (CustomerKey, CustomerName, Address, Mobile)
-VALUES (NEWID(), 'The Bank of Tokyo and Mitsuibishi', 'Manchester United', '1234567890')
+INSERT INTO [dbo].[Customer] (CustomerKey, CustomerName, Address, Mobile, Author, Editor)
+VALUES (NEWID(), 'The Bank of Tokyo and Mitsuibishi', 'Manchester United', '1234567890', 'SYSTEM', 'SYSTEM')
 
-INSERT INTO [dbo].[Customer] (CustomerKey, CustomerName, Address, Mobile)
-VALUES (NEWID(), 'REE Corporation Group', 'Manchester United', '9876543210')
+INSERT INTO [dbo].[Customer] (CustomerKey, CustomerName, Address, Mobile, Author, Editor)
+VALUES (NEWID(), 'REE Corporation Group', 'Manchester United', '9876543210', 'SYSTEM', 'SYSTEM')
 
-INSERT INTO [dbo].[Customer] (CustomerKey, CustomerName, Address, Mobile)
-VALUES (NEWID(), 'FPT Information System', 'Real Madrid', '1234567890')
+INSERT INTO [dbo].[Customer] (CustomerKey, CustomerName, Address, Mobile, Author, Editor)
+VALUES (NEWID(), 'FPT Information System', 'Real Madrid', '1234567890', 'SYSTEM', 'SYSTEM')
 
-INSERT INTO [dbo].[Customer] (CustomerKey, CustomerName, Address, Mobile)
-VALUES (NEWID(), 'HAG Corporation Group', 'Liverpool', '1234567890')
+INSERT INTO [dbo].[Customer] (CustomerKey, CustomerName, Address, Mobile, Author, Editor)
+VALUES (NEWID(), 'HAG Corporation Group', 'Liverpool', '1234567890', 'SYSTEM', 'SYSTEM')
 
-INSERT INTO [dbo].[Customer] (CustomerKey, CustomerName, Address, Mobile)
-VALUES (NEWID(), 'SMC Steel Company', 'PSG', '1234567890')
+INSERT INTO [dbo].[Customer] (CustomerKey, CustomerName, Address, Mobile, Author, Editor)
+VALUES (NEWID(), 'SMC Steel Company', 'PSG', '1234567890', 'SYSTEM', 'SYSTEM')
 
-INSERT INTO [dbo].[Customer] (CustomerKey, CustomerName, Address, Mobile)
-VALUES (NEWID(), 'Marubeni Itochu Steel Vietnam Co. Ltd.', 'PSG', '1234567890')
+INSERT INTO [dbo].[Customer] (CustomerKey, CustomerName, Address, Mobile, Author, Editor)
+VALUES (NEWID(), 'Marubeni Itochu Steel Vietnam Co. Ltd.', 'PSG', '1234567890', 'SYSTEM', 'SYSTEM')
 
 GO
 
@@ -49,6 +53,10 @@ CREATE TABLE [dbo].[Truck](
 	[TruckName] [nvarchar](50) NULL,
 	[TruckNumber] [nvarchar](50) NULL,
 	[Description] [nvarchar](250) NULL,
+	[Created] [datetime] DEFAULT CURRENT_TIMESTAMP,
+	[Updated] [datetime] DEFAULT CURRENT_TIMESTAMP,
+	[Author] [nvarchar](50) NOT NULL,
+	[Editor] [nvarchar](50) NOT NULL,
     [Deleted] [INT] DEFAULT 0
  CONSTRAINT [PK_Truck] PRIMARY KEY CLUSTERED 
 (
@@ -57,14 +65,20 @@ CREATE TABLE [dbo].[Truck](
 ) ON [PRIMARY]
 GO
 
-INSERT INTO [dbo].[Truck] (TruckKey, TruckName, TruckNumber, Description)
-VALUES (NEWID(), 'TRUCK - Land Cruiser', 'T-LAND-123456789', 'Land Cruiser 2015')
+INSERT INTO [dbo].[Truck] (TruckKey, TruckName, TruckNumber, Description, Author, Editor)
+VALUES (NEWID(), 'TRUCK - Land Cruiser', 'T-LAND-123456789', 'Land Cruiser 2015', 'SYSTEM', 'SYSTEM')
 
-INSERT INTO [dbo].[Truck] (TruckKey, TruckName, TruckNumber, Description)
-VALUES (NEWID(), 'TRUCK - Mercedez', 'T-MERC-123456789', 'Mercedez 2017')
+INSERT INTO [dbo].[Truck] (TruckKey, TruckName, TruckNumber, Description, Author, Editor)
+VALUES (NEWID(), 'TRUCK - Mercedez', 'T-MERC-123456789', 'Mercedez 2017', 'SYSTEM', 'SYSTEM')
 
-INSERT INTO [dbo].[Truck] (TruckKey, TruckName, TruckNumber, Description)
-VALUES (NEWID(), 'TRUCK - BMW', 'T-BMW-852741963', 'BMW 2015')
+INSERT INTO [dbo].[Truck] (TruckKey, TruckName, TruckNumber, Description, Author, Editor)
+VALUES (NEWID(), 'TRUCK - BMW', 'T-BMW-852741963', 'BMW 2015', 'SYSTEM', 'SYSTEM')
+
+INSERT INTO [dbo].[Truck] (TruckKey, TruckName, TruckNumber, Description, Author, Editor)
+VALUES (NEWID(), 'TRUCK - MAX', 'T-MAX-852741963', 'Kawasaki 2015', 'SYSTEM', 'SYSTEM')
+
+INSERT INTO [dbo].[Truck] (TruckKey, TruckName, TruckNumber, Description, Author, Editor)
+VALUES (NEWID(), 'TRUCK - EVEREST', 'T-EVEREST-852741963', 'Everest 2018', 'SYSTEM', 'SYSTEM')
 
 
 /****** Object:  Table [dbo].[Account] ******/
@@ -74,6 +88,10 @@ CREATE TABLE [dbo].[Account](
 	[AccountNo] [nvarchar](20) NOT NULL,
     [AccountName] [nvarchar](100) NULL,	
 	[Description] [nvarchar](250) NULL,
+	[Created] [datetime] DEFAULT CURRENT_TIMESTAMP,
+	[Updated] [datetime] DEFAULT CURRENT_TIMESTAMP,
+	[Author] [nvarchar](50) NOT NULL,
+	[Editor] [nvarchar](50) NOT NULL,
     [Deleted] [INT] DEFAULT 0
  CONSTRAINT [PK_Account] PRIMARY KEY CLUSTERED 
 (
@@ -82,18 +100,18 @@ CREATE TABLE [dbo].[Account](
 ) ON [PRIMARY]
 GO
 
-INSERT INTO [dbo].[Account] (AccountKey, AccountNo,AccountName,Description,Deleted) VALUES (NEWID(), '111','Cash','',0);
-INSERT INTO [dbo].[Account] (AccountKey, AccountNo,AccountName,Description,Deleted) VALUES (NEWID(), '112','Cash in bank','',0);
-INSERT INTO [dbo].[Account] (AccountKey, AccountNo,AccountName,Description,Deleted) VALUES (NEWID(), '113','Cash transfer ','',0);
-INSERT INTO [dbo].[Account] (AccountKey, AccountNo,AccountName,Description,Deleted) VALUES (NEWID(), '156','Goods','',0);
-INSERT INTO [dbo].[Account] (AccountKey, AccountNo,AccountName,Description,Deleted) VALUES (NEWID(), '131','Account Receivable','',0);
-INSERT INTO [dbo].[Account] (AccountKey, AccountNo,AccountName,Description,Deleted) VALUES (NEWID(), '331','Account Payment','',0);
-INSERT INTO [dbo].[Account] (AccountKey, AccountNo,AccountName,Description,Deleted) VALUES (NEWID(), '511','Revenue','',0);
-INSERT INTO [dbo].[Account] (AccountKey, AccountNo,AccountName,Description,Deleted) VALUES (NEWID(), '632','Cost of Goods Sold','',0);
-INSERT INTO [dbo].[Account] (AccountKey, AccountNo,AccountName,Description,Deleted) VALUES (NEWID(), '642','Selling Cost','',0);
-INSERT INTO [dbo].[Account] (AccountKey, AccountNo,AccountName,Description,Deleted) VALUES (NEWID(), '711','711','',0);
-INSERT INTO [dbo].[Account] (AccountKey, AccountNo,AccountName,Description,Deleted) VALUES (NEWID(), '811','811','',0);
-INSERT INTO [dbo].[Account] (AccountKey, AccountNo,AccountName,Description,Deleted) VALUES (NEWID(), '911','911','',0);
+INSERT INTO [dbo].[Account] (AccountKey, AccountNo,AccountName,Author,Editor) VALUES (NEWID(), '111','Cash','SYSTEM','SYSTEM');
+INSERT INTO [dbo].[Account] (AccountKey, AccountNo,AccountName,Author,Editor) VALUES (NEWID(), '112','Cash in bank','SYSTEM','SYSTEM');
+INSERT INTO [dbo].[Account] (AccountKey, AccountNo,AccountName,Author,Editor) VALUES (NEWID(), '113','Cash transfer','SYSTEM','SYSTEM');
+INSERT INTO [dbo].[Account] (AccountKey, AccountNo,AccountName,Author,Editor) VALUES (NEWID(), '156','Goods','SYSTEM','SYSTEM');
+INSERT INTO [dbo].[Account] (AccountKey, AccountNo,AccountName,Author,Editor) VALUES (NEWID(), '131','Account Receivable','SYSTEM','SYSTEM');
+INSERT INTO [dbo].[Account] (AccountKey, AccountNo,AccountName,Author,Editor) VALUES (NEWID(), '331','Account Payment','SYSTEM','SYSTEM');
+INSERT INTO [dbo].[Account] (AccountKey, AccountNo,AccountName,Author,Editor) VALUES (NEWID(), '511','Revenue','SYSTEM','SYSTEM');
+INSERT INTO [dbo].[Account] (AccountKey, AccountNo,AccountName,Author,Editor) VALUES (NEWID(), '632','Cost of Goods Sold','SYSTEM','SYSTEM');
+INSERT INTO [dbo].[Account] (AccountKey, AccountNo,AccountName,Author,Editor) VALUES (NEWID(), '642','Selling Cost','SYSTEM','SYSTEM');
+INSERT INTO [dbo].[Account] (AccountKey, AccountNo,AccountName,Author,Editor) VALUES (NEWID(), '711','711','SYSTEM','SYSTEM');
+INSERT INTO [dbo].[Account] (AccountKey, AccountNo,AccountName,Author,Editor) VALUES (NEWID(), '811','811','SYSTEM','SYSTEM');
+INSERT INTO [dbo].[Account] (AccountKey, AccountNo,AccountName,Author,Editor) VALUES (NEWID(), '911','911','SYSTEM','SYSTEM');
 
 
 /****** Object:  Table [dbo].[Transaction] ******/
@@ -110,7 +128,7 @@ CREATE TABLE [dbo].[Transaction](
 	[CustomerId] [int] DEFAULT 0,
   	[CustomerName] [nvarchar](50) DEFAULT NULL,
 	[InvoiceNo] [nvarchar](20) DEFAULT NULL,
-	[InvoiceDate] [datetime] DEFAULT CURRENT_TIMESTAMP, -- ngay hoa don
+	[InvoiceDate] [datetime] DEFAULT NULL, -- ngay hoa don
 	[InvoiceDesc] [nvarchar](250) DEFAULT NULL,  
 	[Created] [datetime] DEFAULT CURRENT_TIMESTAMP,
 	[Updated] [datetime] DEFAULT CURRENT_TIMESTAMP,
@@ -173,6 +191,7 @@ CREATE TABLE [dbo].[User](
 	[UserKey] [nvarchar](50) NOT NULL,	
     [UserType] [nvarchar](20) NULL,
 	[UserName] [nvarchar](50) NULL,
+	[Hash] [nvarchar](50) NOT NULL,	
 	[DisplayName] [nvarchar](50) NULL,
 	[Email] [nvarchar](50) NULL,
 	[Mobile] [nvarchar](50) NULL,
@@ -181,8 +200,8 @@ CREATE TABLE [dbo].[User](
 	[DateOfBirth] [datetime] DEFAULT CURRENT_TIMESTAMP,  	
 	[Created] [datetime] DEFAULT CURRENT_TIMESTAMP,
 	[Updated] [datetime] DEFAULT CURRENT_TIMESTAMP,
-	[Author] [nvarchar](50) DEFAULT NULL,
-	[Editor] [nvarchar](50) DEFAULT NULL,
+	[Author] [nvarchar](50) NULL,
+	[Editor] [nvarchar](50) NULL,
     [Deleted] [int] DEFAULT 0
  CONSTRAINT [PK_User] PRIMARY KEY CLUSTERED 
 (
@@ -191,10 +210,10 @@ CREATE TABLE [dbo].[User](
 ) ON [PRIMARY]
 GO
 
-INSERT INTO [dbo].[User] (UserKey, UserType, UserName, DisplayName, Email, DateOfBirth, Deleted) VALUES (NEWID(), 'USER','beckham','David Beckham','hoanganh@ibm.com','1990-03-03',0);
-INSERT INTO [dbo].[User] (UserKey, UserType, UserName, DisplayName, Email, DateOfBirth, Deleted) VALUES (NEWID(), 'USER','huetran','Hue Tran','huetran@hvn.com','1990-04-04',1);
-INSERT INTO [dbo].[User] (UserKey, UserType, UserName, DisplayName, Email, DateOfBirth, Deleted) VALUES (NEWID(), 'ADMIN','john','John Mike','john@microsoft.com','2000-12-26',0);
-INSERT INTO [dbo].[User] (UserKey, UserType, UserName, DisplayName, Email, DateOfBirth, Deleted) VALUES (NEWID(), 'USER','avo4','Anh Vo','avo4@csc.com','1984-12-22',0);
-INSERT INTO [dbo].[User] (UserKey, UserType, UserName, DisplayName, Email, DateOfBirth, Deleted) VALUES (NEWID(), 'USER','anhvod','Vo Duy Anh','anhvod@hvn.com','1984-12-24',0);
-INSERT INTO [dbo].[User] (UserKey, UserType, UserName, DisplayName, Email, DateOfBirth, Deleted) VALUES (NEWID(), 'USER','lukaku','Lukaku','lukaku@sony.com','1980-06-06',0);
-INSERT INTO [dbo].[User] (UserKey, UserType, UserName, DisplayName, Email, DateOfBirth, Deleted) VALUES (NEWID(), 'USER','pogba','Pogba','pogba@samsung.com','1980-06-06',0);
+INSERT INTO [dbo].[User] (UserKey, UserType, UserName, Hash, DisplayName, Email, DateOfBirth, Author, Editor) VALUES (NEWID(),'USER', 'beckham',NEWID(),'David Beckham','hoanganh@ibm.com','1990-03-03','SYSTEM','SYSTEM');
+INSERT INTO [dbo].[User] (UserKey, UserType, UserName, Hash, DisplayName, Email, DateOfBirth, Author, Editor) VALUES (NEWID(),'USER', 'huetran',NEWID(),'Hue Tran','huetran@hvn.com','1990-04-04','SYSTEM','SYSTEM');
+INSERT INTO [dbo].[User] (UserKey, UserType, UserName, Hash, DisplayName, Email, DateOfBirth, Author, Editor) VALUES (NEWID(),'ADMIN','admin',  NEWID(),'John Mike','john@microsoft.com','2000-12-26','SYSTEM','SYSTEM');
+INSERT INTO [dbo].[User] (UserKey, UserType, UserName, Hash, DisplayName, Email, DateOfBirth, Author, Editor) VALUES (NEWID(),'USER', 'avo4',   NEWID(),'Anh Vo','avo4@csc.com','1984-12-22','SYSTEM','SYSTEM');
+INSERT INTO [dbo].[User] (UserKey, UserType, UserName, Hash, DisplayName, Email, DateOfBirth, Author, Editor) VALUES (NEWID(),'USER', 'anhvod', NEWID(),'Vo Duy Anh','anhvod@hvn.com','1984-12-24','SYSTEM','SYSTEM');
+INSERT INTO [dbo].[User] (UserKey, UserType, UserName, Hash, DisplayName, Email, DateOfBirth, Author, Editor) VALUES (NEWID(),'USER', 'lukaku', NEWID(),'Lukaku','lukaku@sony.com','1982-08-08','SYSTEM','SYSTEM');
+INSERT INTO [dbo].[User] (UserKey, UserType, UserName, Hash, DisplayName, Email, DateOfBirth, Author, Editor) VALUES (NEWID(),'USER', 'pogba',  NEWID(),'Pogba','pogba@samsung.com','1985-06-06','SYSTEM','SYSTEM');
