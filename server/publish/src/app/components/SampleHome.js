@@ -16,10 +16,16 @@ export class SampleHome extends React.Component{
             profile: {},
             name: this.props.name,
             age: this.props.age,
-            homeLink: 'Home Changed',
+            homeLink: props.initialHomeLinkName,
             aboutLink: 'About Changed'
-        };        
-        console.log('- constructor()');
+        };
+
+        setTimeout(() => {
+            this.setState({
+                status: 1
+            });
+        }, 5000);
+        console.log('- SampleHome: constructor()');
     }
 
     onMakeOlder() {
@@ -35,9 +41,15 @@ export class SampleHome extends React.Component{
     changeAboutLink(){
         this.props.changeAboutLink(this.state.aboutLink);
     }
+
+    onChangeHomeLinkHandle(event){
+        this.setState({
+            homeLink: event.target.value
+        })
+    }
     
     componentWillMount() {
-        console.log('- componentWillMount()');
+        console.log('- SampleHome: componentWillMount()');
         var component = this;
         return dataService.getProfile('/api/myprofile')
         .then(function(data){
@@ -48,7 +60,7 @@ export class SampleHome extends React.Component{
     }
 
     render(){
-        console.log('- render()');
+        console.log('- SampleHome: render()');
         // console.log('- this.state.date:', moment(this.state.date).format('DD-MMM-YYYY'));
         // console.log('- this.state.profile:', this.state.profile);
         return (
@@ -66,6 +78,9 @@ export class SampleHome extends React.Component{
                 </div>
                 <p>-----</p>
                 <div>
+                    <input  type="text" 
+                            value={this.state.homeLink} 
+                            onChange={(event) => this.onChangeHomeLinkHandle(event)} />
                     <button className='btn btn-primary' onClick={this.changeHomeLink.bind(this)}>Change Home Link</button>
                 </div>
                 <p>-----</p>
@@ -95,11 +110,11 @@ export class SampleHome extends React.Component{
     }
 
     componentDidMount(){
-        console.log('- componentDidMount()');
+        console.log('- SampleHome: componentDidMount()');
     }
 
-    componentWillReceiveProps(){
-        console.log('- componentWillReceiveProps()');
+    componentWillReceiveProps(nextProps){
+        console.log('- SampleHome: componentWillReceiveProps()', nextProps);
     }
     
     /**
@@ -110,7 +125,9 @@ export class SampleHome extends React.Component{
      * @param {*} nextState 
      */
     shouldComponentUpdate(nextProps, nextState){
-        console.log('- shouldComponentUpdate()');
+        console.log('- SampleHome: shouldComponentUpdate()', nextProps, nextState);
+        // if(nextState.status === 1) 
+        //     return false;
         return true; //false
     }
 
@@ -120,15 +137,15 @@ export class SampleHome extends React.Component{
      * @param {*} nextState 
      */
     componentWillUpdate(nextProps, nextState){     
-        console.log('- componentWillUpdate()');
+        console.log('- SampleHome: componentWillUpdate()', nextProps, nextState);
     }
 
     componentDidUpdate(prevProps, prevState){
-        console.log('- componentDidUpdate()');
+        console.log('- SampleHome: componentDidUpdate()');
     }
 
     componentWillUnMount(){
-        console.log('- componentWillUnMount()');
+        console.log('- SampleHome: componentWillUnMount()');
     }
 }
 
@@ -142,5 +159,6 @@ SampleHome.propTypes = {
     age: React.PropTypes.number,
     user: React.PropTypes.object,
     greet: React.PropTypes.func,
+    initialHomeLinkName: React.PropTypes.string,
     children: React.PropTypes.element.isRequired // same angularjs directive transclude
 }
