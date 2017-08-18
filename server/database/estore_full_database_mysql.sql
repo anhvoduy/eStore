@@ -39,7 +39,7 @@ CREATE TABLE `Customer` (
   `Updated` DATETIME DEFAULT CURRENT_TIMESTAMP,
   `Author` VARCHAR(50) NOT NULL,
   `Editor` VARCHAR(50) NOT NULL,
-  `Deleted` TINYINT(1) DEFAULT '0',
+  `Deleted` TINYINT(1) DEFAULT 0,
   PRIMARY KEY (`CustomerId`),
   UNIQUE KEY `CustomerId_UNIQUE` (`CustomerId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;	
@@ -68,7 +68,7 @@ CREATE TABLE `Truck` (
   `Updated` DATETIME DEFAULT CURRENT_TIMESTAMP,
   `Author` VARCHAR(50) NOT NULL,
   `Editor` VARCHAR(50) NOT NULL,
-  `Deleted` TINYINT(1) DEFAULT '0',
+  `Deleted` TINYINT(1) DEFAULT 0,
   PRIMARY KEY (`TruckId`),
   UNIQUE KEY `TruckId_UNIQUE` (`TruckId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
@@ -102,7 +102,7 @@ CREATE TABLE `Account` (
   `Updated` DATETIME DEFAULT CURRENT_TIMESTAMP,
   `Author` VARCHAR(50) NOT NULL,
   `Editor` VARCHAR(50) NOT NULL,
-  `Deleted` TINYINT(1) DEFAULT '0',
+  `Deleted` TINYINT(1) DEFAULT 0,
   PRIMARY KEY (`AccountId`),
   UNIQUE KEY `AccountId_UNIQUE` (`AccountId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
@@ -146,7 +146,7 @@ CREATE TABLE `Transaction` (
   `Updated` DATETIME DEFAULT CURRENT_TIMESTAMP,
   `Author` VARCHAR(50) NOT NULL,
   `Editor` VARCHAR(50) NOT NULL,
-  `Deleted` TINYINT(1) DEFAULT '0',
+  `Deleted` TINYINT(1) DEFAULT 0,
   PRIMARY KEY (`TransactionId`),
   UNIQUE KEY `TransactionId_UNIQUE` (`TransactionId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
@@ -179,16 +179,18 @@ DROP TABLE IF EXISTS `TransactionDetail`;
 CREATE TABLE `TransactionDetail` (
   `TransactionDetailId` INT(11) NOT NULL AUTO_INCREMENT,
   `TransactionId` INT(11) NOT NULL,
-  `ProductId` INT(11) DEFAULT NULL,  
-  `ProductName` VARCHAR(50) DEFAULT NULL,  
-  `Quantity` DECIMAL(12,4) NOT NULL DEFAULT '0',
-  `Price` DECIMAL(12,4) NOT NULL DEFAULT '0',
-  `Amount` DECIMAL(12,4) NOT NULL DEFAULT '0',
+  `ProductId` INT(11) NOT NULL DEFAULT 0,  
+  `ProductName` VARCHAR(50) DEFAULT NULL,
+  `Description` VARCHAR(250) DEFAULT NULL,
+  `Currency` VARCHAR(3) NOT NULL,
+  `Quantity` INT(11) NOT NULL DEFAULT 0,
+  `Price` DECIMAL(12,4) NOT NULL DEFAULT 0,
+  `Amount` DECIMAL(12,4) NOT NULL DEFAULT 0,  
   `Created` DATETIME DEFAULT CURRENT_TIMESTAMP,
   `Updated` DATETIME DEFAULT CURRENT_TIMESTAMP,
   `Author` VARCHAR(50) NOT NULL,
   `Editor` VARCHAR(50) NOT NULL,
-  `Deleted` TINYINT(1) DEFAULT '0',
+  `Deleted` TINYINT(1) DEFAULT 0,
   PRIMARY KEY (`TransactionDetailId`),
   UNIQUE KEY `TransactionDetailId_UNIQUE` (`TransactionDetailId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
@@ -196,7 +198,20 @@ CREATE TABLE `TransactionDetail` (
 --
 -- Sample data for table `TransactionDetail`
 --
+INSERT INTO `TransactionDetail`(TransactionId, ProductId, ProductName, Description, Currency, Quantity, Price, Amount, Author, Editor)
+VALUES (1,1,'Product 1','Description 1', 'USD', 120, 30, 3600, 'SYSTEM', 'SYSTEM');
 
+INSERT INTO `TransactionDetail`(TransactionId, ProductId, ProductName, Description, Currency, Quantity, Price, Amount, Author, Editor)
+VALUES (1,2,'Product 2','Description 1', 'USD', 120, 30, 3600, 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `TransactionDetail`(TransactionId, ProductId, ProductName, Description, Currency, Quantity, Price, Amount, Author, Editor)
+VALUES (2,1,'Product 1','Description 1', 'USD', 120, 30, 3600, 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `TransactionDetail`(TransactionId, ProductId, ProductName, Description, Currency, Quantity, Price, Amount, Author, Editor)
+VALUES (2,2,'Product 1','Description 1', 'USD', 120, 30, 3600, 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `TransactionDetail`(TransactionId, ProductId, ProductName, Description, Currency, Quantity, Price, Amount, Author, Editor)
+VALUES (2,3,'Product 1','Description 1', 'USD', 120, 30, 3600, 'SYSTEM', 'SYSTEM');
 
 
 --
@@ -205,21 +220,20 @@ CREATE TABLE `TransactionDetail` (
 DROP TABLE IF EXISTS `Inventory`;
 CREATE TABLE `Inventory` (
   `InventoryId` INT(11) NOT NULL AUTO_INCREMENT,
-  `StockId` INT(11) DEFAULT NULL,
-  `StockDate` DATE DEFAULT NULL,  
+  `StockId` INT(11) DEFAULT NULL,  
   `ProductId` INT(11) DEFAULT NULL,  
   `ProductName` VARCHAR(50) DEFAULT NULL,  
-  `QuantityInput` DECIMAL(12,4) NOT NULL DEFAULT '0',
-  `QuantityOutput` DECIMAL(12,4) NOT NULL DEFAULT '0',
-  `QuantityBalance` DECIMAL(12,4) NOT NULL DEFAULT '0',
-  `IsPerpetual` TINYINT(1) DEFAULT '0',
-  `Currency` VARCHAR(3) DEFAULT NULL,
-  `TotalAmount` DECIMAL(12,4) NOT NULL DEFAULT '0',
+  `QtyInput` INT(11) NOT NULL DEFAULT 0,
+  `QtyOutput` INT(11) NOT NULL DEFAULT 0,
+  `QtyBalance` INT(11) NOT NULL DEFAULT 0, -- redundant
+  `IsPerpetual` TINYINT(1) DEFAULT 0, -- redundant  
+  `Price` DECIMAL(12,4) NOT NULL DEFAULT 0,
+  `TotalAmount` DECIMAL(12,4) NOT NULL DEFAULT 0,
   `Created` DATETIME DEFAULT CURRENT_TIMESTAMP,
   `Updated` DATETIME DEFAULT CURRENT_TIMESTAMP,
   `Author` VARCHAR(50) NOT NULL,
   `Editor` VARCHAR(50) NOT NULL,  
-  `Deleted` TINYINT(1) DEFAULT '0',
+  `Deleted` TINYINT(1) DEFAULT 0,
   PRIMARY KEY (`InventoryId`),
   UNIQUE KEY `InventoryId_UNIQUE` (`InventoryId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
@@ -227,9 +241,23 @@ CREATE TABLE `Inventory` (
 --
 -- Sample data for table `Inventory`
 --
+INSERT INTO `Inventory`(StockId, ProductId, ProductName, QtyInput, QtyOutput, QtyBalance, IsPerpetual, Price, TotalAmount, Author, Editor)
+VALUES (1,1,'Product 1', 10, 0, 0, 0, 125, 1250, 'SYSTEM', 'SYSTEM');
 
+INSERT INTO `Inventory`(StockId, ProductId, ProductName, QtyInput, QtyOutput, QtyBalance, IsPerpetual, Price, TotalAmount, Author, Editor)
+VALUES (1,2,'Product 1', 20, 0, 0, 0, 125, 1250, 'SYSTEM', 'SYSTEM');
 
+INSERT INTO `Inventory`(StockId, ProductId, ProductName, QtyInput, QtyOutput, QtyBalance, IsPerpetual, Price, TotalAmount, Author, Editor)
+VALUES (1,3,'Product 1', 50, 0, 0, 0, 125, 1250, 'SYSTEM', 'SYSTEM');
 
+INSERT INTO `Inventory`(StockId, ProductId, ProductName, QtyInput, QtyOutput, QtyBalance, IsPerpetual, Price, TotalAmount, Author, Editor)
+VALUES (2,1,'Product 1', 0, 20, 0, 0, 125, 1250, 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `Inventory`(StockId, ProductId, ProductName, QtyInput, QtyOutput, QtyBalance, IsPerpetual, Price, TotalAmount, Author, Editor)
+VALUES (2,2,'Product 1', 0, 50, 0, 0, 125, 1250, 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `Inventory`(StockId, ProductId, ProductName, QtyInput, QtyOutput, QtyBalance, IsPerpetual, Price, TotalAmount, Author, Editor)
+VALUES (2,3,'Product 1', 60, 0, 0, 0, 125, 1250, 'SYSTEM', 'SYSTEM');
 
 --
 -- Table structure for table `Stock`
@@ -237,43 +265,46 @@ CREATE TABLE `Inventory` (
 DROP TABLE IF EXISTS `Stock`;
 CREATE TABLE `Stock` (
   `StockId` INT(11) NOT NULL AUTO_INCREMENT,
-  `StockNo` VARCHAR(50) NOT NULL,
-  `StockDate` DATE DEFAULT NULL,
+  `StockKey` VARCHAR(50) NOT NULL,
+  `StockDate` DATETIME NOT NULL,
   `StockType` VARCHAR(20) NOT NULL,
   `Description` VARCHAR(250) DEFAULT NULL,
-  `Currency` VARCHAR(3) DEFAULT NULL,
-  `TotalAmount` DECIMAL(12,4) NOT NULL DEFAULT '0',
-  `CustomerId` INT(11) DEFAULT NULL,
+  `Currency` VARCHAR(3) NOT NULL,
+  `TotalAmount` DECIMAL(12,4) NOT NULL DEFAULT 0,
+  `CustomerId` INT(11) DEFAULT 0,
   `CustomerName` VARCHAR(50) DEFAULT NULL,
   `InvoiceNo` VARCHAR(20) DEFAULT NULL,
-  `InvoiceDate` DATE DEFAULT NULL,
+  `InvoiceDate` DATETIME DEFAULT NULL,
   `InvoiceDesc` VARCHAR(250) DEFAULT NULL,  
   `Created` DATETIME DEFAULT CURRENT_TIMESTAMP,
   `Updated` DATETIME DEFAULT CURRENT_TIMESTAMP,
   `Author` VARCHAR(50) NOT NULL,
   `Editor` VARCHAR(50) NOT NULL,
-  `Deleted` TINYINT(1) DEFAULT '0',
+  `Deleted` TINYINT(1) DEFAULT 0,
   PRIMARY KEY (`StockId`),
   UNIQUE KEY `StockId_UNIQUE` (`StockId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 
 --
--- Table structure for table `Stock`
+-- Sample data for table `Stock`
 --
-INSERT INTO `Stock` (`StockNo`, `StockDate`, `StockType`, `Description`, `Currency`, `TotalAmount`, `CustomerId`, `CustomerName`, `Author`, `Editor`) 
-VALUES ('STOCKIN-20161201', '2016-12-01', 'STOCKIN', 'Stock In', 'VND', '60000', '1', 'CUSTOMER', 'SYSTEM', 'SYSTEM');
+INSERT INTO `Stock` (`StockKey`, `StockDate`, `StockType`, `Description`, `Currency`, `TotalAmount`, `CustomerId`, `CustomerName`, `Author`, `Editor`) 
+VALUES (uuid(), '2016-12-01', 'STOCKIN', 'Stock In', 'VND', '60000', '1', 'CUSTOMER', 'SYSTEM', 'SYSTEM');
 
-INSERT INTO `Stock` (`StockNo`, `StockDate`, `StockType`, `Description`, `Currency`, `TotalAmount`, `CustomerId`, `CustomerName`, `Author`, `Editor`) 
-VALUES ('STOCKIN-20161202', '2016-12-02', 'STOCKIN', 'Stock In', 'VND', '60000', '2', 'CUSTOMER', 'SYSTEM', 'SYSTEM');
+INSERT INTO `Stock` (`StockKey`, `StockDate`, `StockType`, `Description`, `Currency`, `TotalAmount`, `CustomerId`, `CustomerName`, `Author`, `Editor`) 
+VALUES (uuid(), '2016-12-02', 'STOCKIN', 'Stock In', 'VND', '60000', '2', 'CUSTOMER', 'SYSTEM', 'SYSTEM');
 
-INSERT INTO `Stock` (`StockNo`, `StockDate`, `StockType`, `Description`, `Currency`, `TotalAmount`, `CustomerId`, `CustomerName`, `Author`, `Editor`) 
-VALUES ('STOCKIN-20161203', '2016-12-03', 'STOCKIN', 'Stock In', 'VND', '60000', '3', 'CUSTOMER', 'SYSTEM', 'SYSTEM');
+INSERT INTO `Stock` (`StockKey`, `StockDate`, `StockType`, `Description`, `Currency`, `TotalAmount`, `CustomerId`, `CustomerName`, `Author`, `Editor`) 
+VALUES (uuid(), '2016-12-03', 'STOCKIN', 'Stock In', 'VND', '60000', '3', 'CUSTOMER', 'SYSTEM', 'SYSTEM');
 
-INSERT INTO `Stock` (`StockNo`, `StockDate`, `StockType`, `Description`, `Currency`, `TotalAmount`, `CustomerId`, `CustomerName`, `Author`, `Editor`) 
-VALUES ('STOCKOUT-20161221', '2016-12-21', 'STOCKOUT', 'Stock out', 'VND', '30000', '1', 'CUSTOMER', 'SYSTEM', 'SYSTEM');
+INSERT INTO `Stock` (`StockKey`, `StockDate`, `StockType`, `Description`, `Currency`, `TotalAmount`, `CustomerId`, `CustomerName`, `Author`, `Editor`) 
+VALUES (uuid(), '2016-12-21', 'STOCKOUT', 'Stock out', 'VND', '30000', '1', 'CUSTOMER', 'SYSTEM', 'SYSTEM');
 
-INSERT INTO `Stock` (`StockNo`, `StockDate`, `StockType`, `Description`, `Currency`, `TotalAmount`, `CustomerId`, `CustomerName`, `Author`, `Editor`) 
-VALUES ('STOCKOUT-20161222', '2016-12-22', 'STOCKOUT', 'Stock out', 'VND', '30000', '2', 'CUSTOMER', 'SYSTEM', 'SYSTEM');
+INSERT INTO `Stock` (`StockKey`, `StockDate`, `StockType`, `Description`, `Currency`, `TotalAmount`, `CustomerId`, `CustomerName`, `Author`, `Editor`) 
+VALUES (uuid(), '2016-12-22', 'STOCKOUT', 'Stock out', 'VND', '30000', '2', 'CUSTOMER', 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `Stock` (`StockKey`, `StockDate`, `StockType`, `Description`, `Currency`, `TotalAmount`, `CustomerId`, `CustomerName`, `Author`, `Editor`) 
+VALUES (uuid(), '2016-12-12', 'STOCKOUT', 'Stock out', 'USD', '150', '2', 'CUSTOMER', 'SYSTEM', 'SYSTEM');
 
 
 --
@@ -282,24 +313,42 @@ VALUES ('STOCKOUT-20161222', '2016-12-22', 'STOCKOUT', 'Stock out', 'VND', '3000
 DROP TABLE IF EXISTS `StockDetail`;
 CREATE TABLE `StockDetail` (
   `StockDetailId` INT(11) NOT NULL AUTO_INCREMENT,
-  `StockId` INT(11) NOT NULL,  
-  `ProductId` INT(11) DEFAULT NULL,  
-  `ProductName` VARCHAR(50) DEFAULT NULL,  
-  `Quantity` DECIMAL(12,4) NOT NULL DEFAULT '0',
-  `Price` DECIMAL(12,4) NOT NULL DEFAULT '0',
-  `Amount` DECIMAL(12,4) NOT NULL DEFAULT '0',
+  `StockId` INT(11) NOT NULL DEFAULT 0,
+  `ProductId` INT(11) NOT NULL DEFAULT 0,  
+  `ProductName` VARCHAR(50) DEFAULT NULL,
+  `Description` VARCHAR(250) DEFAULT NULL,  
+  `Quantity` INT(11) NOT NULL DEFAULT 0,
+  `Price` DECIMAL(12,4) NOT NULL DEFAULT 0,
+  `Amount` DECIMAL(12,4) NOT NULL DEFAULT 0,
   `Created` DATETIME DEFAULT CURRENT_TIMESTAMP,
   `Updated` DATETIME DEFAULT CURRENT_TIMESTAMP,
   `Author` VARCHAR(50) NOT NULL,
   `Editor` VARCHAR(50) NOT NULL,
-  `Deleted` TINYINT(1) DEFAULT '0',
+  `Deleted` TINYINT(1) DEFAULT 0,
   PRIMARY KEY (`StockDetailId`),
   UNIQUE KEY `StockDetailId_UNIQUE` (`StockDetailId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 
 --
--- Table structure for table `StockDetail`
+-- Sample data for table `StockDetail`
 --
+INSERT INTO `StockDetail` (`StockId`, `ProductId`, `ProductName`, `Description`, `Quantity`, `Price`, `Amount`, `Author`, `Editor`) 
+VALUES (1, 1, 'Product 1', ' Desc 1', 25, 200, 5000, 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `StockDetail` (`StockId`, `ProductId`, `ProductName`, `Description`, `Quantity`, `Price`, `Amount`, `Author`, `Editor`) 
+VALUES (1, 2, 'Product 2', ' Desc 2', 25, 200, 5000, 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `StockDetail` (`StockId`, `ProductId`, `ProductName`, `Description`, `Quantity`, `Price`, `Amount`, `Author`, `Editor`) 
+VALUES (1, 3, 'Product 3', ' Desc 3', 25, 200, 5000, 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `StockDetail` (`StockId`, `ProductId`, `ProductName`, `Description`, `Quantity`, `Price`, `Amount`, `Author`, `Editor`) 
+VALUES (2, 1, 'Product 1', ' Desc 1', 10, 200, 2000, 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `StockDetail` (`StockId`, `ProductId`, `ProductName`, `Description`, `Quantity`, `Price`, `Amount`, `Author`, `Editor`) 
+VALUES (2, 2, 'Product 2', ' Desc 2', 5, 200, 1000, 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `StockDetail` (`StockId`, `ProductId`, `ProductName`, `Description`, `Quantity`, `Price`, `Amount`, `Author`, `Editor`) 
+VALUES (2, 3, 'Product 3', ' Desc 3', 25, 200, 5000, 'SYSTEM', 'SYSTEM');
 
 
 --
@@ -308,19 +357,19 @@ CREATE TABLE `StockDetail` (
 DROP TABLE IF EXISTS `Journal`;
 CREATE TABLE `Journal` (
   `JournalId` INT(11) NOT NULL AUTO_INCREMENT,
-  `JournalNo` VARCHAR(50) NOT NULL,
+  `JournalKey` VARCHAR(50) NOT NULL,
   `JournalType` VARCHAR(20) NOT NULL,
-  `JournalDate` DATE DEFAULT NULL,
-  `Description` VARCHAR(250) DEFAULT NULL,
-  `Currency` VARCHAR(3) DEFAULT NULL,
-  `TotalAmount` DECIMAL(12,4) NOT NULL DEFAULT 0,
+  `JournalDate` DATETIME DEFAULT NULL,
   `DebitAcctNo` VARCHAR(20) NOT NULL,
-  `CreditAcctNo` VARCHAR(20) NOT NULL,
+  `CreditAcctNo` VARCHAR(20) NOT NULL,  
+  `Currency` VARCHAR(3) DEFAULT NULL,
+  `Amount` DECIMAL(12,4) NOT NULL DEFAULT 0,
+  `Description` VARCHAR(250) DEFAULT NULL,
   `Created` DATETIME DEFAULT CURRENT_TIMESTAMP,
   `Updated` DATETIME DEFAULT CURRENT_TIMESTAMP,
   `Author` VARCHAR(50) NOT NULL,
   `Editor` VARCHAR(50) NOT NULL,
-  `Deleted` TINYINT(1) DEFAULT '0',
+  `Deleted` TINYINT(1) DEFAULT 0,
   PRIMARY KEY (`JournalId`),
   UNIQUE KEY `JournalId_UNIQUE` (`JournalId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
@@ -328,8 +377,20 @@ CREATE TABLE `Journal` (
 --
 -- Table structure for table `Journal`
 --
+INSERT INTO `Journal` (`JournalKey`,`JournalType`,`JournalDate`,`DebitAcctNo`,`CreditAcctNo`,`Currency`,`Amount`,`Description`,`Author`,`Editor`) 
+VALUES (uuid(), 'CASH', '2017-08-01', '111', '641', 'VND', 6500, ' Cash Journal', 'SYSTEM', 'SYSTEM');
 
+INSERT INTO `Journal` (`JournalKey`,`JournalType`,`JournalDate`,`DebitAcctNo`,`CreditAcctNo`,`Currency`,`Amount`,`Description`,`Author`,`Editor`) 
+VALUES (uuid(), 'CASH', '2017-08-08', '112', '642', 'VND', 5000, ' Cash Journal', 'SYSTEM', 'SYSTEM');
 
+INSERT INTO `Journal` (`JournalKey`,`JournalType`,`JournalDate`,`DebitAcctNo`,`CreditAcctNo`,`Currency`,`Amount`,`Description`,`Author`,`Editor`) 
+VALUES (uuid(), 'STOCK', '2017-08-09', '156', '632', 'VND', 8000, 'Import Product', 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `Journal` (`JournalKey`,`JournalType`,`JournalDate`,`DebitAcctNo`,`CreditAcctNo`,`Currency`,`Amount`,`Description`,`Author`,`Editor`) 
+VALUES (uuid(), 'STOCK', '2017-08-09', '156', '632', 'VND', 600, ' Import Product', 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `Journal` (`JournalKey`,`JournalType`,`JournalDate`,`DebitAcctNo`,`CreditAcctNo`,`Currency`,`Amount`,`Description`,`Author`,`Editor`) 
+VALUES (uuid(), 'STOCK', '2017-08-09', '156', '632', 'VND', 150, ' Import Product', 'SYSTEM', 'SYSTEM');
 
 
 --
@@ -338,13 +399,14 @@ CREATE TABLE `Journal` (
 DROP TABLE IF EXISTS `Brand`;
 CREATE TABLE `Brand` (
   `BrandId` INT(11) NOT NULL AUTO_INCREMENT,
-  `Name` VARCHAR(50) NOT NULL,
+  `BrandKey` VARCHAR(50) NOT NULL,
+  `BrandName` VARCHAR(50) NOT NULL,
   `Description` VARCHAR(250) DEFAULT NULL,
   `Created` DATETIME DEFAULT CURRENT_TIMESTAMP,
   `Updated` DATETIME DEFAULT CURRENT_TIMESTAMP,
   `Author` VARCHAR(50) NOT NULL,
   `Editor` VARCHAR(50) NOT NULL,
-  `Deleted` TINYINT(1) DEFAULT '0',
+  `Deleted` TINYINT(1) DEFAULT 0,
   PRIMARY KEY (`BrandId`),
   UNIQUE KEY `BrandId_UNIQUE` (`BrandId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
@@ -352,28 +414,28 @@ CREATE TABLE `Brand` (
 --
 -- Sample data for table `Brand`
 --
-INSERT INTO `Brand` (`Name`,`Description`,`Author`, `Editor`) VALUES ('Thinkpad T450','Lenovo Thinkpad T450','SYSTEM','SYSTEM');
-INSERT INTO `Brand` (`Name`,`Description`,`Author`, `Editor`) VALUES ('Apple','Apple','SYSTEM','SYSTEM');
-INSERT INTO `Brand` (`Name`,`Description`,`Author`, `Editor`) VALUES ('HIPHOP 005','HIPHOP 005','SYSTEM','SYSTEM');
-INSERT INTO `Brand` (`Name`,`Description`,`Author`, `Editor`) VALUES ('Asus','Asus','SYSTEM','SYSTEM');
-INSERT INTO `Brand` (`Name`,`Description`,`Author`, `Editor`) VALUES ('HP Pro 1005','HP Pro 1005','SYSTEM','SYSTEM');
-INSERT INTO `Brand` (`Name`,`Description`,`Author`, `Editor`) VALUES ('IBM','IBM','SYSTEM','SYSTEM');
-INSERT INTO `Brand` (`Name`,`Description`,`Author`, `Editor`) VALUES ('Super Car 2002','Super Car 2002','SYSTEM','SYSTEM');
-INSERT INTO `Brand` (`Name`,`Description`,`Author`, `Editor`) VALUES ('Dell_XPS','Dell_XPS','SYSTEM','SYSTEM');
-INSERT INTO `Brand` (`Name`,`Description`,`Author`, `Editor`) VALUES ('HP 1009','HP Enterprise 1009','SYSTEM','SYSTEM');
-INSERT INTO `Brand` (`Name`,`Description`,`Author`, `Editor`) VALUES ('Brand TEST 10','Brand TEST 10','SYSTEM','SYSTEM');
-INSERT INTO `Brand` (`Name`,`Description`,`Author`, `Editor`) VALUES ('Asus 520 V.1001','Asus 520 V.10008','SYSTEM','SYSTEM');
-INSERT INTO `Brand` (`Name`,`Description`,`Author`, `Editor`) VALUES ('Brand TEST 12xx','Brand TEST 12xx','SYSTEM','SYSTEM');
-INSERT INTO `Brand` (`Name`,`Description`,`Author`, `Editor`) VALUES ('HP ProBook 2015','HP ProBook 2015','SYSTEM','SYSTEM');
-INSERT INTO `Brand` (`Name`,`Description`,`Author`, `Editor`) VALUES ('Brand TEST 14','Brand TEST 14','SYSTEM','SYSTEM');
-INSERT INTO `Brand` (`Name`,`Description`,`Author`, `Editor`) VALUES ('HP Pro Enter 2011','HP Pro Enter 2011','SYSTEM','SYSTEM');
-INSERT INTO `Brand` (`Name`,`Description`,`Author`, `Editor`) VALUES ('Brand 16','Brand 16','SYSTEM','SYSTEM');
-INSERT INTO `Brand` (`Name`,`Description`,`Author`, `Editor`) VALUES ('DEL version.2017','DEL version.2017','SYSTEM','SYSTEM');
-INSERT INTO `Brand` (`Name`,`Description`,`Author`, `Editor`) VALUES ('Brand TEST 18','Brand TEST 18','SYSTEM','SYSTEM');
-INSERT INTO `Brand` (`Name`,`Description`,`Author`, `Editor`) VALUES ('Brand 19 Century','Brand 19 Century','SYSTEM','SYSTEM');
-INSERT INTO `Brand` (`Name`,`Description`,`Author`, `Editor`) VALUES ('Coca Cola','Coca Cola','SYSTEM','SYSTEM');
-INSERT INTO `Brand` (`Name`,`Description`,`Author`, `Editor`) VALUES ('Pepsi Company','Pepsi Company','SYSTEM','SYSTEM');
-INSERT INTO `Brand` (`Name`,`Description`,`Author`, `Editor`) VALUES ('Facebook','The Facebook','SYSTEM','SYSTEM');
+INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Thinkpad T450','Lenovo Thinkpad T450','SYSTEM','SYSTEM');
+INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Apple','Apple','SYSTEM','SYSTEM');
+INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'HIPHOP 005','HIPHOP 005','SYSTEM','SYSTEM');
+INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Asus','Asus','SYSTEM','SYSTEM');
+INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'HP Pro 1005','HP Pro 1005','SYSTEM','SYSTEM');
+INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'IBM','IBM','SYSTEM','SYSTEM');
+INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Super Car 2002','Super Car 2002','SYSTEM','SYSTEM');
+INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Dell_XPS','Dell_XPS','SYSTEM','SYSTEM');
+INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'HP 1009','HP Enterprise 1009','SYSTEM','SYSTEM');
+INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Brand TEST 10','Brand TEST 10','SYSTEM','SYSTEM');
+INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Asus 520 V.1001','Asus 520 V.10008','SYSTEM','SYSTEM');
+INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Brand TEST 12xx','Brand TEST 12xx','SYSTEM','SYSTEM');
+INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'HP ProBook 2015','HP ProBook 2015','SYSTEM','SYSTEM');
+INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Brand TEST 14','Brand TEST 14','SYSTEM','SYSTEM');
+INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'HP Pro Enter 2011','HP Pro Enter 2011','SYSTEM','SYSTEM');
+INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Brand 16','Brand 16','SYSTEM','SYSTEM');
+INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'DEL version.2017','DEL version.2017','SYSTEM','SYSTEM');
+INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Brand TEST 18','Brand TEST 18','SYSTEM','SYSTEM');
+INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Brand 19 Century','Brand 19 Century','SYSTEM','SYSTEM');
+INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Coca Cola','Coca Cola','SYSTEM','SYSTEM');
+INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Pepsi Company','Pepsi Company','SYSTEM','SYSTEM');
+INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Facebook','The Facebook','SYSTEM','SYSTEM');
 
 --
 -- Table structure for table `Product`
@@ -381,10 +443,11 @@ INSERT INTO `Brand` (`Name`,`Description`,`Author`, `Editor`) VALUES ('Facebook'
 DROP TABLE IF EXISTS `Product`;
 CREATE TABLE `Product` (
   `ProductId` INT(11) NOT NULL AUTO_INCREMENT,
+  `ProductKey` VARCHAR(50) NOT NULL,
   `ProductName` VARCHAR(50) NOT NULL,
   `Description` VARCHAR(250) DEFAULT NULL,
-  `BrandId` INT(11) NOT NULL,
-  `Price` DECIMAL(10,0) DEFAULT '0',
+  `BrandId` INT(11) NOT NULL DEFAULT 0,
+  `Price` DECIMAL(12, 4) DEFAULT 0,
   `Colour` VARCHAR(10) DEFAULT NULL,  
   `Status` VARCHAR(10) DEFAULT NULL,
   `LatestReviewInfo` VARCHAR(250) DEFAULT NULL,
@@ -392,7 +455,7 @@ CREATE TABLE `Product` (
   `Updated` DATETIME DEFAULT CURRENT_TIMESTAMP,
   `Author` VARCHAR(50) NOT NULL,
   `Editor` VARCHAR(50) NOT NULL,
-  `Deleted` TINYINT(1) DEFAULT '0',
+  `Deleted` TINYINT(1) DEFAULT 0,
   PRIMARY KEY (`ProductId`),
   UNIQUE KEY `ProductId_UNIQUE` (`ProductId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8 COMMENT='	';
@@ -400,71 +463,71 @@ CREATE TABLE `Product` (
 --
 -- Sample data for table `Product`
 --
-INSERT INTO `Product`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES ('Sony Vaio','Sony Vaio',1,100,'White','IN','Cool','SYSTEM','SYSTEM');
+INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
+VALUES (uuid(),'Sony Vaio','Sony Vaio',1,100,'White','IN','Cool','SYSTEM','SYSTEM');
 
-INSERT INTO `Product`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES ('Dell','Dell Vostro',2,2000,'White','IN','Cool','SYSTEM','SYSTEM');
+INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
+VALUES (uuid(),'Dell','Dell Vostro',2,2000,'White','IN','Cool','SYSTEM','SYSTEM');
 
-INSERT INTO `Product`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES ('HP Note','HP Note',2,100,'Yellow','IN','Cool','SYSTEM','SYSTEM');
+INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
+VALUES (uuid(),'HP Note','HP Note',2,100,'Yellow','IN','Cool','SYSTEM','SYSTEM');
 
-INSERT INTO `Product`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES ('Asus','Asus',4,800,'White','IN','Cool','SYSTEM','SYSTEM');
+INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
+VALUES (uuid(),'Asus','Asus',4,800,'White','IN','Cool','SYSTEM','SYSTEM');
 
-INSERT INTO `Product`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES ('Acer','Laptop Acer',4,100,'White','IN','Cool','SYSTEM','SYSTEM');
+INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
+VALUES (uuid(),'Acer','Laptop Acer',4,100,'White','IN','Cool','SYSTEM','SYSTEM');
 
-INSERT INTO `Product`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES ('Sony Xperia','Sony Xperia',6,1200,'White','OUT','Cool','SYSTEM','SYSTEM');
+INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
+VALUES (uuid(),'Sony Xperia','Sony Xperia',6,1200,'White','OUT','Cool','SYSTEM','SYSTEM');
 
-INSERT INTO `Product`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES ('IBM T42','IBM T42',20,100,'Red','OUT','Cool','SYSTEM','SYSTEM');
+INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
+VALUES (uuid(),'IBM T42','IBM T42',20,100,'Red','OUT','Cool','SYSTEM','SYSTEM');
 
-INSERT INTO `Product`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES ('IBM T60','IBM T60',20,100,'Red','IN','Cool','SYSTEM','SYSTEM');
+INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
+VALUES (uuid(),'IBM T60','IBM T60',20,100,'Red','IN','Cool','SYSTEM','SYSTEM');
 
-INSERT INTO `Product`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES ('IBM T400','IBM T400',20,100,'Red','IN','Cool','SYSTEM','SYSTEM');
+INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
+VALUES (uuid(),'IBM T400','IBM T400',20,100,'Red','IN','Cool','SYSTEM','SYSTEM');
 
-INSERT INTO `Product`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES ('Ipad 5','Ipad 5',22,3000,'Green','OUT','Cool','SYSTEM','SYSTEM');
+INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
+VALUES (uuid(),'Ipad 5','Ipad 5',22,3000,'Green','OUT','Cool','SYSTEM','SYSTEM');
 
-INSERT INTO `Product`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES ('IBM T42','IBM T42',20,100,'Red','IN','Cool','SYSTEM','SYSTEM');
+INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
+VALUES (uuid(),'IBM T42','IBM T42',20,100,'Red','IN','Cool','SYSTEM','SYSTEM');
 
-INSERT INTO `Product`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES ('IBM T60','IBM T60',20,100,'Red','OUT','Cool','SYSTEM','SYSTEM');
+INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
+VALUES (uuid(),'IBM T60','IBM T60',20,100,'Red','OUT','Cool','SYSTEM','SYSTEM');
 
-INSERT INTO `Product`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES ('IBM T400','IBM T400',20,100,'Red','IN','Cool','SYSTEM','SYSTEM');
+INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
+VALUES (uuid(),'IBM T400','IBM T400',20,100,'Red','IN','Cool','SYSTEM','SYSTEM');
 
-INSERT INTO `Product`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES ('Ipad 6','Ipad 6',22,3000,'Green','IN','Cool','SYSTEM','SYSTEM');
+INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
+VALUES (uuid(),'Ipad 6','Ipad 6',22,3000,'Green','IN','Cool','SYSTEM','SYSTEM');
 
-INSERT INTO `Product`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES ('IBM T43','IBM T43',20,100,'Red','IN','Cool','SYSTEM','SYSTEM');
+INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
+VALUES (uuid(),'IBM T43','IBM T43',20,100,'Red','IN','Cool','SYSTEM','SYSTEM');
 
-INSERT INTO `Product`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES ('IBM T44','IBM T44',20,100,'Red','OUT','Cool','SYSTEM','SYSTEM');
+INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
+VALUES (uuid(),'IBM T44','IBM T44',20,100,'Red','OUT','Cool','SYSTEM','SYSTEM');
 
-INSERT INTO `Product`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES ('IBM T45','IBM T45',20,100,'Red','IN','Cool','SYSTEM','SYSTEM');
+INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
+VALUES (uuid(),'IBM T45','IBM T45',20,100,'Red','IN','Cool','SYSTEM','SYSTEM');
 
-INSERT INTO `Product`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES ('Ipad 7','Ipad 7',22,3000,'Green','OUT','Cool','SYSTEM','SYSTEM');
+INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
+VALUES (uuid(),'Ipad 7','Ipad 7',22,3000,'Green','OUT','Cool','SYSTEM','SYSTEM');
 
-INSERT INTO `Product`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES ('IBM T46','IBM T46',20,100,'Red','IN','Cool','SYSTEM','SYSTEM');
+INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
+VALUES (uuid(),'IBM T46','IBM T46',20,100,'Red','IN','Cool','SYSTEM','SYSTEM');
 
-INSERT INTO `Product`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES ('IBM T47','IBM T47',20,100,'Red','OUT','Cool','SYSTEM','SYSTEM');
+INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
+VALUES (uuid(),'IBM T47','IBM T47',20,100,'Red','OUT','Cool','SYSTEM','SYSTEM');
 
-INSERT INTO `Product`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES ('IBM T2000','IBM T2000',20,100,'Red','IN','Cool','SYSTEM','SYSTEM');
+INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
+VALUES (uuid(),'IBM T2000','IBM T2000',20,100,'Red','IN','Cool','SYSTEM','SYSTEM');
 
-INSERT INTO `Product`(`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES ('Ipad 8','Ipad 8',22,3000,'Green','IN','Cool','SYSTEM','SYSTEM');
+INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`Colour`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
+VALUES (uuid(),'Ipad 8','Ipad 8',22,3000,'Green','IN','Cool','SYSTEM','SYSTEM');
 
 --
 -- Table structure for table `Review`
@@ -472,15 +535,15 @@ VALUES ('Ipad 8','Ipad 8',22,3000,'Green','IN','Cool','SYSTEM','SYSTEM');
 DROP TABLE IF EXISTS `Review`;
 CREATE TABLE `Review` (
   `ReviewId` INT(11) NOT NULL AUTO_INCREMENT,
-  `Rating` int(2) DEFAULT NULL,
+  `Rating` INT(2) NOT NULL DEFAULT 0,
   `Comment` VARCHAR(250) DEFAULT NULL,  
-  `ProductId` INT(11) NOT NULL,
+  `ProductId` INT(11) NOT NULL DEFAULT 0,
   `Email` VARCHAR(50) DEFAULT NULL,
   `Created` DATETIME DEFAULT CURRENT_TIMESTAMP,
   `Updated` DATETIME DEFAULT CURRENT_TIMESTAMP,
   `Author` VARCHAR(50) NOT NULL,
   `Editor` VARCHAR(50) NOT NULL,
-  `Deleted` TINYINT(1) DEFAULT '0',
+  `Deleted` TINYINT(1) DEFAULT 0,
   PRIMARY KEY (`ReviewId`),
   UNIQUE KEY `ReviewId_UNIQUE` (`ReviewId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
@@ -518,7 +581,7 @@ CREATE TABLE `User` (
   `Updated` DATETIME DEFAULT CURRENT_TIMESTAMP,
   `Author` VARCHAR(50) NOT NULL,
   `Editor` VARCHAR(50) NOT NULL,
-  `Deleted` TINYINT(1) DEFAULT '0',
+  `Deleted` TINYINT(1) DEFAULT 0,
   PRIMARY KEY (`UserId`),
   UNIQUE KEY `Email_UNIQUE` (`Email`),
   UNIQUE KEY `UserName_UNIQUE` (`UserName`),
@@ -564,3 +627,20 @@ BEGIN
     END IF;	    
 END ;;
 DELIMITER ;
+
+
+/*
+SELECT COUNT(*) AS Count FROM Account;
+SELECT COUNT(*) AS Count FROM Brand;
+SELECT COUNT(*) AS Count FROM Customer;
+SELECT COUNT(*) AS Count FROM Inventory;
+SELECT COUNT(*) AS Count FROM Journal;
+SELECT COUNT(*) AS Count FROM Product;
+SELECT COUNT(*) AS Count FROM Review;
+SELECT COUNT(*) AS Count FROM Stock;
+SELECT COUNT(*) AS Count FROM StockDetail;
+SELECT COUNT(*) AS Count FROM Transaction;
+SELECT COUNT(*) AS Count FROM TransactionDetail;
+SELECT COUNT(*) AS Count FROM Truck;
+SELECT COUNT(*) AS Count FROM User;
+*/
