@@ -18,11 +18,11 @@ var constant = function () {
 }
 
 constant.transactionType = {
-	cashIn: 'CASHIN',
-	cashOut: 'CASHOUT',
+	CASHIN: 'CASHIN',
+	CASHOUT: 'CASHOUT',
 	STOCKIN: 'STOCKIN',
 	STOCKOUT: 'STOCKOUT',
-	journal: 'JOURNAL',
+	JOURNAL: 'JOURNAL',
 };
 
 // Success Lists
