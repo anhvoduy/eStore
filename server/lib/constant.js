@@ -30,6 +30,10 @@ constant.Success_Authentication = { code: 'SUCCESS_AUTHENTICATION', message: 'Au
 constant.Success_Login = { code: 'SUCCESS_LOGIN', message: 'Login is success.' };
 constant.Success_Logout = { code: 'SUCCESS_LOGOUT', message: 'Logout is success.' };
 
+constant.Success_Account_Create = { code: 'SUCCESS_ACCOUNT_CREATE', message: 'Create Account is success.' };
+constant.Success_Account_Update = { code: 'SUCCESS_ACCOUNT_UPDATE', message: 'Update Account is success.' };
+constant.Success_Account_Delete = { code: 'SUCCESS_ACCOUNT_DELETE', message: 'Delete Account is success.' };
+
 constant.Success_Cash_Create = { code: 'SUCCESS_CASH_CREATE', message: 'Create Cash is success.' };
 constant.Success_Cash_Update = { code: 'SUCCESS_CASH_UPDATE', message: 'Update Cash is success.' };
 constant.Success_Cash_Delete = { code: 'SUCCESS_CASH_DELETE', message: 'Delete Cash is success.' };
@@ -41,10 +45,6 @@ constant.Success_StockIn_Delete = { code: 'SUCCESS_STOCKIN_DELETE', message: 'De
 constant.Success_StockOut_Create = { code: 'SUCCESS_STOCKOUT_CREATE', message: 'Create StockOut is success.' };
 constant.Success_StockOut_Update = { code: 'SUCCESS_STOCKOUT_UPDATE', message: 'Update StockOut is success.' };
 constant.Success_StockOut_Delete = { code: 'SUCCESS_STOCKOUT_DELETE', message: 'Delete StockOut is success.' };
-
-constant.Success_Stock_Create = { code: 'SUCCESS_STOCK_CREATE', message: 'Create Stock is success.' };
-constant.Success_Stock_Update = { code: 'SUCCESS_STOCK_UPDATE', message: 'Update Stock is success.' };
-constant.Success_Stock_Delete = { code: 'SUCCESS_STOCK_DELETE', message: 'Delete Stock is success.' };
 
 constant.Success_Brand_Create = { code: 'SUCCESS_BRAND_CREATE', message: 'Create Brand is success.' };
 constant.Success_Brand_Update = { code: 'SUCCESS_BRAND_UPDATE', message: 'Update Brand is success.' };
