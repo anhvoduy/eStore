@@ -12,8 +12,6 @@ For start review:
 - to access web application: http://localhost:3000/
 
 - download elasticsearch at: https://www.elastic.co/guide/en/elasticsearch/reference/current/windows.html/
-- to access web application: http://localhost:9200/ (but also not connect to elastic)
-
-- download and install redis at: https://redis.io/ (but also remove redis)
+- download and install redis at: https://redis.io/
 
 - deploy to azure: https://docs.microsoft.com/en-us/azure/app-service-web/app-service-web-tutorial-nodejs-mongodb-app
