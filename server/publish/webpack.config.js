@@ -12,6 +12,7 @@ var config = {
         shop: SRC_DIR + '\\app\\shop.js',
         cart: SRC_DIR + '\\app\\cart.js',
         checkout: SRC_DIR + '\\app\\checkout.js',
+        'single-product': SRC_DIR + '\\app\\single-product.js',
         sample: SRC_DIR + '\\app\\sample.js'
     },
     output: {
