@@ -34,8 +34,8 @@ Factory.prototype.getProductsByBrand = function (ctx, brandId) {
 
 Factory.prototype.createReview = function (ctx, review) {
     var sqlCreateReview = dbHelper.prepareQueryCommand(
-        "INSERT INTO Review(Rating, Comment, ProductId, Email, Author, Editor, Deleted)VALUES(?, ?, ?, ?, ?, ?, 0)",
-        [review.Rating, review.Comment, review.ProductId, review.Email, 'SYSTEM', 'SYSTEM']
+        "INSERT INTO Review(Name, Rating, Comment, ProductId, Email, Author, Editor, Deleted)VALUES(?, ?, ?, ?, ?, ?, ?, 0)",
+        [review.Name, review.Rating, review.Comment, review.ProductId, review.Email, 'SYSTEM', 'SYSTEM']
     );
 
     var sqlUpdateProduct = dbHelper.prepareQueryCommand(

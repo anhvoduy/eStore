@@ -197,7 +197,6 @@ export class ProductContentRightSingle extends React.Component {
     }
 };
 
-
 class ReviewForm extends React.Component {
     constructor(){
         super();        
@@ -209,15 +208,32 @@ class ReviewForm extends React.Component {
             name: ''            
         };
         this.onChangeName = this.onChangeName.bind(this);
-        //this.onChangeRating = this.onChangeRating.bind(this);
+        this.resetReview = this.resetReview.bind(this);
+    }
+
+    resetReview(){
+        //var self = this
+        this.setState({
+            rating: 1,
+            comment: '',
+            productId: 1,
+            email: '',
+            name: ''            
+        });
     }
 
     handleSubmit(event) {        
         event.preventDefault();
+        var self = this;
         return reviewService.createReview(this.state)
         .then(function(res){
-            if(res.status) console.log('success');
-            else console.log('failed');
+            if(res.status) {                
+                console.log('success');
+                self.resetReview();
+            }
+            else {
+                console.log('failed');
+            }
         });
     }
 
@@ -227,11 +243,7 @@ class ReviewForm extends React.Component {
         this.setState({
             [name]: value
         });
-    }
-
-    // onChangeRating(event, value){
-    //     console.log(event.target);
-    // }
+    }    
 
     render() {
         return  (
