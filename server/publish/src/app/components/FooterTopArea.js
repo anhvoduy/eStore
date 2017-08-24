@@ -1,6 +1,10 @@
 import React from 'react';
 
 export class FooterTopArea extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+    
     render() {
         return (
             <div className="footer-top-area">
