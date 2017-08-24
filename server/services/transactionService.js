@@ -1,27 +1,27 @@
-// Dependencies
-var Q = require('q');
+const Q = require('q');
+const _ = require('lodash');
 var dbHelper = require('../config/dbHelper');
 
 // Constructor
-var transactionService = function () { 
+var Factory = function () { 
 }
 
-transactionService.prototype.createTransaction = function (ctx, transaction) {
+Factory.prototype.createTransaction = function (ctx, transaction) {
     
 }
 
-transactionService.prototype.updateTransaction = function (ctx, transaction) {	
+Factory.prototype.updateTransaction = function (ctx, transaction) {	
 	var sql = dbHelper.prepareQueryCommand("UPDATE tblTransaction SET TransactionNo = ?, TransactionDate = ?, TransactionType = ?, Description = ?, DebitAcctNo = ?, CreditAcctNo = ?, Currency = ?, TotalAmount = ?, Updated = ?, Editor = ? WHERE TransactionId = ?;",
 		[transaction.TransactionNo, transaction.TransactionDate, transaction.TransactionType, transaction.Description, transaction.DebitAcctNo, transaction.CreditAcctNo, transaction.Currency, transaction.TotalAmount, transaction.Updated, transaction.Editor, transaction.TransactionId]);
 	return ctx.queryCommand(sql);	
 }
 
-transactionService.prototype.deleteTransaction = function (ctx, transaction) {
+Factory.prototype.deleteTransaction = function (ctx, transaction) {
     
 }
 
 
-transactionService.prototype.getTransactions = function (ctx, conditions) {
+Factory.prototype.getTransactions = function (ctx, conditions) {
     var sql = `
         SELECT TransactionId, TransactionNo, TransactionDate, TransactionType,
 	           Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount,
@@ -34,7 +34,7 @@ transactionService.prototype.getTransactions = function (ctx, conditions) {
     return ctx.queryCommand(sql);
 }
 
-transactionService.prototype.getTransactionById = function (ctx, transactionId) {
+Factory.prototype.getTransactionById = function (ctx, transactionId) {
     var sql = `   
         SELECT  TransactionId, TransactionNo, TransactionDate, TransactionType,
 	            Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount,
@@ -46,7 +46,7 @@ transactionService.prototype.getTransactionById = function (ctx, transactionId) 
     return ctx.queryCommand(sql);
 }
 
-transactionService.prototype.getCashIn = function (ctx) {
+Factory.prototype.getCashIn = function (ctx) {
     var sql = `
         SELECT TransactionId, TransactionNo, TransactionDate, TransactionType,
 	           Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount,
@@ -59,7 +59,7 @@ transactionService.prototype.getCashIn = function (ctx) {
     return ctx.queryCommand(sql);
 }
 
-transactionService.prototype.getCashOut = function (ctx) {
+Factory.prototype.getCashOut = function (ctx) {
     var sql = `
         SELECT TransactionId, TransactionNo, TransactionDate, TransactionType,
 	           Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount,
@@ -73,4 +73,4 @@ transactionService.prototype.getCashOut = function (ctx) {
 }
 
 // Export
-module.exports = new transactionService;
+module.exports = new Factory;

@@ -1,5 +1,4 @@
-﻿// Constructor
-var sampleData = function () { 
+﻿var sampleData = function () { 
 }
 
 sampleData.prototype.User = function () {

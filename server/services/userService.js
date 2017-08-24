@@ -1,9 +1,9 @@
-﻿// Dependencies
-var Q = require('q');
-var dbHelper = require('../config/dbHelper');
+﻿const Q = require('q');
+const _ = require('lodash');
+const dbHelper = require('../config/dbHelper');
 
 // Constructor
-var Factory = function () { 
+const Factory = function () { 
 }
 
 Factory.prototype.myProfile = function(){
