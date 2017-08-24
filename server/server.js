@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var auth = require('./config/auth');
 var config = require('./config/config');
-var errorHelper = require('./config/errorHelper');
+var errorHelper = require('./lib/errorHelper');
 
 // Express
 var server = express();

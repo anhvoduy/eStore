@@ -1,5 +1,4 @@
 import React from 'react';
-//import Slider from 'react-slick';
 
 export class BrandsAreaCarousel extends React.Component{
     constructor(props) {

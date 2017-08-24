@@ -1,9 +1,9 @@
 const Q = require('q');
 const _ = require('lodash');
-var dbHelper = require('../config/dbHelper');
+const dbHelper = require('../lib/dbHelper');
 
 // Constructor
-var Factory = function () { 
+const Factory = function () { 
 }
 
 Factory.prototype.createTransaction = function (ctx, transaction) {

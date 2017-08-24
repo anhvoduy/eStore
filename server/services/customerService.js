@@ -1,8 +1,9 @@
 const Q = require('q');
 const _ = require('lodash');
-const dbHelper = require('../config/dbHelper');
+const dbHelper = require('../lib/dbHelper');
 
-var Factory = function () { 
+// Constructor
+const Factory = function () { 
 }
 
 Factory.prototype.getCustomers = function (ctx) {

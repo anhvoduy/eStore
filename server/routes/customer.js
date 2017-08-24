@@ -3,9 +3,9 @@ var express = require('express');
 var router = express.Router();
 var q = require('q');
 var auth = require('../config/auth');
-var constant = require('../config/constant');
-var dbContext = require('../config/dbContext');
-var errorHelper = require('../config/errorHelper');
+var constant = require('../lib/constant');
+var dbContext = require('../lib/dbContext');
+var errorHelper = require('../lib/errorHelper');
 var productService = require('../services/productService');
 
 // Router
