@@ -18,8 +18,7 @@ export class MainMenuArea extends React.Component {
         }
     }
 
-    componentWillMount() {
-        console.log('- componentWillMount()');
+    componentWillMount() {        
         this.state.menu.forEach(function(item, index) {
             if(this.state.location.href.indexOf(item.url)>=0){                
                 item.active = true;

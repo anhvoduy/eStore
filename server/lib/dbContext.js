@@ -1,49 +1,89 @@
-const mssql = require('mssql');
-const Q = require('q');
-const config = require('../config/config');
+// Dependencies
+var config = require('./config.js');
+var mysql = require('mysql');
+var q = require('q');   //https://www.npmjs.com/package/q
+var errorHelper = require('./errorHelper.js');
 
-const dbContext = function() {    
-    this.mssql = mssql;
-    console.log('system is running provider:', config);
+// Connection Pool
+var pool = mysql.createPool({
+    host            : config.host,
+    user            : config.user,
+    password        : config.password,
+    database        : config.database,
+    connectionLimit : config.connectionLimit,    
+});
+
+var getConnection = function () {
+	var defer = q.defer();
+	pool.getConnection(function (err, con) {
+		if (err) defer.reject(err);
+		else defer.resolve(new dbContext(con));
+	});
+	return defer.promise;
 }
 
-dbContext.prototype.openConnection = function(){    
-    return this.mssql.connect(config);
+// Data Access Layer
+function dbContext(connection) {
+	this.connection = connection;
 }
 
-dbContext.prototype.closeConnection = function(pool){
-    pool.close();
-    return this.mssql.close();
+dbContext.prototype.release = function () {    
+	this.connection.release();
 }
 
-// dbContext.prototype.queryData = function(tr, sql){
-//     return tr.request()
-//     .query(sql)
-//     .then(function(data){
-//         //console.log(data);
-//         return data.recordset;
-//     });
-// };
+dbContext.prototype.queryCommand = function (sql) {	
+	var defer = q.defer();
+	this.connection.query(sql, function (error, rows) {
+		if (error) defer.reject(error);
+		else defer.resolve(rows);		
+	});
+	return defer.promise;
+}
 
-dbContext.prototype.queryDatabase = function(pool, sql){
-    let deferred  = Q.defer();
-    
-    Q.when()
-    .then(function(){
-        let req = new mssql.Request(pool, sql);
-        return req.query(sql).then(function(data){
-            return data.recordset;
-        });
-    })
-    .then(function(recordset){        
-        deferred.resolve(recordset);
-    })
-    .catch(function(err){        
-        deferred.reject(err);
+dbContext.prototype.beginTransaction = function () {
+    var defer = q.defer();
+
+	if (this.connection == null || this.connection == undefined)
+		throw errorHelper.Error_Connection;
+
+    var sql = "START TRANSACTION;";
+    this.connection.query(sql, function (error, rows) {
+        if (error) defer.reject(error);
+        else defer.resolve(rows);
     });
+    return defer.promise;
+}
 
-    return deferred.promise;
-};
+dbContext.prototype.rollbackTransaction = function () {
+    var defer = q.defer();
+
+    if (this.connection == null || this.connection == undefined)
+        throw errorHelper.Error_Connection;
+
+    var sql = "ROLLBACK;";
+    this.connection.query(sql, function (error, rows) {
+        if (error) defer.reject(error);
+        else defer.resolve(rows);
+    });
+    return defer.promise;
+}
+
+dbContext.prototype.commitTransaction = function () {
+    var defer = q.defer();
+
+	if (this.connection == null || this.connection == undefined)
+		throw errorHelper.Error_Connection;
+
+    var sql = "COMMIT;";
+    this.connection.query(sql, function (error, rows) {
+        if (error) defer.reject(error);
+        else defer.resolve(rows);
+    });
+    return defer.promise;
+}
 
 // Export
-module.exports = new dbContext;
+var dataConnection = {
+	getConnection: getConnection
+}
+module.exports = dataConnection;

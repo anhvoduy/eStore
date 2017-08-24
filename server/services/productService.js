@@ -1,45 +1,45 @@
-// Dependencies
-var Q = require('q');
-var dbHelper = require('../config/dbHelper');
+const Q = require('q');
+const _ = require('lodash');
+const dbHelper = require('../config/dbHelper');
 
 // Constructor
-var factory = function () { 
+const Factory = function () { 
 }
 
-factory.prototype.getProducts = function (ctx, pageIndex) {
+Factory.prototype.getProducts = function (ctx, pageIndex) {
 	var sql = dbHelper.prepareQueryCommand("CALL sp_product_paging(?);", [pageIndex]);
 	return ctx.queryCommand(sql);
 }
 
-factory.prototype.getProductById = function (ctx, productId) {
+Factory.prototype.getProductById = function (ctx, productId) {
 	var sql = dbHelper.prepareQueryCommand(
 		"SELECT prod.ProductId, prod.ProductName, prod.Description, " +
 		"		prod.BrandId, bra.Name AS BrandName, " + 
 		"       prod.Price, prod.Colour, prod.Created, prod.Status, prod.LatestReviewInfo " +	
-		"FROM tblproduct prod inner join tblbrand bra " + 	
+		"FROM Product prod inner join tblbrand bra " + 	
 		"WHERE prod.brandId = bra.brandId AND prod.productId = ? ", [productId]);
 	return ctx.queryCommand(sql);
 }
 
-factory.prototype.getProductsByBrand = function (ctx, brandId) {
+Factory.prototype.getProductsByBrand = function (ctx, brandId) {
 	var sql = dbHelper.prepareQueryCommand(
 		"SELECT prod.ProductId, prod.ProductName, prod.Description,	" +
 		"		prod.Price, prod.Colour, prod.Created, prod.Status, " +
         "		prod.BrandId, bra.Name AS BrandName, prod.LatestReviewInfo " +
-		"FROM tblproduct prod inner join tblbrand bra " +
+		"FROM Product prod inner join tblbrand bra " +
 		"WHERE bra.brandId = prod.brandId AND bra.brandId = ? " +
 		"ORDER BY prod.ProductId DESC ", [brandId]);
 	return ctx.queryCommand(sql);
 }
 
-factory.prototype.createReview = function (ctx, review) {
+Factory.prototype.createReview = function (ctx, review) {
     var sqlCreateReview = dbHelper.prepareQueryCommand(
-        "INSERT INTO tblreview(Rating, Comment, Created, ProductId, Email, Deleted)VALUES(?, ?, ?, ?, ?, 0)",
-        [review.Rating, review.Comment, review.Created, review.ProductId, review.Email]
+        "INSERT INTO Review(Name, Rating, Comment, ProductId, Email, Author, Editor, Deleted)VALUES(?, ?, ?, ?, ?, ?, ?, 0)",
+        [review.Name, review.Rating, review.Comment, review.ProductId, review.Email, 'SYSTEM', 'SYSTEM']
     );
 
     var sqlUpdateProduct = dbHelper.prepareQueryCommand(
-        "UPDATE tblProduct SET LatestReviewInfo = ? WHERE ProductId = ?",
+        "UPDATE Product SET LatestReviewInfo = ? WHERE ProductId = ?",
         [JSON.stringify(review), review.ProductId]
     );
 
@@ -59,4 +59,4 @@ factory.prototype.createReview = function (ctx, review) {
 }
 
 // Export
-module.exports = new factory;
+module.exports = new Factory;

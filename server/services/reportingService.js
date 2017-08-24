@@ -1,10 +1,10 @@
-// Dependencies
-var Q = require('q');
-var dbHelper = require('../config/dbHelper');
+const Q = require('q');
+const _ = require('lodash');
+const dbHelper = require('../config/dbHelper');
 
 // Constructor
-var reportingService = function () { 
+const Factory = function () { 
 }
 
 // Export
-module.exports = new reportingService;
+module.exports = new Factory;

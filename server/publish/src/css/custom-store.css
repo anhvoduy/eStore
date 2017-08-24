@@ -1,0 +1,14 @@
+/* 
+Custom Css Page 
+Need to define @MediaScreen
+*/
+body { 
+    font-family:Arial, Helvetica, sans-serif; 
+}
+
+label {
+    margin: 3px
+}
+input {
+    margin: 3px;
+}

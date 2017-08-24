@@ -1,13 +1,13 @@
-// Dependencies
-var Q = require('q');
-var dbHelper = require('../config/dbHelper');
+const Q = require('q');
+const _ = require('lodash');
+const dbHelper = require('../config/dbHelper');
 
 // Constructor
-var stockService = function () { 
+const Factory = function () { 
 }
 
-stockService.prototype.getStocks = function (ctx, stockType) {
-    var sql = dbHelper.prepareQueryCommand(`
+Factory.prototype.getStocks = function (ctx, stockType) {
+    let sql = dbHelper.prepareQueryCommand(`
 		SELECT StockId, StockNo, StockDate, StockType, Description, Currency,
 			TotalAmount, CustomerId, CustomerName, InvoiceNo, InvoiceDate, InvoiceDesc,
     		Created, Author, Updated, Editor
@@ -18,25 +18,25 @@ stockService.prototype.getStocks = function (ctx, stockType) {
     return ctx.queryCommand(sql);
 }
 
-stockService.prototype.getStockById = function (ctx, stockId) {
-    var sql = dbHelper.prepareQueryCommand('', []);
+Factory.prototype.getStockById = function (ctx, stockId) {
+    let sql = dbHelper.prepareQueryCommand('', []);
     return ctx.queryCommand(sql);
 }
 
-stockService.prototype.createStock = function (ctx, stock) {
-	var sql = dbHelper.prepareQueryCommand('', []);
+Factory.prototype.createStock = function (ctx, stock) {
+	let sql = dbHelper.prepareQueryCommand('', []);
 	return ctx.queryCommand(sql);
 }
 
-stockService.prototype.updateStock = function (ctx, stock) {
-	var sql = dbHelper.prepareQueryCommand('', []);
+Factory.prototype.updateStock = function (ctx, stock) {
+	let sql = dbHelper.prepareQueryCommand('', []);
 	return ctx.queryCommand(sql);
 }
 
-stockService.prototype.deleteStock = function (ctx, stockId) {
-	var sql = dbHelper.prepareQueryCommand('', []);
+Factory.prototype.deleteStock = function (ctx, stockId) {
+	let sql = dbHelper.prepareQueryCommand('', []);
 	return ctx.queryCommand(sql);
 }
 
 // Export
-module.exports = new stockService;
+module.exports = new Factory;

@@ -1,28 +1,33 @@
-﻿// Dependencies
-var Q = require('q');
-var dbHelper = require('../config/dbHelper');
+﻿const Q = require('q');
+const _ = require('lodash');
+const dbHelper = require('../config/dbHelper');
 
 // Constructor
-var Factory = function(){	
+const Factory = function(){	
 }
 
 Factory.prototype.getBrands = function (ctx) {
-	var sql = `SELECT BrandId, Name, Description FROM tblbrand WHERE deleted = 0 ORDER BY BrandId DESC`;
+	let sql = `
+		SELECT BrandId, Name, Description 
+		FROM Brand 
+		WHERE Deleted <> 1 
+		ORDER BY BrandId DESC
+	`;
 	return ctx.queryCommand(sql);
 }
 
 Factory.prototype.getBrandById = function (ctx, brandId) {
-	var sql = dbHelper.prepareQueryCommand(`SELECT BrandId, Name, Description FROM tblbrand WHERE BrandId = ?`, [brandId]);
+	let sql = dbHelper.prepareQueryCommand(`SELECT BrandId, Name, Description FROM Brand WHERE BrandId = ?`, [brandId]);
 	return ctx.queryCommand(sql);    
 }
 
 Factory.prototype.createBrand = function (ctx, brand) {
-	var sql = dbHelper.prepareQueryCommand(``, []);
+	let sql = dbHelper.prepareQueryCommand(``, []);
 	return ctx.queryCommand(sql);
 }
 
 Factory.prototype.updateBrand = function (ctx, brand) {
-	var sql = dbHelper.prepareQueryCommand(`UPDATE tblbrand SET Name = ?, Description = ? WHERE BrandId = ?`, 
+	let sql = dbHelper.prepareQueryCommand(`UPDATE Brand SET Name = ?, Description = ? WHERE BrandId = ?`, 
 		[brand.Name, brand.Description, brand.BrandId]);
 	return ctx.queryCommand(sql);
 }

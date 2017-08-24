@@ -24,6 +24,8 @@
     "jsonwebtoken": "^7.1.9",
     "method-override": "^1.0.0",
     "mysql": "^2.11.1",
+    "mssql": "^4.0.4",
+    "tedious": "^2.0.0",
     "passport": "^0.3.0",
     "passport-local": "^1.0.0",
     "q": "^1.4.1",

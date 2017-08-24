@@ -51,9 +51,9 @@ server.use('/api/user', require('./routes/user'));
  * Error Handling
  * this is middleware to handle error
  */
-server.use(function (error, request, response, next) {
-	response.status(500);
-	response.json(errorHelper.errorHandler(error));
+server.use(function (err, req, res, next) {
+	res.status(500);
+	res.json(errorHelper.errorHandler(err));
 });
 
 

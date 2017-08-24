@@ -1,12 +1,12 @@
-﻿// Dependencies
-var Q = require('q');
-var dbHelper = require('../config/dbHelper');
+﻿const Q = require('q');
+const _ = require('lodash');
+const dbHelper = require('../config/dbHelper');
 
 // Constructor
-var userService = function () { 
+const Factory = function () { 
 }
 
-userService.prototype.myProfile = function(){
+Factory.prototype.myProfile = function(){
 	return {
 		firstName: 'Eric',
 		lastName: 'Cantona',
@@ -16,45 +16,45 @@ userService.prototype.myProfile = function(){
 	}
 }
 
-userService.prototype.getUsers = function (ctx) {
+Factory.prototype.getUsers = function (ctx) {
     var sql = `
 		SELECT UserId, UserKey, UserType, UserName, DisplayName, Email, Mobile, Tel, Title, DateOfBirth 
-		FROM tbluser 
+		FROM User 
 		WHERE Deleted = 0 
 		ORDER BY UserId DESC
 	`;
 	return ctx.queryCommand(sql);    
 }
 
-userService.prototype.getUserById = function (ctx, userId) {
+Factory.prototype.getUserById = function (ctx, userId) {
     var sql = dbHelper.prepareQueryCommand(`
 		SELECT UserId, UserKey, UserType, UserName, DisplayName, Email, Mobile, Tel, Title, DateOfBirth 
-		FROM tbluser 
+		FROM User 
 		WHERE UserId = ?`, [userId]);
 	return ctx.queryCommand(sql);
 }
 
-userService.prototype.getUserByName = function (ctx, userName) {
+Factory.prototype.getUserByName = function (ctx, userName) {
     var sql = dbHelper.prepareQueryCommand(`
 		SELECT UserId, UserType, UserName, Email, DateOfBirth, Deleted 
-		FROM tbluser 
+		FROM User 
 		WHERE UserName = ?`, [userName]);
     return ctx.queryCommand(sql);
 }
 
-userService.prototype.getUserByEmail = function (ctx, email) {
+Factory.prototype.getUserByEmail = function (ctx, email) {
 	var sql = dbHelper.prepareQueryCommand(`
 		SELECT UserId, UserType, UserName, Email, DateOfBirth, Deleted 
-		FROM tbluser 
+		FROM User 
 		WHERE Email = ?`, [email]);	
 	return ctx.queryCommand(sql);
 }
 
-userService.prototype.authenticate = function (username, password) {
+Factory.prototype.authenticate = function (username, password) {
     return (username === 'admin' && password === '@dmin');
 }
 
-userService.prototype.getMenu = function () {
+Factory.prototype.getMenu = function () {
 	var navigation = [
 		{
 			code: 'cash',
@@ -102,4 +102,4 @@ userService.prototype.getMenu = function () {
 }
 
 // Export
-module.exports = new userService;
+module.exports = new Factory;

@@ -535,6 +535,7 @@ VALUES (uuid(),'Ipad 8','Ipad 8',22,3000,'Green','IN','Cool','SYSTEM','SYSTEM');
 DROP TABLE IF EXISTS `Review`;
 CREATE TABLE `Review` (
   `ReviewId` INT(11) NOT NULL AUTO_INCREMENT,
+  `Name` VARCHAR(50) NOT NULL,
   `Rating` INT(2) NOT NULL DEFAULT 0,
   `Comment` VARCHAR(250) DEFAULT NULL,  
   `ProductId` INT(11) NOT NULL DEFAULT 0,
@@ -551,15 +552,15 @@ CREATE TABLE `Review` (
 --
 -- Sample data for table `User`
 --
-INSERT INTO `Review`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Author`, `Editor`) VALUES (1,'Not bad','2013-08-25 17:00:00',1,'test@hvn.com','SYSTEM','SYSTEM');
-INSERT INTO `Review`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Author`, `Editor`) VALUES (5,'Normal','2013-08-25 17:00:00',2,'test@hvn.com','SYSTEM','SYSTEM');
-INSERT INTO `Review`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Author`, `Editor`) VALUES (6,'Good','2013-08-22 17:00:00',3,'test@hvn.com','SYSTEM','SYSTEM');
-INSERT INTO `Review`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Author`, `Editor`) VALUES (3,'Good','2013-08-22 17:00:00',3,'test@hvn.com','SYSTEM','SYSTEM');
-INSERT INTO `Review`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Author`, `Editor`) VALUES (3,'Bad','2013-08-22 17:00:00',5,'test@hvn.com','SYSTEM','SYSTEM');
-INSERT INTO `Review`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Author`, `Editor`) VALUES (3,'Comment','2016-07-10 16:43:40',7,'hvn@hvn.net','SYSTEM','SYSTEM');
-INSERT INTO `Review`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Author`, `Editor`) VALUES (3,'Comment','2016-07-10 16:43:41',7,'hvn@hvn.net','SYSTEM','SYSTEM');
-INSERT INTO `Review`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Author`, `Editor`) VALUES (3,'Comment','2016-07-10 16:43:41',7,'hvn@hvn.net','SYSTEM','SYSTEM');
-INSERT INTO `Review`(`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Author`, `Editor`) VALUES (2,'2222','2016-07-10 16:59:04',15,'hvn@hvn.net','SYSTEM','SYSTEM');
+INSERT INTO `Review`(`Name`,`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Author`, `Editor`) VALUES ('TEST',1,'Not bad','2013-08-25 17:00:00',1,'test@hvn.com','SYSTEM','SYSTEM');
+INSERT INTO `Review`(`Name`,`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Author`, `Editor`) VALUES ('TEST',5,'Normal','2013-08-25 17:00:00',2,'test@hvn.com','SYSTEM','SYSTEM');
+INSERT INTO `Review`(`Name`,`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Author`, `Editor`) VALUES ('TEST',6,'Good','2013-08-22 17:00:00',3,'test@hvn.com','SYSTEM','SYSTEM');
+INSERT INTO `Review`(`Name`,`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Author`, `Editor`) VALUES ('TEST',3,'Good','2013-08-22 17:00:00',3,'test@hvn.com','SYSTEM','SYSTEM');
+INSERT INTO `Review`(`Name`,`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Author`, `Editor`) VALUES ('TEST',3,'Bad','2013-08-22 17:00:00',5,'test@hvn.com','SYSTEM','SYSTEM');
+INSERT INTO `Review`(`Name`,`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Author`, `Editor`) VALUES ('TEST',3,'Comment','2016-07-10 16:43:40',7,'hvn@hvn.net','SYSTEM','SYSTEM');
+INSERT INTO `Review`(`Name`,`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Author`, `Editor`) VALUES ('TEST',3,'Comment','2016-07-10 16:43:41',7,'hvn@hvn.net','SYSTEM','SYSTEM');
+INSERT INTO `Review`(`Name`,`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Author`, `Editor`) VALUES ('TEST',3,'Comment','2016-07-10 16:43:41',7,'hvn@hvn.net','SYSTEM','SYSTEM');
+INSERT INTO `Review`(`Name`,`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Author`, `Editor`) VALUES ('TEST',2,'2222','2016-07-10 16:59:04',15,'hvn@hvn.net','SYSTEM','SYSTEM');
 
 --
 -- Table structure for table `User`

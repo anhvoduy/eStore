@@ -1,44 +1,44 @@
-// Dependencies
-var Q = require('q');
-var dbHelper = require('../config/dbHelper');
+const Q = require('q');
+const _ = require('lodash');
+const dbHelper = require('../config/dbHelper');
 
 // Constructor
-var factory = function () { 
+var Factory = function () { 
 }
 
-factory.prototype.getJournals = function (ctx, conditions) {
+Factory.prototype.getJournals = function (ctx, conditions) {
 	var sql = dbHelper.prepareQueryCommand('', [brandId]);
 	return ctx.queryCommand(sql);
 }
 
-factory.prototype.getJournalById = function (ctx, journalId) {
+Factory.prototype.getJournalById = function (ctx, journalId) {
     var sql = dbHelper.prepareQueryCommand('', [journalId]);
     return ctx.queryCommand(sql);
 }
 
-factory.prototype.createJournal = function (ctx, journal) {
-    var sqlCreateReview = dbHelper.prepareQueryCommand("INSERT INTO tblreview(Rating, Comment, Created, ProductId, Email, Deleted)VALUES(?, ?, ?, ?, ?, 0)",
+Factory.prototype.createJournal = function (ctx, journal) {
+    var sqlCreateReview = dbHelper.prepareQueryCommand('',
         [review.Rating, review.Comment, review.Created, review.ProductId, review.Email]);
 
-    var sqlUpdateProduct = dbHelper.prepareQueryCommand("UPDATE tblProduct SET LatestReviewInfo = ? WHERE ProductId = ?",
+    var sqlUpdateProduct = dbHelper.prepareQueryCommand('',
         [JSON.stringify(review), review.ProductId]);
 }
 
-factory.prototype.updateJournal = function (ctx, journal) {
-	var sqlCreateReview = dbHelper.prepareQueryCommand("INSERT INTO tblreview(Rating, Comment, Created, ProductId, Email, Deleted)VALUES(?, ?, ?, ?, ?, 0)",
+Factory.prototype.updateJournal = function (ctx, journal) {
+	var sqlCreateReview = dbHelper.prepareQueryCommand('',
         [review.Rating, review.Comment, review.Created, review.ProductId, review.Email]);
 	
-	var sqlUpdateProduct = dbHelper.prepareQueryCommand("UPDATE tblProduct SET LatestReviewInfo = ? WHERE ProductId = ?",
+	var sqlUpdateProduct = dbHelper.prepareQueryCommand('',
         [JSON.stringify(review), review.ProductId]);    
 }
 
-factory.prototype.deleteJournal = function (ctx, transactionId) {
-	var sqlCreateReview = dbHelper.prepareQueryCommand("INSERT INTO tblreview(Rating, Comment, Created, ProductId, Email, Deleted)VALUES(?, ?, ?, ?, ?, 0)",
+Factory.prototype.deleteJournal = function (ctx, transactionId) {
+	var sqlCreateReview = dbHelper.prepareQueryCommand('',
         [review.Rating, review.Comment, review.Created, review.ProductId, review.Email]);
 	
-	var sqlUpdateProduct = dbHelper.prepareQueryCommand("UPDATE tblProduct SET LatestReviewInfo = ? WHERE ProductId = ?",
+	var sqlUpdateProduct = dbHelper.prepareQueryCommand('',
         [JSON.stringify(review), review.ProductId]);    
 }
 
 // Export
-module.exports = new factory;
+module.exports = new Factory;
