@@ -1,4 +1,5 @@
 import React from 'react';
+import reviewService from './../services/reviewService';
 
 export class ProductContentRightSingle extends React.Component {
     constructor(){
@@ -6,11 +7,17 @@ export class ProductContentRightSingle extends React.Component {
 
         // https://facebook.github.io/react/docs/forms.html
         this.state = {
-            value: ''
+            value: '',
+
+            rating: 1,
+            comment: '',
+            productId: 0,
+            email: '',
+            name: ''            
         };
         this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }    
+        this.handleSubmit = this.handleSubmit.bind(this);        
+    }
 
     handleChange(event) {
         this.setState({value: event.target.value});
@@ -19,7 +26,7 @@ export class ProductContentRightSingle extends React.Component {
     handleSubmit(event) {
         alert('A name was submitted: ' + this.state.value);
         event.preventDefault();
-    }
+    }    
     
     render() {
         return (            
@@ -83,27 +90,10 @@ export class ProductContentRightSingle extends React.Component {
                                         <p>Mauris placerat vitae lorem gravida viverra. Mauris in fringilla ex. Nulla facilisi. Etiam scelerisque tincidunt quam facilisis lobortis. In malesuada pulvinar neque a consectetur. Nunc aliquam gravida purus, non malesuada sem accumsan in. Morbi vel sodales libero.</p>
                                     </div>
                                     <div role="tabpanel" className="tab-pane fade" id="profile">
-                                        <h2>Reviews</h2>
-                                        <div className="submit-review">
-                                            <p><label htmlFor="name">Name</label> <input name="name" type="text" /></p>
-                                            <p><label htmlFor="email">Email</label> <input name="email" type="email" /></p>
-                                            <div className="rating-chooser">
-                                                <p>Your rating</p>
-
-                                                <div className="rating-wrap-post">
-                                                    <i className="fa fa-star"></i>
-                                                    <i className="fa fa-star"></i>
-                                                    <i className="fa fa-star"></i>
-                                                    <i className="fa fa-star"></i>
-                                                    <i className="fa fa-star"></i>
-                                                </div>
-                                            </div>
-                                            <p><label htmlFor="review">Your review</label> <textarea name="review" id="" cols="30" rows="10"></textarea></p>
-                                            <p><input type="submit" value="Submit" /></p>
-                                        </div>
+                                        <ReviewForm />
                                     </div>
                                 </div>
-                            </div>                            
+                            </div>
                         </div>
                     </div>
                 </div>               
@@ -207,3 +197,84 @@ export class ProductContentRightSingle extends React.Component {
     }
 };
 
+
+class ReviewForm extends React.Component {
+    constructor(){
+        super();        
+        this.state = {
+            rating: 1,
+            comment: '',
+            productId: 1,
+            email: '',
+            name: ''            
+        };
+        this.onChangeName = this.onChangeName.bind(this);
+        //this.onChangeRating = this.onChangeRating.bind(this);
+    }
+
+    handleSubmit(event) {        
+        event.preventDefault();
+        return reviewService.createReview(this.state)
+        .then(function(res){
+            if(res.status) console.log('success');
+            else console.log('failed');
+        });
+    }
+
+    onChangeName(event){
+        let name = event.target.name;
+        let value = event.target.value;
+        this.setState({
+            [name]: value
+        });
+    }
+
+    // onChangeRating(event, value){
+    //     console.log(event.target);
+    // }
+
+    render() {
+        return  (
+            <div>
+                <h2>Reviews</h2>
+                <div className="submit-review">
+                    <p>
+                        <label htmlFor="name">Name</label> 
+                        <input name="name" 
+                               type="text"
+                               value={this.state.name}
+                               onChange={this.onChangeName.bind(this)} />
+                    </p>
+                    <p>
+                        <label htmlFor="email">Email</label> 
+                        <input name="email" 
+                               type="email" 
+                               value={this.state.email}
+                               onChange={this.onChangeName.bind(this)} />
+                    </p>
+                    <div className="rating-chooser">
+                        <p>Your rating</p>
+                        <div className="rating-wrap-post">
+                            <i className="fa fa-star"></i>
+                            <i className="fa fa-star"></i>
+                            <i className="fa fa-star"></i>
+                            <i className="fa fa-star"></i>
+                            <i className="fa fa-star"></i>
+                        </div>
+                    </div>
+                    <p>
+                        <label htmlFor="comment">Your review</label> 
+                        <textarea name="comment" 
+                                  cols="30" 
+                                  rows="10" 
+                                  value={this.state.comment}
+                                  onChange={this.onChangeName.bind(this)} />
+                    </p>
+                    <p>
+                        <input type="submit" value="Submit" onClick={this.handleSubmit.bind(this)}/>
+                    </p>
+                </div>
+            </div>
+        )
+    }
+}
