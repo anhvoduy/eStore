@@ -2,7 +2,7 @@ const Q = require('q');
 const dbHelper = require('../lib/dbHelper');
 
 // Constructor
-var Factory = function () { 
+const Factory = function () { 
 }
 
 Factory.prototype.getAccounts = function (ctx, condition) {

@@ -1,12 +1,11 @@
-﻿// Dependencies
-var express = require('express');
-var router = express.Router();
-var q = require('q');
-var auth = require('../config/auth');
-var constant = require('../config/constant');
-var dbContext = require('../config/dbContext');
-var errorHelper = require('../config/errorHelper');
-var userService = require('../services/userService');
+﻿const express = require('express');
+const router = express.Router();
+const q = require('q');
+const auth = require('../config/auth');
+const constant = require('../lib/constant');
+const dbContext = require('../lib/dbContext');
+const dbHelper = require('../lib/dbHelper');
+const userService = require('../services/userService');
 
 // Routers
 router.get('/items', auth.checkAuthentication(), function (req, res, next) {

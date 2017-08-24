@@ -1,12 +1,12 @@
 ﻿// Dependencies
-const mssql = require('mssql');
+const mysql = require('mysql');
 
 // Constructor
 const dbHelper = function () { 
 }
 
 dbHelper.prototype.prepareQueryCommand = function (sql, params) {
- 	return mssql.format(sql, params);
+ 	return mysql.format(sql, params);
 }
 
 // Export
