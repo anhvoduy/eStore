@@ -1,8 +1,8 @@
-// Dependencies
-var config = require('./config.js');
+var q = require('q');
+var _ = require('lodash');
 var mysql = require('mysql');
-var q = require('q');   //https://www.npmjs.com/package/q
-var errorHelper = require('./errorHelper.js');
+var config = require('../config/config');
+var errorHelper = require('./errorHelper');
 
 // Connection Pool
 var pool = mysql.createPool({

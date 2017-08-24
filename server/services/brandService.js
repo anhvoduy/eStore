@@ -1,6 +1,6 @@
 ﻿const Q = require('q');
 const _ = require('lodash');
-const dbHelper = require('../config/dbHelper');
+const config = require('../config/config');
 
 // Constructor
 const Factory = function(){	
