@@ -12,6 +12,11 @@ export class SampleForm extends React.Component{
     constructor(props) {
         super(props);  
         this.state = {
+            firstName: '',
+            lastName: '',
+            userName: '',
+            password: '',
+            
             date: Date.now()
         };        
         console.log('- constructor()');
