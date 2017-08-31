@@ -1,61 +1,69 @@
 import React from 'react';
 import moment from 'moment';
-import dataService from './../services/dataService';
 
 /**
- * For understand react's component life cycle
- * https://facebook.github.io/react/docs/react-component.html
- * props: values are passed to component from outside component & only be changed from outside component
- * state: keep values & change inside react's components
+ * https://medium.com/@gaperton/managing-state-and-forms-with-react-part-1-12eacb647112
  */
 export class SampleForm extends React.Component{
     constructor(props) {
-        super(props);  
+        super(props);
         this.state = {
             firstName: '',
             lastName: '',
+            fullName: '',
+            
+            email: '',
             userName: '',
             password: '',
-            
-            date: Date.now()
-        };        
-        console.log('- constructor()');
-    }    
-    
-    componentWillMount() {
-        console.log('- componentWillMount()');     
+            isActive: true,
+
+            today: Date.now()
+        };
+    }
+
+    onSubmit = e => {
+
     }
 
     render(){
-        console.log('- render()');        
         return (
-            <form id='FormSample'>
-            </form>            
+            <form id='SampleForm' onSubmit={ this.onSubmit }>
+                <h2>Sign In</h2>
+                <div className='form-group'>
+                    <label htmlFor='email'>Email address</label>
+                    <input type='email'
+                        className='form-control'
+                        name='email'
+                        value = {this.state.email}
+                        onChange={ e => this.setState({ email: e.target.value })} />
+                </div>
+
+                <div className='form-group'>
+                    <label htmlFor='userName'>UserName</label>
+                    <input type='text'
+                        className='form-control'
+                        name='userName'
+                        value = { this.state.userName }
+                        onChange={ e => this.setState({ userName: e.target.value })} />
+                </div>
+                <div className='form-group'>
+                    <label htmlFor='password'>Password</label>
+                    <input type='password'
+                        className='form-control'
+                        name='password'
+                        value = { this.state.password } 
+                        onChange={ e => this.setState({ password: e.target.value })} />
+                </div>
+                <div className='form-group'>
+                    <label htmlFor='isActive'>Is Active</label>
+                    <input type='checkbox' 
+                        className='form-control' 
+                        name='isActive'
+                        value = { this.state.isActive }
+                        onChange={ e => this.setState({ isActive: e.target.checked })} />
+                </div>
+                <button type='submit' className='btn btn-primary'>Sign In</button>
+            </form>
         );
-    }
-
-    componentDidMount(){
-        console.log('- componentDidMount()');
-    }
-
-    componentWillReceiveProps(){
-        console.log('- componentWillReceiveProps()');
-    }
-        
-    shouldComponentUpdate(nextProps, nextState){
-        console.log('- shouldComponentUpdate()');
-        return true; //false
-    }
-    
-    componentWillUpdate(nextProps, nextState){     
-        console.log('- componentWillUpdate()');
-    }
-
-    componentDidUpdate(prevProps, prevState){
-        console.log('- componentDidUpdate()');
-    }
-
-    componentWillUnMount(){
-        console.log('- componentWillUnMount()');
-    }
+    }    
 }
