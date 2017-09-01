@@ -4,28 +4,13 @@ import Link, { LinkedComponent } from 'valueLink';
 import { Input } from 'valueLink/tags';
 
 /**
+ * React Validation Fields by valueLink
  * https://medium.com/@gaperton/managing-state-and-forms-with-react-part-1-12eacb647112
- * https://github.com/benawad/basic-react-form/tree/3_client_side_validation
+ * https://medium.com/@gaperton/react-forms-with-value-links-part-2-validation-9d1ba78f8e49
  
  * React Semantic UI
  * https://react.semantic-ui.com/elements/input
  */
-
-
-/* Value Link pattern */
-// const TextInput({valueLink, ... props}) => (
-//     <input {...props} 
-//            type='text' 
-//            value={ valueLink.value } 
-//            onChange={ e => valueLink.set(e.target.value) } 
-//     />
-// );
-// function linkState(component, attr) {
-//     return {
-//         value: component.state[attr],
-//         set(x){ component.setState({ [attr]:x }); }
-//     }
-// }
 
 export class SampleForm extends LinkedComponent{
     state = {
@@ -111,7 +96,7 @@ export class SampleForm extends LinkedComponent{
         const linked = this.linkAll(); // wrap all state members in links        
         return (
             <form id='SampleForm' onSubmit={ this.onSubmit }>
-                <h2>Sign In</h2>
+                <h2>Sign In (Form)</h2>
                 <div className='form-group'>
                     <label htmlFor='email'>
                         Email:<Input type='text' name='email' className='form-control' valueLink={linked.email} />
@@ -142,7 +127,7 @@ export class SampleForm extends LinkedComponent{
                         Is Active:<Input type='checkbox' name='isActive' className='form-control' checkedLink={linked.isActive} />
                     </label>
                 </div>
-                <button type='submit' className='btn btn-primary'>Sign In</button>
+                <button type='submit' className='btn btn-primary'>Sign In</button>                                
             </form>
         );
     }
