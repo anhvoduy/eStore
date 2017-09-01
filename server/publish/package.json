@@ -19,7 +19,8 @@
     "react-dom": "15.2.1",
     "react-redux": "^5.0.5",
     "react-slick": "^0.14.11",
-    "redux": "^3.7.2"
+    "redux": "^3.7.2",
+    "valuelink": "^1.5.2"
   },
   "devDependencies": {
     "babel-loader": "^7.1.1",

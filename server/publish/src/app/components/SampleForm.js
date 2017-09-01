@@ -1,5 +1,7 @@
 import React from 'react';
 import moment from 'moment';
+import Link, { LinkedComponent } from 'valueLink';
+import { Input } from 'valueLink/tags';
 
 /**
  * https://medium.com/@gaperton/managing-state-and-forms-with-react-part-1-12eacb647112
@@ -8,24 +10,38 @@ import moment from 'moment';
  * React Semantic UI
  * https://react.semantic-ui.com/elements/input
  */
-export class SampleForm extends React.Component{
-    constructor(props) {
-        super(props);
-        this.state = {
-            firstName: '',
-            firstNameError: '',
-            lastName: '',
-            lastNameError: '',
-            email: '',
-            emailError: '',
-            userName: '',
-            userNameError: '',
-            password: '',
-            passwordError: '',
 
-            isActive: false,            
-            today: Date.now()
-        };
+
+/* Value Link pattern */
+// const TextInput({valueLink, ... props}) => (
+//     <input {...props} 
+//            type='text' 
+//            value={ valueLink.value } 
+//            onChange={ e => valueLink.set(e.target.value) } 
+//     />
+// );
+// function linkState(component, attr) {
+//     return {
+//         value: component.state[attr],
+//         set(x){ component.setState({ [attr]:x }); }
+//     }
+// }
+
+export class SampleForm extends LinkedComponent{
+    state = {
+        firstName: '',
+        firstNameError: '',
+        lastName: '',
+        lastNameError: '',
+        email: '',
+        emailError: '',
+        userName: '',
+        userNameError: '',
+        password: '',
+        passwordError: '',
+
+        isActive: false,            
+        today: Date.now()
     }
 
     change = e => {
@@ -92,67 +108,42 @@ export class SampleForm extends React.Component{
     }
 
     render(){
+        const linked = this.linkAll(); // wrap all state members in links        
         return (
             <form id='SampleForm' onSubmit={ this.onSubmit }>
                 <h2>Sign In</h2>
-                {/* <div className='form-group'>
-                    <label htmlFor='email'>Email address</label>
-                    <input type='email'
-                        className='form-control'
-                        name='email'
-                        value = {this.state.email}
-                        onChange={ e => this.setState({ email: e.target.value })} />
-                </div> */}
-
                 <div className='form-group'>
-                    <label htmlFor='firstName'>First Name</label>
-                    <input type='text'
-                        name='firstName'
-                        className='form-control'                        
-                        value = { this.state.firstName }
-                        onChange={ e => this.setState({ firstName: e.target.value })}
-                    />
-                </div>
-
-                <div className='form-group'>
-                    <label htmlFor='lastName'>Last Name</label>
-                    <input type='text'
-                        name='lastName'
-                        className='form-control'                        
-                        value = { this.state.lastName }
-                        onChange={ e => this.setState({ lastName: e.target.value })} 
-                    />
-                </div>
-
-                <div className='form-group'>
-                    <label htmlFor='userName'>UserName</label>
-                    <input type='text'
-                        name='userName'
-                        className='form-control'                        
-                        value = { this.state.userName }
-                        onChange={ e => this.setState({ userName: e.target.value })} 
-                    />
+                    <label htmlFor='email'>
+                        Email:<Input type='text' name='email' className='form-control' valueLink={linked.email} />
+                    </label>
                 </div>
                 <div className='form-group'>
-                    <label htmlFor='password'>Password</label>
-                    <input type='password'
-                        name='password'
-                        className='form-control'                        
-                        value = { this.state.password } 
-                        onChange={ e => this.setState({ password: e.target.value })}
-                    />
+                    <label htmlFor='firstName'>
+                        First Name:<Input type='text' name='firstName' className='form-control' valueLink={linked.firstName} />
+                    </label>
                 </div>
                 <div className='form-group'>
-                    <label htmlFor='isActive'>Is Active</label>
-                    <input type='checkbox'
-                        name='isActive'
-                        className='form-control'                        
-                        value = { this.state.isActive }
-                        onChange={ e => this.setState({ isActive: e.target.checked })} 
-                    />
+                    <label htmlFor='lastName'>
+                        Last Name:<Input type='text' name='lastName' className='form-control' valueLink={linked.lastName} />
+                    </label>
+                </div>
+                <div className='form-group'>
+                    <label htmlFor='userName'>
+                        UserName:<Input type='text' name='userName' className='form-control' valueLink={linked.userName} />
+                    </label>
+                </div>
+                <div className='form-group'>
+                    <label htmlFor='password'>
+                        Password:<Input type='password' name='password' className='form-control' valueLink={linked.password} />
+                    </label>
+                </div>
+                <div className='form-group'>
+                    <label htmlFor='isActive'>
+                        Is Active:<Input type='checkbox' name='isActive' className='form-control' checkedLink={linked.isActive} />
+                    </label>
                 </div>
                 <button type='submit' className='btn btn-primary'>Sign In</button>
             </form>
         );
-    }    
+    }
 }
