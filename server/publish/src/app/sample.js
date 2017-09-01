@@ -1,10 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 
 import { SampleHeader } from './components/Header';
 import { SampleHome } from './components/SampleHome';
 import { SampleForm } from './components/SampleForm';
 import { SampleCarousel } from './components/SampleCarousel';
+
+import { SampleFormUser } from './components/SampleFormUser';
+import { SampleFormUserStore } from './components/SampleFormUserStore';
 
 class SampleApp extends React.Component {
     constructor() {
@@ -89,6 +93,14 @@ class SampleApp extends React.Component {
                     </div>
                     <div className='col-xs-10 col-xs-offset-1'>
                         <SampleForm />
+                    </div>
+                </div>
+                <div className='row'>
+                    <div className='col-xs-10 col-xs-offset-1'>
+                        <p>Sample Form User</p>
+                    </div>
+                    <div className='col-xs-10 col-xs-offset-1'>
+                                                
                     </div>
                 </div>
                 <div className='row'>

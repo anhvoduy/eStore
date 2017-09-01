@@ -17,7 +17,8 @@
     "moment": "^2.18.1",
     "react": "15.2.1",
     "react-dom": "15.2.1",
-    "react-redux": "^5.0.5",
+    "react-redux": "^5.0.6",
+    "react-redux-form": "^1.14.1",
     "react-slick": "^0.14.11",
     "redux": "^3.7.2",
     "valuelink": "^1.5.2"
