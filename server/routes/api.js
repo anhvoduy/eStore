@@ -108,12 +108,7 @@ router.get('/myprofile', cors(), function (req, res, next){
 
 
 
-// routers: use to authenticate
-router.post('/authenticate', function (req, res, next) {
-	console.log('authenticate ...');
-	return next();
-});
-
+// routers: use to login/logout
 router.post('/login', function (req, res, next) {
 	passport.authenticate('local', function (err, result) {
 		if (err) { return next(err); }
@@ -136,10 +131,10 @@ router.post('/login', function (req, res, next) {
 	})(req, res, next);
 });
 
-router.get('/logout', function (req, res) {
+router.get('/logout', function (req, res, next) {
 	console.log('Log out current user...');
+	next();
 });
-
 
 // return Router
 module.exports = router;
