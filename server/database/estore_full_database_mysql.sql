@@ -130,7 +130,8 @@ DROP TABLE IF EXISTS `Transaction`;
 CREATE TABLE `Transaction` (
   `TransactionId` INT(11) NOT NULL AUTO_INCREMENT,  
   `TransactionKey` VARCHAR(50) NOT NULL,
-  `TransactionDate` DATETIME DEFAULT CURRENT_TIMESTAMP, -- ngay hach toan
+  `TransactionNo` VARCHAR(50) DEFAULT NULL,
+  `TransactionDate` DATETIME DEFAULT NULL, -- ngay hach toan
   `TransactionType` VARCHAR(20) NOT NULL,
   `Description` VARCHAR(250) DEFAULT NULL,
   `DebitAcctNo` VARCHAR(20) NOT NULL,
@@ -154,23 +155,23 @@ CREATE TABLE `Transaction` (
 --
 -- Sample data for table `Transaction`
 --
-INSERT INTO `Transaction`(TransactionKey, TransactionDate, TransactionType, Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount, Author, Editor)
-VALUES (uuid(),'2016-11-07','CASHIN','Cash In ', '111', '642', 'VND', 5000000, 'SYSTEM', 'SYSTEM');
+INSERT INTO `Transaction`(TransactionKey, TransactionNo, TransactionDate, TransactionType, Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount, Author, Editor)
+VALUES (uuid(),'CASHIN-000001','2016-11-07','CASHIN','Cash In ', '111', '642', 'VND', 5000000, 'SYSTEM', 'SYSTEM');
 
-INSERT INTO `Transaction`(TransactionKey, TransactionDate, TransactionType, Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount, Author, Editor)
-VALUES (uuid(),'2016-11-07','CASHIN','Cash In ', '111', '642', 'VND', 6000000, 'SYSTEM', 'SYSTEM');
+INSERT INTO `Transaction`(TransactionKey, TransactionNo, TransactionDate, TransactionType, Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount, Author, Editor)
+VALUES (uuid(),'CASHIN-000002','2016-11-07','CASHIN','Cash In ', '111', '642', 'VND', 6000000, 'SYSTEM', 'SYSTEM');
 
-INSERT INTO `Transaction`(TransactionKey, TransactionDate, TransactionType, Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount, Author, Editor)
-VALUES (uuid(),'2016-11-07','CASHIN','Cash In ', '111', '531', 'USD', 800, 'SYSTEM', 'SYSTEM');
+INSERT INTO `Transaction`(TransactionKey, TransactionNo, TransactionDate, TransactionType, Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount, Author, Editor)
+VALUES (uuid(),'CASHIN-000003','2016-11-07','CASHIN','Cash In ', '111', '531', 'USD', 800, 'SYSTEM', 'SYSTEM');
 
-INSERT INTO `Transaction`(TransactionKey, TransactionDate, TransactionType, Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount, Author, Editor)
-VALUES (uuid(),'2016-11-07','CASHOUT','Cash Out', '111', '642', 'VND', 1000000, 'SYSTEM', 'SYSTEM');
+INSERT INTO `Transaction`(TransactionKey, TransactionNo, TransactionDate, TransactionType, Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount, Author, Editor)
+VALUES (uuid(),'CASHOUT-000001','2016-11-07','CASHOUT','Cash Out', '111', '642', 'VND', 1000000, 'SYSTEM', 'SYSTEM');
 
-INSERT INTO `Transaction`(TransactionKey, TransactionDate, TransactionType, Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount, Author, Editor)
-VALUES (uuid(),'2016-11-07','CASHOUT','Cash Out', '111', '642', 'VND', 2000000, 'SYSTEM', 'SYSTEM');
+INSERT INTO `Transaction`(TransactionKey, TransactionNo, TransactionDate, TransactionType, Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount, Author, Editor)
+VALUES (uuid(),'CASHOUT-000002','2016-11-07','CASHOUT','Cash Out', '111', '642', 'VND', 2000000, 'SYSTEM', 'SYSTEM');
 
-INSERT INTO `Transaction`(TransactionKey, TransactionDate, TransactionType, Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount, Author, Editor)
-VALUES (uuid(),'2016-11-07','CASHOUT','Cash Out', '111', '532', 'USD', 500, 'SYSTEM', 'SYSTEM');
+INSERT INTO `Transaction`(TransactionKey, TransactionNo, TransactionDate, TransactionType, Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount, Author, Editor)
+VALUES (uuid(),'CASHOUT-000003','2016-11-07','CASHOUT','Cash Out', '111', '532', 'USD', 500, 'SYSTEM', 'SYSTEM');
 
 --
 -- Table structure for table `TransactionDetail`

@@ -122,7 +122,8 @@ INSERT INTO [dbo].[Account] (AccountKey, AccountNo,AccountName,Author,Editor) VA
 CREATE TABLE [dbo].[Transaction](
 	[TransactionId] [int] IDENTITY(1,1) NOT NULL,
 	[TransactionKey] [nvarchar](50) NOT NULL,
-	[TransactionDate] [datetime] NOT NULL,
+	[TransactionNo] [nvarchar](50) DEFAULT NULL,
+	[TransactionDate] [datetime] DEFAULT NULL,
     [TransactionType] [nvarchar](20) NULL,
 	[Description] [nvarchar](250) NULL,
 	[DebitAcctNo] [nvarchar](20) NOT NULL,
@@ -146,23 +147,23 @@ CREATE TABLE [dbo].[Transaction](
 ) ON [PRIMARY]
 GO
 
-INSERT INTO [dbo].[Transaction] (TransactionKey, TransactionDate, TransactionType, Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount, CustomerId, Author, Editor)
-VALUES (NEWID(),'2016-11-07','CASHIN','Cash In ', '111', '642', 'VND', 5000000, 1, 'SYSTEM', 'SYSTEM');
+INSERT INTO [dbo].[Transaction] (TransactionKey, TransactionNo, TransactionDate TransactionType, Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount, CustomerId, Author, Editor)
+VALUES (NEWID(),'CASHIN-000001', '2016-11-07','CASHIN','Cash In ', '111', '642', 'VND', 5000000, 1, 'SYSTEM', 'SYSTEM');
 
-INSERT INTO [dbo].[Transaction] (TransactionKey, TransactionDate, TransactionType, Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount, CustomerId, Author, Editor)
-VALUES (NEWID(),'2016-11-07','CASHIN','Cash In ', '111', '642', 'VND', 6000000, 2, 'SYSTEM', 'SYSTEM');
+INSERT INTO [dbo].[Transaction] (TransactionKey, TransactionNo, TransactionDate TransactionType, Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount, CustomerId, Author, Editor)
+VALUES (NEWID(),'CASHIN-000002', '2016-11-07','CASHIN','Cash In ', '111', '642', 'VND', 6000000, 2, 'SYSTEM', 'SYSTEM');
 
-INSERT INTO [dbo].[Transaction] (TransactionKey, TransactionDate, TransactionType, Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount, CustomerId, Author, Editor)
-VALUES (NEWID(),'2016-11-07','CASHIN','Cash In ', '111', '531', 'USD', 900, 1, 'SYSTEM', 'SYSTEM');
+INSERT INTO [dbo].[Transaction] (TransactionKey, TransactionNo, TransactionDate TransactionType, Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount, CustomerId, Author, Editor)
+VALUES (NEWID(),'CASHIN-000003', '2016-11-07','CASHIN','Cash In ', '111', '531', 'USD', 900, 1, 'SYSTEM', 'SYSTEM');
 
-INSERT INTO [dbo].[Transaction] (TransactionKey, TransactionDate, TransactionType, Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount, CustomerId, Author, Editor)
-VALUES (NEWID(),'2016-11-07','CASHOUT','Cash Out', '111', '642', 'VND', 1000000, 2, 'SYSTEM', 'SYSTEM');
+INSERT INTO [dbo].[Transaction] (TransactionKey, TransactionNo, TransactionDate TransactionType, Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount, CustomerId, Author, Editor)
+VALUES (NEWID(),'CASHOUT-000001', '2016-11-07','CASHOUT','Cash Out', '111', '642', 'VND', 1000000, 2, 'SYSTEM', 'SYSTEM');
 
-INSERT INTO [dbo].[Transaction] (TransactionKey, TransactionDate, TransactionType, Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount, CustomerId, Author, Editor)
-VALUES (NEWID(),'2016-11-07','CASHOUT','Cash Out', '111', '642', 'VND', 2000000, 3, 'SYSTEM', 'SYSTEM');
+INSERT INTO [dbo].[Transaction] (TransactionKey, TransactionNo, TransactionDate TransactionType, Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount, CustomerId, Author, Editor)
+VALUES (NEWID(),'CASHOUT-000002', '2016-11-07','CASHOUT','Cash Out', '111', '642', 'VND', 2000000, 3, 'SYSTEM', 'SYSTEM');
 
-INSERT INTO [dbo].[Transaction] (TransactionKey, TransactionDate, TransactionType, Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount, CustomerId, Author, Editor)
-VALUES (NEWID(),'2016-11-07','CASHOUT','Cash Out', '111', '532', 'USD', 500, 1, 'SYSTEM', 'SYSTEM');
+INSERT INTO [dbo].[Transaction] (TransactionKey, TransactionNo, TransactionDate TransactionType, Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount, CustomerId, Author, Editor)
+VALUES (NEWID(),'CASHOUT-000003', '2016-11-07','CASHOUT','Cash Out', '111', '532', 'USD', 500, 1, 'SYSTEM', 'SYSTEM');
 
 
 /****** Object:  Table [dbo].[TransactionDetail] ******/
