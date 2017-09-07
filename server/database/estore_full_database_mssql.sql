@@ -147,22 +147,22 @@ CREATE TABLE [dbo].[Transaction](
 ) ON [PRIMARY]
 GO
 
-INSERT INTO [dbo].[Transaction] (TransactionKey, TransactionNo, TransactionDate TransactionType, Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount, CustomerId, Author, Editor)
+INSERT INTO [dbo].[Transaction] (TransactionKey, TransactionNo, TransactionDate, TransactionType, Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount, CustomerId, Author, Editor)
 VALUES (NEWID(),'CASHIN-000001', '2016-11-07','CASHIN','Cash In ', '111', '642', 'VND', 5000000, 1, 'SYSTEM', 'SYSTEM');
 
-INSERT INTO [dbo].[Transaction] (TransactionKey, TransactionNo, TransactionDate TransactionType, Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount, CustomerId, Author, Editor)
+INSERT INTO [dbo].[Transaction] (TransactionKey, TransactionNo, TransactionDate, TransactionType, Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount, CustomerId, Author, Editor)
 VALUES (NEWID(),'CASHIN-000002', '2016-11-07','CASHIN','Cash In ', '111', '642', 'VND', 6000000, 2, 'SYSTEM', 'SYSTEM');
 
-INSERT INTO [dbo].[Transaction] (TransactionKey, TransactionNo, TransactionDate TransactionType, Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount, CustomerId, Author, Editor)
+INSERT INTO [dbo].[Transaction] (TransactionKey, TransactionNo, TransactionDate, TransactionType, Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount, CustomerId, Author, Editor)
 VALUES (NEWID(),'CASHIN-000003', '2016-11-07','CASHIN','Cash In ', '111', '531', 'USD', 900, 1, 'SYSTEM', 'SYSTEM');
 
-INSERT INTO [dbo].[Transaction] (TransactionKey, TransactionNo, TransactionDate TransactionType, Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount, CustomerId, Author, Editor)
+INSERT INTO [dbo].[Transaction] (TransactionKey, TransactionNo, TransactionDate, TransactionType, Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount, CustomerId, Author, Editor)
 VALUES (NEWID(),'CASHOUT-000001', '2016-11-07','CASHOUT','Cash Out', '111', '642', 'VND', 1000000, 2, 'SYSTEM', 'SYSTEM');
 
-INSERT INTO [dbo].[Transaction] (TransactionKey, TransactionNo, TransactionDate TransactionType, Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount, CustomerId, Author, Editor)
+INSERT INTO [dbo].[Transaction] (TransactionKey, TransactionNo, TransactionDate, TransactionType, Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount, CustomerId, Author, Editor)
 VALUES (NEWID(),'CASHOUT-000002', '2016-11-07','CASHOUT','Cash Out', '111', '642', 'VND', 2000000, 3, 'SYSTEM', 'SYSTEM');
 
-INSERT INTO [dbo].[Transaction] (TransactionKey, TransactionNo, TransactionDate TransactionType, Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount, CustomerId, Author, Editor)
+INSERT INTO [dbo].[Transaction] (TransactionKey, TransactionNo, TransactionDate, TransactionType, Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount, CustomerId, Author, Editor)
 VALUES (NEWID(),'CASHOUT-000003', '2016-11-07','CASHOUT','Cash Out', '111', '532', 'USD', 500, 1, 'SYSTEM', 'SYSTEM');
 
 
