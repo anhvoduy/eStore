@@ -21,7 +21,7 @@ app.config(function ($stateProvider) {
 		url: '/brand',
 		views: {
 			'view': {
-				templateUrl: '/app/components/brand/views/brand.tpl.html',
+				templateUrl: '/app/views/brand.tpl.html',
 				controller: 'brandController'
 			}
 		}
@@ -31,7 +31,7 @@ app.config(function ($stateProvider) {
         parentState: 'brand',
 		views: {
 			'view': {
-				templateUrl: '/app/components/brand/views/brandDetail.tpl.html',
+				templateUrl: '/app/views/brandDetail.tpl.html',
 				controller: 'BrandDetailController'
 			}
 		}
@@ -41,7 +41,7 @@ app.config(function ($stateProvider) {
         parentState: 'brand',
 		views: {
 			'view': {
-				templateUrl: '/app/components/brand/views/brandDetail.tpl.html',
+				templateUrl: '/app/views/brandDetail.tpl.html',
 				controller: 'BrandDetailController'
 			}
 		}
