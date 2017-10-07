@@ -601,35 +601,6 @@ INSERT INTO `User` (`UserKey`, `UserType`, `UserName`, `Hash`, `DisplayName`, `E
 INSERT INTO `User` (`UserKey`, `UserType`, `UserName`, `Hash`, `DisplayName`, `Email`, `DateOfBirth`, `Author`, `Editor`) VALUES (uuid(), 'USER','lukaku' , uuid(), 'Lukaku','lukaku@sony.com','1980-06-06','SYSTEM','SYSTEM');
 INSERT INTO `User` (`UserKey`, `UserType`, `UserName`, `Hash`, `DisplayName`, `Email`, `DateOfBirth`, `Author`, `Editor`) VALUES (uuid(), 'USER','pogba'  , uuid(), 'Pogba','pogba@samsung.com','1980-06-06','SYSTEM','SYSTEM');
 
---
--- Store Procedure: sp_product_paging
---
-DROP procedure IF EXISTS `sp_product_paging`;
-DELIMITER ;;
-CREATE PROCEDURE `sp_product_paging`(IN _pageindex int)
-BEGIN
-	IF(_pageindex = 0) THEN
-		SELECT 	prod.ProductId, prod.ProductName, prod.Description,
-			prod.BrandId, bra.Name AS BrandName, 
-			prod.Price, prod.Colour, prod.Created, prod.Status 
-		FROM Product prod inner join tblbrand bra 
-		WHERE 	prod.brandId = bra.brandId
-			AND prod.productId > _pageindex
-		ORDER BY prod.productId DESC
-		LIMIT 10;
-    ELSE
-		SELECT 	prod.ProductId, prod.ProductName, prod.Description,
-			prod.BrandId, bra.Name AS BrandName, 
-			prod.Price, prod.Colour, prod.Created, prod.Status 
-		FROM Product prod inner join tblbrand bra 
-		WHERE 	prod.brandId = bra.brandId
-			AND prod.productId < _pageindex
-		ORDER BY prod.productId DESC
-        LIMIT 10;
-    END IF;	    
-END ;;
-DELIMITER ;
-
 
 /*
 SELECT COUNT(*) AS Count FROM Account;
