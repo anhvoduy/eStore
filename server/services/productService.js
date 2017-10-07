@@ -7,16 +7,23 @@ const Factory = function () {
 }
 
 Factory.prototype.getProducts = function (ctx, pageIndex) {
-	var sql = dbHelper.prepareQueryCommand("CALL sp_product_paging(?);", [pageIndex]);
+	// var sql = dbHelper.prepareQueryCommand("CALL sp_product_paging(?);", [pageIndex]);
+    // return ctx.queryCommand(sql);
+    var sql = dbHelper.prepareQueryCommand(
+		"SELECT prod.ProductId, prod.ProductName, prod.Description, " +
+		"		prod.BrandId, bra.BrandName AS BrandName, " + 
+		"       prod.Price, prod.Colour, prod.Created, prod.Status, prod.LatestReviewInfo " +	
+		"FROM Product prod inner join Brand bra " + 	
+		"WHERE prod.brandId = bra.brandId", []);
 	return ctx.queryCommand(sql);
 }
 
 Factory.prototype.getProductById = function (ctx, productId) {
 	var sql = dbHelper.prepareQueryCommand(
 		"SELECT prod.ProductId, prod.ProductName, prod.Description, " +
-		"		prod.BrandId, bra.Name AS BrandName, " + 
+		"		prod.BrandId, bra.BrandName AS BrandName, " + 
 		"       prod.Price, prod.Colour, prod.Created, prod.Status, prod.LatestReviewInfo " +	
-		"FROM Product prod inner join tblbrand bra " + 	
+		"FROM Product prod inner join Brand bra " + 	
 		"WHERE prod.brandId = bra.brandId AND prod.productId = ? ", [productId]);
 	return ctx.queryCommand(sql);
 }
@@ -26,7 +33,7 @@ Factory.prototype.getProductsByBrand = function (ctx, brandId) {
 		"SELECT prod.ProductId, prod.ProductName, prod.Description,	" +
 		"		prod.Price, prod.Colour, prod.Created, prod.Status, " +
         "		prod.BrandId, bra.Name AS BrandName, prod.LatestReviewInfo " +
-		"FROM Product prod inner join tblbrand bra " +
+		"FROM Product prod inner join Brand bra " +
 		"WHERE bra.brandId = prod.brandId AND bra.brandId = ? " +
 		"ORDER BY prod.ProductId DESC ", [brandId]);
 	return ctx.queryCommand(sql);
