@@ -9,7 +9,7 @@ const errorHelper = require('../lib/errorHelper');
 const productService = require('../services/productService');
 
 // Router
-router.get('/itemspaging/:id', auth.checkAuthentication(), function (req, res, next) {
+router.get('/list', auth.checkAuthentication(), function (req, res, next) {
 	var pageIndex = req.params.id;
 	if (pageIndex == undefined) pageIndex = 0;
 	
@@ -18,7 +18,7 @@ router.get('/itemspaging/:id', auth.checkAuthentication(), function (req, res, n
 		ctx = result;
 		return productService.getProducts(ctx, pageIndex);
 	}).then(function (result) {
-		var products = result[0];
+		var products = result;
 		res.status(200).json(products);
 	}).catch(function (error) {
 		next(error);

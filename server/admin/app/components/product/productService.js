@@ -10,8 +10,8 @@
         productService.prototype.constructor = productService;
         
         // methods                
-        productService.prototype.getProductsPaging = function (pageIndex) {
-            var url = String.format('{0}/itemspaging/{1}', this.api, pageIndex);
+        productService.prototype.getList = function () {
+            var url = String.format('{0}/list', this.api);
             
             var q = $q.defer();
             this.getData(url).then(function (result) {
