@@ -1,16 +1,16 @@
 (function () {
 	'use strict';
-	app.factory('stockService', stockService);
-	stockService.$inject = ['$q', 'baseService'];
-	function stockService($q, baseService) {
+	app.factory('inventoryService', inventoryService);
+	inventoryService.$inject = ['$q', 'baseService'];
+	function inventoryService($q, baseService) {
 		// constructor
-		var stockService = function () {            
+		var inventoryService = function () {            
 		}
-		stockService.prototype = new baseService('api/inventory');
-		stockService.prototype.constructor = stockService;
+		inventoryService.prototype = new baseService('api/inventory');
+		inventoryService.prototype.constructor = inventoryService;
 		
 		// methods
-		stockService.prototype.getInventories = function () {
+		inventoryService.prototype.getInventories = function () {
 			var url = String.format('{0}/items', this.api);
 			
 			var q = $q.defer();
@@ -22,7 +22,7 @@
 			return q.promise;
 		}
 		
-		stockService.prototype.getInventoryById = function (inventoryId) {
+		inventoryService.prototype.getInventoryById = function (inventoryId) {
 			var url = String.format('{0}/items/{1}', this.api, inventoryId);
 			
 			var q = $q.defer();
@@ -34,7 +34,7 @@
 			return q.promise;
 		}
 		
-		stockService.prototype.updateInventory = function (inventory) {
+		inventoryService.prototype.updateInventory = function (inventory) {
 			var url = String.format('{0}/update', this.api);
 			
 			var q = $q.defer();
@@ -46,7 +46,7 @@
 			return q.promise;
 		}
 		
-		stockService.prototype.deleteInventory = function (inventoryId) {
+		inventoryService.prototype.deleteInventory = function (inventoryId) {
 			var url = String.format('{0}/delete/{1}', this.api, inventoryId);
 			
 			var q = $q.defer();
@@ -58,7 +58,7 @@
 			return q.promise;
 		}
 
-		stockService.prototype.getStockIn = function () {
+		inventoryService.prototype.getStockIn = function () {
 			var url = String.format('{0}/stockin', this.api);
 			
 			var q = $q.defer();
@@ -70,7 +70,7 @@
 			return q.promise;
 		}
 
-		stockService.prototype.getStockOut = function () {			
+		inventoryService.prototype.getStockOut = function () {			
 			var url = String.format('{0}/stockout', this.api);
 			
 			var q = $q.defer();
@@ -82,6 +82,6 @@
 			return q.promise;
 		}
 		
-		return new stockService;
+		return new inventoryService;
 	};
 })();
