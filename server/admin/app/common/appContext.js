@@ -4,12 +4,7 @@
     appContext.$inject = ['$rootScope', '$cookieStore'];
     function appContext($rootScope, $cookieStore) {
         // constructor        
-        var appContext = function () {            
-            //this.http = $http;
-            //this.q = $q;
-            //this.location = $location;
-            //this.rootScope = $rootScope;                        
-            //this.cookieStore = $cookieStore;
+        var appContext = function () {
         }
         
         appContext.prototype = new appContext();

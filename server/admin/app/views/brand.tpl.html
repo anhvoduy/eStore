@@ -4,7 +4,7 @@
             <h3 class="panel-title">All Brands</h3>
         </div>
         <div class="panel-body">
-            <p><a ui-sref="brandEdit({ brandId: null, formStatus: 1 })">Add new brand</a></p>
+            <p><a ui-sref="brandDetail({ brandId: null, formStatus: 1 })">Add new brand</a></p>
             <div class="container" ng-cloak>
                 <div class="row row-table">
                     <table class="table">
@@ -21,16 +21,16 @@
                             <tr ng-repeat="brand in lstBrands">
                                 <td>{{ brand.BrandId }}</td>                    
                                 <td>{{ brand.Description }}</td>
-                                <td><a ui-sref="brandDisplay({ brandId: brand.BrandId, formStatus: 3 })">Display</a></td>                   
-                                <td><a ui-sref="brandEdit({ brandId: brand.BrandId, formStatus: 2 })">Edit</a></td>
-                                <td><a ui-sref="brandDelete({ brandId: brand.BrandId, formStatus: 2 })">Delete</a></td>
+                                <td><a ui-sref="brandDetail({ brandId: brand.BrandId, formStatus: 3 })">Display</a></td>                   
+                                <td><a ui-sref="brandDetail({ brandId: brand.BrandId, formStatus: 2 })">Edit</a></td>
+                                <td><a ng-click="deleteBrand(b.BrandKey)">Delete</a></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
                 <div class="row">
-                    <div class="message-error" ng-show='(vm.messageError.length > 0)'>{{ vm.messageError }}</div>
-                    <div class="message-success" ng-show='(vm.messageSuccess.length > 0)'>{{ vm.messageSuccess }}</div>
+                    <div class="message-error" ng-show='(messageError.length > 0)'>{{ messageError }}</div>
+                    <div class="message-success" ng-show='(messageSuccess.length > 0)'>{{ messageSuccess }}</div>
                 </div>
             </div>
         </div>

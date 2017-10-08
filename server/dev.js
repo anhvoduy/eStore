@@ -1,5 +1,4 @@
-﻿// Dependencies
-var uuid = require('uuid');
+﻿var uuid = require('uuid');
 var http = require('http');
 var server = require('./config/server');
 var memoryMonitor = require('pubnub-rickshaw-memory');

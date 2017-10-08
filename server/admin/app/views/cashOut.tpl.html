@@ -1,0 +1,45 @@
+﻿<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Cash Out</h3>
+        </div>
+        <div class="panel-body">
+            <p><a ui-sref="cashDetail({ cashId: null, formStatus: 1 })">Add new cash out</a></p>
+            <div class="container" ng-cloak>
+                <div class="row row-table table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Transaction Id</th>
+                                <th>Transaction No</th>
+                                <th>Transaction Date</th>
+                                <th>Debit Acct</th>
+                                <th>Credit Acct</th>
+                                <th>Currency</th>
+                                <th>Total Amount</th>
+                                <th>Edit</th>                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="cash in vm.transactions">
+                                <td>{{ cash.TransactionId }}</td>
+                                <td>{{ cash.TransactionNo }}</td>
+                                <td>{{ cash.TransactionDate }}</td>
+                                <td>{{ cash.DebitAcctNo }}</td>
+                                <td>{{ cash.CreditAcctNo }}</td>
+                                <td>{{ cash.Currency }}</td>
+                                <td>{{ cash.TotalAmount }}</td>
+                                <td><a ui-sref="cashOutDetail({ transactionID: cash.TransactionId })">Edit</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row">
+                    <div class="message-error" ng-show='(vm.messageError.length > 0)'>{{ vm.messageError }}</div>
+                    <div class="message-success" ng-show='(vm.messageSuccess.length > 0)'>{{ vm.messageSuccess }}</div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="panel-footer">ng-paginator</div> -->
+    </div>
+</div>
