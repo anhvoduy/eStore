@@ -20,8 +20,8 @@
 				vm.lstProducts = result;
 				vm.messageSuccess = String.format("Get Products is successful. Total: {0} rows", vm.lstProducts.length);
 				
-				vm.paging.nextIndex = vm.lstProducts[vm.lstProducts.length - 1].ProductId;
-				vm.paging.prevIndex = (vm.lstProducts[0].ProductId + vm.paging.pageSize + 1); // review code with this magic number later                                                
+				// vm.paging.nextIndex = vm.lstProducts[vm.lstProducts.length - 1].ProductId;
+				// vm.paging.prevIndex = (vm.lstProducts[0].ProductId + vm.paging.pageSize + 1); // review code with this magic number later                                                
 			}, function (error) {
 				vm.messageError = error.message;
 			});

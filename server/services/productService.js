@@ -6,15 +6,13 @@ const dbHelper = require('../lib/dbHelper');
 const Factory = function () { 
 }
 
-Factory.prototype.getProducts = function (ctx, pageIndex) {
-	// var sql = dbHelper.prepareQueryCommand("CALL sp_product_paging(?);", [pageIndex]);
-    // return ctx.queryCommand(sql);
+Factory.prototype.getProducts = function (ctx, pageIndex) {	
     var sql = dbHelper.prepareQueryCommand(
 		"SELECT prod.ProductId, prod.ProductName, prod.Description, " +
 		"		prod.BrandId, bra.BrandName AS BrandName, " + 
 		"       prod.Price, prod.Colour, prod.Created, prod.Status, prod.LatestReviewInfo " +	
 		"FROM Product prod inner join Brand bra " + 	
-		"WHERE prod.brandId = bra.brandId", []);
+		"WHERE prod.brandId = bra.brandId LIMIT 1000", []);
 	return ctx.queryCommand(sql);
 }
 
