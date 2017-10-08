@@ -44,7 +44,7 @@ router.get('/items/:id', function (req, res, next) {
 			ctx = connection;
 		});
 	}).then(function () {
-		return brandService.getBrands(ctx);
+		return brandService.getBrandById(ctx, brandId);
 	}).then(function (brands) {
 		if (brands.length == 0) {
 			res.status(404).json(errorHelper.Error_Not_Exist_BrandId);
