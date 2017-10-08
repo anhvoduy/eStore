@@ -1,36 +1,41 @@
-﻿<div class="container" ng-cloak>
-    <div class="row">
-        <h2>All Users</h2>
-        <h5>
-            <a ui-sref="userCreate()">Add new user</a>
-        </h5>
-    </div>
-    
-    <div class="row row-table">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>User Id</th>
-                    <th>User Type</th>
-                    <th>User Name</th>
-                    <th>Email</th>
-                    <th>Birthday</th>
-                    <th>Display</th>                        
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="user in vm.lstUsers">
-                    <td>{{ user.UserId }}</td>
-                    <td>{{ user.UserType }}</td>
-                    <td>{{ user.UserName }}</td>
-                    <td>{{ user.Email }}</td>
-                    <td>{{ user.Birthday }}</td>
-                    <td><a ui-sref="userDetail({ userID: user.UserId })">Display</a></td>                        
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <div class="row message-error" ng-show='(vm.messageError.length > 0)'>{{ vm.messageError }}</div>
-    <div class="row message-success" ng-show='(vm.messageSuccess.length > 0)'>{{ vm.messageSuccess }}</div> 	
+﻿<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">All Users</h3>
+        </div>
+        <div class="panel-body">
+            <p><a ui-sref="userCreate()">Add new user</a></p>
+            <div class="container" ng-cloak>            
+                <div class="row row-table">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>User Id</th>
+                                <th>User Type</th>
+                                <th>User Name</th>
+                                <th>Email</th>
+                                <th>Birthday</th>
+                                <th>Display</th>                        
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="user in vm.lstUsers">
+                                <td>{{ user.UserId }}</td>
+                                <td>{{ user.UserType }}</td>
+                                <td>{{ user.UserName }}</td>
+                                <td>{{ user.Email }}</td>
+                                <td>{{ user.Birthday }}</td>
+                                <td><a ui-sref="userDetail({ userID: user.UserId })">Display</a></td>                        
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row">
+                    <div class="message-error" ng-show='(vm.messageError.length > 0)'>{{ vm.messageError }}</div>
+                    <div class="message-success" ng-show='(vm.messageSuccess.length > 0)'>{{ vm.messageSuccess }}</div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="panel-footer">ng-paginator</div> -->
+    </div>   	
 </div>

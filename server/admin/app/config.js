@@ -170,7 +170,7 @@ app.config(function ($stateProvider) {
 		url: "/account",
 		views: {
 			"view": {
-				templateUrl: "/app/components/account/views/account.tpl.html",
+				templateUrl: "/app/views/account.tpl.html",
 				controller: "accountController",
 				controllerAs: 'vm'
 			}
@@ -181,7 +181,7 @@ app.config(function ($stateProvider) {
 		parentState: 'account',
 		views: {
 			"view": {
-				templateUrl: "/app/components/account/views/accountDetail.tpl.html",
+				templateUrl: "/app/views/accountDetail.tpl.html",
 				controller: "accountDetailController",
 				controllerAs: 'vm'
 			}
