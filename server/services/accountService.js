@@ -10,7 +10,7 @@ Factory.prototype.getAccounts = function (ctx, condition) {
 		SELECT AccountId, AccountNo, AccountName, Description 
 		FROM Account 
 		WHERE Deleted <> 1
-		ORDER BY AccountId ASC
+		ORDER BY AccountId DESC
 	`;
 	return ctx.queryCommand(sql);
 }

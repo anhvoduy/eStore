@@ -1,10 +1,8 @@
-﻿<div search-control></div>
-
-<div class="container" ng-cloak>
+﻿<div class="container" ng-cloak>
     <div class="row">
         <h2>All Brands</h2>
         <h5>
-            <a ui-sref="brandCreate()">Create Brand</a>                
+            <a ui-sref="brandCreate()">Add new brand</a>                
         </h5>
     </div>
 
@@ -23,7 +21,7 @@
             <tbody>
                 <tr ng-repeat="brand in lstBrands">
                     <td>{{ brand.BrandId }}</td>
-                    <td>{{ brand.Name }}</td>
+                    <td>{{ brand.BrandName }}</td>
                     <td>{{ brand.Description }}</td>
                     <!--
                         <td><a ui-sref="brandDetail({ brandId: brand.BrandId, formStatus: 3 })">View</a></td>

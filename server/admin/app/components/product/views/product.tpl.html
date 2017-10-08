@@ -1,8 +1,9 @@
-﻿<search-control></search-control>
-
-<div class="container" ng-cloak>
+﻿<div class="container" ng-cloak>
     <div class="row">
         <h2>All Products (10)</h2>
+        <h5>
+            <a ui-sref="productCreate()">Add new product</a>                
+        </h5>
     </div>        
 
     <div class="row row-table">
@@ -20,24 +21,24 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="product in vm.lstProducts">
-                    <td>{{ product.ProductId }}</td>
-                    <td>{{ product.ProductName }}</td>
-                    <td>{{ product.Description }}</td>
-                    <td>{{ product.Price }}</td>
-                    <td>{{ product.Colour }}</td>
-                    <td>{{ product.Status }}</td>
-                    <td><a ui-sref="productDetail({ productID: product.ProductId })">Display</a></td>                        
-                    <td><a ui-sref="reviewProduct({ productID: product.ProductId })">Add Review</a></td>
+                <tr ng-repeat="p in products">
+                    <td>{{ p.ProductId }}</td>
+                    <td>{{ p.ProductName }}</td>
+                    <td>{{ p.Description }}</td>
+                    <td>{{ p.Price }}</td>
+                    <td>{{ p.Colour }}</td>
+                    <td>{{ p.Status }}</td>
+                    <td><a ui-sref="productDetail({ productID: p.ProductId })">Display</a></td>                        
+                    <td><a ui-sref="reviewProduct({ productID: p.ProductId })">Add Review</a></td>
                 </tr>
             </tbody>
         </table>
     </div>
-    <div class="row">
-        <a style="cursor: pointer" ng-click="vm.prevItem()" ng-hide="vm.paging.prevIndex == 0">Prev</a>
-        <a style="cursor: pointer" ng-click="vm.nextItem()" ng-hide="vm.paging.nextIndex == 0">Next</a>
-    </div>
+    <!-- <div class="row">
+        <a style="cursor: pointer" ng-click="prevItem()" ng-hide="paging.prevIndex == 0">Prev</a>
+        <a style="cursor: pointer" ng-click="nextItem()" ng-hide="paging.nextIndex == 0">Next</a>
+    </div> -->
 
-    <div class="row message-error" ng-show='(vm.messageError.length > 0)'>{{ vm.messageError }}</div>
-    <div class="row message-success" ng-show='(vm.messageSuccess.length > 0)'>{{ vm.messageSuccess }}</div>
+    <div class="row message-error" ng-show='(messageError.length > 0)'>{{ messageError }}</div>
+    <div class="row message-success" ng-show='(messageSuccess.length > 0)'>{{ messageSuccess }}</div>
 </div>

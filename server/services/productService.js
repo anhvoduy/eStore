@@ -6,29 +6,39 @@ const dbHelper = require('../lib/dbHelper');
 const Factory = function () { 
 }
 
-Factory.prototype.getProducts = function (ctx, pageIndex) {
-	var sql = dbHelper.prepareQueryCommand("CALL sp_product_paging(?);", [pageIndex]);
+Factory.prototype.getProducts = function (ctx, pageIndex) {	
+    var sql = dbHelper.prepareQueryCommand(`
+		SELECT  P.ProductId, P.ProductName, P.Description, 
+		        P.BrandId, B.BrandName,
+		        P.Price, P.Colour, P.Created, P.Status, P.LatestReviewInfo 
+		FROM Product P INNER JOIN Brand B
+        WHERE P.BrandId = B.BrandId
+        ORDER BY P.ProductId DESC 
+        LIMIT 1000
+    `, []);
 	return ctx.queryCommand(sql);
 }
 
 Factory.prototype.getProductById = function (ctx, productId) {
-	var sql = dbHelper.prepareQueryCommand(
-		"SELECT prod.ProductId, prod.ProductName, prod.Description, " +
-		"		prod.BrandId, bra.Name AS BrandName, " + 
-		"       prod.Price, prod.Colour, prod.Created, prod.Status, prod.LatestReviewInfo " +	
-		"FROM Product prod inner join tblbrand bra " + 	
-		"WHERE prod.brandId = bra.brandId AND prod.productId = ? ", [productId]);
+	var sql = dbHelper.prepareQueryCommand(`
+		SELECT  P.ProductId, P.ProductName, P.Description,
+				P.BrandId, B.BrandName,
+		        P.Price, P.Colour, P.Created, P.Status, P.LatestReviewInfo
+		FROM Product P INNER JOIN Brand B
+        WHERE P.brandId = B.brandId AND P.productId = ? 
+    `, [productId]);
 	return ctx.queryCommand(sql);
 }
 
 Factory.prototype.getProductsByBrand = function (ctx, brandId) {
-	var sql = dbHelper.prepareQueryCommand(
-		"SELECT prod.ProductId, prod.ProductName, prod.Description,	" +
-		"		prod.Price, prod.Colour, prod.Created, prod.Status, " +
-        "		prod.BrandId, bra.Name AS BrandName, prod.LatestReviewInfo " +
-		"FROM Product prod inner join tblbrand bra " +
-		"WHERE bra.brandId = prod.brandId AND bra.brandId = ? " +
-		"ORDER BY prod.ProductId DESC ", [brandId]);
+	var sql = dbHelper.prepareQueryCommand(`
+		SELECT P.ProductId, P.ProductName, P.Description,
+				P.Price, P.Colour, P.Created, P.Status,
+        		P.BrandId, B.BrandName, P.LatestReviewInfo
+		FROM Product P INNER JOIN Brand B
+		WHERE B.brandId = P.brandId AND B.brandId = ?
+        ORDER BY P.ProductId DESC
+    `, [brandId]);
 	return ctx.queryCommand(sql);
 }
 
