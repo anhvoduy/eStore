@@ -7,12 +7,15 @@ const Factory = function () {
 }
 
 Factory.prototype.getProducts = function (ctx, pageIndex) {	
-    var sql = dbHelper.prepareQueryCommand(
-		"SELECT prod.ProductId, prod.ProductName, prod.Description, " +
-		"		prod.BrandId, bra.BrandName AS BrandName, " + 
-		"       prod.Price, prod.Colour, prod.Created, prod.Status, prod.LatestReviewInfo " +	
-		"FROM Product prod inner join Brand bra " + 	
-		"WHERE prod.brandId = bra.brandId LIMIT 1000", []);
+    var sql = dbHelper.prepareQueryCommand(`
+		SELECT  P.ProductId, P.ProductName, P.Description, 
+		        P.BrandId, B.BrandName,
+		        P.Price, P.Colour, P.Created, P.Status, P.LatestReviewInfo 
+		FROM Product P INNER JOIN Brand B
+        WHERE P.BrandId = B.BrandId
+        ORDER BY P.ProductId DESC 
+        LIMIT 1000
+    `, []);
 	return ctx.queryCommand(sql);
 }
 

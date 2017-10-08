@@ -191,7 +191,7 @@ app.config(function ($stateProvider) {
 		url: "/user",
 		views: {
 			"view": {
-				templateUrl: "/app/components/user/views/user.tpl.html",
+				templateUrl: "/app/views/user.tpl.html",
 				controller: "UserController",
 				controllerAs: 'vm'
 			}
@@ -201,7 +201,7 @@ app.config(function ($stateProvider) {
 		url: '/user/:userID',
 		views: {
 			"view": {
-				templateUrl: "/app/components/user/views/userDetail.tpl.html",
+				templateUrl: "/app/views/userDetail.tpl.html",
 				controller: "UserDetailController",
 				controllerAs: 'vm'
 			}
