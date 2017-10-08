@@ -1,32 +1,41 @@
-﻿<div class="container" ng-cloak>
-    <div class="row">
-        <h2>All Accounts</h2>
-    </div>
-            
-    <div class="row row-table">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Account Id</th>
-                    <th>Account No</th>
-                    <th>Account Name</th>
-                    <th>Description</th>
-                    <th>Edit</th>
-                    <!--<th>Delete</th>-->
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="acct in vm.lstAccounts">
-                    <td>{{ acct.AccountId }}</td>
-                    <td>{{ acct.AccountNo }}</td>
-                    <td>{{ acct.AccountName }}</td>
-                    <td>{{ acct.Description }}</td>
-                    <td><a ui-sref="accountDetail({ accountID: acct.AccountId })">Edit</a></td>                        
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <div class="row message-error" ng-show='(vm.messageError.length > 0)'>{{ vm.messageError }}</div>
-    <div class="row message-success" ng-show='(vm.messageSuccess.length > 0)'>{{ vm.messageSuccess }}</div>       
+﻿<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">All Accounts</h3>
+        </div>
+        <div class="panel-body">
+            <p><a ui-sref="brandEdit({ brandId: null, formStatus: 1 })">Add new account</a></p>
+            <div class="container" ng-cloak>
+                <div class="row row-table">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Account Id</th>
+                                <th>Account No</th>
+                                <th>Account Name</th>                    
+                                <th>Display</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="acct in vm.lstAccounts">
+                                <td>{{ acct.AccountId }}</td>
+                                <td>{{ acct.AccountNo }}</td>
+                                <td>{{ acct.AccountName }}</td>                    
+                                <td><a ui-sref="accountDetail({ accountID: acct.AccountId })">Display</a></td>
+                                <td><a ui-sref="accountDetail({ accountID: acct.AccountId })">Edit</a></td>
+                                <td><a ui-sref="accountDetail({ accountID: acct.AccountId })">Delete</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row">
+                    <div class="message-error" ng-show='(vm.messageError.length > 0)'>{{ vm.messageError }}</div>
+                    <div class="message-success" ng-show='(vm.messageSuccess.length > 0)'>{{ vm.messageSuccess }}</div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="panel-footer">ng-paginator</div> -->
+    </div>    
 </div>
