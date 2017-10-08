@@ -1,9 +1,9 @@
 (function (){
     'use strict';
-	app.controller('BrandDetailController', BrandDetailController);
-	BrandDetailController.$inject = ['$scope', '$state', '$stateParams', '$timeout', 'appContext', 'brandService', 'productService'];
+	app.controller('brandDetailController', brandDetailController);
+	brandDetailController.$inject = ['$scope', '$state', '$stateParams', '$timeout', 'appContext', 'brandService', 'productService'];
 
-	function BrandDetailController($scope, $state, $stateParams, $timeout, appContext, brandService, productService) {
+	function brandDetailController($scope, $state, $stateParams, $timeout, appContext, brandService, productService) {
 		// models		
 		$scope.brandId = $stateParams.brandId;
 		$scope.brand = {};
