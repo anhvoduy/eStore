@@ -40,7 +40,7 @@ app.config(function ($stateProvider) {
 		url: "/product",
 		views: {
 			"view": {
-				templateUrl: "/app/components/product/views/product.tpl.html",
+				templateUrl: "/app/views/product.tpl.html",
 				controller: "ProductController",
 				controllerAs: 'vm'
 			}
@@ -50,7 +50,7 @@ app.config(function ($stateProvider) {
         parentState: 'product',
 		views: {
 			"view": {
-				templateUrl: "/app/components/product/views/productDetail.tpl.html",
+				templateUrl: "/app/views/productDetail.tpl.html",
 				controller: "productDetailController",
 				controllerAs: 'vm'
 			}
@@ -59,8 +59,9 @@ app.config(function ($stateProvider) {
 		url: "/review/:productId",
 		views: {
 			"view": {
-				templateUrl: "/app/components/product/views/productReview.tpl.html",
-				controller: "productReviewController"
+				templateUrl: "/app/views/productReview.tpl.html",
+				controller: "productReviewController",
+				controllerAs: 'vm'
 			}
 		}
 	})
@@ -111,7 +112,8 @@ app.config(function ($stateProvider) {
 		views: {
 			"view": {
 				templateUrl: "/app/views/cashReport.tpl.html",
-				controller: "cashReportController"
+				controller: "cashReportController",
+                controllerAs: 'vm'
 			}
 		}
 	})
