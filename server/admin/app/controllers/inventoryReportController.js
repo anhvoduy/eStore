@@ -1,8 +1,8 @@
 (function (){
     'use strict';
-	app.controller('inventoryInputDetailController', inventoryInputDetailController);
-    inventoryInputDetailController.$inject = ['$scope', '$q', '$state', '$stateParams'];    
-	function inventoryInputDetailController($scope, $q, $state, $stateParams) {
+	app.controller('inventoryReportController', inventoryReportController);
+    inventoryReportController.$inject = ['$scope', '$q', '$state', '$stateParams'];    
+	function inventoryReportController($scope, $q, $state, $stateParams) {
 		// models
 		var vm = this;		
 		vm.messageSuccess = '';
