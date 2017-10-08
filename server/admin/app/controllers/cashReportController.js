@@ -9,12 +9,7 @@
 		vm.messageSuccess = '';
 
 		// functions
-		var activate = function () {
-			cashService.getCashOut().then(function (result) {
-				vm.transactions = result;
-			}, function (error) {
-				vm.messageError = error.message;
-			});
+		var activate = function () {			
 		};
 		
 		/* start */
