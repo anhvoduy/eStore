@@ -3,7 +3,9 @@ import ReactDOM from 'react-dom';
 
 import { SampleHeader } from './components/Header';
 import { SampleHome } from './components/SampleHome';
+import { SampleForm } from './components/SampleForm';
 import { SampleCarousel } from './components/SampleCarousel';
+import { SampleUser } from './components/SampleUser';
 
 class SampleApp extends React.Component {
     constructor() {
@@ -33,7 +35,7 @@ class SampleApp extends React.Component {
 
     onChangeHomeMounted(){
         this.setState({
-            homeMounted: !this.state.homeMounted            
+            homeMounted: !this.state.homeMounted
         });
     }
 
@@ -84,16 +86,31 @@ class SampleApp extends React.Component {
                 </div>
                 <div className='row'>
                     <div className='col-xs-10 col-xs-offset-1'>
+                        <p>Sample Form Validation</p>
+                    </div>
+                    <div className='col-xs-10 col-xs-offset-1'>
+                        <SampleForm />
+                    </div>
+                </div>
+                <div className='row'>
+                    <div className='col-xs-10 col-xs-offset-1'>
+                        <p>Sample Form User</p>
+                    </div>
+                    <div className='col-xs-10 col-xs-offset-1'>
+                        <SampleUser />
+                    </div>
+                </div>
+                <div className='row'>
+                    <div className='col-xs-10 col-xs-offset-1'>
                         <p>Sample Carousel</p>
                     </div>
                     <div className='col-xs-10 col-xs-offset-1'>
                         <SampleCarousel />
                     </div>
-                </div>                
+                </div>
             </div>
         );
     }
 }
 
 ReactDOM.render(<SampleApp/>, document.getElementById('sampleapp'));
-

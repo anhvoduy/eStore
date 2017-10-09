@@ -25,7 +25,7 @@ export class SampleHome extends React.Component{
                 status: 1
             });
         }, 5000);
-        console.log('- SampleHome: constructor()');
+        //console.log('- SampleHome: constructor()');
     }
 
     onMakeOlder() {
@@ -49,7 +49,7 @@ export class SampleHome extends React.Component{
     }
     
     componentWillMount() {
-        console.log('- SampleHome: componentWillMount()');
+        //console.log('- SampleHome: componentWillMount()');
         var component = this;
         return dataService.getProfile('/api/myprofile')
         .then(function(data){
@@ -60,9 +60,9 @@ export class SampleHome extends React.Component{
     }
 
     render(){
-        console.log('- SampleHome: render()');
-        // console.log('- this.state.date:', moment(this.state.date).format('DD-MMM-YYYY'));
-        // console.log('- this.state.profile:', this.state.profile);
+        //console.log('- SampleHome: render()');
+        // //console.log('- this.state.date:', moment(this.state.date).format('DD-MMM-YYYY'));
+        // //console.log('- this.state.profile:', this.state.profile);
         return (
             <div>
                 <p>In a new Component!</p>
@@ -110,11 +110,11 @@ export class SampleHome extends React.Component{
     }
 
     componentDidMount(){
-        console.log('- SampleHome: componentDidMount()');
+        //console.log('- SampleHome: componentDidMount()');
     }
 
     componentWillReceiveProps(nextProps){
-        console.log('- SampleHome: componentWillReceiveProps()', nextProps);
+        //console.log('- SampleHome: componentWillReceiveProps()', nextProps);
     }
     
     /**
@@ -125,7 +125,7 @@ export class SampleHome extends React.Component{
      * @param {*} nextState 
      */
     shouldComponentUpdate(nextProps, nextState){
-        console.log('- SampleHome: shouldComponentUpdate()', nextProps, nextState);
+        //console.log('- SampleHome: shouldComponentUpdate()', nextProps, nextState);
         // if(nextState.status === 1) 
         //     return false;
         return true; //false
@@ -137,15 +137,15 @@ export class SampleHome extends React.Component{
      * @param {*} nextState 
      */
     componentWillUpdate(nextProps, nextState){     
-        console.log('- SampleHome: componentWillUpdate()', nextProps, nextState);
+        //console.log('- SampleHome: componentWillUpdate()', nextProps, nextState);
     }
 
     componentDidUpdate(prevProps, prevState){
-        console.log('- SampleHome: componentDidUpdate()');
+        //console.log('- SampleHome: componentDidUpdate()');
     }
 
     componentWillUnMount(){
-        console.log('- SampleHome: componentWillUnMount()');
+        //console.log('- SampleHome: componentWillUnMount()');
     }
 }
 
