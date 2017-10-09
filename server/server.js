@@ -36,6 +36,10 @@ server.use('/api/transaction', require('./routes/transaction'));
 server.use('/api/search', require('./routes/search'));
 server.use('/api/report', require('./routes/report'));
 
+
+
+
+
 /**
  * Allow CORS: https://jonathanmh.com/how-to-enable-cors-in-express-js-node-js/
  * this is middleware to allow cors requests
