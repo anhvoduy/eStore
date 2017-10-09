@@ -25,16 +25,16 @@ server.set('secretKey', config.secretKey); // secret variable
 server.use('/api', require('./routes/api'));
 server.use('/api/account', require('./routes/account'));
 server.use('/api/brand', require('./routes/brand'));
+server.use('/api/product', require('./routes/product'));
 server.use('/api/customer', require('./routes/customer'));
+server.use('/api/user', require('./routes/user'));
 server.use('/api/inventory', require('./routes/inventory'));
 server.use('/api/journal', require('./routes/journal'));
-server.use('/api/product', require('./routes/product'));
-//server.use('/api/reporting', require('./routes/reporting'));
 server.use('/api/review', require('./routes/review'));
-server.use('/api/search', require('./routes/search'));
 server.use('/api/transaction', require('./routes/transaction'));
-server.use('/api/user', require('./routes/user'));
 
+server.use('/api/search', require('./routes/search'));
+server.use('/api/report', require('./routes/report'));
 
 /**
  * Allow CORS: https://jonathanmh.com/how-to-enable-cors-in-express-js-node-js/
