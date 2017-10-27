@@ -1,4 +1,6 @@
-﻿The solution includes Public Site + Admin Site + API:
+﻿-----------------Release v1.0 on 27-Oct-2017----------------
+
+The solution includes Public Site + Admin Site + API:
 - server  : API and Web Application
 - database: estore
 - open file: "/demo/server/services/config.js" to setup: username & password & database name
