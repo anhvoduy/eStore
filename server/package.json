@@ -14,7 +14,8 @@
     "test": "./node_modules/.bin/mocha --reporter spec",
     "start": "node app.js"
   },
-  "dependencies": {    
+  "dependencies": {
+    "axios": "^0.17.0",
     "body-parser": "^1.15.2",
     "cookie-parser": "^1.4.3",
     "cors": "^2.8.4",
@@ -22,7 +23,7 @@
     "express": "^4.14.0",
     "jsonwebtoken": "^7.1.9",
     "method-override": "^1.0.0",
-    "mysql": "^2.11.1",        
+    "mysql": "^2.11.1",
     "passport": "^0.3.0",
     "passport-local": "^1.0.0",
     "q": "^1.4.1",

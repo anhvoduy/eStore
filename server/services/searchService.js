@@ -1,17 +1,16 @@
-﻿// Dependencies
-var Q = require('q');
-var axios = require('axios');
-var elasticsearch = require('elasticsearch');
+﻿const Q = require('q');
+const axios = require('axios');
+const elasticsearch = require('elasticsearch');
 
-var client = new elasticsearch.Client({
+const client = new elasticsearch.Client({
 	host: 'localhost:9200',
 	log: 'trace'
 });
 
-var elasticEndpoint = 'http://localhost:9200';
+const elasticEndpoint = 'http://localhost:9200';
 
 // Constructor
-var searchService = function () {	
+const searchService = function () {	
 }
 
 searchService.prototype.getData = function (url) {	
@@ -28,15 +27,15 @@ searchService.prototype.searchData = function(){
 	client.search({
   		q: 'pants'
 	}).then(function (body) {
-  		var hits = body.hits.hits;
+  		let hits = body.hits.hits;
 	}, function (error) {
   		console.trace(error.message);
 	});
 }
 
 searchService.prototype.getRestaurants = function(){
-	var url = 'http://localhost:9200/place/restaurants/_search';
-	var defer = Q.defer();
+	let url = 'http://localhost:9200/place/restaurants/_search';
+	let defer = Q.defer();
 	axios.get(url).then(function(result){
 		defer.resolve(result.data.hits.hits);
 	}, function(error){
@@ -46,5 +45,4 @@ searchService.prototype.getRestaurants = function(){
 	return defer.promise;
 }
 
-// Export
 module.exports = new searchService;
