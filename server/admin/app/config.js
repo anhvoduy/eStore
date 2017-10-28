@@ -121,41 +121,62 @@ app.config(function ($stateProvider) {
 		url: "/inventory",
 		views: {
 			"view": {
-				templateUrl: "/app/components/inventory/views/inventory.tpl.html"
+				templateUrl: "/app/views/inventory.tpl.html",
+				controller: "inventoryController",
 			}
 		}
 	})
-	.state('stockIn', {
-		url: "/stockIn",
+	.state('inventoryInput', {
+		url: "/inventoryInput",
 		views: {
 			"view": {
-				templateUrl: "/app/components/inventory/views/stockIn.tpl.html",
-				controller: "stockInController",
+				templateUrl: "/app/views/inventoryInput.tpl.html",
+				controller: "inventoryInputController"
 			}
 		}
 	})
-	.state('stockOut', {
-		url: "/stockOut",
+	.state('inventoryInputDetail', {
+		url: "/inventoryInputDetail",
 		views: {
 			"view": {
-				templateUrl: "/app/components/inventory/views/stockOut.tpl.html",
-				controller: "stockOutController",
+				templateUrl: "/app/views/inventoryInputDetail.tpl.html",
+				controller: "inventoryInputDetailController"
 			}
 		}
 	})
-	.state('stockBalance', {
-		url: "/stockBalance",
+	.state('inventoryOutput', {
+		url: "/inventoryOutput",
 		views: {
 			"view": {
-				templateUrl: "/app/components/inventory/views/stockBalance.tpl.html"
+				templateUrl: "/app/views/inventoryOutput.tpl.html",
+				controller: "inventoryOutputController"
 			}
 		}
 	})
-	.state('stockReport', {
-		url: "/stockReport",
+	.state('inventoryOutputDetail', {
+		url: "/inventoryOutputDetail",
 		views: {
 			"view": {
-				templateUrl: "/app/components/inventory/views/stockReport.tpl.html"
+				templateUrl: "/app/views/inventoryOutputDetail.tpl.html",
+				controller: "inventoryOutputDetailController"
+			}
+		}
+	})
+	.state('inventoryBalance', {
+		url: "/inventoryBalance",
+		views: {
+			"view": {
+				templateUrl: "/app/views/inventoryBalance.tpl.html",
+				controller: "inventoryBalanceController"
+			}
+		}
+	})
+	.state('inventoryReport', {
+		url: "/inventoryReport",
+		views: {
+			"view": {
+				templateUrl: "/app/views/inventoryReport.tpl.html",
+				controller: "inventoryReportController"
 			}
 		}
 	})

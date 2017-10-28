@@ -51,6 +51,21 @@
                 }
             };
         }])
+        .directive('ngStopClick', [function () {
+            return {
+                restrict: 'A',                
+                link: function (scope, element, attrs, ngCtrl) {
+                    scope.menucode = attrs.menucode || '';
+                    scope.clickable = attrs.clickable || false;
+                    if(!scope.clickable){
+                        element.bind('click', function (event) {
+                            event.preventDefault();
+                            //event.stopPropagation();
+                        });
+                    }                    
+                }
+            };
+        }])
         .directive('footer', [function () {
             return {
                 restrict: 'EA',

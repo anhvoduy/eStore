@@ -6,7 +6,7 @@
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li class="dropdown" ng-repeat="nav in settings.navigation" uib-dropdown auto-close="outsideClick">
-                    <a class="dropdown-toggle" uib-dropdown-toggle toggle-event="mouseover" ui-sref="{{nav.code}}">
+                    <a class="dropdown-toggle" uib-dropdown-toggle toggle-event="mouseover" ui-sref="{{nav.code}}" ng-stop-click menucode="{{nav.code}}" clickable="{{nav.clickable}}">
                         {{ nav.name }}
                         <b class="caret" ng-show="nav.childNodes.length > 0"></b>
                     </a>
