@@ -4,7 +4,7 @@
             restrict: 'EA',
             replace: true,
             templateUrl: function () {
-                return "/app/directives/search/searchControl.tpl.html";
+                return "/app/directives/searchControl.tpl.html";
             },
             link: function (scope, element, attrs, ngCtrl) {
             }

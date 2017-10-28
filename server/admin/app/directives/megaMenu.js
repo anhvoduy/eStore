@@ -4,7 +4,7 @@
             restrict: 'EA',
             replace: true,
             templateUrl: function () {
-                return "/app/directives/megaMenu/megaMenu.tpl.html";
+                return "/app/directives/megaMenu.tpl.html";
             },
             link: function (scope, element, attrs, ngCtrl) {
 				console.log('init mega-menu');

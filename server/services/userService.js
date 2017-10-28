@@ -58,21 +58,20 @@ Factory.prototype.getMenu = function () {
 	var navigation = [
 		{
 			code: 'cash',
-			name: 'Cash',
+			name: 'Cash',			
 			childNodes: [
 				{ code: 'cashIn', name: 'Cash In' },
 				{ code: 'cashOut', name: 'Cash Out' },
-				{ code: 'cashReport', name: 'Cash Report' }
+				{ code: 'cashReport', name: 'Report' }
 			]
 		},
 		{
 			code: 'inventory',
 			name: 'Inventory',
 			childNodes: [
-				{ code: 'stockIn', name: 'Stock In' },
-				{ code: 'stockOut', name: 'Stock Out' },
-				{ code: 'stockBalance', name: 'Stock Balance' },
-				{ code: 'stockReport', name: 'Stock Reporting' }
+				{ code: 'inventoryInput', name: 'Input' },
+				{ code: 'inventoryOutput', name: 'Output' },				
+				{ code: 'inventoryReport', name: 'Report' }
 			]
 		},
 		{
@@ -85,17 +84,20 @@ Factory.prototype.getMenu = function () {
 				{ code: 'user', name: 'User' }
 			]
 		},
-		{
-			code: 'search',
-			name: 'Search'
-		},
+		// {
+		// 	code: 'search',
+		// 	name: 'Search',
+		// 	clickable: true
+		// },
 		{
 			code: 'help',
-			name: 'Help'
+			name: 'Help',
+			clickable: true
 		},
 		{
 			code: 'sample',
-			name: 'Sample'
+			name: 'Sample',
+			clickable: true
 		}
 	];
 	return navigation;

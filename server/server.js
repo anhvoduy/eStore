@@ -66,7 +66,7 @@ server.use(function (err, req, res, next) {
  * - public site: angular js & multiple pages
  * - admin site : angular js & single page
  */
-var pathPublic = path.join(__dirname, 'public/build');
+var pathPublic = path.join(__dirname, 'public');
 server.use('/', express.static(pathPublic, { index: 'index.html' }));
 
 

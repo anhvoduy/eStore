@@ -1,7 +1,7 @@
 {
-  "name": "gulp-setup-env",
+  "name": "grunt-setup-env",
   "version": "2.0.1",
-  "description": "Gulp Automation Build - Admin Site",
+  "description": "Grunt Automation Build: Public Site",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

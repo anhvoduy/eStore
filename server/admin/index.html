@@ -16,8 +16,10 @@
 
     <!--jquery-->
     <script src="libs/jquery/jquery.js"></script>
+    
     <!--bootstrap-->
     <script src="libs/bootstrap/js/bootstrap.min.js"></script>
+    
     <!--moment-->
     <script src="libs/moment/moment.min.js"></script>
 
@@ -44,11 +46,7 @@
 
     <!-- Application -->
     <script src="app/config.js"></script>
-    <script src="app/app.js"></script>
-
-    <!-- authentication -->
-    <script src="app/components/authentication/loginController.js"></script>
-    <script src="app/components/authentication/authenticationService.js"></script>
+    <script src="app/app.js"></script>    
 
     <!-- common -->
     <script src="app/common/common.js"></script>
@@ -57,10 +55,11 @@
     <!-- directives -->
     <script src="app/directives/megaMenu.js"></script>
     <script src="app/directives/searchControl.js"></script>
-    <script src="app/directives/customDirectives.js"></script> 
+    <script src="app/directives/directives.js"></script> 
     
     <!-- services -->
     <script src="app/services/baseService.js"></script>
+    <script src="app/services/authService.js"></script>
     <script src="app/services/brandService.js"></script>
     <script src="app/services/userService.js"></script>
     <script src="app/services/accountService.js"></script>
@@ -68,10 +67,12 @@
     <script src="app/services/productService.js"></script>
     <script src="app/services/reviewService.js"></script>
     <script src="app/services/inventoryService.js"></script>
+    <script src="app/services/searchService.js"></script>
 	
     <!-- controller -->
     <script src="app/controllers/baseController.js"></script>
     <script src="app/controllers/mainController.js"></script>
+    <script src="app/controllers/loginController.js"></script>
 
 	<script src="app/controllers/brandController.js"></script>
     <script src="app/controllers/brandDetailController.js"></script>
@@ -97,12 +98,7 @@
     <script src="app/controllers/inventoryOutputController.js"></script>
     <script src="app/controllers/inventoryOutputDetailController.js"></script>    
     <script src="app/controllers/inventoryReportController.js"></script>
-
-
-
-
-    <!-- search -->
-    <script src="app/components/search/searchController.js"></script>
-    <script src="app/components/search/searchService.js"></script>    
+    
+    <script src="app/controllers/searchController.js"></script>    
 </body>
 </html>
