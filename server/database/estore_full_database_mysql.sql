@@ -446,6 +446,7 @@ CREATE TABLE `Product` (
   `ProductId` INT(11) NOT NULL AUTO_INCREMENT,
   `ProductKey` VARCHAR(50) NOT NULL,
   `ProductName` VARCHAR(50) NOT NULL,
+  `ProductImage` VARCHAR(50) DEFAULT NULL,
   `Description` VARCHAR(250) DEFAULT NULL,
   `BrandId` INT(11) NOT NULL DEFAULT 0,
   `Price` DECIMAL(12, 4) DEFAULT 0,
