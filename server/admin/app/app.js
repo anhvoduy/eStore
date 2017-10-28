@@ -1,10 +1,10 @@
-app.run(['$rootScope', '$location', '$cookieStore', '$http', 'userService', 'authenticationService',
-    function ($rootScope, $location, $cookieStore, $http, userService, authenticationService) {		
+app.run(['$rootScope', '$location', '$cookieStore', '$http', 'userService', 'authService',
+    function ($rootScope, $location, $cookieStore, $http, userService, authService) {		
 		// keep user logged in after page refresh
         $rootScope.globals = $cookieStore.get('globals') || {};
         $rootScope.settings = $cookieStore.get('settings') || {};
 		if ($rootScope.globals.currentUser) {
-			$http.defaults.headers.common['Authorization'] = $rootScope.globals.currentUser.authdata; // jshint ignore:line						
+			$http.defaults.headers.common['Authorization'] = $rootScope.globals.currentUser.authdata; // jshint ignore:line
 		}		
 						
 		$rootScope.$on('$locationChangeStart', function (event, next, current) {			
@@ -40,7 +40,7 @@ app.run(['$rootScope', '$location', '$cookieStore', '$http', 'userService', 'aut
 
 		// logout
 		$rootScope.logout = function () {
-			authenticationService.clearCredentials();
+			authService.clearCredentials();
 		};
 	}
 ]);
