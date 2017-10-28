@@ -594,13 +594,26 @@ CREATE TABLE `User` (
 --
 -- Sample data for table `User`
 --
-INSERT INTO `User` (`UserKey`, `UserType`, `UserName`, `Hash`, `DisplayName`, `Email`, `DateOfBirth`, `Author`, `Editor`) VALUES (uuid(), 'USER','beckham', uuid(), 'David Beckham','hoanganh@ibm.com','1990-03-03','SYSTEM','SYSTEM');
-INSERT INTO `User` (`UserKey`, `UserType`, `UserName`, `Hash`, `DisplayName`, `Email`, `DateOfBirth`, `Author`, `Editor`) VALUES (uuid(), 'USER','huetran', uuid(), 'Hue Tran','huetran@hvn.com','1990-04-04','SYSTEM','SYSTEM');
-INSERT INTO `User` (`UserKey`, `UserType`, `UserName`, `Hash`, `DisplayName`, `Email`, `DateOfBirth`, `Author`, `Editor`) VALUES (uuid(), 'ADMIN','john'  , uuid(), 'John Mike','john@microsoft.com','2000-12-26','SYSTEM','SYSTEM');
-INSERT INTO `User` (`UserKey`, `UserType`, `UserName`, `Hash`, `DisplayName`, `Email`, `DateOfBirth`, `Author`, `Editor`) VALUES (uuid(), 'USER','avo4 Vo', uuid(), 'Anh Vo','avo4@csc.com','1984-12-22','SYSTEM','SYSTEM');
-INSERT INTO `User` (`UserKey`, `UserType`, `UserName`, `Hash`, `DisplayName`, `Email`, `DateOfBirth`, `Author`, `Editor`) VALUES (uuid(), 'USER','anhvod' , uuid(), 'Vo Duy Anh','anhvod@hvn.com','1984-12-24','SYSTEM','SYSTEM');
-INSERT INTO `User` (`UserKey`, `UserType`, `UserName`, `Hash`, `DisplayName`, `Email`, `DateOfBirth`, `Author`, `Editor`) VALUES (uuid(), 'USER','lukaku' , uuid(), 'Lukaku','lukaku@sony.com','1980-06-06','SYSTEM','SYSTEM');
-INSERT INTO `User` (`UserKey`, `UserType`, `UserName`, `Hash`, `DisplayName`, `Email`, `DateOfBirth`, `Author`, `Editor`) VALUES (uuid(), 'USER','pogba'  , uuid(), 'Pogba','pogba@samsung.com','1980-06-06','SYSTEM','SYSTEM');
+INSERT INTO `User` (`UserKey`, `UserType`, `UserName`, `Hash`, `DisplayName`, `Email`, `DateOfBirth`, `Author`, `Editor`) 
+VALUES (uuid(), 'USER','beckham', uuid(), 'David Beckham','hoanganh@ibm.com','1990-03-03','SYSTEM','SYSTEM');
+
+INSERT INTO `User` (`UserKey`, `UserType`, `UserName`, `Hash`, `DisplayName`, `Email`, `DateOfBirth`, `Author`, `Editor`) 
+VALUES (uuid(), 'USER','huetran', uuid(), 'Hue Tran','huetran@hvn.com','1990-04-04','SYSTEM','SYSTEM');
+
+INSERT INTO `User` (`UserKey`, `UserType`, `UserName`, `Hash`, `DisplayName`, `Email`, `DateOfBirth`, `Author`, `Editor`) 
+VALUES (uuid(), 'ADMIN','john'  , uuid(), 'John Mike','john@microsoft.com','2000-12-26','SYSTEM','SYSTEM');
+
+INSERT INTO `User` (`UserKey`, `UserType`, `UserName`, `Hash`, `DisplayName`, `Email`, `DateOfBirth`, `Author`, `Editor`) 
+VALUES (uuid(), 'USER','avo4 Vo', uuid(), 'Anh Vo','avo4@csc.com','1984-12-22','SYSTEM','SYSTEM');
+
+INSERT INTO `User` (`UserKey`, `UserType`, `UserName`, `Hash`, `DisplayName`, `Email`, `DateOfBirth`, `Author`, `Editor`) 
+VALUES (uuid(), 'USER','anhvod' , uuid(), 'Vo Duy Anh','anhvod@hvn.com','1984-12-24','SYSTEM','SYSTEM');
+
+INSERT INTO `User` (`UserKey`, `UserType`, `UserName`, `Hash`, `DisplayName`, `Email`, `DateOfBirth`, `Author`, `Editor`) 
+VALUES (uuid(), 'USER','lukaku' , uuid(), 'Lukaku','lukaku@sony.com','1980-06-06','SYSTEM','SYSTEM');
+
+INSERT INTO `User` (`UserKey`, `UserType`, `UserName`, `Hash`, `DisplayName`, `Email`, `DateOfBirth`, `Author`, `Editor`) 
+VALUES (uuid(), 'USER','pogba'  , uuid(), 'Pogba','pogba@samsung.com','1980-06-06','SYSTEM','SYSTEM');
 
 
 /*
