@@ -1,16 +1,15 @@
 const express = require('express');
 const router = express.Router();
-const Q = require('q');
+const q = require('q');
 const auth = require('../config/auth');
-const CONSTANT = require('../lib/constant');
+const constant = require('../lib/constant');
+const dbContext = require('../lib/dbContext');
 const errorHelper = require('../lib/errorHelper');
 
-router.get('/cash', function (req, res, next) {
-	res.status(200).json({ code: 'OK', message: "Success." });
+// Router
+router.get('/getdata', function (req, res, next) {
+    res.status(200).json(true);
 });
 
-router.get('/inventory', function (req, res, next) {
-    res.status(200).json({ code: 'OK', message: "Success." });
-});
-
+// return Router
 module.exports = router;

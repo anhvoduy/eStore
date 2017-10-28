@@ -62,11 +62,11 @@ server.use(function (err, req, res, next) {
 
 
 /**
- * register inventory site
- * - public site: react js & multiple pages
- * - admin site: angular js & single page
+ *   register estore:
+ * - public site: angular js & multiple pages
+ * - admin site : angular js & single page
  */
-var pathPublic = path.join(__dirname, 'publish/build');
+var pathPublic = path.join(__dirname, 'public/build');
 server.use('/', express.static(pathPublic, { index: 'index.html' }));
 
 
@@ -78,20 +78,7 @@ server.use('/libs', express.static(path.join(pathAdmin, 'libs')));
 
 
 
-
-
-// if(config.debugMode){
-// 	server.use('/app', express.static(path.join(__dirname, 'client/app')));
-// 	server.use('/img', express.static(path.join(__dirname, 'client/img')));
-// 	server.use('/libs', express.static(path.join(__dirname, 'client/libs')));
-// }
-// else{
-// 	server.use('/app', express.static(path.join(__dirname, 'build/app')));
-// 	server.use('/img', express.static(path.join(__dirname, 'build/img')));
-// 	server.use('/libs', express.static(path.join(__dirname, 'build/libs')));
-// }
-
-// // register SPA
+// register SPA
 // server.get('/', function (req, res, next) {
 // 	if(config.debugMode) 
 // 		res.sendFile(path.join(__dirname + '/client/index.html'));
