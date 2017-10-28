@@ -70,8 +70,7 @@ Factory.prototype.getMenu = function () {
 			name: 'Inventory',
 			childNodes: [
 				{ code: 'inventoryInput', name: 'Input' },
-				{ code: 'inventoryOutput', name: 'Output' },
-				{ code: 'inventoryBalance', name: 'Balance' },
+				{ code: 'inventoryOutput', name: 'Output' },				
 				{ code: 'inventoryReport', name: 'Report' }
 			]
 		},
@@ -85,11 +84,11 @@ Factory.prototype.getMenu = function () {
 				{ code: 'user', name: 'User' }
 			]
 		},
-		{
-			code: 'search',
-			name: 'Search',
-			clickable: true
-		},
+		// {
+		// 	code: 'search',
+		// 	name: 'Search',
+		// 	clickable: true
+		// },
 		{
 			code: 'help',
 			name: 'Help',
