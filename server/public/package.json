@@ -1,0 +1,36 @@
+{
+  "name": "react-setup-env",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "webpack",
+    "start": "npm run build",
+    "build": "webpack -d && copy src\\*.html build\\*.html && webpack-dev-server --content-base src\\ --inline --hot",
+    "build:prod": "webpack -d && cp src\\*.html build\\*.html"
+  },
+  "author": "duyanh",
+  "license": "ISC",
+  "dependencies": {
+    "babel-core": "^6.25.0",
+    "babel-preset-env": "^1.6.0",
+    "moment": "^2.18.1",
+    "react": "15.2.1",
+    "react-dom": "15.2.1",
+    "react-redux": "^5.0.5",
+    "react-slick": "^0.14.11",
+    "redux": "^3.7.2"
+  },
+  "devDependencies": {
+    "babel-loader": "^7.1.1",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.11.1",
+    "babel-preset-stage-2": "^6.11.0",
+    "copy-webpack-plugin": "^4.0.1",
+    "css-loader": "^0.28.4",
+    "extract-text-webpack-plugin": "^3.0.0",
+    "style-loader": "^0.18.2",
+    "webpack": "^3.3.0",
+    "webpack-dev-server": "^1.14.1"
+  }
+}
