@@ -161,22 +161,14 @@ app.config(function ($stateProvider) {
 				controller: "inventoryOutputDetailController"
 			}
 		}
-	})
-	.state('inventoryBalance', {
-		url: "/inventoryBalance",
-		views: {
-			"view": {
-				templateUrl: "/app/views/inventoryBalance.tpl.html",
-				controller: "inventoryBalanceController"
-			}
-		}
-	})
+	})	
 	.state('inventoryReport', {
 		url: "/inventoryReport",
 		views: {
 			"view": {
 				templateUrl: "/app/views/inventoryReport.tpl.html",
-				controller: "inventoryReportController"
+				controller: "inventoryReportController",
+				controllerAs: "vm"
 			}
 		}
 	})
