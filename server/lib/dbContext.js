@@ -31,7 +31,18 @@ dbContext.prototype.release = function () {
 	this.connection.release();
 }
 
-dbContext.prototype.queryCommand = function (sql) {	
+// TO DO: make queryOne
+dbContext.prototype.queryOne = function (sql) {
+    return true;
+}
+
+// TO DO: make queryMany
+dbContext.prototype.queryMany = function (sql) {
+    return true;
+}
+
+// TO DO: make queryCommand
+dbContext.prototype.queryCommand = function (sql) {
 	var defer = q.defer();
 	this.connection.query(sql, function (error, rows) {
 		if (error) defer.reject(error);
