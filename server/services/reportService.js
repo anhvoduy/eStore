@@ -6,7 +6,7 @@ const dbHelper = require('../lib/dbHelper');
 const Factory = function () { 
 }
 
-Factory.prototype.reportCash = function () {
+Factory.prototype.reportCash = function (ctx, query) {
     var sql = `
         SELECT T.TransactionNo, T.TransactionDate, T.Currency,
             (CASE WHEN T.TransactionType = 'CASHIN' THEN TotalAmount ELSE 0 END) DebitAmount,
@@ -15,7 +15,7 @@ Factory.prototype.reportCash = function () {
         WHERE T.Deleted = 0
         ORDER BY T.TransactionDate DESC;
     `;
-    return true;
+    return ctx.queryCommand(sql);
 }
 
 Factory.prototype.reportInventory = function () {

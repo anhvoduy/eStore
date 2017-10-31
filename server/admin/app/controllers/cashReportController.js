@@ -1,8 +1,8 @@
 (function () {
 	'use strict';
 	app.controller('cashReportController', cashReportController);
-	cashReportController.$inject = ['cashService'];
-	function cashReportController(cashService) {
+	cashReportController.$inject = ['reportService'];
+	function cashReportController(reportService) {
 		// models
 		var vm = this;
 		vm.messageError = '';
@@ -18,8 +18,12 @@
 		var activate = function () {			
 		};
 
-		vm.queryReport = function(query){
-			console.log(query);
+		vm.queryReport = function(query){			
+			reportService.getCashReport(query).then(function(data){				
+				vm.transactions = data
+			}, function(err){
+				console.log(err);
+			})
 		}
 		
 		/* start */
