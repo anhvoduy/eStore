@@ -255,21 +255,8 @@ CREATE TABLE `TransactionDetail` (
 
 --
 -- Sample data for table `TransactionDetail`
---
-INSERT INTO `TransactionDetail`(TransactionId, ProductId, ProductName, Description, Currency, Quantity, Price, Amount, Author, Editor)
-VALUES (1,1,'Product 1','Description 1', 'USD', 120, 30, 3600, 'SYSTEM', 'SYSTEM');
+-- May be no need this table
 
-INSERT INTO `TransactionDetail`(TransactionId, ProductId, ProductName, Description, Currency, Quantity, Price, Amount, Author, Editor)
-VALUES (1,2,'Product 2','Description 1', 'USD', 120, 30, 3600, 'SYSTEM', 'SYSTEM');
-
-INSERT INTO `TransactionDetail`(TransactionId, ProductId, ProductName, Description, Currency, Quantity, Price, Amount, Author, Editor)
-VALUES (2,1,'Product 1','Description 1', 'USD', 120, 30, 3600, 'SYSTEM', 'SYSTEM');
-
-INSERT INTO `TransactionDetail`(TransactionId, ProductId, ProductName, Description, Currency, Quantity, Price, Amount, Author, Editor)
-VALUES (2,2,'Product 1','Description 1', 'USD', 120, 30, 3600, 'SYSTEM', 'SYSTEM');
-
-INSERT INTO `TransactionDetail`(TransactionId, ProductId, ProductName, Description, Currency, Quantity, Price, Amount, Author, Editor)
-VALUES (2,3,'Product 1','Description 1', 'USD', 120, 30, 3600, 'SYSTEM', 'SYSTEM');
 
 
 --
@@ -277,17 +264,9 @@ VALUES (2,3,'Product 1','Description 1', 'USD', 120, 30, 3600, 'SYSTEM', 'SYSTEM
 --
 DROP TABLE IF EXISTS `Inventory`;
 CREATE TABLE `Inventory` (
-  `InventoryId` INT(11) NOT NULL AUTO_INCREMENT,
-  `StockId` INT(11) DEFAULT NULL,
-  `ProductId` INT(11) DEFAULT NULL,  
-  `ProductName` VARCHAR(50) DEFAULT NULL,  
-  `QtyInput` INT(11) NOT NULL DEFAULT 0,
-  `QtyOutput` INT(11) NOT NULL DEFAULT 0,
-  `QtyBalance` INT(11) NOT NULL DEFAULT 0,
-  `IsPerpetual` TINYINT(1) DEFAULT 0,
-  `Currency` VARCHAR(3) DEFAULT NULL,  
-  `Price` DECIMAL(12,4) NOT NULL DEFAULT 0,
-  `TotalAmount` DECIMAL(12,4) NOT NULL DEFAULT 0,
+  `InventoryId` INT(11) NOT NULL AUTO_INCREMENT,    
+  `InventoryName` VARCHAR(50) DEFAULT NULL,
+  `Description` VARCHAR(250) DEFAULT NULL,
   `Created` DATETIME DEFAULT CURRENT_TIMESTAMP,
   `Updated` DATETIME DEFAULT CURRENT_TIMESTAMP,
   `Author` VARCHAR(50) NOT NULL,
@@ -300,22 +279,57 @@ CREATE TABLE `Inventory` (
 --
 -- Sample data for table `Inventory`
 --
-INSERT INTO `Inventory`(StockId, ProductId, ProductName, QtyInput, QtyOutput, QtyBalance, IsPerpetual, Price, TotalAmount, Author, Editor)
+INSERT INTO `Inventory`(InventoryId, InventoryName, Description, Author, Editor)
+VALUES (1,'Front Store','Sai Gon store', 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `Inventory`(InventoryId, InventoryName, Description, Author, Editor)
+VALUES (2,'Back Store','Binh Duong store', 'SYSTEM', 'SYSTEM');
+
+
+--
+-- Table structure for table `InventoryBalance`
+--
+DROP TABLE IF EXISTS `InventoryBalance`;
+CREATE TABLE `InventoryBalance` (
+  `InventoryBalanceId` INT(11) NOT NULL AUTO_INCREMENT,  
+  `InventoryId` INT(11) DEFAULT NULL,  
+  `ProductId` INT(11) DEFAULT NULL,  
+  `ProductName` VARCHAR(50) DEFAULT NULL,
+  `QtyInput` INT(11) NOT NULL DEFAULT 0,
+  `QtyOutput` INT(11) NOT NULL DEFAULT 0,
+  `QtyBalance` INT(11) NOT NULL DEFAULT 0,
+  `IsPerpetual` TINYINT(1) DEFAULT 0,
+  `Currency` VARCHAR(3) DEFAULT NULL,  
+  `Price` DECIMAL(12,4) NOT NULL DEFAULT 0,
+  `TotalAmount` DECIMAL(12,4) NOT NULL DEFAULT 0,
+  `Created` DATETIME DEFAULT CURRENT_TIMESTAMP,
+  `Updated` DATETIME DEFAULT CURRENT_TIMESTAMP,
+  `Author` VARCHAR(50) NOT NULL,
+  `Editor` VARCHAR(50) NOT NULL,  
+  `Deleted` TINYINT(1) DEFAULT 0,
+  PRIMARY KEY (`InventoryBalanceId`),
+  UNIQUE KEY `InventoryBalanceId_UNIQUE` (`InventoryBalanceId`)
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
+
+--
+-- Sample data for table `InventoryBalance`
+--
+INSERT INTO `InventoryBalance`(InventoryId, ProductId, ProductName, QtyInput, QtyOutput, QtyBalance, IsPerpetual, Price, TotalAmount, Author, Editor)
 VALUES (1,1,'Product 1', 10, 0, 0, 0, 125, 1250, 'SYSTEM', 'SYSTEM');
 
-INSERT INTO `Inventory`(StockId, ProductId, ProductName, QtyInput, QtyOutput, QtyBalance, IsPerpetual, Price, TotalAmount, Author, Editor)
-VALUES (1,2,'Product 1', 20, 0, 0, 0, 125, 1250, 'SYSTEM', 'SYSTEM');
+INSERT INTO `InventoryBalance`(InventoryId, ProductId, ProductName, QtyInput, QtyOutput, QtyBalance, IsPerpetual, Price, TotalAmount, Author, Editor)
+VALUES (1,2,'Product 2', 20, 0, 0, 0, 125, 1250, 'SYSTEM', 'SYSTEM');
 
-INSERT INTO `Inventory`(StockId, ProductId, ProductName, QtyInput, QtyOutput, QtyBalance, IsPerpetual, Price, TotalAmount, Author, Editor)
-VALUES (1,3,'Product 1', 50, 0, 0, 0, 125, 1250, 'SYSTEM', 'SYSTEM');
+INSERT INTO `InventoryBalance`(InventoryId, ProductId, ProductName, QtyInput, QtyOutput, QtyBalance, IsPerpetual, Price, TotalAmount, Author, Editor)
+VALUES (1,3,'Product 3', 50, 0, 0, 0, 125, 1250, 'SYSTEM', 'SYSTEM');
 
-INSERT INTO `Inventory`(StockId, ProductId, ProductName, QtyInput, QtyOutput, QtyBalance, IsPerpetual, Price, TotalAmount, Author, Editor)
+INSERT INTO `InventoryBalance`(InventoryId, ProductId, ProductName, QtyInput, QtyOutput, QtyBalance, IsPerpetual, Price, TotalAmount, Author, Editor)
 VALUES (2,1,'Product 1', 0, 20, 0, 0, 125, 1250, 'SYSTEM', 'SYSTEM');
 
-INSERT INTO `Inventory`(StockId, ProductId, ProductName, QtyInput, QtyOutput, QtyBalance, IsPerpetual, Price, TotalAmount, Author, Editor)
+INSERT INTO `InventoryBalance`(InventoryId, ProductId, ProductName, QtyInput, QtyOutput, QtyBalance, IsPerpetual, Price, TotalAmount, Author, Editor)
 VALUES (2,2,'Product 1', 0, 50, 0, 0, 125, 1250, 'SYSTEM', 'SYSTEM');
 
-INSERT INTO `Inventory`(StockId, ProductId, ProductName, QtyInput, QtyOutput, QtyBalance, IsPerpetual, Price, TotalAmount, Author, Editor)
+INSERT INTO `InventoryBalance`(InventoryId, ProductId, ProductName, QtyInput, QtyOutput, QtyBalance, IsPerpetual, Price, TotalAmount, Author, Editor)
 VALUES (2,3,'Product 1', 60, 0, 0, 0, 125, 1250, 'SYSTEM', 'SYSTEM');
 
 --
@@ -325,10 +339,11 @@ DROP TABLE IF EXISTS `Stock`;
 CREATE TABLE `Stock` (
   `StockId` INT(11) NOT NULL AUTO_INCREMENT,
   `StockKey` VARCHAR(50) NOT NULL,
-  `StockDate` DATETIME NOT NULL,
-  `StockType` VARCHAR(20) NOT NULL,
+  `StockNo` VARCHAR(50) DEFAULT NULL,
+  `StockDate` DATETIME DEFAULT NULL,
+  `StockType` VARCHAR(20) DEFAULT NULL,
   `Description` VARCHAR(250) DEFAULT NULL,
-  `Currency` VARCHAR(3) NOT NULL,
+  `Currency` VARCHAR(3) DEFAULT NULL,
   `TotalAmount` DECIMAL(12,4) NOT NULL DEFAULT 0,
   `CustomerId` INT(11) DEFAULT 0,
   `CustomerName` VARCHAR(50) DEFAULT NULL,

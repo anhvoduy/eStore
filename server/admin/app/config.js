@@ -45,7 +45,8 @@ app.config(function ($stateProvider) {
 				controllerAs: 'vm'
 			}
 		}
-	}).state('productDetail', {
+	})
+	.state('productDetail', {
         url: "/product/:productId",
         parentState: 'product',
 		views: {
@@ -55,7 +56,27 @@ app.config(function ($stateProvider) {
 				controllerAs: 'vm'
 			}
 		}
-	}).state('reviewProduct', {
+	})
+	.state('inventory', {
+		url: "/inventory",
+		views: {
+			"view": {
+				templateUrl: "/app/views/inventory.tpl.html",
+				controller: "inventoryController"
+			}
+		}
+	})
+	.state('inventoryDetail', {
+        url: "/inventory/:inventoryId",
+        parentState: 'inventory',
+		views: {
+			"view": {
+				templateUrl: "/app/views/inventoryDetail.tpl.html",
+				controller: "inventoryDetailController"
+			}
+		}
+	})
+	.state('reviewProduct', {
 		url: "/review/:productId",
 		views: {
 			"view": {
@@ -116,16 +137,7 @@ app.config(function ($stateProvider) {
                 controllerAs: 'vm'
 			}
 		}
-	})
-	.state('inventory', {
-		url: "/inventory",
-		views: {
-			"view": {
-				templateUrl: "/app/views/inventory.tpl.html",
-				controller: "inventoryController",
-			}
-		}
-	})
+	})	
 	.state('inventoryInput', {
 		url: "/inventoryInput",
 		views: {
