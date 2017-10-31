@@ -10,7 +10,7 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>Inventory Id</th>                                
+                                <th>Id</th>                                
                                 <th>Inventory Name</th>
                                 <th>Location</th>
                                 <th>Description</th>                                
@@ -19,7 +19,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="inv in vm.inventories">
+                            <tr ng-repeat="inv in inventories">
                                 <td>{{ ($index + 1) }}</td>
                                 <td>{{ inv.InventoryName }}</td>
                                 <td>{{ inv.Location }}</td>

@@ -6,6 +6,11 @@ const dbHelper = require('../lib/dbHelper');
 const Factory = function () { 
 }
 
+Factory.prototype.getItems = function (ctx) {
+	let sql = `SELECT * FROM Inventory WHERE Deleted = 0`;
+	return ctx.queryCommand(sql);
+}
+
 Factory.prototype.getInventoryById = function (ctx, inventoryId) {
     var sql = dbHelper.prepareQueryCommand('', []);
     return ctx.queryCommand(sql);
