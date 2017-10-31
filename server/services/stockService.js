@@ -6,15 +6,23 @@ const dbHelper = require('../lib/dbHelper');
 const Factory = function () { 
 }
 
-Factory.prototype.getStocks = function (ctx, stockType) {
-    let sql = dbHelper.prepareQueryCommand(`
-		SELECT StockId, StockNo, StockDate, StockType, Description, Currency,
-			TotalAmount, CustomerId, CustomerName, InvoiceNo, InvoiceDate, InvoiceDesc,
-    		Created, Author, Updated, Editor
-		FROM tblstock
-		WHERE StockType = ?
-		ORDER BY StockId;
-	`, [stockType]);
+Factory.prototype.getStockIn = function (ctx) {
+    let sql = `
+		SELECT * 
+		FROM Stock 
+		WHERE StockType IN ('STOCKIN','INPUT') AND Deleted = 0 
+		ORDER BY StockDate DESC;
+	`;
+    return ctx.queryCommand(sql);
+}
+
+Factory.prototype.getStockOut = function (ctx) {
+    let sql = `
+		SELECT * 
+		FROM Stock 
+		WHERE StockType IN ('STOCKOUT','OUTPUT') AND Deleted = 0 
+		ORDER BY StockDate DESC;
+	`;
     return ctx.queryCommand(sql);
 }
 

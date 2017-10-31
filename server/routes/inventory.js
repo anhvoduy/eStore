@@ -29,7 +29,7 @@ router.get('/input/items', Q.async(function* (req, res, next) {
     var ctx;
     try{
         ctx = yield dbContext.getConnection();
-        var stocks = yield stockService.getStocks(ctx, constant.transactionType.STOCKIN);
+        var stocks = yield stockService.getStockIn(ctx);
         res.status(200).json(stocks);
     }
     catch(err){
@@ -57,11 +57,13 @@ router.put('/input/delete', function (req, res, next) {
 
 
 router.get('/output/items', Q.async(function* (req, res, next) {
-    var ctx = yield dbContext.getConnection();
+    var ctx;
     try{
-        var stocks = yield stockService.getStocks(ctx, constant.transactionType.STOCKOUT);
+        ctx = yield dbContext.getConnection();
+        var stocks = yield stockService.getStockOut(ctx);
         res.status(200).json(stocks);
-    }catch(err){
+    }
+    catch(err){
         yield ctx.release();
         next(error);        
     }

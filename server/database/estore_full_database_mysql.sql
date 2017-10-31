@@ -370,22 +370,22 @@ CREATE TABLE `Stock` (
 -- Sample data for table `Stock`
 --
 INSERT INTO `Stock` (`StockKey`, `StockDate`, `StockType`, `Description`, `Currency`, `TotalAmount`, `CustomerId`, `CustomerName`, `Author`, `Editor`) 
-VALUES (uuid(), '2016-12-01', 'STOCKIN', 'Stock In', 'VND', '60000', '1', 'CUSTOMER', 'SYSTEM', 'SYSTEM');
+VALUES (uuid(), '2016-12-01', 'STOCKIN', 'Stock In', 'VND', '60000', '1', 'Vina Sun', 'SYSTEM', 'SYSTEM');
 
 INSERT INTO `Stock` (`StockKey`, `StockDate`, `StockType`, `Description`, `Currency`, `TotalAmount`, `CustomerId`, `CustomerName`, `Author`, `Editor`) 
-VALUES (uuid(), '2016-12-02', 'STOCKIN', 'Stock In', 'VND', '60000', '2', 'CUSTOMER', 'SYSTEM', 'SYSTEM');
+VALUES (uuid(), '2016-12-02', 'STOCKIN', 'Stock In', 'VND', '60000', '2', 'Vina Capital', 'SYSTEM', 'SYSTEM');
 
 INSERT INTO `Stock` (`StockKey`, `StockDate`, `StockType`, `Description`, `Currency`, `TotalAmount`, `CustomerId`, `CustomerName`, `Author`, `Editor`) 
-VALUES (uuid(), '2016-12-03', 'STOCKIN', 'Stock In', 'VND', '60000', '3', 'CUSTOMER', 'SYSTEM', 'SYSTEM');
+VALUES (uuid(), '2016-12-03', 'STOCKIN', 'Stock In', 'VND', '60000', '3', 'Vina Kyoei', 'SYSTEM', 'SYSTEM');
 
 INSERT INTO `Stock` (`StockKey`, `StockDate`, `StockType`, `Description`, `Currency`, `TotalAmount`, `CustomerId`, `CustomerName`, `Author`, `Editor`) 
-VALUES (uuid(), '2016-12-21', 'STOCKOUT', 'Stock out', 'VND', '30000', '1', 'CUSTOMER', 'SYSTEM', 'SYSTEM');
+VALUES (uuid(), '2016-12-21', 'STOCKOUT', 'Stock out', 'VND', '30000', '1', 'Mitsuibishi', 'SYSTEM', 'SYSTEM');
 
 INSERT INTO `Stock` (`StockKey`, `StockDate`, `StockType`, `Description`, `Currency`, `TotalAmount`, `CustomerId`, `CustomerName`, `Author`, `Editor`) 
-VALUES (uuid(), '2016-12-22', 'STOCKOUT', 'Stock out', 'VND', '30000', '2', 'CUSTOMER', 'SYSTEM', 'SYSTEM');
+VALUES (uuid(), '2016-12-22', 'STOCKOUT', 'Stock out', 'VND', '30000', '2', 'FPT Information System', 'SYSTEM', 'SYSTEM');
 
 INSERT INTO `Stock` (`StockKey`, `StockDate`, `StockType`, `Description`, `Currency`, `TotalAmount`, `CustomerId`, `CustomerName`, `Author`, `Editor`) 
-VALUES (uuid(), '2016-12-12', 'STOCKOUT', 'Stock out', 'USD', '150', '2', 'CUSTOMER', 'SYSTEM', 'SYSTEM');
+VALUES (uuid(), '2016-12-12', 'STOCKOUT', 'Stock out', 'USD', '150', '2', 'FPT Software', 'SYSTEM', 'SYSTEM');
 
 
 --
