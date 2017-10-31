@@ -15,6 +15,9 @@
 
             var q = $q.defer();
             this.getData(url).then(function (result) {
+                angular.forEach(result, function(item){
+                    item.TransactionDate = moment(item.TransactionDate).format('DD/MM/YYYY');
+                });
                 q.resolve(result);
             }, function (error) {
                 q.reject(error);
@@ -27,6 +30,9 @@
 
             var q = $q.defer();
             this.getData(url).then(function (result) {
+                angular.forEach(result, function(item){
+                    item.TransactionDate = moment(item.TransactionDate).format('DD/MM/YYYY');
+                });
                 q.resolve(result);
             }, function (error) {
                 q.reject(error);
