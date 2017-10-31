@@ -2,9 +2,9 @@ var app = angular.module('cargo', [
 	'ngCookies',
 	'ui.router',
 	'mega-menu',
+	'cargo.directives',
 	'cargo.directives.megaMenu',
-	'cargo.directives.searchControl',
-	'cargo.directives.customDirectives'
+	'cargo.directives.searchControl'	
 ]);
 
 app.config(function ($stateProvider) {
