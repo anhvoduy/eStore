@@ -10,22 +10,22 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>User Id</th>
-                                <th>User Type</th>
-                                <th>User Name</th>
-                                <th>Email</th>
-                                <th>Birthday</th>
+                                <th>Inventory Id</th>                                
+                                <th>Inventory Name</th>
+                                <th>Location</th>
+                                <th>Description</th>                                
                                 <th>Display</th>
+                                <th>Edit</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="user in vm.lstUsers">
-                                <td>{{ user.UserId }}</td>
-                                <td>{{ user.UserType }}</td>
-                                <td>{{ user.UserName }}</td>
-                                <td>{{ user.Email }}</td>
-                                <td>{{ user.Birthday }}</td>
-                                <td><a ui-sref="userDetail({ userID: user.UserId })">Display</a></td>                        
+                            <tr ng-repeat="inv in vm.inventories">
+                                <td>{{ ($index + 1) }}</td>
+                                <td>{{ inv.InventoryName }}</td>
+                                <td>{{ inv.Location }}</td>
+                                <td>{{ inv.Description }}</td>                                
+                                <td><a ui-sref="inventoryDetail({ inventoryID: inv.InventoryId })">Display</a></td>
+                                <td><a ui-sref="inventoryDetail({ inventoryID: inv.InventoryId })">Edit</a></td>
                             </tr>
                         </tbody>
                     </table>

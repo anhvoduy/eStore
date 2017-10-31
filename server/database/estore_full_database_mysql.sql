@@ -266,6 +266,7 @@ DROP TABLE IF EXISTS `Inventory`;
 CREATE TABLE `Inventory` (
   `InventoryId` INT(11) NOT NULL AUTO_INCREMENT,    
   `InventoryName` VARCHAR(50) DEFAULT NULL,
+  `Location` VARCHAR(50) DEFAULT NULL,
   `Description` VARCHAR(250) DEFAULT NULL,
   `Created` DATETIME DEFAULT CURRENT_TIMESTAMP,
   `Updated` DATETIME DEFAULT CURRENT_TIMESTAMP,
@@ -279,11 +280,11 @@ CREATE TABLE `Inventory` (
 --
 -- Sample data for table `Inventory`
 --
-INSERT INTO `Inventory`(InventoryId, InventoryName, Description, Author, Editor)
-VALUES (1,'Front Store','Sai Gon store', 'SYSTEM', 'SYSTEM');
+INSERT INTO `Inventory`(InventoryId, InventoryName, Location, Description, Author, Editor)
+VALUES (1,'Front Store','327 Nam Ky Khoi Nghia','Sai Gon store','SYSTEM','SYSTEM');
 
-INSERT INTO `Inventory`(InventoryId, InventoryName, Description, Author, Editor)
-VALUES (2,'Back Store','Binh Duong store', 'SYSTEM', 'SYSTEM');
+INSERT INTO `Inventory`(InventoryId, InventoryName, Location, Description, Author, Editor)
+VALUES (2,'Back Store','45A Song Than Industrial Group','Binh Duong store', 'SYSTEM', 'SYSTEM');
 
 
 --
@@ -763,6 +764,7 @@ SELECT COUNT(*) AS Count FROM Account;
 SELECT COUNT(*) AS Count FROM Brand;
 SELECT COUNT(*) AS Count FROM Customer;
 SELECT COUNT(*) AS Count FROM Inventory;
+SELECT COUNT(*) AS Count FROM InventoryBalance;
 SELECT COUNT(*) AS Count FROM Journal;
 SELECT COUNT(*) AS Count FROM Product;
 SELECT COUNT(*) AS Count FROM Review;
