@@ -47,12 +47,29 @@ CREATE TABLE `Customer` (
 --
 -- Sample data for table `Customer`
 --
-INSERT INTO `Customer` (`CustomerKey`,`CustomerName`,`Author`,`Editor`) VALUES (uuid(),'The Bank of Tokyo and Mitsuibishi','SYSTEM','SYSTEM');
-INSERT INTO `Customer` (`CustomerKey`,`CustomerName`,`Author`,`Editor`) VALUES (uuid(),'REE Corporation Group','SYSTEM','SYSTEM');
-INSERT INTO `Customer` (`CustomerKey`,`CustomerName`,`Author`,`Editor`) VALUES (uuid(),'FPT Information System','SYSTEM','SYSTEM');
-INSERT INTO `Customer` (`CustomerKey`,`CustomerName`,`Author`,`Editor`) VALUES (uuid(),'HAG Corporation Group','SYSTEM','SYSTEM');
-INSERT INTO `Customer` (`CustomerKey`,`CustomerName`,`Author`,`Editor`) VALUES (uuid(),'SMC Steel Company','SYSTEM','SYSTEM');
-INSERT INTO `Customer` (`CustomerKey`,`CustomerName`,`Author`,`Editor`) VALUES (uuid(),'Marubeni Itochu Steel Vietnam Co. Ltd.','SYSTEM','SYSTEM');
+INSERT INTO `Customer` (`CustomerKey`,`CustomerName`,`Address`,`Mobile`,`Author`,`Editor`) 
+VALUES (uuid(),'The Bank of Tokyo and Mitsuibishi','37 Ton Duc Thang street, district 1','029876543210','SYSTEM','SYSTEM');
+
+INSERT INTO `Customer` (`CustomerKey`,`CustomerName`,`Address`,`Mobile`,`Author`,`Editor`) 
+VALUES (uuid(),'REE Corporation Group','458 Hung Vuong street, district 1','029876543210','SYSTEM','SYSTEM');
+
+INSERT INTO `Customer` (`CustomerKey`,`CustomerName`,`Address`,`Mobile`,`Author`,`Editor`) 
+VALUES (uuid(),'FPT Information System','37 Ton Duc Thang street, district 1','029876543210','SYSTEM','SYSTEM');
+
+INSERT INTO `Customer` (`CustomerKey`,`CustomerName`,`Address`,`Mobile`,`Author`,`Editor`) 
+VALUES (uuid(),'HAG Corporation Group','37 Ton Duc Thang street, district 1','029876543210','SYSTEM','SYSTEM');
+
+INSERT INTO `Customer` (`CustomerKey`,`CustomerName`,`Address`,`Mobile`,`Author`,`Editor`) 
+VALUES (uuid(),'SMC Steel Company','37 Ton Duc Thang street, district 1','029876543210','SYSTEM','SYSTEM');
+
+INSERT INTO `Customer` (`CustomerKey`,`CustomerName`,`Address`,`Mobile`,`Author`,`Editor`) 
+VALUES (uuid(),'Marubeni Itochu Steel Vietnam Co. Ltd.','37 Ton Duc Thang street, district 1','029876543210','SYSTEM','SYSTEM');
+
+INSERT INTO `Customer` (`CustomerKey`,`CustomerName`,`Address`,`Mobile`,`Author`,`Editor`) 
+VALUES (uuid(),'Northrop Grumman','37 Ton Duc Thang street, district 1','029876543210','SYSTEM','SYSTEM');
+
+INSERT INTO `Customer` (`CustomerKey`,`CustomerName`,`Address`,`Mobile`,`Author`,`Editor`) 
+VALUES (uuid(),'Alibaba Group','45 Nguyen Thi Minh Khai street, district 1','029876543210','SYSTEM','SYSTEM');
 
 --
 -- Table structure for table `Truck`
@@ -63,6 +80,7 @@ CREATE TABLE `Truck` (
   `TruckKey` VARCHAR(50) NOT NULL,
   `TruckName` VARCHAR(50) NOT NULL,
   `TruckNumber` VARCHAR(50) NOT NULL,
+  `ImageKey` VARCHAR(250) NULL,
   `Description` VARCHAR(250) DEFAULT NULL,
   `Created` DATETIME DEFAULT CURRENT_TIMESTAMP,
   `Updated` DATETIME DEFAULT CURRENT_TIMESTAMP,
@@ -87,6 +105,45 @@ VALUES (uuid(), 'TRUCK - MAX', 'T-MAX-852741963', 'Kawasaki 2015', 'SYSTEM', 'SY
 
 INSERT INTO `Truck` (`TruckKey`, `TruckName`, `TruckNumber`, `Description`, `Author`, `Editor`) 
 VALUES (uuid(), 'TRUCK - EVEREST', 'T-EVEREST-852741963', 'Everest 2018', 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `Truck` (`TruckKey`, `TruckName`, `TruckNumber`, `Description`, `Author`, `Editor`) 
+VALUES (uuid(), 'TRUCK - HONGKONG', 'T-EVEREST-852741963', 'Everest 2018', 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `Truck` (`TruckKey`, `TruckName`, `TruckNumber`, `Description`, `Author`, `Editor`) 
+VALUES (uuid(), 'TRUCK - Land Cruiser', 'T-LAND-123456789', 'Land Cruiser 2015', 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `Truck` (`TruckKey`, `TruckName`, `TruckNumber`, `Description`, `Author`, `Editor`) 
+VALUES (uuid(), 'TRUCK - Mercedez', 'T-MERC-123456789', 'Mercedez 2017', 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `Truck` (`TruckKey`, `TruckName`, `TruckNumber`, `Description`, `Author`, `Editor`) 
+VALUES (uuid(), 'TRUCK - BMW', 'T-BMW-852741963', 'BMW 2015', 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `Truck` (`TruckKey`, `TruckName`, `TruckNumber`, `Description`, `Author`, `Editor`) 
+VALUES (uuid(), 'TRUCK - MAX', 'T-MAX-852741963', 'Kawasaki 2015', 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `Truck` (`TruckKey`, `TruckName`, `TruckNumber`, `Description`, `Author`, `Editor`) 
+VALUES (uuid(), 'TRUCK - EVEREST', 'T-EVEREST-852741963', 'Everest 2018', 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `Truck` (`TruckKey`, `TruckName`, `TruckNumber`, `Description`, `Author`, `Editor`) 
+VALUES (uuid(), 'TRUCK - HONGKONG', 'T-EVEREST-852741963', 'Everest 2018', 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `Truck` (`TruckKey`, `TruckName`, `TruckNumber`, `Description`, `Author`, `Editor`) 
+VALUES (uuid(), 'TRUCK - Land Cruiser', 'T-LAND-123456789', 'Land Cruiser 2015', 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `Truck` (`TruckKey`, `TruckName`, `TruckNumber`, `Description`, `Author`, `Editor`) 
+VALUES (uuid(), 'TRUCK - Mercedez', 'T-MERC-123456789', 'Mercedez 2017', 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `Truck` (`TruckKey`, `TruckName`, `TruckNumber`, `Description`, `Author`, `Editor`) 
+VALUES (uuid(), 'TRUCK - BMW', 'T-BMW-852741963', 'BMW 2015', 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `Truck` (`TruckKey`, `TruckName`, `TruckNumber`, `Description`, `Author`, `Editor`) 
+VALUES (uuid(), 'TRUCK - MAX', 'T-MAX-852741963', 'Kawasaki 2015', 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `Truck` (`TruckKey`, `TruckName`, `TruckNumber`, `Description`, `Author`, `Editor`) 
+VALUES (uuid(), 'TRUCK - ESCAPE', 'T-ESCAPE-852741963', 'ESCAPE 2018', 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `Truck` (`TruckKey`, `TruckName`, `TruckNumber`, `Description`, `Author`, `Editor`) 
+VALUES (uuid(), 'TRUCK - FORD', 'T-FORD-852251963', 'FORD 2018', 'SYSTEM', 'SYSTEM');
 
 --
 -- Table structure for table `Account`
@@ -221,13 +278,14 @@ VALUES (2,3,'Product 1','Description 1', 'USD', 120, 30, 3600, 'SYSTEM', 'SYSTEM
 DROP TABLE IF EXISTS `Inventory`;
 CREATE TABLE `Inventory` (
   `InventoryId` INT(11) NOT NULL AUTO_INCREMENT,
-  `StockId` INT(11) DEFAULT NULL,  
+  `StockId` INT(11) DEFAULT NULL,
   `ProductId` INT(11) DEFAULT NULL,  
   `ProductName` VARCHAR(50) DEFAULT NULL,  
   `QtyInput` INT(11) NOT NULL DEFAULT 0,
   `QtyOutput` INT(11) NOT NULL DEFAULT 0,
-  `QtyBalance` INT(11) NOT NULL DEFAULT 0, -- redundant
-  `IsPerpetual` TINYINT(1) DEFAULT 0, -- redundant  
+  `QtyBalance` INT(11) NOT NULL DEFAULT 0,
+  `IsPerpetual` TINYINT(1) DEFAULT 0,
+  `Currency` VARCHAR(3) DEFAULT NULL,  
   `Price` DECIMAL(12,4) NOT NULL DEFAULT 0,
   `TotalAmount` DECIMAL(12,4) NOT NULL DEFAULT 0,
   `Created` DATETIME DEFAULT CURRENT_TIMESTAMP,
@@ -437,6 +495,9 @@ INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VA
 INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Coca Cola','Coca Cola','SYSTEM','SYSTEM');
 INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Pepsi Company','Pepsi Company','SYSTEM','SYSTEM');
 INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Facebook','The Facebook','SYSTEM','SYSTEM');
+INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Alibaba Group','Alibaba Group','SYSTEM','SYSTEM');
+INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'HongLeong Group','HongLeong Group','SYSTEM','SYSTEM');
+INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Lifan Corporation','Lifan Corporation','SYSTEM','SYSTEM');
 
 --
 -- Table structure for table `Product`
@@ -445,7 +506,8 @@ DROP TABLE IF EXISTS `Product`;
 CREATE TABLE `Product` (
   `ProductId` INT(11) NOT NULL AUTO_INCREMENT,
   `ProductKey` VARCHAR(50) NOT NULL,
-  `ProductName` VARCHAR(50) NOT NULL,
+  `ProductCode` VARCHAR(20) DEFAULT NULL,
+  `ProductName` VARCHAR(50) DEFAULT NULL,
   `ProductImage` VARCHAR(50) DEFAULT NULL,
   `Description` VARCHAR(250) DEFAULT NULL,
   `BrandId` INT(11) NOT NULL DEFAULT 0,
@@ -552,7 +614,7 @@ CREATE TABLE `Review` (
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 
 --
--- Sample data for table `User`
+-- Sample data for table `Review`
 --
 INSERT INTO `Review`(`Name`,`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Author`, `Editor`) VALUES ('TEST',1,'Not bad','2013-08-25 17:00:00',1,'test@hvn.com','SYSTEM','SYSTEM');
 INSERT INTO `Review`(`Name`,`Rating`, `Comment`, `Created`, `ProductId`, `Email`, `Author`, `Editor`) VALUES ('TEST',5,'Normal','2013-08-25 17:00:00',2,'test@hvn.com','SYSTEM','SYSTEM');
@@ -579,7 +641,7 @@ CREATE TABLE `User` (
   `Mobile` VARCHAR(50) DEFAULT NULL,
   `Tel` VARCHAR(50) DEFAULT NULL,
   `Title` VARCHAR(50) DEFAULT NULL,
-  `DateOfBirth` DATE DEFAULT NULL,    
+  `DateOfBirth` DATETIME DEFAULT NULL,    
   `Created` DATETIME DEFAULT CURRENT_TIMESTAMP,
   `Updated` DATETIME DEFAULT CURRENT_TIMESTAMP,
   `Author` VARCHAR(50) NOT NULL,
@@ -615,6 +677,71 @@ VALUES (uuid(), 'USER','lukaku' , uuid(), 'Lukaku','lukaku@sony.com','1980-06-06
 INSERT INTO `User` (`UserKey`, `UserType`, `UserName`, `Hash`, `DisplayName`, `Email`, `DateOfBirth`, `Author`, `Editor`) 
 VALUES (uuid(), 'USER','pogba'  , uuid(), 'Pogba','pogba@samsung.com','1980-06-06','SYSTEM','SYSTEM');
 
+--
+-- Table structure for table `Group`
+--
+DROP TABLE IF EXISTS `Group`;
+CREATE TABLE `Group` (
+  `GroupId` INT(11) NOT NULL AUTO_INCREMENT,
+  `GroupKey` VARCHAR(50) NOT NULL,  
+  `GroupName` VARCHAR(50) NOT NULL,
+  `Description` VARCHAR(250) DEFAULT NULL,  
+  `Created` DATETIME DEFAULT CURRENT_TIMESTAMP,
+  `Updated` DATETIME DEFAULT CURRENT_TIMESTAMP,
+  `Author` VARCHAR(50) NOT NULL,
+  `Editor` VARCHAR(50) NOT NULL,
+  `Deleted` TINYINT(1) DEFAULT 0,
+  PRIMARY KEY (`GroupId`),
+  UNIQUE KEY `GroupId_UNIQUE` (`GroupId`)
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
+
+-- Sample data for table `Group`
+INSERT INTO `Group` (`GroupKey`,`GroupName`,`Description`,`Author`,`Editor`) VALUES (uuid(),'Administrators', 'Administrators Group','SYSTEM','SYSTEM');
+INSERT INTO `Group` (`GroupKey`,`GroupName`,`Description`,`Author`,`Editor`) VALUES (uuid(),'Sales', 'Sales Group','SYSTEM','SYSTEM');
+INSERT INTO `Group` (`GroupKey`,`GroupName`,`Description`,`Author`,`Editor`) VALUES (uuid(),'Accountances','Accountances Group','SYSTEM','SYSTEM');
+INSERT INTO `Group` (`GroupKey`,`GroupName`,`Description`,`Author`,`Editor`) VALUES (uuid(),'Human Resources', 'Human Resources Group','SYSTEM','SYSTEM');
+INSERT INTO `Group` (`GroupKey`,`GroupName`,`Description`,`Author`,`Editor`) VALUES (uuid(),'Logictics', 'Logictics Group','SYSTEM','SYSTEM');
+
+
+--
+-- Table structure for table `UserGroup`
+--
+DROP TABLE IF EXISTS `UserGroup`;
+CREATE TABLE `UserGroup` (
+  `UserGroupId` INT(11) NOT NULL AUTO_INCREMENT,
+  `UserId` INT(11) NOT NULL,  
+  `GroupId` INT(11) NOT NULL,
+  `ModuleId` INT(11) NOT NULL,
+  `IsCreate` INT(11) DEFAULT 0,
+	`IsUpdate` INT(11) DEFAULT 0,
+	`IsDelete` INT(11) DEFAULT 0,
+	`IsDisplay` INT(11) DEFAULT 1,
+  `Created` DATETIME DEFAULT CURRENT_TIMESTAMP,
+  `Updated` DATETIME DEFAULT CURRENT_TIMESTAMP,
+  `Author` VARCHAR(50) NOT NULL,
+  `Editor` VARCHAR(50) NOT NULL,
+  `Deleted` TINYINT(1) DEFAULT 0,
+  PRIMARY KEY (`UserGroupId`),
+  UNIQUE KEY `UserGroupId_UNIQUE` (`UserGroupId`)
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
+
+--  GroupId = ModuleId
+INSERT INTO `UserGroup` (`UserId`, `GroupId`, `ModuleId`, `Author`, `Editor`) VALUES (1,1,1,'SYSTEM','SYSTEM');
+INSERT INTO `UserGroup` (`UserId`, `GroupId`, `ModuleId`, `Author`, `Editor`) VALUES (1,2,2,'SYSTEM','SYSTEM');
+INSERT INTO `UserGroup` (`UserId`, `GroupId`, `ModuleId`, `Author`, `Editor`) VALUES (1,3,3,'SYSTEM','SYSTEM');
+INSERT INTO `UserGroup` (`UserId`, `GroupId`, `ModuleId`, `Author`, `Editor`) VALUES (1,4,4,'SYSTEM','SYSTEM');
+INSERT INTO `UserGroup` (`UserId`, `GroupId`, `ModuleId`, `Author`, `Editor`) VALUES (1,5,5,'SYSTEM','SYSTEM');
+INSERT INTO `UserGroup` (`UserId`, `GroupId`, `ModuleId`, `Author`, `Editor`) VALUES (2,1,1,'SYSTEM','SYSTEM');
+INSERT INTO `UserGroup` (`UserId`, `GroupId`, `ModuleId`, `Author`, `Editor`) VALUES (2,2,2,'SYSTEM','SYSTEM');
+INSERT INTO `UserGroup` (`UserId`, `GroupId`, `ModuleId`, `Author`, `Editor`) VALUES (2,3,3,'SYSTEM','SYSTEM');
+INSERT INTO `UserGroup` (`UserId`, `GroupId`, `ModuleId`, `Author`, `Editor`) VALUES (2,4,4,'SYSTEM','SYSTEM');
+INSERT INTO `UserGroup` (`UserId`, `GroupId`, `ModuleId`, `Author`, `Editor`) VALUES (2,5,5,'SYSTEM','SYSTEM');
+
+
+--
+-- Table structure for table `UserGroupSecurity`
+-- this table may be NEED or NO NEED
+
 
 /*
 SELECT COUNT(*) AS Count FROM Account;
@@ -630,4 +757,5 @@ SELECT COUNT(*) AS Count FROM Transaction;
 SELECT COUNT(*) AS Count FROM TransactionDetail;
 SELECT COUNT(*) AS Count FROM Truck;
 SELECT COUNT(*) AS Count FROM User;
+SELECT COUNT(*) AS Count FROM Group;
 */
