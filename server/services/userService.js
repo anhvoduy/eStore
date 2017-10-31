@@ -80,6 +80,7 @@ Factory.prototype.getMenu = function () {
 			childNodes: [
 				{ code: 'brand', name: 'Brand' },
 				{ code: 'product', name: 'Product' },
+				{ code: 'inventory', name: 'Inventory' },
 				{ code: 'account', name: 'Account' },
 				{ code: 'user', name: 'User' }
 			]

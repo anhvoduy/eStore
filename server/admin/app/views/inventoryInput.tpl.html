@@ -7,23 +7,25 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>Stock Id</th>
+                    <th>Id</th>
                     <th>Stock No</th>
                     <th>Stock Date</th>                    
+                    <th>Customer Name</th>
+                    <th>Currency</th>
                     <th>Total Amount</th>                    
-                    <th>Currency</th>                    
+                    <th>Display</th>
                     <th>Edit</th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="stock in stocks">
-                    <td>{{ stock.StockId }}</td>
+                    <td>{{ ($index + 1) }}</td>
                     <td>{{ stock.StockNo }}</td>
-                    <td>
-                        <span ng-format-date>{{ stock.StockDate }}</span>
-                    </td> 
-                    <td>{{ stock.TotalAmount }}</td>
+                    <td>{{ stock.StockDate }}</td>
+                    <th>{{ stock.CustomerName }}</th>
                     <td>{{ stock.Currency }}</td>
+                    <td>{{ stock.TotalAmount }}</td>                    
+                    <td><a ui-sref="stockInDetail({ stockId: stock.stockId })">Display</a></td>
                     <td><a ui-sref="stockInDetail({ stockId: stock.stockId })">Edit</a></td>
                 </tr>
             </tbody>

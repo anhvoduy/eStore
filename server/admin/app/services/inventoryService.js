@@ -10,7 +10,7 @@
 		inventoryService.prototype.constructor = inventoryService;
 		
 		// methods
-		inventoryService.prototype.getInventories = function () {
+		inventoryService.prototype.getItems = function () {
 			var url = String.format('{0}/items', this.api);
 			
 			var q = $q.defer();
@@ -22,7 +22,7 @@
 			return q.promise;
 		}
 		
-		inventoryService.prototype.getInventoryById = function (inventoryId) {
+		inventoryService.prototype.getItem = function (inventoryId) {
 			var url = String.format('{0}/items/{1}', this.api, inventoryId);
 			
 			var q = $q.defer();
@@ -59,7 +59,7 @@
 		}
 
 		inventoryService.prototype.getStockIn = function () {
-			var url = String.format('{0}/stockin', this.api);
+			var url = String.format('{0}/input/items', this.api);
 			
 			var q = $q.defer();
 			this.getData(url).then(function (result) {				
@@ -71,7 +71,7 @@
 		}
 
 		inventoryService.prototype.getStockOut = function () {			
-			var url = String.format('{0}/stockout', this.api);
+			var url = String.format('{0}/output/items', this.api);
 			
 			var q = $q.defer();
 			this.getData(url).then(function (result) {				

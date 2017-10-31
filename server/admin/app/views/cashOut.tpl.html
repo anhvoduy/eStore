@@ -10,7 +10,7 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>Transaction Id</th>
+                                <th>Id</th>
                                 <th>Transaction No</th>
                                 <th>Transaction Date</th>
                                 <th>Debit Acct</th>
@@ -22,7 +22,7 @@
                         </thead>
                         <tbody>
                             <tr ng-repeat="cash in vm.transactions">
-                                <td>{{ cash.TransactionId }}</td>
+                                <td>{{ ($index + 1) }}</td>
                                 <td>{{ cash.TransactionNo }}</td>
                                 <td>{{ cash.TransactionDate }}</td>
                                 <td>{{ cash.DebitAcctNo }}</td>
