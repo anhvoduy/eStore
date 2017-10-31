@@ -19,12 +19,12 @@
 		};
 
 		vm.queryReport = function(query){			
-			reportService.getCashReport(query).then(function(data){				
+			reportService.getCashReport(query.FromDate, query.ToDate).then(function(data){
 				vm.transactions = data
 			}, function(err){
 				console.log(err);
-			})
-		}
+			});
+		};
 		
 		/* start */
 		activate();
