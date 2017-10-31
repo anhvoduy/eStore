@@ -6,15 +6,23 @@ const dbHelper = require('../lib/dbHelper');
 const Factory = function () { 
 }
 
-Factory.prototype.reportCashIn = function () {
+Factory.prototype.reportCash = function () {
+    var sql = `
+        SELECT T.TransactionNo, T.TransactionDate, T.Currency,
+            (CASE WHEN T.TransactionType = 'CASHIN' THEN TotalAmount ELSE 0 END) DebitAmount,
+            (CASE WHEN T.TransactionType = 'CASHOUT' THEN TotalAmount ELSE 0 END) CreditAmount
+        FROM Transaction T
+        WHERE T.Deleted = 0
+        ORDER BY T.TransactionDate DESC;
+    `;
     return true;
 }
 
-Factory.prototype.reportCashOut = function () {
+Factory.prototype.reportInventory = function () {
     return true;
 }
 
-Factory.prototype.reportInventoryBalance = function () {
+Factory.prototype.reportAccount = function (query) {
     return true;
 }
 
