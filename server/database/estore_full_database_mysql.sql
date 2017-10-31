@@ -222,6 +222,12 @@ INSERT INTO `Transaction`(TransactionKey, TransactionNo, TransactionDate, Transa
 VALUES (uuid(),'CASHIN-000003','2016-11-07','CASHIN','Cash In ', '111', '531', 'USD', 800, 'SYSTEM', 'SYSTEM');
 
 INSERT INTO `Transaction`(TransactionKey, TransactionNo, TransactionDate, TransactionType, Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount, Author, Editor)
+VALUES (uuid(),'CASHIN-000004','2017-07-07','CASHIN','Cash In ', '111', '531', 'USD', 18000, 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `Transaction`(TransactionKey, TransactionNo, TransactionDate, TransactionType, Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount, Author, Editor)
+VALUES (uuid(),'CASHIN-000005','2017-08-07','CASHIN','Cash In ', '111', '531', 'USD', 1250, 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `Transaction`(TransactionKey, TransactionNo, TransactionDate, TransactionType, Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount, Author, Editor)
 VALUES (uuid(),'CASHOUT-000001','2016-11-07','CASHOUT','Cash Out', '111', '642', 'VND', 1000000, 'SYSTEM', 'SYSTEM');
 
 INSERT INTO `Transaction`(TransactionKey, TransactionNo, TransactionDate, TransactionType, Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount, Author, Editor)
