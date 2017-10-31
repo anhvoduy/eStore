@@ -26,6 +26,46 @@
             }
         };
     })
+    .directive('ngInputDate', function(){
+        return {            
+            restrict: 'EA',
+            replace: true,
+            transclude: true,
+            scope: {
+                name:  '@',
+                value: '=',
+                format: '@',
+                required: '@'
+            },
+            template: function() {
+                var template = 
+                '<div class="input-group">' +
+                    '<input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dtValue" ng-change="changeSelectedDate()" is-open="popup.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />' +
+                    '<span class="input-group-btn">' +
+                        '<button type="button" class="btn btn-default" ng-click="openDate()"><i class="glyphicon glyphicon-calendar"></i></button>' +
+                    '</span>'
+                '</div>';
+                return template;
+            },
+            link: function (scope, element, attrs, modelCtrl) {
+                scope.dtValue = scope.value;
+                scope.popup = {
+                    opened: false
+                };
+                scope.openDate = function(){
+                    scope.popup.opened = true;
+                };
+                scope.changeSelectedDate = function(){
+                    scope.value = new Date(moment(scope.dtValue).format('MMM-DD-YYYY'));
+                }
+                scope.$watch('value', function(newVal, oldVal) {
+                    if(oldVal != newVal){
+                        scope.dtValue = new Date(moment(newVal).format('MMM-DD-YYYY'));
+                    }
+                });
+            }
+        };
+    })
     .directive('ngStopClick', [function () {
         return {
             restrict: 'A',                
