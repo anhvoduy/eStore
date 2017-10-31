@@ -34,7 +34,7 @@
 				restrict: 'EA',
 				replace: true,
 				templateUrl: function () {
-					return "/app/directives/templates/mainMenu.html";
+					return "/app/directives/mainMenu.html";
 				},
 				link: function (scope, element, attrs, ngCtrl) {
 				}
@@ -45,7 +45,7 @@
                 restrict: 'EA',
                 replace: true,
                 templateUrl: function () {
-                    return "/app/directives/templates/mainTitle.html";
+                    return "/app/directives/mainTitle.html";
                 },
                 link: function (scope, element, attrs, ngCtrl) {
                 }
@@ -71,7 +71,7 @@
                 restrict: 'EA',
                 replace: true,
                 templateUrl: function () {
-                    return "/app/directives/templates/footer.html";
+                    return "/app/directives/footer.html";
                 },
                 link: function (scope, element, attrs, ngCtrl) {
                 }
