@@ -5,18 +5,7 @@
     function authService($http, $rootScope, $q, $cookieStore, Base64) {
         // constructor
         var authService = function () {
-        }
-
-        //authService.prototype.loginClientSide = function (username, password) {
-        //    /* Use this for test at client side */
-        //    var q = $q.defer();
-        //    var response = { success: username === 'admin' && password === '@dmin' };
-        //    if (!response.success) {
-        //        response.message = 'Username or password is incorrect';
-        //    }
-        //    q.resolve(response);
-        //    return q.promise;
-        //};        
+        }        
 
         authService.prototype.login = function (username, password) {           
             /* Use this for test at server side: /api/user/authenticate */

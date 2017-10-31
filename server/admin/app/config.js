@@ -2,9 +2,9 @@ var app = angular.module('cargo', [
 	'ngCookies',
 	'ui.router',
 	'mega-menu',
+	'cargo.directives',
 	'cargo.directives.megaMenu',
-	'cargo.directives.searchControl',
-	'cargo.directives.customDirectives'
+	'cargo.directives.searchControl'	
 ]);
 
 app.config(function ($stateProvider) {
@@ -217,7 +217,7 @@ app.config(function ($stateProvider) {
 		url: '/login',
 		views: {
 			"view": {
-				templateUrl: "/app/components/authentication/views/login.tpl.html",
+				templateUrl: "/app/views/login.tpl.html",
 				controller: "loginController"
 			}
 		},
@@ -227,7 +227,7 @@ app.config(function ($stateProvider) {
 		url: '/logout',
 		views: {
 			"view": {
-				templateUrl: "/app/components/authentication/views/logout.tpl.html",
+				templateUrl: "/app/views/logout.tpl.html",
 			}
 		}
 	})
@@ -235,7 +235,7 @@ app.config(function ($stateProvider) {
 		url: "/search",
 		views: {
 			"view": {
-				templateUrl: "/app/components/search/views/search.tpl.html",
+				templateUrl: "/app/views/search.tpl.html",
 				controller: "searchController",
 			}
 		}

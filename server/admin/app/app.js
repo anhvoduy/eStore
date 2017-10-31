@@ -7,14 +7,14 @@ app.run(['$rootScope', '$location', '$cookieStore', '$http', 'userService', 'aut
 			$http.defaults.headers.common['Authorization'] = $rootScope.globals.currentUser.authdata; // jshint ignore:line
 		}		
 						
-		$rootScope.$on('$locationChangeStart', function (event, next, current) {			
+		$rootScope.$on('$locationChangeStart', function (event, next, current) {
 			// redirect to login page if not logged in
 			if ($location.path() !== '/login' && !$rootScope.globals.currentUser) {
-				$location.path('/login');				
+				$location.path('/login');
 			} else if ($location.path() === '') {
-				$location.path('/login');				
+				$location.path('/login');
 			} else {
-				console.log('app is running ...');				
+				//console.log('app is running ...');
 				if ($rootScope.globals && $rootScope.globals.currentUser) {
 					$rootScope.setupUI();
 				}				
@@ -25,7 +25,7 @@ app.run(['$rootScope', '$location', '$cookieStore', '$http', 'userService', 'aut
 		$rootScope.setupUI = function () {
 			// get navigation
 			userService.getMenu().then(function (result) {
-				$rootScope.settings.navigation = result;				
+				$rootScope.settings.navigation = result;
 			}, function (error) {
 				console.log(error);
 			});
