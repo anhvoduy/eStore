@@ -8,8 +8,7 @@ var dbContext = require('../lib/dbContext');
 var errorHelper = require('../lib/errorHelper');
 var stockService = require('../services/stockService');
 
-/* ------------ Stock In ------------ */
-router.get('/stockin', Q.async(function* (req, res, next) {
+router.get('/input/items', Q.async(function* (req, res, next) {
     var ctx = yield dbContext.getConnection();
     try{
         var stocks = yield stockService.getStocks(ctx, constant.transactionType.STOCKIN);
@@ -20,21 +19,25 @@ router.get('/stockin', Q.async(function* (req, res, next) {
     }    
 }));
 
-router.get('/stockin/:id', function (req, res, next) {
-    // create stock
+router.get('/input/item', function (req, res, next) {
+    res.status(200).json(true);
 });
 
-router.post('/stockin/:id', function (req, res, next) {
-    // create stock
+router.get('/input/create', function (req, res, next) {
+    res.status(200).json(true);
 });
 
-router.put('/stockin/:id', function (req, res, next) {
-    // edit stock
+router.post('/input/update', function (req, res, next) {
+    res.status(200).json(true);
+});
+
+router.put('/input/delete', function (req, res, next) {
+    res.status(200).json(true);
 });
 
 
-/* ------------ Stock Out ------------ */
-router.get('/stockout', Q.async(function* (req, res, next) {
+
+router.get('/output/items', Q.async(function* (req, res, next) {
     var ctx = yield dbContext.getConnection();
     try{
         var stocks = yield stockService.getStocks(ctx, constant.transactionType.STOCKOUT);
@@ -45,17 +48,22 @@ router.get('/stockout', Q.async(function* (req, res, next) {
     }
 }));
 
-router.get('/stockout/:id', function (req, res, next) {
-    // create stock
+router.get('/output/item', function (req, res, next) {
+    res.status(200).json(true);
 });
 
-router.post('/stockout/:id', function (req, res, next) {
-    // create stock
+router.get('/output/create', function (req, res, next) {
+    res.status(200).json(true);
 });
 
-router.put('/stockout/:id', function (req, res, next) {
-    // edit stock
+router.get('/output/update', function (req, res, next) {
+    res.status(200).json(true);
 });
+
+router.get('/output/delete', function (req, res, next) {
+    res.status(200).json(true);
+});
+
 
 // return Router
 module.exports = router;
