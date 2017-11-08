@@ -35,6 +35,7 @@ CREATE TABLE `Customer` (
   `Fax` VARCHAR(50) DEFAULT NULL,
   `Title` VARCHAR(50) DEFAULT NULL,
   `Address` VARCHAR(250) DEFAULT NULL,
+  `ImageKey` VARCHAR(250) DEFAULT NULL,
   `Created` DATETIME DEFAULT CURRENT_TIMESTAMP,
   `Updated` DATETIME DEFAULT CURRENT_TIMESTAMP,
   `Author` VARCHAR(50) NOT NULL,
@@ -69,7 +70,19 @@ INSERT INTO `Customer` (`CustomerKey`,`CustomerName`,`Address`,`Mobile`,`Author`
 VALUES (uuid(),'Northrop Grumman','37 Ton Duc Thang street, district 1','029876543210','SYSTEM','SYSTEM');
 
 INSERT INTO `Customer` (`CustomerKey`,`CustomerName`,`Address`,`Mobile`,`Author`,`Editor`) 
-VALUES (uuid(),'Alibaba Group','45 Nguyen Thi Minh Khai street, district 1','029876543210','SYSTEM','SYSTEM');
+VALUES (uuid(),'Adnotrium','45 Nguyen Thi Minh Khai street, district 1','029876543210','SYSTEM','SYSTEM');
+
+INSERT INTO `Customer` (`CustomerKey`,`CustomerName`,`Address`,`Mobile`,`Author`,`Editor`) 
+VALUES (uuid(),'SMC Steel Company','37 Ton Duc Thang street, district 1','029876543210','SYSTEM','SYSTEM');
+
+INSERT INTO `Customer` (`CustomerKey`,`CustomerName`,`Address`,`Mobile`,`Author`,`Editor`) 
+VALUES (uuid(),'Marubeni Super Fast Food.','37 Ton Duc Thang street, district 1','029876543210','SYSTEM','SYSTEM');
+
+INSERT INTO `Customer` (`CustomerKey`,`CustomerName`,`Address`,`Mobile`,`Author`,`Editor`) 
+VALUES (uuid(),'North Carolina','142 Ton Duc Thang street, district 1','029876543210','SYSTEM','SYSTEM');
+
+INSERT INTO `Customer` (`CustomerKey`,`CustomerName`,`Address`,`Mobile`,`Author`,`Editor`) 
+VALUES (uuid(),'Taobao Group','45 Nguyen Thi Minh Khai street, district 1','029876543210','SYSTEM','SYSTEM');
 
 --
 -- Table structure for table `Truck`
@@ -167,18 +180,41 @@ CREATE TABLE `Account` (
 --
 -- Sample data for table `Account`
 --
-INSERT INTO `Account` (`AccountKey`,`AccountNo`,`AccountName`,`Author`,`Editor`) VALUES (uuid(),'111','Cash','SYSTEM','SYSTEM');
-INSERT INTO `Account` (`AccountKey`,`AccountNo`,`AccountName`,`Author`,`Editor`) VALUES (uuid(),'112','Cash in bank','SYSTEM','SYSTEM');
-INSERT INTO `Account` (`AccountKey`,`AccountNo`,`AccountName`,`Author`,`Editor`) VALUES (uuid(),'113','Cash transfer','SYSTEM','SYSTEM');
-INSERT INTO `Account` (`AccountKey`,`AccountNo`,`AccountName`,`Author`,`Editor`) VALUES (uuid(),'156','Goods','SYSTEM','SYSTEM');
-INSERT INTO `Account` (`AccountKey`,`AccountNo`,`AccountName`,`Author`,`Editor`) VALUES (uuid(),'131','Account Receivable','SYSTEM','SYSTEM');
-INSERT INTO `Account` (`AccountKey`,`AccountNo`,`AccountName`,`Author`,`Editor`) VALUES (uuid(),'331','Account Payment','SYSTEM','SYSTEM');
-INSERT INTO `Account` (`AccountKey`,`AccountNo`,`AccountName`,`Author`,`Editor`) VALUES (uuid(),'511','Revenue','SYSTEM','SYSTEM');
-INSERT INTO `Account` (`AccountKey`,`AccountNo`,`AccountName`,`Author`,`Editor`) VALUES (uuid(),'632','Cost of Goods Sold','SYSTEM','SYSTEM');
-INSERT INTO `Account` (`AccountKey`,`AccountNo`,`AccountName`,`Author`,`Editor`) VALUES (uuid(),'642','Selling Cost','SYSTEM','SYSTEM');
-INSERT INTO `Account` (`AccountKey`,`AccountNo`,`AccountName`,`Author`,`Editor`) VALUES (uuid(),'711','711','SYSTEM','SYSTEM');
-INSERT INTO `Account` (`AccountKey`,`AccountNo`,`AccountName`,`Author`,`Editor`) VALUES (uuid(),'811','811','SYSTEM','SYSTEM');
-INSERT INTO `Account` (`AccountKey`,`AccountNo`,`AccountName`,`Author`,`Editor`) VALUES (uuid(),'911','911','SYSTEM','SYSTEM');
+INSERT INTO `Account` (`AccountKey`,`AccountNo`,`AccountName`,`Author`,`Editor`) 
+VALUES (uuid(),'111','Cash','SYSTEM','SYSTEM');
+
+INSERT INTO `Account` (`AccountKey`,`AccountNo`,`AccountName`,`Author`,`Editor`) 
+VALUES (uuid(),'112','Cash in bank','SYSTEM','SYSTEM');
+
+INSERT INTO `Account` (`AccountKey`,`AccountNo`,`AccountName`,`Author`,`Editor`) 
+VALUES (uuid(),'113','Cash transfer','SYSTEM','SYSTEM');
+
+INSERT INTO `Account` (`AccountKey`,`AccountNo`,`AccountName`,`Author`,`Editor`) 
+VALUES (uuid(),'156','Goods','SYSTEM','SYSTEM');
+
+INSERT INTO `Account` (`AccountKey`,`AccountNo`,`AccountName`,`Author`,`Editor`) 
+VALUES (uuid(),'131','Account Receivable','SYSTEM','SYSTEM');
+
+INSERT INTO `Account` (`AccountKey`,`AccountNo`,`AccountName`,`Author`,`Editor`) 
+VALUES (uuid(),'331','Account Payment','SYSTEM','SYSTEM');
+
+INSERT INTO `Account` (`AccountKey`,`AccountNo`,`AccountName`,`Author`,`Editor`) 
+VALUES (uuid(),'511','Revenue','SYSTEM','SYSTEM');
+
+INSERT INTO `Account` (`AccountKey`,`AccountNo`,`AccountName`,`Author`,`Editor`) 
+VALUES (uuid(),'632','Cost of Goods Sold','SYSTEM','SYSTEM');
+
+INSERT INTO `Account` (`AccountKey`,`AccountNo`,`AccountName`,`Author`,`Editor`) 
+VALUES (uuid(),'642','Selling Cost','SYSTEM','SYSTEM');
+
+INSERT INTO `Account` (`AccountKey`,`AccountNo`,`AccountName`,`Author`,`Editor`) 
+VALUES (uuid(),'711','711','SYSTEM','SYSTEM');
+
+INSERT INTO `Account` (`AccountKey`,`AccountNo`,`AccountName`,`Author`,`Editor`) 
+VALUES (uuid(),'811','811','SYSTEM','SYSTEM');
+
+INSERT INTO `Account` (`AccountKey`,`AccountNo`,`AccountName`,`Author`,`Editor`) 
+VALUES (uuid(),'911','911','SYSTEM','SYSTEM');
 
 --
 -- Table structure for table `Transaction`
@@ -238,7 +274,8 @@ VALUES (uuid(),'CASHOUT-000003','2016-11-07','CASHOUT','Cash Out', '111', '532',
 
 --
 -- Table structure for table `TransactionDetail`
---
+-- Might be no need table `TransactionDetail`
+/*
 DROP TABLE IF EXISTS `TransactionDetail`;
 CREATE TABLE `TransactionDetail` (
   `TransactionDetailId` INT(11) NOT NULL AUTO_INCREMENT,
@@ -258,11 +295,7 @@ CREATE TABLE `TransactionDetail` (
   PRIMARY KEY (`TransactionDetailId`),
   UNIQUE KEY `TransactionDetailId_UNIQUE` (`TransactionDetailId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
-
---
--- Sample data for table `TransactionDetail`
--- May be no need this table
-
+*/
 
 
 --
@@ -271,6 +304,7 @@ CREATE TABLE `TransactionDetail` (
 DROP TABLE IF EXISTS `Inventory`;
 CREATE TABLE `Inventory` (
   `InventoryId` INT(11) NOT NULL AUTO_INCREMENT,    
+  `InventoryKey` VARCHAR(50) DEFAULT NULL,
   `InventoryName` VARCHAR(50) DEFAULT NULL,
   `Location` VARCHAR(50) DEFAULT NULL,
   `Description` VARCHAR(250) DEFAULT NULL,
@@ -283,14 +317,18 @@ CREATE TABLE `Inventory` (
   UNIQUE KEY `InventoryId_UNIQUE` (`InventoryId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 
+
 --
 -- Sample data for table `Inventory`
 --
-INSERT INTO `Inventory`(InventoryId, InventoryName, Location, Description, Author, Editor)
-VALUES (1,'Front Store','327 Nam Ky Khoi Nghia','Sai Gon store','SYSTEM','SYSTEM');
+INSERT INTO `Inventory`(InventoryKey, InventoryName, Location, Description, Author, Editor)
+VALUES (uuid(),'Front Store','327 Nam Ky Khoi Nghia','Sai Gon store','SYSTEM','SYSTEM');
 
-INSERT INTO `Inventory`(InventoryId, InventoryName, Location, Description, Author, Editor)
-VALUES (2,'Back Store','45A Song Than Industrial Group','Binh Duong store', 'SYSTEM', 'SYSTEM');
+INSERT INTO `Inventory`(InventoryKey, InventoryName, Location, Description, Author, Editor)
+VALUES (uuid(),'Back Store','45A Song Than Industrial Group','Binh Duong store', 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `Inventory`(InventoryKey, InventoryName, Location, Description, Author, Editor)
+VALUES (uuid(),'Shop Store','450 A Ngu Hanh Son street','Da Nang city', 'SYSTEM', 'SYSTEM');
 
 
 --
@@ -298,17 +336,14 @@ VALUES (2,'Back Store','45A Song Than Industrial Group','Binh Duong store', 'SYS
 --
 DROP TABLE IF EXISTS `InventoryBalance`;
 CREATE TABLE `InventoryBalance` (
-  `InventoryBalanceId` INT(11) NOT NULL AUTO_INCREMENT,  
-  `InventoryId` INT(11) DEFAULT NULL,  
-  `ProductId` INT(11) DEFAULT NULL,  
-  `ProductName` VARCHAR(50) DEFAULT NULL,
+  `InventoryBalanceId` INT(11) NOT NULL AUTO_INCREMENT,
+  `InventoryId` INT(11) DEFAULT NULL,
+  `ProductId` INT(11) DEFAULT NULL,
+  `IsPerpetual` TINYINT(1) DEFAULT 0,
   `QtyInput` INT(11) NOT NULL DEFAULT 0,
   `QtyOutput` INT(11) NOT NULL DEFAULT 0,
-  `QtyBalance` INT(11) NOT NULL DEFAULT 0,
-  `IsPerpetual` TINYINT(1) DEFAULT 0,
-  `Currency` VARCHAR(3) DEFAULT NULL,  
+  `Currency` VARCHAR(3) DEFAULT NULL,
   `Price` DECIMAL(12,4) NOT NULL DEFAULT 0,
-  `TotalAmount` DECIMAL(12,4) NOT NULL DEFAULT 0,
   `Created` DATETIME DEFAULT CURRENT_TIMESTAMP,
   `Updated` DATETIME DEFAULT CURRENT_TIMESTAMP,
   `Author` VARCHAR(50) NOT NULL,
@@ -321,23 +356,24 @@ CREATE TABLE `InventoryBalance` (
 --
 -- Sample data for table `InventoryBalance`
 --
-INSERT INTO `InventoryBalance`(InventoryId, ProductId, ProductName, QtyInput, QtyOutput, QtyBalance, IsPerpetual, Price, TotalAmount, Author, Editor)
-VALUES (1,1,'Product 1', 10, 0, 0, 0, 125, 1250, 'SYSTEM', 'SYSTEM');
+INSERT INTO `InventoryBalance`(InventoryId, ProductId, QtyInput, QtyOutput, Price, Author, Editor)
+VALUES (1, 1, 10, 5, 50, 'SYSTEM', 'SYSTEM');
 
-INSERT INTO `InventoryBalance`(InventoryId, ProductId, ProductName, QtyInput, QtyOutput, QtyBalance, IsPerpetual, Price, TotalAmount, Author, Editor)
-VALUES (1,2,'Product 2', 20, 0, 0, 0, 125, 1250, 'SYSTEM', 'SYSTEM');
+INSERT INTO `InventoryBalance`(InventoryId, ProductId, QtyInput, QtyOutput, Price, Author, Editor)
+VALUES (1, 2, 12, 6, 50, 'SYSTEM', 'SYSTEM');
 
-INSERT INTO `InventoryBalance`(InventoryId, ProductId, ProductName, QtyInput, QtyOutput, QtyBalance, IsPerpetual, Price, TotalAmount, Author, Editor)
-VALUES (1,3,'Product 3', 50, 0, 0, 0, 125, 1250, 'SYSTEM', 'SYSTEM');
+INSERT INTO `InventoryBalance`(InventoryId, ProductId, QtyInput, QtyOutput, Price, Author, Editor)
+VALUES (1, 3, 15, 10, 50, 'SYSTEM', 'SYSTEM');
 
-INSERT INTO `InventoryBalance`(InventoryId, ProductId, ProductName, QtyInput, QtyOutput, QtyBalance, IsPerpetual, Price, TotalAmount, Author, Editor)
-VALUES (2,1,'Product 1', 0, 20, 0, 0, 125, 1250, 'SYSTEM', 'SYSTEM');
+INSERT INTO `InventoryBalance`(InventoryId, ProductId, QtyInput, QtyOutput, Price, Author, Editor)
+VALUES (2, 1, 2, 1, 50, 'SYSTEM', 'SYSTEM');
 
-INSERT INTO `InventoryBalance`(InventoryId, ProductId, ProductName, QtyInput, QtyOutput, QtyBalance, IsPerpetual, Price, TotalAmount, Author, Editor)
-VALUES (2,2,'Product 1', 0, 50, 0, 0, 125, 1250, 'SYSTEM', 'SYSTEM');
+INSERT INTO `InventoryBalance`(InventoryId, ProductId, QtyInput, QtyOutput, Price, Author, Editor)
+VALUES (2, 2, 2, 1, 50, 'SYSTEM', 'SYSTEM');
 
-INSERT INTO `InventoryBalance`(InventoryId, ProductId, ProductName, QtyInput, QtyOutput, QtyBalance, IsPerpetual, Price, TotalAmount, Author, Editor)
-VALUES (2,3,'Product 1', 60, 0, 0, 0, 125, 1250, 'SYSTEM', 'SYSTEM');
+INSERT INTO `InventoryBalance`(InventoryId, ProductId, QtyInput, QtyOutput, Price, Author, Editor)
+VALUES (2, 3, 2, 1, 50, 'SYSTEM', 'SYSTEM');
+
 
 --
 -- Table structure for table `Stock`
@@ -351,7 +387,7 @@ CREATE TABLE `Stock` (
   `StockType` VARCHAR(20) DEFAULT NULL,
   `Description` VARCHAR(250) DEFAULT NULL,
   `Currency` VARCHAR(3) DEFAULT NULL,
-  `TotalAmount` DECIMAL(12,4) NOT NULL DEFAULT 0,
+  `TotalAmount` DECIMAL(12,4) DEFAULT 0,
   `CustomerId` INT(11) DEFAULT 0,
   `CustomerName` VARCHAR(50) DEFAULT NULL,
   `InvoiceNo` VARCHAR(20) DEFAULT NULL,
@@ -369,23 +405,23 @@ CREATE TABLE `Stock` (
 --
 -- Sample data for table `Stock`
 --
-INSERT INTO `Stock` (`StockKey`, `StockDate`, `StockType`, `Description`, `Currency`, `TotalAmount`, `CustomerId`, `CustomerName`, `Author`, `Editor`) 
-VALUES (uuid(), '2016-12-01', 'STOCKIN', 'Stock In', 'VND', '60000', '1', 'Vina Sun', 'SYSTEM', 'SYSTEM');
+INSERT INTO `Stock`(StockKey, StockDate, StockType, Description, Currency, TotalAmount, CustomerId, CustomerName, Author, Editor) 
+VALUES (uuid(), '2016-12-01', 'STOCKIN', 'Input Goods', 'VND', '60000', '1', 'Vina Sun', 'SYSTEM', 'SYSTEM');
 
-INSERT INTO `Stock` (`StockKey`, `StockDate`, `StockType`, `Description`, `Currency`, `TotalAmount`, `CustomerId`, `CustomerName`, `Author`, `Editor`) 
-VALUES (uuid(), '2016-12-02', 'STOCKIN', 'Stock In', 'VND', '60000', '2', 'Vina Capital', 'SYSTEM', 'SYSTEM');
+INSERT INTO `Stock`(StockKey, StockDate, StockType, Description, Currency, TotalAmount, CustomerId, CustomerName, Author, Editor) 
+VALUES (uuid(), '2016-12-02', 'STOCKIN', 'Input Goods', 'VND', '60000', '2', 'Vina Capital', 'SYSTEM', 'SYSTEM');
 
-INSERT INTO `Stock` (`StockKey`, `StockDate`, `StockType`, `Description`, `Currency`, `TotalAmount`, `CustomerId`, `CustomerName`, `Author`, `Editor`) 
-VALUES (uuid(), '2016-12-03', 'STOCKIN', 'Stock In', 'VND', '60000', '3', 'Vina Kyoei', 'SYSTEM', 'SYSTEM');
+INSERT INTO `Stock`(StockKey, StockDate, StockType, Description, Currency, TotalAmount, CustomerId, CustomerName, Author, Editor) 
+VALUES (uuid(), '2016-12-03', 'STOCKIN', 'Input Goods', 'VND', '60000', '3', 'Vina Kyoei', 'SYSTEM', 'SYSTEM');
 
-INSERT INTO `Stock` (`StockKey`, `StockDate`, `StockType`, `Description`, `Currency`, `TotalAmount`, `CustomerId`, `CustomerName`, `Author`, `Editor`) 
-VALUES (uuid(), '2016-12-21', 'STOCKOUT', 'Stock out', 'VND', '30000', '1', 'Mitsuibishi', 'SYSTEM', 'SYSTEM');
+INSERT INTO `Stock`(StockKey, StockDate, StockType, Description, Currency, TotalAmount, CustomerId, CustomerName, Author, Editor) 
+VALUES (uuid(), '2016-12-21', 'STOCKOUT', 'Output Goods', 'VND', '30000', '1', 'Mitsuibishi', 'SYSTEM', 'SYSTEM');
 
-INSERT INTO `Stock` (`StockKey`, `StockDate`, `StockType`, `Description`, `Currency`, `TotalAmount`, `CustomerId`, `CustomerName`, `Author`, `Editor`) 
-VALUES (uuid(), '2016-12-22', 'STOCKOUT', 'Stock out', 'VND', '30000', '2', 'FPT Information System', 'SYSTEM', 'SYSTEM');
+INSERT INTO `Stock`(StockKey, StockDate, StockType, Description, Currency, TotalAmount, CustomerId, CustomerName, Author, Editor) 
+VALUES (uuid(), '2016-12-22', 'STOCKOUT', 'Output Goods', 'VND', '30000', '2', 'FPT Information System', 'SYSTEM', 'SYSTEM');
 
-INSERT INTO `Stock` (`StockKey`, `StockDate`, `StockType`, `Description`, `Currency`, `TotalAmount`, `CustomerId`, `CustomerName`, `Author`, `Editor`) 
-VALUES (uuid(), '2016-12-12', 'STOCKOUT', 'Stock out', 'USD', '150', '2', 'FPT Software', 'SYSTEM', 'SYSTEM');
+INSERT INTO `Stock`(StockKey, StockDate, StockType, Description, Currency, TotalAmount, CustomerId, CustomerName, Author, Editor) 
+VALUES (uuid(), '2016-12-12', 'STOCKOUT', 'Output Goods', 'USD', '150', '2', 'FPT Software', 'SYSTEM', 'SYSTEM');
 
 
 --
@@ -394,13 +430,13 @@ VALUES (uuid(), '2016-12-12', 'STOCKOUT', 'Stock out', 'USD', '150', '2', 'FPT S
 DROP TABLE IF EXISTS `StockDetail`;
 CREATE TABLE `StockDetail` (
   `StockDetailId` INT(11) NOT NULL AUTO_INCREMENT,
-  `StockId` INT(11) NOT NULL DEFAULT 0,
-  `ProductId` INT(11) NOT NULL DEFAULT 0,  
+  `StockId` INT(11) DEFAULT 0,
+  `ProductId` INT(11) DEFAULT 0,
   `ProductName` VARCHAR(50) DEFAULT NULL,
-  `Description` VARCHAR(250) DEFAULT NULL,  
-  `Quantity` INT(11) NOT NULL DEFAULT 0,
-  `Price` DECIMAL(12,4) NOT NULL DEFAULT 0,
-  `Amount` DECIMAL(12,4) NOT NULL DEFAULT 0,
+  `Description` VARCHAR(250) DEFAULT NULL,
+  `Quantity` INT(11) DEFAULT 0,
+  `Price` DECIMAL(12,4) DEFAULT 0,
+  `Amount` DECIMAL(12,4) DEFAULT 0,
   `Created` DATETIME DEFAULT CURRENT_TIMESTAMP,
   `Updated` DATETIME DEFAULT CURRENT_TIMESTAMP,
   `Author` VARCHAR(50) NOT NULL,
@@ -413,22 +449,22 @@ CREATE TABLE `StockDetail` (
 --
 -- Sample data for table `StockDetail`
 --
-INSERT INTO `StockDetail` (`StockId`, `ProductId`, `ProductName`, `Description`, `Quantity`, `Price`, `Amount`, `Author`, `Editor`) 
+INSERT INTO `StockDetail`(StockId, ProductId, ProductName, Description, Quantity, Price, Amount, Author, Editor) 
 VALUES (1, 1, 'Product 1', ' Desc 1', 25, 200, 5000, 'SYSTEM', 'SYSTEM');
 
-INSERT INTO `StockDetail` (`StockId`, `ProductId`, `ProductName`, `Description`, `Quantity`, `Price`, `Amount`, `Author`, `Editor`) 
+INSERT INTO `StockDetail`(StockId, ProductId, ProductName, Description, Quantity, Price, Amount, Author, Editor) 
 VALUES (1, 2, 'Product 2', ' Desc 2', 25, 200, 5000, 'SYSTEM', 'SYSTEM');
 
-INSERT INTO `StockDetail` (`StockId`, `ProductId`, `ProductName`, `Description`, `Quantity`, `Price`, `Amount`, `Author`, `Editor`) 
+INSERT INTO `StockDetail`(StockId, ProductId, ProductName, Description, Quantity, Price, Amount, Author, Editor) 
 VALUES (1, 3, 'Product 3', ' Desc 3', 25, 200, 5000, 'SYSTEM', 'SYSTEM');
 
-INSERT INTO `StockDetail` (`StockId`, `ProductId`, `ProductName`, `Description`, `Quantity`, `Price`, `Amount`, `Author`, `Editor`) 
+INSERT INTO `StockDetail`(StockId, ProductId, ProductName, Description, Quantity, Price, Amount, Author, Editor) 
 VALUES (2, 1, 'Product 1', ' Desc 1', 10, 200, 2000, 'SYSTEM', 'SYSTEM');
 
-INSERT INTO `StockDetail` (`StockId`, `ProductId`, `ProductName`, `Description`, `Quantity`, `Price`, `Amount`, `Author`, `Editor`) 
+INSERT INTO `StockDetail`(StockId, ProductId, ProductName, Description, Quantity, Price, Amount, Author, Editor) 
 VALUES (2, 2, 'Product 2', ' Desc 2', 5, 200, 1000, 'SYSTEM', 'SYSTEM');
 
-INSERT INTO `StockDetail` (`StockId`, `ProductId`, `ProductName`, `Description`, `Quantity`, `Price`, `Amount`, `Author`, `Editor`) 
+INSERT INTO `StockDetail`(StockId, ProductId, ProductName, Description, Quantity, Price, Amount, Author, Editor) 
 VALUES (2, 3, 'Product 3', ' Desc 3', 25, 200, 5000, 'SYSTEM', 'SYSTEM');
 
 
@@ -442,7 +478,7 @@ CREATE TABLE `Journal` (
   `JournalType` VARCHAR(20) NOT NULL,
   `JournalDate` DATETIME DEFAULT NULL,
   `DebitAcctNo` VARCHAR(20) NOT NULL,
-  `CreditAcctNo` VARCHAR(20) NOT NULL,  
+  `CreditAcctNo` VARCHAR(20) NOT NULL,
   `Currency` VARCHAR(3) DEFAULT NULL,
   `Amount` DECIMAL(12,4) NOT NULL DEFAULT 0,
   `Description` VARCHAR(250) DEFAULT NULL,
@@ -455,22 +491,23 @@ CREATE TABLE `Journal` (
   UNIQUE KEY `JournalId_UNIQUE` (`JournalId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 
+
 --
 -- Table structure for table `Journal`
 --
-INSERT INTO `Journal` (`JournalKey`,`JournalType`,`JournalDate`,`DebitAcctNo`,`CreditAcctNo`,`Currency`,`Amount`,`Description`,`Author`,`Editor`) 
+INSERT INTO `Journal`(JournalKey,JournalType,JournalDate,DebitAcctNo,CreditAcctNo,Currency,Amount,Description,Author,Editor) 
 VALUES (uuid(), 'CASH', '2017-08-01', '111', '641', 'VND', 6500, ' Cash Journal', 'SYSTEM', 'SYSTEM');
 
-INSERT INTO `Journal` (`JournalKey`,`JournalType`,`JournalDate`,`DebitAcctNo`,`CreditAcctNo`,`Currency`,`Amount`,`Description`,`Author`,`Editor`) 
+INSERT INTO `Journal`(JournalKey,JournalType,JournalDate,DebitAcctNo,CreditAcctNo,Currency,Amount,Description,Author,Editor) 
 VALUES (uuid(), 'CASH', '2017-08-08', '112', '642', 'VND', 5000, ' Cash Journal', 'SYSTEM', 'SYSTEM');
 
-INSERT INTO `Journal` (`JournalKey`,`JournalType`,`JournalDate`,`DebitAcctNo`,`CreditAcctNo`,`Currency`,`Amount`,`Description`,`Author`,`Editor`) 
+INSERT INTO `Journal`(JournalKey,JournalType,JournalDate,DebitAcctNo,CreditAcctNo,Currency,Amount,Description,Author,Editor) 
 VALUES (uuid(), 'STOCK', '2017-08-09', '156', '632', 'VND', 8000, 'Import Product', 'SYSTEM', 'SYSTEM');
 
-INSERT INTO `Journal` (`JournalKey`,`JournalType`,`JournalDate`,`DebitAcctNo`,`CreditAcctNo`,`Currency`,`Amount`,`Description`,`Author`,`Editor`) 
+INSERT INTO `Journal`(JournalKey,JournalType,JournalDate,DebitAcctNo,CreditAcctNo,Currency,Amount,Description,Author,Editor) 
 VALUES (uuid(), 'STOCK', '2017-08-09', '156', '632', 'VND', 600, ' Import Product', 'SYSTEM', 'SYSTEM');
 
-INSERT INTO `Journal` (`JournalKey`,`JournalType`,`JournalDate`,`DebitAcctNo`,`CreditAcctNo`,`Currency`,`Amount`,`Description`,`Author`,`Editor`) 
+INSERT INTO `Journal`(JournalKey,JournalType,JournalDate,DebitAcctNo,CreditAcctNo,Currency,Amount,Description,Author,Editor) 
 VALUES (uuid(), 'STOCK', '2017-08-09', '156', '632', 'VND', 150, ' Import Product', 'SYSTEM', 'SYSTEM');
 
 
@@ -521,6 +558,7 @@ INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VA
 INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'HongLeong Group','HongLeong Group','SYSTEM','SYSTEM');
 INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Lifan Corporation','Lifan Corporation','SYSTEM','SYSTEM');
 
+
 --
 -- Table structure for table `Product`
 --
@@ -534,7 +572,7 @@ CREATE TABLE `Product` (
   `Description` VARCHAR(250) DEFAULT NULL,
   `BrandId` INT(11) NOT NULL DEFAULT 0,
   `Price` DECIMAL(12, 4) DEFAULT 0,
-  `Colour` VARCHAR(10) DEFAULT NULL,  
+  `Colour` VARCHAR(10) DEFAULT NULL,
   `Status` VARCHAR(10) DEFAULT NULL,
   `LatestReviewInfo` VARCHAR(250) DEFAULT NULL,
   `Created` DATETIME DEFAULT CURRENT_TIMESTAMP,
@@ -621,10 +659,10 @@ VALUES (uuid(),'Ipad 8','Ipad 8',22,3000,'Green','IN','Cool','SYSTEM','SYSTEM');
 DROP TABLE IF EXISTS `Review`;
 CREATE TABLE `Review` (
   `ReviewId` INT(11) NOT NULL AUTO_INCREMENT,
-  `Name` VARCHAR(50) NOT NULL,
-  `Rating` INT(2) NOT NULL DEFAULT 0,
-  `Comment` VARCHAR(250) DEFAULT NULL,  
-  `ProductId` INT(11) NOT NULL DEFAULT 0,
+  `Name` VARCHAR(50) DEFAULT NULL,
+  `Rating` INT(2) DEFAULT 0,
+  `Comment` VARCHAR(250) DEFAULT NULL,
+  `ProductId` INT(11) DEFAULT 0,
   `Email` VARCHAR(50) DEFAULT NULL,
   `Created` DATETIME DEFAULT CURRENT_TIMESTAMP,
   `Updated` DATETIME DEFAULT CURRENT_TIMESTAMP,
@@ -654,20 +692,21 @@ INSERT INTO `Review`(`Name`,`Rating`, `Comment`, `Created`, `ProductId`, `Email`
 DROP TABLE IF EXISTS `User`;
 CREATE TABLE `User` (
   `UserId` INT(11) NOT NULL AUTO_INCREMENT,
-  `UserKey` VARCHAR(50) NOT NULL,
-  `UserType` VARCHAR(20) NOT NULL,
-  `UserName` VARCHAR(50) NOT NULL,
+  `UserKey` VARCHAR(50) DEFAULT NULL,
+  `UserType` VARCHAR(20) DEFAULT NULL,
+  `UserName` VARCHAR(50) DEFAULT NULL,
   `Hash` VARCHAR(250) DEFAULT NULL,
   `DisplayName` VARCHAR(50) DEFAULT NULL,
+  `ImageKey` VARCHAR(250) DEFAULT NULL,  
   `Email` VARCHAR(50) DEFAULT NULL,
   `Mobile` VARCHAR(50) DEFAULT NULL,
   `Tel` VARCHAR(50) DEFAULT NULL,
   `Title` VARCHAR(50) DEFAULT NULL,
-  `DateOfBirth` DATETIME DEFAULT NULL,    
+  `DateOfBirth` DATETIME DEFAULT NULL,
   `Created` DATETIME DEFAULT CURRENT_TIMESTAMP,
   `Updated` DATETIME DEFAULT CURRENT_TIMESTAMP,
-  `Author` VARCHAR(50) NOT NULL,
-  `Editor` VARCHAR(50) NOT NULL,
+  `Author` VARCHAR(50) DEFAULT NULL,
+  `Editor` VARCHAR(50) DEFAULT NULL,
   `Deleted` TINYINT(1) DEFAULT 0,
   PRIMARY KEY (`UserId`),
   UNIQUE KEY `Email_UNIQUE` (`Email`),
@@ -705,24 +744,36 @@ VALUES (uuid(), 'USER','pogba'  , uuid(), 'Pogba','pogba@samsung.com','1980-06-0
 DROP TABLE IF EXISTS `Group`;
 CREATE TABLE `Group` (
   `GroupId` INT(11) NOT NULL AUTO_INCREMENT,
-  `GroupKey` VARCHAR(50) NOT NULL,  
-  `GroupName` VARCHAR(50) NOT NULL,
+  `GroupKey` VARCHAR(50) DEFAULT NULL,
+  `GroupName` VARCHAR(50) DEFAULT NULL,
   `Description` VARCHAR(250) DEFAULT NULL,  
   `Created` DATETIME DEFAULT CURRENT_TIMESTAMP,
   `Updated` DATETIME DEFAULT CURRENT_TIMESTAMP,
-  `Author` VARCHAR(50) NOT NULL,
-  `Editor` VARCHAR(50) NOT NULL,
+  `Author` VARCHAR(50) DEFAULT NULL,
+  `Editor` VARCHAR(50) DEFAULT NULL,
   `Deleted` TINYINT(1) DEFAULT 0,
   PRIMARY KEY (`GroupId`),
   UNIQUE KEY `GroupId_UNIQUE` (`GroupId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 
+
+--
 -- Sample data for table `Group`
-INSERT INTO `Group` (`GroupKey`,`GroupName`,`Description`,`Author`,`Editor`) VALUES (uuid(),'Administrators', 'Administrators Group','SYSTEM','SYSTEM');
-INSERT INTO `Group` (`GroupKey`,`GroupName`,`Description`,`Author`,`Editor`) VALUES (uuid(),'Sales', 'Sales Group','SYSTEM','SYSTEM');
-INSERT INTO `Group` (`GroupKey`,`GroupName`,`Description`,`Author`,`Editor`) VALUES (uuid(),'Accountances','Accountances Group','SYSTEM','SYSTEM');
-INSERT INTO `Group` (`GroupKey`,`GroupName`,`Description`,`Author`,`Editor`) VALUES (uuid(),'Human Resources', 'Human Resources Group','SYSTEM','SYSTEM');
-INSERT INTO `Group` (`GroupKey`,`GroupName`,`Description`,`Author`,`Editor`) VALUES (uuid(),'Logictics', 'Logictics Group','SYSTEM','SYSTEM');
+--
+INSERT INTO `Group` (`GroupKey`,`GroupName`,`Description`,`Author`,`Editor`) 
+VALUES (uuid(),'Administrators', 'Administrators Group','SYSTEM','SYSTEM');
+
+INSERT INTO `Group` (`GroupKey`,`GroupName`,`Description`,`Author`,`Editor`) 
+VALUES (uuid(),'Sales', 'Sales Group','SYSTEM','SYSTEM');
+
+INSERT INTO `Group` (`GroupKey`,`GroupName`,`Description`,`Author`,`Editor`) 
+VALUES (uuid(),'Accountances','Accountances Group','SYSTEM','SYSTEM');
+
+INSERT INTO `Group` (`GroupKey`,`GroupName`,`Description`,`Author`,`Editor`) 
+VALUES (uuid(),'Human Resources', 'Human Resources Group','SYSTEM','SYSTEM');
+
+INSERT INTO `Group` (`GroupKey`,`GroupName`,`Description`,`Author`,`Editor`)
+VALUES (uuid(),'Logictics', 'Logictics Group','SYSTEM','SYSTEM');
 
 
 --
@@ -742,10 +793,10 @@ CREATE TABLE `UserGroup` (
   `Updated` DATETIME DEFAULT CURRENT_TIMESTAMP,
   `Author` VARCHAR(50) NOT NULL,
   `Editor` VARCHAR(50) NOT NULL,
-  `Deleted` TINYINT(1) DEFAULT 0,
   PRIMARY KEY (`UserGroupId`),
   UNIQUE KEY `UserGroupId_UNIQUE` (`UserGroupId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
+
 
 --  GroupId = ModuleId
 INSERT INTO `UserGroup` (`UserId`, `GroupId`, `ModuleId`, `Author`, `Editor`) VALUES (1,1,1,'SYSTEM','SYSTEM');
@@ -763,22 +814,4 @@ INSERT INTO `UserGroup` (`UserId`, `GroupId`, `ModuleId`, `Author`, `Editor`) VA
 --
 -- Table structure for table `UserGroupSecurity`
 -- this table may be NEED or NO NEED
-
-
-/*
-SELECT COUNT(*) AS Count FROM Account;
-SELECT COUNT(*) AS Count FROM Brand;
-SELECT COUNT(*) AS Count FROM Customer;
-SELECT COUNT(*) AS Count FROM Inventory;
-SELECT COUNT(*) AS Count FROM InventoryBalance;
-SELECT COUNT(*) AS Count FROM Journal;
-SELECT COUNT(*) AS Count FROM Product;
-SELECT COUNT(*) AS Count FROM Review;
-SELECT COUNT(*) AS Count FROM Stock;
-SELECT COUNT(*) AS Count FROM StockDetail;
-SELECT COUNT(*) AS Count FROM Transaction;
-SELECT COUNT(*) AS Count FROM TransactionDetail;
-SELECT COUNT(*) AS Count FROM Truck;
-SELECT COUNT(*) AS Count FROM User;
-SELECT COUNT(*) AS Count FROM Group;
-*/
+--
