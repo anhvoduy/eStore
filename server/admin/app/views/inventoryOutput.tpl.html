@@ -1,37 +1,45 @@
-﻿<div class="container" ng-cloak>
-    <div class="row">
-        <h2>Stock Out</h2>
+﻿<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Output Goods</h3>
+        </div>
+        <div class="panel-body">
+            <p><a ui-sref="cashDetail({ cashId: null, formStatus: 1 })">Add new item</a></p>
+            <div class="container" ng-cloak>
+                <div class="row row-table table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Stock No</th>
+                                <th>Stock Date</th>                    
+                                <th>Customer Name</th>                    
+                                <th>Currency</th>
+                                <th>Total Amount</th>
+                                <th>Display</th>
+                                <th>Edit</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="stock in stocks">
+                                <td>{{ ($index + 1) }}</td>
+                                <td>{{ stock.StockNo }}</td>
+                                <td>{{ stock.StockDate }}</td>
+                                <th>{{ stock.CustomerName }}</th>
+                                <td>{{ stock.Currency }}</td>
+                                <td>{{ stock.TotalAmount }}</td>                    
+                                <td><a ui-sref="stockInDetail({ stockId: stock.stockId })">Display</a></td>
+                                <td><a ui-sref="stockOutDetail({ stockId: stock.stockId })">Edit</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row">
+                    <div class="row message-error" ng-show='(messageError.length > 0)'>{{ messageError }}</div>
+                    <div class="row message-success" ng-show='(messageSuccess.length > 0)'>{{ messageSuccess }}</div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-footer">ng-paginator</div>
     </div>
-
-    <div class="row row-table">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Stock No</th>
-                    <th>Stock Date</th>                    
-                    <th>Customer Name</th>                    
-                    <th>Currency</th>
-                    <th>Total Amount</th>
-                    <th>Display</th>
-                    <th>Edit</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="stock in stocks">
-                    <td>{{ ($index + 1) }}</td>
-                    <td>{{ stock.StockNo }}</td>
-                    <td>{{ stock.StockDate }}</td>
-                    <th>{{ stock.CustomerName }}</th>
-                    <td>{{ stock.Currency }}</td>
-                    <td>{{ stock.TotalAmount }}</td>                    
-                    <td><a ui-sref="stockInDetail({ stockId: stock.stockId })">Display</a></td>
-                    <td><a ui-sref="stockOutDetail({ stockId: stock.stockId })">Edit</a></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <div class="row message-error" ng-show='(messageError.length > 0)'>{{ messageError }}</div>
-    <div class="row message-success" ng-show='(messageSuccess.length > 0)'>{{ messageSuccess }}</div>
 </div>

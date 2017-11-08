@@ -25,15 +25,14 @@ router.get('/item', Q.async(function* (req, res, next) {
     res.status(200).json(true);    
 }));
 
-router.get('/input/items', Q.async(function* (req, res, next) {
-    var ctx;
-    try{
-        ctx = yield dbContext.getConnection();
-        var stocks = yield stockService.getStockIn(ctx);
+router.get('/input/items', Q.async(function* (req, res, next) {    
+    try
+    {
+        let query = _.pick(req.query, ['PageCurrent', 'PageSize']);
+        let stocks = yield stockService.getStockIn(query);
         res.status(200).json(stocks);
     }
-    catch(err){
-        yield ctx.release();
+    catch(err){        
         next(error);        
     }
 }));
@@ -57,16 +56,15 @@ router.put('/input/delete', function (req, res, next) {
 
 
 router.get('/output/items', Q.async(function* (req, res, next) {
-    var ctx;
-    try{
-        ctx = yield dbContext.getConnection();
-        var stocks = yield stockService.getStockOut(ctx);
+    try
+    {
+        let query = _.pick(req.query, ['PageCurrent', 'PageSize']);
+        let stocks = yield stockService.getStockOut(query);
         res.status(200).json(stocks);
     }
     catch(err){
-        yield ctx.release();
         next(error);        
-    }
+    }    
 }));
 
 router.get('/output/item', function (req, res, next) {
