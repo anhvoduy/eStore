@@ -1,6 +1,7 @@
 const Q = require('q');
 const _ = require('lodash');
 const dbHelper = require('../lib/dbHelper');
+const dbContext = require('../lib/dbContext');
 
 // Constructor
 const Factory = function () { 
@@ -58,7 +59,7 @@ Factory.prototype.getTransactionById = function (ctx, transactionId) {
     return ctx.queryCommand(sql);
 }
 
-Factory.prototype.getCashIn = function (ctx) {
+Factory.prototype.getCashIn = function (query) {
     let sql = `
         SELECT TransactionId, TransactionNo, TransactionDate, TransactionType,
 	           Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount,
@@ -68,10 +69,10 @@ Factory.prototype.getCashIn = function (ctx) {
         ORDER BY TransactionId DESC
         LIMIT 10;
     `;
-    return ctx.queryCommand(sql);
+    return dbContext.queryList(sql);
 }
 
-Factory.prototype.getCashOut = function (ctx) {
+Factory.prototype.getCashOut = function (query) {
     let sql = `
         SELECT TransactionId, TransactionNo, TransactionDate, TransactionType,
 	           Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount,
@@ -81,7 +82,7 @@ Factory.prototype.getCashOut = function (ctx) {
         ORDER BY TransactionId DESC
         LIMIT 10;
     `;
-    return ctx.queryCommand(sql);
+    return dbContext.queryList(sql);
 }
 
 // Export

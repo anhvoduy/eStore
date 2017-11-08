@@ -1,6 +1,7 @@
 ﻿const Q = require('q');
 const _ = require('lodash');
 const dbHelper = require('../lib/dbHelper');
+const dbContext = require('../lib/dbContext');
 
 // Constructor
 const Factory = function () { 
@@ -26,12 +27,13 @@ Factory.prototype.getUsers = function (ctx) {
 	return ctx.queryCommand(sql);    
 }
 
-Factory.prototype.getUserById = function (ctx, userId) {
-    var sql = dbHelper.prepareQueryCommand(`
+Factory.prototype.getUserById = function (userId) {
+    var sql = `
 		SELECT UserId, UserKey, UserType, UserName, DisplayName, Email, Mobile, Tel, Title, DateOfBirth 
 		FROM User 
-		WHERE UserId = ?`, [userId]);
-	return ctx.queryCommand(sql);
+		WHERE UserId =:UserId
+	`;
+	return dbContext.queryItem(sql, {UserId: userId});
 }
 
 Factory.prototype.getUserByName = function (ctx, userName) {

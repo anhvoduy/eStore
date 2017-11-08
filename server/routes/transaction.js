@@ -79,40 +79,29 @@ router.delete('/delete', function (req, res, next) {
 });
 
 
+
 /* --- Get CashIn & CashOut ---*/
-router.get('/cashin', function (req, res, next) {
-    var ctx = {};
-    q.when()
-        .then(function () {
-            return dbContext.getConnection();
-        }).then(function (con) {
-            ctx = con;
-            return transactionService.getCashIn(ctx);
-        }).then(function (transactions) {
-            res.status(200).json(transactions);
-        }).catch(function (error) {
-            next(error);
-        }).finally(function () {
-            ctx.release();
-        });
+router.get('/cashin', async function (req, res, next) {
+    try
+    {
+        let transactions = await transactionService.getCashIn();
+        res.status(200).json(transactions);
+    }
+    catch (err) {        
+        next(err);
+    }    
 });
 
-router.get('/cashout', function (req, res, next) {
-    var ctx = {};
-    q.when()
-        .then(function () {
-            return dbContext.getConnection();
-        }).then(function (con) {
-            ctx = con;
-            return transactionService.getCashOut(ctx);
-        }).then(function (transactions) {
-            res.status(200).json(transactions);
-        }).catch(function (error) {
-            next(error);
-        }).finally(function () {
-            ctx.release();
-        });
+router.get('/cashout', async function (req, res, next) {
+    try
+    {
+        let transactions = await transactionService.getCashOut();
+        res.status(200).json(transactions);
+    }
+    catch (err) {        
+        next(err);
+    }
 });
 
-// return Router
+// Export
 module.exports = router;

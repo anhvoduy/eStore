@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var Q = require('q');
+var _ = require('lodash');
 var auth = require('../config/auth');
 var constant = require('../lib/constant');
 var dbContext = require('../lib/dbContext');
@@ -34,7 +35,7 @@ router.get('/input/items', Q.async(function* (req, res, next) {
     }
     catch(err){        
         next(error);        
-    }
+    }       
 }));
 
 router.get('/input/item', function (req, res, next) {

@@ -49,48 +49,13 @@ var getPromise = function(item){
     });
 }
 
-router.get('/profile', auth.checkAuthentication(), function (req, res, next) {
-    var peoples = [
-        {name: '11', sex: false},
-        {name: '12', sex: false},
-        {name: '13', sex: false},
-        {name: '14', sex: false},
-        {name: '15', sex: true},
-        {name: '16', sex: false},
-        {name: '20', sex: true},
-        {name: '22', sex: true}
-    ];
-
-    var user = {};
-    var ctx = {};
-    //console.log('get current user profile ...');
-    dbContext.getConnection()
-    .then(function (con) {
-        ctx = con;
-        return userService.getUserById(ctx, 1);
-    })
-    .then(function (users) {
-        user = users[0];		
-    })
-    // .then(function(){
-    //     var promises = peoples.map(throat(1, function(item){
-    //         var timeout = item.sex === true? 0: 1000;
-    //         return q.delay(timeout).then(function(){
-    //             //console.log('- item.name:', item.name);
-    //             return getPromise(item);
-    //         }).done();            
-    //     }));
-    //     return q.allSettled(promises);
-    // })
-    .then(function(){
+router.get('/profile', auth.checkAuthentication(), async function (req, res, next) {    
+    try{
+        var user = await userService.getUserById(1);
         res.status(200).json(user);
-    })
-    .catch(function (error) {
-        next(error);
-    })
-    .done(function () {
-        ctx.release();
-    });
+    }catch(err){
+        next(err);
+    }
 });
 
 router.get('/menu', auth.checkAuthentication(), function (req, res, next) {

@@ -23,25 +23,88 @@ var getConnection = function () {
 }
 
 // Data Access Layer
-function dbContext(connection) {
-	this.connection = connection;
+var dbContext = function() {
+    console.log('- initial dbContext: \n', config);
+
+    // init ConnectionPool
+    this.pool = mysql.createPool({
+        host            : config.host,
+        user            : config.user,
+        password        : config.password,
+        database        : config.database,
+        connectionLimit : config.connectionLimit
+    });
 }
 
-dbContext.prototype.release = function () {    
-	this.connection.release();
+dbContext.prototype.getConnection = function () {
+    var defer = q.defer();
+    var self = this;
+	self.pool.getConnection(function (err, connection) {
+		if (err) defer.reject(err);
+		else defer.resolve(connection);
+	});
+	return defer.promise;
 }
 
-// TO DO: make queryOne
-dbContext.prototype.queryOne = function (sql) {
-    return true;
+dbContext.prototype.release = function (connection) {
+    var self = this;
+    if(self.connection) 
+        self.connection.release();
+    connection.release();
 }
 
-// TO DO: make queryMany
-dbContext.prototype.queryMany = function (sql) {
-    return true;
+dbContext.prototype.prepareSqlParameters = function(query, values){
+    var self = this;
+    return query.replace(/\:(\w+)/g, function (txt, key) {
+        if (values.hasOwnProperty(key)) {
+          return self.pool.escape(values[key]);
+        }
+        return txt;
+    });
 }
 
-// TO DO: make queryCommand
+dbContext.prototype.queryItem = function (sql, obj) {
+    var self = this;
+    var deferred = q.defer();    
+    sql = `SELECT TMP.*  FROM (${sql}) TMP LIMIT 1`; // query one item
+    var querySql = self.prepareSqlParameters(sql, obj);
+    self.pool.query(querySql, function(error, results, fields){
+        if (error){
+            deferred.reject(error);
+        }        
+        deferred.resolve(results[0]);        
+    });    
+    return deferred.promise;
+}
+
+dbContext.prototype.queryList = function (sql, obj) {    
+    var deferred = q.defer();
+    var self = this;
+    var querySql = self.prepareSqlParameters(sql, obj);
+    self.pool.query(querySql, function(error, results, fields){
+        if (error){
+            deferred.reject(error);
+        }        
+        deferred.resolve(results);        
+    });    
+    return deferred.promise;
+}
+
+dbContext.prototype.queryExecute  = function (sql, obj) {
+    var self = this;
+    var deferred = q.defer();
+    var querySql = self.prepareSqlParameters(sql, obj);
+    self.pool.query(querySql, function(error, results, fields){
+        if (error){
+            deferred.reject(error);
+        }        
+        deferred.resolve(results);        
+    });    
+    return deferred.promise;
+}
+
+
+// TO DO: deprecated this function
 dbContext.prototype.queryCommand = function (sql) {
 	var defer = q.defer();
 	this.connection.query(sql, function (error, rows) {
@@ -93,8 +156,6 @@ dbContext.prototype.commitTransaction = function () {
     return defer.promise;
 }
 
+
 // Export
-var dataConnection = {
-	getConnection: getConnection
-}
-module.exports = dataConnection;
+module.exports = new dbContext();
