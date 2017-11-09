@@ -22,11 +22,14 @@
 			return q.promise;
 		}
 		
-		inventoryService.prototype.getItem = function (inventoryId) {
-			var url = String.format('{0}/items/{1}', this.api, inventoryId);
+		inventoryService.prototype.getItem = function (inventoryKey) {
+			var url = String.format('{0}/item', this.api);
+			var params = {
+				InventoryKey: inventoryKey
+			}
 			
 			var q = $q.defer();
-			this.getData(url).then(function (result) {
+			this.getData(url, params).then(function (result) {
 				q.resolve(result);
 			}, function (error) {
 				q.reject(error);
@@ -62,7 +65,10 @@
 			var url = String.format('{0}/input/items', this.api);
 			
 			var q = $q.defer();
-			this.getData(url).then(function (result) {				
+			this.getData(url).then(function (result) {
+				angular.forEach(result, function(item){
+                    item.StockDate = moment(item.StockDate).format('DD/MM/YYYY');
+                });
 				q.resolve(result);
 			}, function (error) {
 				q.reject(error);
@@ -74,7 +80,10 @@
 			var url = String.format('{0}/output/items', this.api);
 			
 			var q = $q.defer();
-			this.getData(url).then(function (result) {				
+			this.getData(url).then(function (result) {
+				angular.forEach(result, function(item){
+                    item.StockDate = moment(item.StockDate).format('DD/MM/YYYY');
+                });
 				q.resolve(result);
 			}, function (error) {
 				q.reject(error);

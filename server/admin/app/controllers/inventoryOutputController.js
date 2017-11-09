@@ -2,15 +2,18 @@
 	'use strict';
 	app.controller('inventoryOutputController', inventoryOutputController);
 	inventoryOutputController.$inject = ['$scope', '$q', '$state', '$stateParams', 'inventoryService'];
+	
 	function inventoryOutputController($scope, $q, $state, $stateParams, inventoryService) {
-		// models		
+		/* model */
+		$scope.messageSuccess = [];
+		$scope.messageError = [];
 		
-		// functions
+		/* functions */
 		function activate() {
 			inventoryService.getStockOut().then(function(result){
 				$scope.stocks = result;
 			}, function(error){
-				console.log(error);
+				$scope.messageError.push(error);
 			});
 		}			
 		

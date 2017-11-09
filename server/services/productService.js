@@ -1,6 +1,4 @@
-const Q = require('q');
 const _ = require('lodash');
-const dbHelper = require('../lib/dbHelper');
 const dbContext = require('../lib/dbContext');
 
 // Constructor
@@ -47,30 +45,16 @@ Factory.prototype.getProductsByBrand = function (query) {
 	return dbContext.queryList(sql, { BrandId: query.BrandId });
 }
 
-Factory.prototype.createReview = function (ctx, review) {
-    var sqlCreateReview = dbHelper.prepareQueryCommand(
-        "INSERT INTO Review(Name, Rating, Comment, ProductId, Email, Author, Editor, Deleted)VALUES(?, ?, ?, ?, ?, ?, ?, 0)",
-        [review.Name, review.Rating, review.Comment, review.ProductId, review.Email, 'SYSTEM', 'SYSTEM']
-    );
+Factory.prototype.createReview = function (review) {
+    var sqlCreateReview = `
+        INSERT INTO Review(Name, Rating, Comment, ProductId, Email, Author, Editor)
+        VALUES(:Name, :Rating, :Comment, :ProductId, :Email, :Author, :Editor)
+    `;
 
-    var sqlUpdateProduct = dbHelper.prepareQueryCommand(
-        "UPDATE Product SET LatestReviewInfo = ? WHERE ProductId = ?",
-        [JSON.stringify(review), review.ProductId]
-    );
-
-    return Q.when()
-        .then(function () {
-            return ctx.beginTransaction();
-        }).then(function () {
-            return ctx.queryCommand(sqlCreateReview);
-        }).then(function () {
-            return ctx.queryCommand(sqlUpdateProduct);
-        }).then(function () {
-            return ctx.commitTransaction();
-        }).catch(function (error) {
-            ctx.rollbackTransaction();
-            throw error;
-        });
+    var sqlUpdateProduct = `
+        UPDATE Product SET LatestReviewInfo =:Comment WHERE ProductId =:ProductId 
+    `;
+    return true;
 }
 
 // Export

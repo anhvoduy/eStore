@@ -4,7 +4,7 @@
             <h3 class="panel-title">Output Goods</h3>
         </div>
         <div class="panel-body">
-            <p><a ui-sref="cashDetail({ cashId: null, formStatus: 1 })">Add new item</a></p>
+            <p><a ui-sref="inventoryOutputEdit({ stockKey: null })">Add new item</a></p>
             <div class="container" ng-cloak>
                 <div class="row row-table table-responsive">
                     <table class="table">
@@ -15,8 +15,7 @@
                                 <th>Stock Date</th>                    
                                 <th>Customer Name</th>                    
                                 <th>Currency</th>
-                                <th>Total Amount</th>
-                                <th>Display</th>
+                                <th>Total Amount</th>                                
                                 <th>Edit</th>
                             </tr>
                         </thead>
@@ -27,16 +26,19 @@
                                 <td>{{ stock.StockDate }}</td>
                                 <th>{{ stock.CustomerName }}</th>
                                 <td>{{ stock.Currency }}</td>
-                                <td>{{ stock.TotalAmount }}</td>                    
-                                <td><a ui-sref="stockInDetail({ stockId: stock.stockId })">Display</a></td>
-                                <td><a ui-sref="stockOutDetail({ stockId: stock.stockId })">Edit</a></td>
+                                <td>{{ stock.TotalAmount }}</td>
+                                <td><a ui-sref="inventoryOutputEdit({ stockKey: stock.StockKey })">Edit</a></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
                 <div class="row">
-                    <div class="row message-error" ng-show='(messageError.length > 0)'>{{ messageError }}</div>
-                    <div class="row message-success" ng-show='(messageSuccess.length > 0)'>{{ messageSuccess }}</div>
+                    <div class="message-error" ng-show='(messageError.length > 0)'>
+                        <span ng-repeat="msg in messageError">{{ msg }}</span>
+                    </div>
+                    <div class="message-success" ng-show='(messageSuccess.length > 0)'>
+                        <span ng-repeat="msg in messageSuccess">{{ msg }}</span>
+                    </div>
                 </div>
             </div>
         </div>

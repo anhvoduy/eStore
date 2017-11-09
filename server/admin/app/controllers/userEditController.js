@@ -1,8 +1,8 @@
 (function () {
     'use strict';    
-    app.controller('UserDetailController', UserDetailController);
-    UserDetailController.$inject = ['$stateParams', 'userService'];    
-	function UserDetailController($stateParams, userService) {
+    app.controller('userEditController', userEditController);
+    userEditController.$inject = ['$stateParams', 'userService'];    
+	function userEditController($stateParams, userService) {
 		// models		
 		var vm = this;
 		vm.userId = $stateParams.userID;

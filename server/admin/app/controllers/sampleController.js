@@ -1,9 +1,9 @@
 (function () {
 	'use strict';
-    app.controller('mainController', mainController);
-	mainController.$inject = ['$scope', '$rootScope'];
+    app.controller('sampleController', sampleController);
+	sampleController.$inject = ['$scope', '$rootScope'];
 	
-	function mainController($scope, $rootScope) {
+	function sampleController($scope, $rootScope) {
 		$scope.today = function () {
 			$scope.dt = new Date();
 		};

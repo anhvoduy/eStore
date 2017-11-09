@@ -46,36 +46,17 @@ app.config(function ($stateProvider) {
 			}
 		}
 	})
-	.state('productDetail', {
+	.state('productEdit', {
         url: "/product/:productId",
         parentState: 'product',
 		views: {
 			"view": {
-				templateUrl: "/app/views/productDetail.tpl.html",
-				controller: "productDetailController",
+				templateUrl: "/app/views/productEdit.tpl.html",
+				controller: "productEditController",
 				controllerAs: 'vm'
 			}
 		}
-	})
-	.state('inventory', {
-		url: "/inventory",
-		views: {
-			"view": {
-				templateUrl: "/app/views/inventory.tpl.html",
-				controller: "inventoryController"
-			}
-		}
-	})
-	.state('inventoryDetail', {
-        url: "/inventory/:inventoryId",
-        parentState: 'inventory',
-		views: {
-			"view": {
-				templateUrl: "/app/views/inventoryDetail.tpl.html",
-				controller: "inventoryDetailController"
-			}
-		}
-	})
+	})	
 	.state('reviewProduct', {
 		url: "/review/:productId",
 		views: {
@@ -96,13 +77,13 @@ app.config(function ($stateProvider) {
             }
         }
     })
-    .state('cashInDetail', {
-        url: "/cash/cashIn/:transactionId",
+    .state('cashInEdit', {
+        url: "/cash/cashIn/:transactionKey",
         parentState: 'cashIn',
         views: {
             "view": {
-                templateUrl: "/app/views/cashInDetail.tpl.html",
-                controller: "cashInDetailController",
+                templateUrl: "/app/views/cashInEdit.tpl.html",
+                controller: "cashInEditController",
                 controllerAs: 'vm'
             }
         }
@@ -117,13 +98,13 @@ app.config(function ($stateProvider) {
 			}
 		}
     })
-    .state('cashOutDetail', {
-        url: "/cash/cashOut/:transactionId",
+    .state('cashOutEdit', {
+        url: "/cash/cashOut/:transactionKey",
         parentState: 'cashOut',
         views: {
             "view": {
-                templateUrl: "/app/views/cashOutDetail.tpl.html",
-                controller: "cashOutDetailController",
+                templateUrl: "/app/views/cashOutEdit.tpl.html",
+                controller: "cashOutEditController",
                 controllerAs: 'vm'
             }
         }
@@ -137,7 +118,26 @@ app.config(function ($stateProvider) {
                 controllerAs: 'vm'
 			}
 		}
-	})	
+	})
+	.state('inventory', {
+		url: "/inventory",
+		views: {
+			"view": {
+				templateUrl: "/app/views/inventory.tpl.html",
+				controller: "inventoryController"
+			}
+		}
+	})
+	.state('inventoryEdit', {
+        url: "/inventory/:inventoryKey",
+        parentState: 'inventory',
+		views: {
+			"view": {
+				templateUrl: "/app/views/inventoryEdit.tpl.html",
+				controller: "inventoryEditController"
+			}
+		}
+	})
 	.state('inventoryInput', {
 		url: "/inventoryInput",
 		views: {
@@ -147,12 +147,13 @@ app.config(function ($stateProvider) {
 			}
 		}
 	})
-	.state('inventoryInputDetail', {
-		url: "/inventoryInputDetail",
+	.state('inventoryInputEdit', {
+		url: "/inventoryInput/:stockKey",
+		parentState: 'inventoryInput',
 		views: {
 			"view": {
-				templateUrl: "/app/views/inventoryInputDetail.tpl.html",
-				controller: "inventoryInputDetailController"
+				templateUrl: "/app/views/inventoryInputEdit.tpl.html",
+				controller: "inventoryInputEditController"
 			}
 		}
 	})
@@ -165,12 +166,13 @@ app.config(function ($stateProvider) {
 			}
 		}
 	})
-	.state('inventoryOutputDetail', {
-		url: "/inventoryOutputDetail",
+	.state('inventoryOutputEdit', {
+		url: "/inventoryOutput/:stockKey",
+		parentState: 'inventoryOutput',
 		views: {
 			"view": {
-				templateUrl: "/app/views/inventoryOutputDetail.tpl.html",
-				controller: "inventoryOutputDetailController"
+				templateUrl: "/app/views/inventoryOutputEdit.tpl.html",
+				controller: "inventoryOutputEditController"
 			}
 		}
 	})	
@@ -215,12 +217,12 @@ app.config(function ($stateProvider) {
 			}
 		}
 	})
-	.state('userDetail', {
+	.state('userEdit', {
 		url: '/user/:userID',
 		views: {
 			"view": {
-				templateUrl: "/app/views/userDetail.tpl.html",
-				controller: "UserDetailController",
+				templateUrl: "/app/views/userEdit.tpl.html",
+				controller: "userEditController",
 				controllerAs: 'vm'
 			}
 		}
@@ -264,8 +266,8 @@ app.config(function ($stateProvider) {
 		url: "/sample",
 		views: {
 			"view": {
-				templateUrl: "/app/views/main.tpl.html",
-				controller: "mainController",
+				templateUrl: "/app/views/sample.tpl.html",
+				controller: "sampleController",
 				controllerAs: 'vm'
 			}
 		}
