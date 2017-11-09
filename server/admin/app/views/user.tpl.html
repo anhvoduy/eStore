@@ -10,12 +10,13 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>User Id</th>
+                                <th>Id</th>
                                 <th>User Type</th>
                                 <th>User Name</th>
+                                <th>Display Name</th>
                                 <th>Email</th>
                                 <th>Birthday</th>
-                                <th>Display</th>                        
+                                <th>Edit</th>                        
                             </tr>
                         </thead>
                         <tbody>
@@ -23,9 +24,10 @@
                                 <td>{{ $index + 1 }}</td>
                                 <td>{{ user.UserType }}</td>
                                 <td>{{ user.UserName }}</td>
+                                <td>{{ user.DisplayName }}</td>
                                 <td>{{ user.Email }}</td>
                                 <td>{{ user.Birthday }}</td>
-                                <td><a ui-sref="userEdit({ UserId: user.UserId })">Display</a></td>                        
+                                <td><a ui-sref="userEdit({ UserId: user.UserId })">Edit</a></td>                        
                             </tr>
                         </tbody>
                     </table>

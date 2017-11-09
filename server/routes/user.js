@@ -4,7 +4,6 @@ const _ = require('lodash');
 const auth = require('../config/auth');
 const constant = require('../lib/constant');
 const dbContext = require('../lib/dbContext');
-const dbHelper = require('../lib/dbHelper');
 const userService = require('../services/userService');
 
 // Routers
