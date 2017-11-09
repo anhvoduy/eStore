@@ -71,22 +71,22 @@ dbContext.prototype.queryItem = function (sql, obj) {
     self.pool.query(querySql, function(error, results, fields){
         if (error){
             deferred.reject(error);
-        }        
-        deferred.resolve(results[0]);        
+        }
+        deferred.resolve(results[0]);
     });    
     return deferred.promise;
 }
 
-dbContext.prototype.queryList = function (sql, obj) {    
+dbContext.prototype.queryList = function (sql, obj) {
     var deferred = q.defer();
     var self = this;
-    var querySql = self.prepareSqlParameters(sql, obj);
+    var querySql = self.prepareSqlParameters(sql, obj); // query many items
     self.pool.query(querySql, function(error, results, fields){
         if (error){
             deferred.reject(error);
         }        
-        deferred.resolve(results);        
-    });    
+        deferred.resolve(results);
+    });
     return deferred.promise;
 }
 
@@ -98,8 +98,8 @@ dbContext.prototype.queryExecute  = function (sql, obj) {
         if (error){
             deferred.reject(error);
         }        
-        deferred.resolve(results);        
-    });    
+        deferred.resolve(results);
+    });
     return deferred.promise;
 }
 
@@ -114,6 +114,8 @@ dbContext.prototype.queryCommand = function (sql) {
 	return defer.promise;
 }
 
+
+// TO DO: need to test this function
 dbContext.prototype.beginTransaction = function () {
     var defer = q.defer();
 
@@ -128,6 +130,7 @@ dbContext.prototype.beginTransaction = function () {
     return defer.promise;
 }
 
+// TO DO: need to test this function
 dbContext.prototype.rollbackTransaction = function () {
     var defer = q.defer();
 
@@ -142,6 +145,7 @@ dbContext.prototype.rollbackTransaction = function () {
     return defer.promise;
 }
 
+// TO DO: need to test this function
 dbContext.prototype.commitTransaction = function () {
     var defer = q.defer();
 
