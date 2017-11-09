@@ -1,6 +1,4 @@
-const Q = require('q');
 const _ = require('lodash');
-const dbHelper = require('../lib/dbHelper');
 const dbContext = require('../lib/dbContext');
 
 // Constructor
@@ -12,24 +10,21 @@ Factory.prototype.getItems = function (query) {
 	return dbContext.queryList(sql, query);
 }
 
-Factory.prototype.getInventoryById = function (ctx, inventoryId) {
-    var sql = dbHelper.prepareQueryCommand('', []);
-    return ctx.queryCommand(sql);
+Factory.prototype.getInventoryById = function (query) {
+    let sql = `SELECT * FROM Inventory WHERE InventoryKey =:InventoryKey AND Deleted = 0`;
+	return dbContext.queryItem(sql, query);
 }
 
-Factory.prototype.createInventory = function (ctx, inventory) {
-    var sql = dbHelper.prepareQueryCommand('', []);
-	return ctx.queryCommand(sql);
+Factory.prototype.createInventory = function (inventory) {
+    return true;
 }
 
-Factory.prototype.updateInventory = function (ctx, inventory) {
-    var sql = dbHelper.prepareQueryCommand('', []);
-	return ctx.queryCommand(sql);
+Factory.prototype.updateInventory = function (inventory) {
+    return true;
 }
 
-Factory.prototype.deleteInventory = function (ctx, inventoryId) {
-    var sql = dbHelper.prepareQueryCommand('', []);
-	return ctx.queryCommand(sql);
+Factory.prototype.deleteInventory = function (inventoryId) {
+    return true;
 }
 
 // Export

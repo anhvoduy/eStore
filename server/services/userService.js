@@ -1,6 +1,4 @@
-﻿const Q = require('q');
-const _ = require('lodash');
-const dbHelper = require('../lib/dbHelper'); // TO DO: remove
+﻿const _ = require('lodash');
 const dbContext = require('../lib/dbContext');
 
 // Constructor
@@ -71,6 +69,11 @@ Factory.prototype.getUserByEmail = function (email) {
 Factory.prototype.authenticate = function (username, password) {
     return (username === 'admin' && password === '@dmin');
 }
+
+
+
+
+
 
 Factory.prototype.getMenu = function () {
 	var navigation = [
