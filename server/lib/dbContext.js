@@ -1,4 +1,4 @@
-var q = require('q');
+var Q = require('q');
 var _ = require('lodash');
 var mysql = require('mysql');
 var config = require('../config/config');
@@ -14,7 +14,7 @@ var pool = mysql.createPool({
 });
 
 var getConnection = function () {
-	var defer = q.defer();
+	var defer = Q.defer();
 	pool.getConnection(function (err, con) {
 		if (err) defer.reject(err);
 		else defer.resolve(new dbContext(con));
@@ -37,7 +37,7 @@ var dbContext = function() {
 }
 
 dbContext.prototype.getConnection = function () {
-    var defer = q.defer();
+    var defer = Q.defer();
     var self = this;
 	self.pool.getConnection(function (err, connection) {
 		if (err) defer.reject(err);
@@ -65,7 +65,7 @@ dbContext.prototype.prepareSqlParameters = function(query, values){
 
 dbContext.prototype.queryItem = function (sql, obj) {
     var self = this;
-    var deferred = q.defer();    
+    var deferred = Q.defer();    
     sql = `SELECT TMP.*  FROM (${sql}) TMP LIMIT 1`; // query one item
     var querySql = self.prepareSqlParameters(sql, obj);
     self.pool.query(querySql, function(error, results, fields){
@@ -78,7 +78,7 @@ dbContext.prototype.queryItem = function (sql, obj) {
 }
 
 dbContext.prototype.queryList = function (sql, obj) {
-    var deferred = q.defer();
+    var deferred = Q.defer();
     var self = this;
     var querySql = self.prepareSqlParameters(sql, obj); // query many items
     self.pool.query(querySql, function(error, results, fields){
@@ -92,7 +92,7 @@ dbContext.prototype.queryList = function (sql, obj) {
 
 dbContext.prototype.queryExecute  = function (sql, obj) {
     var self = this;
-    var deferred = q.defer();
+    var deferred = Q.defer();
     var querySql = self.prepareSqlParameters(sql, obj);
     self.pool.query(querySql, function(error, results, fields){
         if (error){
@@ -106,7 +106,7 @@ dbContext.prototype.queryExecute  = function (sql, obj) {
 
 // TO DO: deprecated this function
 dbContext.prototype.queryCommand = function (sql) {
-	var defer = q.defer();
+	var defer = Q.defer();
 	this.connection.query(sql, function (error, rows) {
 		if (error) defer.reject(error);
 		else defer.resolve(rows);		
@@ -117,7 +117,7 @@ dbContext.prototype.queryCommand = function (sql) {
 
 // TO DO: need to test this function
 dbContext.prototype.beginTransaction = function () {
-    var defer = q.defer();
+    var defer = Q.defer();
 
 	if (this.connection == null || this.connection == undefined)
 		throw errorHelper.Error_Connection;
@@ -132,7 +132,7 @@ dbContext.prototype.beginTransaction = function () {
 
 // TO DO: need to test this function
 dbContext.prototype.rollbackTransaction = function () {
-    var defer = q.defer();
+    var defer = Q.defer();
 
     if (this.connection == null || this.connection == undefined)
         throw errorHelper.Error_Connection;
@@ -147,7 +147,7 @@ dbContext.prototype.rollbackTransaction = function () {
 
 // TO DO: need to test this function
 dbContext.prototype.commitTransaction = function () {
-    var defer = q.defer();
+    var defer = Q.defer();
 
 	if (this.connection == null || this.connection == undefined)
 		throw errorHelper.Error_Connection;

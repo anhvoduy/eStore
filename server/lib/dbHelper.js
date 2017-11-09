@@ -1,4 +1,6 @@
-﻿// Dependencies
+﻿// TO DO: deprecated & delete this file
+
+// Dependencies
 const mysql = require('mysql');
 
 // Constructor

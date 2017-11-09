@@ -1,7 +1,6 @@
 // Dependencies
 var express = require('express');
 var router = express.Router();
-var q = require('q');
 var auth = require('../config/auth');
 var constant = require('../lib/constant');
 var dbContext = require('../lib/dbContext');
