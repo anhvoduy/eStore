@@ -1,11 +1,11 @@
 (function () {
     'use strict';
-    app.controller('cashInDetailController', cashInDetailController);
-    cashInDetailController.$inject = ['cashService', '$state', '$stateParams'];
-    function cashInDetailController(cashService, $state, $stateParams) {
+    app.controller('cashOutEditController', cashOutEditController);
+    cashOutEditController.$inject = ['cashService', '$state', '$stateParams'];
+    function cashOutEditController(cashService, $state, $stateParams) {
         // models		
         var vm = this;
-		vm.transactionId = $stateParams.transactionID;
+        vm.transactionId = $stateParams.transactionID;
 		vm.save = save;
 		vm.cancel = cancel;
 
@@ -25,10 +25,10 @@
             });
 		};
 		
-		function save() {
-			cashService.updateCash(vm.transaction).then(function (result) {
+		function save() {			
+			cashService.updateCash(vm.transaction).then(function (result) { 
 				console.log('save() ....');
-			}, function (error) {
+			}, function (error) { 
 				console.log(error);
 			});
 		}
