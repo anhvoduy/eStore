@@ -1,39 +1,27 @@
 (function (){
     'use strict';
-	app.controller('brandDetailController', brandDetailController);
-	brandDetailController.$inject = ['$scope', '$state', '$stateParams', '$timeout', 'appCommon', 'brandService', 'productService'];
+	app.controller('brandEditController', brandEditController);
+	brandEditController.$inject = ['$scope', '$state', '$stateParams', '$timeout', 'appCommon', 'brandService', 'productService'];
 
-	function brandDetailController($scope, $state, $stateParams, $timeout, appCommon, brandService, productService) {
+	function brandEditController($scope, $state, $stateParams, $timeout, appCommon, brandService, productService) {
 		/* models */
-		$scope.brandKey = $stateParams.brandKey;		
-		$scope.formStatus = appCommon.isUndefined($scope.brandKey)
-			? appCommon.formStatus.isNew
-			: $stateParams.formStatus;
-
+		$scope.brandKey = $stateParams.brandKey;
+		$scope.formStatus = angular.isUndefined($scope.brandKey) ? appCommon.formStatus.isNew : appCommon.formStatus.isEdit;
+		$scope.formTitle = appCommon.setFormTitle($scope.formStatus);
+				
 		$scope.disabledButton = false;
 		$scope.messageSuccess = [];
-		$scope.messageError = [];		
+		$scope.messageError = [];
 		
-		/* functions */
-		function setFormTitle(){
-			if($scope.formStatus === appCommon.formStatus.isNew) 
-				return 'Create Brand';
-			else if ($scope.formStatus === appCommon.formStatus.isEdit) 
-				return 'Edit Brand';
-			else 
-				return 'Display Brand';
-		};
-
+		/* functions */		
 		function activate() {
-			$scope.formTitle = setFormTitle();
-
 			brandService.getBrandByKey($scope.brandKey).then(function (result) {
 				$scope.brand = result;
 				if (angular.isUndefined($scope.brand)) {
-					$scope.messageError = String.format('The brand is not found');					
+					$scope.messageError = String.format('The brand is not found');
 				}
 			}, function (error) {
-				$scope.messageError.push(error);				
+				$scope.messageError.push(error);
 			});
 			
 			// productService.getProductByBrand($scope.brandId).then(function (result) {

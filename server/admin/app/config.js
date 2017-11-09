@@ -31,8 +31,8 @@ app.config(function ($stateProvider) {
         parentState: 'brand',
 		views: {
 			'view': {
-				templateUrl: '/app/views/brandDetail.tpl.html',
-				controller: 'brandDetailController'
+				templateUrl: '/app/views/brandEdit.tpl.html',
+				controller: 'brandEditController'
 			}
 		}
 	})
