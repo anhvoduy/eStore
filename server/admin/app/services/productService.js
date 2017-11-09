@@ -37,21 +37,25 @@
             return q.promise;
         }
         
-        productService.prototype.getProductByBrand = function (brandId) {
-            var url = String.format('{0}/itemsbrand/{1}', this.api, brandId);
+        productService.prototype.getProductByBrand = function (brandKey) {
+            var url = String.format('{0}/brand/items', this.api);
+            var params = {
+                BrandKey: brandKey
+            }
             
             var q = $q.defer();
-            this.getData(url).then(function (result) {
+            this.getData(url, params).then(function (result) {
 				// extend models
 				angular.forEach(result, function (item) {
-					if (item.LatestReviewInfo != undefined && item.LatestReviewInfo.length > 0) {
-						var reviewInfo = JSON.parse(item.LatestReviewInfo);
-						item.Review = {};
-						item.Review.UserName = reviewInfo.UserName;
-						item.Review.Email = reviewInfo.Email;
-						item.Review.Rating = reviewInfo.Rating;
-						item.Review.Comment = reviewInfo.Comment;
-					}
+                    item.Created = moment(item.Created).format('DD/MM/YYYY');
+					// if (item.LatestReviewInfo != undefined && item.LatestReviewInfo.length > 0) {
+					// 	var reviewInfo = JSON.parse(item.LatestReviewInfo);
+					// 	item.Review = {};
+					// 	item.Review.UserName = reviewInfo.UserName;
+					// 	item.Review.Email = reviewInfo.Email;
+					// 	item.Review.Rating = reviewInfo.Rating;
+					// 	item.Review.Comment = reviewInfo.Comment;
+					// }
 				});
 				q.resolve(result);
             }, function (error) {

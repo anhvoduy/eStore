@@ -8,9 +8,9 @@ const Factory = function(){
 
 Factory.prototype.getBrands = function (query) {
 	let sql = `
-		SELECT BrandId, BrandName, Description 
-		FROM Brand 
-		WHERE Deleted <> 1 
+		SELECT BrandId, BrandKey, BrandName, Description
+		FROM Brand
+		WHERE Deleted <> 1
 		ORDER BY BrandId DESC
 	`;
 	return dbContext.queryList(sql, query);
@@ -18,9 +18,18 @@ Factory.prototype.getBrands = function (query) {
 
 Factory.prototype.getBrandById = function (query) {
 	let sql = `
-		SELECT BrandId, BrandName, Description 
+		SELECT BrandId, BrandKey, BrandName, Description
 		FROM Brand 
 		WHERE BrandId=:BrandId AND Deleted <> 1		
+	`;
+	return dbContext.queryItem(sql, query);
+}
+
+Factory.prototype.getBrandByKey = function (query) {
+	let sql = `
+		SELECT BrandId, BrandKey, BrandName, Description
+		FROM Brand 
+		WHERE BrandKey=:BrandKey AND Deleted <> 1		
 	`;
 	return dbContext.queryItem(sql, query);
 }
