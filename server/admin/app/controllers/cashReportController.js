@@ -5,9 +5,8 @@
 	function cashReportController(reportService) {
 		// models
 		var vm = this;
-		vm.messageError = '';
-		vm.messageSuccess = '';
-
+		vm.messageSuccess = [];
+		vm.messageError = [];
 		vm.currentDate = new Date();
 		vm.query = {
 			FromDate: new Date(vm.currentDate.getFullYear(), vm.currentDate.getMonth(), 1),
@@ -19,10 +18,11 @@
 		};
 
 		vm.queryReport = function(query){			
-			reportService.getCashReport(query.FromDate, query.ToDate).then(function(data){
-				vm.transactions = data
+			reportService.getCashReport(query.FromDate, query.ToDate)
+			.then(function(data){
+				vm.stocks = data
 			}, function(err){
-				console.log(err);
+				vm.messageError.push(err);
 			});
 		};
 		

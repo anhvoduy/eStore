@@ -11,7 +11,7 @@
         
         // methods
         cashService.prototype.getCashIn = function () {
-            var url = String.format('{0}/cashin', this.api);
+            var url = String.format('{0}/cashin/items', this.api);
 
             var q = $q.defer();
             this.getData(url).then(function (result) {
@@ -26,7 +26,7 @@
         }
         
         cashService.prototype.getCashOut = function () {
-            var url = String.format('{0}/cashout', this.api);
+            var url = String.format('{0}/cashout/items', this.api);
 
             var q = $q.defer();
             this.getData(url).then(function (result) {

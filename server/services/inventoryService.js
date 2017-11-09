@@ -7,9 +7,9 @@ const dbContext = require('../lib/dbContext');
 const Factory = function () { 
 }
 
-Factory.prototype.getItems = function (ctx) {
+Factory.prototype.getItems = function (query) {
 	let sql = `SELECT * FROM Inventory WHERE Deleted = 0`;
-	return ctx.queryCommand(sql);
+	return dbContext.queryList(sql, query);
 }
 
 Factory.prototype.getInventoryById = function (ctx, inventoryId) {

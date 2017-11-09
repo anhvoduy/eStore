@@ -14,24 +14,25 @@ router.get('/items', async function (req, res, next) {
     try
     {
         let query = req.query;
-        let transactions = await transactionService.getTransactions()
-        res.status(200).json(transactions);
+        //let transactions = await transactionService.getTransactions(query);
+        res.status(200).json(true);
     }
     catch(err){
         next(err);
     }
 });
 
-router.get('/item', function (req, res, next) {
+router.get('/item', async function (req, res, next) {
     try
     {
         let query = req.query;
-        let transactions = await transactionService.getTransactionById(query)
-        if (transactions.length == 0) {
-            res.status(404).json(errorHelper.Error_Not_Exist_TransactionId);
-        } else {
-            res.status(200).json(transactions[0]);
-        }        
+        // let transactions = await transactionService.getTransactionById(query)
+        // if (transactions.length == 0) {
+        //     res.status(404).json(errorHelper.Error_Not_Exist_TransactionId);
+        // } else {
+        //     res.status(200).json(transactions[0]);
+        // }
+        res.status(200).json(true);
     }
     catch(err){
         next(err);

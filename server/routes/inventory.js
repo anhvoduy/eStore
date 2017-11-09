@@ -1,4 +1,5 @@
 var router = require('express').Router();
+var Q = require('q');
 var _ = require('lodash');
 var auth = require('../config/auth');
 var constant = require('../lib/constant');
@@ -7,28 +8,27 @@ var errorHelper = require('../lib/errorHelper');
 var inventoryService = require('../services/inventoryService');
 var stockService = require('../services/stockService');
 
-
-router.get('/items', Q.async(function* (req, res, next) {
-    var ctx;
-    try{
-        ctx = yield dbContext.getConnection();
-        var inventories = yield inventoryService.getItems(ctx);
+// Routes
+router.get('/items', async function(req, res, next) {
+    try
+    {
+        var query = req.query;
+        var inventories = await inventoryService.getItems(query);
         res.status(200).json(inventories);
     }
     catch(err){
-        yield ctx.release();
-        next(error);        
+        next(error);
     }
-}));
+});
 
 router.get('/item', Q.async(function* (req, res, next) {
-    res.status(200).json(true);    
+    res.status(200).json(true);
 }));
 
 
 
 /* --- Input  ---*/
-router.get('/input/items', Q.async(function* (req, res, next) {    
+router.get('/input/items', Q.async(function* (req, res, next) {
     try
     {
         let query = _.pick(req.query, ['PageCurrent', 'PageSize']);
