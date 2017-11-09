@@ -1,49 +1,51 @@
 const Q = require('q');
 const _ = require('lodash');
-const dbHelper = require('../lib/dbHelper');
+const dbContext = require('../lib/dbContext');
 
 // Constructor
 const Factory = function () { 
 }
 
-Factory.prototype.getStockIn = function (ctx) {
+Factory.prototype.getStockIn = function (query) {
     let sql = `
 		SELECT * 
 		FROM Stock 
 		WHERE StockType IN ('STOCKIN','INPUT') AND Deleted = 0 
 		ORDER BY StockDate DESC;
-	`;
-    return ctx.queryCommand(sql);
+	`;	
+	return dbContext.queryList(sql);
 }
 
-Factory.prototype.getStockOut = function (ctx) {
+Factory.prototype.getStockOut = function (query) {
     let sql = `
 		SELECT * 
 		FROM Stock 
 		WHERE StockType IN ('STOCKOUT','OUTPUT') AND Deleted = 0 
 		ORDER BY StockDate DESC;
 	`;
-    return ctx.queryCommand(sql);
+    return dbContext.queryList(sql);
 }
 
-Factory.prototype.getStockById = function (ctx, stockId) {
-    let sql = dbHelper.prepareQueryCommand('', []);
-    return ctx.queryCommand(sql);
+Factory.prototype.getStockById = function (query) {
+	let sql = `
+		SELECT * 
+		FROM Stock
+		WHERE StockId =:StockId
+		ORDER BY StockDate DESC;
+	`;
+    return dbContext.queryItem(sql);
 }
 
-Factory.prototype.createStock = function (ctx, stock) {
-	let sql = dbHelper.prepareQueryCommand('', []);
-	return ctx.queryCommand(sql);
+Factory.prototype.createStock = function (stock) {
+	return true;
 }
 
 Factory.prototype.updateStock = function (ctx, stock) {
-	let sql = dbHelper.prepareQueryCommand('', []);
-	return ctx.queryCommand(sql);
+	return true;
 }
 
 Factory.prototype.deleteStock = function (ctx, stockId) {
-	let sql = dbHelper.prepareQueryCommand('', []);
-	return ctx.queryCommand(sql);
+	return true;
 }
 
 // Export

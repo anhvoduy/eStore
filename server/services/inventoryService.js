@@ -1,14 +1,15 @@
 const Q = require('q');
 const _ = require('lodash');
 const dbHelper = require('../lib/dbHelper');
+const dbContext = require('../lib/dbContext');
 
 // Constructor
 const Factory = function () { 
 }
 
-Factory.prototype.getItems = function (ctx) {
+Factory.prototype.getItems = function (query) {
 	let sql = `SELECT * FROM Inventory WHERE Deleted = 0`;
-	return ctx.queryCommand(sql);
+	return dbContext.queryList(sql, query);
 }
 
 Factory.prototype.getInventoryById = function (ctx, inventoryId) {

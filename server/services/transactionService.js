@@ -1,6 +1,7 @@
 const Q = require('q');
 const _ = require('lodash');
 const dbHelper = require('../lib/dbHelper');
+const dbContext = require('../lib/dbContext');
 
 // Constructor
 const Factory = function () { 
@@ -33,7 +34,7 @@ Factory.prototype.deleteTransaction = function (ctx, transaction) {
 }
 
 
-Factory.prototype.getTransactions = function (ctx, conditions) {
+Factory.prototype.getTransactions = function (query) {
     let sql = `
         SELECT TransactionId, TransactionNo, TransactionDate, TransactionType,
 	           Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount,
@@ -41,24 +42,23 @@ Factory.prototype.getTransactions = function (ctx, conditions) {
         FROM Transaction
         WHERE Deleted = 0
         ORDER BY TransactionId DESC
-        LIMIT 10;
+        LIMIT 10
     `;
-    return ctx.queryCommand(sql);
+    return dbContext.queryList(sql, query);
 }
 
-Factory.prototype.getTransactionById = function (ctx, transactionId) {
+Factory.prototype.getTransactionById = function (query) {
     let sql = `   
         SELECT  TransactionId, TransactionNo, TransactionDate, TransactionType,
 	            Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount,
                 CustomerId, CustomerName, InvoiceNo, InvoiceDate, InvoiceDesc
         FROM Transaction
-        WHERE TransactionId = ?;
+        WHERE TransactionId =:TransactionId
     `;
-    sql = dbHelper.prepareQueryCommand(sql, [transactionId]);
-    return ctx.queryCommand(sql);
+    return dbContext.queryItem(sql, query);
 }
 
-Factory.prototype.getCashIn = function (ctx) {
+Factory.prototype.getCashIn = function (query) {
     let sql = `
         SELECT TransactionId, TransactionNo, TransactionDate, TransactionType,
 	           Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount,
@@ -68,10 +68,10 @@ Factory.prototype.getCashIn = function (ctx) {
         ORDER BY TransactionId DESC
         LIMIT 10;
     `;
-    return ctx.queryCommand(sql);
+    return dbContext.queryList(sql);
 }
 
-Factory.prototype.getCashOut = function (ctx) {
+Factory.prototype.getCashOut = function (query) {
     let sql = `
         SELECT TransactionId, TransactionNo, TransactionDate, TransactionType,
 	           Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount,
@@ -81,7 +81,7 @@ Factory.prototype.getCashOut = function (ctx) {
         ORDER BY TransactionId DESC
         LIMIT 10;
     `;
-    return ctx.queryCommand(sql);
+    return dbContext.queryList(sql);
 }
 
 // Export

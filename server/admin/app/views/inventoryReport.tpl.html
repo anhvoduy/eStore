@@ -1,5 +1,76 @@
-﻿<div class="container" ng-cloak>
-    <div class="row">
-        <h2>Inventory Report</h2>
+﻿<div class="container">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Inventory Report</h3>
+            </div>
+            <div class="panel-body">
+                <div class="container" ng-cloak>
+                    <form name="formSearch" class="form form-horizontal">
+                        <div class="form-group">
+                            <label for="InventoryId" class="col-sm-3 control-label">Inventory:</label>
+                            <div class="col-sm-3">
+                                <select name="InventoryId"
+                                        class="form-control"
+                                        ng-model="vm.query.InventoryId"
+                                        ng-change="vm.changeSelectedInventory()"
+                                        ng-options="item.InventoryId as item.InventoryName for item in vm.inventories"/>
+                                </select>
+                            </div>
+                        </div>                
+                        
+                        <div class="form-group">
+                            <label for="FromDate" class="control-label col-sm-3">From Date:</label>
+                            <div class="col-sm-3">
+                                <ng-input-date name='FromDate' value='vm.query.FromDate' format='dd/MM/yyyy' required />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="ToDate" class="control-label col-sm-3">To Date:</label>
+                            <div class="col-sm-3">
+                                <ng-input-date name='ToDate' value='vm.query.ToDate' format='dd/MM/yyyy' required />
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="control-label col-sm-3"></label>
+                            <div class="col-sm-3">
+                                <input type="button" class="btn btn-primary" value="Search" ng-click="vm.queryReport(vm.query)" />
+                            </div>
+                        </div>                                      
+                    </form>
+                </div> 
+                <div class="container" ng-cloak>
+                    <div class="row row-table table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Transaction Id</th>
+                                    <th>Transaction No</th>
+                                    <th>Transaction Date</th>
+                                    <th>Currency</th>
+                                    <th>Debit Amount</th>
+                                    <th>Credit Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="cash in vm.transactions">
+                                    <td>{{ ($index + 1) }}</td>
+                                    <td>{{ cash.TransactionNo }}</td>
+                                    <td>{{ cash.TransactionDate }}</td>
+                                    <td>{{ cash.Currency }}</td>
+                                    <td>{{ cash.DebitAmount }}</td>
+                                    <td>{{ cash.CreditAmount }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="row">
+                        <div class="message-error" ng-show='(vm.messageError.length > 0)'>{{ vm.messageError }}</div>
+                        <div class="message-success" ng-show='(vm.messageSuccess.length > 0)'>{{ vm.messageSuccess }}</div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="panel-footer">ng-paginator</div> -->
+        </div>
     </div>
-</div>

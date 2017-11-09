@@ -1,22 +1,23 @@
 const Q = require('q');
 const _ = require('lodash');
 const dbHelper = require('../lib/dbHelper');
+const dbContext = require('../lib/dbContext');
 
 // Constructor
 const Factory = function () { 
 }
 
-Factory.prototype.getProducts = function (ctx, pageIndex) {	
-    var sql = dbHelper.prepareQueryCommand(`
+Factory.prototype.getProducts = function () {	
+    var sql = `
 		SELECT  P.ProductId, P.ProductName, P.Description, 
 		        P.BrandId, B.BrandName,
 		        P.Price, P.Colour, P.Created, P.Status, P.LatestReviewInfo 
 		FROM Product P INNER JOIN Brand B
         WHERE P.BrandId = B.BrandId
-        ORDER BY P.ProductId DESC 
-        LIMIT 1000
-    `, []);
-	return ctx.queryCommand(sql);
+        ORDER BY P.ProductId DESC
+        LIMIT 5000
+    `;
+	return dbContext.queryList(sql);
 }
 
 Factory.prototype.getProductById = function (ctx, productId) {

@@ -1,6 +1,6 @@
 ﻿var uuid = require('uuid');
 var http = require('http');
-var server = require('./config/server');
+var server = require('./server');
 var memoryMonitor = require('pubnub-rickshaw-memory');
 memoryMonitor.init({dev: true});
 

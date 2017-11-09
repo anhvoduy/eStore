@@ -1,12 +1,9 @@
-﻿// Dependencies
-var express = require('express');
-var router = express.Router();
+﻿var router = require('express').Router();
 var Q = require('q');
 var _ = require('lodash');
 var auth = require('../config/auth');
 var constant = require('../lib/constant');
 var dbContext = require('../lib/dbContext');
-var dbHelper = require('../lib/dbHelper');
 var errorHelper = require('../lib/errorHelper');
 var validator = require('../lib/validator');
 var productService = require('../services/productService');

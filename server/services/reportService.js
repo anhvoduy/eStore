@@ -1,12 +1,12 @@
 const Q = require('q');
 const _ = require('lodash');
-const dbHelper = require('../lib/dbHelper');
+const dbContext = require('../lib/dbContext');
 
 // Constructor
 const Factory = function () { 
 }
 
-Factory.prototype.reportCash = function (ctx, query) {
+Factory.prototype.reportCash = function (query) {
     var sql = `
         SELECT T.TransactionNo, T.TransactionDate, T.Currency,
             (CASE WHEN T.TransactionType = 'CASHIN' THEN TotalAmount ELSE 0 END) DebitAmount,
@@ -15,10 +15,10 @@ Factory.prototype.reportCash = function (ctx, query) {
         WHERE T.Deleted = 0
         ORDER BY T.TransactionDate DESC;
     `;
-    return ctx.queryCommand(sql);
+    return dbContext.queryList(sql, query);
 }
 
-Factory.prototype.reportInventory = function (ctx, query) {
+Factory.prototype.reportInventory = function (query) {
     var sql = `
         SELECT S.StockId AS StockNo, S.StockDate,	
             SD.ProductId, SD.ProductName,             
@@ -31,7 +31,7 @@ Factory.prototype.reportInventory = function (ctx, query) {
         WHERE S.Deleted = 0
         ORDER BY S.StockDate DESC;
     `;
-    return ctx.queryCommand(sql);
+    return dbContext.queryList(sql, query);
 }
 
 Factory.prototype.reportAccount = function (query) {

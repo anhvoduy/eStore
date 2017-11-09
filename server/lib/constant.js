@@ -14,49 +14,56 @@
 */
 
 // Constructor
-var constant = function () { 
+var CONSTANT = function () { 
 }
 
-constant.transactionType = {
+CONSTANT.TRANSACTIONTYPE = {
 	CASHIN: 'CASHIN',
 	CASHOUT: 'CASHOUT',
 	STOCKIN: 'STOCKIN',
 	STOCKOUT: 'STOCKOUT',
-	JOURNAL: 'JOURNAL',
+	JOURNAL: 'JOURNAL'
+};
+
+CONSTANT.STATUS = {
+	DELETED: 1,
+	ACTIVE: 2,
+	PENDING: 3,
+	INACTIVE: 4
 };
 
 // Success Lists
-constant.Success_Authentication = { code: 'SUCCESS_AUTHENTICATION', message: 'Authentication is success.' };
-constant.Success_Login = { code: 'SUCCESS_LOGIN', message: 'Login is success.' };
-constant.Success_Logout = { code: 'SUCCESS_LOGOUT', message: 'Logout is success.' };
+CONSTANT.Success_Authentication = { code: 'SUCCESS_AUTHENTICATION', message: 'Authentication is success.' };
+CONSTANT.Success_Login = { code: 'SUCCESS_LOGIN', message: 'Login is success.' };
+CONSTANT.Success_Logout = { code: 'SUCCESS_LOGOUT', message: 'Logout is success.' };
 
-constant.Success_Account_Create = { code: 'SUCCESS_ACCOUNT_CREATE', message: 'Create Account is success.' };
-constant.Success_Account_Update = { code: 'SUCCESS_ACCOUNT_UPDATE', message: 'Update Account is success.' };
-constant.Success_Account_Delete = { code: 'SUCCESS_ACCOUNT_DELETE', message: 'Delete Account is success.' };
+CONSTANT.Success_Account_Create = { code: 'SUCCESS_ACCOUNT_CREATE', message: 'Create Account is success.' };
+CONSTANT.Success_Account_Update = { code: 'SUCCESS_ACCOUNT_UPDATE', message: 'Update Account is success.' };
+CONSTANT.Success_Account_Delete = { code: 'SUCCESS_ACCOUNT_DELETE', message: 'Delete Account is success.' };
 
-constant.Success_Cash_Create = { code: 'SUCCESS_CASH_CREATE', message: 'Create Cash is success.' };
-constant.Success_Cash_Update = { code: 'SUCCESS_CASH_UPDATE', message: 'Update Cash is success.' };
-constant.Success_Cash_Delete = { code: 'SUCCESS_CASH_DELETE', message: 'Delete Cash is success.' };
+CONSTANT.Success_Cash_Create = { code: 'SUCCESS_CASH_CREATE', message: 'Create Cash is success.' };
+CONSTANT.Success_Cash_Update = { code: 'SUCCESS_CASH_UPDATE', message: 'Update Cash is success.' };
+CONSTANT.Success_Cash_Delete = { code: 'SUCCESS_CASH_DELETE', message: 'Delete Cash is success.' };
 
-constant.Success_StockIn_Create = { code: 'SUCCESS_STOCKIN_CREATE', message: 'Create StockIn is success.' };
-constant.Success_StockIn_Update = { code: 'SUCCESS_STOCKIN_UPDATE', message: 'Update StockIn is success.' };
-constant.Success_StockIn_Delete = { code: 'SUCCESS_STOCKIN_DELETE', message: 'Delete StockIn is success.' };
+CONSTANT.Success_StockIn_Create = { code: 'SUCCESS_STOCKIN_CREATE', message: 'Create StockIn is success.' };
+CONSTANT.Success_StockIn_Update = { code: 'SUCCESS_STOCKIN_UPDATE', message: 'Update StockIn is success.' };
+CONSTANT.Success_StockIn_Delete = { code: 'SUCCESS_STOCKIN_DELETE', message: 'Delete StockIn is success.' };
 
-constant.Success_StockOut_Create = { code: 'SUCCESS_STOCKOUT_CREATE', message: 'Create StockOut is success.' };
-constant.Success_StockOut_Update = { code: 'SUCCESS_STOCKOUT_UPDATE', message: 'Update StockOut is success.' };
-constant.Success_StockOut_Delete = { code: 'SUCCESS_STOCKOUT_DELETE', message: 'Delete StockOut is success.' };
+CONSTANT.Success_StockOut_Create = { code: 'SUCCESS_STOCKOUT_CREATE', message: 'Create StockOut is success.' };
+CONSTANT.Success_StockOut_Update = { code: 'SUCCESS_STOCKOUT_UPDATE', message: 'Update StockOut is success.' };
+CONSTANT.Success_StockOut_Delete = { code: 'SUCCESS_STOCKOUT_DELETE', message: 'Delete StockOut is success.' };
 
-constant.Success_Brand_Create = { code: 'SUCCESS_BRAND_CREATE', message: 'Create Brand is success.' };
-constant.Success_Brand_Update = { code: 'SUCCESS_BRAND_UPDATE', message: 'Update Brand is success.' };
-constant.Success_Brand_Delete = { code: 'SUCCESS_BRAND_DELETE', message: 'Delete Brand is success.' };
+CONSTANT.Success_Brand_Create = { code: 'SUCCESS_BRAND_CREATE', message: 'Create Brand is success.' };
+CONSTANT.Success_Brand_Update = { code: 'SUCCESS_BRAND_UPDATE', message: 'Update Brand is success.' };
+CONSTANT.Success_Brand_Delete = { code: 'SUCCESS_BRAND_DELETE', message: 'Delete Brand is success.' };
 
-constant.Success_Product_Create = { code: 'SUCCESS_PRODUCT_CREATE', message: 'Create Product is success.' };
-constant.Success_Product_Update = { code: 'SUCCESS_PRODUCT_UPDATE', message: 'Update Product is success.' };
-constant.Success_Product_Delete = { code: 'SUCCESS_PRODUCT_DELETE', message: 'Delete Product is success.' };
+CONSTANT.Success_Product_Create = { code: 'SUCCESS_PRODUCT_CREATE', message: 'Create Product is success.' };
+CONSTANT.Success_Product_Update = { code: 'SUCCESS_PRODUCT_UPDATE', message: 'Update Product is success.' };
+CONSTANT.Success_Product_Delete = { code: 'SUCCESS_PRODUCT_DELETE', message: 'Delete Product is success.' };
 
-constant.Success_User_Create = { code: 'SUCCESS_USER_CREATE', message: 'Create User is success.' };
-constant.Success_User_Update = { code: 'SUCCESS_USER_UPDATE', message: 'Update User is success.' };
-constant.Success_User_Delete = { code: 'SUCCESS_USER_DELETE', message: 'Delete User is success.' };
+CONSTANT.Success_User_Create = { code: 'SUCCESS_USER_CREATE', message: 'Create User is success.' };
+CONSTANT.Success_User_Update = { code: 'SUCCESS_USER_UPDATE', message: 'Update User is success.' };
+CONSTANT.Success_User_Delete = { code: 'SUCCESS_USER_DELETE', message: 'Delete User is success.' };
 
 // Export
-module.exports = constant;
+module.exports = CONSTANT;
