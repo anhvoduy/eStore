@@ -9,6 +9,7 @@ var errorHelper = require('../lib/errorHelper');
 var inventoryService = require('../services/inventoryService');
 var stockService = require('../services/stockService');
 
+
 router.get('/items', Q.async(function* (req, res, next) {
     var ctx;
     try{
@@ -26,6 +27,9 @@ router.get('/item', Q.async(function* (req, res, next) {
     res.status(200).json(true);    
 }));
 
+
+
+/* --- Input  ---*/
 router.get('/input/items', Q.async(function* (req, res, next) {    
     try
     {
@@ -42,7 +46,7 @@ router.get('/input/item', function (req, res, next) {
     res.status(200).json(true);
 });
 
-router.get('/input/create', function (req, res, next) {
+router.post('/input/create', function (req, res, next) {
     res.status(200).json(true);
 });
 
@@ -50,12 +54,13 @@ router.post('/input/update', function (req, res, next) {
     res.status(200).json(true);
 });
 
-router.put('/input/delete', function (req, res, next) {
+router.post('/input/delete', function (req, res, next) {
     res.status(200).json(true);
 });
 
 
 
+/* --- Output  ---*/
 router.get('/output/items', Q.async(function* (req, res, next) {
     try
     {
@@ -72,18 +77,18 @@ router.get('/output/item', function (req, res, next) {
     res.status(200).json(true);
 });
 
-router.get('/output/create', function (req, res, next) {
+router.post('/output/create', function (req, res, next) {
     res.status(200).json(true);
 });
 
-router.get('/output/update', function (req, res, next) {
+router.post('/output/update', function (req, res, next) {
     res.status(200).json(true);
 });
 
-router.get('/output/delete', function (req, res, next) {
+router.post('/output/delete', function (req, res, next) {
     res.status(200).json(true);
 });
 
 
-// return Router
+// Export
 module.exports = router;
