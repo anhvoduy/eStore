@@ -6,6 +6,7 @@ var dbContext = require('../lib/dbContext');
 var errorHelper = require('../lib/errorHelper');
 var brandService = require('../services/brandService');
 
+
 // Router
 router.get('/items', async function (req, res, next) {
 	try
@@ -28,45 +29,30 @@ router.get('/item', async function (req, res, next) {
 		if (brands.length == 0) 
 			res.status(404).json(errorHelper.Error_Not_Exist_BrandId);
 		else 
-			res.status(200).json(brands[0]);				
+			res.status(200).json(brands[0]);
 	}
 	catch(err){
 		next(err);
 	}	
 });
 
-router.post('/create', auth.checkAuthentication(), function (req, res, next) {
-	// create brand
+router.post('/create', auth.checkAuthentication(), function (req, res, next) {	
+	res.status(200).json(true);
 });
 
-router.put('/update', auth.checkAuthentication(), function (req, res, next) {
-    // validate data at server side
+router.put('/update', auth.checkAuthentication(), function (req, res, next) {    
     var brand = {
         BrandId: req.body.BrandId,
         Name: req.body.Name,
         Description: req.body.Description
     };
-    
-	var ctx = {};
-	dbContext.getConnection().then(function (result) {
-		ctx = result;
-		return ctx.beginTransaction();
-	}).then(function () {
-		return brandService.updateBrand(ctx, brand);
-	}).then(function () {
-		return ctx.commitTransaction();
-	}).then(function () {
-        res.status(200).json({ code: 'UPDATE_BRAND_SUCCESS', message: "Update Brand is success." });
-	}).catch(function (err) {
-		ctx.rollbackTransaction();
-        next(err);
-	})
-	.done();
+	res.status(200).json({ code: 'UPDATE_BRAND_SUCCESS', message: "Update Brand is success." });		
 });
 
 router.delete('/delete', auth.checkAuthentication(), function (req, res, next) {
-	// create brand
+	res.status(200).json(true);
 });
 
-// return Router
+
+// Export
 module.exports = router;
