@@ -9,12 +9,24 @@
         appCommon.prototype = new appCommon();
         appCommon.prototype.constructor = appCommon;
 
-        // constant
+
+        // properties
         appCommon.prototype.formStatus = {
             isNew: 1,
             isEdit: 2
         };
 
+        appCommon.prototype.defaultPagination = {
+            hitsTotal: 100,
+            pageTotal: 10,
+			pageCurrent: 1,
+			pageSize: 10,
+			maxSize: 5,
+			lstPageSize: [10, 50, 100]
+        };
+        
+        
+        // functions
         appCommon.prototype.setFormTitle = function(formStatus, title) {
             if(Number(formStatus) === this.formStatus.isNew)
                 return String.format('Create {0}', title);
@@ -22,9 +34,8 @@
                 return String.format('Edit {0}', title);
             else
                 return 'Undefined';
-        };
+        };        
         
-        // functions
         appCommon.prototype.isUndefined = function(value){
             if(value === undefined || value === null)
                 return true;
@@ -32,11 +43,11 @@
                 return true;
             else
                 return false;
-        }
+        };                
 
         // export
         return new appCommon;
-    };        
+    };
 })();
 
 // override string object
