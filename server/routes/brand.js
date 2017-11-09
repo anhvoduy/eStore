@@ -7,53 +7,32 @@ var errorHelper = require('../lib/errorHelper');
 var brandService = require('../services/brandService');
 
 // Router
-router.get('/items', function (req, res, next) {
-	var brands;
-	var ctx;
-
-	Q.when()
-	.then(function(){
-		return dbContext.getConnection().then(function(connection){
-			ctx = connection;
-		});
-	})
-	.then(function(){		
-		return brandService.getBrands(ctx).then(function(data){
-			brands = data;
-		});
-	})
-	.then(function(){		
+router.get('/items', async function (req, res, next) {
+	try
+	{
+		let query = req.query;
+		let brands = await brandService.getBrands();
 		return res.status(200).json(brands);
-	})
-	.catch(function(err){
-		ctx.rollbackTransaction();
+	}
+	catch(err){
 		next(err);
-	})
-	.done();
+	}	
 });
 
-router.get('/items/:id', function (req, res, next) {
-	var brandId = req.params.id;
-	var ctx = {};
+router.get('/item', async function (req, res, next) {
+	try
+	{
+		var brandId = req.params.id;
+		let brands = await brandService.getBrandById(brandId);
 
-	Q.when()
-	.then(function () {
-		return dbContext.getConnection().then(function(connection){
-			ctx = connection;
-		});
-	}).then(function () {
-		return brandService.getBrandById(ctx, brandId);
-	}).then(function (brands) {
-		if (brands.length == 0) {
+		if (brands.length == 0) 
 			res.status(404).json(errorHelper.Error_Not_Exist_BrandId);
-		} else {
-			res.status(200).json(brands[0]);
-		}
-	}).catch(function (err) {
-		ctx.rollbackTransaction();
+		else 
+			res.status(200).json(brands[0]);				
+	}
+	catch(err){
 		next(err);
-	})
-	.done();
+	}	
 });
 
 router.post('/create', auth.checkAuthentication(), function (req, res, next) {
