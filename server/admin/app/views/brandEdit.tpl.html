@@ -27,7 +27,7 @@
                 <div class="form-group">
                     <div class='control-label col-sm-8 message-error' ng-show='(messageError.length > 0)'>{{ messageError }}</div>                    
                     <div class='control-label col-sm-8 message-success' ng-show='(messageSuccess.length > 0)'>{{ messageSuccess }}</div>
-                </div>               
+                </div>
             </form>
         </div>
         <div class="panel-footer">
@@ -35,4 +35,41 @@
             <input type="button" class="btn btn-danger" value="Cancel" ng-click="cancel()"/>
         </div>
     </div>
+</div>
+
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Products</h3>
+        </div>
+        <div class="panel-body">            
+            <div class="container" ng-cloak>
+                <div class="row row-table">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Id</th>                                
+                                <th>Product Name</th>
+                                <th>Description</th>
+                                <th>Price</th>
+                                <th>Color</th>
+                                <th>Last Review</th>                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="p in products">
+                                <td>{{ $index + 1 }}</td>
+                                <td>{{ p.ProductName }}</td>
+                                <td>{{ p.Description }}</td>
+                                <td>{{ p.Price }}</td>
+                                <td>{{ p.Colour }}</td>
+                                <td>{{ p.LatestReviewInfo }}</td>                                
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>                
+            </div>
+        </div>
+        <!-- <div class="panel-footer">ng-paginator</div> -->
+    </div>    
 </div>

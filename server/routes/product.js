@@ -1,11 +1,10 @@
-// Dependencies
-const express = require('express');
-const router = express.Router();
-const q = require('q');
+const router = require('express').Router();
+const _ = require('lodash');
 const auth = require('../config/auth');
 const constant = require('../lib/constant');
 const dbContext = require('../lib/dbContext');
 const errorHelper = require('../lib/errorHelper');
+const brandService = require('../services/brandService');
 const productService = require('../services/productService');
 
 // Router
@@ -42,21 +41,18 @@ router.get('/item', auth.checkAuthentication(), function (req, res, next) {
 	});
 });
 
-// router.get('/items/:id', auth.checkAuthentication(), function (req, res, next) {
-// 	var brandId = req.params.id;
-	
-// 	var ctx = {};
-// 	dbContext.getConnection().then(function (result) {
-// 		ctx = result;
-// 		return productService.getProductsByBrand(ctx, brandId);
-// 	}).then(function (products) {
-// 		res.status(200).json(products)
-// 	}).catch(function (error) {
-// 		next(error);
-// 	}).done(function () {
-// 		ctx.release();
-// 	});
-// });
+router.get('/brand/items', auth.checkAuthentication(), async function (req, res, next) {
+	try
+	{
+		let query = _.pick(req.query, ['BrandId', 'BrandKey']);		
+		let brand = await brandService.getBrandByKey({ BrandKey: query.BrandKey });		
+		let products = await productService.getProductsByBrand({ BrandId: brand.BrandId });		
+		res.status(200).json(products);
+	}
+	catch(err){
+		next(err);
+	}	
+});
 
-// return Router
+// Export
 module.exports = router;
