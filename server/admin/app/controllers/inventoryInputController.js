@@ -3,9 +3,10 @@
 	app.controller('inventoryInputController', inventoryInputController);
     inventoryInputController.$inject = ['$scope', '$q', '$state', '$stateParams', 'inventoryService'];    
 	function inventoryInputController($scope, $q, $state, $stateParams, inventoryService) {
-		// models				
+		/* model */
 		
-		// functions
+		
+		/* functions */
 		function activate() {
 			inventoryService.getStockIn().then(function(result){
 				$scope.stocks = result;
