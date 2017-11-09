@@ -6,10 +6,10 @@
 	function brandEditController($scope, $state, $stateParams, $timeout, appCommon, brandService, productService) {
 		/* models */
 		$scope.brandKey = $stateParams.brandKey;
-		$scope.formStatus = appCommon.isUndefined($scope.brandKey) ? appCommon.formStatus.isNew : appCommon.formStatus.isEdit;
-		$scope.formTitle = appCommon.setFormTitle($scope.formStatus);
-				
-		$scope.disabledButton = false;
+		$scope.formStatus = appCommon.isUndefined($scope.brandKey) 
+			? appCommon.formStatus.isNew 
+			: appCommon.formStatus.isEdit;
+		$scope.formTitle = appCommon.setFormTitle($scope.formStatus, 'Brand');
 		$scope.messageSuccess = [];
 		$scope.messageError = [];
 		
@@ -40,8 +40,7 @@
 		
 		// if update brand success/failed -> reset status after 3 seconds
 		function resetFormStatus() {
-			$timeout(function () {
-				$scope.disabledButton = false;
+			$timeout(function () {				
 				$scope.messageSuccess = [];
 				$scope.messageError = [];
 			}, 3000);
@@ -50,8 +49,7 @@
 		/* buttons */
 		$scope.save = function () {
 			if ($scope.brand === undefined) return;
-			
-			$scope.disabledButton = true;
+
 			brandService.updateBrand($scope.brand).then(function (result) {
 				$scope.messageSuccess.push(result);
 				resetFormStatus();
@@ -63,7 +61,7 @@
 
 		$scope.cancel = function() {
             $state.go($state.current.parentState);
-        }
+        };
 		
 		/* start */
 		activate();

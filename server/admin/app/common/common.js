@@ -15,12 +15,12 @@
             isEdit: 2
         };
 
-        appCommon.prototype.setFormTitle = function(formStatus) {
-            if(Number(formStatus) === this.formStatus.isNew) 
-                return 'Create Brand';
-            else if (Number(formStatus) === this.formStatus.isEdit) 
-                return 'Edit Brand';
-            else 
+        appCommon.prototype.setFormTitle = function(formStatus, title) {
+            if(Number(formStatus) === this.formStatus.isNew)
+                return String.format('Create {0}', title);
+            else if (Number(formStatus) === this.formStatus.isEdit)
+                return String.format('Edit {0}', title);
+            else
                 return 'Undefined';
         };
         
