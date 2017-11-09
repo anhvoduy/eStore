@@ -1,20 +1,22 @@
 (function () {
 	'use strict';
 	app.controller('accountController', accountController);
-	accountController.$inject = ['accountService'];
-	function accountController(accountService) {
-		// view-model
+	accountController.$inject = ['appCommon', 'accountService'];
+	function accountController(appCommon, accountService) {
+		/* view-model */
 		var vm = this;
+		vm.messageSuccess = [];
+		vm.messageError = [];
 		
-		// functions
+		/* functions */
 		function activate() {
 			accountService.getAccounts().then(function (result) {
-				vm.lstAccounts = result;
-				vm.messageSuccess = String.format("Get Accounts is successful. Total: {0} rows", vm.lstAccounts.length);
-			}, function (error) {
-				vm.messageError = error.message;
+				vm.accounts = result;
+				vm.messageSuccess.push(String.format("Get Accounts is success. Total: {0} rows", vm.accounts.length));
+			}, function (error) {				
+				vm.messageSuccess.push(error);
 			});
-		}
+		};
 		
 		/* start */
 		activate();

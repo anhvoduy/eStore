@@ -46,13 +46,13 @@ app.config(function ($stateProvider) {
 			}
 		}
 	})
-	.state('productDetail', {
+	.state('productEdit', {
         url: "/product/:productId",
         parentState: 'product',
 		views: {
 			"view": {
-				templateUrl: "/app/views/productDetail.tpl.html",
-				controller: "productDetailController",
+				templateUrl: "/app/views/productEdit.tpl.html",
+				controller: "productEditController",
 				controllerAs: 'vm'
 			}
 		}
