@@ -1,7 +1,7 @@
 ﻿const _ = require('lodash');
 const Q = require('q');
 const dbContext = require('../lib/dbContext');
-const data = require('../database/sampleData');
+const data = require('../database/sampleData'); // TO DO: remove
 
 // Constructor
 const Factory = function () { 

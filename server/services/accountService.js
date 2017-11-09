@@ -1,5 +1,5 @@
 const Q = require('q');
-const dbHelper = require('../lib/dbHelper');
+const _ = require('lodash');
 const dbContext = require('../lib/dbContext');
 
 // Constructor

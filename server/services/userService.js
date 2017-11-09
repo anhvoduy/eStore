@@ -1,6 +1,6 @@
 ﻿const Q = require('q');
 const _ = require('lodash');
-const dbHelper = require('../lib/dbHelper');
+const dbHelper = require('../lib/dbHelper'); // TO DO: remove
 const dbContext = require('../lib/dbContext');
 
 // Constructor

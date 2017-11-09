@@ -1,35 +1,40 @@
 ﻿const Q = require('q');
 const _ = require('lodash');
-const dbHelper = require('../lib/dbHelper');
+const dbContext = require('../lib/dbContext');
 
 // Constructor
 const Factory = function(){	
 }
 
-Factory.prototype.getBrands = function (ctx) {
+Factory.prototype.getBrands = function (query) {
 	let sql = `
 		SELECT BrandId, BrandName, Description 
 		FROM Brand 
 		WHERE Deleted <> 1 
 		ORDER BY BrandId DESC
 	`;
-	return ctx.queryCommand(sql);
+	return dbContext.queryList(sql, query);
 }
 
-Factory.prototype.getBrandById = function (ctx, brandId) {
-	let sql = dbHelper.prepareQueryCommand(`SELECT BrandId, BrandName, Description FROM Brand WHERE BrandId = ?`, [brandId]);
-	return ctx.queryCommand(sql);    
+Factory.prototype.getBrandById = function (query) {
+	let sql = `
+		SELECT BrandId, BrandName, Description 
+		FROM Brand 
+		WHERE BrandId=:BrandId AND Deleted <> 1		
+	`;
+	return dbContext.queryItem(sql, query);
 }
 
-Factory.prototype.createBrand = function (ctx, brand) {
-	let sql = dbHelper.prepareQueryCommand(``, []);
-	return ctx.queryCommand(sql);
+Factory.prototype.createBrand = function (brand) {
+	return true;
 }
 
-Factory.prototype.updateBrand = function (ctx, brand) {
-	let sql = dbHelper.prepareQueryCommand(`UPDATE Brand SET BrandName = ?, Description = ? WHERE BrandId = ?`, 
-		[brand.Name, brand.Description, brand.BrandId]);
-	return ctx.queryCommand(sql);
+Factory.prototype.updateBrand = function (brand) {
+	return true;
+}
+
+Factory.prototype.deleteBrand = function (brand) {
+	return true;
 }
 
 // Export
