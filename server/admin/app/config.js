@@ -96,13 +96,13 @@ app.config(function ($stateProvider) {
             }
         }
     })
-    .state('cashInDetail', {
-        url: "/cash/cashIn/:transactionId",
+    .state('cashInEdit', {
+        url: "/cash/cashIn/:transactionKey",
         parentState: 'cashIn',
         views: {
             "view": {
-                templateUrl: "/app/views/cashInDetail.tpl.html",
-                controller: "cashInDetailController",
+                templateUrl: "/app/views/cashInEdit.tpl.html",
+                controller: "cashInEditController",
                 controllerAs: 'vm'
             }
         }

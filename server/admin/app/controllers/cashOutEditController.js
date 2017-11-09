@@ -1,15 +1,21 @@
 (function () {
     'use strict';
     app.controller('cashOutEditController', cashOutEditController);
-    cashOutEditController.$inject = ['cashService', '$state', '$stateParams'];
-    function cashOutEditController(cashService, $state, $stateParams) {
-        // models		
-        var vm = this;
-        vm.transactionId = $stateParams.transactionID;
-		vm.save = save;
-		vm.cancel = cancel;
+    cashOutEditController.$inject = ['appCommon', 'cashService', '$state', '$stateParams'];
 
-        // functions
+    function cashOutEditController(appCommon, cashService, $state, $stateParams) {
+        /* models */
+        var vm = this;
+        vm.transactionKey = $stateParams.transactionKey;
+        vm.formStatus = appCommon.isUndefined(vm.transactionKey) 
+            ? appCommon.formStatus.isNew 
+            : appCommon.formStatus.isEdit;
+        vm.formTitle = appCommon.setFormTitle(vm.formStatus, 'Cash Out');
+        vm.messageSuccess = [];
+        vm.messageError = [];
+        
+        
+        /* functions */
         var activate = function () {
             cashService.getCashById(vm.transactionId).then(function (result) {
                 vm.transaction = result;
@@ -20,22 +26,18 @@
                     vm.disabledButton = false;
                 }
             }, function (error) {
-                vm.messageError = error.message;
-                vm.disabledButton = true;
+                vm.messageError.push(error);
             });
+        };
+        
+		
+		vm.save = function() {
+			return true;
 		};
 		
-		function save() {			
-			cashService.updateCash(vm.transaction).then(function (result) { 
-				console.log('save() ....');
-			}, function (error) { 
-				console.log(error);
-			});
-		}
-		
-		function cancel() {
+		vm.cancel = function() {
 			$state.go($state.current.parentState);
-		}
+		};
 
         /* start */
         activate();

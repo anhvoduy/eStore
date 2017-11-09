@@ -1,67 +1,56 @@
-﻿<div class="container" ng-cloak>
-    <h2>Cash In's Detail</h2>
-
-    <form class="form-horizontal">        
-        <div class="form-group">
-            <label for="productName" class="col-sm-2 control-label">Transaction No</label>
-            <div class="col-sm-6">
-                <input id="transactionNo" ng-model="vm.transaction.TransactionNo" class="form-control control-readonly" placeholder="Transaction No" />
-            </div>
+﻿<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">{{ vm.formTitle }}</h3>
         </div>
-
-        <div class="form-group">
-            <label for="productName" class="col-sm-2 control-label">Transaction Type</label>
-            <div class="col-sm-6">
-                <input id="transactionType" ng-model="vm.transaction.TransactionType" class="form-control control-readonly" placeholder="CASH IN" />
-            </div>
+        <div class="panel-body" ng-cloak>
+            <form name="frmCash" class="form-horizontal">
+                <div class="form-group">
+                    <label for="productName" class="col-sm-2 control-label">Transaction No</label>
+                    <div class="col-sm-6">
+                        <input id="transactionNo" ng-model="vm.transaction.TransactionNo" class="form-control control-readonly" placeholder="Transaction No" />
+                    </div>
+                </div>
+        
+                <div class="form-group">
+                    <label for="productName" class="col-sm-2 control-label">Transaction Type</label>
+                    <div class="col-sm-6">
+                        <input id="transactionType" ng-model="vm.transaction.TransactionType" class="form-control control-readonly" placeholder="CASH IN" />
+                    </div>
+                </div>
+        
+                <div class="form-group">
+                    <label for="productName" class="col-sm-2 control-label">Transaction Date</label>
+                    <div class="col-sm-6">
+                        <input id="transactionDate" ng-model="vm.transaction.TransactionDate" class="form-control control-readonly" placeholder="Transaction Date" />
+                    </div>
+                </div>
+        
+                <div class="form-group">
+                    <label for="BrandId" class="col-sm-2 control-label">Currency</label>
+                    <div class="col-sm-6">
+                        <input id="currency" ng-model="vm.transaction.Currency" class="form-control control-readonly" placeholder="Currency" />
+                    </div>
+                </div>
+        
+                <div class="form-group">
+                    <label for="BrandId" class="col-sm-2 control-label">Total Amount</label>
+                    <div class="col-sm-6">
+                        <input id="totalAmount" ng-model="vm.transaction.TotalAmount" class="form-control control-readonly" placeholder="Amount" />
+                    </div>
+                </div>        
+        
+                <div class="form-group">
+                    <label for="productDescription" class="col-sm-2 control-label">Description</label>
+                    <div class="col-sm-6">
+                        <textarea name="description" type="textarea" ng-model="vm.transaction.Description" class="form-control" rows="3" maxlength="200" required/>
+                    </div>
+                </div>
+            </form>
         </div>
-
-        <div class="form-group">
-            <label for="productName" class="col-sm-2 control-label">Transaction Date</label>
-            <div class="col-sm-6">
-                <input id="transactionDate" ng-model="vm.transaction.TransactionDate" class="form-control control-readonly" placeholder="Transaction Date" />
-            </div>
+        <div class="panel-footer">
+            <input type="button" class="btn btn-primary" value="Save" ng-click="vm.save()" ng-disabled="true"/>
+            <input type="button" class="btn btn-danger" value="Cancel" ng-click="vm.cancel()"/>
         </div>
-
-        <div class="form-group">
-            <label for="BrandId" class="col-sm-2 control-label">Currency</label>
-            <div class="col-sm-6">
-                <input id="currency" ng-model="vm.transaction.Currency" class="form-control control-readonly" placeholder="Currency" />
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="BrandId" class="col-sm-2 control-label">Total Amount</label>
-            <div class="col-sm-6">
-                <input id="totalAmount" ng-model="vm.transaction.TotalAmount" class="form-control control-readonly" placeholder="Amount" />
-            </div>
-        </div>        
-
-        <div class="form-group">
-            <label for="productDescription" class="col-sm-2 control-label">Description</label>
-            <div class="col-sm-6">
-                <textarea name="description" type="textarea" ng-model="vm.transaction.Description" class="form-control" rows="3" maxlength="200" required/>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="row message-error" ng-show='(vm.messageError.length > 0)'>{{ vm.messageError }}</div>
-            <div class="row message-success" ng-show='(vm.messageSuccess.length > 0)'>{{ vm.messageSuccess }}</div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-                <input type="button"
-                       class="btn"
-                       value="Save"
-                       ng-click="vm.save()"
-                       ng-disabled="vm.disabledButton" />
-                <input type="button"
-                       class="btn"
-                       value="Cancel"
-                       ng-click="vm.cancel()"
-                       ng-disabled="vm.disabledButton" />
-            </div>
-        </div>
-    </form>
+    </div>    
 </div>

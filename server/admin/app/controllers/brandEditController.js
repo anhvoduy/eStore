@@ -13,7 +13,8 @@
 		$scope.messageSuccess = [];
 		$scope.messageError = [];
 		
-		/* functions */		
+		
+		/* functions */
 		function activate() {
 			if(appCommon.isUndefined($scope.brandKey)) return;
 
