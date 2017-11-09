@@ -66,13 +66,13 @@ app.config(function ($stateProvider) {
 			}
 		}
 	})
-	.state('inventoryDetail', {
-        url: "/inventory/:inventoryId",
+	.state('inventoryEdit', {
+        url: "/inventory/:inventoryKey",
         parentState: 'inventory',
 		views: {
 			"view": {
-				templateUrl: "/app/views/inventoryDetail.tpl.html",
-				controller: "inventoryDetailController"
+				templateUrl: "/app/views/inventoryEdit.tpl.html",
+				controller: "inventoryEditController"
 			}
 		}
 	})

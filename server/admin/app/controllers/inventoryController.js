@@ -3,9 +3,9 @@
 	app.controller('inventoryController', inventoryController);
     inventoryController.$inject = ['$scope', '$q', '$state', '$stateParams', 'inventoryService'];    
 	function inventoryController($scope, $q, $state, $stateParams, inventoryService) {
-		// models
+		/* models */
 		
-		// functions
+		/* functions */
 		function activate() {
 			inventoryService.getItems().then(function(result){
 				$scope.inventories = result;
