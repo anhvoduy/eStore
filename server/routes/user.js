@@ -1,6 +1,6 @@
 ﻿const express = require('express');
 const router = express.Router();
-const q = require('q');
+const _ = require('lodash');
 const auth = require('../config/auth');
 const constant = require('../lib/constant');
 const dbContext = require('../lib/dbContext');

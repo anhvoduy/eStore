@@ -1,6 +1,6 @@
 {
   "name": "estore",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "estore",
   "main": "app.js",
   "author": {
@@ -8,7 +8,7 @@
     "email": "duyanh2005@gmail.com"
   },
   "engines": {
-    "node": ">=6.9.1"
+    "node": ">=8.9.1"
   },
   "scripts": {
     "test": "./node_modules/.bin/mocha --reporter spec",

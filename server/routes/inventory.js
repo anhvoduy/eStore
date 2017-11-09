@@ -1,6 +1,4 @@
-var express = require('express');
-var router = express.Router();
-var Q = require('q');
+var router = require('express').Router();
 var _ = require('lodash');
 var auth = require('../config/auth');
 var constant = require('../lib/constant');
