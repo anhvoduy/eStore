@@ -264,8 +264,8 @@ app.config(function ($stateProvider) {
 		url: "/sample",
 		views: {
 			"view": {
-				templateUrl: "/app/views/main.tpl.html",
-				controller: "mainController",
+				templateUrl: "/app/views/sample.tpl.html",
+				controller: "sampleController",
 				controllerAs: 'vm'
 			}
 		}
