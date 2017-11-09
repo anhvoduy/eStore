@@ -2,7 +2,7 @@
     'use strict';
 	app.controller('brandEditController', brandEditController);
 	brandEditController.$inject = ['$scope', '$state', '$stateParams', '$timeout', 'appCommon', 'brandService', 'productService'];
-
+	
 	function brandEditController($scope, $state, $stateParams, $timeout, appCommon, brandService, productService) {
 		/* models */
 		$scope.brandKey = $stateParams.brandKey;
@@ -24,7 +24,7 @@
 				}
 			}, function (error) {
 				$scope.messageError.push(error);
-			});			
+			});
 			
 			productService.getProductByBrand($scope.brandKey).then(function (result) {
 				$scope.products = result;
@@ -35,7 +35,7 @@
 				}
 			}, function (error) {
 				$scope.messageError.push(error);
-			});			
+			});
 		};
 		
 		// if update brand success/failed -> reset status after 3 seconds
