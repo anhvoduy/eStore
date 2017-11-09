@@ -56,26 +56,7 @@ app.config(function ($stateProvider) {
 				controllerAs: 'vm'
 			}
 		}
-	})
-	.state('inventory', {
-		url: "/inventory",
-		views: {
-			"view": {
-				templateUrl: "/app/views/inventory.tpl.html",
-				controller: "inventoryController"
-			}
-		}
-	})
-	.state('inventoryEdit', {
-        url: "/inventory/:inventoryKey",
-        parentState: 'inventory',
-		views: {
-			"view": {
-				templateUrl: "/app/views/inventoryEdit.tpl.html",
-				controller: "inventoryEditController"
-			}
-		}
-	})
+	})	
 	.state('reviewProduct', {
 		url: "/review/:productId",
 		views: {
@@ -117,13 +98,13 @@ app.config(function ($stateProvider) {
 			}
 		}
     })
-    .state('cashOutDetail', {
-        url: "/cash/cashOut/:transactionId",
+    .state('cashOutEdit', {
+        url: "/cash/cashOut/:transactionKey",
         parentState: 'cashOut',
         views: {
             "view": {
-                templateUrl: "/app/views/cashOutDetail.tpl.html",
-                controller: "cashOutDetailController",
+                templateUrl: "/app/views/cashOutEdit.tpl.html",
+                controller: "cashOutEditController",
                 controllerAs: 'vm'
             }
         }
@@ -137,7 +118,26 @@ app.config(function ($stateProvider) {
                 controllerAs: 'vm'
 			}
 		}
-	})	
+	})
+	.state('inventory', {
+		url: "/inventory",
+		views: {
+			"view": {
+				templateUrl: "/app/views/inventory.tpl.html",
+				controller: "inventoryController"
+			}
+		}
+	})
+	.state('inventoryEdit', {
+        url: "/inventory/:inventoryKey",
+        parentState: 'inventory',
+		views: {
+			"view": {
+				templateUrl: "/app/views/inventoryEdit.tpl.html",
+				controller: "inventoryEditController"
+			}
+		}
+	})
 	.state('inventoryInput', {
 		url: "/inventoryInput",
 		views: {
@@ -147,12 +147,13 @@ app.config(function ($stateProvider) {
 			}
 		}
 	})
-	.state('inventoryInputDetail', {
-		url: "/inventoryInputDetail",
+	.state('inventoryInputEdit', {
+		url: "/inventoryInput/:stockKey",
+		parentState: 'inventoryInput',
 		views: {
 			"view": {
-				templateUrl: "/app/views/inventoryInputDetail.tpl.html",
-				controller: "inventoryInputDetailController"
+				templateUrl: "/app/views/inventoryInputEdit.tpl.html",
+				controller: "inventoryInputEditController"
 			}
 		}
 	})
@@ -165,12 +166,13 @@ app.config(function ($stateProvider) {
 			}
 		}
 	})
-	.state('inventoryOutputDetail', {
-		url: "/inventoryOutputDetail",
+	.state('inventoryOutputEdit', {
+		url: "/inventoryOutput/:stockKey",
+		parentState: 'inventoryOutput',
 		views: {
 			"view": {
-				templateUrl: "/app/views/inventoryOutputDetail.tpl.html",
-				controller: "inventoryOutputDetailController"
+				templateUrl: "/app/views/inventoryOutputEdit.tpl.html",
+				controller: "inventoryOutputEditController"
 			}
 		}
 	})	

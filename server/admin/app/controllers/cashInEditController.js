@@ -17,14 +17,14 @@
         
         /* functions */
         var activate = function () {
-            cashService.getCashById(vm.transactionId).then(function (result) {
-                vm.transaction = result;
-                if (appCommon.isUndefined(vm.transaction)) {
-                    vm.messageError.push(String.format("The transaction {0} not found.", vm.transactionKey));                    
-                }
-            }, function (error) {
-                vm.messageError.push(error);
-            });
+            // cashService.getCashById(vm.transactionId).then(function (result) {
+            //     vm.transaction = result;
+            //     if (appCommon.isUndefined(vm.transaction)) {
+            //         vm.messageError.push(String.format("The transaction {0} not found.", vm.transactionKey));                    
+            //     }
+            // }, function (error) {
+            //     vm.messageError.push(error);
+            // });
 		};
 		
 		vm.save = function() {

@@ -32,7 +32,7 @@ Factory.prototype.deleteTransaction = function (ctx, transaction) {
 
 Factory.prototype.getTransactions = function (query) {
     let sql = `
-        SELECT TransactionId, TransactionNo, TransactionDate, TransactionType,
+        SELECT TransactionId, TransactionKey, TransactionNo, TransactionDate, TransactionType,
 	           Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount,
                CustomerId, CustomerName, InvoiceNo, InvoiceDate, InvoiceDesc
         FROM Transaction
@@ -45,7 +45,7 @@ Factory.prototype.getTransactions = function (query) {
 
 Factory.prototype.getTransactionById = function (query) {
     let sql = `   
-        SELECT  TransactionId, TransactionNo, TransactionDate, TransactionType,
+        SELECT  TransactionId, TransactionKey, TransactionNo, TransactionDate, TransactionType,
 	            Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount,
                 CustomerId, CustomerName, InvoiceNo, InvoiceDate, InvoiceDesc
         FROM Transaction
@@ -56,7 +56,7 @@ Factory.prototype.getTransactionById = function (query) {
 
 Factory.prototype.getCashIn = function (query) {
     let sql = `
-        SELECT TransactionId, TransactionNo, TransactionDate, TransactionType,
+        SELECT TransactionId, TransactionKey, TransactionNo, TransactionDate, TransactionType,
 	           Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount,
                CustomerId, CustomerName, InvoiceNo, InvoiceDate, InvoiceDesc
         FROM Transaction
@@ -69,7 +69,7 @@ Factory.prototype.getCashIn = function (query) {
 
 Factory.prototype.getCashOut = function (query) {
     let sql = `
-        SELECT TransactionId, TransactionNo, TransactionDate, TransactionType,
+        SELECT TransactionId, TransactionKey, TransactionNo, TransactionDate, TransactionType,
 	           Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount,
                CustomerId, CustomerName, InvoiceNo, InvoiceDate, InvoiceDesc
         FROM Transaction

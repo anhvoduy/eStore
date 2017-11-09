@@ -3,14 +3,12 @@
 	app.controller('accountEditController', accountEditController);
     accountEditController.$inject = ['$timeout', 'accountService', '$state', '$stateParams'];    
     function accountEditController($timeout, accountService, $state, $stateParams) {
-		// models
+		/* models */
 		var vm = this;
         vm.accountId = $stateParams.accountId;
 		vm.disabledButton = false;
-		vm.messageSuccess = '';
-        vm.messageError = '';
-		vm.save = save;
-		vm.cancel = cancel;
+		vm.messageSuccess = [];
+        vm.messageError = [];		
 		
 		// functions
 		function activate() {
@@ -38,7 +36,7 @@
 		}
 		
 		// buttons
-        function save() {
+        vm.save = function() {
             if (vm.account === undefined) return;
 
             vm.disabledButton = true;
@@ -51,7 +49,7 @@
             });
         }
 
-		function cancel() {            
+		vm.cancel = function() {            
             $state.go($state.current.parentState);
         }
 		

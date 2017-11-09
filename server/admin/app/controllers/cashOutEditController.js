@@ -17,17 +17,17 @@
         
         /* functions */
         var activate = function () {
-            cashService.getCashById(vm.transactionId).then(function (result) {
-                vm.transaction = result;
-                if (vm.transaction === undefined) {
-                    vm.messageError = String.format("The transaction id: {0} not found.", vm.transactionId);
-                    vm.disabledButton = true;
-                } else {
-                    vm.disabledButton = false;
-                }
-            }, function (error) {
-                vm.messageError.push(error);
-            });
+            // cashService.getCashById(vm.transactionId).then(function (result) {
+            //     vm.transaction = result;
+            //     if (vm.transaction === undefined) {
+            //         vm.messageError = String.format("The transaction id: {0} not found.", vm.transactionId);
+            //         vm.disabledButton = true;
+            //     } else {
+            //         vm.disabledButton = false;
+            //     }
+            // }, function (error) {
+            //     vm.messageError.push(error);
+            // });
         };
         
 		

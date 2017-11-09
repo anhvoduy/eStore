@@ -1,20 +1,26 @@
 (function (){
     'use strict';
 	app.controller('inventoryInputEditController', inventoryInputEditController);
-    inventoryInputEditController.$inject = ['$scope', '$q', '$state', '$stateParams'];    
-	function inventoryInputEditController($scope, $q, $state, $stateParams) {
-		// models
-		var vm = this;		
-		vm.messageSuccess = '';
-		vm.messageError = '';		
-		vm.save = save;				
+	inventoryInputEditController.$inject = ['$scope', '$q', '$state', '$stateParams', 'appCommon'];
+	
+	function inventoryInputEditController($scope, $q, $state, $stateParams, appCommon) {
+		/* models */		
+		$scope.stockKey = $stateParams.stockKey;
+		$scope.formStatus = appCommon.isUndefined($scope.stockKey) 
+			? appCommon.formStatus.isNew 
+			: appCommon.formStatus.isEdit;
+		$scope.formTitle = appCommon.setFormTitle($scope.formStatus, 'Input Goods');
+		$scope.messageSuccess = [];
+		$scope.messageError = [];
 		
-		// functions
+		
+		/* functions */
 		function activate() { 
-		}
+		}		
 
-		function save() {			
-		}
+		$scope.cancel = function() {
+            $state.go($state.current.parentState);
+        }
 		
 		/* start */
 		activate();
