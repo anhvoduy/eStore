@@ -11,11 +11,12 @@
 		}
 
         // GET()
-        baseService.prototype.getData = function (url) {
+        baseService.prototype.getData = function (url, params) {
             var q = $q.defer();
             $http({
                 url: url,
-                method: 'GET'
+                method: 'GET',
+                params: params
             }).success(function (result) {
                 q.resolve(result);
 			}).error(function (error, status) {

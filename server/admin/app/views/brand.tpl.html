@@ -4,7 +4,7 @@
             <h3 class="panel-title">All Brands</h3>
         </div>
         <div class="panel-body">
-            <p><a ui-sref="brandDetail({ brandId: null, formStatus: 1 })">Add new brand</a></p>
+            <p><a ui-sref="brandEdit({ brandKey: null, formStatus: 1 })">Add new brand</a></p>
             <div class="container" ng-cloak>
                 <div class="row row-table">
                     <table class="table">
@@ -18,22 +18,26 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="brand in lstBrands">
+                            <tr ng-repeat="brand in brands">
                                 <td>{{ brand.BrandId }}</td>                    
                                 <td>{{ brand.Description }}</td>
-                                <td><a ui-sref="brandDetail({ brandId: brand.BrandId, formStatus: 3 })">Display</a></td>                   
-                                <td><a ui-sref="brandDetail({ brandId: brand.BrandId, formStatus: 2 })">Edit</a></td>
-                                <td><a ng-click="deleteBrand(b.BrandKey)">Delete</a></td>
+                                <td><a ui-sref="brandEdit({ brandKey: brand.BrandKey, formStatus: 3 })">Display</a></td>                   
+                                <td><a ui-sref="brandEdit({ brandKey: brand.BrandKey, formStatus: 2 })">Edit</a></td>
+                                <td><a ng-click="deleteBrand(brand.BrandId)">Delete</a></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
                 <div class="row">
-                    <div class="message-error" ng-show='(messageError.length > 0)'>{{ messageError }}</div>
-                    <div class="message-success" ng-show='(messageSuccess.length > 0)'>{{ messageSuccess }}</div>
+                    <div class="message-error" ng-show='(messageError.length > 0)'>
+                        <span ng-repeat="msg in messageError">{{ msg }}</span>
+                    </div>
+                    <div class="message-success" ng-show='(messageSuccess.length > 0)'>
+                        <span ng-repeat="msg in messageSuccess">{{ msg }}</span>
+                    </div>
                 </div>
             </div>
         </div>
-        <!-- <div class="panel-footer">ng-paginator</div> -->
+        <div class="panel-footer">ng-paginator</div>
     </div>
 </div>

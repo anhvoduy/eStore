@@ -23,11 +23,14 @@
             return q.promise;            
         }
         
-        brandService.prototype.getBrandById = function (brandId) {
-            var url = String.format('{0}/items/{1}', this.api, brandId);
+        brandService.prototype.getBrandByKey = function (brandKey) {
+            var url = String.format('{0}/item', this.api);
+            var params = {
+                BrandKey: brandKey
+            }
             
             var q = $q.defer();
-            this.getData(url).then(function (result) {
+            this.getData(url, params).then(function (result) {
                 q.resolve(result);
             }, function (error) {
                 q.reject(error);

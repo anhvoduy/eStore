@@ -26,8 +26,8 @@ app.config(function ($stateProvider) {
 			}
 		}
 	})	
-	.state('brandDetail', {
-        url: '/brand/:brandId',
+	.state('brandEdit', {
+        url: '/brand/:brandKey',
         parentState: 'brand',
 		views: {
 			'view': {
