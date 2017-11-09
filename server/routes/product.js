@@ -9,22 +9,16 @@ const errorHelper = require('../lib/errorHelper');
 const productService = require('../services/productService');
 
 // Router
-router.get('/items', auth.checkAuthentication(), function (req, res, next) {
-	var pageIndex = req.params.id;
-	if (pageIndex == undefined) pageIndex = 0;
-	
-	var ctx = {};
-	dbContext.getConnection().then(function (result) {
-		ctx = result;
-		return productService.getProducts(ctx, pageIndex);
-	}).then(function (result) {
-		var products = result;
+router.get('/items', auth.checkAuthentication(), async function (req, res, next) {
+	try
+	{
+		let query = req.query;
+		let products = await productService.getProducts();
 		res.status(200).json(products);
-	}).catch(function (error) {
-		next(error);
-	}).done(function () {
-		ctx.release();
-	});
+	}
+	catch(err){
+		next(err);
+	}	
 });
 
 router.get('/item', auth.checkAuthentication(), function (req, res, next) {

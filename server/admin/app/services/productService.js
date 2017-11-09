@@ -11,7 +11,7 @@
         
         // methods                
         productService.prototype.getList = function () {
-            var url = String.format('{0}/list', this.api);
+            var url = String.format('{0}/items', this.api);
             
             var q = $q.defer();
             this.getData(url).then(function (result) {
@@ -23,10 +23,13 @@
         }
         
         productService.prototype.getProductById = function (productId) {
-            var url = String.format('{0}/items/{1}', this.api, productId);
-            
+            var url = String.format('{0}/item', this.api);
+            var params = {
+                ProductId: productId
+            }
+
             var q = $q.defer();
-            this.getData(url).then(function (result) {
+            this.getData(url, params).then(function (result) {
                 q.resolve(result);
             }, function (error) {
                 q.reject(error);

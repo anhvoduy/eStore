@@ -17,39 +17,55 @@ Factory.prototype.myProfile = function(){
 	}
 }
 
-Factory.prototype.getUsers = function (ctx) {
+Factory.prototype.getUsers = function () {
     var sql = `
-		SELECT UserId, UserKey, UserType, UserName, DisplayName, Email, Mobile, Tel, Title, DateOfBirth 
+		SELECT 	UserId, UserKey, UserType, UserName, DisplayName, Email, Mobile, Tel, 
+			Title, DateOfBirth 
 		FROM User 
 		WHERE Deleted = 0 
 		ORDER BY UserId DESC
 	`;
-	return ctx.queryCommand(sql);    
+	return dbContext.queryList(sql);    
 }
 
 Factory.prototype.getUserById = function (userId) {
     var sql = `
-		SELECT UserId, UserKey, UserType, UserName, DisplayName, Email, Mobile, Tel, Title, DateOfBirth 
+		SELECT 	UserId, UserKey, UserType, UserName, DisplayName, Email, Mobile, Tel, 
+			Title, DateOfBirth 
 		FROM User 
 		WHERE UserId =:UserId
 	`;
 	return dbContext.queryItem(sql, {UserId: userId});
 }
 
-Factory.prototype.getUserByName = function (ctx, userName) {
-    var sql = dbHelper.prepareQueryCommand(`
-		SELECT UserId, UserType, UserName, Email, DateOfBirth, Deleted 
+Factory.prototype.getUserByKey = function (userKey) {
+    var sql = `
+		SELECT 	UserId, UserKey, UserType, UserName, DisplayName, Email, Mobile, Tel, 
+			Title, DateOfBirth 
 		FROM User 
-		WHERE UserName = ?`, [userName]);
-    return ctx.queryCommand(sql);
+		WHERE UserId =:UserKey
+	`;
+	return dbContext.queryItem(sql, {UserKey: userKey});
 }
 
-Factory.prototype.getUserByEmail = function (ctx, email) {
-	var sql = dbHelper.prepareQueryCommand(`
-		SELECT UserId, UserType, UserName, Email, DateOfBirth, Deleted 
+Factory.prototype.getUserByName = function (userName) {
+    var sql = `
+		SELECT UserId, UserKey, UserType, UserName, DisplayName, Email, Mobile, Tel, 
+			Title, DateOfBirth 
 		FROM User 
-		WHERE Email = ?`, [email]);	
-	return ctx.queryCommand(sql);
+		WHERE UserName =:UserName
+	`;
+    return dbContext.queryItem(sql, {UserName: userName});
+}
+
+Factory.prototype.getUserByEmail = function (email) {
+	var sql = `
+		SELECT UserId, UserKey, UserType, UserName, DisplayName, Email, Mobile, Tel, 
+			Title, DateOfBirth
+		FROM User 
+		WHERE Email =:Email
+	`;
+	return dbContext.queryItem(sql, {Email: email});
 }
 
 Factory.prototype.authenticate = function (username, password) {
