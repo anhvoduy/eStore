@@ -215,12 +215,12 @@ app.config(function ($stateProvider) {
 			}
 		}
 	})
-	.state('userDetail', {
+	.state('userEdit', {
 		url: '/user/:userID',
 		views: {
 			"view": {
-				templateUrl: "/app/views/userDetail.tpl.html",
-				controller: "UserDetailController",
+				templateUrl: "/app/views/userEdit.tpl.html",
+				controller: "userEditController",
 				controllerAs: 'vm'
 			}
 		}

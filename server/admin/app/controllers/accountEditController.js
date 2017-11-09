@@ -1,11 +1,11 @@
 (function (){
     'use strict';
-	app.controller('accountDetailController', accountDetailController);
-    accountDetailController.$inject = ['$timeout', 'accountService', '$state', '$stateParams'];    
-    function accountDetailController($timeout, accountService, $state, $stateParams) {
+	app.controller('accountEditController', accountEditController);
+    accountEditController.$inject = ['$timeout', 'accountService', '$state', '$stateParams'];    
+    function accountEditController($timeout, accountService, $state, $stateParams) {
 		// models
 		var vm = this;
-        vm.accountId = $stateParams.accountID;		
+        vm.accountId = $stateParams.accountId;
 		vm.disabledButton = false;
 		vm.messageSuccess = '';
         vm.messageError = '';
