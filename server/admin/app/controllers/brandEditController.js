@@ -6,7 +6,7 @@
 	function brandEditController($scope, $state, $stateParams, $timeout, appCommon, brandService, productService) {
 		/* models */
 		$scope.brandKey = $stateParams.brandKey;
-		$scope.formStatus = angular.isUndefined($scope.brandKey) ? appCommon.formStatus.isNew : appCommon.formStatus.isEdit;
+		$scope.formStatus = appCommon.isUndefined($scope.brandKey) ? appCommon.formStatus.isNew : appCommon.formStatus.isEdit;
 		$scope.formTitle = appCommon.setFormTitle($scope.formStatus);
 				
 		$scope.disabledButton = false;

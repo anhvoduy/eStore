@@ -28,7 +28,7 @@
         appCommon.prototype.isUndefined = function(value){
             if(value === undefined || value === null)
                 return true;
-            else if(value === 'undefined' || value === 'null')
+            else if(value === 'undefined' || value === 'null' || value === '')
                 return true;
             else
                 return false;
