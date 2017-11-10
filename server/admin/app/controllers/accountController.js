@@ -4,7 +4,7 @@
 	accountController.$inject = ['$scope', 'appCommon', 'accountService'];
 	function accountController($scope, appCommon, accountService) {
 		/* view-model */
-		$scope.paging = appCommon.defaultPagination;
+		$scope.pagination = appCommon.defaultPagination;
 		$scope.messageSuccess = [];
 		$scope.messageError = [];
 		

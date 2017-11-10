@@ -5,17 +5,52 @@ const dbContext = require('../lib/dbContext');
 const Factory = function () { 
 }
 
-Factory.prototype.getCustomers = function (query) {
-	var sql = `
-		SELECT CustomerId, CustomerName, Description, Email, Mobile, Tel, Fax, Title, Address
-		FROM Customer
-		WHERE Deleted <> 1
-		ORDER BY CustomerId DESC
-	`;
-	return dbContext.queryList(sql);
+Factory.prototype.getList = async function (query) {
+	try
+	{		
+		let TotalSize = 0;
+        let PageTotal = 0;
+        let PageCurrent = parseInt(query.PageCurrent) - 1;
+        let PageSize = parseInt(query.PageSize);
+		let PageOffset = PageCurrent * PageSize;
+		
+		// get hits total
+        let sqlTotal = `
+			SELECT COUNT(*) AS Total
+			FROM Customer
+			WHERE Deleted <> 1
+		`;
+		let totalRows = (await dbContext.queryItem(sqlTotal)).Total;
+		
+		// get data
+		let sqlQuery = `
+			SELECT CustomerId, CustomerName, Description, Email, Mobile, Tel, Fax, Title, Address
+			FROM Customer
+			WHERE Deleted <> 1
+			ORDER BY CustomerId DESC
+			LIMIT :Offset, :Limit
+		`;
+		let data = await dbContext.queryList(sqlQuery, {
+			Offset: PageOffset,
+            Limit: PageSize
+		});
+		console.log(data);
+
+		let result = {
+            HitsTotal: parseInt(totalRows),
+            PageTotal: parseInt(Math.ceil(totalRows / PageSize)),
+            PageSize: parseInt(PageSize),
+            PageCurrent: parseInt(PageCurrent) + 1,
+            PageData: data
+        }
+        return result;
+	}
+	catch(err){
+		throw err;
+	}	
 }
 
-Factory.prototype.getCustomerById = function (query) {
+Factory.prototype.getCustomerById = async function (query) {
 	var sql = `
 		SELECT CustomerId, CustomerName, Description, Email, Mobile, Tel, Fax, Title, Address
 		FROM Customer 
@@ -25,15 +60,15 @@ Factory.prototype.getCustomerById = function (query) {
 	return dbContext.queryItem(sql, query);
 }
 
-Factory.prototype.createCustomer = function (ctx, customer) {
+Factory.prototype.createCustomer = async function (customer) {
 	return true;
 }
 
-Factory.prototype.updateCustomer = function (ctx) {
+Factory.prototype.updateCustomer = async function (customer) {
 	return true;
 }
 
-Factory.prototype.deleteCustomer = function (ctx) {
+Factory.prototype.deleteCustomer = async function (customer) {
 	return true;
 }
 // Export
