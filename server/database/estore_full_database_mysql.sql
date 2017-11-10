@@ -467,24 +467,41 @@ CREATE TABLE `Stock` (
 --
 -- Sample data for table `Stock`
 --
-INSERT INTO `Stock`(StockKey, StockDate, StockType, Description, Currency, TotalAmount, CustomerId, CustomerName, Author, Editor) 
-VALUES (uuid(), '2016-12-01', 'STOCKIN', 'Input Goods', 'VND', '60000', '1', 'Vina Sun', 'SYSTEM', 'SYSTEM');
+INSERT INTO `Stock`(StockKey, StockNo, StockDate, StockType, Description, Currency, TotalAmount, CustomerId, CustomerName, Author, Editor) 
+VALUES (uuid(), 'STOCKIN-000001', '2017-02-01', 'STOCKIN', 'Input Goods', 'VND', '60000', '1', 'Vina Sun', 'SYSTEM', 'SYSTEM');
 
-INSERT INTO `Stock`(StockKey, StockDate, StockType, Description, Currency, TotalAmount, CustomerId, CustomerName, Author, Editor) 
-VALUES (uuid(), '2016-12-02', 'STOCKIN', 'Input Goods', 'VND', '60000', '2', 'Vina Capital', 'SYSTEM', 'SYSTEM');
+INSERT INTO `Stock`(StockKey, StockNo, StockDate, StockType, Description, Currency, TotalAmount, CustomerId, CustomerName, Author, Editor) 
+VALUES (uuid(), 'STOCKIN-000002', '2017-04-02', 'STOCKIN', 'Input Goods', 'VND', '60000', '2', 'Vina Capital', 'SYSTEM', 'SYSTEM');
 
-INSERT INTO `Stock`(StockKey, StockDate, StockType, Description, Currency, TotalAmount, CustomerId, CustomerName, Author, Editor) 
-VALUES (uuid(), '2016-12-03', 'STOCKIN', 'Input Goods', 'VND', '60000', '3', 'Vina Kyoei', 'SYSTEM', 'SYSTEM');
+INSERT INTO `Stock`(StockKey, StockNo, StockDate, StockType, Description, Currency, TotalAmount, CustomerId, CustomerName, Author, Editor) 
+VALUES (uuid(), 'STOCKIN-000003', '2017-05-03', 'STOCKIN', 'Input Goods', 'VND', '60000', '3', 'Vina Kyoei', 'SYSTEM', 'SYSTEM');
 
-INSERT INTO `Stock`(StockKey, StockDate, StockType, Description, Currency, TotalAmount, CustomerId, CustomerName, Author, Editor) 
-VALUES (uuid(), '2016-12-21', 'STOCKOUT', 'Output Goods', 'VND', '30000', '1', 'Mitsuibishi', 'SYSTEM', 'SYSTEM');
+INSERT INTO `Stock`(StockKey, StockNo, StockDate, StockType, Description, Currency, TotalAmount, CustomerId, CustomerName, Author, Editor) 
+VALUES (uuid(), 'STOCKIN-000004', '2017-06-03', 'STOCKIN', 'Input Goods', 'VND', '60000', '3', 'Vina Kyoei', 'SYSTEM', 'SYSTEM');
 
-INSERT INTO `Stock`(StockKey, StockDate, StockType, Description, Currency, TotalAmount, CustomerId, CustomerName, Author, Editor) 
-VALUES (uuid(), '2016-12-22', 'STOCKOUT', 'Output Goods', 'VND', '30000', '2', 'FPT Information System', 'SYSTEM', 'SYSTEM');
+INSERT INTO `Stock`(StockKey, StockNo, StockDate, StockType, Description, Currency, TotalAmount, CustomerId, CustomerName, Author, Editor) 
+VALUES (uuid(), 'STOCKIN-000005', '2017-07-03', 'STOCKIN', 'Input Goods', 'VND', '60000', '3', 'Vina Kyoei', 'SYSTEM', 'SYSTEM');
 
-INSERT INTO `Stock`(StockKey, StockDate, StockType, Description, Currency, TotalAmount, CustomerId, CustomerName, Author, Editor) 
-VALUES (uuid(), '2016-12-12', 'STOCKOUT', 'Output Goods', 'USD', '150', '2', 'FPT Software', 'SYSTEM', 'SYSTEM');
+INSERT INTO `Stock`(StockKey, StockNo, StockDate, StockType, Description, Currency, TotalAmount, CustomerId, CustomerName, Author, Editor) 
+VALUES (uuid(), 'STOCKIN-000006', '2017-08-03', 'STOCKIN', 'Input Goods', 'VND', '60000', '3', 'Vina Kyoei', 'SYSTEM', 'SYSTEM');
 
+INSERT INTO `Stock`(StockKey, StockNo, StockDate, StockType, Description, Currency, TotalAmount, CustomerId, CustomerName, Author, Editor) 
+VALUES (uuid(), 'STOCKOUT-000001', '2017-07-21', 'STOCKOUT', 'Output Goods', 'VND', '30000', '1', 'Mitsuibishi', 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `Stock`(StockKey, StockNo, StockDate, StockType, Description, Currency, TotalAmount, CustomerId, CustomerName, Author, Editor) 
+VALUES (uuid(), 'STOCKOUT-000002', '2017-07-22', 'STOCKOUT', 'Output Goods', 'VND', '30000', '2', 'FPT Information System', 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `Stock`(StockKey, StockNo, StockDate, StockType, Description, Currency, TotalAmount, CustomerId, CustomerName, Author, Editor) 
+VALUES (uuid(), 'STOCKOUT-000003', '2017-07-12', 'STOCKOUT', 'Output Goods', 'USD', '150', '2', 'FPT Software', 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `Stock`(StockKey, StockNo, StockDate, StockType, Description, Currency, TotalAmount, CustomerId, CustomerName, Author, Editor) 
+VALUES (uuid(), 'STOCKOUT-000004', '2017-08-21', 'STOCKOUT', 'Output Goods', 'VND', '30000', '1', 'Mitsuibishi', 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `Stock`(StockKey, StockNo, StockDate, StockType, Description, Currency, TotalAmount, CustomerId, CustomerName, Author, Editor) 
+VALUES (uuid(), 'STOCKOUT-000005', '2017-10-22', 'STOCKOUT', 'Output Goods', 'VND', '30000', '2', 'FPT Information System', 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `Stock`(StockKey, StockNo, StockDate, StockType, Description, Currency, TotalAmount, CustomerId, CustomerName, Author, Editor) 
+VALUES (uuid(), 'STOCKOUT-000006', '2017-10-12', 'STOCKOUT', 'Output Goods', 'USD', '150', '2', 'FPT Software', 'SYSTEM', 'SYSTEM');
 
 --
 -- Table structure for table `StockDetail`
@@ -529,6 +546,59 @@ VALUES (2, 2, 'Product 2', ' Desc 2', 5, 200, 1000, 'SYSTEM', 'SYSTEM');
 INSERT INTO `StockDetail`(StockId, ProductId, ProductName, Description, Quantity, Price, Amount, Author, Editor) 
 VALUES (2, 3, 'Product 3', ' Desc 3', 25, 200, 5000, 'SYSTEM', 'SYSTEM');
 
+INSERT INTO `StockDetail`(StockId, ProductId, ProductName, Description, Quantity, Price, Amount, Author, Editor) 
+VALUES (3, 1, 'Product 1', ' Desc 1', 25, 200, 5000, 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `StockDetail`(StockId, ProductId, ProductName, Description, Quantity, Price, Amount, Author, Editor) 
+VALUES (3, 2, 'Product 2', ' Desc 2', 25, 200, 5000, 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `StockDetail`(StockId, ProductId, ProductName, Description, Quantity, Price, Amount, Author, Editor) 
+VALUES (3, 3, 'Product 3', ' Desc 3', 25, 200, 5000, 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `StockDetail`(StockId, ProductId, ProductName, Description, Quantity, Price, Amount, Author, Editor) 
+VALUES (4, 1, 'Product 1', ' Desc 1', 10, 200, 2000, 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `StockDetail`(StockId, ProductId, ProductName, Description, Quantity, Price, Amount, Author, Editor) 
+VALUES (4, 2, 'Product 2', ' Desc 2', 5, 200, 1000, 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `StockDetail`(StockId, ProductId, ProductName, Description, Quantity, Price, Amount, Author, Editor) 
+VALUES (4, 3, 'Product 3', ' Desc 3', 25, 200, 5000, 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `StockDetail`(StockId, ProductId, ProductName, Description, Quantity, Price, Amount, Author, Editor) 
+VALUES (5, 1, 'Product 1', ' Desc 1', 25, 200, 5000, 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `StockDetail`(StockId, ProductId, ProductName, Description, Quantity, Price, Amount, Author, Editor) 
+VALUES (5, 2, 'Product 2', ' Desc 2', 25, 200, 5000, 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `StockDetail`(StockId, ProductId, ProductName, Description, Quantity, Price, Amount, Author, Editor) 
+VALUES (5, 3, 'Product 3', ' Desc 3', 25, 200, 5000, 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `StockDetail`(StockId, ProductId, ProductName, Description, Quantity, Price, Amount, Author, Editor) 
+VALUES (6, 1, 'Product 1', ' Desc 1', 10, 200, 2000, 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `StockDetail`(StockId, ProductId, ProductName, Description, Quantity, Price, Amount, Author, Editor) 
+VALUES (6, 2, 'Product 2', ' Desc 2', 5, 200, 1000, 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `StockDetail`(StockId, ProductId, ProductName, Description, Quantity, Price, Amount, Author, Editor) 
+VALUES (6, 3, 'Product 3', ' Desc 3', 25, 200, 5000, 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `StockDetail`(StockId, ProductId, ProductName, Description, Quantity, Price, Amount, Author, Editor) 
+VALUES (7, 1, 'Product 1', ' Desc 1', 25, 200, 5000, 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `StockDetail`(StockId, ProductId, ProductName, Description, Quantity, Price, Amount, Author, Editor) 
+VALUES (7, 2, 'Product 2', ' Desc 2', 25, 200, 5000, 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `StockDetail`(StockId, ProductId, ProductName, Description, Quantity, Price, Amount, Author, Editor) 
+VALUES (7, 3, 'Product 3', ' Desc 3', 25, 200, 5000, 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `StockDetail`(StockId, ProductId, ProductName, Description, Quantity, Price, Amount, Author, Editor) 
+VALUES (8, 1, 'Product 1', ' Desc 1', 10, 200, 2000, 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `StockDetail`(StockId, ProductId, ProductName, Description, Quantity, Price, Amount, Author, Editor) 
+VALUES (8, 2, 'Product 2', ' Desc 2', 5, 200, 1000, 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `StockDetail`(StockId, ProductId, ProductName, Description, Quantity, Price, Amount, Author, Editor) 
+VALUES (8, 3, 'Product 3', ' Desc 3', 25, 200, 5000, 'SYSTEM', 'SYSTEM');
 
 --
 -- Table structure for table `Journal`
@@ -570,9 +640,37 @@ INSERT INTO `Journal`(JournalKey,JournalType,JournalDate,DebitAcctNo,CreditAcctN
 VALUES (uuid(), 'STOCK', '2017-08-09', '156', '632', 'VND', 600, ' Import Product', 'SYSTEM', 'SYSTEM');
 
 INSERT INTO `Journal`(JournalKey,JournalType,JournalDate,DebitAcctNo,CreditAcctNo,Currency,Amount,Description,Author,Editor) 
-VALUES (uuid(), 'STOCK', '2017-08-09', '156', '632', 'VND', 150, ' Import Product', 'SYSTEM', 'SYSTEM');
+VALUES (uuid(), 'STOCK', '2017-09-09', '156', '632', 'VND', 150, ' Import Product', 'SYSTEM', 'SYSTEM');
 
+INSERT INTO `Journal`(JournalKey,JournalType,JournalDate,DebitAcctNo,CreditAcctNo,Currency,Amount,Description,Author,Editor) 
+VALUES (uuid(), 'CASH', '2017-09-01', '111', '641', 'VND', 6500, ' Cash Journal', 'SYSTEM', 'SYSTEM');
 
+INSERT INTO `Journal`(JournalKey,JournalType,JournalDate,DebitAcctNo,CreditAcctNo,Currency,Amount,Description,Author,Editor) 
+VALUES (uuid(), 'CASH', '2017-09-08', '112', '642', 'VND', 5000, ' Cash Journal', 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `Journal`(JournalKey,JournalType,JournalDate,DebitAcctNo,CreditAcctNo,Currency,Amount,Description,Author,Editor) 
+VALUES (uuid(), 'STOCK', '2017-09-09', '156', '632', 'VND', 8000, 'Import Product', 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `Journal`(JournalKey,JournalType,JournalDate,DebitAcctNo,CreditAcctNo,Currency,Amount,Description,Author,Editor) 
+VALUES (uuid(), 'STOCK', '2017-09-09', '156', '632', 'VND', 600, ' Import Product', 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `Journal`(JournalKey,JournalType,JournalDate,DebitAcctNo,CreditAcctNo,Currency,Amount,Description,Author,Editor) 
+VALUES (uuid(), 'STOCK', '2017-09-21', '156', '632', 'VND', 150, ' Import Product', 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `Journal`(JournalKey,JournalType,JournalDate,DebitAcctNo,CreditAcctNo,Currency,Amount,Description,Author,Editor) 
+VALUES (uuid(), 'CASH', '2017-10-01', '111', '641', 'VND', 6500, ' Cash Journal', 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `Journal`(JournalKey,JournalType,JournalDate,DebitAcctNo,CreditAcctNo,Currency,Amount,Description,Author,Editor) 
+VALUES (uuid(), 'CASH', '2017-10-08', '112', '642', 'VND', 5000, ' Cash Journal', 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `Journal`(JournalKey,JournalType,JournalDate,DebitAcctNo,CreditAcctNo,Currency,Amount,Description,Author,Editor) 
+VALUES (uuid(), 'STOCK', '2017-10-09', '156', '632', 'VND', 8000, 'Import Product', 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `Journal`(JournalKey,JournalType,JournalDate,DebitAcctNo,CreditAcctNo,Currency,Amount,Description,Author,Editor) 
+VALUES (uuid(), 'STOCK', '2017-10-19', '156', '632', 'VND', 600, ' Import Product', 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `Journal`(JournalKey,JournalType,JournalDate,DebitAcctNo,CreditAcctNo,Currency,Amount,Description,Author,Editor) 
+VALUES (uuid(), 'STOCK', '2017-10-22', '156', '632', 'VND', 150, ' Import Product', 'SYSTEM', 'SYSTEM');
 --
 -- Table structure for table `Brand`
 --
