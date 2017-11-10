@@ -35,15 +35,17 @@
                     </table>
                 </div>
                 <div class="row">
-                    <div class="message-error" ng-show='(messageError.length > 0)'>
-                        <span ng-repeat="msg in messageError">{{ msg }}</span>
+                    <div class="message-error" ng-show='(vm.messageError.length > 0)'>
+                        <span ng-repeat="msg in vm.messageError">{{ msg }}</span>
                     </div>
-                    <div class="message-success" ng-show='(messageSuccess.length > 0)'>
-                        <span ng-repeat="msg in messageSuccess">{{ msg }}</span>
+                    <div class="message-success" ng-show='(vm.messageSuccess.length > 0)'>
+                        <span ng-repeat="msg in vm.messageSuccess">{{ msg }}</span>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="panel-footer">ng-paginator</div>
+        <div class="panel-footer">
+            <ng-pagination pagination="vm.pagination" on-get-data="vm.getCashOut()" />
+        </div>
     </div>
 </div>

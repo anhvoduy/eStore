@@ -34,6 +34,7 @@
                                 <th>Id</th>
                                 <th>Transaction No</th>
                                 <th>Transaction Date</th>
+                                <th>Transaction Type</th>
                                 <th>Currency</th>
                                 <th>Debit Amount</th>
                                 <th>Credit Amount</th>
@@ -44,6 +45,7 @@
                                 <td>{{ ($index + 1) }}</td>
                                 <td>{{ cash.TransactionNo }}</td>
                                 <td>{{ cash.TransactionDate }}</td>
+                                <td>{{ cash.TransactionType }}</td>
                                 <td>{{ cash.Currency }}</td>
                                 <td>{{ cash.DebitAmount }}</td>
                                 <td>{{ cash.CreditAmount }}</td>
@@ -57,6 +59,8 @@
                 </div>
             </div>
         </div>
-        <!-- <div class="panel-footer">ng-paginator</div> -->
+        <div class="panel-footer">
+            <ng-pagination pagination="vm.pagination" on-get-data="vm.queryReport(vm.query)" />
+        </div>
     </div>
 </div>
