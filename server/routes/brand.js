@@ -10,9 +10,9 @@ var brandService = require('../services/brandService');
 router.get('/items', async function (req, res, next) {
 	try
 	{		
-		let query = req.query;
-		let brands = await brandService.getBrands();
-		return res.status(200).json(brands);
+		let query = _.pick(req.query, ['PageCurrent', 'PageSize']);		
+		let data = await brandService.getList(query);
+		return res.status(200).json(data);
 	}
 	catch(err){
 		next(err);
