@@ -4,47 +4,32 @@
             <h3 class="panel-title">{{ formTitle }}</h3>
         </div>
         <div class="panel-body" ng-cloak>
-            <form name="frmUser" class="form-horizontal">
+            <form name="frmGroup" class="form-horizontal">
                 <div class="form-group">
-                    <label for="userType" class="col-sm-2 control-label">User Type</label>
+                    <label for="GroupName" class="col-sm-2 control-label">Group Name</label>
                     <div class="col-sm-6">
-                        <select id="userType"
-                                class="form-control"
-                                ng-model="user.UserType"
-                                ng-options="item.Key as item.Label for item in userTypes"></select>
+                        <input name="GroupName" class="form-control" placeholder="Group Name" ng-model="group.GroupName" maxlength="20" required/>
                     </div>
+                    <div class='control-label col-sm-8 message-error'
+                         ng-show='frmGroup.GroupName.$dirty && frmGroup.GroupName.$invalid'>Please input name</div>
                 </div>
+
                 <div class="form-group">
-                    <label for="brandDescription" class="col-sm-2 control-label">User Name</label>
+                    <label for="Description" class="col-sm-2 control-label">Description</label>
                     <div class="col-sm-6">
-                        <input id="brandDescription" ng-model="user.UserName" class="form-control control-readonly" placeholder="description" readonly/>
-                    </div>
+                        <textarea name="Description" class="form-control" placeholder="Description" ng-model="group.Description" />
+                    </div>                    
                 </div>
-        
-                <div class="form-group">
-                    <label for="brandDescription" class="col-sm-2 control-label">Email</label>
-                    <div class="col-sm-6">
-                        <input id="brandDescription" ng-model="user.Email" class="form-control control-readonly" placeholder="description" readonly/>
-                    </div>
-                </div>
-        
-                <div class="form-group">
-                    <label for="birthday" class="col-sm-2 control-label">Birthday</label>
-                    <div class="col-sm-6">
-                        <input id="birthday" type="date" class="form-control control-readonly" name="inputBirthday" ng-model="user.Birthday"
-                               placeholder="yyyy-MM-dd" min="1900-01-01" max="2999-01-01" readonly/>
-                    </div>
-                </div>
-        
-                <div class="form-group">
-                    <div class="row message-error" ng-show='(messageError.length > 0)'>
+                                
+                <div class="row">
+                    <div class="message-error" ng-show='(messageError.length > 0)'>
                         <span ng-repeat="msg in messageError">{{ msg }}</span>
                     </div>
-                    <div class="row message-success" ng-show='(messageSuccess.length > 0)'>
-                        <span ng-repeat="msg in messageError">{{ msg }}</span>
-                    </div> 
+                    <div class="message-success" ng-show='(messageSuccess.length > 0)'>
+                        <span ng-repeat="msg in messageSuccess">{{ msg }}</span>
+                    </div>
                 </div>
-            </form> 
+            </form>
         </div>
         <div class="panel-footer">
             <input type="button" class="btn btn-primary" value="Save" ng-click="save()" ng-disabled="true"/>

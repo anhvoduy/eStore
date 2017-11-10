@@ -16,11 +16,11 @@
 		var activate = function () {
 			if(appCommon.isUndefined($scope.groupKey)) return;
 
-			// userService.getUserByKey($scope.userKey).then(function (result) {
-			// 	$scope.user = result;				
-			// }, function (error) {
-			// 	$scope.messageError.push(error);
-			// });
+			groupService.getGroupByKey($scope.groupKey).then(function (result) {
+				$scope.group = result;
+			}, function (error) {
+				$scope.messageError.push(error);
+			});
 		};
 
 
