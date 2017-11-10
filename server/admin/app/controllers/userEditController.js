@@ -19,12 +19,20 @@
 		
 		/* functions */
 		var activate = function () {
+			if(appCommon.isUndefined($scope.userKey)) return;
+
 			userService.getUserByKey($scope.userKey).then(function (result) {
-				vm.user = result;				
+				$scope.user = result;				
 			}, function (error) {
-				vm.messageError.push(error);
+				$scope.messageError.push(error);
 			});
 		};
+
+
+		/* buttons */
+		$scope.cancel = function() {
+            $state.go($state.current.parentState);
+        };
 		
 		
 		/* start */

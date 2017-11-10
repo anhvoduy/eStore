@@ -33,7 +33,7 @@
             console.log('save() ....');
         }
 
-        $scope.cancel = function() {            
+        $scope.cancel = function() {
             $state.go($state.current.parentState);
         }
 		

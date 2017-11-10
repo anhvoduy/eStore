@@ -1,33 +1,27 @@
 ﻿<div class="container">
     <div class="panel panel-default">
         <div class="panel-heading">
-            <h3 class="panel-title">All Users</h3>
+            <h3 class="panel-title">All Groups</h3>
         </div>
         <div class="panel-body">
-            <p><a ui-sref="userEdit({ userKey: null })">Add new user</a></p>
+            <p><a ui-sref="groupEdit({ groupKey: null })">Add new group</a></p>
             <div class="container" ng-cloak>
                 <div class="row row-table">
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>Id</th>
-                                <th>User Type</th>
-                                <th>User Name</th>
-                                <th>Display Name</th>
-                                <th>Email</th>
-                                <th>Birthday</th>
+                                <th>Id</th>                                
+                                <th>Group Name</th>
+                                <th>Description</th>                                
                                 <th>Edit</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="user in users">
+                            <tr ng-repeat="g in groups">
                                 <td>{{ $index + 1 }}</td>
-                                <td>{{ user.UserType }}</td>
-                                <td>{{ user.UserName }}</td>
-                                <td>{{ user.DisplayName }}</td>
-                                <td>{{ user.Email }}</td>
-                                <td>{{ user.Birthday }}</td>
-                                <td><a ui-sref="userEdit({ userKey: user.UserKey })">Edit</a></td>
+                                <td>{{ g.groupName }}</td>
+                                <td>{{ g.description }}</td>                                
+                                <td><a ui-sref="groupEdit({ groupKey: g.groupKey })">Edit</a></td>
                             </tr>
                         </tbody>
                     </table>

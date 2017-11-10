@@ -1,8 +1,8 @@
 ﻿(function () {
     'use strict';    
     app.controller('productReviewController', productReviewController);
-    productReviewController.$inject = ['$scope', '$timeout', '$stateParams', 'appCommon', 'productService', 'reviewService'];
-	function productReviewController($scope, $timeout, $stateParams, appCommon, productService, reviewService) {
+    productReviewController.$inject = ['$scope', '$timeout', '$state', '$stateParams', 'appCommon', 'productService', 'reviewService'];
+	function productReviewController($scope, $timeout, $state, $stateParams, appCommon, productService, reviewService) {
 		/* models */
 		$scope.productKey = $stateParams.productKey;
 		$scope.messageSuccess = [];
@@ -40,7 +40,7 @@
 		
 		
 		/* buttons */
-		$scope.save = function() {			
+		$scope.save = function() {
 			reviewService.createReview($scope.review).then(function (result) {				
                 $scope.messageSuccess.push(result);
                 resetFormStatus();
@@ -50,6 +50,9 @@
 			});
 		};
 		
+		$scope.cancel = function() {
+            $state.go($state.current.parentState);
+        }
 		
 		/* start */
 		activate();
