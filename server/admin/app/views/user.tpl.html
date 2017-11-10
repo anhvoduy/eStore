@@ -16,27 +16,27 @@
                                 <th>Display Name</th>
                                 <th>Email</th>
                                 <th>Birthday</th>
-                                <th>Edit</th>                        
+                                <th>Edit</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="user in vm.users">
+                            <tr ng-repeat="user in users">
                                 <td>{{ $index + 1 }}</td>
                                 <td>{{ user.UserType }}</td>
                                 <td>{{ user.UserName }}</td>
                                 <td>{{ user.DisplayName }}</td>
                                 <td>{{ user.Email }}</td>
                                 <td>{{ user.Birthday }}</td>
-                                <td><a ui-sref="userEdit({ UserId: user.UserId })">Edit</a></td>                        
+                                <td><a ui-sref="userEdit({ userKey: user.UserKey })">Edit</a></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
                 <div class="row">
-                    <div class="message-error" ng-show='(vm.messageError.length > 0)'>
+                    <div class="message-error" ng-show='(messageError.length > 0)'>
                         <span ng-repeat="msg in messageError">{{ msg }}</span>
                     </div>
-                    <div class="message-success" ng-show='(vm.messageSuccess.length > 0)'>
+                    <div class="message-success" ng-show='(messageSuccess.length > 0)'>
                         <span ng-repeat="msg in messageSuccess">{{ msg }}</span>
                     </div>
                 </div>

@@ -4,7 +4,7 @@
             <h3 class="panel-title">All Products</h3>
         </div>
         <div class="panel-body">
-            <p><a ui-sref="productDetail({ productId: null, formStatus: 1 })">Add new product</a></p>
+            <p><a ui-sref="productEdit({ productKey: null })">Add new product</a></p>
             <div class="container" ng-cloak>
                 <div class="row row-table">
                     <table class="table">
@@ -28,17 +28,17 @@
                                 <td>{{ p.Price }}</td>
                                 <td>{{ p.Colour }}</td>
                                 <td>{{ p.Status }}</td>
-                                <td><a ui-sref="productEdit({ ProductId: p.ProductId })">Edit</a></td>
-                                <td><a ui-sref="reviewProduct({ ProductId: p.ProductId })">Add Review</a></td>
+                                <td><a ui-sref="productEdit({ productKey: p.ProductKey })">Edit</a></td>
+                                <td><a ui-sref="reviewProduct({ productKey: p.ProductKey })">Add Review</a></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>                
                 <div class="row">
-                    <div class="message-error" ng-show='(vm.messageError.length > 0)'>
+                    <div class="message-error" ng-show='(messageError.length > 0)'>
                         <span ng-repeat="msg in messageError">{{ msg }}</span>
                     </div>
-                    <div class="message-success" ng-show='(vm.messageSuccess.length > 0)'>
+                    <div class="message-success" ng-show='(messageSuccess.length > 0)'>
                         <span ng-repeat="msg in messageSuccess">{{ msg }}</span>
                     </div>
                 </div>
