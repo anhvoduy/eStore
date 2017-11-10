@@ -5,9 +5,7 @@
 	function cashReportController(appCommon, reportService) {
 		// models
 		var vm = this;
-		vm.pagination = appCommon.defaultPagination;
-		vm.pagination.pageSize = 50;
-		vm.pagination.lstPageSize = [50, 100, 200];
+		vm.pagination = appCommon.defaultPagination;		
 		vm.messageSuccess = [];
 		vm.messageError = [];
 		vm.currentDate = new Date();

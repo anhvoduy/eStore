@@ -10,9 +10,9 @@ var accountService = require('../services/accountService');
 router.get('/items', auth.checkAuthentication(), async function (req, res, next) {
 	try 
 	{
-		let query = req.query;
-		let accounts = await accountService.getAccounts(query);
-		res.status(200).json(accounts);
+		let query = _.pick(req.query, ['PageCurrent', 'PageSize']);
+		let data = await accountService.getList(query);
+		res.status(200).json(data);
 	}
 	catch(err){
 		next(err);

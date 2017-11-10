@@ -34,7 +34,6 @@ Factory.prototype.getList = async function (query) {
 			Offset: PageOffset,
             Limit: PageSize
 		});
-		console.log(data);
 
 		let result = {
             HitsTotal: parseInt(totalRows),

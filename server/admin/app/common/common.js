@@ -26,9 +26,9 @@
             hitsTotal: 100,
             pageTotal: 10,
 			pageCurrent: 1,
-			pageSize: 10, //if report: 50
+			pageSize: 10,
 			maxSize: 5,
-			lstPageSize: [10, 50, 100] // if report: [50, 100, 200]
+			lstPageSize: [10, 50, 100]
         };
         
         
