@@ -1,16 +1,13 @@
 (function () {
     'use strict';    
-    app.controller('ProductController', ProductController);
-    ProductController.$inject = ['$scope', 'productService'];    
-	function ProductController($scope, productService) {
+    app.controller('productController', productController);
+    productController.$inject = ['$scope', 'appCommon', 'productService'];    
+	function productController($scope, appCommon, productService) {
 		/* models */
-		$scope.paging = {
-			prevIndex: 0,
-			nextIndex: 0,
-			pageSize: 10
-		};
+		$scope.paging = appCommon.defaultPagination;
 		$scope.messageSuccess = [];
 		$scope.messageError = [];
+
 		
 		/* functions */
 		var activate = function () {
@@ -20,7 +17,8 @@
 			}, function (error) {
 				$scope.messageError.push(error);
 			});
-		};				
+		};
+
 		
 		/* start */
 		activate();

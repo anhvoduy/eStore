@@ -12,6 +12,7 @@
 		$scope.formTitle = appCommon.setFormTitle($scope.formStatus, 'Inventory');						
 		$scope.messageSuccess = [];
 		$scope.messageError = [];
+
 		
 		/* functions */
 		function activate() {
@@ -20,7 +21,7 @@
 			}, function(error){
 				$scope.messageError.push(error);
 			});
-		};
+		};		
 
 		// if update inventory success/failed -> reset status after 3 seconds
 		function resetFormStatus() {
@@ -29,6 +30,7 @@
 				$scope.messageError = [];
 			}, 3000);
 		};
+		
 
 		/* buttons */
 		$scope.cancel = function() {

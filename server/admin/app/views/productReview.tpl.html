@@ -1,100 +1,87 @@
-﻿<div class="container" ng-cloak>
-    <h2>Product Information</h2>
-    <form name="formProduct" class="form-horizontal">
-        <div class="form-group">
-            <label for="productName" class="col-sm-2 control-label">Product Name</label>
-            <div class="col-sm-6">
-                <input id="productName" ng-model="product.ProductName" class="form-control" placeholder="Name" disabled/>
-            </div>
+﻿<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Product Information</h3>
         </div>
-        <div class="form-group">
-            <label for="productDescription" class="col-sm-2 control-label">Description</label>
-            <div class="col-sm-6">
-                <input id="productDescription" ng-model="product.Description" class="form-control" placeholder="Description" disabled/>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="BrandName" class="col-sm-2 control-label">Brand</label>
-            <div class="col-sm-6">
-                <input id="BrandName" ng-model="product.BrandName" class="form-control" placeholder="Brand" disabled/>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="Price" class="col-sm-2 control-label">Price</label>
-            <div class="col-sm-6">
-                <input id="Price" ng-model="product.Price" class="form-control" placeholder="Price" disabled/>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="Colour" class="col-sm-2 control-label">Color</label>
-            <div class="col-sm-6">
-                <input id="Colour" ng-model="product.Colour" class="form-control" placeholder="Colour" disabled />
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="Colour" class="col-sm-2 control-label">Status</label>
-            <div class="col-sm-6">
-                <input id="Status" ng-model="product.Status" class="form-control" placeholder="Status" disabled />
-            </div>
-        </div>
-    </form>
-</div>
+        <div class="panel-body" ng-cloak>
+            <form name="frmProduct" class="form-horizontal">
+                <div class="form-group">
+                    <label for="productName" class="col-sm-2 control-label">Product Name</label>
+                    <div class="col-sm-6">
+                        <input id="productName" class="form-control control-readonly" placeholder="product name" ng-model="product.ProductName" maxlength="50" required/>
+                    </div>
+                </div>
+        
+                <div class="form-group">
+                    <label for="productDescription" class="col-sm-2 control-label">Description</label>
+                    <div class="col-sm-6">
+                        <textarea id="productDescription" class="form-control control-readonly" placeholder="description" ng-model="product.Description" />
+                    </div>
+                </div>           
+                           
+                <div class="form-group">
+                    <label for="Price" class="col-sm-2 control-label">Price</label>
+                    <div class="col-sm-6">
+                        <input id="Price" ng-model="product.Price" class="form-control control-readonly" placeholder="Price" readonly/>
+                    </div>
+                </div>                            
+            </form>
+        </div>        
+    </div>    
+</div> 
 
 <div class="container">
-    <h2>Review</h2>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Review</h3>
+        </div>
+        <div class="panel-body" ng-cloak>
+            <form name="formReview" class="form-horizontal" novalidate>
+                <div class="form-group">
+                    <label for="productName" class="col-sm-2 control-label">Rating <span style="color: red">(*)</span></label>
+                    <div class="col-sm-6">
+                        <input name="Rating" type="text" class="form-control" maxlength="1" ng-model="review.Rating" numbers-only required />
+                    </div>
+                    <div class='control-label col-sm-8 message-error'
+                         ng-show='(formReview.Rating.$dirty && formReview.Rating.$invalid)'>Please input rating (number)</div>
+                </div>
+                <div class="form-group">
+                    <label for="Comment" class="col-sm-2 control-label">Comment <span style="color: red">(*)</span></label>
+                    <div class="col-sm-6">
+                        <textarea name="Comment" type="textarea" class="form-control" ng-model="review.Comment" rows="3" maxlength="200" required/>
+                    </div>
+                    <div class='control-label col-sm-8 message-error'
+                         ng-show='(formReview.Comment.$dirty && formReview.Comment.$invalid)'>Please input your comment</div>
+                </div>
+                <div class="form-group">
+                    <label for="Email" class="col-sm-2 control-label">Email <span style="color: red">(*)</span></label>
+                    <div class="col-sm-6">
+                        <input name="Email" type="email" class="form-control" ng-model="review.Email" maxlength="30" required/>
+                        <br />
+                        <span>sample: avo4@hvn.com</span>
+                    </div>
+                    <div class='control-label col-sm-8 message-error'
+                         ng-show='(formReview.Email.$dirty && formReview.Email.$error.required)'>Please input your email</div>
+                    <div class='control-label col-sm-8 message-error'
+                         ng-show='(formReview.Email.$dirty && formReview.Email.$error.email)'>Invalid email format</div> 
+                </div>
+                
+                <div class="form-group">
+                    <div class='control-label col-sm-8 message-success' ng-show='(messageSuccess.length > 0)'>
+                        <span ng-repeat="msg in messageSuccess">{{ msg }}</span>
+                    </div>                
+                    <div class='control-label col-sm-8 message-error' ng-show='(messageError.length > 0)'>
+                        <span ng-repeat="msg in messageError">{{ msg }}</span>
+                    </div>
+                </div>
 
-    <form name="formReview" class="form-horizontal" novalidate>
-        <div class="form-group">
-            <label for="productName" class="col-sm-2 control-label">Rating <span style="color: red">(*)</span></label>
-            <div class="col-sm-6">
-                <input name="Rating" ng-model="review.Rating" class="form-control" maxlength="1" numbers-only required />
-            </div>
-            <div class='control-label col-sm-8 message-error'
-                 ng-show='(formReview.Rating.$dirty && formReview.Rating.$invalid)'>Please input rating (number)</div>
-        </div>
-        <div class="form-group">
-            <label for="Comment" class="col-sm-2 control-label">Comment <span style="color: red">(*)</span></label>
-            <div class="col-sm-6">
-                <textarea name="Comment" type="textarea" ng-model="review.Comment" class="form-control" rows="3" maxlength="200" required/>
-            </div>
-            <div class='control-label col-sm-8 message-error'
-                 ng-show='(formReview.Comment.$dirty && formReview.Comment.$invalid)'>Please input your comment</div>
-        </div>
-        <div class="form-group">
-            <label for="Email" class="col-sm-2 control-label">Email <span style="color: red">(*)</span></label>
-            <div class="col-sm-6">
-                <input name="Email" type="email" ng-model="review.Email" class="form-control" maxlength="30" required/>
-                <br />
-                <span>sample: avo4@hvn.com</span>
-            </div>
-            <div class='control-label col-sm-8 message-error'
-                 ng-show='(formReview.Email.$dirty && formReview.Email.$error.required)'>Please input your email</div>
-            <div class='control-label col-sm-8 message-error'
-                 ng-show='(formReview.Email.$dirty && formReview.Email.$error.email)'>Invalid email format</div> 
-        </div>
-
-        <div class="form-group">
-            <div class='control-label col-sm-8 message-success'
-                 ng-show='(messageSuccess.length > 0)'>{{ messageSuccess }}</div>
-        </div>
-
-        <div class="form-group">
-            <div class='control-label col-sm-8 message-error'
-                 ng-show='(messageError.length > 0)'>{{ messageError }}</div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-                <input type="button" 
-                       class="btn" 
-                       value="Save" 
-                       ng-click="formReview.$valid && save()"
-                       ng-disabled="disabledButton || formReview.$invalid"/>
-            </div>
-        </div>
-    </form>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <input type="button" class="btn btn-primary" value="Save" ng-click="save()"/>
+                        <input type="button" class="btn btn-danger" value="Cancel" ng-click="cancel()"/>
+                    </div>
+                </div>
+            </form>
+        </div>        
+    </div>    
 </div>

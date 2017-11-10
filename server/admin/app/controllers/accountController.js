@@ -1,20 +1,20 @@
 (function () {
 	'use strict';
 	app.controller('accountController', accountController);
-	accountController.$inject = ['appCommon', 'accountService'];
-	function accountController(appCommon, accountService) {
+	accountController.$inject = ['$scope', 'appCommon', 'accountService'];
+	function accountController($scope, appCommon, accountService) {
 		/* view-model */
-		var vm = this;
-		vm.messageSuccess = [];
-		vm.messageError = [];
+		$scope.paging = appCommon.defaultPagination;
+		$scope.messageSuccess = [];
+		$scope.messageError = [];
 		
 		/* functions */
 		function activate() {
 			accountService.getAccounts().then(function (result) {
-				vm.accounts = result;
-				vm.messageSuccess.push(String.format("Get Accounts is success. Total: {0} rows", vm.accounts.length));
+				$scope.accounts = result;
+				$scope.messageSuccess.push(String.format("Get Accounts is success. Total: {0} rows", $scope.accounts.length));
 			}, function (error) {				
-				vm.messageSuccess.push(error);
+				$scope.messageSuccess.push(error);
 			});
 		};
 		

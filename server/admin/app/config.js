@@ -41,29 +41,27 @@ app.config(function ($stateProvider) {
 		views: {
 			"view": {
 				templateUrl: "/app/views/product.tpl.html",
-				controller: "ProductController",
-				controllerAs: 'vm'
+				controller: "productController"
 			}
 		}
 	})
 	.state('productEdit', {
-        url: "/product/:productId",
+        url: "/product/:productKey",
         parentState: 'product',
 		views: {
 			"view": {
 				templateUrl: "/app/views/productEdit.tpl.html",
-				controller: "productEditController",
-				controllerAs: 'vm'
+				controller: "productEditController"
 			}
 		}
 	})	
-	.state('reviewProduct', {
-		url: "/review/:productId",
+	.state('productReview', {
+		url: "/review/:productKey",
+		parentState: 'product',
 		views: {
 			"view": {
 				templateUrl: "/app/views/productReview.tpl.html",
-				controller: "productReviewController",
-				controllerAs: 'vm'
+				controller: "productReviewController"
 			}
 		}
 	})
@@ -191,19 +189,17 @@ app.config(function ($stateProvider) {
 		views: {
 			"view": {
 				templateUrl: "/app/views/account.tpl.html",
-				controller: "accountController",
-				controllerAs: 'vm'
+				controller: "accountController"
 			}
 		}
 	})
-	.state('accountDetail', {
-		url: '/account/:accountID',
+	.state('accountEdit', {
+		url: '/account/:accountKey',
 		parentState: 'account',
 		views: {
 			"view": {
-				templateUrl: "/app/views/accountDetail.tpl.html",
-				controller: "accountDetailController",
-				controllerAs: 'vm'
+				templateUrl: "/app/views/accountEdit.tpl.html",
+				controller: "accountEditController"
 			}
 		}
 	})
@@ -212,18 +208,36 @@ app.config(function ($stateProvider) {
 		views: {
 			"view": {
 				templateUrl: "/app/views/user.tpl.html",
-				controller: "UserController",
-				controllerAs: 'vm'
+				controller: "userController"
 			}
 		}
 	})
 	.state('userEdit', {
-		url: '/user/:userID',
+		url: '/user/:userKey',
+		parentState: 'user',
 		views: {
 			"view": {
 				templateUrl: "/app/views/userEdit.tpl.html",
-				controller: "userEditController",
-				controllerAs: 'vm'
+				controller: "userEditController"
+			}
+		}
+	})
+	.state('group', {
+		url: "/group",
+		views: {
+			"view": {
+				templateUrl: "/app/views/group.tpl.html",
+				controller: "groupController"
+			}
+		}
+	})
+	.state('groupEdit', {
+		url: '/group/:groupKey',
+		parentState: 'group',
+		views: {
+			"view": {
+				templateUrl: "/app/views/groupEdit.tpl.html",
+				controller: "groupEditController"
 			}
 		}
 	})

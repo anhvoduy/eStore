@@ -15,7 +15,7 @@ Factory.prototype.myProfile = function(){
 	}
 }
 
-Factory.prototype.getUsers = function () {
+Factory.prototype.getUsers = function (query) {
     var sql = `
 		SELECT 	UserId, UserKey, UserType, UserName, DisplayName, Email, Mobile, Tel, 
 			Title, DateOfBirth 
@@ -26,44 +26,44 @@ Factory.prototype.getUsers = function () {
 	return dbContext.queryList(sql);    
 }
 
-Factory.prototype.getUserById = function (userId) {
+Factory.prototype.getUserById = function (query) {
     var sql = `
 		SELECT 	UserId, UserKey, UserType, UserName, DisplayName, Email, Mobile, Tel, 
 			Title, DateOfBirth 
 		FROM User 
 		WHERE UserId =:UserId
 	`;
-	return dbContext.queryItem(sql, {UserId: userId});
+	return dbContext.queryItem(sql, { UserId: query.UserId });
 }
 
-Factory.prototype.getUserByKey = function (userKey) {
+Factory.prototype.getUserByKey = function (query) {
     var sql = `
 		SELECT 	UserId, UserKey, UserType, UserName, DisplayName, Email, Mobile, Tel, 
 			Title, DateOfBirth 
 		FROM User 
 		WHERE UserId =:UserKey
 	`;
-	return dbContext.queryItem(sql, {UserKey: userKey});
+	return dbContext.queryItem(sql, { UserKey: query.UserKey });
 }
 
-Factory.prototype.getUserByName = function (userName) {
+Factory.prototype.getUserByName = function (query) {
     var sql = `
 		SELECT UserId, UserKey, UserType, UserName, DisplayName, Email, Mobile, Tel, 
 			Title, DateOfBirth 
 		FROM User 
 		WHERE UserName =:UserName
 	`;
-    return dbContext.queryItem(sql, {UserName: userName});
+    return dbContext.queryItem(sql, { UserName: query.UserName });
 }
 
-Factory.prototype.getUserByEmail = function (email) {
+Factory.prototype.getUserByEmail = function (query) {
 	var sql = `
 		SELECT UserId, UserKey, UserType, UserName, DisplayName, Email, Mobile, Tel, 
 			Title, DateOfBirth
 		FROM User 
 		WHERE Email =:Email
 	`;
-	return dbContext.queryItem(sql, {Email: email});
+	return dbContext.queryItem(sql, { Email: query.Email });
 }
 
 Factory.prototype.authenticate = function (username, password) {
@@ -103,7 +103,8 @@ Factory.prototype.getMenu = function () {
 				{ code: 'product', name: 'Product' },
 				{ code: 'inventory', name: 'Inventory' },
 				{ code: 'account', name: 'Account' },
-				{ code: 'user', name: 'User' }
+				{ code: 'user', name: 'User' },
+				{ code: 'group', name: 'Group' }
 			]
 		},
 		// {

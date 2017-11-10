@@ -1,36 +1,39 @@
 ﻿(function () {
     'use strict';    
     app.controller('productEditController', productEditController);
-    productEditController.$inject = ['productService', 'reviewService', '$state', '$stateParams'];    
-    function productEditController(productService, reviewService, $state, $stateParams) {
-		// models
-		var vm = this;
-		vm.productId = $stateParams.productID;
-		vm.product = {};
-		vm.review = {};
-		vm.isSaving = false;
-		vm.messageSuccess = '';
-        vm.messageError = '';
-        vm.save = save;
-        vm.cancel = cancel;
+    productEditController.$inject = ['$scope', '$state', '$stateParams', 'appCommon', 'productService', 'reviewService'];
+    function productEditController($scope, $state, $stateParams, appCommon, productService, reviewService) {
+		/* models */
+		$scope.productKey = $stateParams.productKey;
+		$scope.formStatus = appCommon.isUndefined($scope.productKey) 
+			? appCommon.formStatus.isNew 
+			: appCommon.formStatus.isEdit;
+		$scope.formTitle = appCommon.setFormTitle($scope.formStatus, 'Product');
+		$scope.messageSuccess = [];
+        $scope.messageError = [];        
 		
-		// functions
+		
+		/* functions */
 		var activate = function () {
-			productService.getProductById(vm.productId).then(function (result) {
-				vm.product = result;
-				if (vm.product === undefined) {
-					vm.messageError = String.format("The Product Id: {0} not found.", vm.productId);
+			if(appCommon.isUndefined($scope.productKey)) return;
+
+			productService.getProductByKey($scope.productKey).then(function (result) {
+				$scope.product = result;
+				if (appCommon.isUndefined($scope.product)) {
+					$scope.messageError.push(String.format("The Product Key: {0} not found.", $scope.productKey));
 				}
 			}, function (error) {
-				vm.messageError = error.message;
+				$scope.messageError.push(error);
 			});
         };
 
-        function save() {
+
+		/* buttons */
+        $scope.save = function() {
             console.log('save() ....');
         }
 
-        function cancel() {            
+        $scope.cancel = function() {
             $state.go($state.current.parentState);
         }
 		

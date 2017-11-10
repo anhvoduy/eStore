@@ -22,8 +22,12 @@ router.get('/items', async function (req, res, next) {
 router.get('/item', async function (req, res, next) {
 	try
 	{
-		let query = _.pick(req.query,['BrandId', 'BrandKey']);		
-		let brand = await brandService.getBrandByKey(query);		
+		let query = _.pick(req.query,['BrandId', 'BrandKey']);
+		let brand;
+		if(query.BrandId)
+			brand = await brandService.getBrandById(query);
+		else if(query.BrandKey)
+			brand = await brandService.getBrandByKey(query);		
 		res.status(200).json(brand);
 	}
 	catch(err){

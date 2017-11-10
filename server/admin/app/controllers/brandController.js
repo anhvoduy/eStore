@@ -1,14 +1,14 @@
 (function () {
     'use strict';        
     app.controller('brandController', brandController);
-	brandController.$inject = ['$scope', 'brandService'];
-	
+	brandController.$inject = ['$scope', 'brandService'];	
 	function brandController($scope, brandService) {
-		// models				
+		/* view-model */
+		$scope.paging = appCommon.defaultPagination;
 		$scope.messageSuccess = [];
 		$scope.messageError = [];
 		
-		// functions
+		/* functions */
 		function activate() {
 			brandService.getBrands().then(function (result) {
 				$scope.brands = result;

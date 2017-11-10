@@ -1,55 +1,56 @@
 (function (){
     'use strict';
 	app.controller('accountEditController', accountEditController);
-    accountEditController.$inject = ['$timeout', 'accountService', '$state', '$stateParams'];    
-    function accountEditController($timeout, accountService, $state, $stateParams) {
-		/* models */
-		var vm = this;
-        vm.accountId = $stateParams.accountId;
-		vm.disabledButton = false;
-		vm.messageSuccess = [];
-        vm.messageError = [];		
+    accountEditController.$inject = ['$scope', '$timeout', '$state', '$stateParams', 'appCommon', 'accountService'];
+    function accountEditController($scope, $timeout, $state, $stateParams, appCommon, accountService) {
+		/* models */		
+		$scope.accountKey = $stateParams.accountKey;
+		$scope.formStatus = appCommon.isUndefined($scope.accountKey) 
+			? appCommon.formStatus.isNew 
+			: appCommon.formStatus.isEdit;		
+		$scope.formTitle = appCommon.setFormTitle($scope.formStatus, 'Account');
+		$scope.messageSuccess = [];
+		$scope.messageError = [];
 		
-		// functions
+		
+		/* functions */
 		function activate() {
-            accountService.getAccountById(vm.accountId).then(function (result) {
-                vm.account = result;
-				if (vm.account === undefined) {
-                    vm.messageError = String.format("The account: {0} not found.", vm.accountId);
-					vm.disabledButton = true;
-				} else {
-					vm.disabledButton = false;
+			if(appCommon.isUndefined($scope.accountKey)) return;
+
+            accountService.getAccountByKey($scope.accountKey).then(function (result) {
+                $scope.account = result;
+				if (appCommon.isUndefined($scope.account)) {
+                    $scope.messageError.push(String.format("The account: {0} not found.", $scope.accountKey));
 				}
 			}, function (error) {
-				vm.messageError = error.message;
-				vm.disabledButton = true;
+				$scope.messageError.push(error);
 			});			
 		}
 		
-		// if update brand success/failed -> reset status after 5s  
+		// if update brand success/failed -> reset status after 3 seconds  
 		function resetFormStatus() {
 			$timeout(function () {
-				vm.disabledButton = false;
-				vm.messageSuccess = '';
-				vm.messageError = '';
-			}, 5000);
+				$scope.disabledButton = false;
+				$scope.messageSuccess = [];
+				$scope.messageError = [];
+			}, 3000);
 		}
 		
-		// buttons
-        vm.save = function() {
-            if (vm.account === undefined) return;
+		/* buttons */
+        $scope.save = function() {
+            if (appCommon.isUndefined($scope.account)) return;
 
-            vm.disabledButton = true;
-            accountService.updateAccount(vm.account).then(function (result) {
-                vm.messageSuccess = result.message;
+            $scope.disabledButton = true;
+            accountService.updateAccount($scope.account).then(function (result) {
+                $scope.messageSuccess.push(result.message);
                 resetFormStatus();
             }, function (error) {
-                vm.messageError = error.message;
+                $scope.messageError.push(error);
                 resetFormStatus();
             });
         }
 
-		vm.cancel = function() {            
+		$scope.cancel = function() {            
             $state.go($state.current.parentState);
         }
 		
