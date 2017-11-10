@@ -28,12 +28,13 @@
 	width: 100%;
 }
 
-/* .form-ng-pagination > ul {
-    display: block;
+.form-ng-pagination > ul {
+    display: inline;
+    padding-right: 20px;
 }
 
 .form-ng-pagination > select {
     max-width: 70px;
     max-height: 30px;
-    float: right;
-} */
+    display: inline;
+}
