@@ -7,7 +7,7 @@ const Factory = function(){
 
 Factory.prototype.getList = async function (query) {
 	try
-	{		
+	{
 		let TotalSize = 0;
         let PageTotal = 0;
         let PageCurrent = parseInt(query.PageCurrent) - 1;
@@ -21,7 +21,7 @@ Factory.prototype.getList = async function (query) {
 			WHERE Deleted <> 1
 		`;
 		let totalRows = (await dbContext.queryItem(sqlTotal)).Total;
-
+		
 		// get data
 		let sqlQuery = `
 			SELECT BrandId, BrandKey, BrandName, Description
@@ -30,7 +30,7 @@ Factory.prototype.getList = async function (query) {
 			ORDER BY BrandId DESC
 			LIMIT :Offset, :Limit
 		`;
-		let brands = await dbContext.queryList(sqlQuery, {
+		let data = await dbContext.queryList(sqlQuery, {
 			Offset: PageOffset,
             Limit: PageSize
 		});
@@ -40,7 +40,7 @@ Factory.prototype.getList = async function (query) {
             PageTotal: parseInt(Math.ceil(totalRows / PageSize)),
             PageSize: parseInt(PageSize),
             PageCurrent: parseInt(PageCurrent) + 1,
-            PageData: brands
+            PageData: data
         }
         return result;
 	}

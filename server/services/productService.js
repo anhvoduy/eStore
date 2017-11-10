@@ -2,33 +2,73 @@ const _ = require('lodash');
 const dbContext = require('../lib/dbContext');
 
 // Constructor
-const Factory = function () { 
+const Factory = function () {
 }
 
-Factory.prototype.getProducts = function (query) {	
-    var sql = `
-		SELECT  P.ProductId, P.ProductKey, P.ProductName, P.Description, 
-		        P.BrandId, B.BrandName,
-		        P.Price, P.Colour, P.Created, P.Status, P.LatestReviewInfo 
-		FROM Product P INNER JOIN Brand B
-        WHERE P.BrandId = B.BrandId
-        ORDER BY P.ProductId DESC
-        LIMIT 5000
-    `;
-	return dbContext.queryList(sql);
+Factory.prototype.getProducts = async function (query) {
+    try
+    {
+        let TotalSize = 0;
+        let PageTotal = 0;
+        let PageCurrent = parseInt(query.PageCurrent) - 1;
+        let PageSize = parseInt(query.PageSize);
+        let PageOffset = PageCurrent * PageSize;
+        
+        // get hits total
+        let sqlTotal = `
+            SELECT COUNT(*) AS Total
+            FROM Product
+            WHERE Deleted <> 1
+        `;
+        let totalRows = (await dbContext.queryItem(sqlTotal)).Total;
+
+        // get data
+        var sqlQuery = `
+            SELECT  P.ProductId, P.ProductKey, P.ProductName, P.Description, 
+                    P.BrandId, B.BrandName,
+                    P.Price, P.Colour, P.Created, P.Status, P.LatestReviewInfo 
+            FROM Product P INNER JOIN Brand B
+            WHERE P.BrandId = B.BrandId
+            ORDER BY P.ProductId DESC
+            LIMIT :Offset, :Limit
+        `;
+        let data = await dbContext.queryList(sqlQuery, {
+			Offset: PageOffset,
+            Limit: PageSize
+        });
+        
+        let result = {
+            HitsTotal: parseInt(totalRows),
+            PageTotal: parseInt(Math.ceil(totalRows / PageSize)),
+            PageSize: parseInt(PageSize),
+            PageCurrent: parseInt(PageCurrent) + 1,
+            PageData: data
+        }
+        return result;
+    }
+    catch(err){
+        throw err;
+    }    
 }
 
-Factory.prototype.getProductById = function (query) {
-	var sql = `
-		SELECT  P.ProductId, P.ProductKey, P.ProductName, P.Description, 
-				P.BrandId, B.BrandName,
-		        P.Price, P.Colour, P.Created, P.Status, P.LatestReviewInfo
-		FROM Product P INNER JOIN Brand B ON P.BrandId = B.BrandId 
-        WHERE   P.ProductId =:ProductId
-            AND B.Deleted <> 1
-            AND P.Deleted <> 1
-    `;
-	return dbContext.queryItem(sql, { ProductId: query.ProductId });
+Factory.prototype.getProductById = async function (query) {
+    try
+    {
+        var sql = `
+            SELECT  P.ProductId, P.ProductKey, P.ProductName, P.Description, 
+                    P.BrandId, B.BrandName,
+                    P.Price, P.Colour, P.Created, P.Status, P.LatestReviewInfo
+            FROM Product P INNER JOIN Brand B ON P.BrandId = B.BrandId 
+            WHERE   P.ProductId =:ProductId
+                AND B.Deleted <> 1
+                AND P.Deleted <> 1
+        `;
+        let data = await dbContext.queryItem(sql, { ProductId: query.ProductId });
+        return data;
+    }
+    catch(err){
+        throw err;
+    }	
 }
 
 Factory.prototype.getProductByKey = function (query) {

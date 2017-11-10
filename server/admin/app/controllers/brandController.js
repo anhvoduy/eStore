@@ -13,14 +13,13 @@
 			$scope.getBrands();
 		};
 
-		function clearData() {
+		function cleanSuccessErrors() {
 			$scope.messageSuccess = [];
 			$scope.messageError = [];
 		}
 
-		$scope.getBrands = function()
-		{
-			clearData();
+		$scope.getBrands = function() {
+			cleanSuccessErrors();
 			brandService.getList($scope.pagination.pageCurrent, $scope.pagination.pageSize)
 			.then(function (data) {
 				$scope.brands = data.PageData;
