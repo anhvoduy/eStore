@@ -3,8 +3,9 @@
         return {
             restrict: 'EA',
             replace: true,
-            templateUrl: function () {
-                return "/app/directives/footer.html";
+            template: function () {
+                var template = '<div>-----footer-----</div>';
+                return template;
             },
             link: function (scope, element, attrs, ngCtrl) {
             }

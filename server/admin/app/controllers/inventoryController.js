@@ -1,8 +1,8 @@
 (function (){
     'use strict';
 	app.controller('inventoryController', inventoryController);
-    inventoryController.$inject = ['$scope', '$state', '$stateParams', 'inventoryService'];    
-	function inventoryController($scope, $state, $stateParams, inventoryService) {
+    inventoryController.$inject = ['$scope', '$state', '$stateParams', 'appCommon', 'inventoryService'];    
+	function inventoryController($scope, $state, $stateParams, appCommon, inventoryService) {
 		/* models */
 		$scope.paging = appCommon.defaultPagination;
 		$scope.messageSuccess = [];
