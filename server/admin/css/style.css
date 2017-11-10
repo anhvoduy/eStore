@@ -28,6 +28,7 @@
 	width: 100%;
 }
 
+/* pagination directive */
 .form-ng-pagination > ul {
     display: inline;
     padding-right: 20px;
