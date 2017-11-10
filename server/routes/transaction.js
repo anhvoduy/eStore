@@ -1,7 +1,6 @@
-// Dependencies
 var express = require('express');
-var router = express.Router();
-var q = require('q');
+var router = require('express').Router();
+var _ = require('lodash');
 var auth = require('../config/auth');
 var constant = require('../lib/constant');
 var dbContext = require('../lib/dbContext');
@@ -9,56 +8,11 @@ var errorHelper = require('../lib/errorHelper');
 var transactionService = require('../services/transactionService');
 
 
-// Routers
-router.get('/items', async function (req, res, next) {
-    try
-    {
-        let query = req.query;
-        //let transactions = await transactionService.getTransactions(query);
-        res.status(200).json(true);
-    }
-    catch(err){
-        next(err);
-    }
-});
-
-router.get('/item', async function (req, res, next) {
-    try
-    {
-        let query = req.query;
-        // let transactions = await transactionService.getTransactionById(query)
-        // if (transactions.length == 0) {
-        //     res.status(404).json(errorHelper.Error_Not_Exist_TransactionId);
-        // } else {
-        //     res.status(200).json(transactions[0]);
-        // }
-        res.status(200).json(true);
-    }
-    catch(err){
-        next(err);
-    }
-});
-
-router.post('/create', function (req, res, next) {
-    res.status(200).json(true);
-});
-
-router.put('/update', function (req, res, next) {
-	res.status(200).json(true);
-});
-
-router.delete('/delete', function (req, res, next) {
-    res.status(200).json(true);
-});
-
-
-
-
 /* --- CashIn  ---*/
 router.get('/cashin/items', async function (req, res, next) {
     try
     {
-        let query = req.query;
+        let query = _.pick(req.query, ['PageCurrent', 'PageSize']);
         let transactions = await transactionService.getCashIn(query);
         res.status(200).json(transactions);
     }
@@ -89,7 +43,7 @@ router.post('/cashin/delete', function (req, res, next) {
 router.get('/cashout/items', async function (req, res, next) {
     try
     {
-        let query = req.query;
+        let query = _.pick(req.query, ['PageCurrent', 'PageSize']);
         let transactions = await transactionService.getCashOut(query);
         res.status(200).json(transactions);
     }

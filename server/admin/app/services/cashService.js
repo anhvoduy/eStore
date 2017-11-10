@@ -10,14 +10,20 @@
         cashService.prototype.constructor = cashService;
         
         // methods
-        cashService.prototype.getCashIn = function () {
+        cashService.prototype.getCashIn = function (pageCurrent, pageSize) {
             var url = String.format('{0}/cashin/items', this.api);
+            var params = {
+                PageCurrent: pageCurrent,
+                PageSize: pageSize
+            };
 
             var q = $q.defer();
-            this.getData(url).then(function (result) {
-                angular.forEach(result, function(item){
-                    item.TransactionDate = moment(item.TransactionDate).format('DD/MM/YYYY');
-                });
+            this.getData(url, params).then(function (result) {
+                if(result.PageData && result.PageData.length > 0){
+                    angular.forEach(result.PageData, function(item){
+                        item.TransactionDate = moment(item.TransactionDate).format('DD/MM/YYYY');
+                    });
+                };
                 q.resolve(result);
             }, function (error) {
                 q.reject(error);
@@ -25,14 +31,20 @@
             return q.promise;
         }
         
-        cashService.prototype.getCashOut = function () {
+        cashService.prototype.getCashOut = function (pageCurrent, pageSize) {
             var url = String.format('{0}/cashout/items', this.api);
+            var params = {
+                PageCurrent: pageCurrent,
+                PageSize: pageSize
+            };
 
             var q = $q.defer();
-            this.getData(url).then(function (result) {
-                angular.forEach(result, function(item){
-                    item.TransactionDate = moment(item.TransactionDate).format('DD/MM/YYYY');
-                });
+            this.getData(url, params).then(function (result) {
+                if(result.PageData && result.PageData.length > 0){
+                    angular.forEach(result.PageData, function(item){
+                        item.TransactionDate = moment(item.TransactionDate).format('DD/MM/YYYY');
+                    });
+                };
                 q.resolve(result);
             }, function (error) {
                 q.reject(error);
