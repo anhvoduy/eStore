@@ -56,11 +56,11 @@
                     scope.popup.opened = true;
                 };
                 scope.changeSelectedDate = function(){
-                    scope.value = new Date(moment(scope.dtValue).format('MMM-DD-YYYY'));
+                    scope.value = new Date(moment(scope.dtValue).format('YYYY-MM-DD'));
                 }
                 scope.$watch('value', function(newVal, oldVal) {
                     if(oldVal != newVal){
-                        scope.dtValue = new Date(moment(newVal).format('MMM-DD-YYYY'));
+                        scope.dtValue = new Date(moment(newVal).format('YYYY-MM-DD'));
                     }
                 });
             }
