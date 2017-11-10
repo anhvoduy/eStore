@@ -260,13 +260,79 @@ INSERT INTO `Transaction`(TransactionKey, TransactionNo, TransactionDate, Transa
 VALUES (uuid(),'CASHIN-000005','2017-08-07','CASHIN','Cash In ', '111', '531', 'USD', 1250, 'SYSTEM', 'SYSTEM');
 
 INSERT INTO `Transaction`(TransactionKey, TransactionNo, TransactionDate, TransactionType, Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount, Author, Editor)
-VALUES (uuid(),'CASHOUT-000001','2016-11-07','CASHOUT','Cash Out', '111', '642', 'VND', 1000000, 'SYSTEM', 'SYSTEM');
+VALUES (uuid(),'CASHIN-000006','2017-09-07','CASHIN','Cash In ', '111', '531', 'USD', 1250, 'SYSTEM', 'SYSTEM');
 
 INSERT INTO `Transaction`(TransactionKey, TransactionNo, TransactionDate, TransactionType, Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount, Author, Editor)
-VALUES (uuid(),'CASHOUT-000002','2016-11-07','CASHOUT','Cash Out', '111', '642', 'VND', 2000000, 'SYSTEM', 'SYSTEM');
+VALUES (uuid(),'CASHIN-000007','2017-09-17','CASHIN','Cash In ', '111', '531', 'USD', 500, 'SYSTEM', 'SYSTEM');
 
 INSERT INTO `Transaction`(TransactionKey, TransactionNo, TransactionDate, TransactionType, Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount, Author, Editor)
-VALUES (uuid(),'CASHOUT-000003','2016-11-07','CASHOUT','Cash Out', '111', '532', 'USD', 500, 'SYSTEM', 'SYSTEM');
+VALUES (uuid(),'CASHIN-000008','2017-09-17','CASHIN','Cash In ', '111', '531', 'USD', 500, 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `Transaction`(TransactionKey, TransactionNo, TransactionDate, TransactionType, Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount, Author, Editor)
+VALUES (uuid(),'CASHIN-000009','2017-09-18','CASHIN','Cash In ', '111', '532', 'USD', 250, 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `Transaction`(TransactionKey, TransactionNo, TransactionDate, TransactionType, Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount, Author, Editor)
+VALUES (uuid(),'CASHIN-000010','2017-10-08','CASHIN','Cash In ', '111', '531', 'USD', 55, 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `Transaction`(TransactionKey, TransactionNo, TransactionDate, TransactionType, Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount, Author, Editor)
+VALUES (uuid(),'CASHIN-000011','2017-10-08','CASHIN','Cash In ', '111', '532', 'USD', 25, 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `Transaction`(TransactionKey, TransactionNo, TransactionDate, TransactionType, Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount, Author, Editor)
+VALUES (uuid(),'CASHIN-000012','2017-10-10','CASHIN','Cash In ', '111', '531', 'USD', 650, 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `Transaction`(TransactionKey, TransactionNo, TransactionDate, TransactionType, Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount, Author, Editor)
+VALUES (uuid(),'CASHIN-000013','2017-10-12','CASHIN','Cash In ', '111', '532', 'USD', 1150, 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `Transaction`(TransactionKey, TransactionNo, TransactionDate, TransactionType, Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount, Author, Editor)
+VALUES (uuid(),'CASHOUT-000001','2016-05-07','CASHOUT','Cash Out', '111', '642', 'VND', 1000000, 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `Transaction`(TransactionKey, TransactionNo, TransactionDate, TransactionType, Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount, Author, Editor)
+VALUES (uuid(),'CASHOUT-000002','2016-05-17','CASHOUT','Cash Out', '111', '642', 'VND', 2000000, 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `Transaction`(TransactionKey, TransactionNo, TransactionDate, TransactionType, Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount, Author, Editor)
+VALUES (uuid(),'CASHOUT-000003','2016-06-07','CASHOUT','Cash Out', '111', '532', 'USD', 500, 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `Transaction`(TransactionKey, TransactionNo, TransactionDate, TransactionType, Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount, Author, Editor)
+VALUES (uuid(),'CASHOUT-000004','2016-06-17','CASHOUT','Cash Out', '111', '631', 'USD', 1500, 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `Transaction`(TransactionKey, TransactionNo, TransactionDate, TransactionType, Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount, Author, Editor)
+VALUES (uuid(),'CASHOUT-000005','2016-07-23','CASHOUT','Cash Out', '111', '632', 'USD', 600, 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `Transaction`(TransactionKey, TransactionNo, TransactionDate, TransactionType, Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount, Author, Editor)
+VALUES (uuid(),'CASHOUT-000006','2016-07-27','CASHOUT','Cash Out', '111', '632', 'USD', 600, 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `Transaction`(TransactionKey, TransactionNo, TransactionDate, TransactionType, Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount, Author, Editor)
+VALUES (uuid(),'CASHOUT-000007','2016-08-07','CASHOUT','Cash Out', '111', '632', 'USD', 600, 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `Transaction`(TransactionKey, TransactionNo, TransactionDate, TransactionType, Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount, Author, Editor)
+VALUES (uuid(),'CASHOUT-000008','2016-08-07','CASHOUT','Cash Out', '111', '642', 'USD', 600, 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `Transaction`(TransactionKey, TransactionNo, TransactionDate, TransactionType, Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount, Author, Editor)
+VALUES (uuid(),'CASHOUT-000009','2016-09-07','CASHOUT','Cash Out', '111', '641', 'USD', 600, 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `Transaction`(TransactionKey, TransactionNo, TransactionDate, TransactionType, Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount, Author, Editor)
+VALUES (uuid(),'CASHOUT-000010','2016-09-07','CASHOUT','Cash Out', '111', '632', 'USD', 600, 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `Transaction`(TransactionKey, TransactionNo, TransactionDate, TransactionType, Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount, Author, Editor)
+VALUES (uuid(),'CASHOUT-000011','2016-10-18','CASHOUT','Cash Out', '111', '631', 'USD', 800, 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `Transaction`(TransactionKey, TransactionNo, TransactionDate, TransactionType, Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount, Author, Editor)
+VALUES (uuid(),'CASHOUT-000012','2016-10-17','CASHOUT','Cash Out', '111', '632', 'USD', 600, 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `Transaction`(TransactionKey, TransactionNo, TransactionDate, TransactionType, Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount, Author, Editor)
+VALUES (uuid(),'CASHOUT-000013','2016-10-27','CASHOUT','Cash Out', '111', '632', 'USD', 600, 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `Transaction`(TransactionKey, TransactionNo, TransactionDate, TransactionType, Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount, Author, Editor)
+VALUES (uuid(),'CASHOUT-000014','2016-11-03','CASHOUT','Cash Out', '111', '632', 'USD', 600, 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `Transaction`(TransactionKey, TransactionNo, TransactionDate, TransactionType, Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount, Author, Editor)
+VALUES (uuid(),'CASHOUT-000015','2016-11-04','CASHOUT','Cash Out', '111', '632', 'USD', 600, 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `Transaction`(TransactionKey, TransactionNo, TransactionDate, TransactionType, Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount, Author, Editor)
+VALUES (uuid(),'CASHOUT-000016','2016-11-05','CASHOUT','Cash Out', '111', '642', 'USD', 600, 'SYSTEM', 'SYSTEM');
+
+INSERT INTO `Transaction`(TransactionKey, TransactionNo, TransactionDate, TransactionType, Description, DebitAcctNo, CreditAcctNo, Currency, TotalAmount, Author, Editor)
+VALUES (uuid(),'CASHOUT-000017','2016-11-07','CASHOUT','Cash Out', '111', '632', 'USD', 600, 'SYSTEM', 'SYSTEM');
 
 --
 -- Table structure for table `TransactionDetail`
