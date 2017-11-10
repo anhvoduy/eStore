@@ -4,7 +4,8 @@
 - open file: "/demo/server/services/config.js" to setup: username & password & database name
 
 For start review:
-- open command line in folder server
+- install nodejs 8.9.1 LTS
+- open command line:
 	npm install
 	npm start
 - public site: http://localhost:3000/

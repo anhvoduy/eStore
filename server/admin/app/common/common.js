@@ -11,6 +11,12 @@
 
 
         // properties
+        appCommon.prototype.userTypes = [
+			{ Key: 'ADMIN', Label: 'ADMIN' }, 
+            { Key: 'USER', Label: 'USER' },
+            { Key: 'VISITOR', Label: 'VISITOR' }
+        ];
+        
         appCommon.prototype.formStatus = {
             isNew: 1,
             isEdit: 2

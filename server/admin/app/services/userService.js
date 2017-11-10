@@ -28,19 +28,39 @@
         
         userService.prototype.getUserById = function (userId) {
             var url = String.format('{0}/items/{1}', this.api, userId);
+            var params = {
+                UserId: userId
+            };
                         
             var q = $q.defer();
-            this.getData(url).then(function (result) {
-                // extend models
-                if (result != undefined) {
+            this.getData(url, params).then(function (result) {
+                if (result && result.Birthday) {
                     result.Birthday = new Date(moment(result.DateOfBirth));
-                }                
+                }
                 q.resolve(result);
             }, function (error) {
                 q.reject(error);
             })
             return q.promise;
-        }                
+        }
+
+        userService.prototype.getUserByKey = function (userKey) {
+            var url = String.format('{0}/item', this.api);
+            var params = {
+                UserKey: userKey
+            };
+                        
+            var q = $q.defer();
+            this.getData(url, params).then(function (result) {
+                if (result && result.Birthday) {
+                    result.Birthday = new Date(moment(result.DateOfBirth));
+                }
+                q.resolve(result);
+            }, function (error) {
+                q.reject(error);
+            })
+            return q.promise;
+        }
 
         userService.prototype.getProfile = function () {
 			var url = String.format('{0}/profile', this.api);

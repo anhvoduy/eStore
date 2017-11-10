@@ -11,12 +11,12 @@
 		
 		/* functions */
 		var activate = function () {
-			// userService.getUsers().then(function (result) {
-			// 	$scope.users = result;
-			// 	$scope.messageSuccess.push(String.format("Get Users is success. Total: {0} rows", $scope.users.length));
-			// }, function (error) {
-			// 	$scope.messageError.push(error);
-			// });
+			groupService.getGroups().then(function (result) {
+				$scope.groups = result;
+				$scope.messageSuccess.push(String.format("Get Groups is success. Total: {0} rows", $scope.groups.length));
+			}, function (error) {
+				$scope.messageError.push(error);
+			});
 		};
 		
 		
