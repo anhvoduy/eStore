@@ -11,7 +11,7 @@ const productService = require('../services/productService');
 router.get('/items', auth.checkAuthentication(), async function (req, res, next) {
 	try
 	{
-		let query = _.pick(req.query, ['PageCurrent', 'PageSize']);
+		let query = _.pick(req.query, ['PageCurrent', 'PageSize']);		
 		let data = await productService.getProducts(query);
 		res.status(200).json(data);
 	}
