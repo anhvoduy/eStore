@@ -17,28 +17,23 @@ router.get('/items', auth.checkAuthentication(), async function (req, res, next)
 	}
 	catch(err){
 		next(err);
-	}	
+	}
 });
 
-router.get('/item', auth.checkAuthentication(), function (req, res, next) {
-	var productId = req.params.id;
-	
-	var ctx = {};
-	dbContext.getConnection().then(function (result) {
-		ctx = result;
-		// TO DO: getProductById() || getProductsByBrand()
-		return productService.getProductById(ctx, productId);
-	}).then(function (products) {
-		if (products.length == 0) {
-			res.status(404).json(errorHelper.Error_Not_Exist_ProductId);
-		} else {
-			res.status(200).json(products[0]);
-		}
-	}).catch(function (error) {
-		next(error);
-	}).done(function () {
-		ctx.release();
-	});
+router.get('/item', auth.checkAuthentication(), async function (req, res, next) {
+	try
+	{
+		let query = _.pick(req.query, ['ProductId', 'ProductKey']);
+		let products;
+		if(query.ProductId)		
+			 products = await productService.getProductById(query);
+		else if(query.ProductKey)
+			products = await productService.getProductByKey(query);
+		res.status(200).json(products);
+	}
+	catch(err){
+		next(err);
+	}	
 });
 
 router.get('/brand/items', auth.checkAuthentication(), async function (req, res, next) {

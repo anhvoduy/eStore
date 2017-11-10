@@ -8,7 +8,7 @@
 		$scope.brandKey = $stateParams.brandKey;
 		$scope.formStatus = appCommon.isUndefined($scope.brandKey) 
 			? appCommon.formStatus.isNew 
-			: appCommon.formStatus.isEdit;
+			: appCommon.formStatus.isEdit;		
 		$scope.formTitle = appCommon.setFormTitle($scope.formStatus, 'Brand');
 		$scope.messageSuccess = [];
 		$scope.messageError = [];

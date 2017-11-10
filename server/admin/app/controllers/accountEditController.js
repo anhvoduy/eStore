@@ -7,10 +7,10 @@
 		$scope.accountKey = $stateParams.accountKey;
 		$scope.formStatus = appCommon.isUndefined($scope.accountKey) 
 			? appCommon.formStatus.isNew 
-			: appCommon.formStatus.isEdit;
-		$scope.formTitle = appCommon.setFormTitle($scope.formStatus, 'Account');		
+			: appCommon.formStatus.isEdit;		
+		$scope.formTitle = appCommon.setFormTitle($scope.formStatus, 'Account');
 		$scope.messageSuccess = [];
-		$scope.messageError = [];		
+		$scope.messageError = [];
 		
 		
 		/* functions */

@@ -21,7 +21,7 @@ Factory.prototype.getBrandById = function (query) {
 		FROM Brand 
 		WHERE BrandId=:BrandId AND Deleted <> 1		
 	`;
-	return dbContext.queryItem(sql, query);
+	return dbContext.queryItem(sql, { BrandId: query.BrandId });
 }
 
 Factory.prototype.getBrandByKey = function (query) {
@@ -30,7 +30,7 @@ Factory.prototype.getBrandByKey = function (query) {
 		FROM Brand 
 		WHERE BrandKey=:BrandKey AND Deleted <> 1		
 	`;
-	return dbContext.queryItem(sql, query);
+	return dbContext.queryItem(sql, { BrandKey: query.BrandKey });
 }
 
 Factory.prototype.createBrand = function (brand) {

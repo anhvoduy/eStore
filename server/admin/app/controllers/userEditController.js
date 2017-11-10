@@ -1,30 +1,31 @@
 (function () {
     'use strict';    
     app.controller('userEditController', userEditController);
-    userEditController.$inject = ['$stateParams', 'userService'];    
-	function userEditController($stateParams, userService) {
-		// models		
-		var vm = this;
-		vm.userId = $stateParams.userID;
-		vm.user = {};
-		vm.messageSuccess = '';
-		vm.messageError = '';
-		vm.userTypes = [
-			{ Key: 'CUSTOMER', Label: 'CUSTOMER' }, 
-			{ Key: 'MERCHANT', Label: 'MERCHANT' }
+    userEditController.$inject = ['$scope', '$state', '$stateParams', 'appCommon', 'userService'];    
+	function userEditController($scope, $state, $stateParams, appCommon, userService) {
+		/* models */
+		$scope.userKey = $stateParams.userKey;
+		$scope.formStatus = appCommon.isUndefined($scope.userKey) 
+			? appCommon.formStatus.isNew 
+			: appCommon.formStatus.isEdit;
+		$scope.formTitle = appCommon.setFormTitle($scope.formStatus, 'User');
+		$scope.messageSuccess = [];
+		$scope.messageError = [];
+		$scope.userTypes = [
+			{ Key: 'ADMIN', Label: 'ADMIN' }, 
+			{ Key: 'USER', Label: 'USER' }
 		];
 		
-		// functions
+		
+		/* functions */
 		var activate = function () {
-			userService.getUserById(vm.userId).then(function (result) {
-				vm.user = result;
-				if (vm.user === undefined) {
-					vm.messageError = String.format("The User Id: {0} not found.", userId);
-				}
+			userService.getUserByKey($scope.userKey).then(function (result) {
+				vm.user = result;				
 			}, function (error) {
-				vm.messageError = error.message;
+				vm.messageError.push(error);
 			});
 		};
+		
 		
 		/* start */
 		activate();

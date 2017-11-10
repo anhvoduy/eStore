@@ -1,8 +1,8 @@
 (function () {
     'use strict';    
-    app.controller('ProductController', ProductController);
-    ProductController.$inject = ['$scope', 'appCommon', 'productService'];    
-	function ProductController($scope, appCommon, productService) {
+    app.controller('productController', productController);
+    productController.$inject = ['$scope', 'appCommon', 'productService'];    
+	function productController($scope, appCommon, productService) {
 		/* models */
 		$scope.paging = appCommon.defaultPagination;
 		$scope.messageSuccess = [];

@@ -5,9 +5,9 @@ const dbContext = require('../lib/dbContext');
 const Factory = function () { 
 }
 
-Factory.prototype.getProducts = function () {	
+Factory.prototype.getProducts = function (query) {	
     var sql = `
-		SELECT  P.ProductId, P.ProductName, P.Description, 
+		SELECT  P.ProductId, P.ProductKey, P.ProductName, P.Description, 
 		        P.BrandId, B.BrandName,
 		        P.Price, P.Colour, P.Created, P.Status, P.LatestReviewInfo 
 		FROM Product P INNER JOIN Brand B
@@ -20,7 +20,7 @@ Factory.prototype.getProducts = function () {
 
 Factory.prototype.getProductById = function (query) {
 	var sql = `
-		SELECT  P.ProductId, P.ProductName, P.Description,
+		SELECT  P.ProductId, P.ProductKey, P.ProductName, P.Description, 
 				P.BrandId, B.BrandName,
 		        P.Price, P.Colour, P.Created, P.Status, P.LatestReviewInfo
 		FROM Product P INNER JOIN Brand B ON P.BrandId = B.BrandId 
@@ -31,9 +31,22 @@ Factory.prototype.getProductById = function (query) {
 	return dbContext.queryItem(sql, { ProductId: query.ProductId });
 }
 
+Factory.prototype.getProductByKey = function (query) {
+	var sql = `
+		SELECT  P.ProductId, P.ProductKey, P.ProductName, P.Description, 
+				P.BrandId, B.BrandName,
+		        P.Price, P.Colour, P.Created, P.Status, P.LatestReviewInfo
+		FROM Product P INNER JOIN Brand B ON P.BrandId = B.BrandId 
+        WHERE   P.ProductKey =:ProductKey
+            AND B.Deleted <> 1
+            AND P.Deleted <> 1
+    `;
+	return dbContext.queryItem(sql, { ProductKey: query.ProductKey });
+}
+
 Factory.prototype.getProductsByBrand = function (query) {
 	var sql = `
-		SELECT  P.ProductId, P.ProductName, P.Description,
+		SELECT  P.ProductId, P.ProductKey, P.ProductName, P.Description, 
 				P.Price, P.Colour, P.Created, P.Status,
         		P.BrandId, B.BrandName, P.LatestReviewInfo
 		FROM Product P INNER JOIN Brand B ON P.BrandId = B.BrandId

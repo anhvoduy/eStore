@@ -1,59 +1,57 @@
 ﻿(function () {
     'use strict';    
     app.controller('productReviewController', productReviewController);
-    productReviewController.$inject = ['$scope', '$timeout', '$stateParams', 'productService', 'reviewService'];    
-	function productReviewController($scope, $timeout, $stateParams, productService, reviewService) {				
-		$scope.productId = $stateParams.productID;		
-		$scope.product = {};
-		$scope.disabledButton = false;
-		$scope.messageSuccess = '';
-		$scope.messageError = '';
+    productReviewController.$inject = ['$scope', '$timeout', '$stateParams', 'appCommon', 'productService', 'reviewService'];
+	function productReviewController($scope, $timeout, $stateParams, appCommon, productService, reviewService) {
+		/* models */
+		$scope.productKey = $stateParams.productKey;
+		$scope.messageSuccess = [];
+		$scope.messageError = [];
 		$scope.review = {
 			Rating: '',
 			Comment: '',
 			Created: new Date(),
-			ProductId: $scope.productId,
+			ProductKey: $scope.productKey,
 			Email: ''
 		};
 		
-		// functions
-		function initialize() {
-			productService.getProductById($scope.productId).then(function (result) {
+
+		/* functions */
+		function activate() {
+			if(appCommon.isUndefined($scope.productKey)) return;
+
+			productService.getProductByKey($scope.productKey).then(function (result) {
 				$scope.product = result;
-				if ($scope.product === undefined) {
-					$scope.messageError = String.format("The product id: {0} not found.", $scope.productId);
-					$scope.disabledButton = true;
-				} else {
-					$scope.disabledButton = false;
+				if (appCommon.isUndefined($scope.product)){
+					$scope.messageError.push(String.format("The productKey: {0} not found.", $scope.productKey));
 				}
 			}, function (error) {
-				$scope.messageError = error.message;
-				$scope.disabledButton = true;
+				$scope.messageError.push(error);				
 			});
 		};
 		
-		// if create review success/failed -> reset status after 5s
+		// if create review success/failed -> reset status after 3s
 		function resetFormStatus() {
-			$timeout(function () {
-				$scope.disabledButton = false;
-				$scope.messageSuccess = '';
-				$scope.messageError = '';
-			}, 5000);
+			$timeout(function () {				
+				$scope.messageSuccess = [];
+				$scope.messageError = [];
+			}, 3000);
 		};
 		
-		// buttons
-		$scope.save = function() {
-			$scope.disabledButton = true;
+		
+		/* buttons */
+		$scope.save = function() {			
 			reviewService.createReview($scope.review).then(function (result) {				
-                $scope.messageSuccess = result.message;
+                $scope.messageSuccess.push(result);
                 resetFormStatus();
 			}, function (error) {
-				$scope.messageError = error.message;
+				$scope.messageError.push(error);
 				resetFormStatus();
 			});
 		};
 		
+		
 		/* start */
-		initialize();
+		activate();
 	}
 })();

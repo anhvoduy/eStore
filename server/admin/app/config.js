@@ -41,29 +41,26 @@ app.config(function ($stateProvider) {
 		views: {
 			"view": {
 				templateUrl: "/app/views/product.tpl.html",
-				controller: "ProductController",
-				controllerAs: 'vm'
+				controller: "productController"
 			}
 		}
 	})
 	.state('productEdit', {
-        url: "/product/:productId",
+        url: "/product/:productKey",
         parentState: 'product',
 		views: {
 			"view": {
 				templateUrl: "/app/views/productEdit.tpl.html",
-				controller: "productEditController",
-				controllerAs: 'vm'
+				controller: "productEditController"
 			}
 		}
 	})	
-	.state('reviewProduct', {
-		url: "/review/:productId",
+	.state('productReview', {
+		url: "/review/:productKey",
 		views: {
 			"view": {
 				templateUrl: "/app/views/productReview.tpl.html",
-				controller: "productReviewController",
-				controllerAs: 'vm'
+				controller: "productReviewController"
 			}
 		}
 	})
