@@ -4,7 +4,8 @@ var app = angular.module('cargo', [
 	'mega-menu',
 	'cargo.directives',
 	'cargo.directives.megaMenu',
-	'cargo.directives.searchControl'	
+	'cargo.directives.footer',
+	'cargo.directives.pagination'
 ]);
 
 app.config(function ($stateProvider) {

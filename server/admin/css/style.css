@@ -27,3 +27,15 @@
 .home-image {
 	width: 100%;
 }
+
+/* pagination directive */
+.form-ng-pagination > ul {
+    display: inline;
+    padding-right: 20px;
+}
+
+.form-ng-pagination > select {
+    max-width: 70px;
+    max-height: 30px;
+    display: inline;
+}

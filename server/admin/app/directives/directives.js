@@ -22,7 +22,7 @@
             link: function (scope, element, attrs, modelCtrl) {
                 if(scope.stock !== undefined && scope.stock.StockDate!=undefined){
                     scope.stock.StockDate = moment(scope.stock.StockDate).format('DD/MM/YYYY');                        
-                }                    
+                }
             }
         };
     })

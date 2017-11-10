@@ -5,7 +5,7 @@
         </div>
         <div class="panel-body">
             <p><a ui-sref="brandEdit({ brandKey: null })">Add new brand</a></p>
-            <div class="container" ng-cloak>
+            <div class="container" ng-cloak>                
                 <div class="row row-table">
                     <table class="table">
                         <thead>
@@ -38,6 +38,8 @@
                 </div>
             </div>
         </div>
-        <div class="panel-footer">ng-paginator</div>
+        <div class="panel-footer">
+            <ng-pagination pagination="pagination" on-get-data="getBrands()" />
+        </div>
     </div>
 </div>
