@@ -10,7 +10,7 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>Brand Id</th>
+                                <th>Id</th>
                                 <th>Brand Name</th>                    
                                 <th>Description</th>
                                 <th>Edit</th>                    
@@ -19,7 +19,7 @@
                         </thead>
                         <tbody>
                             <tr ng-repeat="brand in brands">
-                                <td>{{ brand.BrandId }}</td>
+                                <td>{{ $index + 1 }}</td>
                                 <td>{{ brand.BrandName }}</td>
                                 <td>{{ brand.Description }}</td>                                
                                 <td><a ui-sref="brandEdit({ brandKey: brand.BrandKey })">Edit</a></td>

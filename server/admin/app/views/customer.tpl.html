@@ -1,31 +1,29 @@
 ﻿<div class="container">
     <div class="panel panel-default">
         <div class="panel-heading">
-            <h3 class="panel-title">All Accounts</h3>
+            <h3 class="panel-title">All Customers</h3>
         </div>
         <div class="panel-body">
-            <p><a ui-sref="accountEdit({ accountKey: null })">Add new account</a></p>
+            <p><a ui-sref="customerEdit({ customerKey: null })">Add new customer</a></p>
             <div class="container" ng-cloak>
                 <div class="row row-table">
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>Id</th>
-                                <th>Account No</th>
-                                <th>Account Name</th>                    
-                                <th>Description</th>
+                                <th>Id</th>                                
+                                <th>Customer Name</th>                    
+                                <th>Address</th>
                                 <th>Edit</th>
                                 <th>Delete</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="acct in accounts">
-                                <td>{{ $index + 1 }}</td>
-                                <td>{{ acct.AccountNo }}</td>
-                                <td>{{ acct.AccountName }}</td>
-                                <td>{{ acct.Description }}</td>                                
-                                <td><a ui-sref="accountEdit({ accountKey: acct.AccountKey })">Edit</a></td>
-                                <td><a ui-sref="deleteAccount(acct.AccountId)">Delete</a></td>
+                            <tr ng-repeat="c in customers">
+                                <td>{{ $index + 1 }}</td>                                
+                                <td>{{ c.CustomerName }}</td>
+                                <td>{{ c.Address }}</td>                                
+                                <td><a ui-sref="customerEdit({ customerKey: c.CustomerKey })">Edit</a></td>
+                                <td><a ui-sref="deleteCustomer(c.customerId)">Delete</a></td>
                             </tr>
                         </tbody>
                     </table>
@@ -41,7 +39,7 @@
             </div>
         </div>
         <div class="panel-footer">
-            <ng-pagination pagination="pagination" on-get-data="getAccounts()" />
+            <ng-pagination pagination="pagination" on-get-data="getCustomers()" />
         </div>
     </div>    
 </div>

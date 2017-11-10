@@ -1,16 +1,16 @@
 (function () {
     'use strict';
-    app.factory('brandService', brandService);
-    brandService.$inject = ['$q', 'baseService'];
-    function brandService($q, baseService) {
+    app.factory('customerService', customerService);
+    customerService.$inject = ['$q', 'baseService'];
+    function customerService($q, baseService) {
         // constructor
-        var brandService = function () {            
+        var customerService = function () {
         }
-        brandService.prototype = new baseService('api/brand');
-        brandService.prototype.constructor = brandService;
+        customerService.prototype = new baseService('api/customer');
+        customerService.prototype.constructor = customerService;                
 
         // methods
-        brandService.prototype.getList = function (pageCurrent, pageSize) {
+        customerService.prototype.getList = function (pageCurrent, pageSize) {
             var url = String.format('{0}/items', this.api);
             var params = {
                 PageCurrent: pageCurrent,
@@ -26,10 +26,10 @@
             return q.promise;            
         }
         
-        brandService.prototype.getBrandByKey = function (brandKey) {
+        customerService.prototype.getCustomerByKey = function (customerKey) {
             var url = String.format('{0}/item', this.api);
             var params = {
-                BrandKey: brandKey
+                CustomerKey: customerKey
             }
             
             var q = $q.defer();
@@ -41,16 +41,11 @@
             return q.promise;
         }
 
-        brandService.prototype.createBrand = function (brand) {
+        customerService.prototype.createCustomer = function (Customer) {
             var url = String.format('{0}/create', this.api);
-            return true;
-        }
-        
-        brandService.prototype.updateBrand = function (brand) {
-            var url = String.format('{0}/update', this.api);
             
             var q = $q.defer();
-            this.update(url, brand).then(function (result) {
+            this.create(url, Customer).then(function (result) {
                 q.resolve(result);
             }, function (error) {
                 q.reject(error);
@@ -58,7 +53,19 @@
             return q.promise;
         }
         
-        brandService.prototype.deleteBrand = function (brandKey) {
+        customerService.prototype.updateCustomer = function (Customer) {
+            var url = String.format('{0}/update', this.api);
+            
+            var q = $q.defer();
+            this.update(url, Customer).then(function (result) {
+                q.resolve(result);
+            }, function (error) {
+                q.reject(error);
+            });
+            return q.promise;
+        }
+        
+        customerService.prototype.deleteCustomer = function (customerId) {
             var url = String.format('{0}/delete', this.api);
             
             var q = $q.defer();
@@ -70,6 +77,6 @@
             return q.promise;            
         }
         
-        return new brandService;
+        return new customerService;
     };
 })();

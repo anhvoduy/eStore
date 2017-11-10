@@ -46,7 +46,7 @@ Factory.prototype.getList = async function (query) {
 	}
 	catch(err){
 		throw err;
-	}	
+	}
 }
 
 Factory.prototype.getBrandById = function (query) {

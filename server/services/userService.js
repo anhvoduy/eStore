@@ -103,6 +103,7 @@ Factory.prototype.getMenu = function () {
 				{ code: 'product', name: 'Product' },
 				{ code: 'inventory', name: 'Inventory' },
 				{ code: 'account', name: 'Account' },
+				{ code: 'customer', name: 'Customer' },
 				{ code: 'user', name: 'User' },
 				{ code: 'group', name: 'Group' }
 			]

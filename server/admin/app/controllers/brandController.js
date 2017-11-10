@@ -16,7 +16,7 @@
 		function cleanSuccessErrors() {
 			$scope.messageSuccess = [];
 			$scope.messageError = [];
-		}
+		};
 
 		$scope.getBrands = function() {
 			cleanSuccessErrors();

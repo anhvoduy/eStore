@@ -1,8 +1,8 @@
 (function () {
 	'use strict';
-	app.controller('accountController', accountController);
-	accountController.$inject = ['$scope', 'appCommon', 'accountService'];
-	function accountController($scope, appCommon, accountService) {
+	app.controller('customerController', customerController);
+	customerController.$inject = ['$scope', 'appCommon', 'customerService'];
+	function customerController($scope, appCommon, customerService) {
 		/* view-model */
 		$scope.pagination = appCommon.defaultPagination;
 		$scope.messageSuccess = [];
@@ -10,26 +10,26 @@
 		
 		/* functions */
 		function activate() {
-			$scope.getAccounts();
+			$scope.getCustomers();			
 		};
 
-		function cleanSuccessErrors() {
-			$scope.messageSuccess = [];
+		function cleanSuccessErrors(){
 			$scope.messageError = [];
+            $scope.messageSuccess = [];
 		};
-
-		$scope.getAccounts = function(){
+		
+		$scope.getCustomers = function(){
 			cleanSuccessErrors();
-			accountService.getAccounts($scope.pagination.pageCurrent, $scope.pagination.pageSize)
+			customerService.getList($scope.pagination.pageCurrent, $scope.pagination.pageSize)
 			.then(function (data) {
-				$scope.accounts = data.PageData;
+				$scope.customers = data.PageData;
 				$scope.pagination.pageCurrent = data.PageCurrent;
 				$scope.pagination.pageSize = data.PageSize;
 				$scope.pagination.pageTotal = data.PageTotal;
 				$scope.pagination.hitsTotal = data.HitsTotal;
 				$scope.pagination.maxSize = Math.ceil(data.HitsTotal/data.PageSize);
 				// message
-				$scope.messageSuccess.push(String.format("Get Accounts is success. Total: {0} rows", $scope.accounts.length));
+				$scope.messageSuccess.push(String.format("Get Customers is success. Total: {0} rows", $scope.customers.length));
 			}, function (error) {				
 				$scope.messageSuccess.push(error);
 			});

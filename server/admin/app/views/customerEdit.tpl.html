@@ -1,0 +1,48 @@
+﻿<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">{{ formTitle }}</h3>
+        </div>    
+        <div class="panel-body" ng-cloak>
+            <form name="frmCustomer" class="form-horizontal">
+                <div class="form-group">
+                    <label for="acctNo" class="col-sm-2 control-label">Customer No</label>
+                    <div class="col-sm-6">
+                        <input name="acctNo" class="form-control" placeholder="Customer no" ng-model="Customer.CustomerNo" maxlength="20" required/>
+                    </div>
+                    <div class='control-label col-sm-8 message-error'
+                        ng-show='frmCustomer.acctNo.$dirty && frmCustomer.acctNo.$invalid'>Please input Acct No</div>
+                </div>
+        
+                <div class="form-group">
+                    <label for="acctName" class="col-sm-2 control-label">Customer Name</label>
+                    <div class="col-sm-6">
+                        <input name="acctName" class="form-control" placeholder="Customer name" ng-model="Customer.CustomerName" maxlength="45" required/>
+                    </div>
+                    <div class='control-label col-sm-8 message-error'
+                        ng-show='frmCustomer.acctName.$dirty && frmCustomer.acctName.$invalid'>Please input Acct Name</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="Address" class="col-sm-2 control-label">Description</label>
+                    <div class="col-sm-6">
+                        <textarea name="Address" class="form-control" placeholder="Address" ng-model="customer.Address" required/>
+                    </div>                    
+                </div>
+
+                <div class="form-group">
+                    <div class='control-label col-sm-8 message-error' ng-show='(messageError.length > 0)'>
+                        <span ng-repeat="msg in messageError">{{ msg }}</span>
+                    </div>                        
+                    <div class='control-label col-sm-8 message-success' ng-show='(messageSuccess.length > 0)'>
+                        <span ng-repeat="msg in messageSuccess">{{ msg }}</span>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="panel-footer">
+            <input type="button" class="btn btn-primary" value="Save" ng-click="save()" ng-disabled="disabledButton"/>
+            <input type="button" class="btn btn-danger" value="Cancel" ng-click="cancel()" ng-disabled="disabledButton"/>          
+        </div>
+    </div>
+</div>   

@@ -204,6 +204,25 @@ app.config(function ($stateProvider) {
 			}
 		}
 	})
+	.state('customer', {
+		url: "/customer",
+		views: {
+			"view": {
+				templateUrl: "/app/views/customer.tpl.html",
+				controller: "customerController"
+			}
+		}
+	})
+	.state('customerEdit', {
+		url: '/customer/:customerKey',
+		parentState: 'customer',
+		views: {
+			"view": {
+				templateUrl: "/app/views/customerEdit.tpl.html",
+				controller: "customerEditController"
+			}
+		}
+	})
 	.state('user', {
 		url: "/user",
 		views: {
