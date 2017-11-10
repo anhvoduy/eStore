@@ -36,7 +36,12 @@
                 q.reject(error);
             })
             return q.promise;
-        }        
+        }
+
+        brandService.prototype.createBrand = function (brand) {
+            var url = String.format('{0}/create', this.api);
+            return true;
+        }
         
         brandService.prototype.updateBrand = function (brand) {
             var url = String.format('{0}/update', this.api);
@@ -50,8 +55,8 @@
             return q.promise;
         }
         
-        brandService.prototype.deleteBrand = function (brandId) {
-            var url = String.format('{0}/delete/{1}', this.api, brandId);
+        brandService.prototype.deleteBrand = function (brandKey) {
+            var url = String.format('{0}/delete', this.api);
             
             var q = $q.defer();
             this.delete(url).then(function (result) {

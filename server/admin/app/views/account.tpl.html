@@ -19,12 +19,12 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="acct in vm.accounts">
+                            <tr ng-repeat="acct in accounts">
                                 <td>{{ $index + 1 }}</td>
                                 <td>{{ acct.AccountNo }}</td>
                                 <td>{{ acct.AccountName }}</td>
                                 <td>{{ acct.Description }}</td>                                
-                                <td><a ui-sref="accountEdit({ accountKey: acct.accountKey })">Edit</a></td>
+                                <td><a ui-sref="accountEdit({ accountKey: acct.AccountKey })">Edit</a></td>
                                 <td><a ui-sref="deleteAccount(acct.AccountId)">Delete</a></td>
                             </tr>
                         </tbody>
@@ -40,6 +40,6 @@
                 </div>
             </div>
         </div>
-        <!-- <div class="panel-footer">ng-paginator</div> -->
+        <div class="panel-footer">ng-paginator</div>
     </div>    
 </div>

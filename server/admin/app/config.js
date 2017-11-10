@@ -191,19 +191,17 @@ app.config(function ($stateProvider) {
 		views: {
 			"view": {
 				templateUrl: "/app/views/account.tpl.html",
-				controller: "accountController",
-				controllerAs: 'vm'
+				controller: "accountController"
 			}
 		}
 	})
-	.state('accountDetail', {
-		url: '/account/:accountID',
+	.state('accountEdit', {
+		url: '/account/:accountKey',
 		parentState: 'account',
 		views: {
 			"view": {
-				templateUrl: "/app/views/accountDetail.tpl.html",
-				controller: "accountDetailController",
-				controllerAs: 'vm'
+				templateUrl: "/app/views/accountEdit.tpl.html",
+				controller: "accountEditController"
 			}
 		}
 	})
@@ -212,18 +210,16 @@ app.config(function ($stateProvider) {
 		views: {
 			"view": {
 				templateUrl: "/app/views/user.tpl.html",
-				controller: "UserController",
-				controllerAs: 'vm'
+				controller: "userController"
 			}
 		}
 	})
 	.state('userEdit', {
-		url: '/user/:userID',
+		url: '/user/:userKey',
 		views: {
 			"view": {
 				templateUrl: "/app/views/userEdit.tpl.html",
-				controller: "userEditController",
-				controllerAs: 'vm'
+				controller: "userEditController"
 			}
 		}
 	})

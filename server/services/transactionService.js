@@ -6,7 +6,7 @@ const Factory = function () {
 }
 
 Factory.prototype.createTransaction = function (transaction) {
-    return true;    
+    return true;
 }
 
 Factory.prototype.updateTransaction = function (transaction) {

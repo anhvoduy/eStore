@@ -6,28 +6,28 @@ const Factory = function () {
 }
 
 Factory.prototype.getAccounts = function (query) {
-	var sql = `
-		SELECT AccountId, AccountNo, AccountName, Description 
+	let sql = `
+		SELECT AccountId, AccountKey, AccountNo, AccountName, Description 
 		FROM Account 
 		WHERE Deleted <> 1
-		ORDER BY AccountId DESC
+		ORDER BY AccountNo ASC
 	`;
 	return dbContext.queryList(sql);
 }
 
-Factory.prototype.getAccountById = function (query) {
-	var sql = `
-		SELECT AccountId, AccountNo, AccountName, Description 
+Factory.prototype.getAccountById = function (query) {	
+	let sql = `
+		SELECT AccountId, AccountKey, AccountNo, AccountName, Description 
 		FROM Account 
-		WHERE AccountId =:AccountId
-	`;
-	return dbContext.queryItem(sql, query);
+		WHERE AccountId =:AccountId OR AccountKey =:AccountKey
+	`;	
+	return dbContext.queryItem(sql, { AccountId: query.AccountId, AccountKey: query.AccountKey });
 }
 
 Factory.prototype.createAccount = function (account) {
 	var sql = `
-		INSERT INTO Account(Acct, Name, Description)
-		VALUES(:Acct, :Name, :Description)
+		INSERT INTO Account(AccountKey, AccountNo, AccountName, Description)
+		VALUES(uuid(), :AccountNo, :AccountName, :Description)
 	`;
     return dbContext.queryExecute(sql, account);
 }
@@ -35,8 +35,8 @@ Factory.prototype.createAccount = function (account) {
 Factory.prototype.updateAccount = function (account) {
 	var sql = `
 		UPDATE Account 
-		SET Acct =:Acct, 
-			Name =:Name, 
+		SET AccountNo =:AccountNo, 
+			AccountName =:AccountName, 
 			Description =:Description
 		WHERE AccountId =:AccountId
 	`;
