@@ -1251,9 +1251,9 @@ iframe.jim-iframe {
     background-color: #ffffff;
     border: 1px solid #cccccc;
     padding: 10px;
-    -webkit-border-radius: 0 8px 8px 8px; /* Safari, Chrome */
-    -moz-border-radius: 0 8px 8px 8px; /* Firefox */
-    border-radius: 0 8px 8px 8px;
+    -webkit-border-radius: 8px 8px 8px 8px; /* Safari, Chrome */
+    -moz-border-radius: 8px 8px 8px 8px; /* Firefox */
+    border-radius: 8px 8px 8px 8px;
 }
 
 /****** Angular Tab ******/
