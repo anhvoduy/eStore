@@ -69,6 +69,8 @@ server.use(function (err, req, res, next) {
 var pathPublic = path.join(__dirname, 'public');
 server.use('/', express.static(pathPublic, { index: 'index.html' }));
 
+// var pathJim = path.join(__dirname, 'jim');
+// server.use('/jim', express.static(pathJim, { index: 'index.html' }));
 
 var pathAdmin = path.join(__dirname, 'admin');
 server.use('/admin', express.static(pathAdmin, { index: 'index.html' }));
