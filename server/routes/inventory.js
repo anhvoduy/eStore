@@ -27,7 +27,26 @@ router.get('/item', Q.async(function* (req, res, next) {
 
 
 
-/* --- Input  ---*/
+/* --- Stock ---*/
+router.get('/stock/item', async function (req, res, next) {
+    try
+    {
+        let query = _.pick(req.query, ['StockKey']);        
+        let stock = await stockService.getStock(query);
+        let stockDetail = await stockService.getStockDetail(stock);
+        let data = {
+            Stock: stock,
+            StockDetail: stockDetail
+        }
+        res.status(200).json(data);
+    }
+    catch(err){        
+        next(err);        
+    }
+});
+
+
+/* --- Input ---*/
 router.get('/input/items', Q.async(function* (req, res, next) {
     try
     {
@@ -37,12 +56,8 @@ router.get('/input/items', Q.async(function* (req, res, next) {
     }
     catch(err){        
         next(error);        
-    }       
+    }
 }));
-
-router.get('/input/item', function (req, res, next) {
-    res.status(200).json(true);
-});
 
 router.post('/input/create', function (req, res, next) {
     res.status(200).json(true);
@@ -58,7 +73,7 @@ router.post('/input/delete', function (req, res, next) {
 
 
 
-/* --- Output  ---*/
+/* --- Output ---*/
 router.get('/output/items', Q.async(function* (req, res, next) {
     try
     {
