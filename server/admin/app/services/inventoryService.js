@@ -12,55 +12,30 @@
 		// methods
 		inventoryService.prototype.getItems = function () {
 			var url = String.format('{0}/items', this.api);
-			
-			var q = $q.defer();
-			this.getData(url).then(function (result) {
-				q.resolve(result);
-			}, function (error) {
-				q.reject(error);
-			})
-			return q.promise;
+			var params = {				
+			};
+			return this.getData(url, params);
 		}
 		
 		inventoryService.prototype.getItem = function (inventoryKey) {
 			var url = String.format('{0}/item', this.api);
 			var params = {
 				InventoryKey: inventoryKey
-			}
-			
-			var q = $q.defer();
-			this.getData(url, params).then(function (result) {
-				q.resolve(result);
-			}, function (error) {
-				q.reject(error);
-			})
-			return q.promise;
+			};
+			return this.getData(url, params);
 		}
 		
 		inventoryService.prototype.updateInventory = function (inventory) {
 			var url = String.format('{0}/update', this.api);
-			
-			var q = $q.defer();
-			this.update(url, inventory).then(function (result) {
-				q.resolve(result);
-			}, function (error) {
-				q.reject(error);
-			})
-			return q.promise;
+			return this.update(url, inventory);
 		}
 		
 		inventoryService.prototype.deleteInventory = function (inventoryId) {
-			var url = String.format('{0}/delete/{1}', this.api, inventoryId);
-			
-			var q = $q.defer();
-			this.delete(url).then(function (result) {
-				q.resolve(result);
-			}, function (error) {
-				q.reject(error);
-			})
-			return q.promise;
+			var url = String.format('{0}/delete/{1}', this.api, inventoryId);			
+			return true;
 		}
 
+		// TO DO: merge getStockIn() & getStockOut() => getStock()
 		inventoryService.prototype.getStockIn = function () {
 			var url = String.format('{0}/input/items', this.api);
 			
@@ -72,10 +47,11 @@
 				q.resolve(result);
 			}, function (error) {
 				q.reject(error);
-			})
+			});
 			return q.promise;
 		}
 
+		// TO DO: merge getStockIn() & getStockOut()
 		inventoryService.prototype.getStockOut = function () {			
 			var url = String.format('{0}/output/items', this.api);
 			
@@ -87,8 +63,21 @@
 				q.resolve(result);
 			}, function (error) {
 				q.reject(error);
-			})
+			});
 			return q.promise;
+		}
+
+
+		inventoryService.prototype.getStockItemById = function (stockId) {
+			return true;
+		}
+
+		inventoryService.prototype.getStockItemByKey = function (stockKey) {
+			var url = String.format('{0}/stock/item', this.api);
+			var params = {
+				StockKey: stockKey
+			};
+			return this.getData(url, params);
 		}
 		
 		return new inventoryService;

@@ -39,3 +39,17 @@
     max-height: 30px;
     display: inline;
 }
+
+
+/* es-control */
+input.form-control.es-control {
+    width: 100%;
+}
+
+textarea.form-control.es-control {
+    width: 100%;
+}
+
+select.form-control.es-control {
+    width: 100%;
+}

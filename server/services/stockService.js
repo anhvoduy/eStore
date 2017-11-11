@@ -25,14 +25,28 @@ Factory.prototype.getStockOut = function (query) {
     return dbContext.queryList(sql);
 }
 
-Factory.prototype.getStockById = function (query) {
-	let sql = `
-		SELECT * 
-		FROM Stock
-		WHERE StockId =:StockId
-		ORDER BY StockDate DESC;
-	`;
-    return dbContext.queryItem(sql);
+Factory.prototype.getStock = async function (query) {
+	try
+	{
+		let sql = `SELECT * FROM Stock WHERE StockKey=:StockKey`;
+		let stock = await dbContext.queryItem(sql, query);		
+		return stock;
+	}
+	catch(err){
+		throw err;
+	}
+}
+
+Factory.prototype.getStockDetail = async function (query) {
+	try
+	{
+		let sql = `SELECT * FROM StockDetail WHERE StockId =:StockId AND Deleted <> 1`;
+		let stockDetail = await dbContext.queryList(sql, query);
+		return stockDetail;
+	}
+	catch(err){
+		throw err;
+	}
 }
 
 Factory.prototype.createStock = function (stock) {

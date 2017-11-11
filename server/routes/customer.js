@@ -1,7 +1,7 @@
 var router = require('express').Router();
 var _ = require('lodash');
 var auth = require('../config/auth');
-var constant = require('../lib/constant');
+var CONSTANT = require('../lib/constant');
 var dbContext = require('../lib/dbContext');
 var errorHelper = require('../lib/errorHelper');
 var customerService = require('../services/customerService');
@@ -11,6 +11,12 @@ router.get('/items', async function (req, res, next) {
 	try
 	{
 		let query = _.pick(req.query, ['PageCurrent', 'PageSize']);
+		
+		if(!query.PageCurrent && !query.PageSize){
+			query.PageCurrent = 1;
+			query.PageSize = 5000;
+		}
+		
 		let data = await customerService.getList(query);		
 		res.status(200).json(data);
 	}
