@@ -1,5 +1,4 @@
 var router = require('express').Router();
-var Q = require('q');
 var _ = require('lodash');
 var auth = require('../config/auth');
 var constant = require('../lib/constant');
@@ -21,9 +20,17 @@ router.get('/items', async function(req, res, next) {
     }
 });
 
-router.get('/item', Q.async(function* (req, res, next) {
-    res.status(200).json(true);
-}));
+router.get('/item', async function (req, res, next) {
+    try
+    {
+        let query = _.pick(req.query,['InventoryId', 'InventoryKey']);
+		let inventory = await inventoryService.getInventoryDetail(query);		
+		res.status(200).json(inventory);
+    }
+    catch(err){
+        next(err);
+    }    
+});
 
 
 
@@ -47,17 +54,17 @@ router.get('/stock/item', async function (req, res, next) {
 
 
 /* --- Input ---*/
-router.get('/input/items', Q.async(function* (req, res, next) {
+router.get('/input/items', async function (req, res, next) {
     try
     {
         let query = _.pick(req.query, ['PageCurrent', 'PageSize']);
-        let stocks = yield stockService.getStockIn(query);
+        let stocks = await stockService.getStockIn(query);
         res.status(200).json(stocks);
     }
     catch(err){        
         next(error);        
     }
-}));
+});
 
 router.post('/input/create', function (req, res, next) {
     res.status(200).json(true);
@@ -74,17 +81,17 @@ router.post('/input/delete', function (req, res, next) {
 
 
 /* --- Output ---*/
-router.get('/output/items', Q.async(function* (req, res, next) {
+router.get('/output/items', async function (req, res, next) {
     try
     {
         let query = _.pick(req.query, ['PageCurrent', 'PageSize']);
-        let stocks = yield stockService.getStockOut(query);
+        let stocks = await stockService.getStockOut(query);
         res.status(200).json(stocks);
     }
     catch(err){
         next(error);        
-    }    
-}));
+    }
+});
 
 router.get('/output/item', function (req, res, next) {
     res.status(200).json(true);
