@@ -10,9 +10,14 @@ Factory.prototype.getItems = function (query) {
 	return dbContext.queryList(sql, query);
 }
 
-Factory.prototype.getInventoryById = function (query) {
-    let sql = `SELECT * FROM Inventory WHERE InventoryKey =:InventoryKey AND Deleted = 0`;
-	return dbContext.queryItem(sql, query);
+Factory.prototype.getInventoryDetail = function (query) {
+    try
+    {
+        let sql = `SELECT * FROM Inventory WHERE InventoryId =:InventoryId OR InventoryKey =:InventoryKey`;
+        return dbContext.queryItem(sql, { InventoryId: query.InventoryId, InventoryKey: query.InventoryKey });
+    } catch(err){
+        throw err;
+    }    
 }
 
 Factory.prototype.createInventory = function (inventory) {

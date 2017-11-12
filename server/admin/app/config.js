@@ -279,6 +279,16 @@ app.config(function ($stateProvider) {
 			}
 		}
 	})
+	.state("profile", {
+		url: "/profile",
+		views: {
+			"view": {
+				templateUrl: "/app/views/profile.tpl.html",
+				controller: "profileController",
+				controllerAs: 'vm'
+			}
+		}
+	})
 	.state("search", {
 		url: "/search",
 		views: {
@@ -305,7 +315,7 @@ app.config(function ($stateProvider) {
 				controllerAs: 'vm'
 			}
 		}
-	})
+	})	
 	.state("otherwise", {
 		url: '/error',
 		views: {
