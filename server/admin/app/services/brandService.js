@@ -16,59 +16,34 @@
                 PageCurrent: pageCurrent,
                 PageSize: pageSize
             };
-
-            var q = $q.defer();
-            this.getData(url, params).then(function (result) {
-                q.resolve(result);
-            }, function (error) {
-                q.reject(error);
-            });
-            return q.promise;            
-        }
+            return this.getData(url, params);                      
+        };
         
         brandService.prototype.getBrandByKey = function (brandKey) {
             var url = String.format('{0}/item', this.api);
             var params = {
                 BrandKey: brandKey
-            }
-            
-            var q = $q.defer();
-            this.getData(url, params).then(function (result) {
-                q.resolve(result);
-            }, function (error) {
-                q.reject(error);
-            });
-            return q.promise;
-        }
+            };                    
+            return this.getData(url, params);
+        };
 
-        brandService.prototype.createBrand = function (brand) {
+        brandService.prototype.create = function (brand) {
             var url = String.format('{0}/create', this.api);
-            return true;
-        }
+            return this.postData(url, brand);
+        };
         
-        brandService.prototype.updateBrand = function (brand) {
-            var url = String.format('{0}/update', this.api);
-            
-            var q = $q.defer();
-            this.update(url, brand).then(function (result) {
-                q.resolve(result);
-            }, function (error) {
-                q.reject(error);
-            });
-            return q.promise;
-        }
+        brandService.prototype.update = function (brand) {
+            var url = String.format('{0}/update', this.api);            
+            return this.postData(url, brand);
+        };
         
-        brandService.prototype.deleteBrand = function (brandKey) {
+        brandService.prototype.delete = function (brandKey) {
             var url = String.format('{0}/delete', this.api);
-            
-            var q = $q.defer();
-            this.delete(url).then(function (result) {
-                q.resolve(result);
-            }, function (error) {
-                q.reject(error);
-            });
-            return q.promise;            
-        }
+            var params = {
+                BrandKey: brandKey
+            };
+            return this.postData(url, params);                       
+        };
         
         return new brandService;
     };

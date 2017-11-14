@@ -39,22 +39,23 @@ router.get('/item', async function (req, res, next) {
 	}
 });
 
-router.post('/create', auth.checkAuthentication(), function (req, res, next) {
+router.post('/create', auth.checkAuthentication(), async function (req, res, next) {
 	try
 	{
 		let brand = _.pick(req.body, ["BrandName", "Description"]);
 		if(!brand.BrandName)
 			throw CONSTANT.MISSING_FIELD_BRANDNAME;
 
-		let result = await brandService.create(brand);
-		res.status(200).json(result);		
+		let result = await brandService.create(brand);		
+		if(result.affectedRows > 0) res.status(200).json({ InsertId: result.insertId, success: true });
+		else res.status(500).json({ success: false });
 	}
 	catch(err){
 		next(err);
 	}
 });
 
-router.post('/update', auth.checkAuthentication(), function (req, res, next) {
+router.post('/update', auth.checkAuthentication(), async function (req, res, next) {
 	try
 	{
 		let brand = _.pick(req.body, ["BrandId", "BrandKey", "BrandName", "Description"]);
@@ -65,7 +66,7 @@ router.post('/update', auth.checkAuthentication(), function (req, res, next) {
 			throw CONSTANT.MISSING_FIELD_BRANDNAME;
 
 		if(!brand.BrandId){
-			let br = await brandService.getBrandByKey(brand);			
+			let br = await brandService.getBrandByKey(brand);
 			if(!br)
 				throw CONSTANT.INVALID_FIELD_BRANDKEY;
 			else 
@@ -73,14 +74,15 @@ router.post('/update', auth.checkAuthentication(), function (req, res, next) {
 		}
 
 		let result = await brandService.update(brand);
-		res.status(200).json(result);
+		if(result.affectedRows > 0) res.status(200).json({ success: true });
+		else res.status(500).json({ success: false });
 	}
 	catch(err){
 		next(err);
 	}		
 });
 
-router.post('/delete', auth.checkAuthentication(), function (req, res, next) {
+router.post('/delete', auth.checkAuthentication(), async function (req, res, next) {
 	try
 	{
 		let brand = _.pick(req.body, ["BrandKey"]);
@@ -88,7 +90,7 @@ router.post('/delete', auth.checkAuthentication(), function (req, res, next) {
 			throw CONSTANT.MISSING_FIELD_BRANDKEY;
 
 		if(!brand.BrandId){
-			let br = await brandService.getBrandByKey(brand);			
+			let br = await brandService.getBrandByKey(brand);
 			if(!br)
 				throw CONSTANT.INVALID_FIELD_BRANDKEY;
 			else 
