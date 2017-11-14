@@ -32,16 +32,24 @@
 			
 			brandService.getList()
 			.then(function (data) {
-				$scope.brands = data.PageData;				
+				$scope.brands = data.PageData;
 			}, function (error) {
 				$scope.messageError.push(error);
-			});
-			
+			});			
 		};
-		
-		$scope.changeSelectedBrand = function(){
+				
+		function validateMaster(){
 
 		};
+
+		function createProduct(){
+
+		};
+
+		function updateProduct(){
+
+		};
+		
 
 		/* buttons */
         $scope.submit = function (product) {
@@ -62,8 +70,7 @@
 					$scope.isSubmitted = false;
 					$scope.isSubmitting = false;
 				}
-			}, function(error){
-				//console.log(error);
+			}, function(error){				
 				$scope.isSubmitted = false;
 				$scope.isSubmitting = false;
 			});
@@ -71,7 +78,11 @@
 
         $scope.cancel = function() {
             $state.go($state.current.parentState);
-        };
+		};
+		
+		$scope.changeSelectedBrand = function(item){
+			console.log(item);
+		};
 		
 		/* start */
 		activate();

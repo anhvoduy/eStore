@@ -39,7 +39,7 @@
 				}
 			}, function (error) {
 				$scope.messageProductError.push(error);
-			});			
+			});
 		};
 		
 		// if update brand success/failed -> reset status after 3 seconds
