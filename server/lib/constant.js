@@ -65,5 +65,15 @@ CONSTANT.Success_User_Create = { code: 'SUCCESS_USER_CREATE', message: 'Create U
 CONSTANT.Success_User_Update = { code: 'SUCCESS_USER_UPDATE', message: 'Update User is success.' };
 CONSTANT.Success_User_Delete = { code: 'SUCCESS_USER_DELETE', message: 'Delete User is success.' };
 
+CONSTANT.MISSING_FIELD_USERKEY = { code: 'MISSING_FIELD_USERKEY', message: 'missing field UserKey.' };
+CONSTANT.MISSING_FIELD_USERNAME = { code: 'MISSING_FIELD_USERNAME', message: 'missing field UserName.' };
+
+CONSTANT.MISSING_FIELD_BRANDKEY = { code: 'MISSING_FIELD_BRANDKEY', message: 'missing field BrandKey.' };
+CONSTANT.MISSING_FIELD_BRANDNAME = { code: 'MISSING_FIELD_BRANDNAME', message: 'missing field BrandName.' };
+
+CONSTANT.INVALID_FIELD_USERKEY = { code: 'INVALID_FIELD_USERKEY', message: 'invalid field UserKey.' };
+
+CONSTANT.INVALID_FIELD_BRANDKEY = { code: 'INVALID_FIELD_BRANDKEY', message: 'invalid field BrandKey.' };
+
 // Export
 module.exports = CONSTANT;

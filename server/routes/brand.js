@@ -1,10 +1,10 @@
-var router = require('express').Router();
-var _ = require('lodash');
-var auth = require('../config/auth');
-var constant = require('../lib/constant');
-var dbContext = require('../lib/dbContext');
-var errorHelper = require('../lib/errorHelper');
-var brandService = require('../services/brandService');
+const router = require('express').Router();
+const _ = require('lodash');
+const auth = require('../config/auth');
+const CONSTANT = require('../lib/constant');
+const dbContext = require('../lib/dbContext');
+const errorHelper = require('../lib/errorHelper');
+const brandService = require('../services/brandService');
 
 // Router
 router.get('/items', async function (req, res, next) {
@@ -39,21 +39,68 @@ router.get('/item', async function (req, res, next) {
 	}
 });
 
-router.post('/create', auth.checkAuthentication(), function (req, res, next) {	
-	res.status(200).json(true);
+router.post('/create', auth.checkAuthentication(), function (req, res, next) {
+	try
+	{
+		let brand = _.pick(req.body, ["BrandName", "Description"]);
+		if(!brand.BrandName)
+			throw CONSTANT.MISSING_FIELD_BRANDNAME;
+
+		let result = await brandService.create(brand);
+		res.status(200).json(result);		
+	}
+	catch(err){
+		next(err);
+	}
 });
 
-router.put('/update', auth.checkAuthentication(), function (req, res, next) {    
-    var brand = {
-        BrandId: req.body.BrandId,
-        Name: req.body.Name,
-        Description: req.body.Description
-    };
-	res.status(200).json({ code: 'UPDATE_BRAND_SUCCESS', message: "Update Brand is success." });		
+router.post('/update', auth.checkAuthentication(), function (req, res, next) {
+	try
+	{
+		let brand = _.pick(req.body, ["BrandId", "BrandKey", "BrandName", "Description"]);
+		if(!brand.BrandKey)
+			throw CONSTANT.MISSING_FIELD_BRANDKEY;
+
+		if(!brand.BrandName)
+			throw CONSTANT.MISSING_FIELD_BRANDNAME;
+
+		if(!brand.BrandId){
+			let br = await brandService.getBrandByKey(brand);			
+			if(!br)
+				throw CONSTANT.INVALID_FIELD_BRANDKEY;
+			else 
+				brand.BrandId = br.BrandId;
+		}
+
+		let result = await brandService.update(brand);
+		res.status(200).json(result);
+	}
+	catch(err){
+		next(err);
+	}		
 });
 
-router.delete('/delete', auth.checkAuthentication(), function (req, res, next) {
-	res.status(200).json(true);
+router.post('/delete', auth.checkAuthentication(), function (req, res, next) {
+	try
+	{
+		let brand = _.pick(req.body, ["BrandKey"]);
+		if(!brand.BrandKey)
+			throw CONSTANT.MISSING_FIELD_BRANDKEY;
+
+		if(!brand.BrandId){
+			let br = await brandService.getBrandByKey(brand);			
+			if(!br)
+				throw CONSTANT.INVALID_FIELD_BRANDKEY;
+			else 
+				brand.BrandId = br.BrandId;
+		}
+
+		let result = await brandService.delete(brand);
+		res.status(200).json(result);		
+	}
+	catch(err){
+		next(err);
+	}
 });
 
 // Export
