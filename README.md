@@ -1,7 +1,7 @@
 ﻿The solution includes:
 - server  : Public Site & Admin Site & APIs
 - database: estore
-- open file: "/demo/server/services/config.js" to setup: username & password & database name
+- update file: "/server/config/config.js" to setup: username & password & database name
 
 For start review:
 - install nodejs 8.9.1 LTS
