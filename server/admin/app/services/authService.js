@@ -18,15 +18,16 @@
             return q.promise;
         };
 
-        authService.prototype.setCredentials = function (user) {            
+        authService.prototype.setCredentials = function (user) {
             $rootScope.globals = {
                 currentUser: {
-                    username: user.username,
+                    username: user.username, // TO DO: remove this parameter
+                    userkey: user.userkey,
                     authdata: user.token
                 },
 				authorized: true
-            };			
-            $http.defaults.headers.common['Authorization'] = $rootScope.globals.currentUser.authdata; // jshint ignore:line			
+            };
+            $http.defaults.headers.common['Authorization'] = $rootScope.globals.currentUser.authdata; // jshint ignore:line
             $cookieStore.put('globals', $rootScope.globals);
         };
 

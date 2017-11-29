@@ -30,7 +30,33 @@
 			maxSize: 5,
 			lstPageSize: [10, 50, 100]
         };
-        
+
+        appCommon.prototype.colorList = [
+            { ColorCode: 'NoColor', ColorName: 'No Color' },
+			{ ColorCode: 'Red', ColorName: 'Red' },
+            { ColorCode: 'Pink', ColorName: 'Pink' },
+            { ColorCode: 'Orange', ColorName: 'Orange' },
+            { ColorCode: 'Yellow', ColorName: 'Yellow' },
+            { ColorCode: 'Green', ColorName: 'Green' },
+            { ColorCode: 'Blue', ColorName: 'Blue' },
+            { ColorCode: 'Purple', ColorName: 'Purple' },
+            { ColorCode: 'Brown', ColorName: 'Brown' },
+            { ColorCode: 'Grey', ColorName: 'Grey' },
+            { ColorCode: 'White', ColorName: 'White' },
+            { ColorCode: 'Black', ColorName: 'Black' },
+            { ColorCode: 'Print', ColorName: 'Print' },
+            { ColorCode: 'Strip', ColorName: 'Strip' },
+            { ColorCode: 'Floral', ColorName: 'Floral' },
+            { ColorCode: 'Check', ColorName: 'Check' },
+            { ColorCode: 'Dot', ColorName: 'Dot' },
+            { ColorCode: 'Gold', ColorName: 'Gold' },
+            { ColorCode: 'Silver', ColorName: 'Silver' },
+            { ColorCode: 'Rosegold', ColorName: 'Rosegold' },
+            { ColorCode: 'Champagne', ColorName: 'Champagne' },
+            { ColorCode: 'Whitegold', ColorName: 'Whitegold' },
+            { ColorCode: 'Platinum', ColorName: 'Platinum' },
+            { ColorCode: 'MultiColor', ColorName: 'Multiple Color' }
+        ];
         
         // functions
         appCommon.prototype.setFormTitle = function(formStatus, title) {

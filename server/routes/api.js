@@ -7,6 +7,10 @@ var cors = require('cors')
 var jwt = require('jsonwebtoken');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
+var auth = require('../config/auth');
+var config = require('../config/config');
+var constant = require('../lib/constant');
+var errorHelper = require('../lib/errorHelper');
 
 // sample redis cache
 // var cache = require('express-redis-cache')();
@@ -14,13 +18,7 @@ var LocalStrategy = require('passport-local').Strategy;
 // var axios = require('axios');
 // var redis = require('redis');
 
-// our configuration
-var auth = require('../config/auth');
-var config = require('../config/config');
-var constant = require('../lib/constant');
-var dbContext = require('../lib/dbContext');
-var errorHelper = require('../lib/errorHelper');
-var userService = require('../services/userService');
+
 
 
 // routers: use to test
@@ -36,8 +34,8 @@ router.post('/', function (req, res, next) {
     next();
 });
 
-router.get('/myprofile', cors(), function (req, res, next){
-	var result = userService.myProfile();
+router.get('/newsfeed', cors(), function (req, res, next){
+	var result = { code: 'SUCCESS_NEWSFEED', message: 'request newsfeed with cors is success.' }
 	res.status(200).json(result);
 	next();
 })
@@ -111,21 +109,22 @@ router.get('/myprofile', cors(), function (req, res, next){
 // routers: use to login/logout
 router.post('/login', function (req, res, next) {
 	passport.authenticate('local', function (err, result) {
-		if (err) { return next(err); }
+		if (err) return next(err);
+
 		if (!result.success) {
 			console.log('Login is failed ...');
 			res.status(404).json({
 				success: false,
 				message: { code: 'ERROR_UNAUTHENTICATION', message: 'Username and Password is invalid.' }
 			});
-		} else {
+		} 
+		else {
 			console.log('Login is success ...');
 			var token = jwt.sign(result.user, config.secretKey, { expiresIn: 60 * 60 * 24 * 1 });
-			//console.log(token);
 			res.status(200).json({
 				success: true,
-				message: { code: 'SUCCESS_AUTHENTICATION', message: 'Login is successful.' },                
-				user: { username: result.user.username, token: token },
+				message: { code: 'SUCCESS_AUTHENTICATION', message: 'Login is successful.' },
+				user: { username: result.user.username, userkey: result.user.userkey, token: token },
 			});
 		}
 	})(req, res, next);

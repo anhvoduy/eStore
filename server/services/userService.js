@@ -15,18 +15,24 @@ Factory.prototype.myProfile = function(){
 	}
 }
 
-Factory.prototype.getUsers = function (query) {
-    var sql = `
-		SELECT 	UserId, UserKey, UserType, UserName, DisplayName, Email, Mobile, Tel, 
-			Title, DateOfBirth 
-		FROM User 
-		WHERE Deleted = 0 
-		ORDER BY UserId DESC
-	`;
-	return dbContext.queryList(sql);    
+Factory.prototype.getUsers = async function(query){
+	try
+	{
+		var sql = `
+			SELECT 	UserId, UserKey, UserType, UserName, DisplayName, Email, Mobile, Tel, 
+				Title, DateOfBirth 
+			FROM User 
+			WHERE Deleted = 0 
+			ORDER BY UserId DESC
+		`;
+		return dbContext.queryList(sql);
+	}
+	catch(err){
+		throw err;
+	}
 }
 
-Factory.prototype.getUserById = function (query) {
+Factory.prototype.getUserById = async function (query) {
 	try
 	{
 		var sql = `
@@ -42,14 +48,14 @@ Factory.prototype.getUserById = function (query) {
 	}
 }
 
-Factory.prototype.getUserByKey = function (query) {
+Factory.prototype.getUserByKey = async function (query) {
 	try
 	{
 		var sql = `
 			SELECT 	UserId, UserKey, UserType, UserName, DisplayName, Email, Mobile, Tel, 
 				Title, DateOfBirth 
 			FROM User 
-			WHERE UserId =:UserKey
+			WHERE UserKey =:UserKey
 		`;
 		return dbContext.queryItem(sql, { UserKey: query.UserKey });
 	}
@@ -58,7 +64,7 @@ Factory.prototype.getUserByKey = function (query) {
 	}
 }
 
-Factory.prototype.getUserByName = function (query) {
+Factory.prototype.getUserByName = async function (query) {
 	try
 	{
 		var sql = `
@@ -74,7 +80,7 @@ Factory.prototype.getUserByName = function (query) {
 	}
 }
 
-Factory.prototype.getUserByEmail = function (query) {
+Factory.prototype.getUserByEmail = async function (query) {
 	try
 	{
 		var sql = `
@@ -90,13 +96,36 @@ Factory.prototype.getUserByEmail = function (query) {
 	}	
 }
 
-Factory.prototype.authenticate = function (username, password) {
-    return (username === 'admin' && password === '@dmin');
+Factory.prototype.authenticate = async function (username, password) {
+	try
+	{		
+		if((username === 'admin' && password === '@dmin')){
+			let sql = 'SELECT UserName, UserKey FROM User WHERE UserName=:UserName';
+			let data = await dbContext.queryItem(sql, { UserName: username });
+			if(!data){
+				return { success: false};
+			}
+			return { success: true, username: data.UserName, userkey: data.UserKey };
+		}
+		return { success: false};
+	}
+	catch(err){
+		throw err;
+	}
 }
 
 
+Factory.prototype.create = async function (user) {
+	try
+	{
+		return true;
+	}
+	catch(err){
+		throw err;
+	}	
+}
 
-Factory.prototype.update = function (user) {
+Factory.prototype.update = async function (user) {
 	try
 	{
 		var sql = `
@@ -117,7 +146,15 @@ Factory.prototype.update = function (user) {
 	}	
 }
 
-
+Factory.prototype.delete = async function (user) {
+	try
+	{
+		return true;
+	}
+	catch(err){
+		throw err;
+	}	
+}
 
 
 Factory.prototype.getMenu = function () {

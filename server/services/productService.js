@@ -26,7 +26,7 @@ Factory.prototype.getProducts = async function (query) {
         var sqlQuery = `
             SELECT  P.ProductId, P.ProductKey, P.ProductName, P.Description, 
                     P.BrandId, B.BrandName,
-                    P.Price, P.Colour, P.Created, P.Status, P.LatestReviewInfo 
+                    P.Price, P.ColorCode, P.Created, P.Status, P.LatestReviewInfo 
             FROM Product P INNER JOIN Brand B
             WHERE P.BrandId = B.BrandId
             ORDER BY P.ProductId DESC
@@ -57,7 +57,7 @@ Factory.prototype.getProductById = async function (query) {
         var sql = `
             SELECT  P.ProductId, P.ProductKey, P.ProductName, P.Description, 
                     P.BrandId, B.BrandName,
-                    P.Price, P.Colour, P.Created, P.Status, P.LatestReviewInfo
+                    P.Price, P.ColorCode, P.Created, P.Status, P.LatestReviewInfo
             FROM Product P INNER JOIN Brand B ON P.BrandId = B.BrandId 
             WHERE   P.ProductId =:ProductId
                 AND B.Deleted <> 1
@@ -75,7 +75,7 @@ Factory.prototype.getProductByKey = function (query) {
 	var sql = `
 		SELECT  P.ProductId, P.ProductKey, P.ProductName, P.Description, 
 				P.BrandId, B.BrandName,
-		        P.Price, P.Colour, P.Created, P.Status, P.LatestReviewInfo
+		        P.Price, P.ColorCode, P.Created, P.Status, P.LatestReviewInfo
 		FROM Product P INNER JOIN Brand B ON P.BrandId = B.BrandId 
         WHERE   P.ProductKey =:ProductKey
             AND B.Deleted <> 1
@@ -87,7 +87,7 @@ Factory.prototype.getProductByKey = function (query) {
 Factory.prototype.getProductsByBrand = function (query) {
 	var sql = `
 		SELECT  P.ProductId, P.ProductKey, P.ProductName, P.Description, 
-				P.Price, P.Colour, P.Created, P.Status,
+				P.Price, P.ColorCode, P.Created, P.Status,
         		P.BrandId, B.BrandName, P.LatestReviewInfo
 		FROM Product P INNER JOIN Brand B ON P.BrandId = B.BrandId
         WHERE   B.BrandId =:BrandId 
@@ -108,6 +108,39 @@ Factory.prototype.createReview = function (review) {
         UPDATE Product SET LatestReviewInfo =:Comment WHERE ProductId =:ProductId 
     `;
     return true;
+}
+
+Factory.prototype.create = async function (product) {
+    try
+    {
+        let sql = `
+            INSERT INTO Product(ProductKey, ProductName, Description, BrandId, ColorCode, Price)
+            VALUES(uuid(), :ProductName, :Description, :BrandId, :ColorCode, :Price)		
+        `;
+        return dbContext.queryExecute(sql, product);
+    }
+    catch(err){
+        throw err;
+    }	
+}
+
+Factory.prototype.update = async function (product) {
+    try
+    {
+        let sql = `
+            UPDATE Product
+            SET ProductName=:ProductName,            
+                BrandId=:BrandId,
+                ColorCode=:ColorCode,
+                Price=:Price,
+                Description=:Description
+            WHERE ProductId=:ProductId
+        `;
+        return dbContext.queryExecute(sql, product);
+    }
+    catch(err){
+        throw err;
+    }
 }
 
 // Export

@@ -6,21 +6,21 @@
         <div class="panel-body" ng-cloak>
             <form name="frmProduct" class="form-horizontal">
                 <div class="form-group">
-                    <label for="productName" class="col-sm-2 control-label">Product Name</label>
+                    <label for="productName" class="col-sm-2 control-label">Product</label>
                     <div class="col-sm-6">
-                        <input id="productName" class="form-control control-readonly" placeholder="product name" ng-model="product.ProductName" maxlength="50" required/>
+                        <input id="productName" class="form-control" placeholder="product name" ng-model="product.ProductName" maxlength="50" required/>
                     </div>
                 </div>
         
                 <div class="form-group">
-                    <label for="BrandId" class="col-sm-2 control-label">Brand Name</label>
+                    <label for="BrandId" class="col-sm-2 control-label">Brand</label>
                     <div class="col-sm-6">
                         <select name="BrandId" 
-                            class="form-control"
-                            ng-model="product.BrandId"
-                            ng-change="changeSelectedBrand()"
-                            ng-options="item.BrandId as item.BrandName for item in brands"
-                            required>
+                                class="form-control"
+                                ng-model="product.BrandId"
+                                ng-change="changeSelectedBrand()"
+                                ng-options="item.BrandId as item.BrandName for item in brands"
+                                required>
                             <option value="">---Please select---</option>
                         </select>
                     </div>
@@ -29,28 +29,44 @@
                 <div class="form-group">
                     <label for="Price" class="col-sm-2 control-label">Price</label>
                     <div class="col-sm-6">
-                        <input id="Price" ng-model="product.Price" class="form-control control-readonly" placeholder="Price" readonly/>
+                        <input id="Price" ng-model="product.Price" class="form-control" placeholder="Price"/>
                     </div>
                 </div>
         
                 <div class="form-group">
                     <label for="Colour" class="col-sm-2 control-label">Color</label>
-                    <div class="col-sm-6">
-                        <input id="Colour" ng-model="product.Colour" class="form-control control-readonly" placeholder="Colour" readonly/>
+                    <div class="col-sm-6">                        
+                        <select name="ColorCode" 
+                                class="form-control"
+                                ng-init="product.ColorCode = colorList[0].ColorCode"
+                                ng-model="product.ColorCode"
+                                ng-change="changeSelectedColor(item)"
+                                ng-options="item.ColorCode as item.ColorName for item in colorList"
+                                required>
+                        </select>
                     </div>
                 </div>
         
+                <!-- 
                 <div class="form-group">
                     <label for="Colour" class="col-sm-2 control-label">Status</label>
                     <div class="col-sm-6">
-                        <input id="Status" ng-model="product.Status" class="form-control control-readonly" placeholder="Status" readonly/>
+                        <input id="Status" ng-model="product.Status" class="form-control" placeholder="Status"/>
                     </div>
-                </div>
+                </div> 
+                -->
 
                 <div class="form-group">
                     <label for="productDescription" class="col-sm-2 control-label">Description</label>
                     <div class="col-sm-6">
                         <textarea id="productDescription" class="form-control control-readonly" placeholder="description" ng-model="product.Description" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="ProductImage" class="col-sm-2 control-label">Image</label>
+                    <div class="col-sm-6">
+                        <input type="file" name="pic" accept="image/*">                        
                     </div>
                 </div>
                 
@@ -65,8 +81,13 @@
             </form>
         </div>
         <div class="panel-footer">
-            <input type="button" class="btn btn-primary" value="Save" ng-click="save()" ng-disabled="true"/>
-            <input type="button" class="btn btn-danger" value="Cancel" ng-click="cancel()"/>
+            <input type="button" class="btn btn-primary" value="Save" 
+                ng-click="save(product)" ng-disabled="(frmProduct.$invalid || isSubmitting)"/>
+            <input type="button" class="btn btn-danger" value="Cancel" 
+                ng-click="cancel()" ng-disabled="(isSubmitted || isSubmitting)"/>
+            <span ng-show="isSubmitting">                
+                <img ng-if="isSubmitting" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+            </span>
         </div>
     </div>    
 </div>        

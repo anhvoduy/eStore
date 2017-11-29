@@ -11,13 +11,12 @@ auth.setup = function (app) {
     app.use(passport.initialize());
 
     passport.use(new LocalStrategy(
-        function (username, password, done) {
-
+        async function (username, password, done) {
+            let result = await userService.authenticate(username, password);
             var data = {
-                success: userService.authenticate(username, password),
-                user: { username: username, password: password }
+                success: result.success,
+                user: { username: result.username, userkey: result.userkey }
             };
-            //console.log('Verify Username & Password ...');
             return done(null, data);
         }
     ));
