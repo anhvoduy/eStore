@@ -44,8 +44,8 @@
 		
 		// if update brand success/failed -> reset status after 3 seconds
 		function resetFormStatus(delay) {
-			if(!delay) delay = 3000;			
-			$timeout(function () {				
+			if(!delay) delay = 3000;
+			$timeout(function () {
 				$scope.messageSuccess = [];
 				$scope.messageError = [];
 				$scope.messageProductSuccess = [];
@@ -56,28 +56,28 @@
 		};
 
 		function validateMaster(master){
-			if(!master){				
+			if(!master){
 				return false;
 			}
 			return true;
 		};
 		
-		function updateBrand(){
-			return brandService.update($scope.master).then(function (result) {
+		function updateBrand(brand){
+			return brandService.update(brand).then(function (result) {
 				if(result && result.success === true){
 					$scope.messageSuccess.push('update brand is success');
 				} else {
 					$scope.messageError.push('update brand is failed');
 				}
-				resetFormStatus();				
+				resetFormStatus();
 			}, function (error) {
 				$scope.messageError.push(error);
 				resetFormStatus(1000);
 			});
 		};
 
-		function createBrand(){
-			return brandService.create($scope.master).then(function (result) {
+		function createBrand(brand){
+			return brandService.create(brand).then(function (result) {
 				if(result && result.success === true){
 					$scope.messageSuccess.push('create brand is success');
 					$scope.brand.BrandId = result.BrandId;
@@ -94,8 +94,7 @@
 		/* buttons */
 		$scope.save = function (brand) {
 			$scope.isSubmitted = true; // validate UI
-			$scope.master = angular.copy(brand); // clone new object
-			if(!$scope.master || !validateMaster($scope.master)) // validate business rules
+			if(!brand || !validateMaster(brand)) // validate business rules
 			{
 				$scope.isSubmitted = false;
 				return;
@@ -104,14 +103,14 @@
 			// start submit to server
 			$scope.isSubmitting = true;
 			if($scope.formStatus === appCommon.formStatus.isNew){
-				return createBrand().then(function(){
+				return createBrand(brand).then(function(){
 					$timeout(function(){
 						$state.go($state.current.parentState);
 					}, 3000);
 				});
 			}
 			else if($scope.formStatus === appCommon.formStatus.isEdit){
-				return updateBrand();
+				return updateBrand(brand);
 			}
 		};
 

@@ -6,14 +6,14 @@
         <div class="panel-body" ng-cloak>
             <form name="frmProduct" class="form-horizontal">
                 <div class="form-group">
-                    <label for="productName" class="col-sm-2 control-label">Product Name</label>
+                    <label for="productName" class="col-sm-2 control-label">Product</label>
                     <div class="col-sm-6">
-                        <input id="productName" class="form-control control-readonly" placeholder="product name" ng-model="product.ProductName" maxlength="50" required/>
+                        <input id="productName" class="form-control" placeholder="product name" ng-model="product.ProductName" maxlength="50" required/>
                     </div>
                 </div>
         
                 <div class="form-group">
-                    <label for="BrandId" class="col-sm-2 control-label">Brand Name</label>
+                    <label for="BrandId" class="col-sm-2 control-label">Brand</label>
                     <div class="col-sm-6">
                         <select name="BrandId" 
                                 class="form-control"
@@ -29,7 +29,7 @@
                 <div class="form-group">
                     <label for="Price" class="col-sm-2 control-label">Price</label>
                     <div class="col-sm-6">
-                        <input id="Price" ng-model="product.Price" class="form-control control-readonly" placeholder="Price" readonly/>
+                        <input id="Price" ng-model="product.Price" class="form-control" placeholder="Price"/>
                     </div>
                 </div>
         
@@ -47,17 +47,26 @@
                     </div>
                 </div>
         
+                <!-- 
                 <div class="form-group">
                     <label for="Colour" class="col-sm-2 control-label">Status</label>
                     <div class="col-sm-6">
-                        <input id="Status" ng-model="product.Status" class="form-control control-readonly" placeholder="Status" readonly/>
+                        <input id="Status" ng-model="product.Status" class="form-control" placeholder="Status"/>
                     </div>
-                </div>
+                </div> 
+                -->
 
                 <div class="form-group">
                     <label for="productDescription" class="col-sm-2 control-label">Description</label>
                     <div class="col-sm-6">
                         <textarea id="productDescription" class="form-control control-readonly" placeholder="description" ng-model="product.Description" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="ProductImage" class="col-sm-2 control-label">Image</label>
+                    <div class="col-sm-6">
+                        <input type="file" name="pic" accept="image/*">                        
                     </div>
                 </div>
                 
@@ -72,7 +81,7 @@
             </form>
         </div>
         <div class="panel-footer">
-            <input type="button" class="btn btn-primary" value="Save" ng-click="save()" ng-disabled="true"/>
+            <input type="button" class="btn btn-primary" value="Save" ng-click="save()"/>
             <input type="button" class="btn btn-danger" value="Cancel" ng-click="cancel()"/>
         </div>
     </div>    
