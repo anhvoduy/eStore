@@ -67,16 +67,27 @@ Factory.prototype.getBrandByKey = function (query) {
 	return dbContext.queryItem(sql, { BrandKey: query.BrandKey });
 }
 
-Factory.prototype.createBrand = function (brand) {
-	return true;
+Factory.prototype.create = function (brand) {
+	let sql = `
+		INSERT INTO Brand(BrandKey, BrandName, Description)
+		VALUES(uuid(), :BrandName, :Description)		
+	`;
+	return dbContext.queryExecute(sql, brand);
 }
 
-Factory.prototype.updateBrand = function (brand) {
-	return true;
+Factory.prototype.update = function (brand) {
+	let sql = `
+		UPDATE Brand
+		SET BrandName=:BrandName,
+			Description=:Description		
+		WHERE BrandId=:BrandId
+	`;
+	return dbContext.queryExecute(sql, brand);
 }
 
-Factory.prototype.deleteBrand = function (brand) {
-	return true;
+Factory.prototype.delete = function (brand) {
+	let sql = `UPDATE Brand SET Deleted = 1 WHERE BrandId=:BrandId`;
+	return dbContext.queryExecute(sql, brand);
 }
 
 // Export

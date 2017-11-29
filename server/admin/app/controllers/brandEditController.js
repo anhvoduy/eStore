@@ -12,52 +12,107 @@
 		$scope.formTitle = appCommon.setFormTitle($scope.formStatus, 'Brand');
 		$scope.messageSuccess = [];
 		$scope.messageError = [];
-		
+		$scope.messageProductSuccess = [];
+		$scope.messageProductError = [];		
 		
 		/* functions */
 		function activate() {
 			if(appCommon.isUndefined($scope.brandKey)) return;
 
+			// get Brand
 			brandService.getBrandByKey($scope.brandKey).then(function (result) {
 				$scope.brand = result;
 				if (appCommon.isUndefined($scope.brand)) {
 					$scope.messageError.push(String.format('The brand is not found'));
-				}
+				}				
 			}, function (error) {
 				$scope.messageError.push(error);
 			});
 			
+			// get Product
 			productService.getProductByBrand($scope.brandKey).then(function (result) {
 				$scope.products = result;
 				if (appCommon.isUndefined($scope.products) || $scope.products.length === 0) {
-					$scope.messageError.push(String.format("Products belongs to this brand is not found.", $scope.brandId));
+					$scope.messageProductError.push(String.format("Products belongs to this brand is not found.", $scope.brandId));
 				} else {
-					$scope.messageSuccess.push(String.format("Get Products is success. Total: {0} rows", $scope.products.length));
+					$scope.messageProductSuccess.push(String.format("Get Products is success. Total: {0} rows", $scope.products.length));
 				}
 			}, function (error) {
-				$scope.messageError.push(error);
+				$scope.messageProductError.push(error);
 			});
 		};
 		
 		// if update brand success/failed -> reset status after 3 seconds
-		function resetFormStatus() {
+		function resetFormStatus(delay) {
+			if(!delay) delay = 3000;			
 			$timeout(function () {				
 				$scope.messageSuccess = [];
 				$scope.messageError = [];
-			}, 3000);
+				$scope.messageProductSuccess = [];
+				$scope.messageProductError = [];
+				$scope.isSubmitted = false;
+				$scope.isSubmitting = false;
+			}, delay);
+		};
+
+		function validateMaster(master){
+			if(!master){				
+				return false;
+			}
+			return true;
 		};
 		
-		/* buttons */
-		$scope.save = function () {
-			if ($scope.brand === undefined) return;
+		function updateBrand(){
+			return brandService.update($scope.master).then(function (result) {
+				if(result && result.success === true){
+					$scope.messageSuccess.push('update brand is success');
+				} else {
+					$scope.messageError.push('update brand is failed');
+				}
+				resetFormStatus();				
+			}, function (error) {
+				$scope.messageError.push(error);
+				resetFormStatus(1000);
+			});
+		};
 
-			brandService.updateBrand($scope.brand).then(function (result) {
-				$scope.messageSuccess.push(result);
+		function createBrand(){
+			return brandService.create($scope.master).then(function (result) {
+				if(result && result.success === true){
+					$scope.messageSuccess.push('create brand is success');
+					$scope.brand.BrandId = result.BrandId;
+				} else {
+					$scope.messageError.push('create brand is failed');
+				}
 				resetFormStatus();
 			}, function (error) {
 				$scope.messageError.push(error);
-				resetFormStatus();
+				resetFormStatus(1000);
 			});
+		};
+
+		/* buttons */
+		$scope.save = function (brand) {
+			$scope.isSubmitted = true; // validate UI
+			$scope.master = angular.copy(brand); // clone new object
+			if(!$scope.master || !validateMaster($scope.master)) // validate business rules
+			{
+				$scope.isSubmitted = false;
+				return;
+			}
+
+			// start submit to server
+			$scope.isSubmitting = true;
+			if($scope.formStatus === appCommon.formStatus.isNew){
+				return createBrand().then(function(){
+					$timeout(function(){
+						$state.go($state.current.parentState);
+					}, 3000);
+				});
+			}
+			else if($scope.formStatus === appCommon.formStatus.isEdit){
+				return updateBrand();
+			}
 		};
 
 		$scope.cancel = function() {

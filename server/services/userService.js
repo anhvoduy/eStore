@@ -27,43 +27,67 @@ Factory.prototype.getUsers = function (query) {
 }
 
 Factory.prototype.getUserById = function (query) {
-    var sql = `
-		SELECT 	UserId, UserKey, UserType, UserName, DisplayName, Email, Mobile, Tel, 
-			Title, DateOfBirth 
-		FROM User 
-		WHERE UserId =:UserId
-	`;
-	return dbContext.queryItem(sql, { UserId: query.UserId });
+	try
+	{
+		var sql = `
+			SELECT 	UserId, UserKey, UserType, UserName, DisplayName, Email, Mobile, Tel, 
+				Title, DateOfBirth 
+			FROM User 
+			WHERE UserId =:UserId
+		`;
+		return dbContext.queryItem(sql, { UserId: query.UserId });
+	}
+	catch(err){
+		throw err;
+	}
 }
 
 Factory.prototype.getUserByKey = function (query) {
-    var sql = `
-		SELECT 	UserId, UserKey, UserType, UserName, DisplayName, Email, Mobile, Tel, 
-			Title, DateOfBirth 
-		FROM User 
-		WHERE UserId =:UserKey
-	`;
-	return dbContext.queryItem(sql, { UserKey: query.UserKey });
+	try
+	{
+		var sql = `
+			SELECT 	UserId, UserKey, UserType, UserName, DisplayName, Email, Mobile, Tel, 
+				Title, DateOfBirth 
+			FROM User 
+			WHERE UserId =:UserKey
+		`;
+		return dbContext.queryItem(sql, { UserKey: query.UserKey });
+	}
+	catch(err){
+		throw err;
+	}
 }
 
 Factory.prototype.getUserByName = function (query) {
-    var sql = `
-		SELECT UserId, UserKey, UserType, UserName, DisplayName, Email, Mobile, Tel, 
-			Title, DateOfBirth 
-		FROM User 
-		WHERE UserName =:UserName
-	`;
-    return dbContext.queryItem(sql, { UserName: query.UserName });
+	try
+	{
+		var sql = `
+			SELECT UserId, UserKey, UserType, UserName, DisplayName, Email, Mobile, Tel, 
+				Title, DateOfBirth 
+			FROM User 
+			WHERE UserName =:UserName
+		`;
+		return dbContext.queryItem(sql, { UserName: query.UserName });
+	}
+	catch(err){
+		throw err;
+	}
 }
 
 Factory.prototype.getUserByEmail = function (query) {
-	var sql = `
-		SELECT UserId, UserKey, UserType, UserName, DisplayName, Email, Mobile, Tel, 
-			Title, DateOfBirth
-		FROM User 
-		WHERE Email =:Email
-	`;
-	return dbContext.queryItem(sql, { Email: query.Email });
+	try
+	{
+		var sql = `
+			SELECT UserId, UserKey, UserType, UserName, DisplayName, Email, Mobile, Tel, 
+				Title, DateOfBirth
+			FROM User 
+			WHERE Email =:Email
+		`;
+		return dbContext.queryItem(sql, { Email: query.Email });
+	}
+	catch(err){
+		throw err;
+	}	
 }
 
 Factory.prototype.authenticate = function (username, password) {
@@ -71,6 +95,27 @@ Factory.prototype.authenticate = function (username, password) {
 }
 
 
+
+Factory.prototype.update = function (user) {
+	try
+	{
+		var sql = `
+			UPDATE User
+			SET UserName=:UserName,
+				DisplayName=:DisplayName, 
+				Email=:Email, 
+				Mobile=:Mobile, 
+				Tel=:Tel, 
+				Title=:Title, 
+				DateOfBirth=:DateOfBirth
+			WHERE UserId=:UserId			
+		`;
+		return dbContext.queryItem(sql, user);
+	}
+	catch(err){
+		throw err;
+	}	
+}
 
 
 
