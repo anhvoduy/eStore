@@ -49,7 +49,7 @@ Factory.prototype.getUserByKey = function (query) {
 			SELECT 	UserId, UserKey, UserType, UserName, DisplayName, Email, Mobile, Tel, 
 				Title, DateOfBirth 
 			FROM User 
-			WHERE UserId =:UserKey
+			WHERE UserKey =:UserKey
 		`;
 		return dbContext.queryItem(sql, { UserKey: query.UserKey });
 	}

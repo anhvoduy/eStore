@@ -62,11 +62,14 @@
             return q.promise;
         }
 
-        userService.prototype.getProfile = function () {
-			var url = String.format('{0}/profile', this.api);
+        userService.prototype.getProfile = function (userKey) {
+            var url = String.format('{0}/profile', this.api);
+            var params = {
+                UserKey: userKey,
+            }
 			
 			var q = $q.defer();
-			this.getData(url).then(function (result) {
+			this.getData(url, params).then(function (result) {
 				q.resolve(result);
 			}, function (error) {
 				q.reject(error);

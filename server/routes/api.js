@@ -121,11 +121,10 @@ router.post('/login', function (req, res, next) {
 		} else {
 			console.log('Login is success ...');
 			var token = jwt.sign(result.user, config.secretKey, { expiresIn: 60 * 60 * 24 * 1 });
-			//console.log(token);
 			res.status(200).json({
 				success: true,
-				message: { code: 'SUCCESS_AUTHENTICATION', message: 'Login is successful.' },                
-				user: { username: result.user.username, token: token },
+				message: { code: 'SUCCESS_AUTHENTICATION', message: 'Login is successful.' },
+				user: { username: result.user.username, userkey: '752a7461-d4d2-11e7-8fcd-00acc0f28252', token: token },
 			});
 		}
 	})(req, res, next);

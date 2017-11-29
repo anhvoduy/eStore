@@ -5,8 +5,9 @@ app.run(['$rootScope', '$location', '$cookieStore', '$http', 'userService', 'aut
         $rootScope.settings = $cookieStore.get('settings') || {};
 		if ($rootScope.globals.currentUser) {
 			$http.defaults.headers.common['Authorization'] = $rootScope.globals.currentUser.authdata; // jshint ignore:line
-		}		
-						
+		}
+
+		// check location change
 		$rootScope.$on('$locationChangeStart', function (event, next, current) {
 			// redirect to login page if not logged in
 			if ($location.path() !== '/login' && !$rootScope.globals.currentUser) {
@@ -17,7 +18,7 @@ app.run(['$rootScope', '$location', '$cookieStore', '$http', 'userService', 'aut
 				//console.log('app is running ...');
 				if ($rootScope.globals && $rootScope.globals.currentUser) {
 					$rootScope.setupUI();
-				}				
+				}
 			}
 		});
 
@@ -31,11 +32,13 @@ app.run(['$rootScope', '$location', '$cookieStore', '$http', 'userService', 'aut
 			});
 			
 			// get user profile
-			userService.getProfile().then(function (result) {
-				$rootScope.settings.profile = result;				
-			}, function (error) {
-				console.log(error);
-			});
+			if($rootScope.globals.currentUser && $rootScope.globals.currentUser.userkey){
+				userService.getProfile($rootScope.globals.currentUser.userkey).then(function (result) {
+					$rootScope.settings.profile = result;
+				}, function (error) {
+					console.log(error);
+				});
+			}
 		}
 
 		// logout
