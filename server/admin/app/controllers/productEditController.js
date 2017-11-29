@@ -1,9 +1,9 @@
 ﻿(function () {
     'use strict';    
     app.controller('productEditController', productEditController);
-	productEditController.$inject = ['$scope', '$state', '$stateParams', 'appCommon', 
+	productEditController.$inject = ['$scope', '$timeout', '$state', '$stateParams', 'appCommon', 
 		'brandService', 'productService', 'reviewService'];
-	function productEditController($scope, $state, $stateParams, appCommon, 
+	function productEditController($scope, $timeout, $state, $stateParams, appCommon, 
 		brandService, productService, reviewService) {
 		/* models */
 		$scope.productKey = $stateParams.productKey;
@@ -13,8 +13,7 @@
 		$scope.formTitle = appCommon.setFormTitle($scope.formStatus, 'Product');
 		$scope.colorList = appCommon.colorList;
 		$scope.messageSuccess = [];
-        $scope.messageError = [];        
-		$scope.master = {}; // https://docs.angularjs.org/guide/forms
+        $scope.messageError = [];		
 		
 		
 		/* functions */
@@ -38,44 +37,80 @@
 				$scope.messageError.push(error);
 			});			
 		};
+
+		// if update brand success/failed -> reset status after 3 seconds
+		function resetFormStatus(delay) {
+			if(!delay) delay = 3000;
+			$timeout(function () {
+				$scope.messageSuccess = [];
+				$scope.messageError = [];
+				$scope.messageProductSuccess = [];
+				$scope.messageProductError = [];
+				$scope.isSubmitted = false;
+				$scope.isSubmitting = false;
+			}, delay);
+		};
 				
-		function validateMaster(){
-
+		function validateMaster(master){
+			if(!master){
+				return false;
+			}
+			return true;
 		};
 
-		function createProduct(){
-
+		function createProduct(product){
+			return productService.create(product).then(function (result) {
+				if(result && result.success === true){
+					$scope.messageSuccess.push('create product is success');
+					$scope.product.ProductId = result.ProductId;
+				} else {
+					$scope.messageError.push('create product is failed');
+				}
+				resetFormStatus();
+			}, function (error) {
+				$scope.messageError.push(error);
+				resetFormStatus(1000);
+			});
 		};
 
-		function updateProduct(){
-
+		function updateProduct(product){
+			return productService.update(product).then(function (result) {
+				if(result && result.success === true){
+					$scope.messageSuccess.push('update product is success');
+				} else {
+					$scope.messageError.push('update product is failed');
+				}
+				resetFormStatus();
+			}, function (error) {
+				$scope.messageError.push(error);
+				resetFormStatus(1000);
+			});
 		};
 		
 
 		/* buttons */
-        $scope.submit = function (product) {
-			$scope.isSubmitted = true; // validate UI
-			$scope.master = angular.copy(product); // clone new object
-			if(!$scope.master || !validateMaster($scope.master)) // validate business rules
+		// https://docs.angularjs.org/guide/forms
+        $scope.save = function (product) {
+			$scope.isSubmitted = true; // validate UI			
+			if(!product || !validateMaster(product)) // validate business rules
 			{ 
 				$scope.isSubmitted = false;
 				return;
 			}
+
 			// start submit to server
 			$scope.isSubmitting = true;
-			productService.update($scope.master).then(function(result){
-				//console.log(result);
-				if($scope.formStatus === appCommon.formStatus.isNew){
-					$state.go($state.current.parentState);
-				} else if($scope.formStatus === appCommon.formStatus.isEdit){
-					$scope.isSubmitted = false;
-					$scope.isSubmitting = false;
-				}
-			}, function(error){				
-				$scope.isSubmitted = false;
-				$scope.isSubmitting = false;
-			});
-		}
+			if($scope.formStatus === appCommon.formStatus.isNew){
+				return createProduct(product).then(function(){
+					$timeout(function(){
+						$state.go($state.current.parentState);
+					}, 3000);
+				});
+			}
+			else if($scope.formStatus === appCommon.formStatus.isEdit){
+				return updateProduct(product);
+			};			
+		};
 
         $scope.cancel = function() {
             $state.go($state.current.parentState);

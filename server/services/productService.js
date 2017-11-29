@@ -110,5 +110,38 @@ Factory.prototype.createReview = function (review) {
     return true;
 }
 
+Factory.prototype.create = async function (product) {
+    try
+    {
+        let sql = `
+            INSERT INTO Product(ProductKey, ProductName, Description, BrandId, ColorCode, Price)
+            VALUES(uuid(), :ProductName, :Description, :BrandId, :ColorCode, :Price)		
+        `;
+        return dbContext.queryExecute(sql, product);
+    }
+    catch(err){
+        throw err;
+    }	
+}
+
+Factory.prototype.update = async function (product) {
+    try
+    {
+        let sql = `
+            UPDATE Product
+            SET ProductName=:ProductName,            
+                BrandId=:BrandId,
+                ColorCode=:ColorCode,
+                Price=:Price,
+                Description=:Description
+            WHERE ProductId=:ProductId
+        `;
+        return dbContext.queryExecute(sql, product);
+    }
+    catch(err){
+        throw err;
+    }
+}
+
 // Export
 module.exports = new Factory;

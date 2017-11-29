@@ -53,27 +53,38 @@ CONSTANT.Success_StockOut_Create = { code: 'SUCCESS_STOCKOUT_CREATE', message: '
 CONSTANT.Success_StockOut_Update = { code: 'SUCCESS_STOCKOUT_UPDATE', message: 'Update StockOut is success.' };
 CONSTANT.Success_StockOut_Delete = { code: 'SUCCESS_STOCKOUT_DELETE', message: 'Delete StockOut is success.' };
 
-CONSTANT.Success_Brand_Create = { code: 'SUCCESS_BRAND_CREATE', message: 'Create Brand is success.' };
-CONSTANT.Success_Brand_Update = { code: 'SUCCESS_BRAND_UPDATE', message: 'Update Brand is success.' };
-CONSTANT.Success_Brand_Delete = { code: 'SUCCESS_BRAND_DELETE', message: 'Delete Brand is success.' };
+CONSTANT.SUCCESS_BRAND_CREATE = { code: 'SUCCESS_BRAND_CREATE', message: 'Create Brand is success.' };
+CONSTANT.SUCCESS_BRAND_UPDATE = { code: 'SUCCESS_BRAND_UPDATE', message: 'Update Brand is success.' };
+CONSTANT.SUCCESS_BRAND_DELETE = { code: 'SUCCESS_BRAND_DELETE', message: 'Delete Brand is success.' };
 
-CONSTANT.Success_Product_Create = { code: 'SUCCESS_PRODUCT_CREATE', message: 'Create Product is success.' };
-CONSTANT.Success_Product_Update = { code: 'SUCCESS_PRODUCT_UPDATE', message: 'Update Product is success.' };
-CONSTANT.Success_Product_Delete = { code: 'SUCCESS_PRODUCT_DELETE', message: 'Delete Product is success.' };
+CONSTANT.SUCCESS_PRODUCT_CREATE = { code: 'SUCCESS_PRODUCT_CREATE', message: 'Create Product is success.' };
+CONSTANT.SUCCESS_PRODUCT_UPDATE = { code: 'SUCCESS_PRODUCT_UPDATE', message: 'Update Product is success.' };
+CONSTANT.SUCCESS_PRODUCT_DELETE = { code: 'SUCCESS_PRODUCT_DELETE', message: 'Delete Product is success.' };
 
-CONSTANT.Success_User_Create = { code: 'SUCCESS_USER_CREATE', message: 'Create User is success.' };
-CONSTANT.Success_User_Update = { code: 'SUCCESS_USER_UPDATE', message: 'Update User is success.' };
-CONSTANT.Success_User_Delete = { code: 'SUCCESS_USER_DELETE', message: 'Delete User is success.' };
+CONSTANT.SUCCESS_USER_CREATE = { code: 'SUCCESS_USER_CREATE', message: 'Create User is success.' };
+CONSTANT.SUCCESS_USER_UPDATE = { code: 'SUCCESS_USER_UPDATE', message: 'Update User is success.' };
+CONSTANT.SUCCESS_USER_DELETE = { code: 'SUCCESS_USER_DELETE', message: 'Delete User is success.' };
 
+// User
 CONSTANT.MISSING_FIELD_USERKEY = { code: 'MISSING_FIELD_USERKEY', message: 'missing field UserKey.' };
 CONSTANT.MISSING_FIELD_USERNAME = { code: 'MISSING_FIELD_USERNAME', message: 'missing field UserName.' };
 
+CONSTANT.INVALID_FIELD_USERKEY = { code: 'INVALID_FIELD_USERKEY', message: 'invalid field UserKey.' };
+
+// Brand
 CONSTANT.MISSING_FIELD_BRANDKEY = { code: 'MISSING_FIELD_BRANDKEY', message: 'missing field BrandKey.' };
 CONSTANT.MISSING_FIELD_BRANDNAME = { code: 'MISSING_FIELD_BRANDNAME', message: 'missing field BrandName.' };
 
-CONSTANT.INVALID_FIELD_USERKEY = { code: 'INVALID_FIELD_USERKEY', message: 'invalid field UserKey.' };
-
 CONSTANT.INVALID_FIELD_BRANDKEY = { code: 'INVALID_FIELD_BRANDKEY', message: 'invalid field BrandKey.' };
+
+// Product
+CONSTANT.MISSING_FIELD_PRODUCTKEY = { code: 'MISSING_FIELD_PRODUCTKEY', message: 'missing field ProductKey.' }
+CONSTANT.MISSING_FIELD_PRODUCTCODE = { code: 'MISSING_FIELD_PRODUCTCODE', message: 'missing field ProductCode.' }
+CONSTANT.MISSING_FIELD_PRODUCTNAME = { code: 'MISSING_FIELD_PRODUCTNAME', message: 'missing field ProductName.' };
+
+CONSTANT.INVALID_FIELD_PRODUCTKEY = { code: 'INVALID_FIELD_PRODUCTKEY', message: 'invalid field ProductKey.' };
+
+
 
 CONSTANT.COLOR_LIST = [
 	{ ColorCode: 'NoColor', ColorName: 'No Color' },

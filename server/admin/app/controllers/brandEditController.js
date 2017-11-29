@@ -92,6 +92,7 @@
 		};
 
 		/* buttons */
+		// https://docs.angularjs.org/guide/forms
 		$scope.save = function (brand) {
 			$scope.isSubmitted = true; // validate UI
 			if(!brand || !validateMaster(brand)) // validate business rules

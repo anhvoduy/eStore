@@ -16,45 +16,24 @@
                 PageCurrent: pageCurrent,
                 PageSize: pageSize
             };
-            
-            var q = $q.defer();
-            this.getData(url, params).then(function (result) {
-                q.resolve(result);
-            }, function (error) {
-                q.reject(error);
-            })
-            return q.promise;
-        }
+            return this.getData(url, params);
+        };
         
         productService.prototype.getProductById = function (productId) {
             var url = String.format('{0}/item', this.api);
             var params = {
                 ProductId: productId
-            }
-
-            var q = $q.defer();
-            this.getData(url, params).then(function (result) {
-                q.resolve(result);
-            }, function (error) {
-                q.reject(error);
-            })
-            return q.promise;
-        }
+            };           
+            return this.getData(url, params);
+        };
 
         productService.prototype.getProductByKey = function (productKey) {
             var url = String.format('{0}/item', this.api);
             var params = {                
                 ProductKey: productKey
-            }
-
-            var q = $q.defer();
-            this.getData(url, params).then(function (result) {
-                q.resolve(result);
-            }, function (error) {
-                q.reject(error);
-            })
-            return q.promise;
-        }
+            };
+            return this.getData(url, params);
+        };
         
         productService.prototype.getProductByBrand = function (brandKey) {
             var url = String.format('{0}/brand/items', this.api);
@@ -81,7 +60,17 @@
                 q.reject(error);
             })
             return q.promise;
-        }        
+        };
+        
+        productService.prototype.create = function (product) {
+            var url = String.format('{0}/create', this.api);
+            return this.postData(url, product);
+        };
+        
+        productService.prototype.update = function (product) {
+            var url = String.format('{0}/update', this.api);            
+            return this.postData(url, product);
+        };
         
         return new productService;
     };
