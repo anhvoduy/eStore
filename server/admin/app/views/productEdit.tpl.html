@@ -16,11 +16,11 @@
                     <label for="BrandId" class="col-sm-2 control-label">Brand Name</label>
                     <div class="col-sm-6">
                         <select name="BrandId" 
-                            class="form-control"
-                            ng-model="product.BrandId"
-                            ng-change="changeSelectedBrand()"
-                            ng-options="item.BrandId as item.BrandName for item in brands"
-                            required>
+                                class="form-control"
+                                ng-model="product.BrandId"
+                                ng-change="changeSelectedBrand()"
+                                ng-options="item.BrandId as item.BrandName for item in brands"
+                                required>
                             <option value="">---Please select---</option>
                         </select>
                     </div>
@@ -35,8 +35,15 @@
         
                 <div class="form-group">
                     <label for="Colour" class="col-sm-2 control-label">Color</label>
-                    <div class="col-sm-6">
-                        <input id="Colour" ng-model="product.Colour" class="form-control control-readonly" placeholder="Colour" readonly/>
+                    <div class="col-sm-6">                        
+                        <select name="ColorCode" 
+                                class="form-control"
+                                ng-init="product.ColorCode = colorList[0].ColorCode"
+                                ng-model="product.ColorCode"
+                                ng-change="changeSelectedColor(item)"
+                                ng-options="item.ColorCode as item.ColorName for item in colorList"
+                                required>
+                        </select>
                     </div>
                 </div>
         

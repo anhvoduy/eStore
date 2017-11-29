@@ -11,6 +11,7 @@
 			? appCommon.formStatus.isNew 
 			: appCommon.formStatus.isEdit;
 		$scope.formTitle = appCommon.setFormTitle($scope.formStatus, 'Product');
+		$scope.colorList = appCommon.colorList;
 		$scope.messageSuccess = [];
         $scope.messageError = [];        
 		$scope.master = {}; // https://docs.angularjs.org/guide/forms
@@ -81,6 +82,10 @@
 		};
 		
 		$scope.changeSelectedBrand = function(item){
+			console.log(item);
+		};
+
+		$scope.changeSelectedColor = function(item){
 			console.log(item);
 		};
 		

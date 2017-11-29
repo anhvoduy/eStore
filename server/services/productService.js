@@ -26,7 +26,7 @@ Factory.prototype.getProducts = async function (query) {
         var sqlQuery = `
             SELECT  P.ProductId, P.ProductKey, P.ProductName, P.Description, 
                     P.BrandId, B.BrandName,
-                    P.Price, P.Colour, P.Created, P.Status, P.LatestReviewInfo 
+                    P.Price, P.ColorCode, P.Created, P.Status, P.LatestReviewInfo 
             FROM Product P INNER JOIN Brand B
             WHERE P.BrandId = B.BrandId
             ORDER BY P.ProductId DESC
@@ -57,7 +57,7 @@ Factory.prototype.getProductById = async function (query) {
         var sql = `
             SELECT  P.ProductId, P.ProductKey, P.ProductName, P.Description, 
                     P.BrandId, B.BrandName,
-                    P.Price, P.Colour, P.Created, P.Status, P.LatestReviewInfo
+                    P.Price, P.ColorCode, P.Created, P.Status, P.LatestReviewInfo
             FROM Product P INNER JOIN Brand B ON P.BrandId = B.BrandId 
             WHERE   P.ProductId =:ProductId
                 AND B.Deleted <> 1
@@ -75,7 +75,7 @@ Factory.prototype.getProductByKey = function (query) {
 	var sql = `
 		SELECT  P.ProductId, P.ProductKey, P.ProductName, P.Description, 
 				P.BrandId, B.BrandName,
-		        P.Price, P.Colour, P.Created, P.Status, P.LatestReviewInfo
+		        P.Price, P.ColorCode, P.Created, P.Status, P.LatestReviewInfo
 		FROM Product P INNER JOIN Brand B ON P.BrandId = B.BrandId 
         WHERE   P.ProductKey =:ProductKey
             AND B.Deleted <> 1
@@ -87,7 +87,7 @@ Factory.prototype.getProductByKey = function (query) {
 Factory.prototype.getProductsByBrand = function (query) {
 	var sql = `
 		SELECT  P.ProductId, P.ProductKey, P.ProductName, P.Description, 
-				P.Price, P.Colour, P.Created, P.Status,
+				P.Price, P.ColorCode, P.Created, P.Status,
         		P.BrandId, B.BrandName, P.LatestReviewInfo
 		FROM Product P INNER JOIN Brand B ON P.BrandId = B.BrandId
         WHERE   B.BrandId =:BrandId 
