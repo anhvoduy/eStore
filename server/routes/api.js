@@ -7,6 +7,10 @@ var cors = require('cors')
 var jwt = require('jsonwebtoken');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
+var auth = require('../config/auth');
+var config = require('../config/config');
+var constant = require('../lib/constant');
+var errorHelper = require('../lib/errorHelper');
 
 // sample redis cache
 // var cache = require('express-redis-cache')();
@@ -14,12 +18,8 @@ var LocalStrategy = require('passport-local').Strategy;
 // var axios = require('axios');
 // var redis = require('redis');
 
-// our configuration
-var auth = require('../config/auth');
-var config = require('../config/config');
-var constant = require('../lib/constant');
-var dbContext = require('../lib/dbContext');
-var errorHelper = require('../lib/errorHelper');
+
+
 
 // routers: use to test
 router.get('/', function (req, res, next) {
@@ -124,7 +124,7 @@ router.post('/login', function (req, res, next) {
 			res.status(200).json({
 				success: true,
 				message: { code: 'SUCCESS_AUTHENTICATION', message: 'Login is successful.' },
-				user: { username: result.user.username, userkey: '752a7461-d4d2-11e7-8fcd-00acc0f28252', token: token },
+				user: { username: result.user.username, userkey: result.user.userkey, token: token },
 			});
 		}
 	})(req, res, next);
