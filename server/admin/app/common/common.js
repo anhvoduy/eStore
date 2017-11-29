@@ -30,7 +30,33 @@
 			maxSize: 5,
 			lstPageSize: [10, 50, 100]
         };
-        
+
+        appCommon.prototype.colorList = [
+            { Key: 'NoColor', Label: 'No Color' },
+			{ Key: 'Red', Label: 'Red' },
+            { Key: 'Pink', Label: 'Pink' },
+            { Key: 'Orange', Label: 'Orange' },
+            { Key: 'Yellow', Label: 'Yellow' },
+            { Key: 'Green', Label: 'Green' },
+            { Key: 'Blue', Label: 'Blue' },
+            { Key: 'Purple', Label: 'Purple' },
+            { Key: 'Brown', Label: 'Brown' },
+            { Key: 'Grey', Label: 'Grey' },
+            { Key: 'White', Label: 'White' },
+            { Key: 'Black', Label: 'Black' },
+            { Key: 'Print', Label: 'Print' },
+            { Key: 'Strip', Label: 'Strip' },
+            { Key: 'Floral', Label: 'Floral' },
+            { Key: 'Check', Label: 'Check' },
+            { Key: 'Dot', Label: 'Dot' },
+            { Key: 'Gold', Label: 'Gold' },
+            { Key: 'Silver', Label: 'Silver' },
+            { Key: 'Rosegold', Label: 'Rosegold' },
+            { Key: 'Champagne', Label: 'Champagne' },
+            { Key: 'Whitegold', Label: 'Whitegold' },
+            { Key: 'Platinum', Label: 'Platinum' },
+            { Key: 'MultiColor', Label: 'Multiple Color' }
+        ];
         
         // functions
         appCommon.prototype.setFormTitle = function(formStatus, title) {
