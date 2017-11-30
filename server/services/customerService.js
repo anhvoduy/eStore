@@ -84,7 +84,7 @@ Factory.prototype.create = async function (customer) {
 	{
 		var sql = `
 			INSERT INTO Customer(CustomerKey, CustomerName, Description, Email, Mobile, Tel, Fax, Representative, Title, Address)
-			VALUES(uuid(), :CustomerKey, :CustomerName, :Description, :Email, :Mobile, :Tel, :Fax, :Representative, :Title, :Address)
+			VALUES(uuid(),:CustomerName,:Description,:Email,:Mobile,:Tel,:Fax,:Representative,:Title,:Address)
 		`;
 		return dbContext.queryExecute(sql, customer);
 	}
