@@ -192,6 +192,9 @@ INSERT INTO `Account` (`AccountKey`,`AccountNo`,`AccountName`,`DebitOrCredit`,`A
 VALUES (uuid(),'131','Account Receivable','CR','SYSTEM','SYSTEM');
 
 INSERT INTO `Account` (`AccountKey`,`AccountNo`,`AccountName`,`DebitOrCredit`,`Author`,`Editor`) 
+VALUES (uuid(),'211','Fixed Asset','DR','SYSTEM','SYSTEM');
+
+INSERT INTO `Account` (`AccountKey`,`AccountNo`,`AccountName`,`DebitOrCredit`,`Author`,`Editor`) 
 VALUES (uuid(),'331','Account Payment','CR','SYSTEM','SYSTEM');
 
 INSERT INTO `Account` (`AccountKey`,`AccountNo`,`AccountName`,`DebitOrCredit`,`Author`,`Editor`) 
