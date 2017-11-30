@@ -28,7 +28,7 @@
                     <div class="col-sm-6">
                         <select name="DebitOrCredit" 
                                 class="form-control"
-                                ng-init="account.DebitOrCredit = accountTypeList[0].DebitOrCredit"
+                                ng-init="account.DebitOrCredit = accountTypeList[0].Key"
                                 ng-model="account.DebitOrCredit"
                                 ng-change="changeSelectedDebitOrCredit(item)"
                                 ng-options="item.Key as item.Value for item in accountTypeList">
