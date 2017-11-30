@@ -19,21 +19,23 @@
             customerService.getCustomerByKey($scope.customerKey).then(function (result) {
                 $scope.customer = result;
 				if (appCommon.isUndefined($scope.customer)) {
-                    $scope.messageError.push(String.format("The customer: {0} not found.", $scope.customerKey));
+                    $scope.messageError.push(String.format("The customer key: {0} not found.", $scope.customerKey));
 				}
 			}, function (error) {
 				$scope.messageError.push(error);
 			});			
-		}
+		};
 		
 		// if update brand success/failed -> reset status after 3 seconds  
-		function resetFormStatus() {
+		function resetFormStatus(delay) {
+			if(!delay) delay = 3000;
 			$timeout(function () {
-				$scope.disabledButton = false;
 				$scope.messageSuccess = [];
 				$scope.messageError = [];
-			}, 3000);
-		}
+				$scope.isSubmitted = false;
+				$scope.isSubmitting = false;
+			}, delay);
+		};
 		
 		/* buttons */
         $scope.save = function() {

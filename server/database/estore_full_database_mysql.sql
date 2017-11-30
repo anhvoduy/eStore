@@ -43,41 +43,44 @@ CREATE TABLE `Customer` (
 --
 -- Sample data for table `Customer`
 --
-INSERT INTO `Customer` (`CustomerKey`,`CustomerName`,`Address`,`Mobile`,`Author`,`Editor`) 
-VALUES (uuid(),'The Bank of Tokyo and Mitsuibishi','37 Ton Duc Thang street, district 1','029876543210','SYSTEM','SYSTEM');
+INSERT INTO `Customer` (`CustomerKey`,`CustomerName`,`Address`,`Email`,`Mobile`,`Author`,`Editor`) 
+VALUES (uuid(),'The Bank of Tokyo and Mitsuibishi','37 Ton Duc Thang street, district 1','customer@customer.com','029876543210','SYSTEM','SYSTEM');
 
-INSERT INTO `Customer` (`CustomerKey`,`CustomerName`,`Address`,`Mobile`,`Author`,`Editor`) 
-VALUES (uuid(),'REE Corporation Group','458 Hung Vuong street, district 1','029876543210','SYSTEM','SYSTEM');
+INSERT INTO `Customer` (`CustomerKey`,`CustomerName`,`Address`,`Email`,`Mobile`,`Author`,`Editor`) 
+VALUES (uuid(),'REE Corporation Group','458 Hung Vuong street, district 1','customer@customer.com','029876543210','SYSTEM','SYSTEM');
 
-INSERT INTO `Customer` (`CustomerKey`,`CustomerName`,`Address`,`Mobile`,`Author`,`Editor`) 
-VALUES (uuid(),'FPT Information System','37 Ton Duc Thang street, district 1','029876543210','SYSTEM','SYSTEM');
+INSERT INTO `Customer` (`CustomerKey`,`CustomerName`,`Address`,`Email`,`Mobile`,`Author`,`Editor`) 
+VALUES (uuid(),'FPT Information System','37 Ton Duc Thang street, district 1','customer@customer.com','029876543210','SYSTEM','SYSTEM');
 
-INSERT INTO `Customer` (`CustomerKey`,`CustomerName`,`Address`,`Mobile`,`Author`,`Editor`) 
-VALUES (uuid(),'HAG Corporation Group','37 Ton Duc Thang street, district 1','029876543210','SYSTEM','SYSTEM');
+INSERT INTO `Customer` (`CustomerKey`,`CustomerName`,`Address`,`Email`,`Mobile`,`Author`,`Editor`) 
+VALUES (uuid(),'HAG Corporation Group','37 Ton Duc Thang street, district 1','customer@customer.com','029876543210','SYSTEM','SYSTEM');
 
-INSERT INTO `Customer` (`CustomerKey`,`CustomerName`,`Address`,`Mobile`,`Author`,`Editor`) 
-VALUES (uuid(),'SMC Steel Company','37 Ton Duc Thang street, district 1','029876543210','SYSTEM','SYSTEM');
+INSERT INTO `Customer` (`CustomerKey`,`CustomerName`,`Address`,`Email`,`Mobile`,`Author`,`Editor`) 
+VALUES (uuid(),'SMC Steel Company','37 Ton Duc Thang street, district 1','customer@customer.com','029876543210','SYSTEM','SYSTEM');
 
-INSERT INTO `Customer` (`CustomerKey`,`CustomerName`,`Address`,`Mobile`,`Author`,`Editor`) 
-VALUES (uuid(),'Marubeni Itochu Steel Vietnam Co. Ltd.','37 Ton Duc Thang street, district 1','029876543210','SYSTEM','SYSTEM');
+INSERT INTO `Customer` (`CustomerKey`,`CustomerName`,`Address`,`Email`,`Mobile`,`Author`,`Editor`) 
+VALUES (uuid(),'Marubeni Itochu Steel Vietnam Co. Ltd.','37 Ton Duc Thang street, district 1','customer@customer.com','029876543210','SYSTEM','SYSTEM');
 
-INSERT INTO `Customer` (`CustomerKey`,`CustomerName`,`Address`,`Mobile`,`Author`,`Editor`) 
-VALUES (uuid(),'Northrop Grumman','157 Hong Ha street, district 1','029876543210','SYSTEM','SYSTEM');
+INSERT INTO `Customer` (`CustomerKey`,`CustomerName`,`Address`,`Email`,`Mobile`,`Author`,`Editor`) 
+VALUES (uuid(),'Northrop Grumman','157 Hong Ha street, district 1','customer@customer.com','029876543210','SYSTEM','SYSTEM');
 
-INSERT INTO `Customer` (`CustomerKey`,`CustomerName`,`Address`,`Mobile`,`Author`,`Editor`) 
-VALUES (uuid(),'Adnotrium','45 Nguyen Thi Minh Khai street, district 1','029876543210','SYSTEM','SYSTEM');
+INSERT INTO `Customer` (`CustomerKey`,`CustomerName`,`Address`,`Email`,`Mobile`,`Author`,`Editor`) 
+VALUES (uuid(),'Adnotrium','45 Nguyen Thi Minh Khai street, district 1','customer@customer.com','029876543210','SYSTEM','SYSTEM');
 
-INSERT INTO `Customer` (`CustomerKey`,`CustomerName`,`Address`,`Mobile`,`Author`,`Editor`) 
-VALUES (uuid(),'SMC Steel Company','25 Ton That Tung street, district 1','029876543210','SYSTEM','SYSTEM');
+INSERT INTO `Customer` (`CustomerKey`,`CustomerName`,`Address`,`Email`,`Mobile`,`Author`,`Editor`) 
+VALUES (uuid(),'SMC Steel Company','25 Ton That Tung street, district 1','customer@customer.com','029876543210','SYSTEM','SYSTEM');
 
-INSERT INTO `Customer` (`CustomerKey`,`CustomerName`,`Address`,`Mobile`,`Author`,`Editor`) 
-VALUES (uuid(),'Marubeni Super Fast Food.','99 Ban Co street, district 3','08 801109934','SYSTEM','SYSTEM');
+INSERT INTO `Customer` (`CustomerKey`,`CustomerName`,`Address`,`Email`,`Mobile`,`Author`,`Editor`) 
+VALUES (uuid(),'Marubeni Super Fast Food.','99 Ban Co street, district 3','customer@customer.com','08 801109934','SYSTEM','SYSTEM');
 
-INSERT INTO `Customer` (`CustomerKey`,`CustomerName`,`Address`,`Mobile`,`Author`,`Editor`) 
-VALUES (uuid(),'North Carolina','142 Ton Duc Thang street, district 1','02 3664916215','SYSTEM','SYSTEM');
+INSERT INTO `Customer` (`CustomerKey`,`CustomerName`,`Address`,`Email`,`Mobile`,`Author`,`Editor`) 
+VALUES (uuid(),'North Carolina','142 Ton Duc Thang street, district 1','customer@customer.com','02 3664916215','SYSTEM','SYSTEM');
 
-INSERT INTO `Customer` (`CustomerKey`,`CustomerName`,`Address`,`Mobile`,`Author`,`Editor`) 
-VALUES (uuid(),'Taobao Group','45 Nguyen Thi Minh Khai street, district 1','029876543210','SYSTEM','SYSTEM');
+INSERT INTO `Customer` (`CustomerKey`,`CustomerName`,`Address`,`Email`,`Mobile`,`Author`,`Editor`) 
+VALUES (uuid(),'Taobao Group','45 Nguyen Thi Minh Khai street, district 1','customer@customer.com','029876543210','SYSTEM','SYSTEM');
+
+INSERT INTO `Customer` (`CustomerKey`,`CustomerName`,`Address`,`Email`,`Mobile`,`Author`,`Editor`) 
+VALUES (uuid(),'Kawasaki Corporation Group','145 Ho Tung Mau street, district 1','customer@customer.com','029888883210','SYSTEM','SYSTEM');
 
 --
 -- Table structure for table `Truck`

@@ -94,6 +94,14 @@ CONSTANT.MISSING_FIELD_DEBITORCREDIT = { code: 'MISSING_FIELD_DEBITORCREDIT', me
 CONSTANT.INVALID_FIELD_ACCOUNTKEY = { code: 'INVALID_FIELD_ACCOUNTKEY', message: 'invalid field AccountKey.' };
 
 
+// Customer
+CONSTANT.MISSING_FIELD_CUSTOMER_KEY = { code: 'MISSING_FIELD_CUSTOMER_KEY', message: 'missing field Customer Key.' }
+CONSTANT.MISSING_FIELD_CUSTOMER_NAME = { code: 'MISSING_FIELD_CUSTOMER_NAME', message: 'missing field Customer Name.' }
+CONSTANT.MISSING_FIELD_CUSTOMER_ADDRESS = { code: 'MISSING_FIELD_CUSTOMER_ADDRESS', message: 'missing field Customer Address.' }
+CONSTANT.MISSING_FIELD_CUSTOMER_EMAIL = { code: 'MISSING_FIELD_CUSTOMER_EMAIL', message: 'missing field Customer Email.' }
+
+CONSTANT.INVALID_FIELD_CUSTOMER_KEY = { code: 'INVALID_FIELD_CUSTOMER_KEY', message: 'invalid field Customer Key.' };
+
 CONSTANT.ACCOUNT_TYPE = {
 	DEBIT: 'DR',
 	CREDIT: 'CR'

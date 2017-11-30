@@ -24,7 +24,7 @@ Factory.prototype.getList = async function (query) {
 		
 		// get data
 		let sqlQuery = `
-			SELECT CustomerId, CustomerName, Description, Email, Mobile, Tel, Fax, Title, Address
+			SELECT CustomerId, CustomerKey, CustomerName, Description, Email, Mobile, Tel, Fax, Title, Address, ImageKey
 			FROM Customer
 			WHERE Deleted <> 1
 			ORDER BY CustomerId DESC
@@ -51,24 +51,68 @@ Factory.prototype.getList = async function (query) {
 
 Factory.prototype.getCustomerById = async function (query) {
 	var sql = `
-		SELECT CustomerId, CustomerName, Description, Email, Mobile, Tel, Fax, Title, Address
+		SELECT CustomerId, CustomerKey, CustomerName, Description, Email, Mobile, Tel, Fax, Title, Address, ImageKey
 		FROM Customer 
 		WHERE CustomerId =:CustomerId AND Deleted <> 1
-		ORDER BY CustomerId DESC
 	`;
 	return dbContext.queryItem(sql, query);
 }
 
-Factory.prototype.createCustomer = async function (customer) {
+Factory.prototype.getCustomerByKey = async function (query) {
+	try
+	{
+		var sql = `
+			SELECT CustomerId, CustomerKey, CustomerName, Description, Email, Mobile, Tel, Fax, Title, Address
+			FROM Customer 
+			WHERE CustomerKey =:CustomerKey AND Deleted <> 1
+		`;
+		return dbContext.queryItem(sql, query);
+	}
+	catch(err){
+		throw err;
+	}	
+}
+
+Factory.prototype.create = async function (customer) {
+	try
+	{
+		var sql = `
+			INSERT INTO Customer(CustomerKey, CustomerName, Description, Email, Mobile, Tel, Fax, Title, Address)
+			VALUES(uuid(), :CustomerKey, :CustomerName, :Description, :Email, :Mobile, :Tel, :Fax, :Title, :Address)
+		`;
+		return dbContext.queryExecute(sql, customer);
+	}
+	catch(err){
+		throw err;
+	}	
+}
+
+Factory.prototype.update = async function (customer) {
+	try
+	{
+		var sql = `
+			UPDATE Customer
+			SET CustomerName=:CustomerName,
+				Email=:Email, 
+				Mobile=:Mobile, 
+				Tel=:Tel, 
+				Fax=:Fax, 
+				Title=:Title, 
+				Address=:Address,
+				ImageKey=:ImageKey,
+				Description=:Description
+			WHERE CustomerId =:CustomerId
+		`;
+		return dbContext.queryExecute(sql, customer);
+	}
+	catch(err){
+		throw err;
+	}	
+}
+
+Factory.prototype.delete = async function (customer) {
 	return true;
 }
 
-Factory.prototype.updateCustomer = async function (customer) {
-	return true;
-}
-
-Factory.prototype.deleteCustomer = async function (customer) {
-	return true;
-}
 // Export
 module.exports = new Factory;
