@@ -24,7 +24,7 @@ Factory.prototype.getList = async function (query) {
 		
 		// get data
 		let sqlQuery = `
-			SELECT CustomerId, CustomerKey, CustomerName, Description, Email, Mobile, Tel, Fax, Title, Address, ImageKey
+			SELECT CustomerId, CustomerKey, CustomerName, Description, Email, Mobile, Tel, Fax, Representative, Title, Address, ImageKey
 			FROM Customer
 			WHERE Deleted <> 1
 			ORDER BY CustomerId DESC
@@ -50,19 +50,25 @@ Factory.prototype.getList = async function (query) {
 }
 
 Factory.prototype.getCustomerById = async function (query) {
-	var sql = `
-		SELECT CustomerId, CustomerKey, CustomerName, Description, Email, Mobile, Tel, Fax, Title, Address, ImageKey
-		FROM Customer 
-		WHERE CustomerId =:CustomerId AND Deleted <> 1
-	`;
-	return dbContext.queryItem(sql, query);
+	try
+	{
+		var sql = `
+			SELECT CustomerId, CustomerKey, CustomerName, Description, Email, Mobile, Tel, Fax, Representative, Title, Address, ImageKey
+			FROM Customer 
+			WHERE CustomerId =:CustomerId AND Deleted <> 1
+		`;
+		return dbContext.queryItem(sql, query);
+	}
+	catch(err){
+		throw err;
+	}	
 }
 
 Factory.prototype.getCustomerByKey = async function (query) {
 	try
 	{
 		var sql = `
-			SELECT CustomerId, CustomerKey, CustomerName, Description, Email, Mobile, Tel, Fax, Title, Address
+			SELECT CustomerId, CustomerKey, CustomerName, Description, Email, Mobile, Tel, Fax, Representative, Title, Address, ImageKey
 			FROM Customer 
 			WHERE CustomerKey =:CustomerKey AND Deleted <> 1
 		`;
@@ -77,8 +83,8 @@ Factory.prototype.create = async function (customer) {
 	try
 	{
 		var sql = `
-			INSERT INTO Customer(CustomerKey, CustomerName, Description, Email, Mobile, Tel, Fax, Title, Address)
-			VALUES(uuid(), :CustomerKey, :CustomerName, :Description, :Email, :Mobile, :Tel, :Fax, :Title, :Address)
+			INSERT INTO Customer(CustomerKey, CustomerName, Description, Email, Mobile, Tel, Fax, Representative, Title, Address)
+			VALUES(uuid(), :CustomerKey, :CustomerName, :Description, :Email, :Mobile, :Tel, :Fax, :Representative, :Title, :Address)
 		`;
 		return dbContext.queryExecute(sql, customer);
 	}
@@ -96,9 +102,10 @@ Factory.prototype.update = async function (customer) {
 				Email=:Email, 
 				Mobile=:Mobile, 
 				Tel=:Tel, 
-				Fax=:Fax, 
-				Title=:Title, 
+				Fax=:Fax,
 				Address=:Address,
+				Representative=:Representative, 
+				Title=:Title, 				
 				ImageKey=:ImageKey,
 				Description=:Description
 			WHERE CustomerId =:CustomerId

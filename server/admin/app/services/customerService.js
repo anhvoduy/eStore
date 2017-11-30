@@ -27,22 +27,22 @@
             return this.getData(url, params);
         };
 
-        customerService.prototype.createCustomer = function (customer) {
+        customerService.prototype.create = function (customer) {
             var url = String.format('{0}/create', this.api);
             return this.postData(url, customer);
         };
         
-        customerService.prototype.updateCustomer = function (customer) {
+        customerService.prototype.update = function (customer) {
             var url = String.format('{0}/update', this.api);
-            return this.postData(url, customer);            
+            return this.postData(url, customer);
         };
         
-        customerService.prototype.deleteCustomer = function (customerId) {
+        customerService.prototype.delete = function (customerId) {
             var url = String.format('{0}/delete', this.api);
             var params = {
                 CustomerId: customerId
             };
-            return this.postData(url, params);         
+            return this.postData(url, params);
         };
         
         return new customerService;

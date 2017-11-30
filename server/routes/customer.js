@@ -44,7 +44,7 @@ router.get('/item', async function (req, res, next) {
 router.post('/create', auth.checkAuthentication(), async function (req, res, next) {
 	try
 	{
-		let customer = _.pick(req.body, ["CustomerName","Description","Email","Mobile","Tel","Fax","Title","Address","ImageKey"]);
+		let customer = _.pick(req.body, ["CustomerName","Description","Email","Mobile","Tel","Fax","Representative","Title","Address","ImageKey"]);
 		
 		if(!customer.CustomerName)
 			throw CONSTANT.MISSING_FIELD_CUSTOMER_NAME;
@@ -69,7 +69,7 @@ router.post('/create', auth.checkAuthentication(), async function (req, res, nex
 router.post('/update', auth.checkAuthentication(), async function (req, res, next) {
 	try
 	{
-		let customer = _.pick(req.body, ["CustomerId","CustomerKey","CustomerName","Description","Email","Mobile","Tel","Fax","Title","Address","ImageKey"]);
+		let customer = _.pick(req.body, ["CustomerId","CustomerKey","CustomerName","Description","Email","Mobile","Tel","Fax","Representative","Title","Address","ImageKey"]);
 		
 		if(!customer.CustomerKey)
 			throw CONSTANT.MISSING_FIELD_CUSTOMER_KEY;

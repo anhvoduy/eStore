@@ -10,7 +10,8 @@
 			: appCommon.formStatus.isEdit;		
 		$scope.formTitle = appCommon.setFormTitle($scope.formStatus, 'Customer');
 		$scope.messageSuccess = [];
-		$scope.messageError = [];		
+		$scope.messageError = [];
+		
 		
 		/* functions */
 		function activate() {
@@ -36,20 +37,66 @@
 				$scope.isSubmitting = false;
 			}, delay);
 		};
+
+		function validateMaster(master){
+			if(!master){
+				return false;
+			}
+			return true;
+		};
+
+		function updateCustomer(customer){
+			return customerService.update(customer).then(function (result) {
+				if(result && result.success === true){
+					$scope.messageSuccess.push('update customer is success');
+				} else {
+					$scope.messageError.push('update customer is failed');
+				}
+				resetFormStatus();
+			}, function (error) {
+				$scope.messageError.push(error);
+				resetFormStatus(1000);
+			});
+		};
+
+		function createCustomer(customer){
+			return customerService.create(customer).then(function (result) {
+				if(result && result.success === true){
+					$scope.messageSuccess.push('create customer is success');
+					$scope.customer.CustomerId = result.CustomerId;
+				} else {
+					$scope.messageError.push('create customer is failed');
+				}
+				resetFormStatus();
+			}, function (error) {
+				$scope.messageError.push(error);
+				resetFormStatus(1000);
+			});
+		};
 		
 		/* buttons */
-        $scope.save = function() {
-            if (appCommon.isUndefined($scope.customer)) return;
+        // https://docs.angularjs.org/guide/forms
+		$scope.save = function (customer) {
+			$scope.isSubmitted = true; // validate UI
+			if(!customer || !validateMaster(customer)) // validate business rules
+			{
+				$scope.isSubmitted = false;
+				return;
+			}
 
-            $scope.disabledButton = true;
-            customerService.updateCustomer($scope.customer).then(function (result) {
-                $scope.messageSuccess.push(result.message);
-                resetFormStatus();
-            }, function (error) {
-                $scope.messageError.push(error);
-                resetFormStatus();
-            });
-        }
+			// start submit to server
+			$scope.isSubmitting = true;
+			if($scope.formStatus === appCommon.formStatus.isNew){
+				return createCustomer(customer).then(function(){
+					$timeout(function(){
+						$state.go($state.current.parentState);
+					}, 3000);
+				});
+			}
+			else if($scope.formStatus === appCommon.formStatus.isEdit){
+				return updateCustomer(customer);
+			}
+		};
 
 		$scope.cancel = function() {            
             $state.go($state.current.parentState);
