@@ -1,10 +1,8 @@
 ﻿(function () {
     'use strict';    
     app.controller('productEditController', productEditController);
-	productEditController.$inject = ['$scope', '$timeout', '$state', '$stateParams', 'appCommon', 
-		'brandService', 'productService', 'reviewService'];
-	function productEditController($scope, $timeout, $state, $stateParams, appCommon, 
-		brandService, productService, reviewService) {
+	productEditController.$inject = ['$scope', '$timeout', '$state', '$stateParams', 'appCommon', 'brandService', 'productService'];
+	function productEditController($scope, $timeout, $state, $stateParams, appCommon, brandService, productService) {
 		/* models */
 		$scope.productKey = $stateParams.productKey;
 		$scope.formStatus = appCommon.isUndefined($scope.productKey) 
