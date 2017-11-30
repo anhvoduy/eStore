@@ -65,29 +65,33 @@
         userService.prototype.getProfile = function (userKey) {
             var url = String.format('{0}/profile', this.api);
             var params = {
-                UserKey: userKey,
-            }
-			
-			var q = $q.defer();
-			this.getData(url, params).then(function (result) {
-				q.resolve(result);
-			}, function (error) {
-				q.reject(error);
-			})
-			return q.promise;
-		}
+                UserKey: userKey
+            };
+			return this.getData(url, params);
+		};
 		
 		userService.prototype.getMenu = function () {
-			var url = String.format('{0}/menu', this.api);
-			
-			var q = $q.defer();
-			this.getData(url).then(function (result) {
-				q.resolve(result);
-			}, function (error) {
-				q.reject(error);
-			})
-			return q.promise;
-		}
+			var url = String.format('{0}/menu', this.api);						
+			return this.getData(url);
+        };
+        
+        userService.prototype.create = function (user) {
+            var url = String.format('{0}/create', this.api);
+            return this.postData(url, user);
+        };
+        
+        userService.prototype.update = function (user) {
+            var url = String.format('{0}/update', this.api);
+            return this.postData(url, user);
+        };
+        
+        userService.prototype.delete = function (userId) {
+            var url = String.format('{0}/delete', this.api);
+            var params = {
+                UserId: userId
+            };
+            return this.postData(url, params);
+        };
 
         return new userService;
     };

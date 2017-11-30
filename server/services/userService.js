@@ -18,6 +18,7 @@ Factory.prototype.myProfile = function(){
 Factory.prototype.getUsers = async function(query){
 	try
 	{
+		// No need pagination
 		let sql = `
 			SELECT 	UserId, UserKey, UserType, UserName, DisplayName, Email, Mobile, Title, DateOfBirth 
 			FROM User 

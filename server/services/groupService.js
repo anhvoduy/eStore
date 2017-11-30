@@ -6,6 +6,7 @@ const Factory = function () {
 }
 
 Factory.prototype.getGroups = function (query) {
+	// No need pagination
 	var sql = "SELECT * FROM `Group` WHERE Deleted <> 1";
 	return dbContext.queryList(sql);
 }
