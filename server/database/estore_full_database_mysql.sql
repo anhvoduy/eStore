@@ -163,7 +163,7 @@ CREATE TABLE `Account` (
   `AccountNo` VARCHAR(20) NOT NULL,
   `AccountName` VARCHAR(100) NULL,
   `Description` VARCHAR(250) DEFAULT NULL,
-  `DebitOrCredit` TINYINT(1) DEFAULT 0,
+  `DebitOrCredit` VARCHAR(2) DEFAULT NULL,
   `Created` DATETIME DEFAULT CURRENT_TIMESTAMP,
   `Updated` DATETIME DEFAULT CURRENT_TIMESTAMP,
   `Author` VARCHAR(50) DEFAULT NULL,
@@ -176,41 +176,41 @@ CREATE TABLE `Account` (
 --
 -- Sample data for table `Account`
 --
-INSERT INTO `Account` (`AccountKey`,`AccountNo`,`AccountName`,`Author`,`Editor`) 
-VALUES (uuid(),'111','Cash','SYSTEM','SYSTEM');
+INSERT INTO `Account` (`AccountKey`,`AccountNo`,`AccountName`,`DebitOrCredit`,`Author`,`Editor`) 
+VALUES (uuid(),'111','Cash','DR','SYSTEM','SYSTEM');
 
-INSERT INTO `Account` (`AccountKey`,`AccountNo`,`AccountName`,`Author`,`Editor`) 
-VALUES (uuid(),'112','Cash in bank','SYSTEM','SYSTEM');
+INSERT INTO `Account` (`AccountKey`,`AccountNo`,`AccountName`,`DebitOrCredit`,`Author`,`Editor`) 
+VALUES (uuid(),'112','Cash in bank','DR','SYSTEM','SYSTEM');
 
-INSERT INTO `Account` (`AccountKey`,`AccountNo`,`AccountName`,`Author`,`Editor`) 
-VALUES (uuid(),'113','Cash transfer','SYSTEM','SYSTEM');
+INSERT INTO `Account` (`AccountKey`,`AccountNo`,`AccountName`,`DebitOrCredit`,`Author`,`Editor`) 
+VALUES (uuid(),'113','Cash transfer','DR','SYSTEM','SYSTEM');
 
-INSERT INTO `Account` (`AccountKey`,`AccountNo`,`AccountName`,`Author`,`Editor`) 
-VALUES (uuid(),'156','Goods','SYSTEM','SYSTEM');
+INSERT INTO `Account` (`AccountKey`,`AccountNo`,`AccountName`,`DebitOrCredit`,`Author`,`Editor`) 
+VALUES (uuid(),'156','Goods','DR','SYSTEM','SYSTEM');
 
-INSERT INTO `Account` (`AccountKey`,`AccountNo`,`AccountName`,`Author`,`Editor`) 
-VALUES (uuid(),'131','Account Receivable','SYSTEM','SYSTEM');
+INSERT INTO `Account` (`AccountKey`,`AccountNo`,`AccountName`,`DebitOrCredit`,`Author`,`Editor`) 
+VALUES (uuid(),'131','Account Receivable','CR','SYSTEM','SYSTEM');
 
-INSERT INTO `Account` (`AccountKey`,`AccountNo`,`AccountName`,`Author`,`Editor`) 
-VALUES (uuid(),'331','Account Payment','SYSTEM','SYSTEM');
+INSERT INTO `Account` (`AccountKey`,`AccountNo`,`AccountName`,`DebitOrCredit`,`Author`,`Editor`) 
+VALUES (uuid(),'331','Account Payment','CR','SYSTEM','SYSTEM');
 
-INSERT INTO `Account` (`AccountKey`,`AccountNo`,`AccountName`,`Author`,`Editor`) 
-VALUES (uuid(),'511','Revenue','SYSTEM','SYSTEM');
+INSERT INTO `Account` (`AccountKey`,`AccountNo`,`AccountName`,`DebitOrCredit`,`Author`,`Editor`) 
+VALUES (uuid(),'511','Revenue','CR','SYSTEM','SYSTEM');
 
-INSERT INTO `Account` (`AccountKey`,`AccountNo`,`AccountName`,`Author`,`Editor`) 
-VALUES (uuid(),'632','Cost of Goods Sold','SYSTEM','SYSTEM');
+INSERT INTO `Account` (`AccountKey`,`AccountNo`,`AccountName`,`DebitOrCredit`,`Author`,`Editor`) 
+VALUES (uuid(),'632','Cost of Goods Sold','CR','SYSTEM','SYSTEM');
 
-INSERT INTO `Account` (`AccountKey`,`AccountNo`,`AccountName`,`Author`,`Editor`) 
-VALUES (uuid(),'642','Selling Cost','SYSTEM','SYSTEM');
+INSERT INTO `Account` (`AccountKey`,`AccountNo`,`AccountName`,`DebitOrCredit`,`Author`,`Editor`) 
+VALUES (uuid(),'642','Selling Cost','CR','SYSTEM','SYSTEM');
 
-INSERT INTO `Account` (`AccountKey`,`AccountNo`,`AccountName`,`Author`,`Editor`) 
-VALUES (uuid(),'711','711','SYSTEM','SYSTEM');
+INSERT INTO `Account` (`AccountKey`,`AccountNo`,`AccountName`,`DebitOrCredit`,`Author`,`Editor`) 
+VALUES (uuid(),'711','711','CR','SYSTEM','SYSTEM');
 
-INSERT INTO `Account` (`AccountKey`,`AccountNo`,`AccountName`,`Author`,`Editor`) 
-VALUES (uuid(),'811','811','SYSTEM','SYSTEM');
+INSERT INTO `Account` (`AccountKey`,`AccountNo`,`AccountName`,`DebitOrCredit`,`Author`,`Editor`) 
+VALUES (uuid(),'811','811','CR','SYSTEM','SYSTEM');
 
-INSERT INTO `Account` (`AccountKey`,`AccountNo`,`AccountName`,`Author`,`Editor`) 
-VALUES (uuid(),'911','911','SYSTEM','SYSTEM');
+INSERT INTO `Account` (`AccountKey`,`AccountNo`,`AccountName`,`DebitOrCredit`,`Author`,`Editor`) 
+VALUES (uuid(),'911','911','CR','SYSTEM','SYSTEM');
 
 --
 -- Table structure for table `Transaction`

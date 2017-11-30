@@ -31,6 +31,11 @@
 			lstPageSize: [10, 50, 100]
         };
 
+        appCommon.prototype.accountTypeList = [
+            { Key: 'DR', Value: 'Debit' },
+            { Key: 'CR', Value: 'Credit' }
+        ];
+
         appCommon.prototype.colorList = [
             { ColorCode: 'NoColor', ColorName: 'No Color' },
 			{ ColorCode: 'Red', ColorName: 'Red' },

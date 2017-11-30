@@ -85,6 +85,24 @@ CONSTANT.MISSING_FIELD_PRODUCTNAME = { code: 'MISSING_FIELD_PRODUCTNAME', messag
 CONSTANT.INVALID_FIELD_PRODUCTKEY = { code: 'INVALID_FIELD_PRODUCTKEY', message: 'invalid field ProductKey.' };
 
 
+// Account
+CONSTANT.MISSING_FIELD_ACCOUNTKEY = { code: 'MISSING_FIELD_ACCOUNTKEY', message: 'missing field AccountKey.' }
+CONSTANT.MISSING_FIELD_ACCOUNTNO = { code: 'MISSING_FIELD_ACCOUNTNO', message: 'missing field AccountNo.' }
+CONSTANT.MISSING_FIELD_ACCOUNTNAME = { code: 'MISSING_FIELD_ACCOUNTNAME', message: 'missing field AccountName.' }
+CONSTANT.MISSING_FIELD_DEBITORCREDIT = { code: 'MISSING_FIELD_DEBITORCREDIT', message: 'missing field DebitOrCredit.' }
+
+CONSTANT.INVALID_FIELD_ACCOUNTKEY = { code: 'INVALID_FIELD_ACCOUNTKEY', message: 'invalid field AccountKey.' };
+
+
+CONSTANT.ACCOUNT_TYPE = {
+	DEBIT: 'DR',
+	CREDIT: 'CR'
+};
+
+CONSTANT.ACCOUNT_TYPE_LIST = [
+	{ Key: 'DR', Value: 'Debit' },
+	{ Key: 'CR', Value: 'Credit' }
+];
 
 CONSTANT.COLOR_LIST = [
 	{ ColorCode: 'NoColor', ColorName: 'No Color' },
