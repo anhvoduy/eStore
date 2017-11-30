@@ -68,6 +68,7 @@ CONSTANT.SUCCESS_USER_DELETE = { code: 'SUCCESS_USER_DELETE', message: 'Delete U
 // User
 CONSTANT.MISSING_FIELD_USERKEY = { code: 'MISSING_FIELD_USERKEY', message: 'missing field UserKey.' };
 CONSTANT.MISSING_FIELD_USERNAME = { code: 'MISSING_FIELD_USERNAME', message: 'missing field UserName.' };
+CONSTANT.MISSING_FIELD_PASSWORD = { code: 'MISSING_FIELD_PASSWORD', message: 'missing field Password.' };
 
 CONSTANT.INVALID_FIELD_USERKEY = { code: 'INVALID_FIELD_USERKEY', message: 'invalid field UserKey.' };
 

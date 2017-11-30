@@ -114,11 +114,18 @@ Factory.prototype.update = async function (customer) {
 	}
 	catch(err){
 		throw err;
-	}	
+	}
 }
 
-Factory.prototype.delete = async function (customer) {
-	return true;
+Factory.prototype.delete = async function (customerId) {
+	try
+	{
+		var sql = `UPDATE Customer SET Deleted = 1 WHERE CustomerId =:CustomerId`;
+		return dbContext.queryExecute(sql, { CustomerId: customerId });
+	}
+	catch(err){
+		throw err;
+	}
 }
 
 // Export

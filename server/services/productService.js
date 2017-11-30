@@ -143,5 +143,16 @@ Factory.prototype.update = async function (product) {
     }
 }
 
+Factory.prototype.delete = async function (productId) {
+    try
+    {
+        let sql = `UPDATE Product SET Deleted = 1 WHERE ProductId=:ProductId`;
+        return dbContext.queryExecute(sql, { ProductId: productId });
+    }
+    catch(err){
+        throw err;
+    }
+}
+
 // Export
 module.exports = new Factory;

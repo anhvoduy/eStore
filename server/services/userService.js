@@ -18,7 +18,7 @@ Factory.prototype.myProfile = function(){
 Factory.prototype.getUsers = async function(query){
 	try
 	{
-		var sql = `
+		let sql = `
 			SELECT 	UserId, UserKey, UserType, UserName, DisplayName, Email, Mobile, Title, DateOfBirth 
 			FROM User 
 			WHERE Deleted = 0 
@@ -34,7 +34,7 @@ Factory.prototype.getUsers = async function(query){
 Factory.prototype.getUserById = async function (query) {
 	try
 	{
-		var sql = `
+		let sql = `
 			SELECT 	UserId, UserKey, UserType, UserName, DisplayName, Email, Mobile, Title, DateOfBirth 
 			FROM User 
 			WHERE UserId =:UserId
@@ -49,7 +49,7 @@ Factory.prototype.getUserById = async function (query) {
 Factory.prototype.getUserByKey = async function (query) {
 	try
 	{
-		var sql = `
+		let sql = `
 			SELECT 	UserId, UserKey, UserType, UserName, DisplayName, Email, Mobile, Title, DateOfBirth 
 			FROM User 
 			WHERE UserKey =:UserKey
@@ -64,7 +64,7 @@ Factory.prototype.getUserByKey = async function (query) {
 Factory.prototype.getUserByName = async function (query) {
 	try
 	{
-		var sql = `
+		let	sql = `
 			SELECT UserId, UserKey, UserType, UserName, DisplayName, Email, Mobile, Title, DateOfBirth 
 			FROM User 
 			WHERE UserName =:UserName
@@ -79,7 +79,7 @@ Factory.prototype.getUserByName = async function (query) {
 Factory.prototype.getUserByEmail = async function (query) {
 	try
 	{
-		var sql = `
+		let sql = `
 			SELECT UserId, UserKey, UserType, UserName, DisplayName, Email, Mobile, Title, DateOfBirth
 			FROM User 
 			WHERE Email =:Email
@@ -113,8 +113,11 @@ Factory.prototype.authenticate = async function (username, password) {
 Factory.prototype.create = async function (user) {
 	try
 	{
-		var sql = ``;
-		return true;
+		var sql = `
+			INSERT INTO User(UserKey,UserType,UserName,Hash,DisplayName,ImageKey,Email,Mobile,Title)
+			VALUES(uuid(),:UserType,:UserName,:Hash,:DisplayName,:ImageKey,:Email,:Mobile,:Title)
+		`;
+		return dbContext.queryExecute(sql, user);
 	}
 	catch(err){
 		throw err;
@@ -134,21 +137,22 @@ Factory.prototype.update = async function (user) {
 				DateOfBirth=:DateOfBirth
 			WHERE UserId=:UserId			
 		`;
-		return dbContext.queryItem(sql, user);
+		return dbContext.queryExecute(sql, user);
 	}
 	catch(err){
 		throw err;
-	}	
+	}
 }
 
-Factory.prototype.delete = async function (user) {
+Factory.prototype.delete = async function (userId) {
 	try
 	{
-		return true;
+		var sql = `UPDATE User SET Deleted=1 WHERE UserId=:UserId`;
+		return dbContext.queryExecute(sql, {UserId: userId});
 	}
 	catch(err){
 		throw err;
-	}	
+	}
 }
 
 

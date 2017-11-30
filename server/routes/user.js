@@ -52,24 +52,49 @@ router.get('/menu', auth.checkAuthentication(), async function (req, res, next) 
 });
 
 router.post('/create', auth.checkAuthentication(), async function (req, res, next) {
-	res.status(200).json(true);
+	try
+    {
+        let user = _.pick(req.body, ['UserName','Password','DisplayName','ImageKey','Email','Mobile','Tel','Title','DateOfBirth']);
+        if(!user.UserName)
+            throw CONSTANT.MISSING_FIELD_USERNAME;
+
+        if(!user.Password)
+            throw CONSTANT.MISSING_FIELD_PASSWORD;        
+
+        let result = await userService.create(user);
+        if(result.affectedRows > 0) 
+            res.status(200).json({ InsertId: result.insertId, success: true });
+        else 
+            res.status(500).json({ success: false });
+    }
+    catch(err){
+        next(err);
+    }
 });
 
 router.post('/update', auth.checkAuthentication(), async function (req, res, next) {
 	try
     {
-        let user = _.pick(req.body, ['UserId','UserKey','UserName','DisplayName','Email','Mobile','Tel','Title','DateOfBirth']);
+        let user = _.pick(req.body, ['UserId','UserKey','UserName','DisplayName','ImageKey','Email','Mobile','Tel','Title','DateOfBirth']);
         if(!user.UserKey)
             throw CONSTANT.MISSING_FIELD_USERKEY;
         
         if(!user.UserName)
             throw CONSTANT.MISSING_FIELD_USERNAME;
 
-        if(!user.UserId) 
-            user.UserId = (await userService.getUserByKey(user.UserKey)).UserId;
+        if(!user.UserId){
+            us = await userService.getUserByKey(user.UserKey);
+            if(!us)
+                throw CONSTANT.INVALID_FIELD_USERKEY;
+            else
+                user.UserId = us.UserId;
+        }
 
         let result = await userService.update(user);
-        res.status(200).json(result);
+        if(result.affectedRows > 0) 
+            res.status(200).json({ success: true });
+        else 
+            res.status(500).json({ success: false });
     }
     catch(err){
         next(err);
@@ -77,7 +102,13 @@ router.post('/update', auth.checkAuthentication(), async function (req, res, nex
 });
 
 router.post('/delete', auth.checkAuthentication(), async function (req, res, next) {
-	res.status(200).json(true);
+    try
+    {
+        res.status(200).json(true);
+    }
+    catch(err){
+        next(err);
+    }	
 });
 
 // Export
