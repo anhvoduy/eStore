@@ -718,9 +718,9 @@ INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VA
 INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'HP ProBook 2015','HP ProBook 2015','SYSTEM','SYSTEM');
 INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Brand TEST 14','Brand TEST 14','SYSTEM','SYSTEM');
 INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'HP Pro Enter 2011','HP Pro Enter 2011','SYSTEM','SYSTEM');
-INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Brand 16','Brand 16','SYSTEM','SYSTEM');
-INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'DEL version.2017','DEL version.2017','SYSTEM','SYSTEM');
-INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Brand TEST 18','Brand TEST 18','SYSTEM','SYSTEM');
+INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Sony Group','Sony Group','SYSTEM','SYSTEM');
+INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'DELL Lattitude 2017','DELL Lattitude 2017','SYSTEM','SYSTEM');
+INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Shiseido','Shiseido','SYSTEM','SYSTEM');
 INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Brand 19 Century','Brand 19 Century','SYSTEM','SYSTEM');
 INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Coca Cola','Coca Cola','SYSTEM','SYSTEM');
 INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Pepsi Company','Pepsi Company','SYSTEM','SYSTEM');
