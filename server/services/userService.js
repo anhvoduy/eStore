@@ -1,4 +1,5 @@
 ﻿const _ = require('lodash');
+const common = require('../lib/commonlib');
 const dbContext = require('../lib/dbContext');
 
 // Constructor
@@ -94,7 +95,7 @@ Factory.prototype.getUserByEmail = async function (query) {
 
 Factory.prototype.authenticate = async function (username, password) {
 	try
-	{		
+	{
 		if((username === 'admin' && password === '@dmin')){
 			let sql = 'SELECT UserName, UserKey FROM User WHERE UserName=:UserName';
 			let data = await dbContext.queryItem(sql, { UserName: username });
@@ -113,7 +114,9 @@ Factory.prototype.authenticate = async function (username, password) {
 
 Factory.prototype.create = async function (user) {
 	try
-	{
+	{		
+		// console.log(common.encoded(user.UserName));
+		// user.Hash = common.encoded(user.UserName);
 		var sql = `
 			INSERT INTO User(UserKey,UserType,UserName,Hash,DisplayName,ImageKey,Email,Mobile,Title,Description)
 			VALUES(uuid(),:UserType,:UserName,:Hash,:DisplayName,:ImageKey,:Email,:Mobile,:Title,:Description)

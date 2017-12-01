@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "axios": "^0.17.0",
+    "base-64": "^0.1.0",
     "body-parser": "^1.15.2",
     "cookie-parser": "^1.4.3",
     "cors": "^2.8.4",
@@ -27,6 +28,7 @@
     "passport": "^0.3.0",
     "passport-local": "^1.0.0",
     "q": "^1.4.1",
+    "utf8": "^2.1.2",
     "uuid": "^3.0.1"
   },
   "devDependencies": {
