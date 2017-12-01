@@ -1,8 +1,8 @@
 (function () {
     'use strict';    
     app.controller('userEditController', userEditController);
-    userEditController.$inject = ['$scope', '$state', '$stateParams', 'appCommon', 'userService'];    
-	function userEditController($scope, $state, $stateParams, appCommon, userService) {
+    userEditController.$inject = ['$scope', '$timeout', '$state', '$stateParams', 'appCommon', 'userService'];    
+	function userEditController($scope, $timeout, $state, $stateParams, appCommon, userService) {
 		/* models */
 		$scope.userKey = $stateParams.userKey;
 		$scope.userTypes = appCommon.userTypes;

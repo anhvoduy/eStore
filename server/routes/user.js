@@ -1,5 +1,6 @@
 ﻿const router = require('express').Router();
 const _ = require('lodash');
+const moment = require('moment');
 const auth = require('../config/auth');
 const CONSTANT = require('../lib/constant');
 const dbContext = require('../lib/dbContext');
@@ -63,7 +64,10 @@ router.post('/create', auth.checkAuthentication(), async function (req, res, nex
             throw CONSTANT.MISSING_FIELD_USERNAME;
 
         if(!user.Password)
-            throw CONSTANT.MISSING_FIELD_PASSWORD;        
+            throw CONSTANT.MISSING_FIELD_PASSWORD;
+            
+        if(user.DateOfBirth)
+            user.DateOfBirth = moment(user.DateOfBirth).format('YYYY-MM-DD');
 
         let result = await userService.create(user);
         if(result.affectedRows > 0) 
@@ -93,6 +97,9 @@ router.post('/update', auth.checkAuthentication(), async function (req, res, nex
             else
                 user.UserId = us.UserId;
         }
+
+        if(user.DateOfBirth)
+            user.DateOfBirth = moment(user.DateOfBirth).format('YYYY-MM-DD');
 
         let result = await userService.update(user);
         if(result.affectedRows > 0) 

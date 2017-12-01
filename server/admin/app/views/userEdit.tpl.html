@@ -6,7 +6,7 @@
 
         <div class="panel-body" ng-cloak>
             <form name="frmUser" class="form-horizontal">
-
+                <!--
                 <div class="form-group">
                     <label for="userType" class="col-sm-2 control-label">User Type</label>
                     <div class="col-sm-6">
@@ -15,16 +15,16 @@
                                 ng-init="user.UserType = userTypes[0].Key"
                                 ng-model="user.UserType"
                                 ng-change="changeSelectedUserType(item)"
-                                ng-disabled="true"
                                 ng-options="item.Key as item.Label for item in userTypes">
                         </select>
                     </div>
-                </div>
+                </div> 
+                -->
                 
                 <div class="form-group">
                     <label for="UserName" class="col-sm-2 control-label">User Name</label>
                     <div class="col-sm-6">
-                        <input id="UserName" ng-model="user.UserName" class="form-control" placeholder="User Name" maxlength="20" required/>
+                        <input id="UserName" ng-model="user.UserName" class="form-control" placeholder="User Name" maxlength="20" required />
                     </div>
                 </div>
         

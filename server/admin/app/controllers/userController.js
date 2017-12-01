@@ -16,12 +16,12 @@
 
 		$scope.getUsers = function(){
 			userService.getUsers().then(function (data) {
-				$scope.users = data.PageData;
-				$scope.pagination.pageCurrent = data.PageCurrent;
-				$scope.pagination.pageSize = data.PageSize;
-				$scope.pagination.pageTotal = data.PageTotal;
-				$scope.pagination.hitsTotal = data.HitsTotal;
-				$scope.pagination.maxSize = Math.ceil(data.HitsTotal/data.PageSize);
+				$scope.users = data;
+				// $scope.pagination.pageCurrent = data.PageCurrent;
+				// $scope.pagination.pageSize = data.PageSize;
+				// $scope.pagination.pageTotal = data.PageTotal;
+				// $scope.pagination.hitsTotal = data.HitsTotal;
+				// $scope.pagination.maxSize = Math.ceil(data.HitsTotal/data.PageSize);
 				// message
 				$scope.messageSuccess.push(String.format("Get Users is success. Total: {0} rows", $scope.users.length));
 			}, function (error) {
