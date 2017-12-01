@@ -4,7 +4,7 @@
 	userController.$inject = ['$scope', 'appCommon', 'userService'];	
 	function userController($scope, appCommon, userService) {
 		/* models */
-		//$scope.pagination = appCommon.defaultPagination;
+		$scope.pagination = appCommon.defaultPagination;
 		$scope.messageSuccess = [];
 		$scope.messageError = [];
 		
