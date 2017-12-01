@@ -38,7 +38,7 @@
                 <div class="form-group">
                     <label for="Birthday" class="col-sm-2 control-label">Birthday</label>
                     <div class="col-sm-6">
-                        <ng-input-date name='Birthday' value='user.Birthday' format='dd/MM/yyyy' />
+                        <ng-input-date name='Birthday' value='user.DateOfBirth' format='dd/MM/yyyy' />
                     </div>
                 </div>               
 
@@ -71,11 +71,11 @@
                 </div>
         
                 <div class="form-group">
-                    <div class="row message-error" ng-show='(messageError.length > 0)'>
+                    <div class="control-label col-sm-8 message-error" ng-show='(messageError.length > 0)'>
                         <span ng-repeat="msg in messageError">{{ msg }}</span>
                     </div>
-                    <div class="row message-success" ng-show='(messageSuccess.length > 0)'>
-                        <span ng-repeat="msg in messageError">{{ msg }}</span>
+                    <div class="control-label col-sm-8 message-success" ng-show='(messageSuccess.length > 0)'>
+                        <span ng-repeat="msg in messageSuccess">{{ msg }}</span>
                     </div> 
                 </div>
             </form> 
