@@ -12,8 +12,8 @@
 
         // properties
         appCommon.prototype.userTypes = [
-			{ Key: 'ADMIN', Label: 'ADMIN' }, 
             { Key: 'USER', Label: 'USER' },
+            { Key: 'ADMIN', Label: 'ADMIN' },
             { Key: 'VISITOR', Label: 'VISITOR' }
         ];
         

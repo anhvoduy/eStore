@@ -20,7 +20,7 @@ Factory.prototype.getUsers = async function(query){
 	{
 		// No need pagination
 		let sql = `
-			SELECT 	UserId, UserKey, UserType, UserName, DisplayName, Email, Mobile, Title, DateOfBirth 
+			SELECT 	UserId, UserKey, UserType, UserName, DisplayName, Email, Mobile, Title, Description, DateOfBirth 
 			FROM User 
 			WHERE Deleted = 0 
 			ORDER BY UserId DESC
@@ -36,7 +36,7 @@ Factory.prototype.getUserById = async function (query) {
 	try
 	{
 		let sql = `
-			SELECT 	UserId, UserKey, UserType, UserName, DisplayName, Email, Mobile, Title, DateOfBirth 
+			SELECT 	UserId, UserKey, UserType, UserName, DisplayName, Email, Mobile, Title, Description, DateOfBirth 
 			FROM User 
 			WHERE UserId =:UserId
 		`;
@@ -51,7 +51,7 @@ Factory.prototype.getUserByKey = async function (query) {
 	try
 	{
 		let sql = `
-			SELECT 	UserId, UserKey, UserType, UserName, DisplayName, Email, Mobile, Title, DateOfBirth 
+			SELECT 	UserId, UserKey, UserType, UserName, DisplayName, Email, Mobile, Title, Description, DateOfBirth 
 			FROM User 
 			WHERE UserKey =:UserKey
 		`;
@@ -66,7 +66,7 @@ Factory.prototype.getUserByName = async function (query) {
 	try
 	{
 		let	sql = `
-			SELECT UserId, UserKey, UserType, UserName, DisplayName, Email, Mobile, Title, DateOfBirth 
+			SELECT UserId, UserKey, UserType, UserName, DisplayName, Email, Mobile, Title, Description, DateOfBirth 
 			FROM User 
 			WHERE UserName =:UserName
 		`;
@@ -81,7 +81,7 @@ Factory.prototype.getUserByEmail = async function (query) {
 	try
 	{
 		let sql = `
-			SELECT UserId, UserKey, UserType, UserName, DisplayName, Email, Mobile, Title, DateOfBirth
+			SELECT UserId, UserKey, UserType, UserName, DisplayName, Email, Mobile, Title, Description, DateOfBirth
 			FROM User 
 			WHERE Email =:Email
 		`;
@@ -115,8 +115,8 @@ Factory.prototype.create = async function (user) {
 	try
 	{
 		var sql = `
-			INSERT INTO User(UserKey,UserType,UserName,Hash,DisplayName,ImageKey,Email,Mobile,Title)
-			VALUES(uuid(),:UserType,:UserName,:Hash,:DisplayName,:ImageKey,:Email,:Mobile,:Title)
+			INSERT INTO User(UserKey,UserType,UserName,Hash,DisplayName,ImageKey,Email,Mobile,Title,Description)
+			VALUES(uuid(),:UserType,:UserName,:Hash,:DisplayName,:ImageKey,:Email,:Mobile,:Title,:Description)
 		`;
 		return dbContext.queryExecute(sql, user);
 	}
@@ -135,7 +135,8 @@ Factory.prototype.update = async function (user) {
 				Email=:Email, 
 				Mobile=:Mobile, 				
 				Title=:Title, 
-				DateOfBirth=:DateOfBirth
+				DateOfBirth=:DateOfBirth,
+				Description=:Description
 			WHERE UserId=:UserId			
 		`;
 		return dbContext.queryExecute(sql, user);

@@ -40,7 +40,7 @@
             template: function() {
                 var template = 
                 '<div class="input-group">' +
-                    '<input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dtValue" ng-change="changeSelectedDate()" is-open="popup.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />' +
+                    '<input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dtValue" ng-change="changeSelectedDate()" is-open="popup.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" ng-required="required"/>' +
                     '<span class="input-group-btn">' +
                         '<button type="button" class="btn btn-default" ng-click="openDate()"><i class="glyphicon glyphicon-calendar"></i></button>' +
                     '</span>'

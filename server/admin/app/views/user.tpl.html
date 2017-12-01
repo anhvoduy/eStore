@@ -11,10 +11,10 @@
                         <thead>
                             <tr>
                                 <th>Id</th>
-                                <th>User Type</th>
                                 <th>User Name</th>
                                 <th>Display Name</th>
                                 <th>Email</th>
+                                <th>Mobile</th>
                                 <th>Birthday</th>
                                 <th>Edit</th>
                             </tr>
@@ -22,10 +22,10 @@
                         <tbody>
                             <tr ng-repeat="user in users">
                                 <td>{{ $index + 1 }}</td>
-                                <td>{{ user.UserType }}</td>
                                 <td>{{ user.UserName }}</td>
                                 <td>{{ user.DisplayName }}</td>
                                 <td>{{ user.Email }}</td>
+                                <td>{{ user.Mobile }}</td>
                                 <td>{{ user.Birthday }}</td>
                                 <td><a ui-sref="userEdit({ userKey: user.UserKey })">Edit</a></td>
                             </tr>
@@ -42,6 +42,8 @@
                 </div>
             </div>
         </div>
-        <div class="panel-footer">ng-paginator</div>
+        <div class="panel-footer">
+            ng-pagination
+        </div>
     </div>   	
 </div>

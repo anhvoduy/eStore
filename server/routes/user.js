@@ -9,7 +9,11 @@ const userService = require('../services/userService');
 router.get('/items', auth.checkAuthentication(), async function (req, res, next) {
     try
     {
-        let query = req.query;
+        let query = _.pick(req.query, ['PageCurrent', 'PageSize']);
+        if(!query.PageCurrent && !query.PageSize){
+			query.PageCurrent = 1;
+			query.PageSize = 5000;			
+        }
         let users = await userService.getUsers(query);
         res.status(200).json(users);
     }
@@ -54,7 +58,7 @@ router.get('/menu', auth.checkAuthentication(), async function (req, res, next) 
 router.post('/create', auth.checkAuthentication(), async function (req, res, next) {
 	try
     {
-        let user = _.pick(req.body, ['UserName','Password','DisplayName','ImageKey','Email','Mobile','Tel','Title','DateOfBirth']);
+        let user = _.pick(req.body, ['UserName','Password','DisplayName','ImageKey','Email','Mobile','Tel','Title','DateOfBirth','Description']);
         if(!user.UserName)
             throw CONSTANT.MISSING_FIELD_USERNAME;
 
@@ -75,7 +79,7 @@ router.post('/create', auth.checkAuthentication(), async function (req, res, nex
 router.post('/update', auth.checkAuthentication(), async function (req, res, next) {
 	try
     {
-        let user = _.pick(req.body, ['UserId','UserKey','UserName','DisplayName','ImageKey','Email','Mobile','Tel','Title','DateOfBirth']);
+        let user = _.pick(req.body, ['UserId','UserKey','UserName','DisplayName','ImageKey','Email','Mobile','Tel','Title','DateOfBirth','Description']);
         if(!user.UserKey)
             throw CONSTANT.MISSING_FIELD_USERKEY;
         

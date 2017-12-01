@@ -45,5 +45,5 @@ app.run(['$rootScope', '$location', '$cookieStore', '$http', 'userService', 'aut
 		$rootScope.logout = function () {
 			authService.clearCredentials();
 		};
-	}
+	};
 ]);
