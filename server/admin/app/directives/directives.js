@@ -62,7 +62,7 @@
                     if(oldVal != newVal){
                         scope.dtValue = new Date(moment(newVal).format('YYYY-MM-DD'));
                     }
-                });
+                });                
             }
         };
     })

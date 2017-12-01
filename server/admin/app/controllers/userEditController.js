@@ -102,8 +102,7 @@
 
 		$scope.cancel = function() {
             $state.go($state.current.parentState);
-        };
-		
+        };			
 		
 		/* start */
 		activate();
