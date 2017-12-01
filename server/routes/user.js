@@ -63,8 +63,8 @@ router.post('/create', auth.checkAuthentication(), async function (req, res, nex
         if(!user.UserName)
             throw CONSTANT.MISSING_FIELD_USERNAME;
 
-        if(!user.Password)
-            throw CONSTANT.MISSING_FIELD_PASSWORD;
+        // if(!user.Password)
+        //     throw CONSTANT.MISSING_FIELD_PASSWORD;
             
         if(user.DateOfBirth)
             user.DateOfBirth = moment(user.DateOfBirth).format('YYYY-MM-DD');

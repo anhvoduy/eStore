@@ -1,5 +1,6 @@
 ﻿const _ = require('lodash');
 const common = require('../lib/commonlib');
+const CONSTANT = require('../lib/constant');
 const dbContext = require('../lib/dbContext');
 
 // Constructor
@@ -114,12 +115,12 @@ Factory.prototype.authenticate = async function (username, password) {
 
 Factory.prototype.create = async function (user) {
 	try
-	{		
-		// console.log(common.encoded(user.UserName));
-		// user.Hash = common.encoded(user.UserName);
+	{
+		user.Hash = common.encoded(user.UserName);
+		user.UserType = CONSTANT.USERTYPES.USER;
 		var sql = `
-			INSERT INTO User(UserKey,UserType,UserName,Hash,DisplayName,ImageKey,Email,Mobile,Title,Description)
-			VALUES(uuid(),:UserType,:UserName,:Hash,:DisplayName,:ImageKey,:Email,:Mobile,:Title,:Description)
+			INSERT INTO User(UserKey,UserType,UserName,Hash,DisplayName,Email,Mobile,Title,Description)
+			VALUES(uuid(),:UserType,:UserName,:Hash,:DisplayName,:Email,:Mobile,:Title,:Description)
 		`;
 		return dbContext.queryExecute(sql, user);
 	}

@@ -32,6 +32,12 @@ CONSTANT.STATUS = {
 	INACTIVE: 4
 };
 
+CONSTANT.USERTYPES = {
+	USER: 'USER',
+	ADMIN: 'ADMIN',
+	VISITOR: 'VISITOR'
+};
+
 // Success Lists
 CONSTANT.SUCCESS_AUTHENTICATION = { code: 'SUCCESS_AUTHENTICATION', message: 'Authentication is success.' };
 CONSTANT.SUCCESS_LOGIN = { code: 'SUCCESS_LOGIN', message: 'Login is success.' };
