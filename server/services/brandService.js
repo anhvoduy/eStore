@@ -27,7 +27,7 @@ Factory.prototype.getList = async function (query) {
 			SELECT BrandId, BrandKey, BrandName, Description
 			FROM Brand
 			WHERE Deleted <> 1
-			ORDER BY BrandId DESC
+			ORDER BY BrandId ASC
 			LIMIT :Offset, :Limit
 		`;
 		let data = await dbContext.queryList(sqlQuery, {
