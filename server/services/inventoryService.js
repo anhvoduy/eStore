@@ -7,7 +7,7 @@ const Factory = function () {
 
 Factory.prototype.getItems = function (query) {
     // No need pagination
-	let sql = `SELECT * FROM Inventory WHERE Deleted = 0`;
+	let sql = `SELECT * FROM Inventory WHERE Deleted <> 1 ORDER BY InventoryId ASC`;
 	return dbContext.queryList(sql, query);
 }
 

@@ -12,7 +12,7 @@
 		// methods
 		inventoryService.prototype.getItems = function () {
 			var url = String.format('{0}/items', this.api);
-			var params = {				
+			var params = {
 			};
 			return this.getData(url, params);
 		}
@@ -25,12 +25,12 @@
 			return this.getData(url, params);
 		}
 		
-		inventoryService.prototype.updateInventory = function (inventory) {
+		inventoryService.prototype.update = function (inventory) {
 			var url = String.format('{0}/update', this.api);
-			return this.update(url, inventory);
+			return this.postData(url, inventory);
 		}
 		
-		inventoryService.prototype.deleteInventory = function (inventoryId) {
+		inventoryService.prototype.delete = function (inventoryId) {
 			var url = String.format('{0}/delete/{1}', this.api, inventoryId);			
 			return true;
 		}
@@ -38,6 +38,7 @@
 		// TO DO: merge getStockIn() & getStockOut() => getStock()
 		inventoryService.prototype.getStockIn = function () {
 			var url = String.format('{0}/input/items', this.api);
+			var params = {};
 			
 			var q = $q.defer();
 			this.getData(url).then(function (result) {
@@ -54,7 +55,8 @@
 		// TO DO: merge getStockIn() & getStockOut()
 		inventoryService.prototype.getStockOut = function () {			
 			var url = String.format('{0}/output/items', this.api);
-			
+			var params = {};
+
 			var q = $q.defer();
 			this.getData(url).then(function (result) {
 				angular.forEach(result, function(item){
@@ -79,7 +81,7 @@
 			};
 			return this.getData(url, params);
 		}
-		
+
 		return new inventoryService;
 	};
 })();
