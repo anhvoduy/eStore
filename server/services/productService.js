@@ -114,14 +114,14 @@ Factory.prototype.create = async function (product) {
     try
     {
         let sql = `
-            INSERT INTO Product(ProductKey, ProductName, Description, BrandId, ColorCode, Price)
-            VALUES(uuid(), :ProductName, :Description, :BrandId, :ColorCode, :Price)		
+            INSERT INTO Product(ProductKey, ProductName, Description, BrandId, ColorCode, Price, Status)
+            VALUES(uuid(), :ProductName, :Description, :BrandId, :ColorCode, :Price, :Status)
         `;
         return dbContext.queryExecute(sql, product);
     }
     catch(err){
         throw err;
-    }	
+    }
 }
 
 Factory.prototype.update = async function (product) {

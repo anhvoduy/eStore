@@ -16,24 +16,23 @@
 		
 		/* functions */
 		var activate = function () {
-			if(appCommon.isUndefined($scope.productKey)) return;
-
-			productService.getProductByKey($scope.productKey)
-			.then(function (result) {
-				$scope.product = result;
-				if (appCommon.isUndefined($scope.product)) {
-					$scope.messageError.push(String.format("The Product Key: {0} not found.", $scope.productKey));
-				}
+			// isNew
+			brandService.getList().then(function (data) {
+				$scope.brands = data.PageData;
 			}, function (error) {
 				$scope.messageError.push(error);
 			});
 			
-			brandService.getList()
-			.then(function (data) {
-				$scope.brands = data.PageData;
-			}, function (error) {
-				$scope.messageError.push(error);
-			});			
+			if(!appCommon.isUndefined($scope.productKey)){
+				productService.getProductByKey($scope.productKey).then(function (result) {
+					$scope.product = result;
+					if (appCommon.isUndefined($scope.product)) {
+						$scope.messageError.push(String.format("The Product Key: {0} not found.", $scope.productKey));
+					}
+				}, function (error) {
+					$scope.messageError.push(error);
+				});
+			}
 		};
 
 		// if update brand success/failed -> reset status after 3 seconds

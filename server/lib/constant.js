@@ -38,6 +38,23 @@ CONSTANT.USERTYPES = {
 	VISITOR: 'VISITOR'
 };
 
+CONSTANT.PRODUCT_STATUS = {
+	NEW: 'NEW',
+	IN: 'IN',
+	OUT: 'OUT'	
+};
+
+CONSTANT.ACCOUNT_TYPE = {
+	DEBIT: 'DR',
+	CREDIT: 'CR'
+};
+
+CONSTANT.ACCOUNT_TYPE_LIST = [
+	{ Key: 'DR', Value: 'Debit' },
+	{ Key: 'CR', Value: 'Credit' }
+];
+
+
 // Success Lists
 CONSTANT.SUCCESS_AUTHENTICATION = { code: 'SUCCESS_AUTHENTICATION', message: 'Authentication is success.' };
 CONSTANT.SUCCESS_LOGIN = { code: 'SUCCESS_LOGIN', message: 'Login is success.' };
@@ -109,15 +126,6 @@ CONSTANT.MISSING_FIELD_CUSTOMER_EMAIL = { code: 'MISSING_FIELD_CUSTOMER_EMAIL', 
 
 CONSTANT.INVALID_FIELD_CUSTOMER_KEY = { code: 'INVALID_FIELD_CUSTOMER_KEY', message: 'invalid field Customer Key.' };
 
-CONSTANT.ACCOUNT_TYPE = {
-	DEBIT: 'DR',
-	CREDIT: 'CR'
-};
-
-CONSTANT.ACCOUNT_TYPE_LIST = [
-	{ Key: 'DR', Value: 'Debit' },
-	{ Key: 'CR', Value: 'Credit' }
-];
 
 CONSTANT.COLOR_LIST = [
 	{ ColorCode: 'NoColor', ColorName: 'No Color' },
