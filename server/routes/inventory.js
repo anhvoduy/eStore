@@ -11,7 +11,11 @@ var stockService = require('../services/stockService');
 router.get('/items', async function(req, res, next) {
     try
     {
-        var query = req.query;
+        let query = _.pick(req.query, ['PageCurrent', 'PageSize']);
+        if(!query.PageCurrent && !query.PageSize){
+			query.PageCurrent = 1;
+			query.PageSize = 5000;			
+        }
         var inventories = await inventoryService.getItems(query);
         res.status(200).json(inventories);
     }
@@ -30,6 +34,28 @@ router.get('/item', async function (req, res, next) {
     catch(err){
         next(err);
     }    
+});
+
+router.post('/update', async function (req, res, next) {
+    try
+    {
+        let inventory = _.pick(req.body,['InventoryId', 'InventoryKey','InventoryName','Location','Description']);
+        if(!inventory.InventoryKey)
+            throw CONSTANT.MISSING_FIELD_INVENTORYKEY;
+
+        if(!inventory.InventoryName)
+            throw CONSTANT.MISSING_FIELD_INVENTORYNAME;
+
+        if(!inventory.Location)
+            throw CONSTANT.MISSING_FIELD_LOCATION;
+
+        let result = await inventoryService.updateInventory(inventory);
+		if(result.affectedRows > 0) res.status(200).json({ success: true });
+		else res.status(500).json({ success: false });
+    }
+    catch(err){
+        next(err);
+    }
 });
 
 

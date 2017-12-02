@@ -4,7 +4,7 @@
         return {
             require: 'ngModel',
             link: function (scope, element, attrs, modelCtrl) {
-                modelCtrl.$parsers.push(function (inputValue) {                    
+                modelCtrl.$parsers.push(function (inputValue) {
                     if (inputValue == undefined) return '';
                     var transformedInput = inputValue.replace(/[^0-9]/g, '');
                     if (transformedInput != inputValue) {
@@ -21,7 +21,7 @@
             restrict: 'A',                
             link: function (scope, element, attrs, modelCtrl) {
                 if(scope.stock !== undefined && scope.stock.StockDate!=undefined){
-                    scope.stock.StockDate = moment(scope.stock.StockDate).format('DD/MM/YYYY');                        
+                    scope.stock.StockDate = moment(scope.stock.StockDate).format('DD/MM/YYYY');
                 }
             }
         };
@@ -40,7 +40,7 @@
             template: function() {
                 var template = 
                 '<div class="input-group">' +
-                    '<input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dtValue" ng-change="changeSelectedDate()" is-open="popup.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />' +
+                    '<input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dtValue" ng-change="changeSelectedDate()" is-open="popup.opened" datepicker-options="dateOptions" close-text="Close" alt-input-formats="altInputFormats" ng-required="required"/>' +
                     '<span class="input-group-btn">' +
                         '<button type="button" class="btn btn-default" ng-click="openDate()"><i class="glyphicon glyphicon-calendar"></i></button>' +
                     '</span>'
@@ -62,7 +62,7 @@
                     if(oldVal != newVal){
                         scope.dtValue = new Date(moment(newVal).format('YYYY-MM-DD'));
                     }
-                });
+                });                
             }
         };
     })

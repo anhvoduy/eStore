@@ -11,15 +11,8 @@
         
         // methods
         groupService.prototype.getGroups = function () {
-            var url = String.format('{0}/items', this.api);
-            
-            var q = $q.defer();
-            this.getData(url).then(function (result) {
-                q.resolve(result);
-            }, function (error) {
-                q.reject(error);
-            });
-            return q.promise;
+            var url = String.format('{0}/items', this.api);            
+            return this.getData(url);
         };
         
         groupService.prototype.getGroupById = function (groupId) {
@@ -27,14 +20,7 @@
             var params = {
                 GroupId: groupId
             };
-            
-            var q = $q.defer();
-            this.getData(url, params).then(function (result) {                
-                q.resolve(result);
-            }, function (error) {
-                q.reject(error);
-            });
-            return q.promise;
+            return this.getData(url, params);
         };
 
         groupService.prototype.getGroupByKey = function (groupKey) {
@@ -42,16 +28,27 @@
             var params = {
                 GroupKey: groupKey
             };
-            
-            var q = $q.defer();
-            this.getData(url, params).then(function (result) {
-                q.resolve(result);
-            }, function (error) {
-                q.reject(error);
-            });
-            return q.promise;
-		};
-				
+            return this.getData(url, params);
+        };
+        
+        groupService.prototype.create = function (group) {
+            var url = String.format('{0}/create', this.api);
+            return this.postData(url, group);
+        };
+        
+        groupService.prototype.update = function (group) {
+            var url = String.format('{0}/update', this.api);
+            return this.postData(url, group);
+        };
+        
+        groupService.prototype.delete = function (groupId) {
+            var url = String.format('{0}/delete', this.api);
+            var params = {
+                GroupId: groupId
+            };
+            return this.postData(url, params);
+        };
+        
         return new groupService;
     };
 })();

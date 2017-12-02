@@ -32,6 +32,29 @@ CONSTANT.STATUS = {
 	INACTIVE: 4
 };
 
+CONSTANT.USERTYPES = {
+	USER: 'USER',
+	ADMIN: 'ADMIN',
+	VISITOR: 'VISITOR'
+};
+
+CONSTANT.PRODUCT_STATUS = {
+	NEW: 'NEW',
+	IN: 'IN',
+	OUT: 'OUT'	
+};
+
+CONSTANT.ACCOUNT_TYPE = {
+	DEBIT: 'DR',
+	CREDIT: 'CR'
+};
+
+CONSTANT.ACCOUNT_TYPE_LIST = [
+	{ Key: 'DR', Value: 'Debit' },
+	{ Key: 'CR', Value: 'Credit' }
+];
+
+
 // Success Lists
 CONSTANT.SUCCESS_AUTHENTICATION = { code: 'SUCCESS_AUTHENTICATION', message: 'Authentication is success.' };
 CONSTANT.SUCCESS_LOGIN = { code: 'SUCCESS_LOGIN', message: 'Login is success.' };
@@ -68,6 +91,7 @@ CONSTANT.SUCCESS_USER_DELETE = { code: 'SUCCESS_USER_DELETE', message: 'Delete U
 // User
 CONSTANT.MISSING_FIELD_USERKEY = { code: 'MISSING_FIELD_USERKEY', message: 'missing field UserKey.' };
 CONSTANT.MISSING_FIELD_USERNAME = { code: 'MISSING_FIELD_USERNAME', message: 'missing field UserName.' };
+CONSTANT.MISSING_FIELD_PASSWORD = { code: 'MISSING_FIELD_PASSWORD', message: 'missing field Password.' };
 
 CONSTANT.INVALID_FIELD_USERKEY = { code: 'INVALID_FIELD_USERKEY', message: 'invalid field UserKey.' };
 
@@ -94,15 +118,14 @@ CONSTANT.MISSING_FIELD_DEBITORCREDIT = { code: 'MISSING_FIELD_DEBITORCREDIT', me
 CONSTANT.INVALID_FIELD_ACCOUNTKEY = { code: 'INVALID_FIELD_ACCOUNTKEY', message: 'invalid field AccountKey.' };
 
 
-CONSTANT.ACCOUNT_TYPE = {
-	DEBIT: 'DR',
-	CREDIT: 'CR'
-};
+// Customer
+CONSTANT.MISSING_FIELD_CUSTOMER_KEY = { code: 'MISSING_FIELD_CUSTOMER_KEY', message: 'missing field Customer Key.' }
+CONSTANT.MISSING_FIELD_CUSTOMER_NAME = { code: 'MISSING_FIELD_CUSTOMER_NAME', message: 'missing field Customer Name.' }
+CONSTANT.MISSING_FIELD_CUSTOMER_ADDRESS = { code: 'MISSING_FIELD_CUSTOMER_ADDRESS', message: 'missing field Customer Address.' }
+CONSTANT.MISSING_FIELD_CUSTOMER_EMAIL = { code: 'MISSING_FIELD_CUSTOMER_EMAIL', message: 'missing field Customer Email.' }
 
-CONSTANT.ACCOUNT_TYPE_LIST = [
-	{ Key: 'DR', Value: 'Debit' },
-	{ Key: 'CR', Value: 'Credit' }
-];
+CONSTANT.INVALID_FIELD_CUSTOMER_KEY = { code: 'INVALID_FIELD_CUSTOMER_KEY', message: 'invalid field Customer Key.' };
+
 
 CONSTANT.COLOR_LIST = [
 	{ ColorCode: 'NoColor', ColorName: 'No Color' },

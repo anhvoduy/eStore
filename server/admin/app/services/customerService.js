@@ -7,7 +7,7 @@
         var customerService = function () {
         }
         customerService.prototype = new baseService('api/customer');
-        customerService.prototype.constructor = customerService;                
+        customerService.prototype.constructor = customerService;
 
         // methods
         customerService.prototype.getList = function (pageCurrent, pageSize) {
@@ -15,67 +15,35 @@
             var params = {
                 PageCurrent: pageCurrent,
                 PageSize: pageSize
-            };
-
-            var q = $q.defer();
-            this.getData(url, params).then(function (result) {
-                q.resolve(result);
-            }, function (error) {
-                q.reject(error);
-            });
-            return q.promise;            
-        }
+            };            
+            return this.getData(url, params);
+        };
         
         customerService.prototype.getCustomerByKey = function (customerKey) {
             var url = String.format('{0}/item', this.api);
             var params = {
                 CustomerKey: customerKey
-            }
-            
-            var q = $q.defer();
-            this.getData(url, params).then(function (result) {
-                q.resolve(result);
-            }, function (error) {
-                q.reject(error);
-            });
-            return q.promise;
-        }
+            };
+            return this.getData(url, params);
+        };
 
-        customerService.prototype.createCustomer = function (Customer) {
+        customerService.prototype.create = function (customer) {
             var url = String.format('{0}/create', this.api);
-            
-            var q = $q.defer();
-            this.create(url, Customer).then(function (result) {
-                q.resolve(result);
-            }, function (error) {
-                q.reject(error);
-            });
-            return q.promise;
-        }
+            return this.postData(url, customer);
+        };
         
-        customerService.prototype.updateCustomer = function (Customer) {
+        customerService.prototype.update = function (customer) {
             var url = String.format('{0}/update', this.api);
-            
-            var q = $q.defer();
-            this.update(url, Customer).then(function (result) {
-                q.resolve(result);
-            }, function (error) {
-                q.reject(error);
-            });
-            return q.promise;
-        }
+            return this.postData(url, customer);
+        };
         
-        customerService.prototype.deleteCustomer = function (customerId) {
+        customerService.prototype.delete = function (customerId) {
             var url = String.format('{0}/delete', this.api);
-            
-            var q = $q.defer();
-            this.delete(url).then(function (result) {
-                q.resolve(result);
-            }, function (error) {
-                q.reject(error);
-            });
-            return q.promise;            
-        }
+            var params = {
+                CustomerId: customerId
+            };
+            return this.postData(url, params);
+        };
         
         return new customerService;
     };

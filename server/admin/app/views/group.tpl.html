@@ -4,15 +4,17 @@
             <h3 class="panel-title">All Groups</h3>
         </div>
         <div class="panel-body">
-            <p><a ui-sref="groupEdit({ groupKey: null })">Add new group</a></p>
+            <p>
+                <!-- <a ui-sref="groupEdit({ groupKey: null })">Add new group</a> -->
+            </p>
             <div class="container" ng-cloak>
                 <div class="row row-table">
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>Id</th>                                
+                                <th>Id</th>
                                 <th>Group Name</th>
-                                <th>Description</th>                                
+                                <th>Description</th>
                                 <th>Edit</th>
                             </tr>
                         </thead>
@@ -20,7 +22,7 @@
                             <tr ng-repeat="g in groups">
                                 <td>{{ $index + 1 }}</td>
                                 <td>{{ g.GroupName }}</td>
-                                <td>{{ g.Description }}</td>                                
+                                <td>{{ g.Description }}</td>
                                 <td><a ui-sref="groupEdit({ groupKey: g.GroupKey })">Edit</a></td>
                             </tr>
                         </tbody>
@@ -36,6 +38,8 @@
                 </div>
             </div>
         </div>
-        <div class="panel-footer">ng-paginator</div>
+        <div class="panel-footer">
+            ng-paginator
+        </div>
     </div>   	
 </div>

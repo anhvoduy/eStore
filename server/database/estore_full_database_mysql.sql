@@ -24,12 +24,13 @@ CREATE TABLE `Customer` (
   `CustomerKey` VARCHAR(50) NOT NULL,
   `CustomerName` VARCHAR(50) NOT NULL,
   `Description` VARCHAR(250) DEFAULT NULL,
-  `Email` VARCHAR(50) DEFAULT NULL,
-  `Mobile` VARCHAR(50) DEFAULT NULL,
+  `Email` VARCHAR(50) DEFAULT NULL,  
   `Tel` VARCHAR(50) DEFAULT NULL,
-  `Fax` VARCHAR(50) DEFAULT NULL,
-  `Title` VARCHAR(50) DEFAULT NULL,
+  `Fax` VARCHAR(50) DEFAULT NULL,  
   `Address` VARCHAR(250) DEFAULT NULL,
+  `Representative` VARCHAR(50) DEFAULT NULL,
+  `Title` VARCHAR(50) DEFAULT NULL,
+  `Mobile` VARCHAR(50) DEFAULT NULL,
   `ImageKey` VARCHAR(250) DEFAULT NULL,
   `Created` DATETIME DEFAULT CURRENT_TIMESTAMP,
   `Updated` DATETIME DEFAULT CURRENT_TIMESTAMP,
@@ -43,41 +44,48 @@ CREATE TABLE `Customer` (
 --
 -- Sample data for table `Customer`
 --
-INSERT INTO `Customer` (`CustomerKey`,`CustomerName`,`Address`,`Mobile`,`Author`,`Editor`) 
-VALUES (uuid(),'The Bank of Tokyo and Mitsuibishi','37 Ton Duc Thang street, district 1','029876543210','SYSTEM','SYSTEM');
+INSERT INTO `Customer` (`CustomerKey`,`CustomerName`,`Address`,`Email`,`Tel`,`Author`,`Editor`) 
+VALUES (uuid(),'The Bank of Tokyo and Mitsuibishi','37 Ton Duc Thang street, district 1','customer@customer.com','029876543210','SYSTEM','SYSTEM');
 
-INSERT INTO `Customer` (`CustomerKey`,`CustomerName`,`Address`,`Mobile`,`Author`,`Editor`) 
-VALUES (uuid(),'REE Corporation Group','458 Hung Vuong street, district 1','029876543210','SYSTEM','SYSTEM');
+INSERT INTO `Customer` (`CustomerKey`,`CustomerName`,`Address`,`Email`,`Tel`,`Author`,`Editor`) 
+VALUES (uuid(),'REE Corporation Group','458 Hung Vuong street, district 1','customer@customer.com','029876543210','SYSTEM','SYSTEM');
 
-INSERT INTO `Customer` (`CustomerKey`,`CustomerName`,`Address`,`Mobile`,`Author`,`Editor`) 
-VALUES (uuid(),'FPT Information System','37 Ton Duc Thang street, district 1','029876543210','SYSTEM','SYSTEM');
+INSERT INTO `Customer` (`CustomerKey`,`CustomerName`,`Address`,`Email`,`Tel`,`Author`,`Editor`) 
+VALUES (uuid(),'FPT Information System','37 Ton Duc Thang street, district 1','customer@customer.com','029876543210','SYSTEM','SYSTEM');
 
-INSERT INTO `Customer` (`CustomerKey`,`CustomerName`,`Address`,`Mobile`,`Author`,`Editor`) 
-VALUES (uuid(),'HAG Corporation Group','37 Ton Duc Thang street, district 1','029876543210','SYSTEM','SYSTEM');
+INSERT INTO `Customer` (`CustomerKey`,`CustomerName`,`Address`,`Email`,`Tel`,`Author`,`Editor`) 
+VALUES (uuid(),'HAG Corporation Group','37 Ton Duc Thang street, district 1','customer@customer.com','029876543210','SYSTEM','SYSTEM');
 
-INSERT INTO `Customer` (`CustomerKey`,`CustomerName`,`Address`,`Mobile`,`Author`,`Editor`) 
-VALUES (uuid(),'SMC Steel Company','37 Ton Duc Thang street, district 1','029876543210','SYSTEM','SYSTEM');
+INSERT INTO `Customer` (`CustomerKey`,`CustomerName`,`Address`,`Email`,`Tel`,`Author`,`Editor`) 
+VALUES (uuid(),'SMC Steel Company','37 Ton Duc Thang street, district 1','customer@customer.com','029876543210','SYSTEM','SYSTEM');
 
-INSERT INTO `Customer` (`CustomerKey`,`CustomerName`,`Address`,`Mobile`,`Author`,`Editor`) 
-VALUES (uuid(),'Marubeni Itochu Steel Vietnam Co. Ltd.','37 Ton Duc Thang street, district 1','029876543210','SYSTEM','SYSTEM');
+INSERT INTO `Customer` (`CustomerKey`,`CustomerName`,`Address`,`Email`,`Tel`,`Author`,`Editor`) 
+VALUES (uuid(),'Marubeni Itochu Steel Vietnam Co. Ltd.','37 Ton Duc Thang street, district 1','customer@customer.com','029876543210','SYSTEM','SYSTEM');
 
-INSERT INTO `Customer` (`CustomerKey`,`CustomerName`,`Address`,`Mobile`,`Author`,`Editor`) 
-VALUES (uuid(),'Northrop Grumman','157 Hong Ha street, district 1','029876543210','SYSTEM','SYSTEM');
+INSERT INTO `Customer` (`CustomerKey`,`CustomerName`,`Address`,`Email`,`Tel`,`Author`,`Editor`) 
+VALUES (uuid(),'Northrop Grumman','157 Hong Ha street, district 1','customer@customer.com','029876543210','SYSTEM','SYSTEM');
 
-INSERT INTO `Customer` (`CustomerKey`,`CustomerName`,`Address`,`Mobile`,`Author`,`Editor`) 
-VALUES (uuid(),'Adnotrium','45 Nguyen Thi Minh Khai street, district 1','029876543210','SYSTEM','SYSTEM');
+INSERT INTO `Customer` (`CustomerKey`,`CustomerName`,`Address`,`Email`,`Tel`,`Author`,`Editor`) 
+VALUES (uuid(),'Adnotrium','45 Nguyen Thi Minh Khai street, district 1','customer@customer.com','029876543210','SYSTEM','SYSTEM');
 
-INSERT INTO `Customer` (`CustomerKey`,`CustomerName`,`Address`,`Mobile`,`Author`,`Editor`) 
-VALUES (uuid(),'SMC Steel Company','25 Ton That Tung street, district 1','029876543210','SYSTEM','SYSTEM');
+INSERT INTO `Customer` (`CustomerKey`,`CustomerName`,`Address`,`Email`,`Tel`,`Author`,`Editor`) 
+VALUES (uuid(),'SMC Steel Company','25 Ton That Tung street, district 1','customer@customer.com','029876543210','SYSTEM','SYSTEM');
 
-INSERT INTO `Customer` (`CustomerKey`,`CustomerName`,`Address`,`Mobile`,`Author`,`Editor`) 
-VALUES (uuid(),'Marubeni Super Fast Food.','99 Ban Co street, district 3','08 801109934','SYSTEM','SYSTEM');
+INSERT INTO `Customer` (`CustomerKey`,`CustomerName`,`Address`,`Email`,`Tel`,`Author`,`Editor`) 
+VALUES (uuid(),'Marubeni Super Fast Food.','99 Ban Co street, district 3','customer@customer.com','08 801109934','SYSTEM','SYSTEM');
 
-INSERT INTO `Customer` (`CustomerKey`,`CustomerName`,`Address`,`Mobile`,`Author`,`Editor`) 
-VALUES (uuid(),'North Carolina','142 Ton Duc Thang street, district 1','02 3664916215','SYSTEM','SYSTEM');
+INSERT INTO `Customer` (`CustomerKey`,`CustomerName`,`Address`,`Email`,`Tel`,`Author`,`Editor`) 
+VALUES (uuid(),'North Carolina','142 Ton Duc Thang street, district 1','customer@customer.com','02 3664916215','SYSTEM','SYSTEM');
 
-INSERT INTO `Customer` (`CustomerKey`,`CustomerName`,`Address`,`Mobile`,`Author`,`Editor`) 
-VALUES (uuid(),'Taobao Group','45 Nguyen Thi Minh Khai street, district 1','029876543210','SYSTEM','SYSTEM');
+INSERT INTO `Customer` (`CustomerKey`,`CustomerName`,`Address`,`Email`,`Tel`,`Author`,`Editor`) 
+VALUES (uuid(),'Taobao Group','45 Nguyen Thi Minh Khai street, district 1','customer@customer.com','029876543210','SYSTEM','SYSTEM');
+
+INSERT INTO `Customer` (`CustomerKey`,`CustomerName`,`Address`,`Email`,`Tel`,`Author`,`Editor`) 
+VALUES (uuid(),'Kawasaki Corporation Group','145 Ho Tung Mau street, district 1','customer@customer.com','029888883210','SYSTEM','SYSTEM');
+
+INSERT INTO `Customer` (`CustomerKey`,`CustomerName`,`Address`,`Email`,`Tel`,`Author`,`Editor`) 
+VALUES (uuid(),'Emirates Corporation Group','145 Ton That Tung street, district 1','customer@customer.com','029888883210','SYSTEM','SYSTEM');
+
 
 --
 -- Table structure for table `Truck`
@@ -710,9 +718,9 @@ INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VA
 INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'HP ProBook 2015','HP ProBook 2015','SYSTEM','SYSTEM');
 INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Brand TEST 14','Brand TEST 14','SYSTEM','SYSTEM');
 INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'HP Pro Enter 2011','HP Pro Enter 2011','SYSTEM','SYSTEM');
-INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Brand 16','Brand 16','SYSTEM','SYSTEM');
-INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'DEL version.2017','DEL version.2017','SYSTEM','SYSTEM');
-INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Brand TEST 18','Brand TEST 18','SYSTEM','SYSTEM');
+INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Sony Group','Sony Group','SYSTEM','SYSTEM');
+INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'DELL Lattitude 2017','DELL Lattitude 2017','SYSTEM','SYSTEM');
+INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Shiseido','Shiseido','SYSTEM','SYSTEM');
 INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Brand 19 Century','Brand 19 Century','SYSTEM','SYSTEM');
 INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Coca Cola','Coca Cola','SYSTEM','SYSTEM');
 INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Pepsi Company','Pepsi Company','SYSTEM','SYSTEM');
@@ -751,73 +759,73 @@ CREATE TABLE `Product` (
 -- Sample data for table `Product`
 --
 INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES (uuid(),'Sony Vaio','Sony Vaio',1,100,'White','IN','Cool','SYSTEM','SYSTEM');
+VALUES (uuid(),'Sony Vaio','Sony Vaio',1,100,'White','NEW','Cool','SYSTEM','SYSTEM');
 
 INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES (uuid(),'Dell','Dell Vostro',2,2000,'White','IN','Cool','SYSTEM','SYSTEM');
+VALUES (uuid(),'Dell','Dell Vostro',2,2000,'White','NEW','Cool','SYSTEM','SYSTEM');
 
 INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES (uuid(),'HP Note','HP Note',2,100,'Yellow','IN','Cool','SYSTEM','SYSTEM');
+VALUES (uuid(),'HP Note','HP Note',2,100,'Yellow','NEW','Cool','SYSTEM','SYSTEM');
 
 INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES (uuid(),'Asus','Asus',4,800,'White','IN','Cool','SYSTEM','SYSTEM');
+VALUES (uuid(),'Asus','Asus',4,800,'White','NEW','Cool','SYSTEM','SYSTEM');
 
 INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES (uuid(),'Acer','Laptop Acer',4,100,'White','IN','Cool','SYSTEM','SYSTEM');
+VALUES (uuid(),'Acer','Laptop Acer',4,100,'White','NEW','Cool','SYSTEM','SYSTEM');
 
 INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES (uuid(),'Sony Xperia','Sony Xperia',6,1200,'White','OUT','Cool','SYSTEM','SYSTEM');
+VALUES (uuid(),'Sony Xperia','Sony Xperia',6,1200,'White','NEW','Cool','SYSTEM','SYSTEM');
 
 INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES (uuid(),'IBM T42','IBM T42',20,100,'Red','OUT','Cool','SYSTEM','SYSTEM');
+VALUES (uuid(),'IBM T42','IBM T42',20,100,'Red','NEW','Cool','SYSTEM','SYSTEM');
 
 INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES (uuid(),'IBM T60','IBM T60',20,100,'Red','IN','Cool','SYSTEM','SYSTEM');
+VALUES (uuid(),'IBM T60','IBM T60',20,100,'Red','NEW','Cool','SYSTEM','SYSTEM');
 
 INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES (uuid(),'IBM T400','IBM T400',20,100,'Red','IN','Cool','SYSTEM','SYSTEM');
+VALUES (uuid(),'IBM T400','IBM T400',20,100,'Red','NEW','Cool','SYSTEM','SYSTEM');
 
 INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES (uuid(),'Ipad 5','Ipad 5',22,3000,'Green','OUT','Cool','SYSTEM','SYSTEM');
+VALUES (uuid(),'Ipad 5','Ipad 5',22,3000,'Green','NEW','Cool','SYSTEM','SYSTEM');
 
 INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES (uuid(),'IBM T42','IBM T42',20,100,'Red','IN','Cool','SYSTEM','SYSTEM');
+VALUES (uuid(),'IBM T42','IBM T42',20,100,'Red','NEW','Cool','SYSTEM','SYSTEM');
 
 INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES (uuid(),'IBM T60','IBM T60',20,100,'Red','OUT','Cool','SYSTEM','SYSTEM');
+VALUES (uuid(),'IBM T60','IBM T60',20,100,'Red','NEW','Cool','SYSTEM','SYSTEM');
 
 INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES (uuid(),'IBM T400','IBM T400',20,100,'Red','IN','Cool','SYSTEM','SYSTEM');
+VALUES (uuid(),'IBM T400','IBM T400',20,100,'Red','NEW','Cool','SYSTEM','SYSTEM');
 
 INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES (uuid(),'Ipad 6','Ipad 6',22,3000,'Green','IN','Cool','SYSTEM','SYSTEM');
+VALUES (uuid(),'Ipad 6','Ipad 6',22,3000,'Green','NEW','Cool','SYSTEM','SYSTEM');
 
 INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES (uuid(),'IBM T43','IBM T43',5,100,'Red','IN','Cool','SYSTEM','SYSTEM');
+VALUES (uuid(),'IBM T43','IBM T43',5,100,'Red','NEW','Cool','SYSTEM','SYSTEM');
 
 INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES (uuid(),'IBM T44','IBM T44',5,100,'Red','OUT','Cool','SYSTEM','SYSTEM');
+VALUES (uuid(),'IBM T44','IBM T44',5,100,'Red','NEW','Cool','SYSTEM','SYSTEM');
 
 INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES (uuid(),'IBM T45','IBM T45',5,100,'Red','IN','Cool','SYSTEM','SYSTEM');
+VALUES (uuid(),'IBM T45','IBM T45',5,100,'Red','NEW','Cool','SYSTEM','SYSTEM');
 
 INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES (uuid(),'Ipad 7','Ipad 7',22,3000,'Green','OUT','Cool','SYSTEM','SYSTEM');
+VALUES (uuid(),'Ipad 7','Ipad 7',22,3000,'Green','NEW','Cool','SYSTEM','SYSTEM');
 
 INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES (uuid(),'IBM T46','IBM T46',5,100,'Red','IN','Cool','SYSTEM','SYSTEM');
+VALUES (uuid(),'IBM T46','IBM T46',5,100,'Red','NEW','Cool','SYSTEM','SYSTEM');
 
 INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES (uuid(),'IBM T47','IBM T47',5,100,'Red','OUT','Cool','SYSTEM','SYSTEM');
+VALUES (uuid(),'IBM T47','IBM T47',5,100,'Red','NEW','Cool','SYSTEM','SYSTEM');
 
 INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES (uuid(),'IBM T2000','IBM T2000',20,100,'Red','IN','Cool','SYSTEM','SYSTEM');
+VALUES (uuid(),'IBM T2000','IBM T2000',20,100,'Red','NEW','Cool','SYSTEM','SYSTEM');
 
 INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES (uuid(),'Ipad 8','Ipad 8',5,3000,'Green','IN','Cool','SYSTEM','SYSTEM');
+VALUES (uuid(),'Ipad 8','Ipad 8',5,3000,'Green','NEW','Cool','SYSTEM','SYSTEM');
 
 INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES (uuid(),'Lifan 2015','Lifan 2015',2,500,'White','IN','Cool','SYSTEM','SYSTEM');
+VALUES (uuid(),'Lifan 2015','Lifan 2015',2,500,'White','NEW','Cool','SYSTEM','SYSTEM');
 
 --
 -- Table structure for table `Review`
@@ -865,9 +873,9 @@ CREATE TABLE `User` (
   `DisplayName` VARCHAR(50) DEFAULT NULL,
   `ImageKey` VARCHAR(250) DEFAULT NULL,  
   `Email` VARCHAR(50) DEFAULT NULL,
-  `Mobile` VARCHAR(50) DEFAULT NULL,
-  `Tel` VARCHAR(50) DEFAULT NULL,
+  `Mobile` VARCHAR(50) DEFAULT NULL,  
   `Title` VARCHAR(50) DEFAULT NULL,
+  `Description` VARCHAR(250) DEFAULT NULL,
   `DateOfBirth` DATETIME DEFAULT NULL,
   `Created` DATETIME DEFAULT CURRENT_TIMESTAMP,
   `Updated` DATETIME DEFAULT CURRENT_TIMESTAMP,
@@ -883,26 +891,45 @@ CREATE TABLE `User` (
 --
 -- Sample data for table `User`
 --
-INSERT INTO `User` (`UserKey`, `UserType`, `UserName`, `Hash`, `DisplayName`, `Email`, `DateOfBirth`, `Author`, `Editor`) 
-VALUES (uuid(), 'USER','beckham', uuid(), 'David Beckham','hoanganh@ibm.com','1990-03-03','SYSTEM','SYSTEM');
+INSERT INTO `User` (`UserKey`, `UserType`, `UserName`, `Hash`, `DisplayName`, `Email`, `Mobile`, `DateOfBirth`, `Author`, `Editor`) 
+VALUES (uuid(), 'ADMIN','admin'  , uuid(), 'Administrator','admin@estore.com','001 852741963','2012-12-12','SYSTEM','SYSTEM');
 
-INSERT INTO `User` (`UserKey`, `UserType`, `UserName`, `Hash`, `DisplayName`, `Email`, `DateOfBirth`, `Author`, `Editor`) 
-VALUES (uuid(), 'USER','huetran', uuid(), 'Hue Tran','huetran@hvn.com','1990-04-04','SYSTEM','SYSTEM');
+INSERT INTO `User` (`UserKey`, `UserType`, `UserName`, `Hash`, `DisplayName`, `Email`, `Mobile`, `DateOfBirth`, `Author`, `Editor`) 
+VALUES (uuid(), 'USER','beckham', uuid(), 'David Beckham','hoanganh@ibm.com','001 852741963','1990-03-03','SYSTEM','SYSTEM');
 
-INSERT INTO `User` (`UserKey`, `UserType`, `UserName`, `Hash`, `DisplayName`, `Email`, `DateOfBirth`, `Author`, `Editor`) 
-VALUES (uuid(), 'ADMIN','admin'  , uuid(), 'Administrator','admin@estore.com','2012-12-12','SYSTEM','SYSTEM');
+INSERT INTO `User` (`UserKey`, `UserType`, `UserName`, `Hash`, `DisplayName`, `Email`, `Mobile`, `DateOfBirth`, `Author`, `Editor`) 
+VALUES (uuid(), 'USER','huetran', uuid(), 'Nguyen Hue Tran','huetran@hvn.com','001 852741963','1990-04-04','SYSTEM','SYSTEM');
 
-INSERT INTO `User` (`UserKey`, `UserType`, `UserName`, `Hash`, `DisplayName`, `Email`, `DateOfBirth`, `Author`, `Editor`) 
-VALUES (uuid(), 'USER','avo4 Vo', uuid(), 'Anh Vo','avo4@csc.com','1984-12-22','SYSTEM','SYSTEM');
+INSERT INTO `User` (`UserKey`, `UserType`, `UserName`, `Hash`, `DisplayName`, `Email`, `Mobile`, `DateOfBirth`, `Author`, `Editor`) 
+VALUES (uuid(), 'USER','avo4', uuid(), 'Anh Vo','avo4@csc.com','001 852741963','1984-12-22','SYSTEM','SYSTEM');
 
-INSERT INTO `User` (`UserKey`, `UserType`, `UserName`, `Hash`, `DisplayName`, `Email`, `DateOfBirth`, `Author`, `Editor`) 
-VALUES (uuid(), 'USER','anhvod' , uuid(), 'Vo Duy Anh','anhvod@hvn.com','1984-12-24','SYSTEM','SYSTEM');
+INSERT INTO `User` (`UserKey`, `UserType`, `UserName`, `Hash`, `DisplayName`, `Email`, `Mobile`, `DateOfBirth`, `Author`, `Editor`) 
+VALUES (uuid(), 'USER','anhvod' , uuid(), 'Vo Duy Anh','anhvod@hvn.com','084 852741963','1984-12-24','SYSTEM','SYSTEM');
 
-INSERT INTO `User` (`UserKey`, `UserType`, `UserName`, `Hash`, `DisplayName`, `Email`, `DateOfBirth`, `Author`, `Editor`) 
-VALUES (uuid(), 'USER','lukaku' , uuid(), 'Lukaku','lukaku@sony.com','1980-06-06','SYSTEM','SYSTEM');
+INSERT INTO `User` (`UserKey`, `UserType`, `UserName`, `Hash`, `DisplayName`, `Email`, `Mobile`, `DateOfBirth`, `Author`, `Editor`) 
+VALUES (uuid(), 'USER','lukaku' , uuid(), 'Lukaku','lukaku@sony.com','001 852741963','1980-06-06','SYSTEM','SYSTEM');
 
-INSERT INTO `User` (`UserKey`, `UserType`, `UserName`, `Hash`, `DisplayName`, `Email`, `DateOfBirth`, `Author`, `Editor`) 
-VALUES (uuid(), 'USER','pogba'  , uuid(), 'Pogba','pogba@samsung.com','1980-06-06','SYSTEM','SYSTEM');
+INSERT INTO `User` (`UserKey`, `UserType`, `UserName`, `Hash`, `DisplayName`, `Email`, `Mobile`, `DateOfBirth`, `Author`, `Editor`) 
+VALUES (uuid(), 'USER','pogba'  , uuid(), 'Pogba','pogba@samsung.com','001 852741963','1980-06-06','SYSTEM','SYSTEM');
+
+INSERT INTO `User` (`UserKey`, `UserType`, `UserName`, `Hash`, `DisplayName`, `Email`, `Mobile`, `DateOfBirth`, `Author`, `Editor`) 
+VALUES (uuid(), 'USER','thanglt'  , uuid(), 'Le Tat Thang','thanglt@fpt.com.vn','001 852741963','1980-08-08','SYSTEM','SYSTEM');
+
+INSERT INTO `User` (`UserKey`, `UserType`, `UserName`, `Hash`, `DisplayName`, `Email`, `Mobile`, `DateOfBirth`, `Author`, `Editor`) 
+VALUES (uuid(), 'USER','vuongpq'  , uuid(), 'Pham Quoc Vuong','vuongpq@fpt.com.vn','001 852741963','1980-02-02','SYSTEM','SYSTEM');
+
+INSERT INTO `User` (`UserKey`, `UserType`, `UserName`, `Hash`, `DisplayName`, `Email`, `Mobile`, `DateOfBirth`, `Author`, `Editor`) 
+VALUES (uuid(), 'USER','ronaldo'  , uuid(), 'Cris Ronaldo','ronaldo@fpt.com.vn','003 852741963','1980-02-02','SYSTEM','SYSTEM');
+
+INSERT INTO `User` (`UserKey`, `UserType`, `UserName`, `Hash`, `DisplayName`, `Email`, `Mobile`, `DateOfBirth`, `Author`, `Editor`) 
+VALUES (uuid(), 'USER','messi'  , uuid(), 'Lionel Messi','messi@fpt.com.vn','001 852741963','1980-02-02','SYSTEM','SYSTEM');
+
+INSERT INTO `User` (`UserKey`, `UserType`, `UserName`, `Hash`, `DisplayName`, `Email`, `Mobile`, `DateOfBirth`, `Author`, `Editor`) 
+VALUES (uuid(), 'USER','bale'  , uuid(), 'Gareth Bale','bale@fpt.com.vn','001 852741963','1980-02-02','SYSTEM','SYSTEM');
+
+INSERT INTO `User` (`UserKey`, `UserType`, `UserName`, `Hash`, `DisplayName`, `Email`, `Mobile`, `DateOfBirth`, `Author`, `Editor`) 
+VALUES (uuid(), 'USER','rojo'  , uuid(), 'Marcus Rojo','rojo@fpt.com.vn','001 852741963','1980-02-02','SYSTEM','SYSTEM');
+
 
 --
 -- Table structure for table `Group`

@@ -14,7 +14,7 @@
                                 <th>Brand Name</th>                    
                                 <th>Description</th>
                                 <th>Edit</th>                    
-                                <th>Delete</th>
+                                <!-- <th>Delete</th> -->
                             </tr>
                         </thead>
                         <tbody>
@@ -23,7 +23,7 @@
                                 <td>{{ brand.BrandName }}</td>
                                 <td>{{ brand.Description }}</td>                                
                                 <td><a ui-sref="brandEdit({ brandKey: brand.BrandKey })">Edit</a></td>
-                                <td><a ng-click="deleteBrand(brand.BrandId)">Delete</a></td>
+                                <!-- <td><a ng-click="deleteBrand(brand.BrandId)">Delete</a></td> -->
                             </tr>
                         </tbody>
                     </table>

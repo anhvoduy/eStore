@@ -1,4 +1,6 @@
 ﻿const _ = require('lodash');
+const common = require('../lib/commonlib');
+const CONSTANT = require('../lib/constant');
 const dbContext = require('../lib/dbContext');
 
 // Constructor
@@ -15,90 +17,57 @@ Factory.prototype.myProfile = function(){
 	}
 }
 
-Factory.prototype.getUsers = async function(query){
-	try
-	{
-		var sql = `
-			SELECT 	UserId, UserKey, UserType, UserName, DisplayName, Email, Mobile, Tel, 
-				Title, DateOfBirth 
-			FROM User 
-			WHERE Deleted = 0 
-			ORDER BY UserId DESC
-		`;
-		return dbContext.queryList(sql);
-	}
-	catch(err){
-		throw err;
-	}
+Factory.prototype.getUsers = function(query){
+	// No need pagination
+	let sql = `
+		SELECT 	UserId, UserKey, UserType, UserName, DisplayName, Email, Mobile, Title, Description, DateOfBirth 
+		FROM User 
+		WHERE Deleted = 0 
+		ORDER BY UserId DESC
+	`;
+	return dbContext.queryList(sql);
 }
 
-Factory.prototype.getUserById = async function (query) {
-	try
-	{
-		var sql = `
-			SELECT 	UserId, UserKey, UserType, UserName, DisplayName, Email, Mobile, Tel, 
-				Title, DateOfBirth 
-			FROM User 
-			WHERE UserId =:UserId
-		`;
-		return dbContext.queryItem(sql, { UserId: query.UserId });
-	}
-	catch(err){
-		throw err;
-	}
+Factory.prototype.getUserById = function (query) {
+	let sql = `
+		SELECT 	UserId, UserKey, UserType, UserName, DisplayName, Email, Mobile, Title, Description, DateOfBirth 
+		FROM User 
+		WHERE UserId =:UserId
+	`;
+	return dbContext.queryItem(sql, { UserId: query.UserId });
 }
 
-Factory.prototype.getUserByKey = async function (query) {
-	try
-	{
-		var sql = `
-			SELECT 	UserId, UserKey, UserType, UserName, DisplayName, Email, Mobile, Tel, 
-				Title, DateOfBirth 
-			FROM User 
-			WHERE UserKey =:UserKey
-		`;
-		return dbContext.queryItem(sql, { UserKey: query.UserKey });
-	}
-	catch(err){
-		throw err;
-	}
+Factory.prototype.getUserByKey = function (query) {
+	let sql = `
+		SELECT 	UserId, UserKey, UserType, UserName, DisplayName, Email, Mobile, Title, Description, DateOfBirth 
+		FROM User 
+		WHERE UserKey =:UserKey
+	`;
+	return dbContext.queryItem(sql, { UserKey: query.UserKey });
 }
 
-Factory.prototype.getUserByName = async function (query) {
-	try
-	{
-		var sql = `
-			SELECT UserId, UserKey, UserType, UserName, DisplayName, Email, Mobile, Tel, 
-				Title, DateOfBirth 
-			FROM User 
-			WHERE UserName =:UserName
-		`;
-		return dbContext.queryItem(sql, { UserName: query.UserName });
-	}
-	catch(err){
-		throw err;
-	}
+Factory.prototype.getUserByName = function (query) {
+	let	sql = `
+		SELECT UserId, UserKey, UserType, UserName, DisplayName, Email, Mobile, Title, Description, DateOfBirth 
+		FROM User 
+		WHERE UserName =:UserName
+	`;
+	return dbContext.queryItem(sql, { UserName: query.UserName });
 }
 
-Factory.prototype.getUserByEmail = async function (query) {
-	try
-	{
-		var sql = `
-			SELECT UserId, UserKey, UserType, UserName, DisplayName, Email, Mobile, Tel, 
-				Title, DateOfBirth
-			FROM User 
-			WHERE Email =:Email
-		`;
-		return dbContext.queryItem(sql, { Email: query.Email });
-	}
-	catch(err){
-		throw err;
-	}	
+Factory.prototype.getUserByEmail = function (query) {
+	let sql = `
+		SELECT UserId, UserKey, UserType, UserName, DisplayName, Email, Mobile, Title, Description, DateOfBirth
+		FROM User 
+		WHERE Email =:Email
+	`;
+	return dbContext.queryItem(sql, { Email: query.Email });	
 }
+
 
 Factory.prototype.authenticate = async function (username, password) {
 	try
-	{		
+	{
 		if((username === 'admin' && password === '@dmin')){
 			let sql = 'SELECT UserName, UserKey FROM User WHERE UserName=:UserName';
 			let data = await dbContext.queryItem(sql, { UserName: username });
@@ -118,7 +87,13 @@ Factory.prototype.authenticate = async function (username, password) {
 Factory.prototype.create = async function (user) {
 	try
 	{
-		return true;
+		user.Hash = common.encoded(user.UserName);
+		user.UserType = CONSTANT.USERTYPES.USER;
+		var sql = `
+			INSERT INTO User(UserKey,UserType,UserName,Hash,DisplayName,Email,Mobile,Title,Description)
+			VALUES(uuid(),:UserType,:UserName,:Hash,:DisplayName,:Email,:Mobile,:Title,:Description)
+		`;
+		return dbContext.queryExecute(sql, user);
 	}
 	catch(err){
 		throw err;
@@ -133,27 +108,28 @@ Factory.prototype.update = async function (user) {
 			SET UserName=:UserName,
 				DisplayName=:DisplayName, 
 				Email=:Email, 
-				Mobile=:Mobile, 
-				Tel=:Tel, 
+				Mobile=:Mobile, 				
 				Title=:Title, 
-				DateOfBirth=:DateOfBirth
+				DateOfBirth=:DateOfBirth,
+				Description=:Description
 			WHERE UserId=:UserId			
 		`;
-		return dbContext.queryItem(sql, user);
+		return dbContext.queryExecute(sql, user);
 	}
 	catch(err){
 		throw err;
-	}	
+	}
 }
 
-Factory.prototype.delete = async function (user) {
+Factory.prototype.delete = async function (userId) {
 	try
 	{
-		return true;
+		var sql = `UPDATE User SET Deleted=1 WHERE UserId=:UserId`;
+		return dbContext.queryExecute(sql, {UserId: userId});
 	}
 	catch(err){
 		throw err;
-	}	
+	}
 }
 
 

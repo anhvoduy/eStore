@@ -11,17 +11,23 @@
                         <thead>
                             <tr>
                                 <th>Id</th>                                
-                                <th>Customer Name</th>                    
-                                <th>Address</th>
+                                <th>Name</th>                                
+                                <th>Tel</th>
+                                <th>Email</th>
+                                <th>Fax</th>
+                                <th>Representative</th>
                                 <th>Edit</th>
                                 <th>Delete</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr ng-repeat="c in customers">
-                                <td>{{ $index + 1 }}</td>                                
+                                <td>{{ $index + 1 }}</td>
                                 <td>{{ c.CustomerName }}</td>
-                                <td>{{ c.Address }}</td>                                
+                                <td>{{ c.Tel }}</td>
+                                <td>{{ c.Email }}</td>
+                                <td>{{ c.Fax }}</td>
+                                <td>{{ c.Representative }}</td>
                                 <td><a ui-sref="customerEdit({ customerKey: c.CustomerKey })">Edit</a></td>
                                 <td><a ui-sref="deleteCustomer(c.customerId)">Delete</a></td>
                             </tr>

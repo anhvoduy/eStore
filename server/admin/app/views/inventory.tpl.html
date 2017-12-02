@@ -4,7 +4,9 @@
             <h3 class="panel-title">All Inventories</h3>
         </div>
         <div class="panel-body">
-            <p><a ui-sref="inventoryEdit({ inventoryKey: null })">Add new inventory</a></p>
+            <p>
+                <!-- <a ui-sref="inventoryEdit({ inventoryKey: null })">Add new inventory</a> -->
+            </p>
             <div class="container" ng-cloak>
                 <div class="row row-table">
                     <table class="table">
@@ -15,7 +17,7 @@
                                 <th>Location</th>
                                 <th>Description</th>
                                 <th>Edit</th>
-                                <th>Delete</th>
+                                <!-- <th>Delete</th> -->
                             </tr>
                         </thead>
                         <tbody>
@@ -25,21 +27,23 @@
                                 <td>{{ inv.Location }}</td>
                                 <td>{{ inv.Description }}</td>                                
                                 <td><a ui-sref="inventoryEdit({ inventoryKey: inv.InventoryKey })">Edit</a></td>
-                                <td><a ng-click="deleteInventory(inv.InventoryId)">Delete</a></td>
+                                <!-- <td><a ng-click="deleteInventory(inv.InventoryId)">Delete</a></td> -->
                             </tr>
                         </tbody>
                     </table>
                 </div>
                 <div class="row">
-                    <div class="message-error" ng-show='(vm.messageError.length > 0)'>
+                    <div class="message-error" ng-show='(messageError.length > 0)'>
                         <span ng-repeat="msg in messageError">{{ msg }}</span>
                     </div>
-                    <div class="message-success" ng-show='(vm.messageSuccess.length > 0)'>
+                    <div class="message-success" ng-show='(messageSuccess.length > 0)'>
                         <span ng-repeat="msg in messageSuccess">{{ msg }}</span>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="panel-footer">ng-paginator</div>
-    </div>   	
+        <div class="panel-footer">
+            ng-paginator
+        </div>
+    </div>
 </div>

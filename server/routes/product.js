@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const _ = require('lodash');
 const auth = require('../config/auth');
-const constant = require('../lib/constant');
+const CONSTANT = require('../lib/constant');
 const dbContext = require('../lib/dbContext');
 const errorHelper = require('../lib/errorHelper');
 const brandService = require('../services/brandService');
@@ -53,10 +53,13 @@ router.post('/create', auth.checkAuthentication(), async function (req, res, nex
 	try
 	{
 		let product = _.pick(req.body, ["ProductCode", "ProductName", "ProductImage", "Description", 
-		"BrandId", "Price", "ColorCode"]);
+			"BrandId", "Price", "ColorCode", "Status"]);
 		
 		if(!product.ProductName)
 			throw CONSTANT.MISSING_FIELD_PRODUCTNAME;
+
+		if(!product.Status)
+			product.Status = CONSTANT.PRODUCT_STATUS.NEW;
 
 		let result = await productService.create(product);		
 		if(result.affectedRows > 0) 
@@ -73,7 +76,7 @@ router.post('/update', auth.checkAuthentication(), async function (req, res, nex
 	try
 	{
 		let product = _.pick(req.body, ["ProductKey", "ProductCode", "ProductName", "ProductImage", "Description", 
-		"BrandId", "Price", "ColorCode"]);
+			"BrandId", "Price", "ColorCode", "Status"]);
 		
 		if(!product.ProductKey)
 			throw CONSTANT.MISSING_FIELD_PRODUCTKEY;
