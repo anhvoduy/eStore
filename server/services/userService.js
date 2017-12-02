@@ -17,82 +17,53 @@ Factory.prototype.myProfile = function(){
 	}
 }
 
-Factory.prototype.getUsers = async function(query){
-	try
-	{
-		// No need pagination
-		let sql = `
-			SELECT 	UserId, UserKey, UserType, UserName, DisplayName, Email, Mobile, Title, Description, DateOfBirth 
-			FROM User 
-			WHERE Deleted = 0 
-			ORDER BY UserId DESC
-		`;
-		return dbContext.queryList(sql);
-	}
-	catch(err){
-		throw err;
-	}
+Factory.prototype.getUsers = function(query){
+	// No need pagination
+	let sql = `
+		SELECT 	UserId, UserKey, UserType, UserName, DisplayName, Email, Mobile, Title, Description, DateOfBirth 
+		FROM User 
+		WHERE Deleted = 0 
+		ORDER BY UserId DESC
+	`;
+	return dbContext.queryList(sql);
 }
 
-Factory.prototype.getUserById = async function (query) {
-	try
-	{
-		let sql = `
-			SELECT 	UserId, UserKey, UserType, UserName, DisplayName, Email, Mobile, Title, Description, DateOfBirth 
-			FROM User 
-			WHERE UserId =:UserId
-		`;
-		return dbContext.queryItem(sql, { UserId: query.UserId });
-	}
-	catch(err){
-		throw err;
-	}
+Factory.prototype.getUserById = function (query) {
+	let sql = `
+		SELECT 	UserId, UserKey, UserType, UserName, DisplayName, Email, Mobile, Title, Description, DateOfBirth 
+		FROM User 
+		WHERE UserId =:UserId
+	`;
+	return dbContext.queryItem(sql, { UserId: query.UserId });
 }
 
-Factory.prototype.getUserByKey = async function (query) {
-	try
-	{
-		let sql = `
-			SELECT 	UserId, UserKey, UserType, UserName, DisplayName, Email, Mobile, Title, Description, DateOfBirth 
-			FROM User 
-			WHERE UserKey =:UserKey
-		`;
-		return dbContext.queryItem(sql, { UserKey: query.UserKey });
-	}
-	catch(err){
-		throw err;
-	}
+Factory.prototype.getUserByKey = function (query) {
+	let sql = `
+		SELECT 	UserId, UserKey, UserType, UserName, DisplayName, Email, Mobile, Title, Description, DateOfBirth 
+		FROM User 
+		WHERE UserKey =:UserKey
+	`;
+	return dbContext.queryItem(sql, { UserKey: query.UserKey });
 }
 
-Factory.prototype.getUserByName = async function (query) {
-	try
-	{
-		let	sql = `
-			SELECT UserId, UserKey, UserType, UserName, DisplayName, Email, Mobile, Title, Description, DateOfBirth 
-			FROM User 
-			WHERE UserName =:UserName
-		`;
-		return dbContext.queryItem(sql, { UserName: query.UserName });
-	}
-	catch(err){
-		throw err;
-	}
+Factory.prototype.getUserByName = function (query) {
+	let	sql = `
+		SELECT UserId, UserKey, UserType, UserName, DisplayName, Email, Mobile, Title, Description, DateOfBirth 
+		FROM User 
+		WHERE UserName =:UserName
+	`;
+	return dbContext.queryItem(sql, { UserName: query.UserName });
 }
 
-Factory.prototype.getUserByEmail = async function (query) {
-	try
-	{
-		let sql = `
-			SELECT UserId, UserKey, UserType, UserName, DisplayName, Email, Mobile, Title, Description, DateOfBirth
-			FROM User 
-			WHERE Email =:Email
-		`;
-		return dbContext.queryItem(sql, { Email: query.Email });
-	}
-	catch(err){
-		throw err;
-	}	
+Factory.prototype.getUserByEmail = function (query) {
+	let sql = `
+		SELECT UserId, UserKey, UserType, UserName, DisplayName, Email, Mobile, Title, Description, DateOfBirth
+		FROM User 
+		WHERE Email =:Email
+	`;
+	return dbContext.queryItem(sql, { Email: query.Email });	
 }
+
 
 Factory.prototype.authenticate = async function (username, password) {
 	try
