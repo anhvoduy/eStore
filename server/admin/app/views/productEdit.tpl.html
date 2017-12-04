@@ -8,7 +8,7 @@
         <div class="panel-body" ng-cloak>
             <form name="frmProduct" class="form-horizontal">
                 <div class="form-group">
-                    <label for="productName" class="col-sm-2 control-label">Product</label>
+                    <label for="productName" class="col-sm-2 control-label estore-label-mandatory">Product</label>
                     <div class="col-sm-6">
                         <input id="productName" class="form-control" placeholder="product name" ng-model="product.ProductName" maxlength="50" required/>
                     </div>
@@ -29,7 +29,7 @@
                 </div>
         
                 <div class="form-group">
-                    <label for="Price" class="col-sm-2 control-label">Price</label>
+                    <label for="Price" class="col-sm-2 control-label estore-label-mandatory">Price</label>
                     <div class="col-sm-6">
                         <input id="Price" ng-model="product.Price" class="form-control" placeholder="Price" ng-input-number-only />
                     </div>

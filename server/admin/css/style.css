@@ -60,6 +60,25 @@
 .row.row-table {
     margin-right: 50px;
 }
+
+.estore-label {
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 0.5em;
+}
+
+.estore-label-mandatory::after{
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    content: "\f069";
+    color: #be1e2d;
+    font-size: 0.5em;
+    padding: 0 0 0 2px;
+    vertical-align: top;
+}
+
 .message-error {
     color: red;    
 }
