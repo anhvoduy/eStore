@@ -1,5 +1,5 @@
 ﻿<div class="container">
-    <div class="panel panel-default estore-panel-default">
+    <div class="panel panel-default">
         <div class="panel-heading estore-panel-heading">
             <div class="panel-title estore-panel-title">
                 <label>{{ formTitle }}</label>
@@ -37,7 +37,7 @@
         
                 <div class="form-group">
                     <label for="Colour" class="col-sm-2 control-label">Color</label>
-                    <div class="col-sm-6">                        
+                    <div class="col-sm-6">
                         <select name="ColorCode" 
                                 class="form-control"
                                 ng-init="product.ColorCode = colorList[0].ColorCode"
@@ -61,14 +61,14 @@
                 <div class="form-group">
                     <label for="productDescription" class="col-sm-2 control-label">Description</label>
                     <div class="col-sm-6">
-                        <textarea id="productDescription" class="form-control control-readonly" placeholder="description" ng-model="product.Description" />
+                        <textarea id="productDescription" class="form-control control-readonly" placeholder="description" ng-model="product.Description" rows="3" />
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label for="ProductImage" class="col-sm-2 control-label">Image</label>
                     <div class="col-sm-6">
-                        <input type="file" name="pic" accept="image/*">                        
+                        <input type="file" name="pic" accept="image/*">
                     </div>
                 </div>
                 
