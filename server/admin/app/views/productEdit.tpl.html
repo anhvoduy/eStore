@@ -1,7 +1,9 @@
 ﻿<div class="container">
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3 class="panel-title">{{ formTitle }}</h3>
+    <div class="panel panel-default estore-panel-default">
+        <div class="panel-heading estore-panel-heading">
+            <div class="panel-title estore-panel-title">
+                <label>{{ formTitle }}</label>
+            </div>
         </div>
         <div class="panel-body" ng-cloak>
             <form name="frmProduct" class="form-horizontal">
@@ -80,7 +82,7 @@
                 </div>
             </form>
         </div>
-        <div class="panel-footer">
+        <div class="panel-footer estore-panel-footer">
             <input type="button" class="btn btn-primary" value="Save" 
                 ng-click="save(product)" ng-disabled="(frmProduct.$invalid || isSubmitting)"/>
             <input type="button" class="btn btn-danger" value="Cancel" 
