@@ -1,17 +1,21 @@
-﻿<div class="container">
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3 class="panel-title">All Products</h3>
+﻿<div class="panel-group">
+    <div class="panel panel-default estore-panel-default">
+        <div class="panel-heading estore-panel-heading">
+            <div class="panel-title estore-panel-title">
+                <label>All Products</label>
+            </div>
         </div>
-        <div class="panel-body">
-            <p><a ui-sref="productEdit({ productKey: null })">Add new product</a></p>
-            <div class="container" ng-cloak>
-                <div class="row row-table">
+        <div class="panel-body" ng-cloak>
+            <div class="row estore-form-row">
+                <a ui-sref="productEdit({ productKey: null })">Add new product</a>
+            </div>
+            <div class="row estore-form-row">
+                <div class="row">
                     <table class="table">
                         <thead>
                             <tr>
                                 <th>No.</th>
-                                <th>Name</th>                                
+                                <th>Name</th>
                                 <th>Price</th>
                                 <th>Color</th>
                                 <th>Status</th>
@@ -23,7 +27,7 @@
                         <tbody>
                             <tr ng-repeat="p in products">
                                 <td>{{ ($index +1) }}</td>
-                                <td>{{ p.ProductName }}</td>                                
+                                <td>{{ p.ProductName }}</td>
                                 <td>{{ p.Price }}</td>
                                 <td>{{ p.ColorCode }}</td>
                                 <td>{{ p.Status }}</td>
@@ -44,7 +48,7 @@
                 </div>
             </div>
         </div>
-        <div class="panel-footer">
+        <div class="panel-footer estore-panel-footer">
             <ng-pagination pagination="pagination" on-get-data="getProducts()" />
         </div>
     </div>

@@ -16,7 +16,47 @@
     color: white;
 }
 
+.main-content {
+    padding-top: 80px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 30px;
+}
 
+/* estore-panel */
+.panel.panel-default.estore-panel-default{
+    border-radius: 8px 8px 8px 8px;    
+}
+
+.estore-panel-heading {
+    background-color: #186c9b;
+    border-color: #186c9b;
+    background-image: linear-gradient(to bottom,#186c9b 0, #186c9b 100%) !important;
+    border-radius: 8px 8px 0 0;
+}
+
+.estore-panel-title {    
+    color: white;
+}
+
+.estore-panel-title>label {
+    margin: auto;
+    font-weight: normal;
+    font-size: 1em;
+}
+
+.estore-form-row {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.estore-panel-footer {
+    background-color: white;
+    border-radius: 0px 0px 8px 8px;
+}
+
+
+/* row & controls */
 .row.row-table {
     margin-right: 50px;
 }
@@ -24,14 +64,10 @@
     color: red;    
 }
 .message-success {
-    color: green;    
+    color: green;
 }
 .control-readonly {
     background-color: white !important;
-}
-
-.main-content {
-    padding-top: 80px;
 }
 
 .form-login {
