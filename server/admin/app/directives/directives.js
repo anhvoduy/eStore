@@ -1,6 +1,6 @@
 (function () {
     angular.module('cargo.directives', [])
-    .directive('numbersOnly', function () {
+    .directive('ngInputNumberOnly', function () {
         return {
             require: 'ngModel',
             link: function (scope, element, attrs, modelCtrl) {

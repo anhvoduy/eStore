@@ -25,14 +25,14 @@
 
 /* estore-panel */
 .panel.panel-default.estore-panel-default{
-    border-radius: 8px 8px 8px 8px;    
+    /* border-radius: 8px 8px 8px 8px; */
 }
 
 .estore-panel-heading {
     background-color: #186c9b;
     border-color: #186c9b;
     background-image: linear-gradient(to bottom,#186c9b 0, #186c9b 100%) !important;
-    border-radius: 8px 8px 0 0;
+    /* border-radius: 8px 8px 0 0; */
 }
 
 .estore-panel-title {    
@@ -52,7 +52,7 @@
 
 .estore-panel-footer {
     background-color: white;
-    border-radius: 0px 0px 8px 8px;
+    /* border-radius: 0px 0px 8px 8px; */
 }
 
 
