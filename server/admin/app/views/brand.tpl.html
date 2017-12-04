@@ -1,12 +1,16 @@
-﻿<div class="container">
+﻿<div class="panel-group">
     <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3 class="panel-title">All Brands</h3>
+        <div class="panel-heading estore-panel-heading">
+            <div class="panel-title estore-panel-title">
+                <label>All Brands</label>
+            </div>
         </div>
-        <div class="panel-body">
-            <p><a ui-sref="brandEdit({ brandKey: null })">Add new brand</a></p>
-            <div class="container" ng-cloak>                
-                <div class="row row-table">
+        <div class="panel-body" ng-cloak>
+            <div class="row estore-form-row">
+                <a ui-sref="brandEdit({ brandKey: null })">Add new brand</a>
+            </div>            
+            <div class="row estore-form-row">
+                <div class="row">
                     <table class="table">
                         <thead>
                             <tr>
@@ -38,7 +42,7 @@
                 </div>
             </div>
         </div>
-        <div class="panel-footer">
+        <div class="panel-footer estore-panel-footer">
             <ng-pagination pagination="pagination" on-get-data="getBrands()" />
         </div>
     </div>

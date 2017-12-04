@@ -1,12 +1,14 @@
-﻿<div class="container">
+﻿<div class="panel-group">
     <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3 class="panel-title">{{ formTitle }}</h3>
+        <div class="panel-heading estore-panel-heading">
+            <div class="panel-title estore-panel-title">
+                <label>{{ formTitle }}</label>
+            </div>
         </div>
         <div class="panel-body" ng-cloak>
             <form name="frmProduct" class="form-horizontal">
                 <div class="form-group">
-                    <label for="productName" class="col-sm-2 control-label">Product</label>
+                    <label for="productName" class="col-sm-2 control-label estore-label-mandatory">Product</label>
                     <div class="col-sm-6">
                         <input id="productName" class="form-control" placeholder="product name" ng-model="product.ProductName" maxlength="50" required/>
                     </div>
@@ -27,15 +29,15 @@
                 </div>
         
                 <div class="form-group">
-                    <label for="Price" class="col-sm-2 control-label">Price</label>
+                    <label for="Price" class="col-sm-2 control-label estore-label-mandatory">Price</label>
                     <div class="col-sm-6">
-                        <input id="Price" ng-model="product.Price" class="form-control" placeholder="Price"/>
+                        <input id="Price" ng-model="product.Price" class="form-control" placeholder="Price" ng-input-number-only />
                     </div>
                 </div>
         
                 <div class="form-group">
                     <label for="Colour" class="col-sm-2 control-label">Color</label>
-                    <div class="col-sm-6">                        
+                    <div class="col-sm-6">
                         <select name="ColorCode" 
                                 class="form-control"
                                 ng-init="product.ColorCode = colorList[0].ColorCode"
@@ -59,14 +61,19 @@
                 <div class="form-group">
                     <label for="productDescription" class="col-sm-2 control-label">Description</label>
                     <div class="col-sm-6">
-                        <textarea id="productDescription" class="form-control control-readonly" placeholder="description" ng-model="product.Description" />
+                        <textarea id="productDescription" class="form-control control-readonly" placeholder="description" ng-model="product.Description" rows="3" />
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label for="ProductImage" class="col-sm-2 control-label">Image</label>
                     <div class="col-sm-6">
-                        <input type="file" name="pic" accept="image/*">                        
+                        <input type="file" name="pic" accept="image/*">
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="image estore-image-large">
+                            <img ng-src="{{ product.ProductImageUrl }}" alt="{{ product.ProductName }}" />
+                        </div>
                     </div>
                 </div>
                 
@@ -80,7 +87,7 @@
                 </div>
             </form>
         </div>
-        <div class="panel-footer">
+        <div class="panel-footer estore-panel-footer">
             <input type="button" class="btn btn-primary" value="Save" 
                 ng-click="save(product)" ng-disabled="(frmProduct.$invalid || isSubmitting)"/>
             <input type="button" class="btn btn-danger" value="Cancel" 
@@ -89,5 +96,5 @@
                 <img ng-if="isSubmitting" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
             </span>
         </div>
-    </div>    
+    </div>
 </div>        

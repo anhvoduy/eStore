@@ -16,22 +16,83 @@
     color: white;
 }
 
+.main-content {
+    padding-top: 80px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 30px;
+}
 
+/* estore-panel */
+.panel.panel-default.estore-panel-default{
+    /* border-radius: 8px 8px 8px 8px; */
+}
+
+.estore-panel-heading {
+    background-color: #186c9b;
+    border-color: #186c9b;
+    background-image: linear-gradient(to bottom,#186c9b 0, #186c9b 100%) !important;
+    /* border-radius: 8px 8px 0 0; */
+}
+
+.estore-panel-title {    
+    color: white;
+}
+
+.estore-panel-title>label {
+    margin: auto;
+    font-weight: normal;
+    font-size: 1em;
+}
+
+.estore-form-row {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.estore-panel-footer {
+    background-color: white;
+    /* border-radius: 0px 0px 8px 8px; */
+}
+
+
+/* row & controls */
 .row.row-table {
     margin-right: 50px;
 }
+
+.estore-label {
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 0.5em;
+}
+
+.estore-label-mandatory::after{
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    content: "\f069";
+    color: #be1e2d;
+    font-size: 0.5em;
+    padding: 0 0 0 2px;
+    vertical-align: top;
+}
+
+.estore-image-large {
+    margin: 1%;
+    max-height: 980px;
+    max-width: 418px;
+}
+
 .message-error {
     color: red;    
 }
 .message-success {
-    color: green;    
+    color: green;
 }
 .control-readonly {
     background-color: white !important;
-}
-
-.main-content {
-    padding-top: 80px;
 }
 
 .form-login {

@@ -1,8 +1,8 @@
 (function () {
     'use strict';
     app.factory('appCommon', appCommon);    
-    appCommon.$inject = ['$rootScope', '$cookieStore'];
-    function appCommon($rootScope, $cookieStore) {
+    appCommon.$inject = ['$rootScope', '$cookieStore', '$location'];
+    function appCommon($rootScope, $cookieStore, $location) {
         // constructor        
         var appCommon = function () {
         }        
@@ -80,7 +80,11 @@
                 return true;
             else
                 return false;
-        };                
+        };
+        
+        appCommon.prototype.getRootLocation = function(){
+            return $location.$$protocol + ':' + '//' + $location.$$host + ':' + $location.$$port;
+        };
 
         // export
         return new appCommon;

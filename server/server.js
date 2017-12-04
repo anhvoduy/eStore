@@ -36,7 +36,8 @@ server.use('/api/transaction', require('./routes/transaction'));
 server.use('/api/search', require('./routes/search'));
 server.use('/api/report', require('./routes/report'));
 
-
+var pathUploads = path.join(__dirname, 'uploads');
+server.use('/uploads', express.static(pathUploads));
 
 
 
