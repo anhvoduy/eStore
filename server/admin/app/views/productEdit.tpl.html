@@ -1,4 +1,4 @@
-﻿<div class="container">
+﻿<div class="panel-group">
     <div class="panel panel-default">
         <div class="panel-heading estore-panel-heading">
             <div class="panel-title estore-panel-title">
@@ -69,6 +69,11 @@
                     <label for="ProductImage" class="col-sm-2 control-label">Image</label>
                     <div class="col-sm-6">
                         <input type="file" name="pic" accept="image/*">
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="image estore-image-large">
+                            <img ng-src="{{ product.ProductImageUrl }}" alt="{{ product.ProductName }}" />
+                        </div>
                     </div>
                 </div>
                 

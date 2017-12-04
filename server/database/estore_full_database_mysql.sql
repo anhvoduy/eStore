@@ -758,74 +758,74 @@ CREATE TABLE `Product` (
 --
 -- Sample data for table `Product`
 --
-INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES (uuid(),'Sony Vaio','Sony Vaio',1,100,'White','NEW','Cool','SYSTEM','SYSTEM');
+INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`ProductImage`,`Author`,`Editor`)
+VALUES (uuid(),'Sony Vaio','Sony Vaio',1,100,'White','NEW','Cool','product02.jpg','SYSTEM','SYSTEM');
 
-INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES (uuid(),'Dell','Dell Vostro',2,2000,'White','NEW','Cool','SYSTEM','SYSTEM');
+INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`ProductImage`,`Author`,`Editor`)
+VALUES (uuid(),'Dell','Dell Vostro',2,2000,'White','NEW','Cool','product02.jpg','SYSTEM','SYSTEM');
 
-INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES (uuid(),'HP Note','HP Note',2,100,'Yellow','NEW','Cool','SYSTEM','SYSTEM');
+INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`ProductImage`,`Author`,`Editor`)
+VALUES (uuid(),'HP Note','HP Note',2,100,'Yellow','NEW','Cool','product02.jpg','SYSTEM','SYSTEM');
 
-INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES (uuid(),'Asus','Asus',4,800,'White','NEW','Cool','SYSTEM','SYSTEM');
+INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`ProductImage`,`Author`,`Editor`)
+VALUES (uuid(),'Asus','Asus',4,800,'White','NEW','Cool','product03.jpg','SYSTEM','SYSTEM');
 
-INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES (uuid(),'Acer','Laptop Acer',4,100,'White','NEW','Cool','SYSTEM','SYSTEM');
+INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`ProductImage`,`Author`,`Editor`)
+VALUES (uuid(),'Acer','Laptop Acer',4,100,'White','NEW','Cool','product03.jpg','SYSTEM','SYSTEM');
 
-INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES (uuid(),'Sony Xperia','Sony Xperia',6,1200,'White','NEW','Cool','SYSTEM','SYSTEM');
+INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`ProductImage`,`Author`,`Editor`)
+VALUES (uuid(),'Sony Xperia','Sony Xperia',6,1200,'White','NEW','Cool','product03.jpg','SYSTEM','SYSTEM');
 
-INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES (uuid(),'IBM T42','IBM T42',20,100,'Red','NEW','Cool','SYSTEM','SYSTEM');
+INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`ProductImage`,`Author`,`Editor`)
+VALUES (uuid(),'IBM T42','IBM T42',20,100,'Red','NEW','Cool','product04.jpg','SYSTEM','SYSTEM');
 
-INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES (uuid(),'IBM T60','IBM T60',20,100,'Red','NEW','Cool','SYSTEM','SYSTEM');
+INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`ProductImage`,`Author`,`Editor`)
+VALUES (uuid(),'IBM T60','IBM T60',20,100,'Red','NEW','Cool','product04.jpg','SYSTEM','SYSTEM');
 
-INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES (uuid(),'IBM T400','IBM T400',20,100,'Red','NEW','Cool','SYSTEM','SYSTEM');
+INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`ProductImage`,`Author`,`Editor`)
+VALUES (uuid(),'IBM T400','IBM T400',20,100,'Red','NEW','Cool','product04.jpg','SYSTEM','SYSTEM');
 
-INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES (uuid(),'Ipad 5','Ipad 5',22,3000,'Green','NEW','Cool','SYSTEM','SYSTEM');
+INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`ProductImage`,`Author`,`Editor`)
+VALUES (uuid(),'Ipad 5','Ipad 5',22,3000,'Green','NEW','Cool','product05.jpg','SYSTEM','SYSTEM');
 
-INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES (uuid(),'IBM T42','IBM T42',20,100,'Red','NEW','Cool','SYSTEM','SYSTEM');
+INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`ProductImage`,`Author`,`Editor`)
+VALUES (uuid(),'IBM T42','IBM T42',20,100,'Red','NEW','Cool','product05.jpg','SYSTEM','SYSTEM');
 
-INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES (uuid(),'IBM T60','IBM T60',20,100,'Red','NEW','Cool','SYSTEM','SYSTEM');
+INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`ProductImage`,`Author`,`Editor`)
+VALUES (uuid(),'IBM T60','IBM T60',20,100,'Red','NEW','Cool','product05.jpg','SYSTEM','SYSTEM');
 
-INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES (uuid(),'IBM T400','IBM T400',20,100,'Red','NEW','Cool','SYSTEM','SYSTEM');
+INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`ProductImage`,`Author`,`Editor`)
+VALUES (uuid(),'IBM T400','IBM T400',20,100,'Red','NEW','Cool','product05.jpg','SYSTEM','SYSTEM');
 
-INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES (uuid(),'Ipad 6','Ipad 6',22,3000,'Green','NEW','Cool','SYSTEM','SYSTEM');
+INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`ProductImage`,`Author`,`Editor`)
+VALUES (uuid(),'Ipad 6','Ipad 6',22,3000,'Green','NEW','Cool','product05.jpg','SYSTEM','SYSTEM');
 
-INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES (uuid(),'IBM T43','IBM T43',5,100,'Red','NEW','Cool','SYSTEM','SYSTEM');
+INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`ProductImage`,`Author`,`Editor`)
+VALUES (uuid(),'IBM T43','IBM T43',5,100,'Red','NEW','Cool','product05.jpg','SYSTEM','SYSTEM');
 
-INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES (uuid(),'IBM T44','IBM T44',5,100,'Red','NEW','Cool','SYSTEM','SYSTEM');
+INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`ProductImage`,`Author`,`Editor`)
+VALUES (uuid(),'IBM T44','IBM T44',5,100,'Red','NEW','Cool','product05.jpg','SYSTEM','SYSTEM');
 
-INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES (uuid(),'IBM T45','IBM T45',5,100,'Red','NEW','Cool','SYSTEM','SYSTEM');
+INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`ProductImage`,`Author`,`Editor`)
+VALUES (uuid(),'IBM T45','IBM T45',5,100,'Red','NEW','Cool','product05.jpg','SYSTEM','SYSTEM');
 
-INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES (uuid(),'Ipad 7','Ipad 7',22,3000,'Green','NEW','Cool','SYSTEM','SYSTEM');
+INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`ProductImage`,`Author`,`Editor`)
+VALUES (uuid(),'Ipad 7','Ipad 7',22,3000,'Green','NEW','Cool','product05.jpg','SYSTEM','SYSTEM');
 
-INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES (uuid(),'IBM T46','IBM T46',5,100,'Red','NEW','Cool','SYSTEM','SYSTEM');
+INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`ProductImage`,`Author`,`Editor`)
+VALUES (uuid(),'IBM T46','IBM T46',5,100,'Red','NEW','Cool','product05.jpg','SYSTEM','SYSTEM');
 
-INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES (uuid(),'IBM T47','IBM T47',5,100,'Red','NEW','Cool','SYSTEM','SYSTEM');
+INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`ProductImage`,`Author`,`Editor`)
+VALUES (uuid(),'IBM T47','IBM T47',5,100,'Red','NEW','Cool','product05.jpg','SYSTEM','SYSTEM');
 
-INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES (uuid(),'IBM T2000','IBM T2000',20,100,'Red','NEW','Cool','SYSTEM','SYSTEM');
+INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`ProductImage`,`Author`,`Editor`)
+VALUES (uuid(),'IBM T2000','IBM T2000',20,100,'Red','NEW','Cool','product05.jpg','SYSTEM','SYSTEM');
 
-INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES (uuid(),'Ipad 8','Ipad 8',5,3000,'Green','NEW','Cool','SYSTEM','SYSTEM');
+INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`ProductImage`,`Author`,`Editor`)
+VALUES (uuid(),'Ipad 8','Ipad 8',5,3000,'Green','NEW','Cool','product05.jpg','SYSTEM','SYSTEM');
 
-INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`Author`,`Editor`)
-VALUES (uuid(),'Lifan 2015','Lifan 2015',2,500,'White','NEW','Cool','SYSTEM','SYSTEM');
+INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`ProductImage`,`Author`,`Editor`)
+VALUES (uuid(),'Lifan 2015','Lifan 2015',2,500,'White','NEW','Cool','product05.jpg','SYSTEM','SYSTEM');
 
 --
 -- Table structure for table `Review`

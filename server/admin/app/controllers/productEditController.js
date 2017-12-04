@@ -9,9 +9,10 @@
 			? appCommon.formStatus.isNew 
 			: appCommon.formStatus.isEdit;
 		$scope.formTitle = appCommon.setFormTitle($scope.formStatus, 'Product');
+		$scope.rootLocation = appCommon.getRootLocation();
 		$scope.colorList = appCommon.colorList;
 		$scope.messageSuccess = [];
-        $scope.messageError = [];		
+        $scope.messageError = [];
 		
 		
 		/* functions */
@@ -26,6 +27,10 @@
 			if(!appCommon.isUndefined($scope.productKey)){
 				productService.getProductByKey($scope.productKey).then(function (result) {
 					$scope.product = result;
+					if(!appCommon.isUndefined($scope.product.ProductImage)){
+						$scope.product.ProductImageUrl = String.format('{0}/{1}/{2}/{3}', $scope.rootLocation, 'uploads', 'products', $scope.product.ProductImage);
+					}
+
 					if (appCommon.isUndefined($scope.product)) {
 						$scope.messageError.push(String.format("The Product Key: {0} not found.", $scope.productKey));
 					}

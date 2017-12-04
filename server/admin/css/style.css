@@ -79,6 +79,12 @@
     vertical-align: top;
 }
 
+.estore-image-large {
+    margin: 1%;
+    max-height: 980px;
+    max-width: 418px;
+}
+
 .message-error {
     color: red;    
 }

@@ -26,10 +26,10 @@ Factory.prototype.getProducts = async function (query) {
         var sqlQuery = `
             SELECT  P.ProductId, P.ProductKey, P.ProductName, P.Description, 
                     P.BrandId, B.BrandName,
-                    P.Price, P.ColorCode, P.Created, P.Status, P.LatestReviewInfo 
+                    P.Price, P.ColorCode, P.Created, P.Status, P.LatestReviewInfo, P.ProductImage 
             FROM Product P INNER JOIN Brand B
             WHERE P.BrandId = B.BrandId
-            ORDER BY P.ProductId DESC
+            ORDER BY P.ProductId ASC
             LIMIT :Offset, :Limit
         `;
         let data = await dbContext.queryList(sqlQuery, {
@@ -57,7 +57,7 @@ Factory.prototype.getProductById = async function (query) {
         var sql = `
             SELECT  P.ProductId, P.ProductKey, P.ProductName, P.Description, 
                     P.BrandId, B.BrandName,
-                    P.Price, P.ColorCode, P.Created, P.Status, P.LatestReviewInfo
+                    P.Price, P.ColorCode, P.Created, P.Status, P.LatestReviewInfo, P.ProductImage 
             FROM Product P INNER JOIN Brand B ON P.BrandId = B.BrandId 
             WHERE   P.ProductId =:ProductId
                 AND B.Deleted <> 1
@@ -75,7 +75,7 @@ Factory.prototype.getProductByKey = function (query) {
 	var sql = `
 		SELECT  P.ProductId, P.ProductKey, P.ProductName, P.Description, 
 				P.BrandId, B.BrandName,
-		        P.Price, P.ColorCode, P.Created, P.Status, P.LatestReviewInfo
+		        P.Price, P.ColorCode, P.Created, P.Status, P.LatestReviewInfo, P.ProductImage 
 		FROM Product P INNER JOIN Brand B ON P.BrandId = B.BrandId 
         WHERE   P.ProductKey =:ProductKey
             AND B.Deleted <> 1
@@ -88,7 +88,7 @@ Factory.prototype.getProductsByBrand = function (query) {
 	var sql = `
 		SELECT  P.ProductId, P.ProductKey, P.ProductName, P.Description, 
 				P.Price, P.ColorCode, P.Created, P.Status,
-        		P.BrandId, B.BrandName, P.LatestReviewInfo
+        		P.BrandId, B.BrandName, P.LatestReviewInfo, P.ProductImage 
 		FROM Product P INNER JOIN Brand B ON P.BrandId = B.BrandId
         WHERE   B.BrandId =:BrandId 
             AND B.Deleted <> 1 
@@ -129,7 +129,7 @@ Factory.prototype.update = async function (product) {
     {
         let sql = `
             UPDATE Product
-            SET ProductName=:ProductName,            
+            SET ProductName=:ProductName,
                 BrandId=:BrandId,
                 ColorCode=:ColorCode,
                 Price=:Price,
