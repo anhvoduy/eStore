@@ -1,13 +1,26 @@
 const router = require('express').Router();
 const _ = require('lodash');
+const upload = multer({ dest: 'uploads/products/' })
 const auth = require('../config/auth');
 const CONSTANT = require('../lib/constant');
+const commonlib = require('../lib/commonlib');
 const dbContext = require('../lib/dbContext');
 const errorHelper = require('../lib/errorHelper');
 const brandService = require('../services/brandService');
 const productService = require('../services/productService');
 
 // Router
+router.post('/upload', auth.checkAuthentication(), upload.single('avatar'), async function(req, res, next){
+	try
+	{
+		let productImageKey = 'XXXX';
+		res.status(200).json(productImageKey);
+	}
+	catch(err){
+		next(err);
+	}
+});
+
 router.get('/items', auth.checkAuthentication(), async function (req, res, next) {
 	try
 	{

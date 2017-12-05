@@ -9,7 +9,12 @@
         productService.prototype = new baseService('api/product');
         productService.prototype.constructor = productService;
         
-        // methods                
+        // methods
+        productService.prototype.upload = function (file) {
+            var url = String.format('{0}/upload', this.api);            
+            return this.postData(url, { file: file });
+        };
+
         productService.prototype.getList = function (pageCurrent, pageSize) {
             var url = String.format('{0}/items', this.api);
             var params = {
@@ -70,6 +75,15 @@
         productService.prototype.update = function (product) {
             var url = String.format('{0}/update', this.api);            
             return this.postData(url, product);
+        };
+
+        productService.prototype.delete = function (productId, productKey) {
+            var url = String.format('{0}/delete', this.api);
+            var params = {
+                ProductId: productId,
+                ProductKey: productKey
+            }
+            return this.postData(url, params);
         };
         
         return new productService;

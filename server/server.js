@@ -17,7 +17,7 @@ server.use(bodyParser.json());
 
 // setup Server
 auth.setup(server);
-server.set('port', process.env.PORT || 3000);
+server.set('port', process.env.PORT || 8000);
 server.set('secretKey', config.secretKey);
 
 // Register API 
