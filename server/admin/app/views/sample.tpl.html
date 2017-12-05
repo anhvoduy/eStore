@@ -65,7 +65,9 @@
             </div>
             <div ng-show="!vm.fileSelected" class="text-center form-group">
                 <label>ng-file-upload:</label>
-                <button class="btn btn-default btn-file" ngf-select="(vm.fileSelected = true) && (vm.loading = false)" ng-model="picFile" accept="image/*" ngf-before-model-change="vm.loading = true" ngf-resize="{width: 400}" ngf-resize-if="$width > 400 || $height > 400">Select Picture</button>
+                <button class="btn btn-default btn-file" ngf-select="(vm.fileSelected = true) && (vm.loading = false)" ng-model="picFile" accept="image/*" 
+					ngf-before-model-change="vm.loading = true" 
+					ngf-resize="{width: 400}" ngf-resize-if="$width > 400 || $height > 400">Select Picture</button>
             </div>
             <div ng-show="vm.fileSelected" class="text-center form-group">
                 <button class="btn btn-primary" ng-click="vm.upload(picFile)">Use This Picture</button>

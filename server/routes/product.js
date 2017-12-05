@@ -12,7 +12,7 @@ const productService = require('../services/productService');
 // sample file upload
 const multerConfig = {
 	dest: './uploads/products',
-	limits: { fileSize: 1048576 }
+	limits: { fileSize: CONSTANT.UPLOAD_FILE.FILE_SIZE }
 };
 const uploadProductImage = multer(multerConfig).single('ProductImage');
 
@@ -20,9 +20,9 @@ router.post('/upload', auth.checkAuthentication(), uploadProductImage, async fun
 	try
 	{
 		if(req.file)
-			res.status(200).json({ success: true, FileName: req.file.filename });
+			res.status(200).json({ Success: true, FileName: req.file.filename });
 		else
-			res.status(500).json({ success: false });
+			res.status(500).json({ Success: false });
 	}
 	catch(err){
 		next(err);
@@ -113,8 +113,9 @@ router.post('/update', auth.checkAuthentication(), async function (req, res, nex
 				product.ProductId = prod.ProductId;
 		}
 
-		let result = await productService.update(product);
-		if(result.affectedRows > 0) 
+		let r1 = await productService.update(product);
+		let r2 = await productService.saveImage(product.ProductId, product.ProductImage);
+		if(r1.affectedRows > 0) 
 			res.status(200).json({ success: true });
 		else 
 			res.status(500).json({ success: false });
