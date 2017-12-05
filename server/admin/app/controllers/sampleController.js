@@ -108,7 +108,7 @@
 			Upload.upload({
 				url: '/api/product/upload',
 				data: {
-				  newProductImage: dataUrl
+					newProductImage: dataUrl
 				}
 			}).then(function (response) {
 				$timeout(function () {

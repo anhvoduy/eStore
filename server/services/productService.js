@@ -143,6 +143,17 @@ Factory.prototype.update = async function (product) {
     }
 }
 
+Factory.prototype.saveImage = async function (product) {
+    try
+    {
+        let sql = `UPDATE Product SET ProductImage=:ProductImage WHERE ProductId=:ProductId`;
+        return dbContext.queryExecute(sql, product);
+    }
+    catch(err){
+        throw err;
+    }
+}
+
 Factory.prototype.delete = async function (productId) {
     try
     {

@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const _ = require('lodash');
-//const upload = multer({ dest: 'uploads/products/' })
+const multer = require('multer');
 const auth = require('../config/auth');
 const CONSTANT = require('../lib/constant');
 const commonlib = require('../lib/commonlib');
@@ -9,16 +9,30 @@ const errorHelper = require('../lib/errorHelper');
 const brandService = require('../services/brandService');
 const productService = require('../services/productService');
 
-// Router
-router.post('/upload', auth.checkAuthentication(), async function(req, res, next){
+router.post('/upload', auth.checkAuthentication(), async function(req, res, next){	
 	try
 	{
-		let user = req.user;
-		let existingImageUrl;
-		let multerConfig;
+		let upload = multer(multerConfig).single('newProductImage');
+		let multerConfig = {
+			dest: './uploads/products',
+			limits: { fileSize: 1048576 }
+		};
+		function uploadImage(req, res){
+			return new Promise(function (resolve, reject) {
+				upload(req, res, function (err) {
+					if (err) reject(err);
+					else resolve(true);
+				});
+			});
+		};
 
-		let productImageKey = 'XXXX';
-		res.status(200).json(productImageKey);
+		let product = req.data;
+		return uploadImage(req, res).then(function(){
+			res.status(200).json(true);
+		})
+		.catch(function(err){
+			next(err);
+		});
 	}
 	catch(err){
 		next(err);

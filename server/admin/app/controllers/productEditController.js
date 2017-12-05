@@ -111,7 +111,7 @@
 			}
 			else if($scope.formStatus === appCommon.formStatus.isEdit){
 				return updateProduct(product);
-			};			
+			};
 		};
 
         $scope.cancel = function() {
