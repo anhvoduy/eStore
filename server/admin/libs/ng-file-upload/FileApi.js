@@ -1,4 +1,4 @@
-/*! FileAPI 2.0.17 - BSD | git://github.com/mailru/FileAPI.git
+/*! FileAPI 2.0.7 - BSD | git://github.com/mailru/FileAPI.git
  * FileAPI — a set of  javascript tools for working with files. Multiupload, drag'n'drop and chunked file upload. Images: crop, resize and auto orientation by EXIF.
  */
 
@@ -105,7 +105,6 @@
 		document = window.document,
 		doctype = document.doctype || {},
 		userAgent = window.navigator.userAgent,
-		safari = /safari\//i.test(userAgent) && !/chrome\//i.test(userAgent),
 
 		// https://github.com/blueimp/JavaScript-Load-Image/blob/master/load-image.js#L48
 		apiURL = (window.createObjectURL && window) || (window.URL && URL.revokeObjectURL && URL) || (window.webkitURL && webkitURL),
@@ -120,13 +119,11 @@
 		jQuery = window.jQuery,
 
 		html5 =    !!(File && (FileReader && (window.Uint8Array || FormData || XMLHttpRequest.prototype.sendAsBinary)))
-				&& !(safari && /windows/i.test(userAgent)), // BugFix: https://github.com/mailru/FileAPI/issues/25
+				&& !(/safari\//i.test(userAgent) && !/chrome\//i.test(userAgent) && /windows/i.test(userAgent)), // BugFix: https://github.com/mailru/FileAPI/issues/25
 
 		cors = html5 && ('withCredentials' in (new XMLHttpRequest)),
 
 		chunked = html5 && !!Blob && !!(Blob.prototype.webkitSlice || Blob.prototype.mozSlice || Blob.prototype.slice),
-
-		normalize = ('' + ''.normalize).indexOf('[native code]') > 0,
 
 		// https://github.com/blueimp/JavaScript-Canvas-to-Blob
 		dataURLtoBlob = window.dataURLtoBlob,
@@ -139,8 +136,6 @@
 		_rdata = /^data:[^,]+,/,
 
 		_toString = {}.toString,
-		_supportConsoleLog,
-		_supportConsoleLogApply,
 
 
 		Math = window.Math,
@@ -280,12 +275,11 @@
 			return attr in input;
 		},
 
-
 		/**
 		 * FileAPI (core object)
 		 */
 		api = {
-			version: '2.0.17',
+			version: '2.0.7',
 
 			cors: false,
 			html5: true,
@@ -345,8 +339,9 @@
 			},
 
 			log: function (){
-				if( api.debug && _supportConsoleLog ){
-					if( _supportConsoleLogApply ){
+				// ngf fix for IE8 #1071
+				if( api.debug && api._supportConsoleLog ){
+					if( api._supportConsoleLogApply ){
 						console.log.apply(console, arguments);
 					}
 					else {
@@ -800,84 +795,28 @@
 			getDropFiles: function (evt, callback){
 				var
 					  files = []
-					, all = []
-					, items
 					, dataTransfer = _getDataTransfer(evt)
-					, transFiles = dataTransfer.files
-					, transItems = dataTransfer.items
-					, entrySupport = _isArray(transItems) && transItems[0] && _getAsEntry(transItems[0])
-					, queue = api.queue(function (){ callback(files, all); })
+					, entrySupport = _isArray(dataTransfer.items) && dataTransfer.items[0] && _getAsEntry(dataTransfer.items[0])
+					, queue = api.queue(function (){ callback(files); })
 				;
 
-				if( entrySupport ){
-					if( normalize && transFiles ){
-						var
-							i = transFiles.length
-							, file
-							, entry
-						;
-
-						items = new Array(i);
-						while( i-- ){
-							file = transFiles[i];
-
-							try {
-								entry = _getAsEntry(transItems[i]);
-							}
-							catch( err ){
-								api.log('[err] getDropFiles: ', err);
-								entry = null;
-							}
-
-							if( _isEntry(entry) ){
-								// OSX filesystems use Unicode Normalization Form D (NFD),
-								// and entry.file(…) can't read the files with the same names
-								if( entry.isDirectory || (entry.isFile && file.name == file.name.normalize('NFC')) ){
-									items[i] = entry;
-								}
-								else {
-									items[i] = file;
-								}
-							}
-							else {
-								items[i] = file;
-							}
-						}
-					}
-					else {
-						items = transItems;
-					}
-				}
-				else {
-					items = transFiles;
-				}
-
-				_each(items || [], function (item){
+				_each((entrySupport ? dataTransfer.items : dataTransfer.files) || [], function (item){
 					queue.inc();
 
 					try {
-						if( entrySupport && _isEntry(item) ){
-							_readEntryAsFiles(item, function (err, entryFiles, allEntries){
+						if( entrySupport ){
+							_readEntryAsFiles(item, function (err, entryFiles){
 								if( err ){
 									api.log('[err] getDropFiles:', err);
 								} else {
 									files.push.apply(files, entryFiles);
 								}
-								all.push.apply(all, allEntries);
-
 								queue.next();
 							});
 						}
 						else {
-							_isRegularFile(item, function (yes, err){
-								if( yes ){
-									files.push(item);
-								}
-								else {
-									item.error = err;
-								}
-								all.push(item);
-
+							_isRegularFile(item, function (yes){
+								yes && files.push(item);
 								queue.next();
 							});
 						}
@@ -1197,7 +1136,7 @@
 										options.progress({
 											  type:   'progress'
 											, total:  _total
-											, loaded: proxyXHR.loaded = (_loaded + data.size * (evt.loaded/evt.total)) || 0
+											, loaded: proxyXHR.loaded = (_loaded + data.size * (evt.loaded/evt.total))|0
 										}, _file, xhr, _fileOptions);
 									}
 								} : noop,
@@ -1368,13 +1307,7 @@
 						queue.inc();
 
 						file.toData(function (err, image){
-							// @todo: требует рефакторинга и обработки ошибки
-							if (file.file) {
-								image.type = file.file.type;
-								image.quality = file.matrix.quality;
-								filename = file.file && file.file.name;
-							}
-
+							// @todo: error
 							filename = filename || (new Date).getTime()+'.png';
 
 							_addFile(image);
@@ -1558,13 +1491,13 @@
 	}
 
 
-	function _hasSupportReadAs(method){
-		return	FileReader && !!FileReader.prototype['readAs' + method];
+	function _hasSupportReadAs(as){
+		return	FileReader && !!FileReader.prototype['readAs'+as];
 	}
 
 
-	function _readAs(file, fn, method, encoding){
-		if( api.isBlob(file) && _hasSupportReadAs(method) ){
+	function _readAs(file, fn, as, encoding){
+		if( api.isBlob(file) && _hasSupportReadAs(as) ){
 			var Reader = new FileReader;
 
 			// Add event listener
@@ -1586,10 +1519,10 @@
 			try {
 				// ReadAs ...
 				if( encoding ){
-					Reader['readAs' + method](file, encoding);
+					Reader['readAs'+as](file, encoding);
 				}
 				else {
-					Reader['readAs' + method](file);
+					Reader['readAs'+as](file);
 				}
 			}
 			catch (err){
@@ -1597,46 +1530,38 @@
 			}
 		}
 		else {
-			_emit(file, fn, 'error', undef, { error: 'filreader_not_support_' + method });
+			_emit(file, fn, 'error', undef, { error: 'FileReader_not_support_'+as });
 		}
 	}
 
 
 	function _isRegularFile(file, callback){
 		// http://stackoverflow.com/questions/8856628/detecting-folders-directories-in-javascript-filelist-objects
-		if( !file.type && (safari || ((file.size % 4096) === 0 && (file.size <= 102400))) ){
+		if( !file.type && (file.size % 4096) === 0 && (file.size <= 102400) ){
 			if( FileReader ){
 				try {
-					var reader = new FileReader();
+					var Reader = new FileReader();
 
-					_one(reader, _readerEvents, function (evt){
+					_one(Reader, _readerEvents, function (evt){
 						var isFile = evt.type != 'error';
+						callback(isFile);
 						if( isFile ){
-							reader.abort();
-							callback(isFile);
-						}
-						else {
-							callback(false, reader.error);
+							Reader.abort();
 						}
 					});
 
-					reader.readAsDataURL(file);
+					Reader.readAsDataURL(file);
 				} catch( err ){
-					callback(false, err);
+					callback(false);
 				}
 			}
 			else {
-				callback(null, new Error('FileReader is not supported'));
+				callback(null);
 			}
 		}
 		else {
 			callback(true);
 		}
-	}
-
-
-	function _isEntry(item){
-		return item && (item.isFile || item.isDirectory);
 	}
 
 
@@ -1651,68 +1576,45 @@
 	function _readEntryAsFiles(entry, callback){
 		if( !entry ){
 			// error
-			var err = new Error('invalid entry');
-			entry = new Object(entry);
-			entry.error = err;
-			callback(err.message, [], [entry]);
+			callback('invalid entry');
 		}
 		else if( entry.isFile ){
 			// Read as file
-			entry.file(function (file){
+			entry.file(function(file){
 				// success
 				file.fullPath = entry.fullPath;
-				callback(false, [file], [file]);
+				callback(false, [file]);
 			}, function (err){
 				// error
-				entry.error = err;
-				callback('FileError.code: ' + err.code, [], [entry]);
+				callback('FileError.code: '+err.code);
 			});
 		}
 		else if( entry.isDirectory ){
-			var
-				reader = entry.createReader()
-				, firstAttempt = true
-				, files = []
-				, all = [entry]
-			;
+			var reader = entry.createReader(), result = [];
 
-			var onerror = function (err){
-				// error
-				entry.error = err;
-				callback('DirectoryError.code: ' + err.code, files, all);
-			};
-			var ondone = function ondone(entries){
-				if( firstAttempt ){
-					firstAttempt = false;
-					if( !entries.length ){
-						entry.error = new Error('directory is empty');
-					}
-				}
-
+			reader.readEntries(function(entries){
 				// success
-				if( entries.length ){
-					api.afor(entries, function (next, entry){
-						_readEntryAsFiles(entry, function (err, entryFiles, allEntries){
-							if( !err ){
-								files = files.concat(entryFiles);
-							}
-							all = all.concat(allEntries);
+				api.afor(entries, function (next, entry){
+					_readEntryAsFiles(entry, function (err, files){
+						if( err ){
+							api.log(err);
+						}
+						else {
+							result = result.concat(files);
+						}
 
-							if( next ){
-								next();
-							}
-							else {
-								reader.readEntries(ondone, onerror);
-							}
-						});
+						if( next ){
+							next();
+						}
+						else {
+							callback(false, result);
+						}
 					});
-				}
-				else {
-					callback(false, files, all);
-				}
-			};
-
-			reader.readEntries(ondone, onerror);
+				});
+			}, function (err){
+				// error
+				callback('directory_reader: ' + err);
+			});
 		}
 		else {
 			_readEntryAsFiles(_getAsEntry(entry), callback);
@@ -1833,8 +1735,8 @@
 				_type = 0;
 				onHover.call(evt[currentTarget], false, evt);
 
-				api.getDropFiles(evt, function (files, all){
-					onDrop.call(evt[currentTarget], files, all, evt);
+				api.getDropFiles(evt, function (files){
+					onDrop.call(evt[currentTarget], files, evt);
 				});
 			});
 		}
@@ -1889,12 +1791,11 @@
 	});
 
 
-	// Configuration
+	// configuration
 	try {
-		_supportConsoleLog = !!console.log;
-		_supportConsoleLogApply = !!console.log.apply;
-	}
-	catch (err) {}
+		api._supportConsoleLog = !!console.log;
+		api._supportConsoleLogApply = !!console.log.apply;
+	} catch (err) {}
 
 	if( !api.flashUrl ){ api.flashUrl = api.staticPath + 'FileAPI.flash.swf'; }
 	if( !api.flashImageUrl ){ api.flashImageUrl = api.staticPath + 'FileAPI.flash.image.swf'; }
@@ -1976,7 +1877,7 @@
 		},
 
 		resize: function (w, h, strategy){
-			if( /min|max|height|width/.test(h) ){
+			if( /min|max/.test(h) ){
 				strategy = h;
 				h = w;
 			}
@@ -2158,12 +2059,6 @@
 						sh		= h;
 					}
 				}
-			}
-			else if( strategy == 'height' ){
-				dw = dh * sf;
-			}
-			else if( strategy == 'width' ){
-				dh = dw / sf;
 			}
 			else if( strategy ){
 				if( !(sw > dw || sh > dh) ){
@@ -2632,13 +2527,7 @@
 			});
 
 			this.each(function (file){
-				try{
-					next(file, data, queue, arg);
-				}
-				catch( err ){
-					api.log('FileAPI.Form._to: ' + err.message);
-					complete(err);
-				}
+				next(file, data, queue, arg);
 			});
 
 			queue.check();
@@ -2866,19 +2755,14 @@
 			var _this = this, options = this.options;
 
 			FormData.toData(function (data){
-				if( data instanceof Error ){
-					_this.end(0, data.message);
-				}
-				else{
-					// Start uploading
-					options.upload(options, _this);
-					_this._send.call(_this, options, data);
-				}
+				// Start uploading
+				options.upload(options, _this);
+				_this._send.call(_this, options, data);
 			}, options);
 		},
 
 		_send: function (options, data){
-			var _this = this, xhr, uid = _this.uid, onLoadFnName = _this.uid + "Load", url = options.url;
+			var _this = this, xhr, uid = _this.uid, onloadFuncName = _this.uid + "Load", url = options.url;
 
 			api.log('XHR._send:', data);
 
@@ -2917,7 +2801,7 @@
 						_this.end(status, statusText);
 
 						api.event.off(window, 'message', onPostMessage);
-						window[uid] = xhr = transport = window[onLoadFnName] = null;
+						window[uid] = xhr = transport = window[onloadFuncName] = null;
 					}
 				;
 
@@ -2933,7 +2817,7 @@
 
 				api.event.on(window, 'message', onPostMessage);
 
-				window[onLoadFnName] = function (){
+				window[onloadFuncName] = function (){
 					try {
 						var
 							  win = transport.contentWindow
@@ -2948,7 +2832,7 @@
 
 				xhr = document.createElement('div');
 				xhr.innerHTML = '<form target="'+ uid +'" action="'+ url +'" method="POST" enctype="multipart/form-data" style="position: absolute; top: -1000px; overflow: hidden; width: 1px; height: 1px;">'
-							+ '<iframe name="'+ uid +'" src="javascript:false;" onload="window.' + onLoadFnName + ' && ' + onLoadFnName + '();"></iframe>'
+							+ '<iframe name="'+ uid +'" src="javascript:false;" onload="' + onloadFuncName + '()"></iframe>'
 							+ (jsonp && (options.url.indexOf('=?') < 0) ? '<input value="'+ uid +'" name="'+jsonp+'" type="hidden"/>' : '')
 							+ '</form>'
 				;
@@ -2971,11 +2855,7 @@
 
 				// send
 				_this.readyState = 2; // loaded
-				try {
-					form.submit();
-				} catch (err) {
-					api.log('iframe.error: ' + err);
-				}
+				form.submit();
 				form = null;
 			}
 			else {
@@ -3032,9 +2912,11 @@
 						_this.readyState = xhr.readyState;
 
 						if( xhr.readyState == 4 ){
-							for( var k in _xhrResponsePostfix ){
-								_this['response'+k]  = xhr['response'+k];
-							}
+							try {
+								for( var k in _xhrResponsePostfix ){
+									_this['response'+k]  = xhr['response'+k];
+								}
+							}catch(_){}
 							xhr.onreadystatechange = null;
 
 							if (!xhr.status || xhr.status - 201 > 0) {
@@ -3498,6 +3380,31 @@
 
 
 				/**
+				 * Publish flash-object
+				 *
+				 * @param {HTMLElement} el
+				 * @param {String} id
+				 * @param {Object} [opts]
+				 */
+				publish: function (el, id, opts){
+					opts = opts || {};
+					el.innerHTML = _makeFlashHTML({
+						id: id
+						, src: _getUrl(api.flashUrl, 'r=' + api.version)
+//						, src: _getUrl('http://v.demidov.boom.corp.mail.ru/uploaderfileapi/FlashFileAPI.swf?1')
+						, wmode: opts.camera ? '' : 'transparent'
+						, flashvars: 'callback=' + (opts.onEvent || 'FileAPI.Flash.onEvent')
+						+ '&flashId='+ id
+						+ '&storeKey='+ navigator.userAgent.match(/\d/ig).join('') +'_'+ api.version
+						+ (flash.isReady || (api.pingUrl ? '&ping='+api.pingUrl : ''))
+						+ '&timeout='+api.flashAbortTimeout
+						+ (opts.camera ? '&useCamera=' + _getUrl(api.flashWebcamUrl) : '')
+						+ '&debug='+(api.debug?"1":"")
+					}, opts);
+				},
+
+
+				/**
 				 * Initialization & preload flash object
 				 */
 				init: function (){
@@ -3518,7 +3425,7 @@
 									, width: 5
 									, height: 5
 									, position: 'absolute'
-									, zIndex: 2147483647+'' // set max zIndex
+									, zIndex: 1e6+'' // set max zIndex
 								});
 
 								child.parentNode.insertBefore(dummy, child);
@@ -3533,31 +3440,6 @@
 					if( _retry < 10 ){
 						setTimeout(flash.init, ++_retry*50);
 					}
-				},
-
-
-				/**
-				 * Publish flash-object
-				 *
-				 * @param {HTMLElement} el
-				 * @param {String} id
-				 * @param {Object} [opts]
-				 */
-				publish: function (el, id, opts){
-					opts = opts || {};
-					el.innerHTML = _makeFlashHTML({
-						  id: id
-						, src: _getUrl(api.flashUrl, 'r=' + api.version)
-//						, src: _getUrl('http://v.demidov.boom.corp.mail.ru/uploaderfileapi/FlashFileAPI.swf?1')
-						, wmode: opts.camera ? '' : 'transparent'
-						, flashvars: 'callback=' + (opts.onEvent || 'FileAPI.Flash.onEvent')
-							+ '&flashId='+ id
-							+ '&storeKey='+ navigator.userAgent.match(/\d/ig).join('') +'_'+ api.version
-							+ (flash.isReady || (api.pingUrl ? '&ping='+api.pingUrl : ''))
-							+ '&timeout='+api.flashAbortTimeout
-							+ (opts.camera ? '&useCamera=' + _getUrl(api.flashWebcamUrl) : '')
-							+ '&debug='+(api.debug?"1":"")
-					}, opts);
 				},
 
 
@@ -3593,73 +3475,75 @@
 					}
 					while( (node = node.parentNode) && (node !== document.body) );
 				},
-
+				
+				disableMouseover: false,
 
 				mouseover: function (evt){
-					var target = api.event.fix(evt).target;
-
-					if( /input/i.test(target.nodeName) && target.type == 'file' && !target.disabled ){
-						var
-							  state = target.getAttribute(_attr)
-							, wrapper = flash.getWrapper(target)
-						;
-
-						if( api.multiFlash ){
-							// check state:
-							//   p — published
-							//   i — initialization
-							//   r — ready
-							if( state == 'i' || state == 'r' ){
-								// publish fail
-								return	false;
-							}
-							else if( state != 'p' ){
-								// set "init" state
-								target.setAttribute(_attr, 'i');
-
-								var dummy = document.createElement('div');
-
-								if( !wrapper ){
-									api.log('[err] FlashAPI.mouseover: js-fileapi-wrapper not found');
-									return;
+					if (!flash.disableMouseover) {
+						var target = api.event.fix(evt).target;
+	
+						if( /input/i.test(target.nodeName) && target.type == 'file' && !target.disabled ){
+							var
+								  state = target.getAttribute(_attr)
+								, wrapper = flash.getWrapper(target)
+							;
+	
+							if( api.multiFlash ){
+								// check state:
+								//   i — published
+								//   i — initialization
+								//   r — ready
+								if( state == 'i' || state == 'r' ){
+									// publish fail
+									return	false;
 								}
-
-								_css(dummy, {
-									  top:    0
-									, left:   0
-									, width:  target.offsetWidth
-									, height: target.offsetHeight
-									, zIndex: 2147483647+'' // set max zIndex
-									, position: 'absolute'
-								});
-
-								wrapper.appendChild(dummy);
-								flash.publish(dummy, api.uid());
-
-								// set "publish" state
-								target.setAttribute(_attr, 'p');
+								else if( state != 'p' ){
+									// set "init" state
+									target.setAttribute(_attr, 'i');
+	
+									var dummy = document.createElement('div');
+	
+									if( !wrapper ){
+										api.log('[err] FlashAPI.mouseover: js-fileapi-wrapper not found');
+										return;
+									}
+	
+									_css(dummy, {
+										  top:    0
+										, left:   0
+										, width:  target.offsetWidth
+										, height: target.offsetHeight
+										, zIndex: 1e6+'' // set max zIndex
+										, position: 'absolute'
+									});
+	
+									wrapper.appendChild(dummy);
+									flash.publish(dummy, api.uid());
+	
+									// set "publish" state
+									target.setAttribute(_attr, 'p');
+								}
+	
+								return	true;
 							}
-
-							return	true;
+							else if( wrapper ){
+								// Use one flash element
+								var box = _getDimensions(wrapper);
+								_css(flash.getEl(), box);
+	
+								// Set current input
+								flash.curInp = target;
+							}
 						}
-						else if( wrapper ){
-							// Use one flash element
-							var box = _getDimensions(wrapper);
-
-							_css(flash.getEl(), box);
-
-							// Set current input
-							flash.curInp = target;
+						else if( !/object|embed/i.test(target.nodeName) ){
+							_css(flash.getEl(), { top: 1, left: 1, width: 5, height: 5 });
 						}
-					}
-					else if( !/object|embed/i.test(target.nodeName) ){
-						_css(flash.getEl(), { top: 1, left: 1, width: 5, height: 5 });
 					}
 				},
 
 				onEvent: function (evt){
 					var type = evt.type;
-
+					
 					if( type == 'ready' ){
 						try {
 							// set "ready" state
@@ -3684,8 +3568,12 @@
 						}, 1);
 					}
 				},
-
-
+				mouseDown: function(evt) {
+					flash.disableMouseover = true;
+				},
+				cancel: function(evt) {
+					flash.disableMouseover = false;
+				},
 				mouseenter: function (evt){
 					var node = flash.getInput(evt.flashId);
 
@@ -3734,42 +3622,55 @@
 
 
 				select: function (evt){
-					var
-						  inp = flash.getInput(evt.flashId)
-						, uid = api.uid(inp)
-						, files = evt.target.files
-						, event
-					;
-
-					_each(files, function (file){
-						api.checkFileObj(file);
-					});
-
-					_files[uid] = files;
-
-					if( document.createEvent ){
-						event = document.createEvent('Event');
-						event.files = files;
-						event.initEvent('change', true, true);
-						inp.dispatchEvent(event);
-					}
-					else if( jQuery ){
-						jQuery(inp).trigger({ type: 'change', files: files });
-					}
-					else {
-						event = document.createEventObject();
-						event.files = files;
-						inp.fireEvent('onchange', event);
+					try {
+						var
+							  inp = flash.getInput(evt.flashId)
+							, uid = api.uid(inp)
+							, files = evt.target.files
+							, event
+						;
+						_each(files, function (file){
+							api.checkFileObj(file);
+						});
+	
+						_files[uid] = files;
+	
+						if( document.createEvent ){
+							event = document.createEvent('Event');
+							event.files = files;
+							event.initEvent('change', true, true);
+							inp.dispatchEvent(event);
+						}
+						else if( jQuery ){
+							jQuery(inp).trigger({ type: 'change', files: files });
+						}
+						else {
+							event = document.createEventObject();
+							event.files = files;
+							inp.fireEvent('onchange', event);
+						}
+					} finally {
+						flash.disableMouseover = false;
 					}
 				},
 
-
-				cmd: function (id, name, data, last){
+				interval: null,
+				cmd: function (id, name, data, last) {
+					if (flash.uploadInProgress && flash.readInProgress) {
+						setTimeout(function() {
+							flash.cmd(id, name, data, last);
+						}, 100);
+					} else {
+						this.cmdFn(id, name, data, last);
+					}
+				},
+				
+				cmdFn: function(id, name, data, last) {
 					try {
 						api.log('(js -> flash).'+name+':', data);
 						return flash.get(id.flashId || id).cmd(name, data);
-					} catch (err){
-						api.log('(js -> flash).onError:', err.toString());
+					} catch (e){
+						api.log('(js -> flash).onError:', e);
 						if( !last ){
 							// try again
 							setTimeout(function (){ flash.cmd(id, name, data, true); }, 50);
@@ -3777,12 +3678,56 @@
 					}
 				},
 
-
 				patch: function (){
 					api.flashEngine = true;
 
 					// FileAPI
 					_inherit(api, {
+						readAsDataURL: function (file, callback){
+							if( _isHtmlFile(file) ){
+								this.parent.apply(this, arguments);
+							}
+							else {
+								api.log('FlashAPI.readAsBase64');
+								flash.readInProgress = true;
+								flash.cmd(file, 'readAsBase64', {
+									id: file.id,
+									callback: _wrap(function _(err, base64){
+										flash.readInProgress = false;
+										_unwrap(_);
+
+										api.log('FlashAPI.readAsBase64:', err);
+
+										callback({
+											  type: err ? 'error' : 'load'
+											, error: err
+											, result: 'data:'+ file.type +';base64,'+ base64
+										});
+									})
+								});
+							}
+						},
+
+						readAsText: function (file, encoding, callback){
+							if( callback ){
+								api.log('[warn] FlashAPI.readAsText not supported `encoding` param');
+							} else {
+								callback = encoding;
+							}
+
+							api.readAsDataURL(file, function (evt){
+								if( evt.type == 'load' ){
+									try {
+										evt.result = window.atob(evt.result.split(';base64,')[1]);
+									} catch( err ){
+										evt.type = 'error';
+										evt.error = err.toString();
+									}
+								}
+								callback(evt);
+							});
+						},
+						
 						getFiles: function (input, filter, callback){
 							if( callback ){
 								api.filterFiles(api.getFiles(input), filter, callback);
@@ -3821,13 +3766,15 @@
 								if( !file.__info ){
 									var defer = file.__info = api.defer();
 
-									flash.cmd(file, 'getFileInfo', {
-										  id: file.id
-										, callback: _wrap(function _(err, info){
-											_unwrap(_);
-											defer.resolve(err, file.info = info);
-										})
-									});
+//									flash.cmd(file, 'getFileInfo', {
+//										  id: file.id
+//										, callback: _wrap(function _(err, info){
+//											_unwrap(_);
+//											defer.resolve(err, file.info = info);
+//										})
+//									});
+									defer.resolve(null, file.info = null);
+
 								}
 
 								file.__info.then(fn);
@@ -4011,12 +3958,13 @@
 
 							_this.xhr = {
 								headers: {},
-								abort: function (){ flash.cmd(flashId, 'abort', { id: fileId }); },
+								abort: function (){ flash.uploadInProgress = false; flash.cmd(flashId, 'abort', { id: fileId }); },
 								getResponseHeader: function (name){ return this.headers[name]; },
 								getAllResponseHeaders: function (){ return this.headers; }
 							};
 
 							var queue = api.queue(function (){
+								flash.uploadInProgress = true;
 								flash.cmd(flashId, 'upload', {
 									  url: _getUrl(options.url.replace(/([a-z]+)=(\?)&?/i, ''))
 									, data: data
@@ -4033,6 +3981,7 @@
 											options.progress(evt);
 										}
 										else if( type == 'complete' ){
+											flash.uploadInProgress = false;
 											_unwrap(upload);
 
 											if( typeof result == 'string' ){
@@ -4042,6 +3991,7 @@
 											_this.end(evt.status || 200);
 										}
 										else if( type == 'abort' || type == 'error' ){
+											flash.uploadInProgress = false;
 											_this.end(evt.status || 0, evt.message);
 											_unwrap(upload);
 										}
@@ -4089,6 +4039,7 @@
 					}
 					try { el.style[key] = val; } catch (e) {}
 				}
+				
 			}
 		}
 
@@ -4210,12 +4161,27 @@
 				, body = document.body
 				, docEl = (el && el.ownerDocument).documentElement
 			;
-
+			
+			function getOffset(obj) {
+			    var left, top;
+			    left = top = 0;
+			    if (obj.offsetParent) {
+			        do {
+			            left += obj.offsetLeft;
+			            top  += obj.offsetTop;
+			        } while (obj = obj.offsetParent);
+			    }
+			    return {
+			        left : left,
+			        top : top
+			    };
+			};
+			
 			return {
-				  top:		box.top + (window.pageYOffset || docEl.scrollTop)  - (docEl.clientTop || body.clientTop || 0)
-				, left:		box.left + (window.pageXOffset || docEl.scrollLeft) - (docEl.clientLeft || body.clientLeft || 0)
-				, width:	box.right - box.left
-				, height:	box.bottom - box.top
+				  top:		getOffset(el).top
+				, left:		getOffset(el).left
+				, width:	el.offsetWidth
+				, height:	el.offsetHeight
 			};
 		}
 
@@ -4244,8 +4210,10 @@
     var _each = api.each,
         _cameraQueue = [];
 
-    if (api.support.flash && (api.media && (!api.support.media || !api.html5))) {
+
+    if (api.support.flash && (api.media && !api.support.media)) {
         (function () {
+
             function _wrap(fn) {
                 var id = fn.wid = api.uid();
                 api.Flash._fn[id] = fn;
