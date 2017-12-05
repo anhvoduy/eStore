@@ -103,5 +103,32 @@ router.post('/update', auth.checkAuthentication(), async function (req, res, nex
 	}		
 });
 
+router.post('/delete', auth.checkAuthentication(), async function (req, res, next) {
+	try
+	{
+		let product = _.pick(req.body, ["ProductId","ProductKey"]);
+		
+		if(!product.ProductKey)
+			throw CONSTANT.MISSING_FIELD_PRODUCTKEY;		
+
+		if(!product.ProductId){
+			let prod = await productService.getProductByKey(product);
+			if(!prod)
+				throw CONSTANT.INVALID_FIELD_PRODUCTKEY;
+			else 
+				product.ProductId = prod.ProductId;
+		}
+
+		let result = await productService.delete(product.ProductId);
+		if(result.affectedRows > 0) 
+			res.status(200).json({ success: true });
+		else 
+			res.status(500).json({ success: false });
+	}
+	catch(err){
+		next(err);
+	}		
+});
+
 // Export
 module.exports = router;
