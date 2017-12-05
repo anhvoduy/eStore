@@ -9,30 +9,20 @@ const errorHelper = require('../lib/errorHelper');
 const brandService = require('../services/brandService');
 const productService = require('../services/productService');
 
-router.post('/upload', auth.checkAuthentication(), async function(req, res, next){	
+// sample file upload
+const multerConfig = {
+	dest: './uploads/products',
+	limits: { fileSize: 1048576 }
+};
+const uploadProductImage = multer(multerConfig).single('ProductImage');
+
+router.post('/upload', auth.checkAuthentication(), uploadProductImage, async function(req, res, next){	
 	try
 	{
-		let upload = multer(multerConfig).single('newProductImage');
-		let multerConfig = {
-			dest: './uploads/products',
-			limits: { fileSize: 1048576 }
-		};
-		function uploadImage(req, res){
-			return new Promise(function (resolve, reject) {
-				upload(req, res, function (err) {
-					if (err) reject(err);
-					else resolve(true);
-				});
-			});
-		};
-
-		let product = req.data;
-		return uploadImage(req, res).then(function(){
-			res.status(200).json(true);
-		})
-		.catch(function(err){
-			next(err);
-		});
+		if(req.file)
+			res.status(200).json({ success: true, FileName: req.file.filename });
+		else
+			res.status(500).json({ success: false });
 	}
 	catch(err){
 		next(err);

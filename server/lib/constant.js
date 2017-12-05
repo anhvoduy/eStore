@@ -54,6 +54,10 @@ CONSTANT.ACCOUNT_TYPE_LIST = [
 	{ Key: 'CR', Value: 'Credit' }
 ];
 
+CONSTANT.UPLOAD_FILE = {
+	FILE_SIZE: 1048576
+};
+
 
 // Success Lists
 CONSTANT.SUCCESS_AUTHENTICATION = { code: 'SUCCESS_AUTHENTICATION', message: 'Authentication is success.' };

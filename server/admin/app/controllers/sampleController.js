@@ -2,7 +2,6 @@
 	'use strict';
     app.controller('sampleController', sampleController);
 	sampleController.$inject = ['$scope', '$rootScope'];
-	
 	function sampleController($scope, $rootScope) {
 		$scope.today = function () {
 			$scope.dt = new Date();
@@ -83,7 +82,7 @@
 		function getDayClass(data) {
 			var date = data.date, mode = data.mode;
 			if (mode === 'day') {
-				var dayToCheck = new Date(date).setHours(0, 0, 0, 0);				
+				var dayToCheck = new Date(date).setHours(0, 0, 0, 0);
 				for (var i = 0; i < $scope.events.length; i++) {
 					var currentDay = new Date($scope.events[i].date).setHours(0, 0, 0, 0);					
 					if (dayToCheck === currentDay) {
@@ -96,6 +95,7 @@
 	};
 
 
+
 	app.controller('sampleUploadController', sampleUploadController);
 	sampleUploadController.$inject = ['$scope', 'Upload',];
 	function sampleUploadController($scope, Upload){
@@ -103,15 +103,16 @@
 		vm.progress = 0;
 		vm.user = {};
 
-		vm.upload = function (dataUrl) {
-			console.log('- dataUrl:', dataUrl);
+		vm.upload = function (img) {
 			Upload.upload({
-				url: '/api/product/upload',
+				url: '/api/upload',
 				data: {
-					newProductImage: dataUrl
+					ProductId: 1,
+					ProductImage: img
 				}
 			}).then(function (response) {
 				$timeout(function () {
+				  console.log(response.data);
 				  onSuccessItem(response.data);
 				});
 			}, function (response) {
@@ -136,7 +137,7 @@
 		// Called after the user has failed to upload a new picture
 		function onErrorItem(response) {
 			vm.fileSelected = false;
-			vm.progress = 0;	  
+			vm.progress = 0;
 			// Show error message
 			// Notification.error({ message: response.message, title: '<i class="glyphicon glyphicon-remove"></i> Failed to change profile picture' });
 		};
