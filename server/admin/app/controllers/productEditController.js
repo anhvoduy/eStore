@@ -128,21 +128,16 @@
 		};
 
 		$scope.upload = function (imageUrl, productId) {
-			Upload.upload({
-				url: '/api/product/upload',
-				data: {
-					ProductId: productId,
-					ProductImage: imageUrl
-				}
-			}).then(function (result) {
+			productService.upload(imageUrl, productId)
+			.then(function(result){
 				$scope.product.ProductImage = result.data.FileName;
 				$scope.product.ProductImageUrl = String.format('{0}/{1}/{2}/{3}', $scope.rootLocation, 'uploads', 'products', $scope.product.ProductImage);
 				$scope.fileSelected = false;
 				$scope.progress = 0;
-			}, function (error) {
+			}, function(error){
 				$scope.fileSelected = false;
 				$scope.progress = 0;
-			}, function (evt) {
+			}, function(evt){
 				$scope.progress = parseInt(100.0 * evt.loaded / evt.total, 10);
 			});
 		};

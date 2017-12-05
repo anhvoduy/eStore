@@ -1,8 +1,8 @@
 (function () {
     'use strict';
     app.factory('productService', productService);
-    productService.$inject = ['$q', 'baseService'];
-    function productService($q, baseService) {
+    productService.$inject = ['$q', 'baseService', 'Upload'];
+    function productService($q, baseService, Upload) {
         // constructor
         var productService = function () {            
         }
@@ -10,9 +10,14 @@
         productService.prototype.constructor = productService;
         
         // methods
-        productService.prototype.upload = function (file) {
-            var url = String.format('{0}/upload', this.api);            
-            return this.postData(url, { file: file });
+        productService.prototype.upload = function (imageUrl, productId) {            
+            return Upload.upload({
+                url: String.format('{0}/upload', this.api),
+                data: {
+                    ProductId: productId,
+                    ProductImage: imageUrl
+                }
+            });
         };
 
         productService.prototype.getList = function (pageCurrent, pageSize) {
