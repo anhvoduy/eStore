@@ -2,6 +2,7 @@ var app = angular.module('cargo', [
 	'ngCookies',
 	'ui.router',
 	'mega-menu',
+	'ngFileUpload',
 	'cargo.directives',
 	'cargo.directives.megaMenu',
 	'cargo.directives.footer',

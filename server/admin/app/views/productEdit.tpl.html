@@ -68,7 +68,16 @@
                 <div class="form-group">
                     <label for="ProductImage" class="col-sm-2 control-label estore-label-mandatory">Image</label>
                     <div class="col-sm-6">
-                        <input type="file" name="pic" accept="image/*">
+                        <!-- <input type="file" name="pic" accept="image/*"> -->
+                        <button class="btn btn-default btn-file" 
+                                ngf-select="(fileSelected = true) && (loading = false)" 
+                                ng-model="picFile" 
+                                accept="image/*" 
+                                ngf-before-model-change="loading = true" 
+                                ngf-resize="{width: 400}" 
+                                ngf-resize-if="$width > 400 || $height > 400">
+                            Select Picture
+                        </button>
                     </div>
                     <div class="col-sm-6">
                         <div class="image estore-image-large">
