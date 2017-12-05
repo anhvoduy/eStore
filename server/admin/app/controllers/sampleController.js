@@ -104,7 +104,7 @@
 		vm.user = {};
 
 		vm.upload = function (dataUrl) {
-
+			console.log('- dataUrl:', dataUrl);
 			Upload.upload({
 				url: '/api/product/upload',
 				data: {
