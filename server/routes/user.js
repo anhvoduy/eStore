@@ -17,7 +17,7 @@ const uploadUserImage = function(){
 };
 
 // Routers
-router.post('/upload', auth.checkAuthentication(), uploadUserImage, async function(req, res, next){
+router.post('/upload', auth.checkAuthentication(), uploadUserImage(), async function(req, res, next){
 	try
 	{
 		if(req.file)
