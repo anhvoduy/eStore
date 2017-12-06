@@ -20,4 +20,13 @@ common.imageFileFilter = function (req, file, callback) {
     callback(null, true);
 };
 
+common.errorHandler = function (error) {
+    let _error = {
+        code: error.code,
+        message: error.message
+    }
+    console.log(_error);
+	return _error;
+}
+
 module.exports = common;
