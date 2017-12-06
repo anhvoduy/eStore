@@ -17,7 +17,7 @@ const uploadUserImage = function(){
 };
 
 // Routers
-router.post('/upload', auth.checkAuthentication(), uploadUserImage, async function(req, res, next){	
+router.post('/upload', auth.checkAuthentication(), uploadUserImage, async function(req, res, next){
 	try
 	{
 		if(req.file)
@@ -66,6 +66,9 @@ router.get('/profile', auth.checkAuthentication(), async function (req, res, nex
     try
     {
         let query = _.pick(req.query, ['UserKey']);
+        if(!query.UserKey)
+            throw CONSTANT.MISSING_FIELD_USERKEY;
+
         let user = await userService.getUserByKey(query);
         res.status(200).json(user);
     }

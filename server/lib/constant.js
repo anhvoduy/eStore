@@ -1,4 +1,5 @@
-﻿/*
+﻿'use strict';
+/*
 200 OK Standard response for successful HTTP requests
 201 Created Request has been fulfilled.New resource created
 204 No Content Request processed.No content returned

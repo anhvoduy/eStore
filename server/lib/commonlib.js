@@ -1,3 +1,4 @@
+'use strict';
 var path = require("path");
 var base64 = require("base-64");
 var utf8 = require("utf8");

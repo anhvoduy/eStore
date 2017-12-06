@@ -1,4 +1,5 @@
-﻿const _ = require('lodash');
+﻿'use strict';
+const _ = require('lodash');
 
 const validator = function () { 
 }

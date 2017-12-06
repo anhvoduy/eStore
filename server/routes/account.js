@@ -3,7 +3,6 @@ var _ = require('lodash');
 var auth = require('../config/auth');
 const CONSTANT = require('../lib/constant');
 var dbContext = require('../lib/dbContext');
-var errorHelper = require('../lib/errorHelper');
 var accountService = require('../services/accountService');
 
 // Router

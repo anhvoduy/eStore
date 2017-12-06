@@ -3,7 +3,6 @@ var _ = require('lodash');
 var auth = require('../config/auth');
 var constant = require('../lib/constant');
 var dbContext = require('../lib/dbContext');
-var errorHelper = require('../lib/errorHelper');
 var inventoryService = require('../services/inventoryService');
 var stockService = require('../services/stockService');
 

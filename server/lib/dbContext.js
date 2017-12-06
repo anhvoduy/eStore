@@ -1,3 +1,4 @@
+'use strict';
 var Q = require('q');
 var _ = require('lodash');
 var mysql = require('mysql');
