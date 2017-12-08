@@ -1,8 +1,8 @@
 ﻿(function () {
     'use strict';    
     app.controller('productEditController', productEditController);
-	productEditController.$inject = ['$scope', '$timeout', '$state', '$stateParams', 'appCommon', 'brandService', 'productService'];
-	function productEditController($scope, $timeout, $state, $stateParams, appCommon, brandService, productService) {
+	productEditController.$inject = ['$scope', '$timeout', '$state', '$stateParams', 'Upload', 'appCommon', 'brandService', 'productService'];
+	function productEditController($scope, $timeout, $state, $stateParams, Upload, appCommon, brandService, productService) {
 		/* models */
 		$scope.productKey = $stateParams.productKey;
 		$scope.formStatus = appCommon.isUndefined($scope.productKey) 
@@ -12,7 +12,8 @@
 		$scope.rootLocation = appCommon.getRootLocation();
 		$scope.colorList = appCommon.colorList;
 		$scope.messageSuccess = [];
-        $scope.messageError = [];
+		$scope.messageError = [];
+		$scope.progress = 0;
 		
 		
 		/* functions */
@@ -93,7 +94,7 @@
 		/* buttons */
 		// https://docs.angularjs.org/guide/forms
         $scope.save = function (product) {
-			$scope.isSubmitted = true; // validate UI			
+			$scope.isSubmitted = true; // validate UI
 			if(!product || !validateMaster(product)) // validate business rules
 			{ 
 				$scope.isSubmitted = false;
@@ -111,7 +112,7 @@
 			}
 			else if($scope.formStatus === appCommon.formStatus.isEdit){
 				return updateProduct(product);
-			};			
+			};
 		};
 
         $scope.cancel = function() {
@@ -124,6 +125,21 @@
 
 		$scope.changeSelectedColor = function(item){
 			console.log(item);
+		};
+
+		$scope.upload = function (imageUrl, productId) {
+			productService.upload(imageUrl, productId)
+			.then(function(result){
+				$scope.product.ProductImage = result.data.FileName;
+				$scope.product.ProductImageUrl = String.format('{0}/{1}/{2}/{3}', $scope.rootLocation, 'uploads', 'products', $scope.product.ProductImage);
+				$scope.fileSelected = false;
+				$scope.progress = 0;
+			}, function(error){
+				$scope.fileSelected = false;
+				$scope.progress = 0;
+			}, function(evt){
+				$scope.progress = parseInt(100.0 * evt.loaded / evt.total, 10);
+			});
 		};
 		
 		/* start */

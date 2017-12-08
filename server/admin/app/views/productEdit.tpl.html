@@ -61,19 +61,41 @@
                 <div class="form-group">
                     <label for="productDescription" class="col-sm-2 control-label">Description</label>
                     <div class="col-sm-6">
-                        <textarea id="productDescription" class="form-control control-readonly" placeholder="description" ng-model="product.Description" rows="3" />
+                        <textarea id="productDescription" class="form-control" placeholder="description" ng-model="product.Description" rows="3" />
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label for="ProductImage" class="col-sm-2 control-label">Image</label>
                     <div class="col-sm-6">
-                        <input type="file" name="pic" accept="image/*">
+                        <button class="btn btn-default btn-file" 
+                            ngf-select="(fileSelected = true) && (loading = false)"
+                            ng-model="picFile" accept="image/*" 
+                            ngf-before-model-change="loading = true"
+                            ngf-resize="{ width: 600, height: 400 }" 
+                            ngf-resize-if="$width > 600 || $height > 400">
+                            Select Picture
+                        </button>
                     </div>
-                    <div class="col-sm-6">
-                        <div class="image estore-image-large">
-                            <img ng-src="{{ product.ProductImageUrl }}" alt="{{ product.ProductName }}" />
-                        </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="ProductImage" class="col-sm-2 control-label"></label>
+                    <div class="col-sm-6" ng-show="loading">
+                        <img ng-src="/img/loaders/loader.gif" height="50" width="50" alt="Loading image..." />
+                    </div>
+                    <div class="col-sm-6" ng-show="!loading">
+                        <img ngf-src="fileSelected ? picFile : product.ProductImageUrl" alt="{{ product.ProductName }}" class="img-thumbnail estore-product-image" ngf-drop />
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="ProductImage" class="col-sm-2 control-label"></label>
+                    <div class="col-sm-6" ng-show="fileSelected">
+                        <button class="btn btn-success" ng-click="upload(picFile)" 
+                            ng-disabled="(frmProduct.$invalid || isSubmitting)">Use This Picture</button>
+                        <button class="btn btn-warning" ng-click="fileSelected = false"
+                            ng-disabled="(frmProduct.$invalid || isSubmitting)">Cancel</button>
                     </div>
                 </div>
                 
@@ -87,7 +109,7 @@
                 </div>
             </form>
         </div>
-        <div class="panel-footer estore-panel-footer">
+        <div class="panel-footer estore-panel-footer">            
             <input type="button" class="btn btn-primary" value="Save" 
                 ng-click="save(product)" ng-disabled="(frmProduct.$invalid || isSubmitting)"/>
             <input type="button" class="btn btn-danger" value="Cancel" 

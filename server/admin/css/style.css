@@ -79,10 +79,10 @@
     vertical-align: top;
 }
 
-.estore-image-large {
+.estore-product-image {
     margin: 1%;
-    max-height: 980px;
-    max-width: 418px;
+    max-height: 400px;
+    max-width: 600px;
 }
 
 .message-error {

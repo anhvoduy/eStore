@@ -1,13 +1,36 @@
 const router = require('express').Router();
 const _ = require('lodash');
+const multer = require('multer');
+const moment = require('moment');
 const auth = require('../config/auth');
 const CONSTANT = require('../lib/constant');
 const dbContext = require('../lib/dbContext');
-const errorHelper = require('../lib/errorHelper');
 const brandService = require('../services/brandService');
 const productService = require('../services/productService');
 
-// Router
+// upload file config
+const uploadProductImage = function(){
+	const multerConfig = {
+		dest: './uploads/products',
+		limits: { fileSize: CONSTANT.UPLOAD_FILE.FILE_SIZE }
+	};
+	return multer(multerConfig).single('ProductImage');
+};
+
+// Routers
+router.post('/upload', auth.checkAuthentication(), uploadProductImage(), async function(req, res, next){
+	try
+	{
+		if(req.file)
+			res.status(200).json({ Success: true, FileName: req.file.filename });
+		else
+			res.status(500).json({ Success: false });
+	}
+	catch(err){
+		next(err);
+	}
+});
+
 router.get('/items', auth.checkAuthentication(), async function (req, res, next) {
 	try
 	{
@@ -92,7 +115,35 @@ router.post('/update', auth.checkAuthentication(), async function (req, res, nex
 				product.ProductId = prod.ProductId;
 		}
 
-		let result = await productService.update(product);
+		let r1 = await productService.update(product);
+		let r2 = await productService.saveImage(product.ProductId, product.ProductImage);
+		if(r1.affectedRows > 0) 
+			res.status(200).json({ success: true });
+		else 
+			res.status(500).json({ success: false });
+	}
+	catch(err){
+		next(err);
+	}		
+});
+
+router.post('/delete', auth.checkAuthentication(), async function (req, res, next) {
+	try
+	{
+		let product = _.pick(req.body, ["ProductId","ProductKey"]);
+		
+		if(!product.ProductKey)
+			throw CONSTANT.MISSING_FIELD_PRODUCTKEY;		
+
+		if(!product.ProductId){
+			let prod = await productService.getProductByKey(product);
+			if(!prod)
+				throw CONSTANT.INVALID_FIELD_PRODUCTKEY;
+			else 
+				product.ProductId = prod.ProductId;
+		}
+
+		let result = await productService.delete(product.ProductId);
 		if(result.affectedRows > 0) 
 			res.status(200).json({ success: true });
 		else 

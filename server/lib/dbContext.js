@@ -1,8 +1,9 @@
+'use strict';
 var Q = require('q');
 var _ = require('lodash');
 var mysql = require('mysql');
 var config = require('../config/config');
-var errorHelper = require('./errorHelper');
+var CONSTANT = require('./constant');
 
 // Connection Pool
 var pool = mysql.createPool({
@@ -120,7 +121,7 @@ dbContext.prototype.beginTransaction = function () {
     var defer = Q.defer();
 
 	if (this.connection == null || this.connection == undefined)
-		throw errorHelper.Error_Connection;
+		throw CONSTANT.ERROR_CONNECTION;
 
     var sql = "START TRANSACTION;";
     this.connection.query(sql, function (error, rows) {
@@ -135,7 +136,7 @@ dbContext.prototype.rollbackTransaction = function () {
     var defer = Q.defer();
 
     if (this.connection == null || this.connection == undefined)
-        throw errorHelper.Error_Connection;
+        throw CONSTANT.ERROR_CONNECTION;
 
     var sql = "ROLLBACK;";
     this.connection.query(sql, function (error, rows) {
@@ -150,7 +151,7 @@ dbContext.prototype.commitTransaction = function () {
     var defer = Q.defer();
 
 	if (this.connection == null || this.connection == undefined)
-		throw errorHelper.Error_Connection;
+		throw CONSTANT.ERROR_CONNECTION;
 
     var sql = "COMMIT;";
     this.connection.query(sql, function (error, rows) {

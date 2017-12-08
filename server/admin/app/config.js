@@ -2,6 +2,7 @@ var app = angular.module('cargo', [
 	'ngCookies',
 	'ui.router',
 	'mega-menu',
+	'ngFileUpload',
 	'cargo.directives',
 	'cargo.directives.megaMenu',
 	'cargo.directives.footer',
@@ -285,6 +286,16 @@ app.config(function ($stateProvider) {
 			"view": {
 				templateUrl: "/app/views/profile.tpl.html",
 				controller: "profileController",
+				controllerAs: 'vm'
+			}
+		}
+	})
+	.state("password", {
+		url: "/password",
+		views: {
+			"view": {
+				templateUrl: "/app/views/password.tpl.html",
+				controller: "passwordController",
 				controllerAs: 'vm'
 			}
 		}

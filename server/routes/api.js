@@ -1,15 +1,13 @@
 ﻿var express = require('express');
 var router = express.Router();
 var cors = require('cors')
-
-// sample Authentication
 var jwt = require('jsonwebtoken');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
+var multer = require('multer');
 var auth = require('../config/auth');
 var config = require('../config/config');
-var constant = require('../lib/constant');
-var errorHelper = require('../lib/errorHelper');
+var CONSTANT = require('../lib/constant');
 
 // sample redis cache
 // var cache = require('express-redis-cache')();
@@ -132,6 +130,38 @@ router.post('/login', function (req, res, next) {
 router.get('/logout', function (req, res, next) {
 	console.log('Log out current user...');
 	next();
+});
+
+
+
+// sample file upload
+const multerConfig = {
+	dest: './uploads/sample',
+	limits: { fileSize: 1048576 }
+};
+const uploadProductImage = multer(multerConfig).single('ProductImage');
+
+router.post('/upload', auth.checkAuthentication(), uploadProductImage, async function(req, res, next){
+	try
+	{
+		// req.file is the `ProductImage` file
+		let fileName = req.file.filename;
+		// req.body will hold the text fields, if there were any
+		let product = req.body;
+		product.ProductId = parseInt(product.ProductId);
+		product.ProductImage = fileName;
+		
+		if(product){
+			console.log(product);
+			res.status(200).json({ success: true, data: product });
+		}
+		else{
+			res.status(500).json({ success: false });
+		}
+	}
+	catch(err){
+		next(err);
+	}
 });
 
 // return Router

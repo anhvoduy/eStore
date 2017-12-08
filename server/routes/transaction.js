@@ -4,7 +4,6 @@ var _ = require('lodash');
 var auth = require('../config/auth');
 var constant = require('../lib/constant');
 var dbContext = require('../lib/dbContext');
-var errorHelper = require('../lib/errorHelper');
 var transactionService = require('../services/transactionService');
 
 

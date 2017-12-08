@@ -4,7 +4,6 @@ var router = express.Router();
 var auth = require('../config/auth');
 var constant = require('../lib/constant');
 var dbContext = require('../lib/dbContext');
-var errorHelper = require('../lib/errorHelper');
 var journalService = require('../services/journalService');
 
 // Router

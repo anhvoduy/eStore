@@ -46,10 +46,33 @@
             <label>ng-input-date: <ng-input-date name='FromDate' value='query.FromDate' format='dd/MM/yyyy' required />
         </div>
     </div>
-
+    
     <hr />
     <button type="button" class="btn btn-sm btn-info" ng-click="today()">Today</button>
     <button type="button" class="btn btn-sm btn-default" ng-click="setDate(2009, 7, 24)">2009-08-24</button>
     <button type="button" class="btn btn-sm btn-danger" ng-click="clear()">Clear</button>
     <button type="button" class="btn btn-sm btn-default" ng-click="toggleMin()" uib-tooltip="After today restriction">Min date</button>
+
+    <hr />
+    <!-- Sample Upload File -->
+    <div class="row" ng-controller="sampleUploadController as vm">
+        <form class="signin form-horizontal">
+            <div class="form-group text-center">
+                <img ngf-src="vm.fileSelected ? picFile : vm.user.profileImageURL" alt="{{vm.user.displayName}}" class="img-thumbnail user-profile-picture" ngf-drop>
+            </div>
+            <div ng-show="vm.loading" class="form-group text-center">
+                <img ng-src="/img/loaders/loader.gif" height="50" width="50" alt="Loading image...">
+            </div>
+            <div ng-show="!vm.fileSelected" class="text-center form-group">
+                <label>ng-file-upload:</label>
+                <button class="btn btn-default btn-file" ngf-select="(vm.fileSelected = true) && (vm.loading = false)" ng-model="picFile" accept="image/*" 
+					ngf-before-model-change="vm.loading = true" 
+					ngf-resize="{width: 400}" ngf-resize-if="$width > 400 || $height > 400">Select Picture</button>
+            </div>
+            <div ng-show="vm.fileSelected" class="text-center form-group">
+                <button class="btn btn-primary" ng-click="vm.upload(picFile)">Use This Picture</button>
+                <button class="btn btn-default" ng-click="vm.fileSelected = false">Cancel</button>
+            </div>
+        </form>
+    </div>
 </div>

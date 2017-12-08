@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var auth = require('./config/auth');
 var config = require('./config/config');
-var errorHelper = require('./lib/errorHelper');
+var common = require('./lib/commonlib');
 
 // Express
 var server = express();
@@ -17,7 +17,7 @@ server.use(bodyParser.json());
 
 // setup Server
 auth.setup(server);
-server.set('port', process.env.PORT || 3000);
+server.set('port', process.env.PORT || 8000);
 server.set('secretKey', config.secretKey);
 
 // Register API 
@@ -58,7 +58,7 @@ server.use('/uploads', express.static(pathUploads));
  */
 server.use(function (err, req, res, next) {
 	res.status(500);
-	res.json(errorHelper.errorHandler(err));
+	res.json(common.errorHandler(err));
 });
 
 

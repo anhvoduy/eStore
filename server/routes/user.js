@@ -1,12 +1,35 @@
 ﻿const router = require('express').Router();
 const _ = require('lodash');
+const multer = require('multer');
 const moment = require('moment');
 const auth = require('../config/auth');
 const CONSTANT = require('../lib/constant');
 const dbContext = require('../lib/dbContext');
 const userService = require('../services/userService');
 
+// upload file config
+const uploadUserImage = function(){
+    let multerConfig = {
+        dest: './uploads/users',
+        limits: { fileSize: CONSTANT.UPLOAD_FILE.FILE_SIZE }
+    };
+    return multer(multerConfig).single('UserImage');
+};
+
 // Routers
+router.post('/upload', auth.checkAuthentication(), uploadUserImage(), async function(req, res, next){
+	try
+	{
+		if(req.file)
+			res.status(200).json({ Success: true, FileName: req.file.filename });
+		else
+			res.status(500).json({ Success: false });
+	}
+	catch(err){
+		next(err);
+	}
+});
+
 router.get('/items', auth.checkAuthentication(), async function (req, res, next) {
     try
     {
@@ -43,6 +66,9 @@ router.get('/profile', auth.checkAuthentication(), async function (req, res, nex
     try
     {
         let query = _.pick(req.query, ['UserKey']);
+        if(!query.UserKey)
+            throw CONSTANT.MISSING_FIELD_USERKEY;
+
         let user = await userService.getUserByKey(query);
         res.status(200).json(user);
     }

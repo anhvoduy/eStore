@@ -1,4 +1,5 @@
-﻿/*
+﻿'use strict';
+/*
 200 OK Standard response for successful HTTP requests
 201 Created Request has been fulfilled.New resource created
 204 No Content Request processed.No content returned
@@ -54,8 +55,12 @@ CONSTANT.ACCOUNT_TYPE_LIST = [
 	{ Key: 'CR', Value: 'Credit' }
 ];
 
+CONSTANT.UPLOAD_FILE = {
+	FILE_SIZE: 1048576
+};
 
-// Success Lists
+
+// ------------------------- Success Lists -------------------------
 CONSTANT.SUCCESS_AUTHENTICATION = { code: 'SUCCESS_AUTHENTICATION', message: 'Authentication is success.' };
 CONSTANT.SUCCESS_LOGIN = { code: 'SUCCESS_LOGIN', message: 'Login is success.' };
 CONSTANT.SUCCESS_LOGOUT = { code: 'SUCCESS_LOGOUT', message: 'Logout is success.' };
@@ -87,6 +92,18 @@ CONSTANT.SUCCESS_PRODUCT_DELETE = { code: 'SUCCESS_PRODUCT_DELETE', message: 'De
 CONSTANT.SUCCESS_USER_CREATE = { code: 'SUCCESS_USER_CREATE', message: 'Create User is success.' };
 CONSTANT.SUCCESS_USER_UPDATE = { code: 'SUCCESS_USER_UPDATE', message: 'Update User is success.' };
 CONSTANT.SUCCESS_USER_DELETE = { code: 'SUCCESS_USER_DELETE', message: 'Delete User is success.' };
+
+// ------------------------- Error Lists -------------------------
+CONSTANT.ERROR_UNAUTHORIZED = { code: 'ERROR_UNAUTHORIZED', message: 'User is not authorized.' };
+CONSTANT.ERROR_UNAUTHENTICATION = { code: 'ERROR_UNAUTHENTICATION', message: 'Username and Password is invalid.' };
+CONSTANT.ERROR_CONNECTION = { code: 'ERROR_CONNECTION', message: 'Error: the current connection is closed or undefined.' };
+CONSTANT.ERROR_NOT_EXIST_TRANSACTIONID = { code: 'ERROR_NOT_EXIST_TRANSACTIONID', message: 'Cash Id does not existed.' };
+CONSTANT.ERROR_NOT_EXIST_BRANDID = { code: 'ERROR_NOT_EXIST_BRANDID', message: 'Brand Id does not existed.' };
+CONSTANT.ERROR_NOT_EXIST_PRODUCTID = { code: 'ERROR_NOT_EXIST_PRODUCTID', message: 'Product Id does not existed.' };
+CONSTANT.ERROR_NOT_EXIST_USERID = { code: 'ERROR_NOT_EXIST_USERID', message: 'User Id does not existed.' };
+CONSTANT.ERROR_NOT_EXIST_EMAIL = { code: 'ERROR_NOT_EXIST_EMAIL', message: 'Email Account does not existed.' };
+CONSTANT.ERROR_INVALID_RATING = { code: 'ERROR_INVALID_RATING', message: "Rating is invalid" };
+CONSTANT.ERROR_INVALID_EMAIL = { code: 'ERROR_INVALID_EMAIL', message: "Email is invalid" };
 
 // User
 CONSTANT.MISSING_FIELD_USERKEY = { code: 'MISSING_FIELD_USERKEY', message: 'missing field UserKey.' };

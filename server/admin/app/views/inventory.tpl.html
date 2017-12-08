@@ -1,14 +1,16 @@
-﻿<div class="container">
+﻿<div class="panel-group">
     <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3 class="panel-title">All Inventories</h3>
+        <div class="panel-heading estore-panel-heading">
+            <div class="panel-title estore-panel-title">
+                <label>All Inventories</label>
+            </div>
         </div>
-        <div class="panel-body">
-            <p>
+        <div class="panel-body" ng-cloak>
+            <div class="row estore-form-row">
                 <!-- <a ui-sref="inventoryEdit({ inventoryKey: null })">Add new inventory</a> -->
-            </p>
-            <div class="container" ng-cloak>
-                <div class="row row-table">
+            </div>
+            <div class="row estore-form-row">
+                <div class="row">
                     <table class="table">
                         <thead>
                             <tr>
@@ -42,7 +44,7 @@
                 </div>
             </div>
         </div>
-        <div class="panel-footer">
+        <div class="panel-footer estore-panel-footer">
             ng-paginator
         </div>
     </div>

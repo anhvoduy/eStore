@@ -1,15 +1,25 @@
 (function () {
     'use strict';
     app.factory('userService', userService);
-    userService.$inject = ['$http', '$q', 'baseService'];
-    function userService($http, $q, baseService) {                
+    userService.$inject = ['$q', 'baseService', 'Upload'];
+    function userService($q, baseService, Upload) {
         // constructor
-        var userService = function () {            
+        var userService = function () {
         }
         userService.prototype = new baseService('api/user');
         userService.prototype.constructor = userService;
         
         // methods
+        userService.prototype.upload = function (imageUrl, userId, userKey) {
+            return Upload.upload({
+                url: String.format('{0}/upload', this.api),
+                data: {
+                    UserId: userId,                    
+                    ProductImage: imageUrl
+                }
+            });
+        };
+
         userService.prototype.getUsers = function () {
             var url = String.format('{0}/items', this.api);
             
