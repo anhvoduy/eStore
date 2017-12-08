@@ -1,11 +1,15 @@
-﻿<div class="container">
+﻿<div class="panel-group">
     <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3 class="panel-title">All Users</h3>
+        <div class="panel-heading estore-panel-heading">
+            <div class="panel-title estore-panel-title">
+                <label>All Users</label>
+            </div>
         </div>
-        <div class="panel-body">
-            <p><a ui-sref="userEdit({ userKey: null })">Add new user</a></p>
-            <div class="container" ng-cloak>
+        <div class="panel-body" ng-cloak>
+            <div class="row estore-form-row">
+                <a ui-sref="userEdit({ userKey: null })">Add new user</a>
+            </div>            
+            <div class="row estore-form-row">
                 <div class="row row-table">
                     <table class="table">
                         <thead>
@@ -42,7 +46,7 @@
                 </div>
             </div>
         </div>
-        <div class="panel-footer">
+        <div class="panel-footer estore-panel-footer">
             ng-pagination
         </div>
     </div>   	
