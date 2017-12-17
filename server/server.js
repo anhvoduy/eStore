@@ -67,13 +67,13 @@ server.use(function (err, req, res, next) {
  * - public site: angular js & multiple pages
  * - admin site : angular js & single page
  */
-var pathPublic = path.join(__dirname, 'public');
+var pathPublic = path.join(__dirname, '../public');
 server.use('/', express.static(pathPublic, { index: 'index.html' }));
 
 // var pathJim = path.join(__dirname, 'jim');
 // server.use('/jim', express.static(pathJim, { index: 'index.html' }));
 
-var pathAdmin = path.join(__dirname, 'admin');
+var pathAdmin = path.join(__dirname, '../client');
 server.use('/admin', express.static(pathAdmin, { index: 'index.html' }));
 server.use('/app', express.static(path.join(pathAdmin, 'app')));
 server.use('/img', express.static(path.join(pathAdmin, 'img')));
