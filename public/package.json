@@ -1,0 +1,14 @@
+{
+  "name": "public-site",
+  "version": "2.0.1",
+  "description": "grunt-setup-env",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "duyanh",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.6.5"
+  }
+}
