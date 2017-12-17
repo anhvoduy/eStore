@@ -20,7 +20,7 @@ auth.setup(server);
 server.set('port', process.env.PORT || 8000);
 server.set('secretKey', config.secretKey);
 
-// Register API 
+// Register APIs
 server.use('/api', require('./routes/api'));
 server.use('/api/account', require('./routes/account'));
 server.use('/api/brand', require('./routes/brand'));
@@ -70,24 +70,11 @@ server.use(function (err, req, res, next) {
 var pathPublic = path.join(__dirname, '../public');
 server.use('/', express.static(pathPublic, { index: 'index.html' }));
 
-// var pathJim = path.join(__dirname, 'jim');
-// server.use('/jim', express.static(pathJim, { index: 'index.html' }));
-
 var pathAdmin = path.join(__dirname, '../client');
 server.use('/admin', express.static(pathAdmin, { index: 'index.html' }));
 server.use('/app', express.static(path.join(pathAdmin, 'app')));
 server.use('/img', express.static(path.join(pathAdmin, 'img')));
 server.use('/libs', express.static(path.join(pathAdmin, 'libs')));
-
-
-
-// register SPA
-// server.get('/', function (req, res, next) {
-// 	if(config.debugMode) 
-// 		res.sendFile(path.join(__dirname + '/client/index.html'));
-// 	else 
-// 		res.sendFile(path.join(__dirname + '/build/index.html'));	
-// });
 
 // export
 module.exports = server;
