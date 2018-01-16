@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    angular.module('contact.service').factory('contactService', contactService);
+    angular.module('contact.service', []).factory('contactService', contactService);
     contactService.$inject = ['$http', '$q', '$location'];
     function contactService($http, $q, $location) {
         // constructor

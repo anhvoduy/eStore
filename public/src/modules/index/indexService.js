@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    angular.module('index.service').factory('indexService', indexService);
+    angular.module('index.service', []).factory('indexService', indexService);
     indexService.$inject = ['$http', '$q', '$location'];
     function indexService($http, $q, $location) {
         // constructor

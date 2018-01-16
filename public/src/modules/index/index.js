@@ -1,4 +1,4 @@
-var index = angular.module('index', [	
+angular.module('index', [	
 	'index.controller',
 	//'index.directive',
 	'index.service'

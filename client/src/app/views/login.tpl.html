@@ -48,10 +48,20 @@
     }
 
     .login-blur h1 { 
-        color: #fff; 
+        color: #fff;         
         text-shadow: 0 0 10px rgba(0,0,0,0.3); 
         letter-spacing:1px; 
         text-align:center; 
+    }
+
+    .login-blur h3 { 
+        text-shadow: 0 0 10px rgba(0,0,0,0.3); 
+        letter-spacing:1px; 
+        text-align:center; 
+    }
+
+    .login-blur>h3>a { 
+        color: #4a77d4
     }
 
     .login-blur form input { 
@@ -82,12 +92,13 @@
 
 <div class="login-body">
     <div class="login-blur">
-        <h1>Login</h1>
+        <!-- <h1>Login</h1> -->
         <form name="form" ng-submit="login()" role="form">
             <input type="text" name="username" placeholder="UserName" ng-model="username" required />
             <input type="password" name="password" placeholder="Password" ng-model="password" required />
-            <button type="submit" class="btn btn-primary btn-block btn-large" ng-disabled="form.$invalid || dataLoading">Let me in.</button>
+            <button type="submit" class="btn btn-primary btn-block btn-large" ng-disabled="form.$invalid || dataLoading">Let me in.</button>            
         </form>
+        <h3><a href="/">Back to Home Page</a></h3>
     </div>
 </div>
 

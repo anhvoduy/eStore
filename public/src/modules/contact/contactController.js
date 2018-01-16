@@ -1,13 +1,13 @@
 (function () {
     'use strict';        
-    angular.module('contact.controller').controller('contactController', contactController);
+    angular.module('contact.controller', []).controller('contactController', contactController);
 	contactController.$inject = ['$q'];
 	function contactController($q) {
         /* view-model */
-        var vm = this;		
+		var vm = this;		
 		
 		/* functions */
-		function activate() {
+		function activate() {			
 			console.log('activating ...');
 		};
 		

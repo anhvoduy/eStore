@@ -1,6 +1,6 @@
 (function () {
     'use strict';        
-    angular.module('index.controller').controller('indexController', indexController);
+    angular.module('index.controller', []).controller('indexController', indexController);
 	indexController.$inject = ['$q'];	
 	function indexController($q) {
         /* view-model */
