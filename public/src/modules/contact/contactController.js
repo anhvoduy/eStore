@@ -1,8 +1,8 @@
 (function () {
     'use strict';        
-    angular.module('index.controller').controller('indexController', indexController);
-	indexController.$inject = ['$q'];	
-	function indexController($q) {
+    angular.module('contact.controller').controller('contactController', contactController);
+	contactController.$inject = ['$q'];
+	function contactController($q) {
         /* view-model */
         var vm = this;		
 		

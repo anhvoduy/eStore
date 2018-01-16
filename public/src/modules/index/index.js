@@ -1,5 +1,5 @@
 var index = angular.module('index', [	
 	'index.controller',
-	'index.directive',
+	//'index.directive',
 	'index.service'
 ]);
