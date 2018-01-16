@@ -8,7 +8,7 @@
 		
 		/* functions */
 		function activate() {			
-			console.log('activating ...');
+			console.log('activating() ... contactController ...');
 		};
 		
 		/* start */
