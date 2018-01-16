@@ -1,7 +1,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-	<title>eStore Index</title>	
+	<title>eStore Contact</title>
 	<!--[if lte IE 6]>
 		<style type="text/css" media="screen">
 			.tabbed { height:420px; }
@@ -16,17 +16,15 @@
 	<!-- <script src="js/jquery/jquery-func.js" type="text/javascript"></script> -->
 	
 	<script src="js/angular/angular.min.js" type="text/javascript"></script>
-	<script src="modules/index/index.js" type="text/javascript"></script>
-	<script src="modules/index/indexController.js" type="text/javascript"></script>
-	<script src="modules/index/indexService.js" type="text/javascript"></script>
+	<script src="modules/contact/contact.js" type="text/javascript"></script>
+	<script src="modules/contact/contactController.js" type="text/javascript"></script>
+	<script src="modules/contact/contactService.js" type="text/javascript"></script>
 </head>
 <body>
-	<div ng-controller="indexController as vm">
+	<div ng-controller="contactController as vm">		
 		<!-- Top -->
 		<div id="top">
-			
-			<div class="shell">
-				
+			<div class="shell">				
 				<!-- Header -->
 				<div id="header">
 					<h1 id="logo"><a href="/">Urgan Gear</a></h1>
@@ -528,7 +526,7 @@
 								<!-- <span>|</span>
 								<a href="#">Support</a> -->
 								<!-- <span>|</span>
-								<a href="#">The Store</a> -->						
+								<a href="#">The Store</a> -->
 							</div>
 							<div class="right">
 								&copy; Sitename.com. Design by <a href="http://chocotemplates.com" target="_blank" title="CSS Templates">ChocoTemplates.com</a>
@@ -546,9 +544,10 @@
 		</div>
 		<!-- End Main -->	
 	</div>
+
 	<script>
 		angular.element(function() {
-			angular.bootstrap(document, ['index']);
+			angular.bootstrap(document, ['contact']);
 		});
 	</script>
 </body>
