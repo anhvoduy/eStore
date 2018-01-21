@@ -1,7 +1,7 @@
 {
   "name": "estore",
   "version": "2.0.2",
-  "description": "estore",
+  "description": "estore: Full-Stack JavaScript with MySQL, Express, AngularJS, and Node.js",
   "main": "app.js",
   "author": {
     "name": "duyanh",
@@ -15,6 +15,8 @@
     "start": "node app.js"
   },
   "dependencies": {
+    "amazon-s3-uri": "0.0.3",
+    "aws-sdk": "^2.185.0",
     "axios": "^0.17.0",
     "base-64": "^0.1.0",
     "body-parser": "^1.15.2",
@@ -25,6 +27,7 @@
     "jsonwebtoken": "^7.1.9",
     "method-override": "^1.0.0",
     "multer": "^1.3.0",
+    "multer-s3": "^2.7.0",
     "mysql": "^2.11.1",
     "passport": "^0.3.0",
     "passport-local": "^1.0.0",
