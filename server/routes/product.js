@@ -9,7 +9,7 @@ const uploadFile = require('../lib/uploadFile');
 const brandService = require('../services/brandService');
 const productService = require('../services/productService');
 
-// upload file config
+// bucket ProductImage
 const bucket = './uploads/products';
 const uploadProductImage = function(){
 	const multerConfig = {
