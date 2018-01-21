@@ -5,6 +5,7 @@ const moment = require('moment');
 const auth = require('../config/auth');
 const CONSTANT = require('../lib/constant');
 const dbContext = require('../lib/dbContext');
+const uploadFile = require('../lib/uploadFile');
 const brandService = require('../services/brandService');
 const productService = require('../services/productService');
 

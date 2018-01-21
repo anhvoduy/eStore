@@ -1,4 +1,4 @@
-var configMySql = {
+var mySql = {
     host: 'localhost',
     user: 'root',
     password: 'P@ssw0rd',
@@ -28,9 +28,9 @@ var aws = {
     }
 };
 
-var localhost = {
+var fs = {
     provider: 'fs',
     destination: './uploads'
 };
 
-module.exports = configMySql;
+module.exports = mySql;
