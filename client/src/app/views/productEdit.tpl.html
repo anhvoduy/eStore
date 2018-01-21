@@ -92,7 +92,7 @@
                 <div class="form-group">
                     <label for="ProductImage" class="col-sm-2 control-label"></label>
                     <div class="col-sm-6" ng-show="fileSelected">
-                        <button class="btn btn-success" ng-click="upload(picFile)" 
+                        <button class="btn btn-success" ng-click="upload(picFile, product.ProductId)" 
                             ng-disabled="(frmProduct.$invalid || isSubmitting)">Use This Picture</button>
                         <button class="btn btn-warning" ng-click="fileSelected = false"
                             ng-disabled="(frmProduct.$invalid || isSubmitting)">Cancel</button>

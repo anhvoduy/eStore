@@ -119,6 +119,7 @@ CONSTANT.MISSING_FIELD_BRANDNAME = { code: 'MISSING_FIELD_BRANDNAME', message: '
 CONSTANT.INVALID_FIELD_BRANDKEY = { code: 'INVALID_FIELD_BRANDKEY', message: 'invalid field BrandKey.' };
 
 // Product
+CONSTANT.MISSING_FIELD_PRODUCTID = { code: 'MISSING_FIELD_PRODUCTID', message: 'missing field ProductId.' }
 CONSTANT.MISSING_FIELD_PRODUCTKEY = { code: 'MISSING_FIELD_PRODUCTKEY', message: 'missing field ProductKey.' }
 CONSTANT.MISSING_FIELD_PRODUCTCODE = { code: 'MISSING_FIELD_PRODUCTCODE', message: 'missing field ProductCode.' }
 CONSTANT.MISSING_FIELD_PRODUCTNAME = { code: 'MISSING_FIELD_PRODUCTNAME', message: 'missing field ProductName.' };
