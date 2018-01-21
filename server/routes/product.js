@@ -5,26 +5,36 @@ const moment = require('moment');
 const auth = require('../config/auth');
 const CONSTANT = require('../lib/constant');
 const dbContext = require('../lib/dbContext');
+const uploadFile = require('../lib/uploadFile');
 const brandService = require('../services/brandService');
 const productService = require('../services/productService');
 
-// upload file config
+// bucket ProductImage
+const bucket = './uploads/products';
 const uploadProductImage = function(){
 	const multerConfig = {
-		dest: './uploads/products',
+		dest: bucket,
 		limits: { fileSize: CONSTANT.UPLOAD_FILE.FILE_SIZE }
 	};
 	return multer(multerConfig).single('ProductImage');
 };
 
 // Routers
-router.post('/upload', auth.checkAuthentication(), uploadProductImage(), async function(req, res, next){
+router.post('/upload', uploadProductImage(), auth.checkAuthentication(), async function(req, res, next){
 	try
 	{
-		if(req.file)
-			res.status(200).json({ Success: true, FileName: req.file.filename });
-		else
+		if(!req.file){
 			res.status(500).json({ Success: false });
+		}
+
+		if(!req.body.ProductId){
+			throw CONSTANT.MISSING_FIELD_PRODUCTID;
+		}
+		
+		let productId = req.body.ProductId;
+		let fileName = req.file.filename;
+		let data = await productService.saveImage(productId, fileName);
+		res.status(200).json({ Success: true, ProductId: productId, FileName: fileName });
 	}
 	catch(err){
 		next(err);

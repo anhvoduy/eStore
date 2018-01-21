@@ -1,4 +1,4 @@
-var configMySql = {
+var mySql = {
     host: 'localhost',
     user: 'root',
     password: 'P@ssw0rd',
@@ -8,10 +8,10 @@ var configMySql = {
 	debugMode: true
 };
 
-var storage = {
+var azure = {
     provider: "azureblob",
     azureblob: {
-        container: "uploads",
+        container: "estore",
         accountName: "demo2017",
         host: "demo2017.blob.core.windows.net",
         accessKey: "r4Am7zLZK3xZUrqLhwfSEAil7pl0p7/qxhQCHeN3pY94Z0LSStU6lDAUAyF8ac/xaDMXmB0siccCH3840z/xbw==",
@@ -19,4 +19,18 @@ var storage = {
     }
 };
 
-module.exports = configMySql;
+var aws = {
+    provider: "s3",
+    s3: {
+        accessKeyId: "AKIAI6CZ5U4AFRNZJBKQ",
+        secretAccessKey: "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",
+        bucket: "estore"
+    }
+};
+
+var fs = {
+    provider: 'fs',
+    destination: './uploads'
+};
+
+module.exports = mySql;
