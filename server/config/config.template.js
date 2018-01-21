@@ -28,4 +28,9 @@ var aws = {
     }
 };
 
+var localhost = {
+    provider: 'fs',
+    destination: './uploads'
+};
+
 module.exports = configMySql;
