@@ -10,13 +10,14 @@
         }
 
         // methods
-        indexService.prototype.getList = function (pageCurrent, pageSize) {
-            // var url = String.format('{0}/items', this.api);
+        indexService.prototype.getProducts = function () {
+            var url = String.format('{0}/items', this.api);
+            console.log(url);
             // var params = {
             //     PageCurrent: pageCurrent,
             //     PageSize: pageSize
             // };
-            return this.getData(url, params);                      
+            //return this.getData(url, params);                      
         };                
         
         return new indexService;
