@@ -1,14 +1,22 @@
 (function () {
     'use strict';        
-    angular.module('index.controller', []).controller('indexController', indexController);
-	indexController.$inject = ['$q'];	
-	function indexController($q) {
-        /* view-model */
-        var vm = this;		
+    angular.module('index.controller', ['index.service']).controller('indexController', indexController);
+	indexController.$inject = ['$q','indexService'];
+	function indexController($q, indexService) {
+		/* view-model */
+		var vm = this;
+		var indexService = new indexService();		
 		
 		/* functions */
 		function activate() {
-			console.log('activating() ... indexController ...');
+			return indexService.getProducts().then(function(result){
+				if(result){
+					vm.products = result.PageData;
+					vm.hello = 'hello world';
+				}
+			}, function(err){
+				console.log(err);
+			});
 		};
 		
 		/* start */

@@ -1,3 +1,4 @@
+/*
 var app = angular.module('app', ['ngCookies']);
 
 app.config(function($cookiesProvider) {
@@ -50,3 +51,4 @@ app.factory('appManager', function() {
         }
     }
 });
+*/

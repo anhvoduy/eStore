@@ -39,7 +39,9 @@ h1#logo a{ display:block; height:61px; text-indent: -4000px; background:url(imag
 
 .shell { width:980px; margin:0 auto; }
 
-#top { height:479px; background:#000; }
+/* #top { height:479px; background:#000; } */
+#top { background:#000; }
+
 #header { height:61px; }
 
 #slider { width:980px; height:418px; position:relative; overflow:hidden; }
@@ -108,6 +110,6 @@ h1#logo a{ display:block; height:61px; text-indent: -4000px; background:url(imag
 #footer a:hover{ color:#9d0000; }
 #footer span{ padding:0 5px;}
 
-.tab-content { display:none;}
+.tab-content { display:block;}
 
 .tabbed { min-height:420px;}

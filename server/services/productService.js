@@ -15,27 +15,19 @@ Factory.prototype.getProducts = async function (query) {
         let PageOffset = PageCurrent * PageSize;
         
         // get hits total
-        let sqlTotal = `
-            SELECT COUNT(*) AS Total
-            FROM Product
-            WHERE Deleted <> 1
-        `;
+        let sqlTotal = `SELECT COUNT(*) AS Total FROM Product WHERE Deleted <> 1`;
         let totalRows = (await dbContext.queryItem(sqlTotal)).Total;
 
         // get data
         var sqlQuery = `
-            SELECT  P.ProductId, P.ProductKey, P.ProductName, P.Description, 
-                    P.BrandId, B.BrandName,
-                    P.Price, P.ColorCode, P.Created, P.Status, P.LatestReviewInfo, P.ProductImage 
-            FROM Product P INNER JOIN Brand B
-            WHERE P.BrandId = B.BrandId
-            ORDER BY P.ProductId ASC
+            SELECT  P.ProductId, P.ProductKey, P.ProductName, P.SizeList, P.Description,
+                    P.Price, P.ColorCode, P.Created, P.Status, P.LatestReviewInfo, P.ProductImage
+            FROM Product P
+            WHERE P.Deleted <> 1
+            ORDER BY P.ProductId DESC
             LIMIT :Offset, :Limit
         `;
-        let data = await dbContext.queryList(sqlQuery, {
-			Offset: PageOffset,
-            Limit: PageSize
-        });
+        let data = await dbContext.queryList(sqlQuery, { Offset: PageOffset, Limit: PageSize });
         
         let result = {
             HitsTotal: parseInt(totalRows),
@@ -55,7 +47,7 @@ Factory.prototype.getProductById = async function (query) {
     try
     {
         var sql = `
-            SELECT  P.ProductId, P.ProductKey, P.ProductName, P.Description, 
+            SELECT  P.ProductId, P.ProductKey, P.ProductName, P.SizeList, P.Description, 
                     P.BrandId, B.BrandName,
                     P.Price, P.ColorCode, P.Created, P.Status, P.LatestReviewInfo, P.ProductImage 
             FROM Product P INNER JOIN Brand B ON P.BrandId = B.BrandId 
@@ -73,7 +65,7 @@ Factory.prototype.getProductById = async function (query) {
 
 Factory.prototype.getProductByKey = function (query) {
 	var sql = `
-		SELECT  P.ProductId, P.ProductKey, P.ProductName, P.Description, 
+		SELECT  P.ProductId, P.ProductKey, P.ProductName, P.SizeList, P.Description, 
 				P.BrandId, B.BrandName,
 		        P.Price, P.ColorCode, P.Created, P.Status, P.LatestReviewInfo, P.ProductImage 
 		FROM Product P INNER JOIN Brand B ON P.BrandId = B.BrandId 
@@ -84,18 +76,51 @@ Factory.prototype.getProductByKey = function (query) {
 	return dbContext.queryItem(sql, { ProductKey: query.ProductKey });
 }
 
-Factory.prototype.getProductsByBrand = function (query) {
-	var sql = `
-		SELECT  P.ProductId, P.ProductKey, P.ProductName, P.Description, 
-				P.Price, P.ColorCode, P.Created, P.Status,
-        		P.BrandId, B.BrandName, P.LatestReviewInfo, P.ProductImage 
-		FROM Product P INNER JOIN Brand B ON P.BrandId = B.BrandId
-        WHERE   B.BrandId =:BrandId 
-            AND B.Deleted <> 1 
-            AND P.Deleted <> 1 
-        ORDER BY P.ProductId DESC
-    `;
-	return dbContext.queryList(sql, { BrandId: query.BrandId });
+Factory.prototype.getProductsByBrand = async function (query) {
+    try
+    {
+        let TotalSize = 0;
+        let PageTotal = 0;
+        let PageCurrent = parseInt(query.PageCurrent) - 1;
+        let PageSize = parseInt(query.PageSize);
+        let PageOffset = PageCurrent * PageSize;
+
+        // get hits total
+        let sqlTotal = `
+            SELECT  COUNT(P.ProductId) AS Total
+            FROM Product P INNER JOIN Brand B ON P.BrandId = B.BrandId
+            WHERE   B.BrandId =:BrandId 
+                AND B.Deleted <> 1 
+                AND P.Deleted <> 1 
+            ORDER BY P.ProductId DESC            
+        `;
+        let totalRows = (await dbContext.queryItem(sqlTotal, { BrandId: query.BrandId })).Total;
+
+        var sql = `
+            SELECT  P.ProductId, P.ProductKey, P.ProductName, P.SizeList, P.Description, 
+                    P.Price, P.ColorCode, P.Created, P.Status,
+                    P.BrandId, B.BrandName, P.LatestReviewInfo, P.ProductImage 
+            FROM Product P INNER JOIN Brand B ON P.BrandId = B.BrandId
+            WHERE   B.BrandId =:BrandId 
+                AND B.Deleted <> 1 
+                AND P.Deleted <> 1 
+            ORDER BY P.ProductId DESC
+            LIMIT :Offset, :Limit
+        `;
+        let data = await dbContext.queryList(sql, { BrandId: query.BrandId, Offset: PageOffset, Limit: PageSize });
+
+        let result = {
+            HitsTotal: parseInt(totalRows),
+            PageTotal: parseInt(Math.ceil(totalRows / PageSize)),
+            PageSize: parseInt(PageSize),
+            PageCurrent: parseInt(PageCurrent) + 1,
+            PageData: data
+        }
+        return result;
+    }
+    catch(err){
+        throw err;
+    }
 }
 
 Factory.prototype.createReview = function (review) {

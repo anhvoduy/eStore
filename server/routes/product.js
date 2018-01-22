@@ -41,10 +41,38 @@ router.post('/upload', uploadProductImage(), auth.checkAuthentication(), async f
 	}
 });
 
+/**
+ * API: using for Back End
+ */
 router.get('/items', auth.checkAuthentication(), async function (req, res, next) {
 	try
 	{
-		let query = _.pick(req.query, ['PageCurrent', 'PageSize']);		
+		let query = _.pick(req.query, ['PageCurrent', 'PageSize']);
+		if(!query.PageCurrent && !query.PageSize){
+			query.PageCurrent = 1;
+			query.PageSize = 5000;
+		}
+
+		let data = await productService.getProducts(query);
+		res.status(200).json(data);
+	}
+	catch(err){
+		next(err);
+	}
+});
+
+/**
+ * API: using for Front End
+ */
+router.get('/fe/items', async function (req, res, next) {
+	try
+	{
+		let query = _.pick(req.query, ['PageCurrent', 'PageSize']);
+		if(!query.PageCurrent && !query.PageSize){
+			query.PageCurrent = 1;
+			query.PageSize = 5000;
+		}
+
 		let data = await productService.getProducts(query);
 		res.status(200).json(data);
 	}
@@ -69,12 +97,29 @@ router.get('/item', auth.checkAuthentication(), async function (req, res, next) 
 	}
 });
 
+/**
+ * API: using for Back End
+ */
 router.get('/brand/items', auth.checkAuthentication(), async function (req, res, next) {
 	try
 	{
-		let query = _.pick(req.query, ['BrandId', 'BrandKey']);		
-		let brand = await brandService.getBrandByKey({ BrandKey: query.BrandKey });		
-		let products = await productService.getProductsByBrand({ BrandId: brand.BrandId });		
+		let query = _.pick(req.query, ['BrandId', 'BrandKey','PageCurrent','PageSize']);
+
+		if(!query.BrandKey)
+			throw CONSTANT.MISSING_FIELD_BRANDKEY;
+
+		if(!query.PageCurrent && !query.PageSize){
+			query.PageCurrent = 1;
+			query.PageSize = 5000;
+		}
+
+		let brand = await brandService.getBrandByKey({ BrandKey: query.BrandKey });
+		if(!brand){
+			throw CONSTANT.INVALID_FIELD_BRANDKEY;
+		}
+		query.BrandId = brand.BrandId;
+
+		let products = await productService.getProductsByBrand(query);
 		res.status(200).json(products);
 	}
 	catch(err){

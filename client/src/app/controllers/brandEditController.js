@@ -6,35 +6,45 @@
 	function brandEditController($scope, $state, $stateParams, $timeout, appCommon, brandService, productService) {
 		/* models */
 		$scope.brandKey = $stateParams.brandKey;
+		$scope.pagination = appCommon.defaultPagination;
 		$scope.formStatus = appCommon.isUndefined($scope.brandKey) 
 			? appCommon.formStatus.isNew 
-			: appCommon.formStatus.isEdit;		
+			: appCommon.formStatus.isEdit;
 		$scope.formTitle = appCommon.setFormTitle($scope.formStatus, 'Brand');
 		$scope.messageSuccess = [];
 		$scope.messageError = [];
 		$scope.messageProductSuccess = [];
-		$scope.messageProductError = [];		
+		$scope.messageProductError = [];
 		
 		/* functions */
 		function activate() {
 			if(appCommon.isUndefined($scope.brandKey)) return;
 
 			// get Brand
-			brandService.getBrandByKey($scope.brandKey).then(function (result) {
+			brandService.getBrandByKey($scope.brandKey)
+			.then(function (result) {
 				$scope.brand = result;
 				if (appCommon.isUndefined($scope.brand)) {
 					$scope.messageError.push(String.format('The brand is not found'));
-				}				
+				}
 			}, function (error) {
 				$scope.messageError.push(error);
 			});
 			
 			// get Product
-			productService.getProductByBrand($scope.brandKey).then(function (result) {
-				$scope.products = result;
+			productService.getProductByBrand($scope.brandKey, $scope.pagination.pageCurrent, $scope.pagination.pageSize)
+			.then(function (result) {
+				$scope.products = result.PageData;
+				$scope.pagination.pageCurrent = result.PageCurrent;
+				$scope.pagination.pageSize = result.PageSize;
+				$scope.pagination.pageTotal = result.PageTotal;
+				$scope.pagination.hitsTotal = result.HitsTotal;
+				$scope.pagination.maxSize = Math.ceil(result.HitsTotal/result.PageSize);
+
 				if (appCommon.isUndefined($scope.products) || $scope.products.length === 0) {
-					$scope.messageProductError.push(String.format("Products belongs to this brand is not found.", $scope.brandId));
-				} else {
+					$scope.messageProductError.push('Products belongs to this brand is not found.');
+				} 
+				else {
 					$scope.messageProductSuccess.push(String.format("Get Products is success. Total: {0} rows", $scope.products.length));
 				}
 			}, function (error) {
