@@ -1,6 +1,6 @@
 (function () {
     angular.module('index.directive', ['index.controller', 'index.service'])
-    .directive('ngIndexHeader',[function () {
+    .directive('ngHeader',[function () {
         return {
             restrict: 'EA',            
             replace: true,            
@@ -11,10 +11,21 @@
             }
         };
     }])
+    .directive('ngBrand',[function () {
+        return {
+            restrict: 'EA',            
+            replace: true,
+            templateUrl: function() {                
+                return 'modules/index/brand.tpl.html';
+            },
+            link: function (scope, element, attrs, modelCtrl) {                
+            }
+        };
+    }])
     .directive('ngFooter',[function () {
         return {
             restrict: 'EA',            
-            replace: true,            
+            replace: true,
             templateUrl: function() {                
                 return 'modules/index/footer.tpl.html';
             },
@@ -22,13 +33,13 @@
             }
         };
     }])
-    .directive('ngIndexProduct',[function () {
+    .directive('ngProduct',[function () {
         return {
             restrict: 'EA',            
             replace: true,
             transclude: true,
             templateUrl: function() {                
-                return 'modules/index/indexProduct.tpl.html';
+                return 'modules/index/product.tpl.html';
             },
             link: function (scope, element, attrs, modelCtrl) {                
             }
