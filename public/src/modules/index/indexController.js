@@ -5,15 +5,15 @@
 	function indexController($q, indexService) {
 		/* view-model */
 		var vm = this;
-		var indexService = new indexService();				
+		var indexService = new indexService();		
 		
 		/* functions */
 		function activate() {
-			console.log('activating() ... indexController ...');
 			return indexService.getProducts().then(function(result){
 				if(result){
 					vm.products = result.PageData;
-				}				
+					vm.hello = 'hello world';
+				}
 			}, function(err){
 				console.log(err);
 			});

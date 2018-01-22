@@ -20,11 +20,11 @@ Factory.prototype.getProducts = async function (query) {
 
         // get data
         var sqlQuery = `
-            SELECT  P.ProductId, P.ProductKey, P.ProductName, P.Description,
+            SELECT  P.ProductId, P.ProductKey, P.ProductName, P.SizeList, P.Description,
                     P.Price, P.ColorCode, P.Created, P.Status, P.LatestReviewInfo, P.ProductImage
             FROM Product P
             WHERE P.Deleted <> 1
-            ORDER BY P.ProductId ASC
+            ORDER BY P.ProductId DESC
             LIMIT :Offset, :Limit
         `;
         let data = await dbContext.queryList(sqlQuery, { Offset: PageOffset, Limit: PageSize });
@@ -47,7 +47,7 @@ Factory.prototype.getProductById = async function (query) {
     try
     {
         var sql = `
-            SELECT  P.ProductId, P.ProductKey, P.ProductName, P.Description, 
+            SELECT  P.ProductId, P.ProductKey, P.ProductName, P.SizeList, P.Description, 
                     P.BrandId, B.BrandName,
                     P.Price, P.ColorCode, P.Created, P.Status, P.LatestReviewInfo, P.ProductImage 
             FROM Product P INNER JOIN Brand B ON P.BrandId = B.BrandId 
@@ -65,7 +65,7 @@ Factory.prototype.getProductById = async function (query) {
 
 Factory.prototype.getProductByKey = function (query) {
 	var sql = `
-		SELECT  P.ProductId, P.ProductKey, P.ProductName, P.Description, 
+		SELECT  P.ProductId, P.ProductKey, P.ProductName, P.SizeList, P.Description, 
 				P.BrandId, B.BrandName,
 		        P.Price, P.ColorCode, P.Created, P.Status, P.LatestReviewInfo, P.ProductImage 
 		FROM Product P INNER JOIN Brand B ON P.BrandId = B.BrandId 
@@ -97,7 +97,7 @@ Factory.prototype.getProductsByBrand = async function (query) {
         let totalRows = (await dbContext.queryItem(sqlTotal, { BrandId: query.BrandId })).Total;
 
         var sql = `
-            SELECT  P.ProductId, P.ProductKey, P.ProductName, P.Description, 
+            SELECT  P.ProductId, P.ProductKey, P.ProductName, P.SizeList, P.Description, 
                     P.Price, P.ColorCode, P.Created, P.Status,
                     P.BrandId, B.BrandName, P.LatestReviewInfo, P.ProductImage 
             FROM Product P INNER JOIN Brand B ON P.BrandId = B.BrandId

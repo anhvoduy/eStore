@@ -35,13 +35,19 @@
     }])
     .directive('ngProduct',[function () {
         return {
-            restrict: 'EA',            
+            restrict: 'EA',
+            required: 'ngModel',
             replace: true,
             transclude: true,
+            scope:{
+                products:'=',
+                hello:'='
+            },
             templateUrl: function() {                
                 return 'modules/index/ngProduct.tpl.html';
             },
-            link: function (scope, element, attrs, modelCtrl) {                
+            link: function (scope, element, attrs, modelCtrl) {
+                console.log(scope.products);
             }
         };
     }])

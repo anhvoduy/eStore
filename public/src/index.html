@@ -73,33 +73,22 @@
 			<!-- End Search, etc -->
 			
 			<!-- Content -->
-			<div id="content">										
-				<!-- Container -->
+			<div id="content" ng-controller="indexController as vm">				
 				<div id="container">
 					<div class="tabbed">
 						<div class="tab-content">
-							<div ng-product></div>
+							<div ng-product products="vm.products" hello="vm.hello"></div>
 						</div>
-					</div>
-
-					<!-- Brands -->
+					</div>					
 					<div ng-brand></div>
-					<!-- End Brands -->
-					
-					<!-- Footer -->
-					<div ng-footer></div>
-					<!-- End Footer -->
-					
-				</div>
-				<!-- End Container -->
-				
-			</div>
-			<!-- End Content -->
-			
+					<div ng-footer></div>					
+				</div>				
+			</div>			
 		</div>
-	</div>
-			
-	
+	</div>	
+
+	<!-- TO DO: move footer here -->				
+
 	<script>
 		angular.element(function() {
 			angular.bootstrap(document, ['index']);
