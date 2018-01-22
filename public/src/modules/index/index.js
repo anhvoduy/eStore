@@ -1,10 +1,12 @@
-angular.module('index', [	
-	'index.controller',
-	//'index.directive',
-	'index.service'
-]);
+(function () {
+    angular.module('index', [	
+        'index.controller',	
+        'index.service',
+        'index.directive'
+    ]);
+})();
 
-// override string object
+
 (function () {
     String.format = function() {
         var s = arguments[0];

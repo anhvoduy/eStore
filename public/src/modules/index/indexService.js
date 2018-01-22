@@ -13,7 +13,9 @@
         indexService.prototype.getProducts = function () {
             var url = String.format('{0}/fe/items', this.api);
             var params = {};
-            return $http.get(url, params);
+            return $http.get(url, params).then(function(result){
+                return result.data;
+            });
         };
         
         return indexService;
