@@ -5,7 +5,7 @@
             restrict: 'EA',            
             replace: true,            
             templateUrl: function() {                
-                return 'modules/index/header.tpl.html';
+                return 'modules/index/ngHeader.tpl.html';
             },
             link: function (scope, element, attrs, modelCtrl) {                
             }
@@ -16,7 +16,7 @@
             restrict: 'EA',            
             replace: true,
             templateUrl: function() {                
-                return 'modules/index/brand.tpl.html';
+                return 'modules/index/ngBrand.tpl.html';
             },
             link: function (scope, element, attrs, modelCtrl) {                
             }
@@ -27,7 +27,7 @@
             restrict: 'EA',            
             replace: true,
             templateUrl: function() {                
-                return 'modules/index/footer.tpl.html';
+                return 'modules/index/ngFooter.tpl.html';
             },
             link: function (scope, element, attrs, modelCtrl) {                
             }
@@ -39,7 +39,7 @@
             replace: true,
             transclude: true,
             templateUrl: function() {                
-                return 'modules/index/product.tpl.html';
+                return 'modules/index/ngProduct.tpl.html';
             },
             link: function (scope, element, attrs, modelCtrl) {                
             }
