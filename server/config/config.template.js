@@ -1,7 +1,7 @@
 var mySql = {
     host: 'localhost',
     user: 'root',
-    password: 'P@ssw0rd',
+    password: 'password',
     database: 'estore',
     connectionLimit: 10,
     secretKey: 'ilovejavascript',
@@ -12,18 +12,17 @@ var azure = {
     provider: "azureblob",
     azureblob: {
         container: "estore",
-        accountName: "demo2017",
+        accountName: "accountName",
         host: "demo2017.blob.core.windows.net",
-        accessKey: "r4Am7zLZK3xZUrqLhwfSEAil7pl0p7/qxhQCHeN3pY94Z0LSStU6lDAUAyF8ac/xaDMXmB0siccCH3840z/xbw==",
-        maximumExecutionTimeInMs: 30000
+        accessKey: "v6Am7zLZK3xZUrqLhwfSEAil7pl0p9/qxhQCHeM3pY94Z0LSStU6lDAUAyF8ac/xaDMXmB0siuuCH3840z/xbw=="
     }
 };
 
 var aws = {
     provider: "s3",
     s3: {
-        accessKeyId: "AKIAI6CZ5U4AFRNZJBKQ",
-        secretAccessKey: "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",
+        accessKeyId: "accessKeyId",
+        secretAccessKey: "RTAOlLwMY2ZCT7cstEtYCm305B2d8hfq+qLCSlQF",
         bucket: "estore"
     }
 };
