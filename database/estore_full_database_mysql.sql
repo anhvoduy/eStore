@@ -703,7 +703,9 @@ CREATE TABLE `Brand` (
 --
 -- Sample data for table `Brand`
 --
-INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Thinkpad T450','Lenovo Thinkpad T450','SYSTEM','SYSTEM');
+INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Gucci','Gucci','SYSTEM','SYSTEM');
+INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Nike','Nike','SYSTEM','SYSTEM');
+INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Adidas','Adidas','SYSTEM','SYSTEM');
 INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Apple','Apple','SYSTEM','SYSTEM');
 INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'HIPHOP 005','HIPHOP 005','SYSTEM','SYSTEM');
 INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Asus','Asus','SYSTEM','SYSTEM');
@@ -711,12 +713,12 @@ INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VA
 INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'IBM','IBM','SYSTEM','SYSTEM');
 INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Super Car 2002','Super Car 2002','SYSTEM','SYSTEM');
 INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Dell_XPS','Dell_XPS','SYSTEM','SYSTEM');
-INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'HP 1009','HP Enterprise 1009','SYSTEM','SYSTEM');
-INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Brand TEST 10','Brand TEST 10','SYSTEM','SYSTEM');
+INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Facebook','Facebook Corporation','SYSTEM','SYSTEM');
+INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Lifan Corporation','Lifan Corporation','SYSTEM','SYSTEM');
 INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Asus 520 V.1001','Asus 520 V.10008','SYSTEM','SYSTEM');
-INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Brand TEST 12xx','Brand TEST 12xx','SYSTEM','SYSTEM');
-INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'HP ProBook 2015','HP ProBook 2015','SYSTEM','SYSTEM');
-INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Brand TEST 14','Brand TEST 14','SYSTEM','SYSTEM');
+INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Alibaba Group','Alibaba Group','SYSTEM','SYSTEM');
+INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'HongLeong Group','HongLeong Group','SYSTEM','SYSTEM');
+INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Rolex','Rolex Group','SYSTEM','SYSTEM');
 INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'HP Pro Enter 2011','HP Pro Enter 2011','SYSTEM','SYSTEM');
 INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Sony Group','Sony Group','SYSTEM','SYSTEM');
 INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'DELL Lattitude 2017','DELL Lattitude 2017','SYSTEM','SYSTEM');
@@ -725,10 +727,7 @@ INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VA
 INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Coca Cola','Coca Cola','SYSTEM','SYSTEM');
 INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Pepsi Company','Pepsi Company','SYSTEM','SYSTEM');
 INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Facebook','The Facebook','SYSTEM','SYSTEM');
-INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Alibaba Group','Alibaba Group','SYSTEM','SYSTEM');
-INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'HongLeong Group','HongLeong Group','SYSTEM','SYSTEM');
-INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Lifan Corporation','Lifan Corporation','SYSTEM','SYSTEM');
-
+INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Tommy','Tommy Hilfiger','SYSTEM','SYSTEM');
 
 --
 -- Table structure for table `Product`
@@ -816,16 +815,25 @@ INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`
 VALUES (uuid(),'IBM T46','IBM T46',5,100,'Red','NEW','Cool','product05.jpg','SYSTEM','SYSTEM');
 
 INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`ProductImage`,`Author`,`Editor`)
-VALUES (uuid(),'IBM T47','IBM T47',5,100,'Red','NEW','Cool','product05.jpg','SYSTEM','SYSTEM');
+VALUES (uuid(),'Adidas Shoes','Adidas Shoes',1,100,'Red','NEW','Cool','product05.jpg','SYSTEM','SYSTEM');
 
 INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`ProductImage`,`Author`,`Editor`)
-VALUES (uuid(),'IBM T2000','IBM T2000',20,100,'Red','NEW','Cool','product05.jpg','SYSTEM','SYSTEM');
+VALUES (uuid(),'Adidas Shoes','Adidas Shoes',1,100,'Red','NEW','Cool','product05.jpg','SYSTEM','SYSTEM');
 
 INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`ProductImage`,`Author`,`Editor`)
-VALUES (uuid(),'Ipad 8','Ipad 8',5,3000,'Green','NEW','Cool','product05.jpg','SYSTEM','SYSTEM');
+VALUES (uuid(),'Adidas Shoes','Adidas Shoes',1,75,'Green','NEW','Cool','product05.jpg','SYSTEM','SYSTEM');
 
 INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`ProductImage`,`Author`,`Editor`)
-VALUES (uuid(),'Lifan 2015','Lifan 2015',2,500,'White','NEW','Cool','product05.jpg','SYSTEM','SYSTEM');
+VALUES (uuid(),'Nike Shoes','Nike Shoes',2,50,'White','NEW','Cool','product05.jpg','SYSTEM','SYSTEM');
+
+INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`ProductImage`,`Author`,`Editor`)
+VALUES (uuid(),'Nike Shoes','Nike Shoes',2,50,'White','NEW','Cool','product05.jpg','SYSTEM','SYSTEM');
+
+INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`ProductImage`,`Author`,`Editor`)
+VALUES (uuid(),'Nike Shoes','Nike Shoes',2,50,'Black','NEW','Cool','product05.jpg','SYSTEM','SYSTEM');
+
+INSERT INTO `Product`(`ProductKey`,`ProductName`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`ProductImage`,`Author`,`Editor`)
+VALUES (uuid(),'Nike Shoes','Nike Shoes',2,50,'Pink','NEW','Cool','product05.jpg','SYSTEM','SYSTEM');
 
 --
 -- Table structure for table `Review`
