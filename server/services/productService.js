@@ -84,18 +84,44 @@ Factory.prototype.getProductByKey = function (query) {
 	return dbContext.queryItem(sql, { ProductKey: query.ProductKey });
 }
 
-Factory.prototype.getProductsByBrand = function (query) {
-	var sql = `
-		SELECT  P.ProductId, P.ProductKey, P.ProductName, P.Description, 
-				P.Price, P.ColorCode, P.Created, P.Status,
-        		P.BrandId, B.BrandName, P.LatestReviewInfo, P.ProductImage 
-		FROM Product P INNER JOIN Brand B ON P.BrandId = B.BrandId
-        WHERE   B.BrandId =:BrandId 
-            AND B.Deleted <> 1 
-            AND P.Deleted <> 1 
-        ORDER BY P.ProductId DESC
-    `;
-	return dbContext.queryList(sql, { BrandId: query.BrandId });
+Factory.prototype.getProductsByBrand = async function (query) {
+    try
+    {
+        let TotalSize = 0;
+        let PageTotal = 0;
+        let PageCurrent = parseInt(query.PageCurrent) - 1;
+        let PageSize = parseInt(query.PageSize);
+        let PageOffset = PageCurrent * PageSize;
+
+        var sql = `
+            SELECT  P.ProductId, P.ProductKey, P.ProductName, P.Description, 
+                    P.Price, P.ColorCode, P.Created, P.Status,
+                    P.BrandId, B.BrandName, P.LatestReviewInfo, P.ProductImage 
+            FROM Product P INNER JOIN Brand B ON P.BrandId = B.BrandId
+            WHERE   B.BrandId =:BrandId 
+                AND B.Deleted <> 1 
+                AND P.Deleted <> 1 
+            ORDER BY P.ProductId DESC
+            LIMIT :Offset, :Limit
+        `;
+        let data = await dbContext.queryList(sql, { 
+            BrandId: query.BrandId,
+            Offset: PageOffset,
+            Limit: PageSize 
+        });
+
+        let result = {
+            HitsTotal: parseInt(totalRows),
+            PageTotal: parseInt(Math.ceil(totalRows / PageSize)),
+            PageSize: parseInt(PageSize),
+            PageCurrent: parseInt(PageCurrent) + 1,
+            PageData: data
+        }
+        return result;
+    }
+    catch(err){
+        throw err;
+    }
 }
 
 Factory.prototype.createReview = function (review) {

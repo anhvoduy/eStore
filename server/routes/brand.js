@@ -8,12 +8,17 @@ const brandService = require('../services/brandService');
 // Router
 router.get('/items', async function (req, res, next) {
 	try
-	{		
+	{
 		let query = _.pick(req.query, ['PageCurrent', 'PageSize']);
-		if(!query.PageCurrent && !query.PageSize){
+		
+		if(!query.PageCurrent || parseInt(query.PageCurrent)<=0){
 			query.PageCurrent = 1;
-			query.PageSize = 5000;			
 		}
+
+		if(!query.PageSize || parseInt(query.PageSize)<=0){
+			query.PageSize = 5000;
+		}
+
 		let data = await brandService.getList(query);
 		return res.status(200).json(data);
 	}

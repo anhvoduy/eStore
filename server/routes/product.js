@@ -41,10 +41,46 @@ router.post('/upload', uploadProductImage(), auth.checkAuthentication(), async f
 	}
 });
 
+/**
+ * API: using for Back End
+ */
 router.get('/items', auth.checkAuthentication(), async function (req, res, next) {
 	try
 	{
-		let query = _.pick(req.query, ['PageCurrent', 'PageSize']);		
+		let query = _.pick(req.query, ['PageCurrent', 'PageSize']);
+
+		if(!query.PageCurrent || parseInt(query.PageCurrent)<=0){
+			query.PageCurrent = 1;
+		}
+
+		if(!query.PageSize || parseInt(query.PageSize)<=0){
+			query.PageSize = 5000;
+		}
+
+		let data = await productService.getProducts(query);
+		res.status(200).json(data);
+	}
+	catch(err){
+		next(err);
+	}
+});
+
+/**
+ * API: using for Front End
+ */
+router.get('/fe/items', async function (req, res, next) {
+	try
+	{
+		let query = _.pick(req.query, ['PageCurrent', 'PageSize']);
+
+		if(!query.PageCurrent || parseInt(query.PageCurrent)<=0){
+			query.PageCurrent = 1;
+		}
+		
+		if(!query.PageSize || parseInt(query.PageSize)<=0){
+			query.PageSize = 5000;
+		}
+
 		let data = await productService.getProducts(query);
 		res.status(200).json(data);
 	}
