@@ -3,8 +3,7 @@ var mySql = {
     user: 'user',
     password: 'password',
     database: 'database',
-    connectionLimit: 10,
-    secretKey: 'ilovejavascript',
+    connectionLimit: 10,    
 	debugMode: true
 };
 
@@ -32,4 +31,11 @@ var fs = {
     destination: './uploads'
 };
 
-module.exports = mySql;
+module.exports = {
+    mySql: mySql,
+    azure: azure,
+    aws: aws,
+    fs: fs,
+    default: 'fs',
+    secretKey: 'ilovejavascript'
+};

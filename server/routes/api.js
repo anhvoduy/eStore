@@ -6,7 +6,7 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var multer = require('multer');
 var auth = require('../config/auth');
-var config = require('../config/config');
+var config = require('../config/config').mySql;
 var CONSTANT = require('../lib/constant');
 
 // sample redis cache
