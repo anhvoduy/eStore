@@ -33,5 +33,9 @@ var fs = {
 
 module.exports = {
     mySql: mySql,
-    secretKey: 'ilovejavascript',
+    azure: azure,
+    aws: aws,
+    fs: fs,
+    default: 'fs',
+    secretKey: 'ilovejavascript'
 };
