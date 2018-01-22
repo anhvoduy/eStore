@@ -48,12 +48,8 @@ router.get('/items', auth.checkAuthentication(), async function (req, res, next)
 	try
 	{
 		let query = _.pick(req.query, ['PageCurrent', 'PageSize']);
-
-		if(!query.PageCurrent || parseInt(query.PageCurrent)<=0){
+		if(!query.PageCurrent && !query.PageSize){
 			query.PageCurrent = 1;
-		}
-
-		if(!query.PageSize || parseInt(query.PageSize)<=0){
 			query.PageSize = 5000;
 		}
 
@@ -72,12 +68,8 @@ router.get('/fe/items', async function (req, res, next) {
 	try
 	{
 		let query = _.pick(req.query, ['PageCurrent', 'PageSize']);
-
-		if(!query.PageCurrent || parseInt(query.PageCurrent)<=0){
+		if(!query.PageCurrent && !query.PageSize){
 			query.PageCurrent = 1;
-		}
-		
-		if(!query.PageSize || parseInt(query.PageSize)<=0){
 			query.PageSize = 5000;
 		}
 
@@ -105,12 +97,29 @@ router.get('/item', auth.checkAuthentication(), async function (req, res, next) 
 	}
 });
 
+/**
+ * API: using for Back End
+ */
 router.get('/brand/items', auth.checkAuthentication(), async function (req, res, next) {
 	try
 	{
-		let query = _.pick(req.query, ['BrandId', 'BrandKey']);		
-		let brand = await brandService.getBrandByKey({ BrandKey: query.BrandKey });		
-		let products = await productService.getProductsByBrand({ BrandId: brand.BrandId });		
+		let query = _.pick(req.query, ['BrandId', 'BrandKey','PageCurrent','PageSize']);
+
+		if(!query.BrandKey)
+			throw CONSTANT.MISSING_FIELD_BRANDKEY;
+
+		if(!query.PageCurrent && !query.PageSize){
+			query.PageCurrent = 1;
+			query.PageSize = 5000;
+		}
+
+		let brand = await brandService.getBrandByKey({ BrandKey: query.BrandKey });
+		if(!brand){
+			throw CONSTANT.INVALID_FIELD_BRANDKEY;
+		}
+		query.BrandId = brand.BrandId;
+
+		let products = await productService.getProductsByBrand(query);
 		res.status(200).json(products);
 	}
 	catch(err){
