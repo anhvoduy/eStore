@@ -1,25 +1,26 @@
 (function () {
-    'use strict';        
+    'use strict';
 	angular.module('product.detail.controller', ['product.service']).controller('productDetailController', productDetailController);
-
-	productDetailController.$inject = ['$location', '$q','productService'];
-	function productDetailController($location, $q, productService) {
+	productDetailController.$inject = ['$rootScope','$location', '$q','productService'];
+	function productDetailController($rootScope, $location, $q, productService) {
 		/* view-model */
 		var vm = this;
-		var productService = new productService();		
+		var productService = new productService();
 		
 		/* functions */
-		function activate() {			
+		function activate() {
 			var productId = getProductId($location.$$absUrl);
-			console.log('- productId:', productId);
 			return productService.getProductItem(productId).then(function(result){
-				if(result){
-					vm.product = result
-				}				
+				vm.product = result;
+				vm.product.ProductImageUrl = String.format('{0}/{1}/{2}/{3}', getRootLocation($location), 'uploads', 'products', vm.product.ProductImage);
 			}, function(err){
 				console.log(err);
 			});
 		};
+
+		function getRootLocation(location) {
+			return $location.$$protocol + ':' + '//' + $location.$$host + ':' + $location.$$port;
+		}
 
 		function getProductId(url) {
 			var array = url.split('/');
@@ -33,7 +34,7 @@
 				resIndex = -1,
 				result = [];	
 			while (++index < arr_length) {
-				var value = array[index];		
+				var value = array[index];
 				if (value) {
 					result[++resIndex] = value;
 				}

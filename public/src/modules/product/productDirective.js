@@ -1,5 +1,5 @@
 (function () {
-    angular.module('product.directive', [])    
+    angular.module('product.directive', [])
     .directive('ngProductDetail',[function () {
         return {
             restrict: 'EA',
@@ -7,13 +7,13 @@
             replace: true,
             transclude: true,
             scope:{
-                products:'=',
+                product:'=',
                 hello:'='
             },
-            templateUrl: function() {                
+            templateUrl: function() {
                 return 'modules/product/ngProductDetail.tpl.html';
             },
-            link: function (scope, element, attrs, modelCtrl) {                
+            link: function (scope, element, attrs, modelCtrl) {
             }
         };
     }])
@@ -27,10 +27,10 @@
                 products:'=',
                 hello:'='
             },
-            templateUrl: function() {                
+            templateUrl: function() {
                 return 'modules/product/ngProductList.tpl.html';
             },
-            link: function (scope, element, attrs, modelCtrl) {                
+            link: function (scope, element, attrs, modelCtrl) {
             }
         };
     }])

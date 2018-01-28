@@ -87,7 +87,6 @@ router.get('/fe/items', async function (req, res, next) {
 router.get('/fe/item', async function (req, res, next) {
 	try
 	{
-		console.log(req.query);
 		let query = _.pick(req.query, ['ProductId']);
 		if(!query.ProductId){
 			throw CONSTANT.MISSING_FIELD_PRODUCTID;
