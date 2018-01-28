@@ -12,17 +12,14 @@
 		function activate() {			
 			var productId = getProductId($location.$$absUrl);
 			console.log('- productId:', productId);
-			return productService.getProducts().then(function(result){
+			return productService.getProductItem(productId).then(function(result){
 				if(result){
-					vm.products = result.PageData;
-					vm.hello = 'hello product';
-				}
-				console.log('productDetailController ....');				
+					vm.product = result
+				}				
 			}, function(err){
 				console.log(err);
 			});
 		};
-
 
 		function getProductId(url) {
 			var array = url.split('/');
