@@ -1,11 +1,11 @@
 (function () {
     'use strict';
-    angular.module('contact.service', []).factory('contactService', contactService);
+    angular.module('contact.service', []).service('contactService', contactService);
     contactService.$inject = ['$http', '$q', '$location'];
     function contactService($http, $q, $location) {
         // constructor
         var contactService = function () {
-            this.api = String.format('{0}://{1}:{2}/{3}', $location.protocol(), $location.host(), $location.port(),'api');
+            this.api = String.format('{0}://{1}:{2}/{3}', $location.protocol(), $location.host(), $location.port(), 'api');
         }
 
         // methods
@@ -20,6 +20,6 @@
             });
         };
         
-        return new contactService;
+        return contactService;
     };
 })();
