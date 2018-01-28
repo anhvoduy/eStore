@@ -15,6 +15,9 @@
 	<script src="js/angular/angular.min.js" type="text/javascript"></script>
 
 	<!-- app -->
+	<script src="productpage.js" type="text/javascript"></script>
+
+	<!-- modules injection -->
 	<script src="modules/core/core.js" type="text/javascript"></script>
 	<script src="modules/core/coreDirective.js" type="text/javascript"></script>
 	<script src="modules/core/coreService.js" type="text/javascript"></script>
@@ -22,6 +25,7 @@
 	<script src="modules/product/product.js" type="text/javascript"></script>
 	<script src="modules/product/productDirective.js" type="text/javascript"></script>
 	<script src="modules/product/productController.js" type="text/javascript"></script>
+	<script src="modules/product/productDetailController.js" type="text/javascript"></script>
 	<script src="modules/product/productService.js" type="text/javascript"></script>
 </head>
 <body>
@@ -57,7 +61,7 @@
 
 	<script>
 		angular.element(function() {
-			angular.bootstrap(document, ['product']);
+			angular.bootstrap(document, ['productpage']);
 		});
 	</script>
 </body>

@@ -1,8 +1,8 @@
 (function () {
     'use strict';        
-    angular.module('product.controller', ['product.service']).controller('productController', productController);
-	productController.$inject = ['$q','productService'];
-	function productController($q, productService) {
+    angular.module('product.detail.controller', ['product.service']).controller('productDetailController', productDetailController);
+	productDetailController.$inject = ['$q','productService'];
+	function productDetailController($q, productService) {
 		/* view-model */
 		var vm = this;
 		var productService = new productService();		
@@ -14,7 +14,7 @@
 					vm.products = result.PageData;
 					vm.hello = 'hello product';
 				}
-				console.log('productController ....');
+				console.log('productDetailController ....');
 			}, function(err){
 				console.log(err);
 			});

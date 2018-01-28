@@ -1,7 +1,7 @@
 (function () {
-    angular.module('product', [
-        'core',
-        'product.controller',        
+    angular.module('product', [        
+        'product.controller',
+        'product.detail.controller',
         'product.service',
         'product.directive'
     ]);
