@@ -1,3 +1,3 @@
 (function () {
-    angular.module('contactpage', ['core']);
+    angular.module('contactpage', ['core', 'contact']);
 })();
