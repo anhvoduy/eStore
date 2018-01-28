@@ -1,5 +1,5 @@
 angular.module('contact', [
 	'contact.controller',
-	//'contact.directive',
+	'contact.directive',
 	'contact.service'
 ]);

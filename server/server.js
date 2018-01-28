@@ -70,6 +70,7 @@ server.use(function (err, req, res, next) {
 var pathPublic = path.join(__dirname, '../public/src/');
 server.use('/', express.static(pathPublic, { index: 'index.html' }));
 server.use('/index', express.static(pathPublic, { index: 'index.html' }));
+server.use('/product', express.static(pathPublic, { index: 'product.html' }));
 server.use('/contact', express.static(pathPublic, { index: 'contact.html' }));
 
 var pathAdmin = path.join(__dirname, '../client/src/');
