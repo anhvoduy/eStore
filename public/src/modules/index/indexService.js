@@ -5,7 +5,7 @@
     function indexService($http, $q, $location) {
         // constructor
         var indexService = function () {
-            this.api = String.format('{0}://{1}:{2}/{3}', $location.protocol(), $location.host(), $location.port(), 'api');			
+            this.api = String.format('{0}://{1}:{2}/{3}', $location.protocol(), $location.host(), $location.port(), 'api');
         };
 
         // methods
