@@ -1,18 +1,18 @@
 (function () {
     'use strict';        
-    angular.module('index.controller', ['index.service']).controller('indexController', indexController);
-	indexController.$inject = ['$q','indexService'];
-	function indexController($q, indexService) {
+    angular.module('product.controller', ['product.service']).controller('productController', productController);
+	productController.$inject = ['$q','productService'];
+	function productController($q, productService) {
 		/* view-model */
 		var vm = this;
-		var indexService = new indexService();		
+		var productService = new productService();		
 		
 		/* functions */
 		function activate() {
-			return indexService.getProducts().then(function(result){
+			return productService.getProducts().then(function(result){
 				if(result){
 					vm.products = result.PageData;
-					vm.hello = 'hello world';
+					vm.hello = 'hello product';
 				}
 			}, function(err){
 				console.log(err);

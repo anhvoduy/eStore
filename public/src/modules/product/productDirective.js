@@ -1,5 +1,5 @@
 (function () {
-    angular.module('index.directive', [])    
+    angular.module('product.directive', [])    
     .directive('ngProductDetail',[function () {
         return {
             restrict: 'EA',
@@ -11,10 +11,9 @@
                 hello:'='
             },
             templateUrl: function() {                
-                return 'modules/index/ngProductDetail.tpl.html';
+                return 'modules/product/ngProductDetail.tpl.html';
             },
-            link: function (scope, element, attrs, modelCtrl) {
-                console.log(scope.products);
+            link: function (scope, element, attrs, modelCtrl) {                
             }
         };
     }])
