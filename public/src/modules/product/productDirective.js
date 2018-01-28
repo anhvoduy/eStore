@@ -1,39 +1,6 @@
 (function () {
-    angular.module('index.directive', ['index.controller', 'index.service'])
-    .directive('ngHeader',[function () {
-        return {
-            restrict: 'EA',            
-            replace: true,            
-            templateUrl: function() {                
-                return 'modules/index/ngHeader.tpl.html';
-            },
-            link: function (scope, element, attrs, modelCtrl) {                
-            }
-        };
-    }])
-    .directive('ngBrand',[function () {
-        return {
-            restrict: 'EA',            
-            replace: true,
-            templateUrl: function() {                
-                return 'modules/index/ngBrand.tpl.html';
-            },
-            link: function (scope, element, attrs, modelCtrl) {                
-            }
-        };
-    }])
-    .directive('ngFooter',[function () {
-        return {
-            restrict: 'EA',            
-            replace: true,
-            templateUrl: function() {                
-                return 'modules/index/ngFooter.tpl.html';
-            },
-            link: function (scope, element, attrs, modelCtrl) {                
-            }
-        };
-    }])
-    .directive('ngProduct',[function () {
+    angular.module('index.directive', [])    
+    .directive('ngProductDetail',[function () {
         return {
             restrict: 'EA',
             required: 'ngModel',
@@ -44,7 +11,7 @@
                 hello:'='
             },
             templateUrl: function() {                
-                return 'modules/index/ngProduct.tpl.html';
+                return 'modules/index/ngProductDetail.tpl.html';
             },
             link: function (scope, element, attrs, modelCtrl) {
                 console.log(scope.products);

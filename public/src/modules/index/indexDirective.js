@@ -1,10 +1,10 @@
 (function () {
-    angular.module('index.directive', ['index.controller', 'index.service'])
+    angular.module('index.directive', [])
     .directive('ngHeader',[function () {
         return {
-            restrict: 'EA',            
-            replace: true,            
-            templateUrl: function() {                
+            restrict: 'EA',
+            replace: true,
+            templateUrl: function() {
                 return 'modules/index/ngHeader.tpl.html';
             },
             link: function (scope, element, attrs, modelCtrl) {                
@@ -13,7 +13,7 @@
     }])
     .directive('ngBrand',[function () {
         return {
-            restrict: 'EA',            
+            restrict: 'EA',
             replace: true,
             templateUrl: function() {                
                 return 'modules/index/ngBrand.tpl.html';
@@ -24,7 +24,7 @@
     }])
     .directive('ngFooter',[function () {
         return {
-            restrict: 'EA',            
+            restrict: 'EA',
             replace: true,
             templateUrl: function() {                
                 return 'modules/index/ngFooter.tpl.html';
