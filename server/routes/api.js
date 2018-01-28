@@ -6,7 +6,7 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var multer = require('multer');
 var auth = require('../config/auth');
-var config = require('../config/config').mySql;
+var config = require('../config/config');
 var CONSTANT = require('../lib/constant');
 
 // sample redis cache
@@ -109,14 +109,14 @@ router.post('/login', function (req, res, next) {
 		if (err) return next(err);
 
 		if (!result.success) {
-			console.log('Login is failed ...');
+			//console.log('Login is failed ...');
 			res.status(404).json({
 				success: false,
 				message: { code: 'ERROR_UNAUTHENTICATION', message: 'Username and Password is invalid.' }
 			});
 		} 
 		else {
-			console.log('Login is success ...');
+			//console.log('Login is success ...');
 			var token = jwt.sign(result.user, config.secretKey, { expiresIn: 60 * 60 * 24 * 1 });
 			res.status(200).json({
 				success: true,
@@ -128,7 +128,8 @@ router.post('/login', function (req, res, next) {
 });
 
 router.get('/logout', function (req, res, next) {
-	console.log('Log out current user...');
+	// TO DO: force logout 404
+	// console.log('Log out current user ...');	
 	next();
 });
 
