@@ -15,58 +15,16 @@
 	<script src="modules/index/indexService.js" type="text/javascript"></script>
 </head>
 <body>
+	<!-- header -->
 	<div id="top">
-		<div class="shell">
-			<!-- Header -->
+		<div class="shell">			
 			<div id="header" ng-header></div>
-			<!-- End Header -->
-			
-			<!-- Slider -->
-			<!-- <div id="slider">
-				<div id="slider-holder">
-					<ul>
-						<li><a href="#"><img src="css/images/slide1.jpg" alt="" /></a></li>
-						<li><a href="#"><img src="css/images/slide2.jpg" alt="" /></a></li>
-						<li><a href="#"><img src="css/images/slide1.jpg" alt="" /></a></li>
-						<li><a href="#"><img src="css/images/slide2.jpg" alt="" /></a></li>
-						<li><a href="#"><img src="css/images/slide1.jpg" alt="" /></a></li>
-						<li><a href="#"><img src="css/images/slide2.jpg" alt="" /></a></li>
-					</ul>
-				</div>
-				<div id="slider-nav">
-					<a href="#" class="prev">Previous</a>
-					<a href="#" class="next">Next</a>
-				</div>
-			</div> -->
-			<!-- End Slider -->			
 		</div>
 	</div>
-		
+	
+	<!-- main -->
 	<div id="main">
-		<div class="shell">			
-			<!-- Search, etc -->
-			<div class="options">
-					<div class="search">
-						<form action="" method="post">
-							<span class="field"><input type="text" class="blink" value="SEARCH" title="SEARCH" /></span>
-							<input type="text" class="search-submit" value="GO" />
-						</form>
-					</div>
-					<span class="left"><a href="#">Advanced Search</a></span>
-					
-					<div class="right">
-						<span class="cart">
-							<a href="#" class="cart-ico">&nbsp;</a>
-							<strong>$0.00</strong>
-						</span>
-						<span class="left more-links">
-							<a href="#">Checkout</a>
-							<a href="#">Details</a>
-						</span>
-					</div>
-			</div>
-			<!-- End Search, etc -->
-			
+		<div class="shell">						
 			<!-- Content -->
 			<div id="content" ng-controller="indexController as vm">				
 				<div id="container">
@@ -80,9 +38,9 @@
 				</div>				
 			</div>			
 		</div>
-	</div>	
+	</div>
 
-	<!-- TO DO: move footer here -->				
+	<!-- TO DO: footer -->
 
 	<script>
 		angular.element(function() {
