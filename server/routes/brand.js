@@ -59,12 +59,13 @@ router.post('/create', auth.checkAuthentication(), async function (req, res, nex
 	}
 });
 
-router.post('/update', auth.checkAuthentication(), async function (req, res, next) {
+//router.post('/update', auth.checkAuthentication(), async function (req, res, next) {
+router.post('/update', async function (req, res, next) {
 	try
 	{
 		let brand = _.pick(req.body, ["BrandId", "BrandKey", "BrandName", "Description"]);
-		if(!brand.BrandKey)
-			throw CONSTANT.MISSING_FIELD_BRANDKEY;
+		// if(!brand.BrandKey)
+		// 	throw CONSTANT.MISSING_FIELD_BRANDKEY;
 
 		if(!brand.BrandName)
 			throw CONSTANT.MISSING_FIELD_BRANDNAME;
