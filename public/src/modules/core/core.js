@@ -1,13 +1,4 @@
 (function () {
-    angular.module('index', [	
-        'index.controller',	
-        'index.service',
-        'index.directive'
-    ]);
-})();
-
-
-(function () {
     String.format = function() {
         var s = arguments[0];
         for (var i = 0; i < arguments.length - 1; i += 1) {
@@ -16,4 +7,8 @@
         }
         return s;
     };
+})();
+
+(function () {
+    angular.module('core', ['core.service', 'core.directive']);
 })();

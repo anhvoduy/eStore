@@ -5,10 +5,10 @@
             <div class="image">
                 <a href="#"><img src="css/images/image3.jpg" alt="" /></a>
             </div>
-            <p>                
+            <p>
                 Item Number: <span>{{p.ProductId}}</span><br />
                 Size List :  <span>{{p.SizeList}}</span><br />
-                Brand Name:  <a href="#">{{p.ProductName}}</a>
+                Product Name:  <a ng-href="/product/{{p.ProductId}}">{{p.ProductName}}</a>
             </p>
             <p class="price">Wholesale Price:&nbsp;<strong>{{p.Price}}&nbsp;USD</strong></p>
         </li>

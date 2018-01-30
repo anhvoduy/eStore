@@ -81,6 +81,25 @@ router.get('/fe/items', async function (req, res, next) {
 	}
 });
 
+/**
+ * API: using for Front End
+ */
+router.get('/fe/item', async function (req, res, next) {
+	try
+	{
+		let query = _.pick(req.query, ['ProductId']);
+		if(!query.ProductId){
+			throw CONSTANT.MISSING_FIELD_PRODUCTID;
+		}
+
+		let data = await productService.getProductById(query);
+		res.status(200).json(data);
+	}
+	catch(err){
+		next(err);
+	}
+});
+
 router.get('/item', auth.checkAuthentication(), async function (req, res, next) {
 	try
 	{
