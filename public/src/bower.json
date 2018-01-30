@@ -1,0 +1,23 @@
+{
+  "name": "src",
+  "homepage": "https://github.com/anhvodhvn/demo-mysql",
+  "authors": [
+    "Anh Vo Duy <anh.voduy@harveynash.vn>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "angularjs#^1.6.8",
+    "jquery": "^3.3.1",
+    "boostrap": "^4.0.0",
+    "moment": "^2.20.1"
+  }
+}
