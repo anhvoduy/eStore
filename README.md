@@ -1,5 +1,7 @@
 ﻿The solution includes:
-- server  : Public Site & Admin Site & APIs
+- public  : Public Site
+- client  : Admin Site
+- server  : APIs
 - database: estore
 - update file: "/server/config/config.js" to setup: username & password & database name
 
