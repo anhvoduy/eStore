@@ -1,105 +1,78 @@
 ﻿'use strict';
-var expect  = require("chai").expect;
+var chai = require('chai');
+var expect  = chai.expect;
 var supertest = require("supertest");
-var server = 'http://localhost:8000';
+var server = require('../server');
+//var chaiHttp = require('chai-http');
+//chai.use(chaiHttp);
 
-describe("GET API: /api/product/", function () {
-    var pageIndex = 0;
-    it("Get List Products with Page Index = " + pageIndex, function (done) {
+var mApiProduct = "/api/product";
+var mApiProductFeItems = `${mApiProduct}/fe/items`;
+var mApiProductFeItem = `${mApiProduct}/fe/item`;
+
+var mToken;
+var pageIndex = 0;
+var productId = 10;
+var review = {
+    Rating: 2,
+    Comment: 'Test Rating 2xx - Product Id = 2',
+    Created: '',
+    ProductId: 2,
+    Email: 'anhvod@hvn.com',						
+};
+
+describe(`@DEV: ${mApiProduct}`, function () {
+    beforeEach(function(done) {
         supertest(server)
-			.get("/api/product/itemspaging/" + pageIndex)
-			.expect(200)
-			.end(function (error, response) {
-            
-            if (error) {
-                return done(error);
-            }
-            
-            response.body.forEach(function (product) {
-                expect(product).property('ProductId');
-                expect(product).property('ProductName');
-                expect(product).property('Description');
-                expect(product).property('Price');
-                expect(product).property('Colour');
-                expect(product).property('Status');
-                
-                expect(product.ProductId).a('number');
-                expect(product.ProductName).a('string');
-                expect(product.Description).a('string');
-                expect(product.Price).a('number');
-                expect(product.Colour).a('string');
-                expect(product.Status).a('string');
+            .post('/api/login')
+            .send({ username: 'admin', password: '@dmin' })
+			.end(function (err, res) {
+                if (err){                    
+                    return done(err);
+                }
+                mToken = res.body.user.token;                
+                done();          
+            });
+    });
+
+    afterEach(function(done) {
+        done();  
+    });
+
+    it(`GET: ${mApiProductFeItems}`, function (done) {
+        supertest(server)
+        .get(mApiProductFeItems)
+		.expect(200)
+		.end(function (err, res) {
+            if (err) 
+                return done(err);
+
+            expect(res.status, 'Status').eql(200);
+            expect(res.body, 'Body').all.keys('HitsTotal', 'PageTotal', 'PageSize', 'PageCurrent', 'PageData');
+            res.body.PageData.forEach(function (product) {
+                expect(product).all.keys('ProductId', 'ProductKey', 'ProductName', 'Description', 'ColorCode', 'Price', 'LatestReviewInfo', 'ProductImage', 'SizeList', 'Status', 'Created');
+                expect(product.ProductId,'ProductId').a('number');
+                expect(product.ProductKey,'ProductKey').a('string');
+                expect(product.ProductName,'ProductName').a('string');
+                expect(product.Description,'Description').a('string');
             });
             done();
         })
     });
-    
-    var productId = 2;
-    it("Get Product with ProductId = " + productId, function (done) {
+        
+    it(`GET: ${mApiProductFeItem}`, function (done) {
         supertest(server)
-			.get("/api/product/items/" + productId)
+            .get(mApiProductFeItem)
+            .query({ProductId: productId})
 			.expect(200)
-			.end(function (error, response) {
+			.end(function (err, res) {
             
-            if (error) {
-                return done(error);
-            }
-            
-            var product = response.body;
-            expect(product).property('ProductId');
-            expect(product).property('ProductName');
-            expect(product).property('Description');
-            expect(product).property('BrandId');
-            expect(product).property('BrandName');
-            expect(product).property('Price');
-            expect(product).property('Colour');
-            expect(product).property('Status');
-            
-            expect(product.ProductId).a('number');
-            expect(product.ProductName).a('string');
-            expect(product.Description).a('string');
-            expect(product.BrandId).a('number');
-            expect(product.BrandName).a('string');
-            expect(product.Price).a('number');
-            expect(product.Colour).a('string');
-            expect(product.Status).a('string');
+            if (err) 
+                return done(err);
+                        
+            expect(res.status, 'Status').eql(200);            
+            expect(res.body).all.keys('BrandId', 'BrandName','ProductId', 'ProductKey', 'ProductName', 'Description', 'ColorCode', 'Price', 'LatestReviewInfo', 'ProductImage', 'SizeList', 'Status', 'Created');
             done();
         })
-    });
-});
-
-
-describe("POST API: /api/review/", function () {
-    var review = {
-        Rating: 2,
-        Comment: 'Test Rating 2xx - Product Id = 2',
-        Created: '',
-        ProductId: 2,
-        Email: 'anhvod@hvn.com',						
-    };
-    // valid Email  :  anhvod@hvn.com
-    // invalid Email:  anhvod@csc.com
-    
-    it('post /api/review/add', function (done) {
-        supertest(server)
-            .post("/api/review/add")
-            .send(review)
-            .expect(201)
-            .end(function (error, response) {
-            
-            if (error) {
-                return done(error);
-            }
-            
-            var result = response.body;            
-            expect(result).property('code');
-            expect(result).property('message');
-                        
-            expect(result.code).a('string');
-            expect(result.message).a('string');
-			
-			expect(result.code).to.equal('CREATE_REVIEW_SUCCESS');
-			done();            
-        });
     });
 });

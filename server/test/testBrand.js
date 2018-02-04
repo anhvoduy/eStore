@@ -1,11 +1,17 @@
 ﻿'use strict';
 var chai = require('chai');
-//var chaiHttp = require('chai-http');
-var expect  = require("chai").expect;
+var expect  = chai.expect;
 var supertest = require("supertest");
 var server = require('../server');
+//var chaiHttp = require('chai-http');
 //chai.use(chaiHttp);
 
+var mApiBrand = "/api/brand";
+var mApiBrandItems = `${mApiBrand}/items`;
+var mApiBrandItem = `${mApiBrand}/item`;
+var mApiBrandUpdate = `${mApiBrand}/update`;
+
+var mToken;
 var brandId = 10;
 var brand = {
     BrandId: 10,
@@ -13,22 +19,33 @@ var brand = {
     Description: 'Sony Vaio'
 };
 
-describe("GET API: /api/brand/", function() {
-    beforeEach(function() {
-    });
-
-    afterEach(function() {
-    });
-
-    it("Get List Brands", function (done) {
+describe(`@DEV: ${mApiBrand}`, function() {
+    beforeEach(function(done) {
         supertest(server)
-			.get("/api/brand/items")
+            .post('/api/login')
+            .send({ username: 'admin', password: '@dmin' })
+			.end(function (err, res) {
+                if (err){                    
+                    return done(err);
+                }
+                mToken = res.body.user.token;                
+                done();          
+            });
+    });
+
+    afterEach(function(done) {
+        done();
+    });
+
+    it(`GET: ${mApiBrandItems}`, function (done) {
+        supertest(server)
+			.get(mApiBrandItems)
 			.expect(200)
 			.end(function (err, res) {
             
-            if (err) {
+            if (err) 
                 return done(err);
-            }            
+            
             expect(res.status, 'Status').eql(200);
             expect(res.body, 'Body').all.keys('HitsTotal', 'PageTotal', 'PageSize', 'PageCurrent', 'PageData');            
             res.body.PageData.forEach(function (brand) {
@@ -42,16 +59,16 @@ describe("GET API: /api/brand/", function() {
         })
     });
 		
-    it("Get Brand with BrandId: " + brandId, function (done) {
+    it(`GET: ${mApiBrandItem}`, function (done) {
         supertest(server)
-            .get("/api/brand/item")
+            .get(mApiBrandItem)
             .query({BrandId: brandId})
 			.expect(200)
 			.end(function (err, res) {
             
-            if (err) {
+            if (err) 
                 return done(err);
-            }
+            
             expect(res.status, 'Status').eql(200);
             expect(res.body).all.keys('BrandId', 'BrandKey', 'BrandName', 'Description');
             expect(res.body.BrandId,'BrandId').a('number');
@@ -63,23 +80,32 @@ describe("GET API: /api/brand/", function() {
     });
 });
 
-describe("POST API: /api/brand/", function () {
-    beforeEach(function() {
+describe(`@DEV: ${mApiBrand}`, function () {
+    beforeEach(function(done) {
+        supertest(server)
+            .post('/api/login')
+            .send({ username: 'admin', password: '@dmin' })
+			.end(function (err, res) {
+                if (err){                    
+                    return done(err);
+                }
+                mToken = res.body.user.token;                
+                done();          
+            });
     });
 
     afterEach(function() {
     });
 
-    it('POST: update Brand with BrandId = 10', function (done) {
+    it(`POST: ${mApiBrandUpdate}`, function (done) {
         supertest(server)
-            .post("/api/brand/update")
+            .post(mApiBrandUpdate)
             .send(brand)
             .expect(200)
             .end(function (err, res) {
             
-            if (err) {
+            if (err) 
                 return done(err);
-            }
 
             expect(res.status, 'Status').eql(200);
             expect(res.body.success, 'success').eq(true);
