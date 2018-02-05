@@ -61,6 +61,7 @@ router.get('/items', auth.checkAuthentication(), async function (req, res, next)
 	}
 });
 
+
 /**
  * API: using for Front End
  */
@@ -100,6 +101,10 @@ router.get('/fe/item', async function (req, res, next) {
 	}
 });
 
+
+/**
+ * API: using for Back End
+ */
 router.get('/item', auth.checkAuthentication(), async function (req, res, next) {
 	try
 	{

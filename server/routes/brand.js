@@ -6,7 +6,7 @@ const dbContext = require('../lib/dbContext');
 const brandService = require('../services/brandService');
 
 // Router
-router.get('/items', async function (req, res, next) {
+router.get('/items', auth.checkAuthentication(), async function (req, res, next) {
 	try
 	{
 		let query = _.pick(req.query, ['PageCurrent', 'PageSize']);
@@ -27,7 +27,7 @@ router.get('/items', async function (req, res, next) {
 	}
 });
 
-router.get('/item', async function (req, res, next) {
+router.get('/item', auth.checkAuthentication(), async function (req, res, next) {
 	try
 	{
 		let query = _.pick(req.query,['BrandId', 'BrandKey']);
@@ -59,8 +59,7 @@ router.post('/create', auth.checkAuthentication(), async function (req, res, nex
 	}
 });
 
-//router.post('/update', auth.checkAuthentication(), async function (req, res, next) {
-router.post('/update', async function (req, res, next) {
+router.post('/update', auth.checkAuthentication(), async function (req, res, next) {
 	try
 	{
 		let brand = _.pick(req.body, ["BrandId", "BrandKey", "BrandName", "Description"]);
