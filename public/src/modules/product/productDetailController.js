@@ -10,12 +10,22 @@
 		/* functions */
 		function activate() {
 			var productId = getProductId($location.$$absUrl);
-			return productService.getProductItem(productId).then(function(result){
-				vm.product = result;
-				vm.product.ProductImageUrl = String.format('{0}/{1}/{2}/{3}', getRootLocation($location), 'uploads', 'products', vm.product.ProductImage);
-			}, function(err){
-				console.log(err);
-			});
+			if(productId == 0){
+				return productService.getProductMostLiked().then(function(result){
+					vm.product = result;
+					vm.product.ProductImageUrl = String.format('{0}/{1}/{2}/{3}', getRootLocation($location), 'uploads', 'products', vm.product.ProductImage);
+				}, function(err){
+					console.log(err);
+				});
+			}
+			else{
+				return productService.getProductItem(productId).then(function(result){
+					vm.product = result;
+					vm.product.ProductImageUrl = String.format('{0}/{1}/{2}/{3}', getRootLocation($location), 'uploads', 'products', vm.product.ProductImage);
+				}, function(err){
+					console.log(err);
+				});
+			}			
 		};
 
 		function getRootLocation(location) {
@@ -25,7 +35,9 @@
 		function getProductId(url) {
 			var array = url.split('/');
 			var params = filterArray(array);
-			return params[params.length-1];
+			var productId = params[params.length-1];
+			if(Number(productId)>0) return productId;
+			else return 0;
 		}
 
 		function filterArray(array) {
@@ -38,9 +50,9 @@
 				if (value) {
 					result[++resIndex] = value;
 				}
-			}		
+			}
 			return result;
-		}		
+		}
 		
 		/* start */
 		activate();

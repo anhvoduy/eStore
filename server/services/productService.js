@@ -63,6 +63,27 @@ Factory.prototype.getProductById = async function (query) {
     }	
 }
 
+// most liked: latest product by Updated
+Factory.prototype.getProductMostLiked = async function () {
+    try
+    {
+        var sql = `
+            SELECT  P.ProductId, P.ProductKey, P.ProductName, P.SizeList, P.Description, 
+                    P.BrandId, B.BrandName,
+                    P.Price, P.ColorCode, P.Created, P.Status, P.LatestReviewInfo, P.ProductImage 
+            FROM Product P INNER JOIN Brand B ON P.BrandId = B.BrandId 
+            WHERE   B.Deleted <> 1  AND P.Deleted <> 1
+            ORDER BY P.Updated DESC
+            LIMIT 1
+        `;
+        let data = await dbContext.queryItem(sql);
+        return data;
+    }
+    catch(err){
+        throw err;
+    }	
+}
+
 Factory.prototype.getProductByKey = function (query) {
 	var sql = `
 		SELECT  P.ProductId, P.ProductKey, P.ProductName, P.SizeList, P.Description, 
