@@ -101,6 +101,21 @@ router.get('/fe/item', async function (req, res, next) {
 	}
 });
 
+/**
+ * API: using for Front End
+ */
+router.get('/fe/mostliked', async function (req, res, next) {
+	try
+	{		
+		let query = _.pick(req.query, ['PageCurrent', 'PageSize']);		
+		let data = await productService.getProductMostLiked();
+		res.status(200).json(data);
+	}
+	catch(err){
+		next(err);
+	}
+});
+
 
 /**
  * API: using for Back End

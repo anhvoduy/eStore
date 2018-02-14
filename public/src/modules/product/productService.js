@@ -26,6 +26,13 @@
                 return result.data;
             });
         };
+
+        productService.prototype.getProductMostLiked = function () {
+            var url = String.format('{0}/product/fe/mostliked', this.api);            
+            return $http.get(url, null).then(function(result){
+                return result.data;
+            });
+        };
         
         return productService;
     };
