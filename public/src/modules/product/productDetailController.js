@@ -36,8 +36,8 @@
 			var array = url.split('/');
 			var params = filterArray(array);
 			var productId = params[params.length-1];
-			if(angular.isNumber(productId)) return productId;
-			else return 0;			
+			if(Number(productId)>0) return productId;
+			else return 0;
 		}
 
 		function filterArray(array) {
