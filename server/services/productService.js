@@ -13,6 +13,7 @@ Factory.prototype.getProducts = async function (query) {
         let PageCurrent = parseInt(query.PageCurrent) - 1;
         let PageSize = parseInt(query.PageSize);
         let PageOffset = PageCurrent * PageSize;
+        let OrderBy = (query.OrderBy != undefined && query.OrderBy == 'DESC') ? 'DESC': 'ASC';
         
         // get hits total
         let sqlTotal = `SELECT COUNT(*) AS Total FROM Product WHERE Deleted <> 1`;
@@ -24,7 +25,7 @@ Factory.prototype.getProducts = async function (query) {
                     P.Price, P.ColorCode, P.Created, P.Status, P.LatestReviewInfo, P.ProductImage
             FROM Product P
             WHERE P.Deleted <> 1
-            ORDER BY P.ProductId DESC
+            ORDER BY P.ProductId ${OrderBy}
             LIMIT :Offset, :Limit
         `;
         let data = await dbContext.queryList(sqlQuery, { Offset: PageOffset, Limit: PageSize });
@@ -40,7 +41,7 @@ Factory.prototype.getProducts = async function (query) {
     }
     catch(err){
         throw err;
-    }    
+    }
 }
 
 Factory.prototype.getProductById = async function (query) {
