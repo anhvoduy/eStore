@@ -1,9 +1,9 @@
-var router = require('express').Router();
-var _ = require('lodash');
-var auth = require('../config/auth');
-var CONSTANT = require('../lib/constant');
-var dbContext = require('../lib/dbContext');
-var accountService = require('../services/accountService');
+const router = require('express').Router();
+const _ = require('lodash');
+const auth = require('../config/auth');
+const CONSTANT = require('../lib/constant');
+const dbContext = require('../lib/dbContext');
+const accountService = require('../services/accountService');
 
 // Router
 router.get('/items', auth.checkAuthentication(), async function (req, res, next) {
