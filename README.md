@@ -14,8 +14,12 @@ For start review:
 - public site: http://localhost:8000/
 - admin  site: http://localhost:8000/admin/
 
+For download:
+- nodejs: https://nodejs.org/en/
 - elasticsearch: https://www.elastic.co/guide/en/elasticsearch/reference/current/windows.html/
 - redis: https://redis.io/
 - azure : https://docs.microsoft.com/en-us/azure/app-service-web/app-service-web-tutorial-nodejs-mongodb-app
 
-- deploy to amazon: http://ec2-34-205-24-111.compute-1.amazonaws.com/
+For deploy:
+- amazon: http://ec2-34-205-24-111.compute-1.amazonaws.com/
+
