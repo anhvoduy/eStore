@@ -1,10 +1,11 @@
 ﻿The solution includes: (from release 2.0)
-- public   : Public Site
-- client   : Admin Site
-- server   : APIs
-- database : estore
-- storage  : fs or azure blob or amazone s3
-- update file: "/server/config/config.js" to setup: username & password & database name
+- public     : Public Site
+- client     : Admin Site
+- server     : APIs
+- database   : estore
+- storage    : fs or azure blob or amazone s3
+- config info: "/server/config/config.js" to setup: username & password & database name
+- hosting    : http://ec2-34-205-24-111.compute-1.amazonaws.com/
 
 For start review:
 - install nodejs 8.9.1 LTS
@@ -14,12 +15,10 @@ For start review:
 - public site: http://localhost:8000/
 - admin  site: http://localhost:8000/admin/
 
-For download:
+For download & guide:
 - nodejs: https://nodejs.org/en/
 - elasticsearch: https://www.elastic.co/guide/en/elasticsearch/reference/current/windows.html/
 - redis: https://redis.io/
 - azure : https://docs.microsoft.com/en-us/azure/app-service-web/app-service-web-tutorial-nodejs-mongodb-app
 
-For deploy:
-- amazon: http://ec2-34-205-24-111.compute-1.amazonaws.com/
 
