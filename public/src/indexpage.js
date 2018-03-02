@@ -6,8 +6,10 @@
     $(function(){
         $('.bxslider').bxSlider({
             mode: 'fade',
+            speed: 500,
+            auto: true,
             captions: true,
-            slideWidth: 600
+            pager: false
         });
     });
 })();
