@@ -5,7 +5,7 @@
 (function(){
     $(function(){
         $('.bxslider').bxSlider({
-            mode: 'fade',
+            mode: 'horizontal',
             speed: 500,
             auto: true,
             captions: true,
