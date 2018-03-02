@@ -44,6 +44,7 @@ h1#logo a{ display:block; height:61px; text-indent: -4000px; background:url(imag
 
 #header { height:61px; }
 
+/* slider */
 #slider { width:980px; height:418px; position:relative; overflow:hidden; }
 #slider-holder { width:980px; height:418px; position:relative; overflow:hidden; }
 #slider-holder ul{ width:980px; height:418px; position:relative; overflow:hidden; list-style-type: none;}
