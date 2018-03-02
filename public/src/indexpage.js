@@ -6,9 +6,11 @@
     $(function(){
         $('.bxslider').bxSlider({
             mode: 'horizontal',
-            speed: 500,
-            auto: true,
             captions: true,
+            auto: true,
+            speed: 1000,
+            infiniteLoop: false,
+            stopAutoOnClick: true,
             pager: false
         });
     });
