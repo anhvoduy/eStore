@@ -12,7 +12,7 @@
 			var productId = getProductId($location.$$absUrl);
 			if(productId == 0){
 				return productService.getProductMostLiked().then(function(result){
-					vm.product = result;
+					vm.product = result[0]; // TO DO: update product detail page
 					vm.product.ProductImageUrl = String.format('{0}/{1}/{2}/{3}', getRootLocation($location), 'uploads', 'products', vm.product.ProductImage);
 				}, function(err){
 					console.log(err);

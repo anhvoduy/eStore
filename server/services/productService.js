@@ -63,7 +63,7 @@ Factory.prototype.getProductById = async function (query) {
     }	
 }
 
-// most liked: latest product by Updated
+// most liked: 3 latest product by Updated
 Factory.prototype.getProductMostLiked = async function () {
     try
     {
@@ -74,14 +74,13 @@ Factory.prototype.getProductMostLiked = async function () {
             FROM Product P INNER JOIN Brand B ON P.BrandId = B.BrandId 
             WHERE   B.Deleted <> 1  AND P.Deleted <> 1
             ORDER BY P.Updated DESC
-            LIMIT 1
+            LIMIT 3
         `;
-        let data = await dbContext.queryItem(sql);
-        return data;
+        return dbContext.queryList(sql);
     }
     catch(err){
         throw err;
-    }	
+    }
 }
 
 Factory.prototype.getProductByKey = function (query) {
