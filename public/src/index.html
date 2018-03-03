@@ -38,32 +38,18 @@
 			<div id="header" ng-header></div>
 			
 			<!-- Slider -->
-			<!-- <div id="slider">
-				<div id="slider-holder">
-					<ul>
-						<li><a href="#"><img src="css/images/slide1.jpg" alt="" /></a></li>
-						<li><a href="#"><img src="css/images/slide2.jpg" alt="" /></a></li>
-						<li><a href="#"><img src="css/images/slide1.jpg" alt="" /></a></li>
-						<li><a href="#"><img src="css/images/slide2.jpg" alt="" /></a></li>
-						<li><a href="#"><img src="css/images/slide1.jpg" alt="" /></a></li>
-						<li><a href="#"><img src="css/images/slide2.jpg" alt="" /></a></li>
-					</ul>
+			<div id="slider">
+				<div class="bxslider" ng-controller="productController as vm">
+					<div><img src="css/images/slide1.jpg" alt=""></div>
+					<div><img src="css/images/slide2.jpg" alt=""></div>
+					<div><img src="css/images/slide1.jpg" alt=""></div>
+					<div><img src="css/images/slide2.jpg" alt=""></div>
+					<!-- 
+					<div ng-repeat="product in vm.productMostLiked">
+						<img ng-src="{{product.ProductImageUrl}}" width="980" height="418" />
+					</div> 
+					-->
 				</div>
-				<div id="slider-nav">
-					<a href="#" class="prev">Previous</a>
-					<a href="#" class="next">Next</a>
-				</div>
-			</div> -->
-			<div class="bxslider" ng-controller="productController as vm">
-				<div><img src="css/images/slide1.jpg" alt=""></div>
-				<div><img src="css/images/slide2.jpg" alt=""></div>
-				<div><img src="css/images/slide1.jpg" alt=""></div>
-				<div><img src="css/images/slide2.jpg" alt=""></div>
-				<!-- 
-				<div ng-repeat="product in vm.productMostLiked">
-					<img ng-src="{{product.ProductImageUrl}}" width="980" height="418" />
-				</div> 
-				-->
 			</div>
 		</div>
 	</div>
