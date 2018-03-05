@@ -10,5 +10,5 @@
 })();
 
 (function () {
-    angular.module('core', ['core.service', 'core.directive']);
+    angular.module('core', ['core.service', 'core.directive', 'core.controller']);
 })();
