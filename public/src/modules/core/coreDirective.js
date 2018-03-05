@@ -30,6 +30,15 @@
                 return 'modules/core/ngSlider.tpl.html';
             },
             link: function (scope, element, attrs, modelCtrl) {
+                $('.bxslider').bxSlider({
+                    mode: 'horizontal',
+                    captions: true,
+                    auto: true,
+                    speed: 1000,
+                    infiniteLoop: false,
+                    stopAutoOnClick: true,
+                    pager: false
+                });
             }
         };
     }])
