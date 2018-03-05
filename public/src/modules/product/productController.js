@@ -8,16 +8,7 @@
 		var productService = new productService();
 		
 		/* functions */
-		function activate() {
-			// productService.getProductMostLiked().then(function(result){
-			// 	vm.productMostLiked = result;
-			// 	angular.forEach(vm.productMostLiked, function(item){
-			// 		item.ProductImageUrl = String.format('{0}/{1}/{2}/{3}', getRootLocation($location), 'uploads', 'products', item.ProductImage);
-			// 	});
-			// }, function(err){
-			// 	console.log(err);
-			// });
-
+		function activate() {			
 			productService.getProducts().then(function(result){
 				if(result){
 					vm.products = result.PageData;
