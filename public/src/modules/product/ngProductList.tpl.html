@@ -3,7 +3,7 @@
     <ul>
         <li ng-repeat="p in products">
             <div class="image">
-                <a ng-href="/product/{{p.ProductId}}">
+                <a ng-href="/product/{{p.ProductKey}}">
                     <!-- <img ng-src="css/images/image3.jpg" alt="" width="136px" height="83px"/> -->
                     <img ng-src="{{p.ProductImageUrl}}" alt="" width="136px" height="83px"/>
                 </a>
@@ -11,7 +11,7 @@
             <p>
                 Item Number: <span>{{p.ProductId}}</span><br />
                 Size List :  <span>{{p.SizeList}}</span><br />
-                Product Name:  <a ng-href="/product/{{p.ProductId}}">{{p.ProductName}}</a>
+                Product Name:  <a ng-href="/product/{{p.ProductKey}}">{{p.ProductName}}</a>
             </p>
             <p class="price">Wholesale Price:&nbsp;<strong>{{p.Price}}&nbsp;USD</strong></p>
         </li>
