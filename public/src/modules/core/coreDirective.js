@@ -26,19 +26,26 @@
         return {
             restrict: 'EA',
             replace: true,
+            scope: {
+                products: "="
+            },
             templateUrl: function() {
                 return 'modules/core/ngSlider.tpl.html';
             },
             link: function (scope, element, attrs, modelCtrl) {
-                $('.bxslider').bxSlider({
-                    mode: 'horizontal',
-                    captions: true,
-                    auto: true,
-                    speed: 1000,
-                    infiniteLoop: false,
-                    stopAutoOnClick: true,
-                    pager: false
-                });
+                scope.$watch('products', function(newVal, oldVal){
+                    if(newVal != oldVal){
+                        $('.bxslider').bxSlider({
+                            mode: 'horizontal',
+                            captions: true,
+                            auto: true,
+                            speed: 1000,
+                            infiniteLoop: false,
+                            stopAutoOnClick: true,
+                            pager: false
+                        });
+                    }
+                }, true);
             }
         };
     }])

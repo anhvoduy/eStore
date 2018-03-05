@@ -38,8 +38,8 @@
 			<div id="header" ng-header></div>
 			
 			<!-- Slider -->
-			<div id="slider">
-				<div ng-slider></div>
+			<div id="slider" ng-controller="productController as vm">
+				<div ng-slider products="vm.productMostLiked"></div>
 			</div>
 		</div>
 	</div>
