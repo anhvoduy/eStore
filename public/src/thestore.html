@@ -33,7 +33,7 @@
 <body>
 	<!-- header -->
 	<div id="top">
-		<div class="shell">			
+		<div class="shell">
 			<div id="header" ng-header></div>
 		</div>
 	</div>
@@ -45,16 +45,16 @@
 			<div ng-search></div>
 			
 			<!-- Content -->
-			<div id="content">				
+			<div id="content" ng-controller="productController as vm">
 				<div id="container">
 					<div class="tabbed">
-						<div class="tab-content" ng-controller="productDetailController as vm">
-							<div ng-product-detail product="vm.product"></div>
+						<div class="tab-content">
+							<div ng-product-list products="vm.products" hello="vm.hello"></div>
 						</div>
 					</div>
 					<div ng-brand></div>
 					<div ng-footer></div>
-				</div>				
+				</div>
 			</div>
 		</div>
 	</div>
