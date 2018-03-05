@@ -88,12 +88,12 @@ router.get('/fe/items', async function (req, res, next) {
 router.get('/fe/item', async function (req, res, next) {
 	try
 	{
-		let query = _.pick(req.query, ['ProductId']);
-		if(!query.ProductId){
-			throw CONSTANT.MISSING_FIELD_PRODUCTID;
+		let query = _.pick(req.query, ['ProductKey']);
+		if(!query.ProductKey){
+			throw CONSTANT.MISSING_FIELD_PRODUCTKEY;
 		}
 
-		let data = await productService.getProductById(query);
+		let data = await productService.getProductByKey(query);
 		res.status(200).json(data);
 	}
 	catch(err){

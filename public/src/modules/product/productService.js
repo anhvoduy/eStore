@@ -17,10 +17,10 @@
             });
         };
 
-        productService.prototype.getProductItem = function (productId) {
+        productService.prototype.getProductItem = function (productKey) {
             var url = String.format('{0}/product/fe/item', this.api);
             var params = {
-                ProductId: productId
+                ProductKey: productKey
             };
             return $http.get(url, {params: params}).then(function(result){
                 return result.data;
@@ -31,6 +31,13 @@
             var url = String.format('{0}/product/fe/mostliked', this.api);            
             return $http.get(url, null).then(function(result){
                 return result.data;
+            });
+        };
+
+        productService.prototype.getProductMostLikedOne = function () {
+            var url = String.format('{0}/product/fe/mostliked', this.api);            
+            return $http.get(url, null).then(function(result){
+                return result.data[0];
             });
         };
         

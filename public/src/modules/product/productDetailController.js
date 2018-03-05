@@ -9,35 +9,35 @@
 		
 		/* functions */
 		function activate() {
-			var productId = getProductId($location.$$absUrl);
-			if(productId == 0){
-				return productService.getProductMostLiked().then(function(result){
-					vm.product = result[0]; // TO DO: update product detail page
+			var productKey = getProductKey($location.$$absUrl);
+			if(angular.isUndefined(productKey) || productKey == ''){
+				return productService.getProductMostLikedOne().then(function(result){
+					vm.product = result;
 					vm.product.ProductImageUrl = String.format('{0}/{1}/{2}/{3}', getRootLocation($location), 'uploads', 'products', vm.product.ProductImage);
 				}, function(err){
 					console.log(err);
 				});
 			}
 			else{
-				return productService.getProductItem(productId).then(function(result){
+				return productService.getProductItem(productKey).then(function(result){
 					vm.product = result;
 					vm.product.ProductImageUrl = String.format('{0}/{1}/{2}/{3}', getRootLocation($location), 'uploads', 'products', vm.product.ProductImage);
 				}, function(err){
 					console.log(err);
 				});
-			}			
+			}
 		};
 
 		function getRootLocation(location) {
 			return $location.$$protocol + ':' + '//' + $location.$$host + ':' + $location.$$port;
 		}
 
-		function getProductId(url) {
+		function getProductKey(url) {
 			var array = url.split('/');
 			var params = filterArray(array);
-			var productId = params[params.length-1];
-			if(Number(productId)>0) return productId;
-			else return 0;
+			var productKey = params[params.length-1];
+			if(angular.isUndefined(productKey)) return '';
+			else return productKey;
 		}
 
 		function filterArray(array) {
