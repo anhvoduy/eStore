@@ -40,7 +40,7 @@
                             captions: true,
                             auto: true,
                             speed: 1000,
-                            infiniteLoop: false,
+                            infiniteLoop: true,
                             stopAutoOnClick: true,
                             pager: false
                         });
