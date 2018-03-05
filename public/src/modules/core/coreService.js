@@ -9,13 +9,12 @@
         };
 
         // methods
-        coreService.prototype.getBanners = function () {
-            var url = String.format('{0}/product/fe/items', this.api);
-            var params = {};
-            // return $http.get(url, params).then(function(result){
-            //     return result.data;
-            // });
-        };        
+        coreService.prototype.getProductMostLiked = function () {
+            var url = String.format('{0}/product/fe/mostliked', this.api);
+            return $http.get(url, null).then(function(result){
+                return result.data;
+            });
+        };
         
         return coreService;
     };

@@ -1,16 +1,5 @@
-<div id="slider">
-    <div id="slider-holder">
-        <ul>
-            <li><a href="#"><img src="css/images/slide1.jpg" alt="" /></a></li>
-            <li><a href="#"><img src="css/images/slide2.jpg" alt="" /></a></li>
-            <li><a href="#"><img src="css/images/slide1.jpg" alt="" /></a></li>
-            <li><a href="#"><img src="css/images/slide2.jpg" alt="" /></a></li>
-            <li><a href="#"><img src="css/images/slide1.jpg" alt="" /></a></li>
-            <li><a href="#"><img src="css/images/slide2.jpg" alt="" /></a></li>
-        </ul>
-    </div>
-    <div id="slider-nav">
-        <a href="#" class="prev">Previous</a>
-        <a href="#" class="next">Next</a>
+<div class="bxslider">        
+    <div ng-repeat="product in products">
+        <img ng-src="{{product.ProductImageUrl}}" width="980" height="418" />
     </div>
 </div>
