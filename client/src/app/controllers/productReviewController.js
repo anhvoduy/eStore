@@ -4,35 +4,35 @@
     productReviewController.$inject = ['$scope', '$timeout', '$state', '$stateParams', 'appCommon', 'productService', 'reviewService'];
 	function productReviewController($scope, $timeout, $state, $stateParams, appCommon, productService, reviewService) {
 		/* models */
-		$scope.productKey = $stateParams.productKey;
+		$scope.productId = $stateParams.productId;
 		$scope.messageSuccess = [];
 		$scope.messageError = [];
 		$scope.review = {
 			Rating: '',
 			Comment: '',
 			Created: new Date(),
-			ProductKey: $scope.productKey,
+			ProductId: $scope.productId,
 			Email: ''
 		};
 		
 
 		/* functions */
 		function activate() {
-			if(appCommon.isUndefined($scope.productKey)) return;
+			if(appCommon.isUndefined($scope.productId)) return;
 
-			productService.getProductByKey($scope.productKey).then(function (result) {
+			productService.getProductById($scope.productId).then(function (result) {
 				$scope.product = result;
 				if (appCommon.isUndefined($scope.product)){
-					$scope.messageError.push(String.format("The productKey: {0} not found.", $scope.productKey));
+					$scope.messageError.push(String.format("The Product Id: {0} not found.", $scope.productId));
 				}
 			}, function (error) {
-				$scope.messageError.push(error);				
+				$scope.messageError.push(error);
 			});
 		};
 		
 		// if create review success/failed -> reset status after 3s
 		function resetFormStatus() {
-			$timeout(function () {				
+			$timeout(function () {
 				$scope.messageSuccess = [];
 				$scope.messageError = [];
 			}, 3000);
@@ -52,7 +52,7 @@
 		
 		$scope.cancel = function() {
             $state.go($state.current.parentState);
-        }
+        };
 		
 		/* start */
 		activate();

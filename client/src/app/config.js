@@ -48,7 +48,7 @@ app.config(function ($stateProvider) {
 		}
 	})
 	.state('productEdit', {
-        url: "/product/:productKey",
+        url: "/product/:productId",
         parentState: 'product',
 		views: {
 			"view": {
@@ -58,7 +58,7 @@ app.config(function ($stateProvider) {
 		}
 	})	
 	.state('productReview', {
-		url: "/review/:productKey",
+		url: "/review/:productId",
 		parentState: 'product',
 		views: {
 			"view": {
