@@ -1,15 +1,16 @@
 (function () {
 	'use strict';
-    app.controller('profilePasswordController', profilePasswordController);
-	profilePasswordController.$inject = ['$rootScope', 'userService'];	
-	function profilePasswordController($rootScope, userService) {
+    app.controller('passwordController', passwordController);
+	passwordController.$inject = ['$rootScope', 'userService'];	
+	function passwordController($rootScope, userService) {
 		/* models */
 		var vm = this;
-
+		vm.formTitle = 'Change Password';
+		vm.user = {};
 		
 		/* functions */
 		function activate(){
-
+			
 		};
 		
 
