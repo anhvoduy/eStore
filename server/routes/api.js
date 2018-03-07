@@ -20,19 +20,25 @@ const CONSTANT = require('../lib/constant');
 
 // routers: use to test
 router.get('/', function (req, res, next) {
-    res.json({ message: 'eAccounting method GET() is success' });
+    res.json({ message: 'request GET is success' });
     console.log('%s %s — %s', (new Date).toString(), req.method, req.url);	
     next();
 });
 
 router.post('/', function (req, res, next) {
-    res.json({ message: 'eAccounting method POST() is success' });
+    res.json({ message: 'request POST is success' });
+    console.log('%s %s — %s', (new Date).toString(), req.method, req.url);
+    next();
+});
+
+router.put('/', function (req, res, next) {
+    res.json({ message: 'request PUT is success' });
     console.log('%s %s — %s', (new Date).toString(), req.method, req.url);
     next();
 });
 
 router.get('/newsfeed', cors(), function (req, res, next){
-	var result = { code: 'SUCCESS_NEWSFEED', message: 'request newsfeed with cors is success.' }
+	var result = { code: 'SUCCESS_NEWSFEED', message: 'request newsfeed with CORS is success.' }
 	res.status(200).json(result);
 	next();
 })
