@@ -12,19 +12,24 @@ auth.setup = function (app) {
 
     passport.use(new LocalStrategy(
         async function (username, password, done) {
-            let result = await userService.authenticate(username, password);
-            var data = {
-                success: result.success,
-                user: { username: result.username, userkey: result.userkey }
-            };
-            return done(null, data);
+            try
+            {
+                let result = await userService.authenticate(username, password);
+                let data = {
+                    success: result.success,
+                    user: { username: result.username, userkey: result.userkey }
+                };
+                return done(null, data);
+            }
+            catch(err){
+                return done(err);
+            }
         }
     ));
 };
 
-auth.checkAuthentication = function () {    
-    return function (req, res, next) {        
-        //console.log('checkAuthentication() ...');
+auth.checkAuthentication = function () {
+    return function (req, res, next) {
         // check header or url parameters or post parameters for token
         var token = req.body.token || req.query.token || req.headers['x-access-token'] || req.headers.authorization;
         if (token) {

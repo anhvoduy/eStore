@@ -105,24 +105,30 @@ router.get('/newsfeed', cors(), function (req, res, next){
 
 // routers: use to login/logout
 router.post('/login', function (req, res, next) {
-	passport.authenticate('local', function (err, result) {
-		if (err) return next(err);
-
-		if (!result.success) {
-			//console.log('Login is failed ...');
-			res.status(404).json({
-				success: false,
-				message: { code: 'ERROR_UNAUTHENTICATION', message: 'Username and Password is invalid.' }
-			});
-		} 
-		else {
-			//console.log('Login is success ...');
-			var token = jwt.sign(result.user, config.secretKey, { expiresIn: 60 * 60 * 24 * 1 });
-			res.status(200).json({
-				success: true,
-				message: { code: 'SUCCESS_AUTHENTICATION', message: 'Login is successful.' },
-				user: { username: result.user.username, userkey: result.user.userkey, token: token },
-			});
+	return passport.authenticate('local', async function (err, result) {
+		try
+		{
+			if (err) throw err;
+			
+			if (!result.success) {
+				//console.log('authenticate is failed ...');
+				return res.status(404).json({
+					success: false,
+					message: { code: 'ERROR_UNAUTHENTICATION', message: 'Username and Password is invalid.' }
+				});
+			} 
+			else {
+				//console.log('authenticate is success ...');
+				var token = jwt.sign(result.user, config.secretKey, { expiresIn: 60 * 60 * 24 * 1 });
+				return res.status(200).json({
+					success: true,
+					message: { code: 'SUCCESS_AUTHENTICATION', message: 'Login is successful.' },
+					user: { username: result.user.username, userkey: result.user.userkey, token: token },
+				});
+			}
+		}
+		catch(err){
+			next(err);
 		}
 	})(req, res, next);
 });
