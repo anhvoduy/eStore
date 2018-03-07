@@ -1,11 +1,10 @@
-var jwt = require('jsonwebtoken');
-var passport = require('passport');
-var LocalStrategy = require('passport-local').Strategy;
-var config = require('../config/config');
-var userService = require('../services/userService');
+const jwt = require('jsonwebtoken');
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
+const config = require('../config/config');
+const userService = require('../services/userService');
 
-// Authenticate Service
-var auth = {};
+const auth = {};
 auth.setup = function (app) {
 
     app.use(passport.initialize());
@@ -45,6 +44,10 @@ auth.checkAuthentication = function () {
             return res.status(403).send({ success: false, message: 'No token provided.' });
         }      
     };
+};
+
+auth.checkSelf = function(){
+    return true;
 };
 
 module.exports = auth;

@@ -1,13 +1,13 @@
-﻿var express = require('express');
-var router = express.Router();
-var cors = require('cors')
-var jwt = require('jsonwebtoken');
-var passport = require('passport');
-var LocalStrategy = require('passport-local').Strategy;
-var multer = require('multer');
-var auth = require('../config/auth');
-var config = require('../config/config');
-var CONSTANT = require('../lib/constant');
+﻿const express = require('express');
+const router = express.Router();
+const cors = require('cors')
+const jwt = require('jsonwebtoken');
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
+const multer = require('multer');
+const auth = require('../config/auth');
+const config = require('../config/config');
+const CONSTANT = require('../lib/constant');
 
 // sample redis cache
 // var cache = require('express-redis-cache')();
@@ -20,19 +20,25 @@ var CONSTANT = require('../lib/constant');
 
 // routers: use to test
 router.get('/', function (req, res, next) {
-    res.json({ message: 'eAccounting method GET() is success' });
+    res.json({ message: 'request GET is success' });
     console.log('%s %s — %s', (new Date).toString(), req.method, req.url);	
     next();
 });
 
 router.post('/', function (req, res, next) {
-    res.json({ message: 'eAccounting method POST() is success' });
+    res.json({ message: 'request POST is success' });
+    console.log('%s %s — %s', (new Date).toString(), req.method, req.url);
+    next();
+});
+
+router.put('/', function (req, res, next) {
+    res.json({ message: 'request PUT is success' });
     console.log('%s %s — %s', (new Date).toString(), req.method, req.url);
     next();
 });
 
 router.get('/newsfeed', cors(), function (req, res, next){
-	var result = { code: 'SUCCESS_NEWSFEED', message: 'request newsfeed with cors is success.' }
+	var result = { code: 'SUCCESS_NEWSFEED', message: 'request newsfeed with CORS is success.' }
 	res.status(200).json(result);
 	next();
 })
@@ -103,7 +109,7 @@ router.get('/newsfeed', cors(), function (req, res, next){
 
 
 
-// routers: use to login/logout
+// routers: use to login/logout/changepassword
 router.post('/login', function (req, res, next) {
 	return passport.authenticate('local', async function (err, result) {
 		try
@@ -139,6 +145,9 @@ router.get('/logout', function (req, res, next) {
 	next();
 });
 
+router.post('/changepassword', auth.checkSelf(), function (req, res, next) {
+	next();
+});
 
 
 // sample file upload
