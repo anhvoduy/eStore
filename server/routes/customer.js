@@ -1,9 +1,9 @@
-var router = require('express').Router();
-var _ = require('lodash');
-var auth = require('../config/auth');
-var CONSTANT = require('../lib/constant');
-var dbContext = require('../lib/dbContext');
-var customerService = require('../services/customerService');
+const router = require('express').Router();
+const _ = require('lodash');
+const auth = require('../config/auth');
+const CONSTANT = require('../lib/constant');
+const dbContext = require('../lib/dbContext');
+const customerService = require('../services/customerService');
 
 // Router
 router.get('/items', async function (req, res, next) {

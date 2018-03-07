@@ -4,8 +4,8 @@
 	productEditController.$inject = ['$scope', '$timeout', '$state', '$stateParams', 'Upload', 'appCommon', 'brandService', 'productService'];
 	function productEditController($scope, $timeout, $state, $stateParams, Upload, appCommon, brandService, productService) {
 		/* models */
-		$scope.productKey = $stateParams.productKey;
-		$scope.formStatus = appCommon.isUndefined($scope.productKey) 
+		$scope.productId = $stateParams.productId;
+		$scope.formStatus = appCommon.isUndefined($scope.productId) 
 			? appCommon.formStatus.isNew 
 			: appCommon.formStatus.isEdit;
 		$scope.formTitle = appCommon.setFormTitle($scope.formStatus, 'Product');
@@ -25,20 +25,20 @@
 				$scope.messageError.push(error);
 			});
 			
-			if(!appCommon.isUndefined($scope.productKey)){
-				productService.getProductByKey($scope.productKey).then(function (result) {
+			if(!appCommon.isUndefined($scope.productId)){
+				productService.getProductById($scope.productId).then(function (result) {
 					$scope.product = result;
 					if(!appCommon.isUndefined($scope.product.ProductImage)){
 						$scope.product.ProductImageUrl = String.format('{0}/{1}/{2}/{3}', $scope.rootLocation, 'uploads', 'products', $scope.product.ProductImage);
 					}
 
 					if (appCommon.isUndefined($scope.product)) {
-						$scope.messageError.push(String.format("The Product Key: {0} not found.", $scope.productKey));
+						$scope.messageError.push(String.format("The Product Id: {0} not found.", $scope.productId));
 					}
 				}, function (error) {
 					$scope.messageError.push(error);
 				});
-			}
+			};
 		};
 
 		// if update brand success/failed -> reset status after 3 seconds
