@@ -83,6 +83,16 @@ Factory.prototype.authenticate = async function (username, password) {
 	}
 }
 
+Factory.prototype.changePassword = async function (userId, hash) {
+	try
+	{
+		let sql = 'UPDATE User SET Hash=:Hash WHERE UserId=:UserId';
+		return dbContext.queryExecute(sql,{ UserId: userId, Hash: hash });
+	}
+	catch(err){
+		throw err;
+	}
+}
 
 Factory.prototype.create = async function (user) {
 	try
