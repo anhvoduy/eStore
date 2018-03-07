@@ -46,4 +46,8 @@ auth.checkAuthentication = function () {
     };
 };
 
+auth.checkSelf = function(){
+    return true;
+};
+
 module.exports = auth;
