@@ -145,7 +145,7 @@ router.get('/logout', function (req, res, next) {
 	next();
 });
 
-router.post('/changepassword', auth.checkSelf(), function (req, res, next) {
+router.post('/changepassword', function (req, res, next) {
 	next();
 });
 
