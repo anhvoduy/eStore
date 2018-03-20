@@ -1,7 +1,7 @@
 {
   "name": "estore",
   "version": "2.0.2",
-  "description": "estore: Full-Stack JavaScript with MySQL, Express, AngularJS, and Node.js",
+  "description": "estore: Full-Stack JavaScript with AngularJs, NodeJs, ExpressJs, and MySql",
   "main": "app.js",
   "author": {
     "name": "duyanh",
@@ -32,6 +32,7 @@
     "passport": "^0.3.0",
     "passport-local": "^1.0.0",
     "q": "^1.4.1",
+    "redis": "^2.8.0",
     "utf8": "^2.1.2",
     "uuid": "^3.0.1"
   },
