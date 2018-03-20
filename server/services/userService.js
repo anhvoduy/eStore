@@ -68,21 +68,42 @@ Factory.prototype.getUserByEmail = function (query) {
 Factory.prototype.authenticate = async function (username, password) {
 	try
 	{
-		if((username === 'admin' && password === '@dmin')){
-			let sql = 'SELECT UserName, UserKey FROM User WHERE UserName=:UserName';
-			let data = await dbContext.queryItem(sql, { UserName: username });
-			if(!data){
-				return { success: false};
-			}
-			return { success: true, username: data.UserName, userkey: data.UserKey };
+		if(!username)
+			throw { code: 'ERROR_UNAUTHENTICATION', message: 'Username is required.' };
+
+		if(!password)
+			throw { code: 'ERROR_UNAUTHENTICATION', message: 'Password is required.' };
+
+		let sqlUser = 'SELECT UserKey, UserName, Hash FROM User WHERE UserName=:UserName LIMIT 1';
+		let user = await dbContext.queryItem(sqlUser, { UserName: username});
+		if(!user)
+			throw { code: 'ERROR_UNAUTHENTICATION', message: 'Username is invalid.' };
+
+		if(common.encoded(password) !== user.Hash)
+			throw { code: 'ERROR_UNAUTHENTICATION', message: 'Password is invalid.' };
+		
+		if(username !== user.UserName && password !== user.Hash) {
+			return { success: false };
 		}
-		return { success: false};
+		else {
+			return { success: true, username: user.UserName, userkey: user.UserKey };
+		}
 	}
 	catch(err){
 		throw err;
 	}
 }
 
+Factory.prototype.changePassword = async function (userId, hash) {
+	try
+	{
+		let sql = 'UPDATE User SET Hash=:Hash WHERE UserId=:UserId';
+		return dbContext.queryExecute(sql,{ UserId: userId, Hash: hash });
+	}
+	catch(err){
+		throw err;
+	}
+}
 
 Factory.prototype.create = async function (user) {
 	try

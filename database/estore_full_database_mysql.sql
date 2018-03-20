@@ -879,43 +879,43 @@ CREATE TABLE `User` (
 -- Sample data for table `User`
 --
 INSERT INTO `User` (`UserKey`, `UserType`, `UserName`, `Hash`, `DisplayName`, `Email`, `Mobile`, `DateOfBirth`, `Author`, `Editor`) 
-VALUES (uuid(), 'ADMIN','admin'  , uuid(), 'Administrator','admin@estore.com','001 852741963','2012-12-12','SYSTEM','SYSTEM');
+VALUES (uuid(), 'ADMIN','admin', 'QGRtaW4=', 'Administrator','admin@estore.com','001 852741963','2012-12-12','SYSTEM','SYSTEM');
 
 INSERT INTO `User` (`UserKey`, `UserType`, `UserName`, `Hash`, `DisplayName`, `Email`, `Mobile`, `DateOfBirth`, `Author`, `Editor`) 
-VALUES (uuid(), 'USER','beckham', uuid(), 'David Beckham','hoanganh@ibm.com','001 852741963','1990-03-03','SYSTEM','SYSTEM');
+VALUES (uuid(), 'USER','beckham', 'QGRtaW4=', 'David Beckham','beckham@ibm.com','001 852741963','1990-03-03','SYSTEM','SYSTEM');
 
 INSERT INTO `User` (`UserKey`, `UserType`, `UserName`, `Hash`, `DisplayName`, `Email`, `Mobile`, `DateOfBirth`, `Author`, `Editor`) 
-VALUES (uuid(), 'USER','huetran', uuid(), 'Nguyen Hue Tran','huetran@hvn.com','001 852741963','1990-04-04','SYSTEM','SYSTEM');
+VALUES (uuid(), 'USER','huetran', 'QGRtaW4=', 'Nguyen Hue Tran','huetran@marui.com','001 852741963','1990-04-04','SYSTEM','SYSTEM');
 
 INSERT INTO `User` (`UserKey`, `UserType`, `UserName`, `Hash`, `DisplayName`, `Email`, `Mobile`, `DateOfBirth`, `Author`, `Editor`) 
-VALUES (uuid(), 'USER','avo4', uuid(), 'Anh Vo','avo4@csc.com','001 852741963','1984-12-22','SYSTEM','SYSTEM');
+VALUES (uuid(), 'USER','avo4', 'QGRtaW4=', 'Anh Vo','avo4@node.org','001 852741963','1984-12-22','SYSTEM','SYSTEM');
 
 INSERT INTO `User` (`UserKey`, `UserType`, `UserName`, `Hash`, `DisplayName`, `Email`, `Mobile`, `DateOfBirth`, `Author`, `Editor`) 
-VALUES (uuid(), 'USER','anhvod' , uuid(), 'Vo Duy Anh','anhvod@hvn.com','084 852741963','1984-12-24','SYSTEM','SYSTEM');
+VALUES (uuid(), 'USER','anhvod', 'QGRtaW4=', 'Vo Duy Anh','anhvod@sharepoint.org','084 852741963','1984-12-24','SYSTEM','SYSTEM');
 
 INSERT INTO `User` (`UserKey`, `UserType`, `UserName`, `Hash`, `DisplayName`, `Email`, `Mobile`, `DateOfBirth`, `Author`, `Editor`) 
-VALUES (uuid(), 'USER','lukaku' , uuid(), 'Lukaku','lukaku@sony.com','001 852741963','1980-06-06','SYSTEM','SYSTEM');
+VALUES (uuid(), 'USER','lukaku', 'QGRtaW4=', 'Lukaku','lukaku@mu.com','001 852741963','1980-06-06','SYSTEM','SYSTEM');
 
 INSERT INTO `User` (`UserKey`, `UserType`, `UserName`, `Hash`, `DisplayName`, `Email`, `Mobile`, `DateOfBirth`, `Author`, `Editor`) 
-VALUES (uuid(), 'USER','pogba'  , uuid(), 'Pogba','pogba@samsung.com','001 852741963','1980-06-06','SYSTEM','SYSTEM');
+VALUES (uuid(), 'USER','pogba', 'QGRtaW4=', 'Pogba','pogba@mu.com','001 852741963','1980-06-06','SYSTEM','SYSTEM');
 
 INSERT INTO `User` (`UserKey`, `UserType`, `UserName`, `Hash`, `DisplayName`, `Email`, `Mobile`, `DateOfBirth`, `Author`, `Editor`) 
-VALUES (uuid(), 'USER','thanglt'  , uuid(), 'Le Tat Thang','thanglt@fpt.com.vn','001 852741963','1980-08-08','SYSTEM','SYSTEM');
+VALUES (uuid(), 'USER','thanglt', 'QGRtaW4=', 'Le Tat Thang','thanglt@fpt.com.vn','001 852741963','1980-08-08','SYSTEM','SYSTEM');
 
 INSERT INTO `User` (`UserKey`, `UserType`, `UserName`, `Hash`, `DisplayName`, `Email`, `Mobile`, `DateOfBirth`, `Author`, `Editor`) 
-VALUES (uuid(), 'USER','vuongpq'  , uuid(), 'Pham Quoc Vuong','vuongpq@fpt.com.vn','001 852741963','1980-02-02','SYSTEM','SYSTEM');
+VALUES (uuid(), 'USER','leung', 'QGRtaW4=', 'Leung Benchmark','leung@samsung.com','001 852741963','1980-02-02','SYSTEM','SYSTEM');
 
 INSERT INTO `User` (`UserKey`, `UserType`, `UserName`, `Hash`, `DisplayName`, `Email`, `Mobile`, `DateOfBirth`, `Author`, `Editor`) 
-VALUES (uuid(), 'USER','ronaldo'  , uuid(), 'Cris Ronaldo','ronaldo@fpt.com.vn','003 852741963','1980-02-02','SYSTEM','SYSTEM');
+VALUES (uuid(), 'USER','supervisor', 'QGRtaW4=', 'Super Visor','super@super.org','003 852741963','1980-02-02','SYSTEM','SYSTEM');
 
 INSERT INTO `User` (`UserKey`, `UserType`, `UserName`, `Hash`, `DisplayName`, `Email`, `Mobile`, `DateOfBirth`, `Author`, `Editor`) 
-VALUES (uuid(), 'USER','messi'  , uuid(), 'Lionel Messi','messi@fpt.com.vn','001 852741963','1980-02-02','SYSTEM','SYSTEM');
+VALUES (uuid(), 'USER','messi', 'QGRtaW4=', 'Lionel Messi','messi@barca.com','001 852741963','1980-02-02','SYSTEM','SYSTEM');
 
 INSERT INTO `User` (`UserKey`, `UserType`, `UserName`, `Hash`, `DisplayName`, `Email`, `Mobile`, `DateOfBirth`, `Author`, `Editor`) 
-VALUES (uuid(), 'USER','bale'  , uuid(), 'Gareth Bale','bale@fpt.com.vn','001 852741963','1980-02-02','SYSTEM','SYSTEM');
+VALUES (uuid(), 'USER','bale', 'QGRtaW4=', 'Gareth Bale','bale@real.com','001 852741963','1980-02-02','SYSTEM','SYSTEM');
 
 INSERT INTO `User` (`UserKey`, `UserType`, `UserName`, `Hash`, `DisplayName`, `Email`, `Mobile`, `DateOfBirth`, `Author`, `Editor`) 
-VALUES (uuid(), 'USER','rojo'  , uuid(), 'Marcus Rojo','rojo@fpt.com.vn','001 852741963','1980-02-02','SYSTEM','SYSTEM');
+VALUES (uuid(), 'USER','ronaldo', 'QGRtaW4=', 'Cris Ronaldo','ronaldo@mu.com','001 852741963','1980-02-02','SYSTEM','SYSTEM');
 
 
 --

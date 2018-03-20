@@ -1,11 +1,12 @@
 ﻿The solution includes: (from release 2.0)
-- public     : Public Site
-- client     : Admin Site
-- server     : APIs
-- database   : estore
-- storage    : fs or azure blob or amazone s3
-- config info: "/server/config/config.js" to setup: username & password & database name
-- hosting    : http://ec2-34-205-24-111.compute-1.amazonaws.com/
+- public        : Public Site
+- client        : Admin Site
+- server        : APIs
+- database      : estore
+- storage       : fs or azure blob or amazone s3
+- config info   : "/server/config/config.js" to setup: username & password & database name
+- hosting       : http://ec2-34-205-24-111.compute-1.amazonaws.com/
+- user/password : admin/@dmin
 
 For start review:
 - install nodejs 8.9.1 LTS

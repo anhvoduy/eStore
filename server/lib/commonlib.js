@@ -11,6 +11,16 @@ common.encoded = function(text){
     return encoded;
 };
 
+// common.createSalt=function ()
+// {
+// 	return crypto.randomBytes(16).toString('base64');
+// }
+
+// common.createHash=function (clearText,salt)
+// {	
+// 	return crypto.pbkdf2Sync(clearText, salt, 4096, 64, 'SHA1').toString('base64');
+// }
+
 common.imageFileFilter = function (req, file, callback) {
     if (file.mimetype !== 'image/png' && file.mimetype !== 'image/jpg' && file.mimetype !== 'image/jpeg' && file.mimetype !== 'image/gif') {
       var err = new Error();
