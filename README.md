@@ -8,6 +8,7 @@
 - hosting       : http://ec2-34-205-24-111.compute-1.amazonaws.com/
 - user/password : admin/@dmin
 
+
 For start review:
 - install nodejs 8.9.1 LTS
 - open command line:
@@ -15,6 +16,7 @@ For start review:
 	npm start
 - public site: http://localhost:8000/
 - admin  site: http://localhost:8000/admin/
+
 
 For download & guide:
 - nodejs: https://nodejs.org/en/
