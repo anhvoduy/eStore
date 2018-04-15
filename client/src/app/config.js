@@ -5,6 +5,7 @@ var app = angular.module('cargo', [
 	'ngFileUpload',
 	'cargo.directives',
 	'cargo.directives.megaMenu',
+	'cargo.directives.menuMultiLevel',
 	'cargo.directives.footer',
 	'cargo.directives.pagination'
 ]);
