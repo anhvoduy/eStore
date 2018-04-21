@@ -1,1 +1,18 @@
 version: '2'
+services:
+  mysql1:
+    image: "mysql1"
+    ports:
+     - "3306:3306"
+  web:
+    build: ./
+    ports:
+     - "8000:8000"
+    depends_on:
+      - mysql1
+    links:
+      - mysql1
+    volumes:
+      - ./:/usr/src/app
+    command: []
+    #entrypoint: /usr/src/app/entrypoint.sh

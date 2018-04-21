@@ -25,4 +25,13 @@ For download & guide:
 - redis: https://redis.io/
 - azure : https://docs.microsoft.com/en-us/azure/app-service-web/app-service-web-tutorial-nodejs-mongodb-app
 
-- prepare APIs FE cache
+
+For docker: 
+- https://hub.docker.com/r/mysql/mysql-server/
+- docker pull mysql/mysql-server:5.7
+- docker run --name=mysql1 -d mysql/mysql-server:5.7
+- docker ps
+- docker logs mysql1
+- docker exec -it mysql1 mysql -uroot -p
+- docker exec -it mysql1 bash 
+
