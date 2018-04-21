@@ -109,5 +109,28 @@ router.post('/delete', auth.checkAuthentication(), async function (req, res, nex
 	}
 });
 
+/**
+ * API: using for Front End
+ */
+router.get('/fe/items', async function (req, res, next) {
+	try
+	{
+		let query = _.pick(req.query, ['PageCurrent', 'PageSize']);
+		if(!query.PageCurrent || parseInt(query.PageCurrent)<=0){
+			query.PageCurrent = 1;
+		}
+
+		if(!query.PageSize || parseInt(query.PageSize)<=0){
+			query.PageSize = 5000;
+		}
+		
+		let data = await brandService.getList(query);
+		res.status(200).json(data);
+	}
+	catch(err){
+		next(err);
+	}
+});
+
 // Export
 module.exports = router;
