@@ -13,13 +13,14 @@ For start review:
 - install nodejs 8.9.1 LTS
 - open command line:
 	npm install or yarn install
-	npm start
+	npm run start or npm run dev (with nodemon)
 - public site: http://localhost:8000/
 - admin  site: http://localhost:8000/admin/
 
 
 For download & guide:
 - nodejs: https://nodejs.org/en/
+- nodemon: https://github.com/remy/nodemon
 - elasticsearch: https://www.elastic.co/guide/en/elasticsearch/reference/current/windows.html/
 - redis: https://redis.io/
 - azure : https://docs.microsoft.com/en-us/azure/app-service-web/app-service-web-tutorial-nodejs-mongodb-app
