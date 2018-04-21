@@ -10,7 +10,7 @@
 
 
 For start review:
-- install nodejs 8.9.1 LTS
+- install nodejs 8.11.1 LTS
 - open command line:
 	npm install or yarn install
 	npm run start or npm run dev (with nodemon)
