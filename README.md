@@ -27,11 +27,7 @@ For download & guide:
 
 
 For docker: 
-- https://hub.docker.com/r/mysql/mysql-server/
-- docker pull mysql/mysql-server:5.7
-- docker run --name=mysql1 -d mysql/mysql-server:5.7
-- docker ps
-- docker logs mysql1
-- docker exec -it mysql1 mysql -uroot -p
-- docker exec -it mysql1 bash 
-
+- find docker hub: mysql:5.7
+- find mysql ipaddress: docker inspect [containerid-mysql]
+- update config mysql's ip address
+- docker-compose up
