@@ -1,5 +1,5 @@
 var mySql = {
-    host: 'localhost',
+    host: 'localhost', // For docker => docker inspect [containerid]
     user: 'user',
     password: 'password',
     database: 'database',
