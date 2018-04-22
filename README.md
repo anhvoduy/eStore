@@ -10,12 +10,20 @@
 
 
 For start review:
-- install nodejs 8.11.1 LTS
+- install mysql  5.7
+- install nodejs 8.11.1
 - open command line:
 	npm install or yarn install
 	npm run start or npm run dev (with nodemon)
 - public site: http://localhost:8000/
 - admin  site: http://localhost:8000/admin/
+
+
+For docker: 
+- find docker hub: mysql:5.7
+- find mysql ipaddress: docker inspect [containerid-mysql]
+- update config mysql's ip address
+- docker-compose up
 
 
 For download & guide:
@@ -24,10 +32,3 @@ For download & guide:
 - elasticsearch: https://www.elastic.co/guide/en/elasticsearch/reference/current/windows.html/
 - redis: https://redis.io/
 - azure : https://docs.microsoft.com/en-us/azure/app-service-web/app-service-web-tutorial-nodejs-mongodb-app
-
-
-For docker: 
-- find docker hub: mysql:5.7
-- find mysql ipaddress: docker inspect [containerid-mysql]
-- update config mysql's ip address
-- docker-compose up
