@@ -1,18 +1,23 @@
 version: '2'
 services:
-  mysql1:
-    image: "mysql1"
+  database:
+    image: mysql:5.7
     ports:
-     - "3306:3306"
-  web:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: "estore"
+      MYSQL_ROOT_PASSWORD: "3nations"
+    volumes:
+      - ./database:/home/database
+  api:
     build: ./
     ports:
-     - "8000:8000"
+      - "8000:8000"
     depends_on:
-      - mysql1
+      - database
     links:
-      - mysql1
+      - database
     volumes:
-      - ./:/usr/src/app
+      - ./:/home/app
     command: []
-    #entrypoint: /usr/src/app/entrypoint.sh
+    
