@@ -1,1 +1,23 @@
 version: '2'
+services:
+  database:
+    image: mysql:5.7
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: "estore"
+      MYSQL_ROOT_PASSWORD: "3nations"
+    volumes:
+      - ./database:/home/database
+  api:
+    build: ./
+    ports:
+      - "8000:8000"
+    depends_on:
+      - database
+    links:
+      - database
+    volumes:
+      - ./:/home/app
+    command: []
+    

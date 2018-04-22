@@ -25,4 +25,9 @@ For download & guide:
 - redis: https://redis.io/
 - azure : https://docs.microsoft.com/en-us/azure/app-service-web/app-service-web-tutorial-nodejs-mongodb-app
 
-- prepare APIs FE cache
+
+For docker: 
+- find docker hub: mysql:5.7
+- find mysql ipaddress: docker inspect [containerid-mysql]
+- update config mysql's ip address
+- docker-compose up
