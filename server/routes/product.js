@@ -137,26 +137,25 @@ router.get('/item', auth.checkAuthentication(), async function (req, res, next) 
 });
 
 /**
- * API: using for Back End
+ * API: using for Front End & Back End
  */
 router.get('/brand/items', auth.checkAuthentication(), async function (req, res, next) {
 	try
 	{
 		let query = _.pick(req.query, ['BrandId', 'BrandKey','PageCurrent','PageSize']);
-
-		if(!query.BrandKey)
-			throw CONSTANT.MISSING_FIELD_BRANDKEY;
-
 		if(!query.PageCurrent && !query.PageSize){
 			query.PageCurrent = 1;
 			query.PageSize = 5000;
 		}
+		
+		if(!query.BrandKey || !query.BrandId)
+			throw CONSTANT.MISSING_FIELD_BRANDID_BRANDKEY;
 
-		let brand = await brandService.getBrandByKey({ BrandKey: query.BrandKey });
-		if(!brand){
-			throw CONSTANT.INVALID_FIELD_BRANDKEY;
+		if(query.BrandKey){
+			let brand = await brandService.getBrandByKey({ BrandKey: query.BrandKey });
+			if(!brand) throw CONSTANT.INVALID_FIELD_BRANDKEY;
+			query.BrandId = brand.BrandId;
 		}
-		query.BrandId = brand.BrandId;
 
 		let products = await productService.getProductsByBrand(query);
 		res.status(200).json(products);
