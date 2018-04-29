@@ -36,7 +36,8 @@ router.get('/item', auth.checkAuthentication(), async function (req, res, next) 
 			brand = await brandService.getBrandById(query);
 		else if(query.BrandKey)
 			brand = await brandService.getBrandByKey(query);		
-		res.status(200).json(brand);
+		
+		return res.status(200).json(brand);
 	}
 	catch(err){
 		next(err);

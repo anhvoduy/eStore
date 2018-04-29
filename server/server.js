@@ -24,6 +24,7 @@ server.set('secretKey', config.secretKey);
 server.use('/api', require('./routes/api'));
 server.use('/api/account', require('./routes/account'));
 server.use('/api/brand', require('./routes/brand'));
+server.use('/api/category', require('./routes/category'));
 server.use('/api/product', require('./routes/product'));
 server.use('/api/customer', require('./routes/customer'));
 server.use('/api/user', require('./routes/user'));
