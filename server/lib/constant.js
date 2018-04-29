@@ -1,4 +1,5 @@
-﻿'use strict',
+﻿'use strict';
+
 /*
 200 OK Standard response for successful HTTP requests
 201 Created Request has been fulfilled.New resource created
@@ -14,13 +15,14 @@
 503 Service Unavailable Server is currently unavailable
 */
 
-const CONSTANT = { 
+const CONSTANT = {
+	/** ------------- Unchange -------------*/
 	TRANSACTIONTYPE: {
-		CASHIN: 'CASHIN',
-		CASHOUT: 'CASHOUT',
-		STOCKIN: 'STOCKIN',
+		CASHIN	: 'CASHIN',
+		CASHOUT	: 'CASHOUT',
+		STOCKIN	: 'STOCKIN',
 		STOCKOUT: 'STOCKOUT',
-		JOURNAL: 'JOURNAL'
+		JOURNAL	: 'JOURNAL'
 	},
 	STATUS: {
 		DELETED: 1,
@@ -46,11 +48,37 @@ const CONSTANT = {
 		{ Key: 'DR', Value: 'Debit' },
 		{ Key: 'CR', Value: 'Credit' }
 	],
-	UPLOAD_FILE = {
+	UPLOAD_FILE: {
 		FILE_SIZE: 1048576
 	},
+	COLOR_LIST: [
+		{ ColorCode: 'NoColor', ColorName: 'No Color' },
+		{ ColorCode: 'Red', ColorName: 'Red' },
+		{ ColorCode: 'Pink', ColorName: 'Pink' },
+		{ ColorCode: 'Orange', ColorName: 'Orange' },
+		{ ColorCode: 'Yellow', ColorName: 'Yellow' },
+		{ ColorCode: 'Green', ColorName: 'Green' },
+		{ ColorCode: 'Blue', ColorName: 'Blue' },
+		{ ColorCode: 'Purple', ColorName: 'Purple' },
+		{ ColorCode: 'Brown', ColorName: 'Brown' },
+		{ ColorCode: 'Grey', ColorName: 'Grey' },
+		{ ColorCode: 'White', ColorName: 'White' },
+		{ ColorCode: 'Black', ColorName: 'Black' },
+		{ ColorCode: 'Print', ColorName: 'Print' },
+		{ ColorCode: 'Strip', ColorName: 'Strip' },
+		{ ColorCode: 'Floral', ColorName: 'Floral' },
+		{ ColorCode: 'Check', ColorName: 'Check' },
+		{ ColorCode: 'Dot', ColorName: 'Dot' },
+		{ ColorCode: 'Gold', ColorName: 'Gold' },
+		{ ColorCode: 'Silver', ColorName: 'Silver' },
+		{ ColorCode: 'Rosegold', ColorName: 'Rosegold' },
+		{ ColorCode: 'Champagne', ColorName: 'Champagne' },
+		{ ColorCode: 'Whitegold', ColorName: 'Whitegold' },
+		{ ColorCode: 'Platinum', ColorName: 'Platinum' },
+		{ ColorCode: 'MultiColor', ColorName: 'Multiple Color' }
+	],
 
-	/** -------------Success Lists -------------*/
+	/** ------------- Authentication -------------*/
 	SUCCESS_AUTHENTICATION: { 
 		code: 'SUCCESS_AUTHENTICATION', 
 		message: 'Authentication is success.' 
@@ -92,7 +120,7 @@ const CONSTANT = {
 	SUCCESS_USER_UPDATE: { code: 'SUCCESS_USER_UPDATE', message: 'Update User is success.' },
 	SUCCESS_USER_DELETE: { code: 'SUCCESS_USER_DELETE', message: 'Delete User is success.' },
 
-	/** -------------Error Lists -------------*/
+	/** -------------Error Handle -------------*/
 	ERROR_UNAUTHORIZED: { code: 'ERROR_UNAUTHORIZED', message: 'User is not authorized.' },
 	ERROR_UNAUTHENTICATION: { code: 'ERROR_UNAUTHENTICATION', message: 'Username and Password is invalid.' },
 	ERROR_CONNECTION: { code: 'ERROR_CONNECTION', message: 'Error: the current connection is closed or undefined.' },
@@ -137,34 +165,7 @@ const CONSTANT = {
 	MISSING_FIELD_CUSTOMER_NAME: { code: 'MISSING_FIELD_CUSTOMER_NAME', message: 'missing field Customer Name.' },
 	MISSING_FIELD_CUSTOMER_ADDRESS: { code: 'MISSING_FIELD_CUSTOMER_ADDRESS', message: 'missing field Customer Address.' },
 	MISSING_FIELD_CUSTOMER_EMAIL: { code: 'MISSING_FIELD_CUSTOMER_EMAIL', message: 'missing field Customer Email.' },
-	INVALID_FIELD_CUSTOMER_KEY: { code: 'INVALID_FIELD_CUSTOMER_KEY', message: 'invalid field Customer Key.' },
-
-	COLOR_LIST: [
-		{ ColorCode: 'NoColor', ColorName: 'No Color' },
-		{ ColorCode: 'Red', ColorName: 'Red' },
-		{ ColorCode: 'Pink', ColorName: 'Pink' },
-		{ ColorCode: 'Orange', ColorName: 'Orange' },
-		{ ColorCode: 'Yellow', ColorName: 'Yellow' },
-		{ ColorCode: 'Green', ColorName: 'Green' },
-		{ ColorCode: 'Blue', ColorName: 'Blue' },
-		{ ColorCode: 'Purple', ColorName: 'Purple' },
-		{ ColorCode: 'Brown', ColorName: 'Brown' },
-		{ ColorCode: 'Grey', ColorName: 'Grey' },
-		{ ColorCode: 'White', ColorName: 'White' },
-		{ ColorCode: 'Black', ColorName: 'Black' },
-		{ ColorCode: 'Print', ColorName: 'Print' },
-		{ ColorCode: 'Strip', ColorName: 'Strip' },
-		{ ColorCode: 'Floral', ColorName: 'Floral' },
-		{ ColorCode: 'Check', ColorName: 'Check' },
-		{ ColorCode: 'Dot', ColorName: 'Dot' },
-		{ ColorCode: 'Gold', ColorName: 'Gold' },
-		{ ColorCode: 'Silver', ColorName: 'Silver' },
-		{ ColorCode: 'Rosegold', ColorName: 'Rosegold' },
-		{ ColorCode: 'Champagne', ColorName: 'Champagne' },
-		{ ColorCode: 'Whitegold', ColorName: 'Whitegold' },
-		{ ColorCode: 'Platinum', ColorName: 'Platinum' },
-		{ ColorCode: 'MultiColor', ColorName: 'Multiple Color' }
-	]
+	INVALID_FIELD_CUSTOMER_KEY: { code: 'INVALID_FIELD_CUSTOMER_KEY', message: 'invalid field Customer Key.' }
 };
 
 module.exports = CONSTANT;
