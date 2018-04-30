@@ -69,8 +69,8 @@
 (function () {
     'use strict';
 	angular.module('product.related.controller', ['product.service']).controller('productRelatedController', productRelatedController);
-	productRelatedController.$inject = ['$rootScope','productService'];
-	function productRelatedController($rootScope,productService) {
+	productRelatedController.$inject = ['$rootScope','$location','productService'];
+	function productRelatedController($rootScope,$location,productService) {
 		/* view-model */
 		var vm = this;
 		var productService = new productService();
@@ -79,12 +79,19 @@
 		function activate(brandId) {
 			return productService.getProductsByBrand(brandId).then(function(data){
 				if(data && data.PageData){
-					vm.relatedProducts = data.PageData;
+					vm.productlist = data.PageData;
+					angular.forEach(vm.productlist, function(item){
+						item.ProductImageUrl = String.format('{0}/{1}/{2}/{3}', getRootLocation($location), 'uploads', 'products', item.ProductImage);
+					});
 				}
 			}, function(err){
 				console.log(err);
 			})
 		};
+
+		function getRootLocation(location) {
+			return $location.$$protocol + ':' + '//' + $location.$$host + ':' + $location.$$port;
+		}
 
 		/* start: only activate after get brandId exactly */
 		$rootScope.$on('product-selected-brand', function(event, data) {
