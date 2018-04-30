@@ -58,3 +58,24 @@
 		activate();
 	}
 })();
+
+
+(function () {
+    'use strict';
+	angular.module('product.related.controller', ['product.service']).controller('productRelatedController', productRelatedController);
+	productRelatedController.$inject = ['$rootScope','productService'];
+	function productRelatedController($rootScope,productService) {
+		/* view-model */
+		var vm = this;
+		var productService = new productService();
+		
+		/* functions */
+		function activate() {
+			//var productKey = getProductKey($location.$$absUrl);
+			console.log('productRelatedController');
+		};
+
+		/* start */
+		activate();
+	}
+})();

@@ -50,6 +50,11 @@
 							<div ng-product-detail product="vm.product"></div>
 						</div>
 					</div>
+					<div class="tabbed">
+						<div class="tab-content" ng-controller="productRelatedController as vm">
+							<div ng-product-related relatedProducts="vm.relatedProducts"></div>
+						</div>
+					</div>
 					<div ng-brand></div>
 					<div ng-footer></div>
 				</div>				

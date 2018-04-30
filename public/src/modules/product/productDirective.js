@@ -34,4 +34,20 @@
             }
         };
     }])
+    .directive('ngProductRelated',[function () {
+        return {
+            restrict: 'EA',
+            required: 'ngModel',
+            replace: true,
+            transclude: true,
+            scope:{
+                relatedProducts:'='
+            },
+            templateUrl: function() {
+                return 'modules/product/ngProductRelated.tpl.html';
+            },
+            link: function (scope, element, attrs, modelCtrl) {
+            }
+        };
+    }])
 })();
