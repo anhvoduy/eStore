@@ -56,7 +56,7 @@
                             autoControls: false,
                             stopAutoOnClick: true,
                             speed: 500,
-                            infiniteLoop: false,
+                            infiniteLoop: true,
                             slideSelector: 'div.item',
                             minSlides: 4,
                             maxSlides: 4,

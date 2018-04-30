@@ -211,10 +211,10 @@ h1#logo a{ display:block; height:61px; text-indent: -4000px; background:url(imag
 	color: #444;
 }
 
-a.bx-prev {
+.slider-product-list .bx-wrapper .bx-controls .bx-controls-direction a.bx-prev {
     left: -20px!important;
 }
 
-a.bx-next {
+.slider-product-list .bx-wrapper .bx-controls .bx-controls-direction a.bx-next {
     right: -10px !important;
 }
