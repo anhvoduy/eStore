@@ -1,4 +1,4 @@
-﻿The solution includes: (from release 2.2.2)
+﻿The solution includes: (from release 2.2)
 - public        : Public Site
 - client        : Admin Site
 - server        : APIs
