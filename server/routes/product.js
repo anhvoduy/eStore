@@ -64,6 +64,7 @@ router.get('/items', auth.checkAuthentication(), async function (req, res, next)
 
 /**
  * API: using for Front End
+ * return: list items
  */
 router.get('/fe/items', async function (req, res, next) {
 	try
@@ -84,6 +85,7 @@ router.get('/fe/items', async function (req, res, next) {
 
 /**
  * API: using for Front End
+ * return: item
  */
 router.get('/fe/item', async function (req, res, next) {
 	try
@@ -139,7 +141,9 @@ router.get('/item', auth.checkAuthentication(), async function (req, res, next) 
 /**
  * API: using for Front End & Back End
  */
-router.get('/brand/items', auth.checkAuthentication(), async function (req, res, next) {
+router.get('/brand/items', 
+	//auth.checkAuthentication(), 
+	async function (req, res, next) {
 	try
 	{
 		let query = _.pick(req.query, ['BrandId', 'BrandKey','PageCurrent','PageSize']);
@@ -148,7 +152,7 @@ router.get('/brand/items', auth.checkAuthentication(), async function (req, res,
 			query.PageSize = 5000;
 		}
 		
-		if(!query.BrandKey || !query.BrandId)
+		if(!query.BrandKey && !query.BrandId)
 			throw CONSTANT.MISSING_FIELD_BRANDID_BRANDKEY;
 
 		if(query.BrandKey){

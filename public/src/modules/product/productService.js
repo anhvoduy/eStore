@@ -40,6 +40,16 @@
                 return result.data[0];
             });
         };
+
+        productService.prototype.getProductsByBrand = function (brandId) {
+            var url = String.format('{0}/product/brand/items', this.api);
+            var params = {
+                BrandId: brandId
+            };
+            return $http.get(url, {params: params}).then(function(result){
+                return result.data;
+            });
+        };
         
         return productService;
     };
