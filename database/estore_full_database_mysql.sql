@@ -752,7 +752,7 @@ INSERT INTO `Product`(`ProductKey`,`ProductName`,`SizeList`,`Description`,`Brand
 VALUES (uuid(),'Asus','8/8.5/9.5/10/11','Asus',4,800,'White','NEW','Cool','product03.jpg','SYSTEM','SYSTEM');
 
 INSERT INTO `Product`(`ProductKey`,`ProductName`,`SizeList`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`ProductImage`,`Author`,`Editor`)
-VALUES (uuid(),'Acer','8/8.5/9.5/10/11','Laptop Acer',4,100,'White','NEW','Cool','product03.jpg','SYSTEM','SYSTEM');
+VALUES (uuid(),'Lenovo Thinkpad X1','8/8.5/9.5/10/11','Lenovo Thinkpad X1 Carbon Touch Intel Core i7 14 Ultrabook',4,1100,'White','NEW','Cool','product03.jpg','SYSTEM','SYSTEM');
 
 INSERT INTO `Product`(`ProductKey`,`ProductName`,`SizeList`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`ProductImage`,`Author`,`Editor`)
 VALUES (uuid(),'Sony Xperia','8/8.5/9.5/10/11','Sony Xperia',6,1200,'White','NEW','Cool','product03.jpg','SYSTEM','SYSTEM');
