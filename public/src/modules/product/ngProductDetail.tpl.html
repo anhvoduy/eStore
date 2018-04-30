@@ -1,11 +1,37 @@
-<div class="container">
-    <div class="row">
-        <div class="col-md-6">
-            <img class="fe-product-img" ng-src="{{product.ProductImageUrl}}" width="450" height="300" />
+<div class="product-essential">
+    <div class="gallery">
+        <img ng-src="{{product.ProductImageUrl}}" />
+    </div>
+    <div class="overview">
+        <div class="product-name">
+            <h1>{{product.ProductName}}</h1>
         </div>
-        <div class="col-md-6">
-                For performance reasons, the Tooltip and Popover data-apis are opt-in, meaning you must initialize them yourself.
-                One way to initialize all tooltips on a page would be to select them by their data-toggle attribute:
+        <div class="short-description">
+            <p>{{product.Description}}</p>
+        </div>
+        <div class="manufacturers">
+            <span class="label">Brand:</span>
+            <span class="value">{{product.BrandName}}</span>
+        </div>
+        <div class="price">
+            <span class="label">Price:</span>
+            <span class="value">{{product.Price}} <b>$</b></span>
+        </div>
+        <div class="color">
+            <span class="label">Color:</span>
+            <span class="value">{{product.ColorCode}}</span>
+        </div>
+        <div class="size-list">
+            <span class="label">Size List:</span>
+            <span class="value">{{product.SizeList}}</span>
+        </div>
+        <div class="status">
+            <span class="label">Status:</span>
+            <span class="value">{{product.Status}}</span>
+        </div>
+        <div class="last-review">
+            <span class="label">Last Review:</span>
+            <span class="value">{{product.LatestReviewInfo}}</span>
         </div>
     </div>
 </div>

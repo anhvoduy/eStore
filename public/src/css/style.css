@@ -76,9 +76,45 @@ h1#logo a{ display:block; height:61px; text-indent: -4000px; background:url(imag
 
 #content { padding-top:20px; }
 
+/* .product-essential { padding: 10px; } */
+.product-essential .gallery { float: left; width: 50%; } 
+.product-essential .gallery img { width: 450px; height: 300px; }
+
+.product-essential .overview { float: right; width: 50%; }
+.product-essential .overview .product-name { margin: 0 0 20px; border-bottom: 1px solid #ddd; padding: 0 0 10px; }
+.product-essential .overview .product-name h1 { font-size: 30px; font-weight: normal; }
+
+.product-essential .overview .short-description { margin: 0 0 16px; line-height: 16px; }
+.product-essential .overview .short-description p { font-size: 14px; font-weight: normal; color: #666; }
+
+.product-essential .overview .manufacturers { margin: 0 0 16px; line-height: 16px; }
+.product-essential .overview .manufacturers .label { font-size: 14px; font-weight: normal; color: #666; border-bottom: 1px solid #ddd; }
+.product-essential .overview .manufacturers .value { font-size: 14px; font-weight: normal; color: #444; }
+
+.product-essential .overview .price { margin: 0 0 16px; line-height: 16px; }
+.product-essential .overview .price .label { font-size: 14px; font-weight: normal; color: #666; border-bottom: 1px solid #ddd; }
+.product-essential .overview .price .value { font-size: 14px; font-weight: normal; color: #444; }
+
+.product-essential .overview .color { margin: 0 0 16px; line-height: 16px; }
+.product-essential .overview .color .label { font-size: 14px; font-weight: normal; color: #666; border-bottom: 1px solid #ddd; }
+.product-essential .overview .color .value { font-size: 14px; font-weight: normal; color: #444; }
+
+.product-essential .overview .size-list { margin: 0 0 16px; line-height: 16px; }
+.product-essential .overview .size-list .label { font-size: 14px; font-weight: normal; color: #666; border-bottom: 1px solid #ddd; }
+.product-essential .overview .size-list .value { font-size: 14px; font-weight: normal; color: #444; }
+
+.product-essential .overview .status { margin: 0 0 16px; line-height: 16px; }
+.product-essential .overview .status .label { font-size: 14px; font-weight: normal; color: #666; border-bottom: 1px solid #ddd; }
+.product-essential .overview .status .value { font-size: 14px; font-weight: normal; color: #444; }
+
+.product-essential .overview .last-review { margin: 0 0 16px; line-height: 16px; }
+.product-essential .overview .last-review .label { font-size: 14px; font-weight: normal; color: #666; border-bottom: 1px solid #ddd; }
+.product-essential .overview .last-review .value { font-size: 14px; font-weight: normal; color: #444; }
+
+
 .tabs { height:36px; }
 .tabs ul{ list-style-type: none; font-size:14px; text-transform: uppercase; font-weight: bold; }
-.tabs ul li{ float:left; display:inline; margin-right:1px; }
+.tabs ul li { float:left; display:inline; margin-right:1px; }
 .tabs ul li a,
 .tabs ul li a span { float:left; height:36px; background:url(images/tab.gif) no-repeat 0 -37px; padding:0 0 0 20px;}
 .tabs ul li a span { background-position:right -37px; padding:0 20px 0 0;}
@@ -93,7 +129,9 @@ h1#logo a{ display:block; height:61px; text-indent: -4000px; background:url(imag
 .tabs ul li a.active span,
 .tabs ul li a:hover span{ background-position:right 0;}
 
-#container { background:#fff url(images/container-t.gif) no-repeat 0 0; padding:30px 20px; }
+#container { 
+	background:#fff url(images/container-t.gif) no-repeat 0 0; padding:30px 20px; 
+}
 
 .items { position:relative; width:960px; margin-right:-20px; padding-bottom:5px; }
 .items ul{ list-style-type: none;}

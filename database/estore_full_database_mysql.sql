@@ -743,7 +743,7 @@ INSERT INTO `Product`(`ProductKey`,`ProductName`,`SizeList`,`Description`,`Brand
 VALUES (uuid(),'Sony Vaio','8/8.5/9.5/10/11','Sony Vaio',1,100,'White','NEW','Cool','product02.jpg','SYSTEM','SYSTEM');
 
 INSERT INTO `Product`(`ProductKey`,`ProductName`,`SizeList`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`ProductImage`,`Author`,`Editor`)
-VALUES (uuid(),'Dell','8/8.5/9.5/10/11','Dell Vostro',2,2000,'White','NEW','Cool','product02.jpg','SYSTEM','SYSTEM');
+VALUES (uuid(),'Apple MacBook Pro 13-inch','8/8.5/9.5/10/11','A groundbreaking Retina. A new force-sensing trackpad. All-flash architecture. Powerful dual-core and quad-core Intel processors. Together, these features take the notebook to a new level of performance.',2,2000,'White','NEW','Cool','product02.jpg','SYSTEM','SYSTEM');
 
 INSERT INTO `Product`(`ProductKey`,`ProductName`,`SizeList`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`ProductImage`,`Author`,`Editor`)
 VALUES (uuid(),'HP Note','8/8.5/9.5/10/11','HP Note',2,100,'Yellow','NEW','Cool','product02.jpg','SYSTEM','SYSTEM');
