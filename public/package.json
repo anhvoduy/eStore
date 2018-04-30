@@ -1,6 +1,6 @@
 {
   "name": "grunt-setup-env",
-  "version": "2.0.1",
+  "version": "2.2.2",
   "description": "Grunt Automation Build - Public Site",
   "main": "index.js",
   "scripts": {
