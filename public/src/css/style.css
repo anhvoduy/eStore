@@ -163,6 +163,7 @@ h1#logo a{ display:block; height:61px; text-indent: -4000px; background:url(imag
     margin: auto;
 }
 
+/* product detail: slider related product list */
 .related-products-list { 
 	background: #fff;
 	margin: 0 0 50px;
@@ -177,13 +178,16 @@ h1#logo a{ display:block; height:61px; text-indent: -4000px; background:url(imag
     color: #444;
 }
 
-.slider-product-list .slider-popular { background: #fff; }
+.slider-product-list .slider-popular { 
+	background: #fff; 
+}
 .slider-product-list .slider-popular .item {
 	float: left;
 	width: 25%;
 	text-align: center;
 	position: relative;
 	padding-bottom: 20px;
+	padding-top: 10px;
 }
 .slider-product-list .slider-popular .item:after {
 	content: "";
