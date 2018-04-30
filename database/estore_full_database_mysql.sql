@@ -657,6 +657,8 @@ VALUES (uuid(), 'STOCK', '2017-10-19', '156', '632', 'VND', 600, ' Import Produc
 
 INSERT INTO `Journal`(JournalKey,JournalType,JournalDate,DebitAcctNo,CreditAcctNo,Currency,Amount,Description,Author,Editor) 
 VALUES (uuid(), 'STOCK', '2017-10-22', '156', '632', 'VND', 150, ' Import Product', 'SYSTEM', 'SYSTEM');
+
+
 --
 -- Table structure for table `Brand`
 --
@@ -710,6 +712,37 @@ INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VA
 INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Brodard','Brodard cake','SYSTEM','SYSTEM');
 INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Conditori La Glace','Conditori La Glace Copenhagen','SYSTEM','SYSTEM');
 
+
+--
+-- Table structure for table `Category`
+--
+DROP TABLE IF EXISTS `Category`;
+CREATE TABLE `Brand` (
+  `CategoryId` INT(11) NOT NULL AUTO_INCREMENT,
+  `CategoryKey` VARCHAR(50) NOT NULL,
+  `BrandId` INT(11) NOT NULL DEFAULT 0,
+  `CategoryName` VARCHAR(50) NOT NULL,
+  `Description` VARCHAR(250) DEFAULT NULL,
+  `Created` DATETIME DEFAULT NULL,
+  `Updated` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `Author` VARCHAR(50) DEFAULT NULL,
+  `Editor` VARCHAR(50) DEFAULT NULL,
+  `Deleted` TINYINT(1) DEFAULT 0,
+  PRIMARY KEY (`CategoryId`),
+  UNIQUE KEY `CategoryId_UNIQUE` (`CategoryId`)
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
+
+--
+-- Sample data for table `Category`
+--
+INSERT INTO `Category` (`CategoryKey`,`BrandId`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),15,'Sony Laptop','Sony Laptop','SYSTEM','SYSTEM');
+INSERT INTO `Category` (`CategoryKey`,`BrandId`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),15,'Sony Xperia Phone','Sony Xperia Phone','SYSTEM','SYSTEM');
+INSERT INTO `Category` (`CategoryKey`,`BrandId`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),15,'Sony Smart Glasses','Sony Smart Glasses','SYSTEM','SYSTEM');
+INSERT INTO `Category` (`CategoryKey`,`BrandId`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),15,'Sony Smart Watch','Sony Smart Watch','SYSTEM','SYSTEM');
+INSERT INTO `Category` (`CategoryKey`,`BrandId`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),15,'Sony Ericsson','Sony Ericsson','SYSTEM','SYSTEM');
+INSERT INTO `Category` (`CategoryKey`,`BrandId`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),15,'Sony Wearable','Sony Wearable','SYSTEM','SYSTEM');
+
+
 --
 -- Table structure for table `Product`
 --
@@ -723,6 +756,7 @@ CREATE TABLE `Product` (
   `SizeList` VARCHAR(250) DEFAULT NULL,
   `Description` VARCHAR(250) DEFAULT NULL,
   `BrandId` INT(11) NOT NULL DEFAULT 0,
+  `CategoryId` INT(11) NOT NULL DEFAULT 0,
   `Price` DECIMAL(12, 4) DEFAULT 0,
   `ColorCode` VARCHAR(10) DEFAULT NULL,
   `Status` VARCHAR(10) DEFAULT NULL,
