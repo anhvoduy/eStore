@@ -153,8 +153,8 @@ router.get('/brand/items', auth.checkAuthentication(), async function (req, res,
 
 		if(query.BrandKey){
 			let brand = await brandService.getBrandByKey({ BrandKey: query.BrandKey });
-			if(!brand) throw CONSTANT.INVALID_FIELD_BRANDKEY;
-			query.BrandId = brand.BrandId;
+			if(!brand || !brand.BrandId) throw CONSTANT.INVALID_FIELD_BRANDKEY;
+			else query.BrandId = brand.BrandId;
 		}
 
 		let products = await productService.getProductsByBrand(query);
