@@ -1,10 +1,14 @@
-<div class="related-products-grid">
-    <div class="main-content">
-        <div class="popular">      
-            <div class="item" ng-repeat="product in productlist">
-                <img ng-src="{{product.ProductImageUrl}}" width="136px" height="83px" />
-            </div>
-            <div class="clear"></div>
-        </div>
-    </div>
+<div class="related-products-list">
+  <div class="title">
+      <strong>Related products</strong>
+  </div>
+  <div class="slider-product-list">
+      <div class="slider-popular">      
+          <div class="item" ng-repeat="product in productlist">
+              <img ng-src="{{product.ProductImageUrl}}" width="136px" height="83px" />
+              <p><a ng-href="/product/{{product.ProductKey}}">{{product.ProductName}}</a></p>
+          </div>
+          <div class="clear"></div>
+      </div>
+  </div>
 </div>

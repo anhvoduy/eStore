@@ -49,7 +49,7 @@
             link: function (scope, element, attrs, modelCtrl) {
                 scope.$watch('productlist', function(newVal, oldVal){
                     if(newVal != oldVal){
-                        $('.popular').bxSlider({
+                        $('.slider-popular').bxSlider({
                             mode: 'horizontal',
                             captions: true,
                             auto: true,
