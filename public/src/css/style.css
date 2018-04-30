@@ -81,11 +81,11 @@ h1#logo a{ display:block; height:61px; text-indent: -4000px; background:url(imag
 .product-essential .gallery img { width: 450px; height: 300px; }
 
 .product-essential .overview { float: right; width: 50%; }
-.product-essential .overview .product-name { margin: 0 0 20px; border-bottom: 1px solid #ddd; padding: 0 0 10px; }
+.product-essential .overview .product-name { margin: 0 0 20px; border-bottom: 1px solid #ddd; padding: 10 0 10px; }
 .product-essential .overview .product-name h1 { font-size: 30px; font-weight: normal; }
 
 .product-essential .overview .short-description { margin: 0 0 16px; line-height: 16px; }
-.product-essential .overview .short-description p { font-size: 14px; font-weight: normal; color: #666; }
+.product-essential .overview .short-description p { font-size: 14px; font-weight: normal; color: #444; }
 
 .product-essential .overview .manufacturers { margin: 0 0 16px; line-height: 16px; }
 .product-essential .overview .manufacturers .label { font-size: 14px; font-weight: normal; color: #666; border-bottom: 1px solid #ddd; }
