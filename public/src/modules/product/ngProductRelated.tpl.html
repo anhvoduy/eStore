@@ -1,7 +1,10 @@
 <div class="related-products-grid">
-    <div class="bxslider">        
-        <div ng-repeat="product in productlist">
-            <img ng-src="{{product.ProductImageUrl}}" width="136px" height="83px" />
+    <div class="main-content">
+        <div class="popular">      
+            <div class="item" ng-repeat="product in productlist">
+                <img ng-src="{{product.ProductImageUrl}}" width="136px" height="83px" />
+            </div>
+            <div class="clear"></div>
         </div>
     </div>
 </div>

@@ -53,21 +53,16 @@
                             mode: 'horizontal',
                             captions: true,
                             auto: true,
-                            speed: 1000,
-                            infiniteLoop: true,
+                            autoControls: false,
                             stopAutoOnClick: true,
-                            minSlides: 3,
-                            maxSlides: 3,
-                            moveSlides: 3,
-                            pause: 2000,
-                            pager: false,
-                            onSlideBefore: function(){
-                                $(".popular").fadeOut();
-                            },
-                            onSlideAfter: function(){
-                                $(".popular").fadeIn();
-                            }
-                        });
+                            speed: 500,
+                            infiniteLoop: false,
+                            slideSelector: 'div.item',
+                            minSlides: 5,
+                            maxSlides: 10,
+                            moveSlides: 1,
+                            slideWidth: 200
+                          });
                     }
                 }, true);
             }

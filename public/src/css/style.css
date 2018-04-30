@@ -163,3 +163,29 @@ h1#logo a{ display:block; height:61px; text-indent: -4000px; background:url(imag
     box-shadow: none;
     margin: auto;
 }
+
+.main-content .popular { background: #fff; }
+.main-content .popular .item {
+	float: left;
+	width: 25%;
+	text-align: center;
+	position: relative;
+	padding-bottom: 20px;
+}
+.main-content .popular .item:after {
+	content: "";
+	width: 2px;
+	height: 100%;
+	background: #f5f5f5;
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+.main-content .popular .item p {
+	text-align: left;
+	padding-left: 20px;
+}
+.main-content .popular .item p a {
+	font-size: 16px;
+	color: #414a56;
+}

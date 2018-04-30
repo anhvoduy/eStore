@@ -39,10 +39,10 @@
                             mode: 'horizontal',
                             captions: true,
                             auto: true,
-                            speed: 1000,
-                            infiniteLoop: true,
+                            autoControls: false,
                             stopAutoOnClick: true,
-                            pager: false
+                            speed: 500,
+                            infiniteLoop: false
                         });
                     }
                 }, true);
