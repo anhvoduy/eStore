@@ -114,3 +114,12 @@ h1#logo a{ display:block; height:61px; text-indent: -4000px; background:url(imag
 .tab-content { display:block;}
 
 .tabbed { min-height:420px;}
+
+
+/* ----------------- custom styles ----------------- */
+.bx-wrapper {    
+    width:100% !important; 
+    border: none;
+    box-shadow: none;
+    margin: auto;
+}
