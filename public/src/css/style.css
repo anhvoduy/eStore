@@ -186,8 +186,8 @@ h1#logo a{ display:block; height:61px; text-indent: -4000px; background:url(imag
 	width: 25%;
 	text-align: center;
 	position: relative;
-	padding-bottom: 20px;
 	padding-top: 10px;
+	padding-bottom: 10px;
 }
 .slider-product-list .slider-popular .item:after {
 	content: "";
@@ -198,11 +198,23 @@ h1#logo a{ display:block; height:61px; text-indent: -4000px; background:url(imag
 	right: 0;
 	top: 0;
 }
-.slider-product-list .slider-popular .item p {
-	text-align: left;
+.slider-product-list .slider-popular .item img {
 	padding-left: 20px;
 }
-.slider-product-list .slider-popular .item p a {
+.slider-product-list .slider-popular .item .name {
+	text-align: left;
+	padding-top: 10px;
+	padding-left: 20px;
+}
+.slider-product-list .slider-popular .item .name a {
 	font-size: 14px;
 	color: #444;
+}
+
+a.bx-prev {
+    left: -20px!important;
+}
+
+a.bx-next {
+    right: -10px !important;
 }

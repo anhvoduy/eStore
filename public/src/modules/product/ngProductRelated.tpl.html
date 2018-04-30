@@ -5,8 +5,10 @@
   <div class="slider-product-list">
       <div class="slider-popular">      
           <div class="item" ng-repeat="product in productlist">
-              <img ng-src="{{product.ProductImageUrl}}" width="136px" height="83px" />
-              <p><a ng-href="/product/{{product.ProductKey}}">{{product.ProductName}}</a></p>
+              <img ng-src="{{product.ProductImageUrl}}" width="150px" height="100px" />
+              <div class="name">
+                <a ng-href="/product/{{product.ProductKey}}">{{product.ProductName}}</a>
+              </div>
           </div>
           <div class="clear"></div>
       </div>

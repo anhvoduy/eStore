@@ -58,8 +58,8 @@
                             speed: 500,
                             infiniteLoop: false,
                             slideSelector: 'div.item',
-                            minSlides: 5,
-                            maxSlides: 10,
+                            minSlides: 4,
+                            maxSlides: 4,
                             moveSlides: 1,
                             slideWidth: 200
                           });
