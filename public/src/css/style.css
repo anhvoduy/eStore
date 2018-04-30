@@ -151,8 +151,9 @@ h1#logo a{ display:block; height:61px; text-indent: -4000px; background:url(imag
 
 .tab-content { display:block;}
 
-.tabbed { min-height:420px;}
-
+.tabbed { min-height:420px; }
+.tabbed-product-detail { min-height:350px; }
+.tabbed-product-list { min-height:200px; }
 
 /* ----------------- custom styles ----------------- */
 .bx-wrapper {    
@@ -160,4 +161,60 @@ h1#logo a{ display:block; height:61px; text-indent: -4000px; background:url(imag
     border: none;
     box-shadow: none;
     margin: auto;
+}
+
+/* product detail: slider related product list */
+.related-products-list { 
+	background: #fff;
+	margin: 0 0 50px;
+}
+
+.related-products-list .title {
+    margin: 0 0 30px;
+    border-bottom: 1px solid #ddd;
+    padding: 0 0 15px;
+    font-size: 30px;
+    font-weight: normal;
+    color: #444;
+}
+
+.slider-product-list .slider-popular { 
+	background: #fff; 
+}
+.slider-product-list .slider-popular .item {
+	float: left;
+	width: 25%;
+	text-align: center;
+	position: relative;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+.slider-product-list .slider-popular .item:after {
+	content: "";
+	/* width: 2px; */
+	height: 100%;
+	background: #f5f5f5;
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+.slider-product-list .slider-popular .item img {
+	padding-left: 20px;
+}
+.slider-product-list .slider-popular .item .name {
+	text-align: left;
+	padding-top: 10px;
+	padding-left: 20px;
+}
+.slider-product-list .slider-popular .item .name a {
+	font-size: 14px;
+	color: #444;
+}
+
+.slider-product-list .bx-wrapper .bx-controls .bx-controls-direction a.bx-prev {
+    left: -20px!important;
+}
+
+.slider-product-list .bx-wrapper .bx-controls .bx-controls-direction a.bx-next {
+    right: -10px !important;
 }

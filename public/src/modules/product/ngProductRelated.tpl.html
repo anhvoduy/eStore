@@ -1,3 +1,16 @@
-<div class="related-products-grid">
-    related-products-grid
+<div class="related-products-list">
+  <div class="title">
+      <strong>Related products</strong>
+  </div>
+  <div class="slider-product-list">
+      <div class="slider-popular">      
+          <div class="item" ng-repeat="product in productlist">
+              <img ng-src="{{product.ProductImageUrl}}" width="150px" height="100px" />
+              <div class="name">
+                <a ng-href="/product/{{product.ProductKey}}">{{product.ProductName}}</a>
+              </div>
+          </div>
+          <div class="clear"></div>
+      </div>
+  </div>
 </div>

@@ -41,12 +41,30 @@
             replace: true,
             transclude: true,
             scope:{
-                relatedProducts:'='
+                productlist:'='
             },
             templateUrl: function() {
                 return 'modules/product/ngProductRelated.tpl.html';
             },
             link: function (scope, element, attrs, modelCtrl) {
+                scope.$watch('productlist', function(newVal, oldVal){
+                    if(newVal != oldVal){
+                        $('.slider-popular').bxSlider({
+                            mode: 'horizontal',
+                            captions: true,
+                            auto: true,
+                            autoControls: false,
+                            stopAutoOnClick: true,
+                            speed: 500,
+                            infiniteLoop: true,
+                            slideSelector: 'div.item',
+                            minSlides: 4,
+                            maxSlides: 4,
+                            moveSlides: 1,
+                            slideWidth: 200
+                          });
+                    }
+                }, true);
             }
         };
     }])

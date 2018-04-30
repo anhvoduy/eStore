@@ -11,6 +11,7 @@
 
 	<!-- js -->
 	<script src="js/jquery/jquery.min.js" type="text/javascript"></script>
+	<script src="js/moment/moment.min.js" type="text/javascript"></script>
 	<script src="js/bxslider/jquery.bxSlider.min.js" type="text/javascript"></script>
 	<script src="js/angular/angular.min.js" type="text/javascript"></script>
 
@@ -45,19 +46,19 @@
 			<!-- Content -->
 			<div id="content">				
 				<div id="container">
-					<div class="tabbed">
+					<div class="tabbed-product-detail">
 						<div class="tab-content" ng-controller="productDetailController as vm">
 							<div ng-product-detail product="vm.product"></div>
 						</div>
 					</div>
-					<div class="tabbed">
+					<div class="tabbed-product-list">
 						<div class="tab-content" ng-controller="productRelatedController as vm">
-							<div ng-product-related relatedProducts="vm.relatedProducts"></div>
+							<div ng-product-related productlist="vm.productlist"></div>
 						</div>
 					</div>
 					<div ng-brand></div>
 					<div ng-footer></div>
-				</div>				
+				</div>
 			</div>
 		</div>
 	</div>
