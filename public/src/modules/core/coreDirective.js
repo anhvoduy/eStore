@@ -42,7 +42,8 @@
                             autoControls: false,
                             stopAutoOnClick: true,
                             speed: 500,
-                            infiniteLoop: true
+                            infiniteLoop: true,
+                            pager: false
                         });
                     }
                 }, true);
