@@ -36,13 +36,13 @@
                 scope.$watch('products', function(newVal, oldVal){
                     if(newVal != oldVal){
                         $('.bxslider').bxSlider({
-                            mode: 'horizontal',
+                            mode: 'fade',
                             captions: true,
                             auto: true,
                             autoControls: false,
                             stopAutoOnClick: true,
                             speed: 500,
-                            infiniteLoop: false
+                            infiniteLoop: true
                         });
                     }
                 }, true);
