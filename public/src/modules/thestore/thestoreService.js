@@ -15,6 +15,16 @@
                 return result.data;
             });
         };
+
+        thestoreService.prototype.getProductByBrand = function (brandId) {
+            var url = String.format('{0}/product/brand/items', this.api);
+            var params = {
+                BrandId: brandId
+            };
+            return $http.get(url, params).then(function(result){
+                return result.data;
+            });
+        };
         
         return thestoreService;
     };
