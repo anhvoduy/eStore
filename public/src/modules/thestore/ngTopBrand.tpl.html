@@ -1,0 +1,5 @@
+<ul ng-repeat="b in brandlist">
+    <li>
+        <a href="#" ng-click="vm.setActiveBrand(b)" ng-class="{active: b.active == true}"><span>{{b.BrandName}}</span></a>
+    </li>
+</ul>

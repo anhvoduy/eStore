@@ -1,3 +1,3 @@
 (function () {
-    angular.module('thestorepage', ['core', 'product']);
+    angular.module('thestorepage', ['core', 'thestore']);
 })();
