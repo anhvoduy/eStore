@@ -721,7 +721,7 @@ INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VA
 -- Table structure for table `Category`
 --
 DROP TABLE IF EXISTS `Category`;
-CREATE TABLE `Brand` (
+CREATE TABLE `Category` (
   `CategoryId` INT(11) NOT NULL AUTO_INCREMENT,
   `CategoryKey` VARCHAR(50) NOT NULL,
   `BrandId` INT(11) NOT NULL DEFAULT 0,
