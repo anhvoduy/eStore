@@ -49,6 +49,24 @@ Factory.prototype.getList = async function (query) {
 	}
 }
 
+// get top 5 brands: 12,14,15,28,29,30
+Factory.prototype.getTopBrands = async function () {
+	try
+	{
+		let topBrands = [12,14,15,28,29,30]; // top 5 brands
+		let sqlQuery = `
+			SELECT BrandId, BrandKey, BrandName, Description
+			FROM Brand
+			WHERE Deleted <> 1 AND BrandId IN (12,14,15,28,29,30)
+			ORDER BY BrandId ASC
+		`;
+		return dbContext.queryList(sqlQuery);
+	}
+	catch(err){
+		throw err;
+	}
+}
+
 Factory.prototype.getBrandById = function (query) {
 	let sql = `
 		SELECT BrandId, BrandKey, BrandName, Description
