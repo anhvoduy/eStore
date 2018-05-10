@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const _ = require('lodash');
+const cors = require('cors');
 const multer = require('multer');
 const moment = require('moment');
 const auth = require('../config/auth');
@@ -66,7 +67,7 @@ router.get('/items', auth.checkAuthentication(), async function (req, res, next)
  * API: using for Front End
  * return: list items
  */
-router.get('/fe/items', async function (req, res, next) {
+router.get('/fe/items', cors(), async function (req, res, next) {
 	try
 	{
 		let query = _.pick(req.query, ['PageCurrent', 'PageSize']);
@@ -87,7 +88,7 @@ router.get('/fe/items', async function (req, res, next) {
  * API: using for Front End
  * return: item
  */
-router.get('/fe/item', async function (req, res, next) {
+router.get('/fe/item', cors(), async function (req, res, next) {
 	try
 	{
 		let query = _.pick(req.query, ['ProductKey']);
@@ -106,7 +107,7 @@ router.get('/fe/item', async function (req, res, next) {
 /**
  * API: using for Front End
  */
-router.get('/fe/mostliked', async function (req, res, next) {
+router.get('/fe/mostliked', cors(), async function (req, res, next) {
 	try
 	{		
 		let query = _.pick(req.query, ['PageCurrent', 'PageSize']);		
