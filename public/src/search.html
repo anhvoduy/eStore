@@ -1,7 +1,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-	<title>eStore Support</title>
+	<title>eStore Search</title>
 	<!-- favicon -->
 	<link rel="icon" href="images/favicon.ico" type="image/ico" sizes="16x16">	
 	
@@ -16,20 +16,24 @@
 	<script src="js/angular/angular.min.js" type="text/javascript"></script>
 
 	<!-- app -->
-	<script src="supportpage.js" type="text/javascript"></script>
+	<script src="searchpage.js" type="text/javascript"></script>
 	<!-- modules injection -->
 	<script src="modules/core/core.js" type="text/javascript"></script>
 	<script src="modules/core/coreDirective.js" type="text/javascript"></script>
 	<script src="modules/core/coreService.js" type="text/javascript"></script>
 	<script src="modules/core/coreController.js" type="text/javascript"></script>
-		
+	<!-- modules search -->
+	<script src="modules/search/search.js" type="text/javascript"></script>
+	<script src="modules/search/searchDirective.js" type="text/javascript"></script>
+	<script src="modules/search/searchController.js" type="text/javascript"></script>
+	<script src="modules/search/searchService.js" type="text/javascript"></script>
 </head>
 <body>		
 	<!-- Top -->
 	<div id="top">
 		<div class="shell">				
 			<!-- Header -->
-			<div id="header" ng-header></div>				
+			<div id="header" ng-header></div>
 			
 			<!-- Slider -->
 			<div ng-slider></div>
@@ -513,7 +517,7 @@
 	
 	<script>
 		angular.element(function() {
-			angular.bootstrap(document, ['supportpage']);
+			angular.bootstrap(document, ['searchpage']);
 		});
 	</script>
 </body>

@@ -1,0 +1,29 @@
+<div class="items">
+    <div class="cl">&nbsp;</div>
+    <ul>
+        <li ng-repeat="p in products">
+            <div class="image">
+                <a ng-href="/product/{{p.ProductKey}}">
+                    <!-- <img ng-src="css/images/image3.jpg" alt="" width="136px" height="83px"/> -->
+                    <img ng-src="{{p.ProductImageUrl}}" alt="" width="136px" height="83px"/>
+                </a>
+            </div>
+            <div style="padding: 5 0 5 0px;">
+                <label>Item Number:</label>
+                <span>{{p.ProductId}}</span>
+                <br />
+                
+                <label>Size List:</label>
+                <span>{{p.SizeList}}</span>
+                <br />
+
+                <label>Name:</label>
+                <span><a ng-href="/product/{{p.ProductKey}}">{{p.ProductName}}</a></span>
+            </div>
+            <div class="price">
+                Sale Price:&nbsp;<strong>{{p.Price}}&nbsp;<b>$</b></strong>
+            </div>
+        </li>
+    </ul>    
+    <div class="cl">&nbsp;</div>
+</div>
