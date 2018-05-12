@@ -9,15 +9,24 @@
 		
 		/* functions */
 		function activate() {
-			return thestoreService.getTopBrand().then(function(result){
+			return thestoreService.getTopBrand()
+			.then(function(result){
 				vm.brandlist = result;
 				angular.forEach(vm.brandlist, function(brand) {
 					brand.active = false;
 				});
+
+				// get products for default brand
 				vm.brandlist[0].active = true;
+				return thestoreService.getProductByBrand(vm.brandlist[0].BrandId);
 			}, function(error){
 				console.log(error);
 			})
+			.then(function(result){
+				vm.products = result.PageData;
+			}, function(error){
+				console.log(error);
+			});
 		};
 		
 		vm.setActiveBrand = function(item) {
@@ -25,6 +34,14 @@
 			    brand.active = false;
 			});
 			item.active = true;
+
+			// get products for selected brand
+			return thestoreService.getProductByBrand(item.BrandId)
+			.then(function(result){
+				vm.products = result.PageData;
+			}, function(error){
+				console.log(error);
+			});
 		}
 
 		/* start */

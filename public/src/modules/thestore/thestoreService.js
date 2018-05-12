@@ -21,7 +21,7 @@
             var params = {
                 BrandId: brandId
             };
-            return $http.get(url, params).then(function(result){
+            return $http.get(url, {params: params}).then(function(result){
                 return result.data;
             });
         };

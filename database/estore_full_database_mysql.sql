@@ -877,6 +877,9 @@ VALUES (uuid(),'Nike Shoes','8/8.5/9.5/10/11','Nike Shoes',2,50,'Pink','NEW','Co
 INSERT INTO `Product`(`ProductKey`,`ProductName`,`SizeList`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`ProductImage`,`Author`,`Editor`)
 VALUES (uuid(),'Buma Shoes','8/8.5/9.5/10/11','Nike Shoes',2,50,'Pink','NEW','Cool','product09.jpg','SYSTEM','SYSTEM');
 
+INSERT INTO `Product`(`ProductKey`,`ProductName`,`SizeList`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`ProductImage`,`Author`,`Editor`)
+VALUES (uuid(),'Microsoft Surface','8/8.5/9.5/10/11','Microsoft Surface',12,50,'Silver','NEW','Cool','product09.jpg','SYSTEM','SYSTEM');
+
 --
 -- Table structure for table `Review`
 --

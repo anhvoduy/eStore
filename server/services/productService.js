@@ -115,9 +115,9 @@ Factory.prototype.getProductsByBrand = async function (query) {
                 AND P.Deleted <> 1 
             ORDER BY P.ProductId DESC            
         `;
-        let totalRows = (await dbContext.queryItem(sqlTotal, { BrandId: query.BrandId })).Total;
+        let totalRows = (await dbContext.queryItem(sqlTotal, { BrandId: parseInt(query.BrandId) })).Total;
 
-        var sql = `
+        let sql = `
             SELECT  P.ProductId, P.ProductKey, P.ProductName, P.SizeList, P.Description, 
                     P.Price, P.ColorCode, P.Created, P.Status,
                     P.BrandId, B.BrandName, P.LatestReviewInfo, P.ProductImage 
@@ -128,7 +128,7 @@ Factory.prototype.getProductsByBrand = async function (query) {
             ORDER BY P.ProductId DESC
             LIMIT :Offset, :Limit
         `;
-        let data = await dbContext.queryList(sql, { BrandId: query.BrandId, Offset: PageOffset, Limit: PageSize });
+        let data = await dbContext.queryList(sql, { BrandId: parseInt(query.BrandId), Offset: PageOffset, Limit: PageSize });
 
         let result = {
             HitsTotal: parseInt(totalRows),
