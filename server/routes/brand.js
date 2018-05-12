@@ -111,7 +111,7 @@ router.post('/delete', auth.checkAuthentication(), async function (req, res, nex
 });
 
 /**
- * API: using for Front End
+ * API: using for Front End => TO DO: REVIEW
  */
 router.get('/fe/items', async function (req, res, next) {
 	try
@@ -126,6 +126,20 @@ router.get('/fe/items', async function (req, res, next) {
 		}
 		
 		let data = await brandService.getList(query);
+		res.status(200).json(data);
+	}
+	catch(err){
+		next(err);
+	}
+});
+
+/**
+ * API: using for Front End => get top 5 brands
+ */
+router.get('/fe/top/items', async function (req, res, next) {
+	try
+	{	
+		let data = await brandService.getTopBrands();
 		res.status(200).json(data);
 	}
 	catch(err){

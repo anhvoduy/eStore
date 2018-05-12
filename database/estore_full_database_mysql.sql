@@ -684,7 +684,7 @@ INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VA
 INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Nike','Nike','SYSTEM','SYSTEM');
 INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Adidas','Adidas','SYSTEM','SYSTEM');
 INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'John Henry','John Henry','SYSTEM','SYSTEM');
-INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Romano','Romano','SYSTEM','SYSTEM');
+INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Romano','Romano','SYSTEM','SYSTEM'); -- 5
 INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Hermes','Hermes','SYSTEM','SYSTEM');
 INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Christian Dior','Christian Dior','SYSTEM','SYSTEM');
 INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Brook Brothers','X-Men','SYSTEM','SYSTEM');
@@ -692,23 +692,27 @@ INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VA
 INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Louis Vuiton','Louis Vuiton','SYSTEM','SYSTEM');
 
 INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'IBM','IBM','SYSTEM','SYSTEM');
-INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Microsoft','Microsoft Corporation','SYSTEM','SYSTEM');
+INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Microsoft','Microsoft Corporation','SYSTEM','SYSTEM'); -- 12
 INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Facebook','Facebook Corporation','SYSTEM','SYSTEM');
 INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Apple','Apple Corporation','SYSTEM','SYSTEM');
-INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Sony','Sony Corporation','SYSTEM','SYSTEM');
+INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Sony','Sony Corporation','SYSTEM','SYSTEM');  -- 15
 INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Samsung','Samsung Corporation','SYSTEM','SYSTEM');
 INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Alibaba Group','Alibaba Group','SYSTEM','SYSTEM');
 INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Amazon','Amazon AWS','SYSTEM','SYSTEM');
 INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'HP Enterprise','HP Enterprise','SYSTEM','SYSTEM');
 INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Dell Corporation','Dell Corporation','SYSTEM','SYSTEM');
-INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Snapchat','Snapchat','SYSTEM','SYSTEM');
 
+INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Snapchat','Snapchat','SYSTEM','SYSTEM');
 INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Coca Cola','Coca Cola','SYSTEM','SYSTEM');
 INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Pepsi','Pepsi','SYSTEM','SYSTEM');
 INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Chivas','Chivas','SYSTEM','SYSTEM');
-INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Scotch','Scotch 19th century','SYSTEM','SYSTEM');
+INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Scotch','Scotch 19th century','SYSTEM','SYSTEM'); -- 25
 INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Johny Walker','Johny Walker','SYSTEM','SYSTEM');
 INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Hennessy','Hennessy','SYSTEM','SYSTEM');
+INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'LG','LG','SYSTEM','SYSTEM');
+INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Nokia','Nokia','SYSTEM','SYSTEM');
+INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Xiaomi','Xiaomi Corp','SYSTEM','SYSTEM'); -- 30
+
 INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Brodard','Brodard cake','SYSTEM','SYSTEM');
 INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Conditori La Glace','Conditori La Glace Copenhagen','SYSTEM','SYSTEM');
 
@@ -717,7 +721,7 @@ INSERT INTO `Brand` (`BrandKey`,`BrandName`,`Description`,`Author`, `Editor`) VA
 -- Table structure for table `Category`
 --
 DROP TABLE IF EXISTS `Category`;
-CREATE TABLE `Brand` (
+CREATE TABLE `Category` (
   `CategoryId` INT(11) NOT NULL AUTO_INCREMENT,
   `CategoryKey` VARCHAR(50) NOT NULL,
   `BrandId` INT(11) NOT NULL DEFAULT 0,
@@ -735,12 +739,31 @@ CREATE TABLE `Brand` (
 --
 -- Sample data for table `Category`
 --
+INSERT INTO `Category` (`CategoryKey`,`BrandId`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),12,'Samsung Laptop','Samsung Laptop','SYSTEM','SYSTEM');
+INSERT INTO `Category` (`CategoryKey`,`BrandId`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),12,'Samsung Smart Phone','Samsung Smart Phone','SYSTEM','SYSTEM');
+INSERT INTO `Category` (`CategoryKey`,`BrandId`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),12,'Samsung Smart Glasses','Samsung Smart Glasses','SYSTEM','SYSTEM');
+INSERT INTO `Category` (`CategoryKey`,`BrandId`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),12,'Samsung Smart Watch','Samsung Smart Watch','SYSTEM','SYSTEM');
+INSERT INTO `Category` (`CategoryKey`,`BrandId`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),12,'Samsung Robocon','Samsung Robocon','SYSTEM','SYSTEM');
+INSERT INTO `Category` (`CategoryKey`,`BrandId`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),12,'Samsung Wearable','Samsung Wearable','SYSTEM','SYSTEM');
+
 INSERT INTO `Category` (`CategoryKey`,`BrandId`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),15,'Sony Laptop','Sony Laptop','SYSTEM','SYSTEM');
 INSERT INTO `Category` (`CategoryKey`,`BrandId`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),15,'Sony Xperia Phone','Sony Xperia Phone','SYSTEM','SYSTEM');
 INSERT INTO `Category` (`CategoryKey`,`BrandId`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),15,'Sony Smart Glasses','Sony Smart Glasses','SYSTEM','SYSTEM');
 INSERT INTO `Category` (`CategoryKey`,`BrandId`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),15,'Sony Smart Watch','Sony Smart Watch','SYSTEM','SYSTEM');
 INSERT INTO `Category` (`CategoryKey`,`BrandId`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),15,'Sony Ericsson','Sony Ericsson','SYSTEM','SYSTEM');
 INSERT INTO `Category` (`CategoryKey`,`BrandId`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),15,'Sony Wearable','Sony Wearable','SYSTEM','SYSTEM');
+
+INSERT INTO `Category` (`CategoryKey`,`BrandId`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),12,'Microsoft Laptop','Microsoft Laptop','SYSTEM','SYSTEM');
+INSERT INTO `Category` (`CategoryKey`,`BrandId`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),12,'Microsoft Phone','Microsoft Phone','SYSTEM','SYSTEM');
+
+INSERT INTO `Category` (`CategoryKey`,`BrandId`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),14,'Apple Laptop','Apple Laptop','SYSTEM','SYSTEM');
+INSERT INTO `Category` (`CategoryKey`,`BrandId`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),14,'Apple Phone','Apple Phone','SYSTEM','SYSTEM');
+
+INSERT INTO `Category` (`CategoryKey`,`BrandId`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),28,'LG Phone','LG Phone','SYSTEM','SYSTEM');
+INSERT INTO `Category` (`CategoryKey`,`BrandId`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),29,'Nokia Phone','Nokia Phone','SYSTEM','SYSTEM');
+INSERT INTO `Category` (`CategoryKey`,`BrandId`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),30,'Xiaomi Smart Phone','Xiaomi Smart Phone','SYSTEM','SYSTEM');
+
+
 
 
 --
@@ -853,6 +876,25 @@ VALUES (uuid(),'Nike Shoes','8/8.5/9.5/10/11','Nike Shoes',2,50,'Pink','NEW','Co
 
 INSERT INTO `Product`(`ProductKey`,`ProductName`,`SizeList`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`ProductImage`,`Author`,`Editor`)
 VALUES (uuid(),'Buma Shoes','8/8.5/9.5/10/11','Nike Shoes',2,50,'Pink','NEW','Cool','product09.jpg','SYSTEM','SYSTEM');
+
+-- update images later
+INSERT INTO `Product`(`ProductKey`,`ProductName`,`SizeList`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`ProductImage`,`Author`,`Editor`)
+VALUES (uuid(),'Microsoft Surface','8/8.5/9.5/10/11','Microsoft Surface',12,50,'Silver','NEW','Cool','product09.jpg','SYSTEM','SYSTEM');
+
+INSERT INTO `Product`(`ProductKey`,`ProductName`,`SizeList`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`ProductImage`,`Author`,`Editor`)
+VALUES (uuid(),'Microsoft Surface','8/8.5/9.5/10/11','Microsoft Surface',14,50,'Silver','NEW','Cool','product09.jpg','SYSTEM','SYSTEM');
+
+INSERT INTO `Product`(`ProductKey`,`ProductName`,`SizeList`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`ProductImage`,`Author`,`Editor`)
+VALUES (uuid(),'Microsoft Surface','8/8.5/9.5/10/11','Microsoft Surface',15,50,'Silver','NEW','Cool','product09.jpg','SYSTEM','SYSTEM');
+
+INSERT INTO `Product`(`ProductKey`,`ProductName`,`SizeList`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`ProductImage`,`Author`,`Editor`)
+VALUES (uuid(),'Microsoft Surface','8/8.5/9.5/10/11','Microsoft Surface',28,50,'Silver','NEW','Cool','product09.jpg','SYSTEM','SYSTEM');
+
+INSERT INTO `Product`(`ProductKey`,`ProductName`,`SizeList`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`ProductImage`,`Author`,`Editor`)
+VALUES (uuid(),'Microsoft Surface','8/8.5/9.5/10/11','Microsoft Surface',29,50,'Silver','NEW','Cool','product09.jpg','SYSTEM','SYSTEM');
+
+INSERT INTO `Product`(`ProductKey`,`ProductName`,`SizeList`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`ProductImage`,`Author`,`Editor`)
+VALUES (uuid(),'Microsoft Surface','8/8.5/9.5/10/11','Microsoft Surface',30,50,'Silver','NEW','Cool','product09.jpg','SYSTEM','SYSTEM');
 
 --
 -- Table structure for table `Review`
