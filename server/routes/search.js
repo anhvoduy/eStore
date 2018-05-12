@@ -1,15 +1,15 @@
-// Dependencies
-var express = require('express');
-var router = express.Router();
-var Q = require('q');
-var searchService = require('../services/searchService');
+const express = require('express');
+const router = express.Router();
+const Q = require('q');
+const searchService = require('../services/searchService');
 
-// Router
 router.get('/restaurants', Q.async(function* (req, res, next) {	
-	try{		
-		var restaurants = yield searchService.getRestaurants();
+	try
+	{		
+		let restaurants = yield searchService.getRestaurants();
 		return res.status(200).json(restaurants);
-	}catch(err){
+	}
+	catch(err){
 		next(err);
 	};
 }));
