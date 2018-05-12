@@ -13,16 +13,6 @@ const elasticEndpoint = 'http://localhost:9200';
 const searchService = function () {	
 }
 
-searchService.prototype.getData = function (url) {	
-	return axios.get(url).then(function(result){
-		if (result && result.data){
-			console.log(result.data.version);
-		}
-	}, function(error){
-		console.log(error);
-	});	
-}
-
 searchService.prototype.searchData = function(){
 	client.search({
   		q: 'pants'
