@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const _ = require('lodash');
+const cors = require('cors');
 const auth = require('../config/auth');
 const CONSTANT = require('../lib/constant');
 const dbContext = require('../lib/dbContext');
@@ -113,7 +114,7 @@ router.post('/delete', auth.checkAuthentication(), async function (req, res, nex
 /**
  * API: using for Front End => TO DO: REVIEW
  */
-router.get('/fe/items', async function (req, res, next) {
+router.get('/fe/items', cors(), async function (req, res, next) {
 	try
 	{
 		let query = _.pick(req.query, ['PageCurrent', 'PageSize']);
@@ -136,7 +137,7 @@ router.get('/fe/items', async function (req, res, next) {
 /**
  * API: using for Front End => get top 5 brands
  */
-router.get('/fe/top/items', async function (req, res, next) {
+router.get('/fe/top/items', cors(), async function (req, res, next) {
 	try
 	{	
 		let data = await brandService.getTopBrands();
