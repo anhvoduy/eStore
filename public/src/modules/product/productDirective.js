@@ -24,8 +24,7 @@
             replace: true,
             transclude: true,
             scope:{
-                products:'=',
-                hello:'='
+                products:'='
             },
             templateUrl: function() {
                 return 'modules/product/ngProductList.tpl.html';
