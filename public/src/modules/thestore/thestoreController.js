@@ -1,8 +1,8 @@
 (function () {
     'use strict';        
     angular.module('thestore.controller', ['thestore.service']).controller('thestoreController', thestoreController);
-	thestoreController.$inject = ['$q', 'thestoreService'];
-	function thestoreController($q, thestoreService) {
+	thestoreController.$inject = ['$q', '$location', 'thestoreService'];
+	function thestoreController($q, $location, thestoreService) {
         /* view-model */
 		var vm = this;
 		var thestoreService = new thestoreService();
@@ -18,12 +18,23 @@
 
 				// get products for default brand
 				vm.brandlist[0].active = true;
-				return thestoreService.getProductByBrand(vm.brandlist[0].BrandId);
+				return getProductByBrand(vm.brandlist[0].BrandId);
 			}, function(error){
 				console.log(error);
-			})
+			});
+		};
+
+		function getRootLocation(location) {
+			return $location.$$protocol + ':' + '//' + $location.$$host + ':' + $location.$$port;
+		};
+
+		function getProductByBrand(brandId){
+			return thestoreService.getProductByBrand(brandId)
 			.then(function(result){
 				vm.products = result.PageData;
+				angular.forEach(vm.products, function(item){
+					item.ProductImageUrl = String.format('{0}/{1}/{2}/{3}', getRootLocation($location), 'uploads', 'products', item.ProductImage);
+				});
 			}, function(error){
 				console.log(error);
 			});
@@ -36,13 +47,8 @@
 			item.active = true;
 
 			// get products for selected brand
-			return thestoreService.getProductByBrand(item.BrandId)
-			.then(function(result){
-				vm.products = result.PageData;
-			}, function(error){
-				console.log(error);
-			});
-		}
+			getProductByBrand(item.BrandId);
+		};
 
 		/* start */
 		activate();
