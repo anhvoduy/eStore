@@ -73,7 +73,8 @@ dbContext.prototype.queryItem = function (sql, obj) {
     self.pool.query(querySql, function(error, results, fields){
         if (error){
             deferred.reject(error);
-        }        
+        }
+        //console.log(results);
         deferred.resolve(results[0]);
     });    
     return deferred.promise;
@@ -86,7 +87,8 @@ dbContext.prototype.queryList = function (sql, obj) {
     self.pool.query(querySql, function(error, results, fields){
         if (error){
             deferred.reject(error);
-        }        
+        }
+        //console.log(results);
         deferred.resolve(results);
     });
     return deferred.promise;
