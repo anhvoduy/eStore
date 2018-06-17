@@ -109,15 +109,20 @@
 }
 
 /* pagination directive */
-.form-ng-pagination > ul {
-    display: inline;
-    padding-right: 20px;
+#pagination {
+    display: "inline-block";
+    width: 100%;
+    padding-bottom: 30px;
+}
+#pagination>ul {
+    float: left;
+    margin: 0;
 }
 
-.form-ng-pagination > select {
+#pagination .form-control.page-select {
+    float: right;
     max-width: 80px;
-    max-height: 30px;
-    display: inline;
+    height: 30px;
 }
 
 

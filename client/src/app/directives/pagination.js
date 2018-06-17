@@ -11,7 +11,7 @@
             },
             template: function() {
                 var template =
-                    '<div class="form-ng-pagination">           ' +
+                    '<div id="pagination">                      ' +
                     '    <ul uib-pagination                     ' +
                     '        boundary-links="true"              ' +
                     '        total-items="pagination.hitsTotal" ' +
@@ -25,7 +25,7 @@
                     '        last-text="&raquo;">               ' +
                     '    </ul>                                  ' +
                     '    <select name="pageSize"                ' +
-                    '        class="form-control"               ' +
+                    '        class="form-control page-select"   ' +
                     '        ng-model="pagination.pageSize"     ' +
                     '        ng-change="changePageSize()"       ' +
                     '        ng-options="item as item for item in pagination.lstPageSize">  ' +
