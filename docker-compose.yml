@@ -6,7 +6,7 @@ services:
       - "3306:3306"
     environment:
       MYSQL_DATABASE: "estore"
-      MYSQL_ROOT_PASSWORD: "3nations"
+      MYSQL_ROOT_PASSWORD: "estore"
     volumes:
       - ./database:/home/database
   api:
