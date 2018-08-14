@@ -50,6 +50,10 @@
     margin-right: 15px;
 }
 
+.estore-form-row .export-file {
+    float: right;
+}
+
 .estore-panel-footer {
     background-color: white;
     /* border-radius: 0px 0px 8px 8px; */

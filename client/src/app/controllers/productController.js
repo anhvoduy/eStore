@@ -12,6 +12,7 @@
 		/* functions */
 		var activate = function () {
 			$scope.getProducts();
+			cleanSuccessErrors();
 		};
 
 		function cleanSuccessErrors() {
@@ -20,7 +21,6 @@
 		};
 
 		$scope.getProducts = function(){
-			cleanSuccessErrors();
 			productService.getList($scope.pagination.pageCurrent, $scope.pagination.pageSize)
 			.then(function (data) {
 				$scope.products = data.PageData;
@@ -36,6 +36,9 @@
 			});
 		};
 
+		$scope.exportFile = function(){
+			console.log('export file ...');
+		}
 		
 		/* start */
 		activate();
