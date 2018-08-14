@@ -1,8 +1,8 @@
 (function () {
     'use strict';    
     app.controller('productController', productController);
-    productController.$inject = ['$scope', 'appCommon', 'productService'];    
-	function productController($scope, appCommon, productService) {
+    productController.$inject = ['FileSaver', 'Blob', '$scope', 'appCommon', 'productService'];    
+	function productController(FileSaver, Blob, $scope, appCommon, productService) {
 		/* view-model */
 		$scope.pagination = appCommon.defaultPagination;
 		$scope.messageSuccess = [];
@@ -12,6 +12,7 @@
 		/* functions */
 		var activate = function () {
 			$scope.getProducts();
+			cleanSuccessErrors();
 		};
 
 		function cleanSuccessErrors() {
@@ -20,7 +21,6 @@
 		};
 
 		$scope.getProducts = function(){
-			cleanSuccessErrors();
 			productService.getList($scope.pagination.pageCurrent, $scope.pagination.pageSize)
 			.then(function (data) {
 				$scope.products = data.PageData;
@@ -36,6 +36,17 @@
 			});
 		};
 
+		$scope.exportFile = function(){
+			productService.exportFile()
+			.then(function(result) {
+				var blob = new Blob([result], {
+					type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=utf-8"
+				});
+				FileSaver.saveAs(blob, 'export_file' + moment(new Date()).format('YYYYMMDDHHmmss') + '.xlsx');
+			}, function(error){
+				$scope.messageError.push(error);
+			})
+		}
 		
 		/* start */
 		activate();
