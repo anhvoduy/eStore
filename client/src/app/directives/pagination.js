@@ -12,6 +12,12 @@
             template: function() {
                 var template =
                     '<div class="form-ng-pagination">           ' +
+                    '    <select name="pageSize"                ' +
+                    '        class="form-control"               ' +
+                    '        ng-model="pagination.pageSize"     ' +
+                    '        ng-change="changePageSize()"       ' +
+                    '        ng-options="item as item for item in pagination.lstPageSize">  ' +
+                    '    </select>                              ' +
                     '    <ul uib-pagination                     ' +
                     '        boundary-links="true"              ' +
                     '        total-items="pagination.hitsTotal" ' +
@@ -24,12 +30,6 @@
                     '        first-text="&laquo;"               ' +
                     '        last-text="&raquo;">               ' +
                     '    </ul>                                  ' +
-                    '    <select name="pageSize"                ' +
-                    '        class="form-control"               ' +
-                    '        ng-model="pagination.pageSize"     ' +
-                    '        ng-change="changePageSize()"       ' +
-                    '        ng-options="item as item for item in pagination.lstPageSize">  ' +
-                    '    </select>                              ' +
                     '</div>                                     ';
                 return template;
             },
