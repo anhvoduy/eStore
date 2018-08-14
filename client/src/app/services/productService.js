@@ -1,8 +1,8 @@
 (function () {
     'use strict';
     app.factory('productService', productService);
-    productService.$inject = ['$q', 'baseService', 'Upload'];
-    function productService($q, baseService, Upload) {
+    productService.$inject = ['$http', '$q', 'baseService', 'Upload'];
+    function productService($http, $q, baseService, Upload) {
         // constructor
         var productService = function () {            
         }
@@ -18,6 +18,21 @@
                     ProductImage: imageUrl
                 }
             });
+        };
+
+        productService.prototype.exportFile = function () {
+            var url = String.format('{0}/export', this.api);
+            var q = $q.defer();
+            $http({
+                url: url,
+                method: 'GET',
+                responseType: 'blob'
+            }).success(function (result) {
+                q.resolve(result);
+			}).error(function (error) {
+                q.reject(error);
+            });
+            return q.promise;
         };
 
         productService.prototype.getList = function (pageCurrent, pageSize) {

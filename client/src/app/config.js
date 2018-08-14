@@ -3,6 +3,7 @@ var app = angular.module('cargo', [
 	'ui.router',
 	'mega-menu',
 	'ngFileUpload',
+	'ngFileSaver',
 	'cargo.directives',
 	'cargo.directives.megaMenu',
 	'cargo.directives.menuMultiLevel',
