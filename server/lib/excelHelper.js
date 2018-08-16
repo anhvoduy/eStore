@@ -4,7 +4,7 @@ const Excel = require('excel4node');
 const ExcelHelper = function(){
 }
 
-ExcelHelper.prototype.exportFile = async function(res, header, data, filename){
+ExcelHelper.prototype.exportFile = async function(res, header, filename){
 	try
 	{
 		let workbook = new Excel.Workbook();
@@ -19,12 +19,6 @@ ExcelHelper.prototype.exportFile = async function(res, header, data, filename){
 		// headers
 		for(let i=1; i<header.length; i++){
 			worksheet.cell(1, i).string(header[i-1]).style(style);
-		}
-		// rows
-		let j = 2;
-		for(let row of data){
-			//worksheet.cell(3, 1).string(row.ProductId).style(style);
-			j++;
 		}
 		res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
 		res.setHeader("Content-Disposition", "attachment; filename=" + filename);
