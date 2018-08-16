@@ -3,7 +3,7 @@ const _ = require('lodash');
 const cors = require('cors');
 const multer = require('multer');
 const moment = require('moment');
-const Excel = require('excel4node');
+const excel = require('../lib/excelHelper');
 
 const auth = require('../config/auth');
 const CONSTANT = require('../lib/constant');
@@ -48,33 +48,14 @@ router.post('/upload', uploadProductImage(), auth.checkAuthentication(), async f
 router.get('/export', async function(req, res, next){
 	try
 	{
-		// let query = _.pick(req.query, ['PageCurrent', 'PageSize']);
-		// if(!query.PageCurrent && !query.PageSize){
-		// 	query.PageCurrent = 1;
-		// 	query.PageSize = 5000;
-		// }
-		// let data = await productService.getProducts(query);
-		// res.status(200).json(data);
-
+		let query = _.pick(req.query, ['PageCurrent', 'PageSize']);
+		if(!query.PageCurrent && !query.PageSize){
+			query.PageCurrent = 1;
+			query.PageSize = 5000;
+		}
+		let data = await productService.getProducts(query);
 		let fileName = `Export_Product_${moment(new Date()).format('YYYYMMDDHHmmss')}.xlsx`;
-		res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-		res.setHeader("Content-Disposition", "attachment; filename=" + fileName);
-		
-		let workbook = new Excel.Workbook();
-        let worksheet = workbook.addWorksheet('Sheet1');
-        let style = workbook.createStyle({
-			font: {
-				color: '#FF0800',
-				size: 12,
-			},
-			numberFormat: '$#,##0.00; ($#,##0.00); -',
-		});
-		worksheet.cell(1, 1).number(100).style(style);
-		worksheet.cell(1, 2).number(200).style(style);
-		worksheet.cell(1, 3).formula('A1 + B1').style(style);
-		worksheet.cell(2, 1).string('string').style(style);
-		worksheet.cell(3, 1).bool(true).style(style).style({font: {size: 14}});
-		return workbook.write(fileName, res);
+		return excel.exportFile(res, data, fileName);
 	}
 	catch(err){
 		next(err);
