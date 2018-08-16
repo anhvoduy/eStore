@@ -53,9 +53,10 @@ router.get('/export', async function(req, res, next){
 			query.PageCurrent = 1;
 			query.PageSize = 5000;
 		}
+		let header = ['ProductId','ProductName','SizeList','Description','Price','ColorCode','Status','LatestReviewInfo','ProductImage'];
 		let data = await productService.getProducts(query);
 		let fileName = `Export_Product_${moment(new Date()).format('YYYYMMDDHHmmss')}.xlsx`;
-		return excel.exportFile(res, data, fileName);
+		return excel.exportFile(res, header, data.PageData, fileName);
 	}
 	catch(err){
 		next(err);
