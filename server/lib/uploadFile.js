@@ -23,6 +23,18 @@ const uploadFileS3 = multer({
   })
 });
 
+
+
+/* upload file to FS */
+const multerConfig = {
+	dest: './uploads/sample',
+	limits: { fileSize: 1048576 }
+};
+const uploadProductImageFS = multer(multerConfig).single('ProductImage');
+
+
+
 module.exports = {
-    uploadFileS3: uploadFileS3
+  uploadProductImageFS: uploadProductImageFS,
+  uploadFileS3: uploadFileS3
 };

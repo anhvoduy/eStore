@@ -1,13 +1,14 @@
-﻿const express = require('express');
+const express = require('express');
 const router = express.Router();
 const cors = require('cors')
 const jwt = require('jsonwebtoken');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
-const multer = require('multer');
+
 const auth = require('../config/auth');
 const config = require('../config/config');
 const CONSTANT = require('../lib/constant');
+const { uploadProductImageFS } = require('../lib/uploadFile');
 
 // sample redis cache
 // var cache = require('express-redis-cache')();
@@ -149,15 +150,7 @@ router.post('/changepassword', function (req, res, next) {
 	next();
 });
 
-
-// sample file upload
-const multerConfig = {
-	dest: './uploads/sample',
-	limits: { fileSize: 1048576 }
-};
-const uploadProductImage = multer(multerConfig).single('ProductImage');
-
-router.post('/upload', auth.checkAuthentication(), uploadProductImage, async function(req, res, next){
+router.post('/upload', auth.checkAuthentication(), uploadProductImageFS, async function(req, res, next){
 	try
 	{
 		// req.file is the `ProductImage` file
