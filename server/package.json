@@ -40,6 +40,7 @@
     "uuid": "^3.0.1"
   },
   "devDependencies": {
+    "axios": "^0.18.1",
     "chai": "^3.5.0",
     "chai-http": "^3.0.0",
     "loadtest": "*",
