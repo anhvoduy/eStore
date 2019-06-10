@@ -4,8 +4,8 @@
   "description": "estore: Full-Stack JavaScript with AngularJs, NodeJs, ExpressJs, and MySql",
   "main": "app.js",
   "author": {
-    "name": "duyanh",
-    "email": "duyanh2005@gmail.com"
+    "name": "voduyanh",
+    "email": "voduyanh1984@yahoo.com"
   },
   "engines": {
     "node": "^8.11.1"
@@ -18,7 +18,6 @@
   "dependencies": {
     "amazon-s3-uri": "0.0.3",
     "aws-sdk": "^2.185.0",
-    "axios": "^0.17.0",
     "base-64": "^0.1.0",
     "body-parser": "^1.15.2",
     "cookie-parser": "^1.4.3",
@@ -41,6 +40,7 @@
     "uuid": "^3.0.1"
   },
   "devDependencies": {
+    "axios": "^0.18.1",
     "chai": "^3.5.0",
     "chai-http": "^3.0.0",
     "loadtest": "*",
