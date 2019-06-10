@@ -8,27 +8,24 @@ var mySql = {
 };
 
 var storage = {
-    default: 'fs', // 'azure', 'aws'
     fs: {
-        provider: 'fs',
-        destination: './uploads'
+        provider: "fs",
+        destination: "./uploads"
     },
     azure: {
         provider: "azureblob",
-        azureblob: {
-            container: "estore",
-            accountName: "accountName",
-            host: "estore.blob.core.windows.net",
-            accessKey: "accessKey"
-        }
+        container: "container",
+        accountName: "accountName",
+        host: "host.blob.core.windows.net",
+        accessKey: "accessKey"
+        
     },
     aws: {
         provider: "s3",
-        s3: {
-            accessKeyId: "accessKeyId",
-            secretAccessKey: "secretAccessKey",
-            bucket: "estore"
-        }
+        accessKeyId: "accessKeyId",
+        secretAccessKey: "secretAccessKey",
+        bucket: "bucket",
+        region: "region"
     }
 };
 
