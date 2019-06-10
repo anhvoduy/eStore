@@ -37,5 +37,6 @@ module.exports = {
     aws: aws,
     fs: fs,
     default: 'fs',
+    azureAuthenticate: true,
     secretKey: 'ilovejavascript'
 };
