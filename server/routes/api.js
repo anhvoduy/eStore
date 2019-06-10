@@ -10,16 +10,7 @@ const config = require('../config/config');
 const CONSTANT = require('../lib/constant');
 const { uploadProductImageFS } = require('../lib/uploadFile');
 
-// sample redis cache
-// var cache = require('express-redis-cache')();
-// var responseTime = require('response-time');
-// var axios = require('axios');
-// var redis = require('redis');
-
-
-
-
-// routers: use to test
+// routes for testing
 router.get('/', function (req, res, next) {
     res.json({ message: 'request GET is success' });
     console.log('%s %s — %s', (new Date).toString(), req.method, req.url);	
