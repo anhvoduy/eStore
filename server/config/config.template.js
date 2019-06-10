@@ -17,8 +17,7 @@ var storage = {
         container: "container",
         accountName: "accountName",
         host: "host.blob.core.windows.net",
-        accessKey: "accessKey"
-        
+        accessKey: "accessKey"      
     },
     aws: {
         provider: "s3",
