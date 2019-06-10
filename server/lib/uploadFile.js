@@ -2,9 +2,7 @@
 const aws = require('aws-sdk');
 const multer = require('multer');
 const multerS3 = require('multer-s3');
-
-const config = require('../config/config');
-const storageAWS = config.storage.aws;
+const storageAWS = require('../config/config').storage.aws;
 
 /* upload file to AWS Storage S3 */
 const s3 = new aws.S3({ 
