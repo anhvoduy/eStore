@@ -14,7 +14,7 @@
             var url = String.format('{0}/add', this.api);
             
             var q = $q.defer();
-            this.add(url, review).then(function (result) {
+            this.postData(url, review).then(function (result) {
                 q.resolve(result);
             }, function (error) {
                 q.reject(error);

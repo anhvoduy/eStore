@@ -966,7 +966,7 @@ INSERT INTO `User` (`UserKey`, `UserType`, `UserName`, `Hash`, `DisplayName`, `E
 VALUES (uuid(), 'USER','huetran', 'QGRtaW4=', 'Nguyen Hue Tran','huetran@marui.com','001 852741963','1990-04-04','SYSTEM','SYSTEM');
 
 INSERT INTO `User` (`UserKey`, `UserType`, `UserName`, `Hash`, `DisplayName`, `Email`, `Mobile`, `DateOfBirth`, `Author`, `Editor`) 
-VALUES (uuid(), 'USER','avo4', 'QGRtaW4=', 'Anh Vo','avo4@node.org','001 852741963','1984-12-22','SYSTEM','SYSTEM');
+VALUES (uuid(), 'USER','avo4', 'QGRtaW4=', 'Anh Vo','avo4@csc.com','001 852741963','1984-12-22','SYSTEM','SYSTEM');
 
 INSERT INTO `User` (`UserKey`, `UserType`, `UserName`, `Hash`, `DisplayName`, `Email`, `Mobile`, `DateOfBirth`, `Author`, `Editor`) 
 VALUES (uuid(), 'USER','anhvod', 'QGRtaW4=', 'Vo Duy Anh','anhvod@sharepoint.org','084 852741963','1984-12-24','SYSTEM','SYSTEM');
