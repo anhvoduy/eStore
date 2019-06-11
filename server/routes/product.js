@@ -29,7 +29,7 @@ router.post('/upload', uploadProductImage(), auth.checkAuthentication(), async f
 		}
 
 		if(!req.body.ProductId){
-			throw CONSTANTS.MISSING_FIELD_PRODUCTID;
+			throw { code: 'MISSING_REQUIRED_FIELD', message: 'missing required field: ProductId' }
 		}
 		
 		let productId = req.body.ProductId;
@@ -130,7 +130,7 @@ router.get('/fe/item', cors(), async function (req, res, next) {
 	{
 		let query = _.pick(req.query, ['ProductKey']);
 		if(!query.ProductKey){
-			throw CONSTANTS.MISSING_FIELD_PRODUCTKEY;
+			throw { code: 'MISSING_REQUIRED_FIELD', message: 'missing required field: ProductKey' }
 		}
 
 		let data = await productService.getProductByKey(query);
@@ -214,7 +214,7 @@ router.post('/create', auth.checkAuthentication(), async function (req, res, nex
 			"BrandId", "Price", "ColorCode", "Status"]);
 		
 		if(!product.ProductName)
-			throw CONSTANTS.MISSING_FIELD_PRODUCTNAME;
+			throw { code: 'MISSING_REQUIRED_FIELD', message: 'missing required field: ProductName' }
 
 		if(!product.Status)
 			product.Status = CONSTANTS.PRODUCT_STATUS.NEW;
@@ -237,15 +237,15 @@ router.post('/update', auth.checkAuthentication(), async function (req, res, nex
 			"BrandId", "Price", "ColorCode", "Status"]);
 		
 		if(!product.ProductKey)
-			throw CONSTANTS.MISSING_FIELD_PRODUCTKEY;
+			throw { code: 'MISSING_REQUIRED_FIELD', message: 'missing required field: ProductKey' }
 
 		if(!product.ProductName)
-			throw CONSTANTS.MISSING_FIELD_PRODUCTNAME;
+			throw { code: 'MISSING_REQUIRED_FIELD', message: 'missing required field: ProductName' }
 
 		if(!product.ProductId){
 			let prod = await productService.getProductByKey(product);
 			if(!prod)
-				throw CONSTANTS.INVALID_FIELD_PRODUCTKEY;
+				throw { code: 'INVALID_FIELD', message: 'Invalid field: ProductKey' }
 			else 
 				product.ProductId = prod.ProductId;
 		}
@@ -268,14 +268,12 @@ router.post('/delete', auth.checkAuthentication(), async function (req, res, nex
 		let product = _.pick(req.body, ["ProductId","ProductKey"]);
 		
 		if(!product.ProductKey)
-			throw CONSTANTS.MISSING_FIELD_PRODUCTKEY;		
+			throw { code: 'MISSING_REQUIRED_FIELD', message: 'missing required field: ProductKey' }
 
 		if(!product.ProductId){
 			let prod = await productService.getProductByKey(product);
-			if(!prod)
-				throw CONSTANTS.INVALID_FIELD_PRODUCTKEY;
-			else 
-				product.ProductId = prod.ProductId;
+			if(!prod) throw { code: 'INVALID_FIELD', message: 'Invalid field: ProductKey' }
+			else product.ProductId = prod.ProductId;
 		}
 
 		let result = await productService.delete(product.ProductId);

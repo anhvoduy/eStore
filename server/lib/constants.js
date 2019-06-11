@@ -16,7 +16,6 @@
 */
 
 const CONSTANTS = {
-	/** ------------- Unchange -------------*/
 	TRANSACTIONTYPE: {
 		CASHIN	: 'CASHIN',
 		CASHOUT	: 'CASHOUT',
@@ -77,45 +76,6 @@ const CONSTANTS = {
 		{ ColorCode: 'Platinum', ColorName: 'Platinum' },
 		{ ColorCode: 'MultiColor', ColorName: 'Multiple Color' }
 	],
-
-	/** ------------- Authentication -------------*/
-	SUCCESS_AUTHENTICATION: { 
-		code: 'SUCCESS_AUTHENTICATION', 
-		message: 'Authentication is success.' 
-	},
-	SUCCESS_LOGIN: { 
-		code: 'SUCCESS_LOGIN', 
-		message: 'Login is success.' 
-	},
-	SUCCESS_LOGOUT: { 
-		code: 'SUCCESS_LOGOUT', 
-		message: 'Logout is success.' 
-	},
-
-	/** -------------Error Handle -------------*/
-	ERROR_UNAUTHORIZED: { code: 'ERROR_UNAUTHORIZED', message: 'User is not authorized.' },
-	ERROR_UNAUTHENTICATION: { code: 'ERROR_UNAUTHENTICATION', message: 'Username and Password is invalid.' },
-	
-
-	// User
-	MISSING_FIELD_USERKEY: { code: 'MISSING_FIELD_USERKEY', message: 'missing field UserKey.' },
-	MISSING_FIELD_USERNAME: { code: 'MISSING_FIELD_USERNAME', message: 'missing field UserName.' },
-	MISSING_FIELD_PASSWORD: { code: 'MISSING_FIELD_PASSWORD', message: 'missing field Password.' },
-	INVALID_FIELD_USERKEY: { code: 'INVALID_FIELD_USERKEY', message: 'invalid field UserKey.' },
-
-	// Product
-	MISSING_FIELD_PRODUCTID: { code: 'MISSING_FIELD_PRODUCTID', message: 'missing field ProductId.' },
-	MISSING_FIELD_PRODUCTKEY: { code: 'MISSING_FIELD_PRODUCTKEY', message: 'missing field ProductKey.' },
-	MISSING_FIELD_PRODUCTCODE: { code: 'MISSING_FIELD_PRODUCTCODE', message: 'missing field ProductCode.' },
-	MISSING_FIELD_PRODUCTNAME: { code: 'MISSING_FIELD_PRODUCTNAME', message: 'missing field ProductName.' },
-	INVALID_FIELD_PRODUCTKEY: { code: 'INVALID_FIELD_PRODUCTKEY', message: 'invalid field ProductKey.' },
-
-	// Customer
-	MISSING_FIELD_CUSTOMER_KEY: { code: 'MISSING_FIELD_CUSTOMER_KEY', message: 'missing field Customer Key.' },
-	MISSING_FIELD_CUSTOMER_NAME: { code: 'MISSING_FIELD_CUSTOMER_NAME', message: 'missing field Customer Name.' },
-	MISSING_FIELD_CUSTOMER_ADDRESS: { code: 'MISSING_FIELD_CUSTOMER_ADDRESS', message: 'missing field Customer Address.' },
-	MISSING_FIELD_CUSTOMER_EMAIL: { code: 'MISSING_FIELD_CUSTOMER_EMAIL', message: 'missing field Customer Email.' },
-	INVALID_FIELD_CUSTOMER_KEY: { code: 'INVALID_FIELD_CUSTOMER_KEY', message: 'invalid field Customer Key.' }
 };
 
 module.exports = CONSTANTS;

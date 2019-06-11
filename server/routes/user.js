@@ -66,7 +66,7 @@ router.get('/profile', auth.checkAuthentication(), async function (req, res, nex
     {
         let query = _.pick(req.query, ['UserKey']);
         if(!query.UserKey)
-            throw CONSTANTS.MISSING_FIELD_USERKEY;
+            throw { code: 'MISSING_REQUIRED_FIELD', message: 'missing required field: UserKey' };
 
         let user = await userService.getUserByKey(query);
         res.status(200).json(user);
@@ -86,10 +86,10 @@ router.post('/create', auth.checkAuthentication(), async function (req, res, nex
     {
         let user = _.pick(req.body, ['UserName','Password','DisplayName','ImageKey','Email','Mobile','Tel','Title','DateOfBirth','Description']);
         if(!user.UserName)
-            throw CONSTANTS.MISSING_FIELD_USERNAME;
+            throw { code: 'MISSING_REQUIRED_FIELD', message: 'missing required field: UserName' }
 
         // if(!user.Password)
-        //     throw CONSTANTS.MISSING_FIELD_PASSWORD;
+        //     throw { code: 'MISSING_REQUIRED_FIELD', message: 'missing required field: Password' };
             
         if(user.DateOfBirth)
             user.DateOfBirth = moment(user.DateOfBirth).format('YYYY-MM-DD');
@@ -110,15 +110,15 @@ router.post('/update', auth.checkAuthentication(), async function (req, res, nex
     {
         let user = _.pick(req.body, ['UserId','UserKey','UserName','DisplayName','ImageKey','Email','Mobile','Tel','Title','DateOfBirth','Description']);
         if(!user.UserKey)
-            throw CONSTANTS.MISSING_FIELD_USERKEY;
+            throw { code: 'MISSING_REQUIRED_FIELD', message: 'missing required field: UserKey' };
         
         if(!user.UserName)
-            throw CONSTANTS.MISSING_FIELD_USERNAME;
+            throw { code: 'MISSING_REQUIRED_FIELD', message: 'missing required field: UserName' }
 
         if(!user.UserId){
             us = await userService.getUserByKey(user.UserKey);
             if(!us)
-                throw CONSTANTS.INVALID_FIELD_USERKEY;
+                throw { code: 'INVALID_FIELD', message: 'Invalid field: UserKey' }
             else
                 user.UserId = us.UserId;
         }
