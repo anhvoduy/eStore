@@ -30,7 +30,6 @@ server.use('/api/customer', require('./routes/customer'));
 server.use('/api/user', require('./routes/user'));
 server.use('/api/group', require('./routes/group'));
 server.use('/api/inventory', require('./routes/inventory'));
-server.use('/api/journal', require('./routes/journal'));
 server.use('/api/review', require('./routes/review'));
 server.use('/api/transaction', require('./routes/transaction'));
 
