@@ -2,25 +2,6 @@
 var Q = require('q');
 var mysql = require('mysql');
 var config = require('../config/config').mySql;
-var CONSTANT = require('./constant');
-
-// Connection Pool
-var pool = mysql.createPool({
-    host            : config.host,
-    user            : config.user,
-    password        : config.password,
-    database        : config.database,
-    connectionLimit : config.connectionLimit,    
-});
-
-var getConnection = function () {
-	var defer = Q.defer();
-	pool.getConnection(function (err, con) {
-		if (err) defer.reject(err);
-		else defer.resolve(new dbContext(con));
-	});
-	return defer.promise;
-}
 
 // Data Access Layer
 var dbContext = function() {
@@ -122,7 +103,7 @@ dbContext.prototype.beginTransaction = function () {
     var defer = Q.defer();
 
 	if (this.connection == null || this.connection == undefined)
-		throw CONSTANT.ERROR_CONNECTION;
+		throw { code: 'ERROR_CONNECTION', message: 'Error: the current connection is closed or undefined.' }
 
     var sql = "START TRANSACTION;";
     this.connection.query(sql, function (error, rows) {
@@ -137,7 +118,7 @@ dbContext.prototype.rollbackTransaction = function () {
     var defer = Q.defer();
 
     if (this.connection == null || this.connection == undefined)
-        throw CONSTANT.ERROR_CONNECTION;
+        throw { code: 'ERROR_CONNECTION', message: 'Error: the current connection is closed or undefined.' }
 
     var sql = "ROLLBACK;";
     this.connection.query(sql, function (error, rows) {
@@ -152,7 +133,7 @@ dbContext.prototype.commitTransaction = function () {
     var defer = Q.defer();
 
 	if (this.connection == null || this.connection == undefined)
-		throw CONSTANT.ERROR_CONNECTION;
+		throw { code: 'ERROR_CONNECTION', message: 'Error: the current connection is closed or undefined.' }
 
     var sql = "COMMIT;";
     this.connection.query(sql, function (error, rows) {
