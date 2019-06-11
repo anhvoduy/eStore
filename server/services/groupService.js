@@ -1,6 +1,5 @@
 ﻿const dbContext = require('../lib/dbContext');
 
-// Constructor
 const Factory = function () { 
 }
 

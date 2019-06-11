@@ -2,7 +2,6 @@
 const CONSTANTS = require('../lib/constants');
 const dbContext = require('../lib/dbContext');
 
-// Constructor
 const Factory = function () {
 }
 

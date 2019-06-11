@@ -1,5 +1,4 @@
-const express = require('express');
-const router = express.Router();
+const router = require('express').Router();
 const cors = require('cors')
 const jwt = require('jsonwebtoken');
 const passport = require('passport');
