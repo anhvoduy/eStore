@@ -1,10 +1,9 @@
-﻿const _ = require('lodash');
-const common = require('../lib/commonlib');
-const CONSTANT = require('../lib/constant');
+﻿const common = require('../lib/commonlib');
+const CONSTANTS = require('../lib/constants');
 const dbContext = require('../lib/dbContext');
 
 // Constructor
-const Factory = function () { 
+const Factory = function () {
 }
 
 Factory.prototype.myProfile = function(){
@@ -109,7 +108,7 @@ Factory.prototype.create = async function (user) {
 	try
 	{
 		user.Hash = common.encoded(user.UserName);
-		user.UserType = CONSTANT.USERTYPES.USER;
+		user.UserType = CONSTANTS.USERTYPES.USER;
 		var sql = `
 			INSERT INTO User(UserKey,UserType,UserName,Hash,DisplayName,Email,Mobile,Title,Description)
 			VALUES(uuid(),:UserType,:UserName,:Hash,:DisplayName,:Email,:Mobile,:Title,:Description)

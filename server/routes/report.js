@@ -1,9 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const _ = require('lodash');
-const auth = require('../config/auth');
-const constant = require('../lib/constant');
-const dbContext = require('../lib/dbContext');
 const reportService = require('../services/reportService');
 
 // Router

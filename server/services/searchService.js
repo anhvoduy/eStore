@@ -7,8 +7,6 @@ const client = new elasticsearch.Client({
 	log: 'trace'
 });
 
-const elasticEndpoint = 'http://localhost:9200';
-
 // Constructor
 const searchService = function () {	
 }

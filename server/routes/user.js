@@ -3,15 +3,14 @@ const _ = require('lodash');
 const multer = require('multer');
 const moment = require('moment');
 const auth = require('../config/auth');
-const CONSTANT = require('../lib/constant');
-const dbContext = require('../lib/dbContext');
+const CONSTANTS = require('../lib/constants');
 const userService = require('../services/userService');
 
 // upload file config
 const uploadUserImage = function(){
     let multerConfig = {
         dest: './uploads/users',
-        limits: { fileSize: CONSTANT.UPLOAD_FILE.FILE_SIZE }
+        limits: { fileSize: CONSTANTS.UPLOAD_FILE.FILE_SIZE }
     };
     return multer(multerConfig).single('UserImage');
 };
@@ -67,7 +66,7 @@ router.get('/profile', auth.checkAuthentication(), async function (req, res, nex
     {
         let query = _.pick(req.query, ['UserKey']);
         if(!query.UserKey)
-            throw CONSTANT.MISSING_FIELD_USERKEY;
+            throw CONSTANTS.MISSING_FIELD_USERKEY;
 
         let user = await userService.getUserByKey(query);
         res.status(200).json(user);
@@ -87,10 +86,10 @@ router.post('/create', auth.checkAuthentication(), async function (req, res, nex
     {
         let user = _.pick(req.body, ['UserName','Password','DisplayName','ImageKey','Email','Mobile','Tel','Title','DateOfBirth','Description']);
         if(!user.UserName)
-            throw CONSTANT.MISSING_FIELD_USERNAME;
+            throw CONSTANTS.MISSING_FIELD_USERNAME;
 
         // if(!user.Password)
-        //     throw CONSTANT.MISSING_FIELD_PASSWORD;
+        //     throw CONSTANTS.MISSING_FIELD_PASSWORD;
             
         if(user.DateOfBirth)
             user.DateOfBirth = moment(user.DateOfBirth).format('YYYY-MM-DD');
@@ -111,15 +110,15 @@ router.post('/update', auth.checkAuthentication(), async function (req, res, nex
     {
         let user = _.pick(req.body, ['UserId','UserKey','UserName','DisplayName','ImageKey','Email','Mobile','Tel','Title','DateOfBirth','Description']);
         if(!user.UserKey)
-            throw CONSTANT.MISSING_FIELD_USERKEY;
+            throw CONSTANTS.MISSING_FIELD_USERKEY;
         
         if(!user.UserName)
-            throw CONSTANT.MISSING_FIELD_USERNAME;
+            throw CONSTANTS.MISSING_FIELD_USERNAME;
 
         if(!user.UserId){
             us = await userService.getUserByKey(user.UserKey);
             if(!us)
-                throw CONSTANT.INVALID_FIELD_USERKEY;
+                throw CONSTANTS.INVALID_FIELD_USERKEY;
             else
                 user.UserId = us.UserId;
         }
