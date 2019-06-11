@@ -45,13 +45,13 @@ router.post('/create', auth.checkAuthentication(), async function (req, res, nex
 		let customer = _.pick(req.body, ["CustomerName","Description","Email","Mobile","Tel","Fax","Representative","Title","Address","ImageKey"]);
 		
 		if(!customer.CustomerName)
-			throw CONSTANTS.MISSING_FIELD_CUSTOMER_NAME;
+			throw { code: 'MISSING_REQUIRED_FIELD', message: 'missing required field: CustomerName' }
 
 		if(!customer.Address)
-			throw CONSTANTS.MISSING_FIELD_CUSTOMER_ADDRESS;
+			throw { code: 'MISSING_REQUIRED_FIELD', message: 'missing required field: Address' }
 		
 		if(!customer.Email)
-			throw CONSTANTS.MISSING_FIELD_CUSTOMER_EMAIL;
+			throw { code: 'MISSING_REQUIRED_FIELD', message: 'missing required field: Email' }
 
 		let result = await customerService.create(customer);		
 		if(result.affectedRows > 0) 
@@ -70,21 +70,21 @@ router.post('/update', auth.checkAuthentication(), async function (req, res, nex
 		let customer = _.pick(req.body, ["CustomerId","CustomerKey","CustomerName","Description","Email","Mobile","Tel","Fax","Representative","Title","Address","ImageKey"]);
 		
 		if(!customer.CustomerKey)
-			throw CONSTANTS.MISSING_FIELD_CUSTOMER_KEY;
+			throw { code: 'MISSING_REQUIRED_FIELD', message: 'missing required field: CustomerKey' };
 
 		if(!customer.CustomerName)
-			throw CONSTANTS.MISSING_FIELD_CUSTOMER_NAME;
+			throw { code: 'MISSING_REQUIRED_FIELD', message: 'missing required field: CustomerName' };
 
 		if(!customer.Address)
-			throw CONSTANTS.MISSING_FIELD_CUSTOMER_ADDRESS;
+			throw { code: 'MISSING_REQUIRED_FIELD', message: 'missing required field: Address' };
 		
 		if(!customer.Email)
-			throw CONSTANTS.MISSING_FIELD_CUSTOMER_EMAIL;
+			throw { code: 'MISSING_REQUIRED_FIELD', message: 'missing required field: Email' };
 
 		if(!customer.CustomerId){
 			let cus = await customerService.getCustomerByKey(customer);
 			if(!cus)
-				throw CONSTANTS.INVALID_FIELD_CUSTOMER_KEY;
+				throw { code: 'INVALID_FIELD', message: 'Invalid field: Customer Key' };
 			else 
 				customer.CustomerId = cus.CustomerId;
 		}

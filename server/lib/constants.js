@@ -109,13 +109,6 @@ const CONSTANTS = {
 	MISSING_FIELD_PRODUCTCODE: { code: 'MISSING_FIELD_PRODUCTCODE', message: 'missing field ProductCode.' },
 	MISSING_FIELD_PRODUCTNAME: { code: 'MISSING_FIELD_PRODUCTNAME', message: 'missing field ProductName.' },
 	INVALID_FIELD_PRODUCTKEY: { code: 'INVALID_FIELD_PRODUCTKEY', message: 'invalid field ProductKey.' },
-
-	// Customer
-	MISSING_FIELD_CUSTOMER_KEY: { code: 'MISSING_FIELD_CUSTOMER_KEY', message: 'missing field Customer Key.' },
-	MISSING_FIELD_CUSTOMER_NAME: { code: 'MISSING_FIELD_CUSTOMER_NAME', message: 'missing field Customer Name.' },
-	MISSING_FIELD_CUSTOMER_ADDRESS: { code: 'MISSING_FIELD_CUSTOMER_ADDRESS', message: 'missing field Customer Address.' },
-	MISSING_FIELD_CUSTOMER_EMAIL: { code: 'MISSING_FIELD_CUSTOMER_EMAIL', message: 'missing field Customer Email.' },
-	INVALID_FIELD_CUSTOMER_KEY: { code: 'INVALID_FIELD_CUSTOMER_KEY', message: 'invalid field Customer Key.' }
 };
 
 module.exports = CONSTANTS;
