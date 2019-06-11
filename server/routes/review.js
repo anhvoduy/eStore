@@ -1,6 +1,5 @@
 ﻿var router = require('express').Router();
 var Q = require('q');
-var CONSTANTS = require('../lib/constants');
 var dbContext = require('../lib/dbContext');
 var common = require('../lib/commonlib');
 var productService = require('../services/productService');

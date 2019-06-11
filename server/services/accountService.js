@@ -1,14 +1,11 @@
 const dbContext = require('../lib/dbContext');
 
-// Constructor
 const Factory = function () { 
 }
 
 Factory.prototype.getList = async function (query) {
 	try
 	{
-		let TotalSize = 0;
-        let PageTotal = 0;
         let PageCurrent = parseInt(query.PageCurrent) - 1;
         let PageSize = parseInt(query.PageSize);
 		let PageOffset = PageCurrent * PageSize;
