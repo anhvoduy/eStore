@@ -1,5 +1,4 @@
 'use strict';
-var path = require("path");
 var base64 = require("base-64");
 var utf8 = require("utf8");
 
@@ -49,18 +48,6 @@ common.validateEmail = function (email) {
     var regex = /\S+@\S+\.\S+/;
     if (regex.test(email)) return true;
     else return false;
-};
-
-common.validateNumber = function (value) {
-    return true;
-};
-
-common.validateDate = function (value) {
-    return true;
-};
-
-common.validateString = function (value) {
-    return true;
 };
 
 module.exports = common;
