@@ -2,7 +2,6 @@ const router = require('express').Router();
 const _ = require('lodash');
 const cors = require('cors');
 const auth = require('../config/auth');
-const CONSTANTS = require('../lib/constants');
 const brandService = require('../services/brandService');
 
 // Router
@@ -49,7 +48,7 @@ router.post('/create', auth.checkAuthentication(), async function (req, res, nex
 	{
 		let brand = _.pick(req.body, ["BrandName", "Description"]);
 		if(!brand.BrandName)
-			throw CONSTANTS.MISSING_FIELD_BRANDNAME;
+			throw { code: 'MISSING_REQUIRED_FIELD', message: 'Missing required field: BrandName' }
 
 		let result = await brandService.create(brand);		
 		if(result.affectedRows > 0) res.status(200).json({ InsertId: result.insertId, success: true });
@@ -64,16 +63,14 @@ router.post('/update', auth.checkAuthentication(), async function (req, res, nex
 	try
 	{
 		let brand = _.pick(req.body, ["BrandId", "BrandKey", "BrandName", "Description"]);
-		// if(!brand.BrandKey)
-		// 	throw CONSTANTS.MISSING_FIELD_BRANDKEY;
 
 		if(!brand.BrandName)
-			throw CONSTANTS.MISSING_FIELD_BRANDNAME;
+			throw { code: 'MISSING_REQUIRED_FIELD', message: 'Missing required field: BrandName' };
 
 		if(!brand.BrandId){
 			let br = await brandService.getBrandByKey(brand);
 			if(!br)
-				throw CONSTANTS.INVALID_FIELD_BRANDKEY;
+				throw { code: 'INVALID_DATA', message: 'Invalid data: BrandId or BrandKey' };
 			else 
 				brand.BrandId = br.BrandId;
 		}
@@ -92,12 +89,12 @@ router.post('/delete', auth.checkAuthentication(), async function (req, res, nex
 	{
 		let brand = _.pick(req.body, ["BrandKey"]);
 		if(!brand.BrandKey)
-			throw CONSTANTS.MISSING_FIELD_BRANDKEY;
+			throw { code: 'MISSING_REQUIRED_FIELD', message: 'Missing required field: BrandKey' };
 
 		if(!brand.BrandId){
 			let br = await brandService.getBrandByKey(brand);
 			if(!br)
-				throw CONSTANTS.INVALID_FIELD_BRANDKEY;
+				throw { code: 'INVALID_DATA', message: 'Invalid data: BrandId or BrandKey' };
 			else 
 				brand.BrandId = br.BrandId;
 		}
