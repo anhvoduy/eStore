@@ -9,15 +9,14 @@ services:
       MYSQL_ROOT_PASSWORD: "estore"
     volumes:
       - ./database:/home/database
-  api:
-    build: ./
-    ports:
-      - "8000:8000"
-    depends_on:
-      - database
-    links:
-      - database
-    volumes:
-      - ./:/home/app
-    command: []
-    
+  # api:
+  #   build: ./
+  #   ports:
+  #     - "8000:8000"
+  #   depends_on:
+  #     - database
+  #   links:
+  #     - database
+  #   volumes:
+  #     - ./:/home/app
+  #   command: []
