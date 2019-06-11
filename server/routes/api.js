@@ -3,11 +3,9 @@ const router = express.Router();
 const cors = require('cors')
 const jwt = require('jsonwebtoken');
 const passport = require('passport');
-const LocalStrategy = require('passport-local').Strategy;
 
 const auth = require('../config/auth');
 const config = require('../config/config');
-const CONSTANT = require('../lib/constant');
 const { uploadProductImageFS } = require('../lib/uploadFile');
 
 // routes for testing
@@ -27,8 +25,7 @@ router.put('/', function (req, res, next) {
 });
 
 router.get('/newsfeed', cors(), function (req, res, next){
-	var result = { code: 'SUCCESS', message: 'request newsfeed with CORS is success.' }
-	res.status(200).json(result);
+	res.status(200).json({ code: 'SUCCESS', message: 'request newsfeed with CORS is success.' });
 	next();
 });
 
@@ -41,14 +38,12 @@ router.post('/login', function (req, res, next) {
 			if (err) throw err;
 			
 			if (!result.success) {
-				//console.log('authenticate is failed ...');
 				return res.status(404).json({
 					success: false,
 					message: { code: 'ERROR_UNAUTHENTICATION', message: 'Username and Password is invalid.' }
 				});
 			} 
 			else {
-				//console.log('authenticate is success ...');
 				var token = jwt.sign(result.user, config.secretKey, { expiresIn: 60 * 60 * 24 * 1 });
 				return res.status(200).json({
 					success: true,
