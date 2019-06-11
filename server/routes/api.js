@@ -46,7 +46,7 @@ router.get('/newsfeed', cors(), function (req, res, next){
 
 
 
-// routers: use to login/logout/changepassword
+// routers: use to login/logout
 router.post('/login', function (req, res, next) {
 	return passport.authenticate('local', async function (err, result) {
 		try
@@ -81,11 +81,6 @@ router.get('/logout', function (req, res, next) {
 	// console.log('Log out current user ...');	
 	next();
 });
-
-router.post('/changepassword', function (req, res, next) {
-	next();
-});
-
 
 // sample file upload
 const multerConfig = {
