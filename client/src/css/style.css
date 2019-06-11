@@ -16,6 +16,27 @@
     color: white;
 }
 
+.navbar-nav .dropdown .display-info>i {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.navbar-nav .dropdown .display-info .caret {
+    margin-left: 5px;
+    margin-right: 5px;
+
+    border-top-width: 6px;
+    border-top-style: dashed;
+    border-top-color: initial;
+
+    border-left-width: 6px;
+    border-left-style: solid;
+    border-left-color: transparent;
+
+    border-right-width: 6px;
+    border-right-style: solid;
+    border-right-color: transparent;
+}
+
 .main-content {
     padding-top: 80px;
     padding-left: 30px;

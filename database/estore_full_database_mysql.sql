@@ -724,7 +724,6 @@ DROP TABLE IF EXISTS `Category`;
 CREATE TABLE `Category` (
   `CategoryId` INT(11) NOT NULL AUTO_INCREMENT,
   `CategoryKey` VARCHAR(50) NOT NULL,
-  `BrandId` INT(11) NOT NULL DEFAULT 0,
   `CategoryName` VARCHAR(50) NOT NULL,
   `Description` VARCHAR(250) DEFAULT NULL,
   `Created` DATETIME DEFAULT NULL,
@@ -739,29 +738,26 @@ CREATE TABLE `Category` (
 --
 -- Sample data for table `Category`
 --
-INSERT INTO `Category` (`CategoryKey`,`BrandId`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),12,'Samsung Laptop','Samsung Laptop','SYSTEM','SYSTEM');
-INSERT INTO `Category` (`CategoryKey`,`BrandId`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),12,'Samsung Smart Phone','Samsung Smart Phone','SYSTEM','SYSTEM');
-INSERT INTO `Category` (`CategoryKey`,`BrandId`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),12,'Samsung Smart Glasses','Samsung Smart Glasses','SYSTEM','SYSTEM');
-INSERT INTO `Category` (`CategoryKey`,`BrandId`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),12,'Samsung Smart Watch','Samsung Smart Watch','SYSTEM','SYSTEM');
-INSERT INTO `Category` (`CategoryKey`,`BrandId`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),12,'Samsung Robocon','Samsung Robocon','SYSTEM','SYSTEM');
-INSERT INTO `Category` (`CategoryKey`,`BrandId`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),12,'Samsung Wearable','Samsung Wearable','SYSTEM','SYSTEM');
+INSERT INTO `Category` (`CategoryKey`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Laptop','Laptop','SYSTEM','SYSTEM');
+INSERT INTO `Category` (`CategoryKey`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Mobile Phone','Mobile Phone','SYSTEM','SYSTEM');
+INSERT INTO `Category` (`CategoryKey`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Smart Glasses','Smart Glasses','SYSTEM','SYSTEM');
+INSERT INTO `Category` (`CategoryKey`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Smart Watch','Smart Watch','SYSTEM','SYSTEM');
+INSERT INTO `Category` (`CategoryKey`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Robocon','Robocon','SYSTEM','SYSTEM');
+INSERT INTO `Category` (`CategoryKey`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Wearable','Wearable','SYSTEM','SYSTEM');
+INSERT INTO `Category` (`CategoryKey`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Desktop','Desktop','SYSTEM','SYSTEM');
+INSERT INTO `Category` (`CategoryKey`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Men Shoes','Men Shoes','SYSTEM','SYSTEM');
+INSERT INTO `Category` (`CategoryKey`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Women Shoes','Women Shoes','SYSTEM','SYSTEM');
+INSERT INTO `Category` (`CategoryKey`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Traditional Watch','Traditional Watch','SYSTEM','SYSTEM');
+INSERT INTO `Category` (`CategoryKey`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Balo','Balo','SYSTEM','SYSTEM');
+INSERT INTO `Category` (`CategoryKey`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Handbadge','Handbadge','SYSTEM','SYSTEM');
 
-INSERT INTO `Category` (`CategoryKey`,`BrandId`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),15,'Sony Laptop','Sony Laptop','SYSTEM','SYSTEM');
-INSERT INTO `Category` (`CategoryKey`,`BrandId`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),15,'Sony Xperia Phone','Sony Xperia Phone','SYSTEM','SYSTEM');
-INSERT INTO `Category` (`CategoryKey`,`BrandId`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),15,'Sony Smart Glasses','Sony Smart Glasses','SYSTEM','SYSTEM');
-INSERT INTO `Category` (`CategoryKey`,`BrandId`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),15,'Sony Smart Watch','Sony Smart Watch','SYSTEM','SYSTEM');
-INSERT INTO `Category` (`CategoryKey`,`BrandId`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),15,'Sony Ericsson','Sony Ericsson','SYSTEM','SYSTEM');
-INSERT INTO `Category` (`CategoryKey`,`BrandId`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),15,'Sony Wearable','Sony Wearable','SYSTEM','SYSTEM');
-
-INSERT INTO `Category` (`CategoryKey`,`BrandId`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),12,'Microsoft Laptop','Microsoft Laptop','SYSTEM','SYSTEM');
-INSERT INTO `Category` (`CategoryKey`,`BrandId`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),12,'Microsoft Phone','Microsoft Phone','SYSTEM','SYSTEM');
-
-INSERT INTO `Category` (`CategoryKey`,`BrandId`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),14,'Apple Laptop','Apple Laptop','SYSTEM','SYSTEM');
-INSERT INTO `Category` (`CategoryKey`,`BrandId`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),14,'Apple Phone','Apple Phone','SYSTEM','SYSTEM');
-
-INSERT INTO `Category` (`CategoryKey`,`BrandId`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),28,'LG Phone','LG Phone','SYSTEM','SYSTEM');
-INSERT INTO `Category` (`CategoryKey`,`BrandId`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),29,'Nokia Phone','Nokia Phone','SYSTEM','SYSTEM');
-INSERT INTO `Category` (`CategoryKey`,`BrandId`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),30,'Xiaomi Smart Phone','Xiaomi Smart Phone','SYSTEM','SYSTEM');
+INSERT INTO `Category` (`CategoryKey`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Microsoft Laptop','Microsoft Laptop','SYSTEM','SYSTEM');
+INSERT INTO `Category` (`CategoryKey`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Microsoft Phone','Microsoft Phone','SYSTEM','SYSTEM');
+INSERT INTO `Category` (`CategoryKey`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Apple Laptop','Apple Laptop','SYSTEM','SYSTEM');
+INSERT INTO `Category` (`CategoryKey`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Apple Phone','Apple Phone','SYSTEM','SYSTEM');
+INSERT INTO `Category` (`CategoryKey`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'LG Phone','LG Phone','SYSTEM','SYSTEM');
+INSERT INTO `Category` (`CategoryKey`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Nokia Phone','Nokia Phone','SYSTEM','SYSTEM');
+INSERT INTO `Category` (`CategoryKey`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Xiaomi Smart Phone','Xiaomi Smart Phone','SYSTEM','SYSTEM');
 
 
 
