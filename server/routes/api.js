@@ -15,22 +15,22 @@ const CONSTANT = require('../lib/constant');
 
 // routers for testing
 router.get('/', function (req, res, next) {
-    res.json({ message: 'request GET is success' });
+    res.json({ code: 'SUCCESS', message: 'request GET is success' });
     next();
 });
 
 router.post('/', function (req, res, next) {
-    res.json({ message: 'request POST is success' });
+    res.json({ code: 'SUCCESS', message: 'request POST is success' });
     next();
 });
 
 router.put('/', function (req, res, next) {
-    res.json({ message: 'request PUT is success' });
+    res.json({ code: 'SUCCESS', message: 'request PUT is success' });
     next();
 });
 
 router.get('/newsfeed', cors(), function (req, res, next){
-	var result = { code: 'SUCCESS_NEWSFEED', message: 'request newsfeed with CORS is success.' }
+	var result = { code: 'SUCCESS', message: 'request newsfeed with CORS is success.' }
 	res.status(200).json(result);
 	next();
 });
