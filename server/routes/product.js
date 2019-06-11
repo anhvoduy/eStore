@@ -6,9 +6,7 @@ const moment = require('moment');
 const Excel = require('excel4node');
 
 const auth = require('../config/auth');
-const CONSTANT = require('../lib/constant');
-const dbContext = require('../lib/dbContext');
-const uploadFile = require('../lib/uploadFile');
+const CONSTANTS = require('../lib/constants');
 const brandService = require('../services/brandService');
 const productService = require('../services/productService');
 
@@ -17,7 +15,7 @@ const bucket = './uploads/products';
 const uploadProductImage = function(){
 	const multerConfig = {
 		dest: bucket,
-		limits: { fileSize: CONSTANT.UPLOAD_FILE.FILE_SIZE }
+		limits: { fileSize: CONSTANTS.UPLOAD_FILE.FILE_SIZE }
 	};
 	return multer(multerConfig).single('ProductImage');
 };
@@ -31,7 +29,7 @@ router.post('/upload', uploadProductImage(), auth.checkAuthentication(), async f
 		}
 
 		if(!req.body.ProductId){
-			throw CONSTANT.MISSING_FIELD_PRODUCTID;
+			throw CONSTANTS.MISSING_FIELD_PRODUCTID;
 		}
 		
 		let productId = req.body.ProductId;
@@ -132,7 +130,7 @@ router.get('/fe/item', cors(), async function (req, res, next) {
 	{
 		let query = _.pick(req.query, ['ProductKey']);
 		if(!query.ProductKey){
-			throw CONSTANT.MISSING_FIELD_PRODUCTKEY;
+			throw CONSTANTS.MISSING_FIELD_PRODUCTKEY;
 		}
 
 		let data = await productService.getProductByKey(query);
@@ -193,11 +191,11 @@ router.get('/brand/items',
 		}
 		
 		if(!query.BrandKey && !query.BrandId)
-			throw CONSTANT.MISSING_FIELD_BRANDID_BRANDKEY;
+			throw CONSTANTS.MISSING_FIELD_BRANDID_BRANDKEY;
 
 		if(query.BrandKey){
 			let brand = await brandService.getBrandByKey({ BrandKey: query.BrandKey });
-			if(!brand || !brand.BrandId) throw CONSTANT.INVALID_FIELD_BRANDKEY;
+			if(!brand || !brand.BrandId) throw CONSTANTS.INVALID_FIELD_BRANDKEY;
 			else query.BrandId = brand.BrandId;
 		}
 
@@ -216,10 +214,10 @@ router.post('/create', auth.checkAuthentication(), async function (req, res, nex
 			"BrandId", "Price", "ColorCode", "Status"]);
 		
 		if(!product.ProductName)
-			throw CONSTANT.MISSING_FIELD_PRODUCTNAME;
+			throw CONSTANTS.MISSING_FIELD_PRODUCTNAME;
 
 		if(!product.Status)
-			product.Status = CONSTANT.PRODUCT_STATUS.NEW;
+			product.Status = CONSTANTS.PRODUCT_STATUS.NEW;
 
 		let result = await productService.create(product);		
 		if(result.affectedRows > 0) 
@@ -239,15 +237,15 @@ router.post('/update', auth.checkAuthentication(), async function (req, res, nex
 			"BrandId", "Price", "ColorCode", "Status"]);
 		
 		if(!product.ProductKey)
-			throw CONSTANT.MISSING_FIELD_PRODUCTKEY;
+			throw CONSTANTS.MISSING_FIELD_PRODUCTKEY;
 
 		if(!product.ProductName)
-			throw CONSTANT.MISSING_FIELD_PRODUCTNAME;
+			throw CONSTANTS.MISSING_FIELD_PRODUCTNAME;
 
 		if(!product.ProductId){
 			let prod = await productService.getProductByKey(product);
 			if(!prod)
-				throw CONSTANT.INVALID_FIELD_PRODUCTKEY;
+				throw CONSTANTS.INVALID_FIELD_PRODUCTKEY;
 			else 
 				product.ProductId = prod.ProductId;
 		}
@@ -270,12 +268,12 @@ router.post('/delete', auth.checkAuthentication(), async function (req, res, nex
 		let product = _.pick(req.body, ["ProductId","ProductKey"]);
 		
 		if(!product.ProductKey)
-			throw CONSTANT.MISSING_FIELD_PRODUCTKEY;		
+			throw CONSTANTS.MISSING_FIELD_PRODUCTKEY;		
 
 		if(!product.ProductId){
 			let prod = await productService.getProductByKey(product);
 			if(!prod)
-				throw CONSTANT.INVALID_FIELD_PRODUCTKEY;
+				throw CONSTANTS.INVALID_FIELD_PRODUCTKEY;
 			else 
 				product.ProductId = prod.ProductId;
 		}

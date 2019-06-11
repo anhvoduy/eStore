@@ -1,7 +1,5 @@
-﻿const _ = require('lodash');
-const dbContext = require('../lib/dbContext');
+﻿const dbContext = require('../lib/dbContext');
 
-// Constructor
 const Factory = function(){	
 }
 
