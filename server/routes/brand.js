@@ -2,8 +2,7 @@ const router = require('express').Router();
 const _ = require('lodash');
 const cors = require('cors');
 const auth = require('../config/auth');
-const CONSTANT = require('../lib/constant');
-const dbContext = require('../lib/dbContext');
+const CONSTANTS = require('../lib/constants');
 const brandService = require('../services/brandService');
 
 // Router
@@ -50,7 +49,7 @@ router.post('/create', auth.checkAuthentication(), async function (req, res, nex
 	{
 		let brand = _.pick(req.body, ["BrandName", "Description"]);
 		if(!brand.BrandName)
-			throw CONSTANT.MISSING_FIELD_BRANDNAME;
+			throw CONSTANTS.MISSING_FIELD_BRANDNAME;
 
 		let result = await brandService.create(brand);		
 		if(result.affectedRows > 0) res.status(200).json({ InsertId: result.insertId, success: true });
@@ -66,15 +65,15 @@ router.post('/update', auth.checkAuthentication(), async function (req, res, nex
 	{
 		let brand = _.pick(req.body, ["BrandId", "BrandKey", "BrandName", "Description"]);
 		// if(!brand.BrandKey)
-		// 	throw CONSTANT.MISSING_FIELD_BRANDKEY;
+		// 	throw CONSTANTS.MISSING_FIELD_BRANDKEY;
 
 		if(!brand.BrandName)
-			throw CONSTANT.MISSING_FIELD_BRANDNAME;
+			throw CONSTANTS.MISSING_FIELD_BRANDNAME;
 
 		if(!brand.BrandId){
 			let br = await brandService.getBrandByKey(brand);
 			if(!br)
-				throw CONSTANT.INVALID_FIELD_BRANDKEY;
+				throw CONSTANTS.INVALID_FIELD_BRANDKEY;
 			else 
 				brand.BrandId = br.BrandId;
 		}
@@ -93,12 +92,12 @@ router.post('/delete', auth.checkAuthentication(), async function (req, res, nex
 	{
 		let brand = _.pick(req.body, ["BrandKey"]);
 		if(!brand.BrandKey)
-			throw CONSTANT.MISSING_FIELD_BRANDKEY;
+			throw CONSTANTS.MISSING_FIELD_BRANDKEY;
 
 		if(!brand.BrandId){
 			let br = await brandService.getBrandByKey(brand);
 			if(!br)
-				throw CONSTANT.INVALID_FIELD_BRANDKEY;
+				throw CONSTANTS.INVALID_FIELD_BRANDKEY;
 			else 
 				brand.BrandId = br.BrandId;
 		}
