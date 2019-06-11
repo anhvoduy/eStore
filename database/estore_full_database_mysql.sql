@@ -972,10 +972,10 @@ INSERT INTO `User` (`UserKey`, `UserType`, `UserName`, `Hash`, `DisplayName`, `E
 VALUES (uuid(), 'USER','anhvod', 'QGRtaW4=', 'Vo Duy Anh','anhvod@sharepoint.org','084 852741963','1984-12-24','SYSTEM','SYSTEM');
 
 INSERT INTO `User` (`UserKey`, `UserType`, `UserName`, `Hash`, `DisplayName`, `Email`, `Mobile`, `DateOfBirth`, `Author`, `Editor`) 
-VALUES (uuid(), 'USER','lukaku', 'QGRtaW4=', 'Lukaku','lukaku@mu.com','001 852741963','1980-06-06','SYSTEM','SYSTEM');
+VALUES (uuid(), 'USER','romney', 'QGRtaW4=', 'Mitt Romney','romney@president.com','001 852741963','1980-06-06','SYSTEM','SYSTEM');
 
 INSERT INTO `User` (`UserKey`, `UserType`, `UserName`, `Hash`, `DisplayName`, `Email`, `Mobile`, `DateOfBirth`, `Author`, `Editor`) 
-VALUES (uuid(), 'USER','pogba', 'QGRtaW4=', 'Pogba','pogba@mu.com','001 852741963','1980-06-06','SYSTEM','SYSTEM');
+VALUES (uuid(), 'USER','obama', 'QGRtaW4=', 'obama','obama@president.com','001 852741963','1980-06-06','SYSTEM','SYSTEM');
 
 INSERT INTO `User` (`UserKey`, `UserType`, `UserName`, `Hash`, `DisplayName`, `Email`, `Mobile`, `DateOfBirth`, `Author`, `Editor`) 
 VALUES (uuid(), 'USER','thanglt', 'QGRtaW4=', 'Le Tat Thang','thanglt@fpt.com.vn','001 852741963','1980-08-08','SYSTEM','SYSTEM');
@@ -990,7 +990,7 @@ INSERT INTO `User` (`UserKey`, `UserType`, `UserName`, `Hash`, `DisplayName`, `E
 VALUES (uuid(), 'USER','messi', 'QGRtaW4=', 'Lionel Messi','messi@barca.com','001 852741963','1980-02-02','SYSTEM','SYSTEM');
 
 INSERT INTO `User` (`UserKey`, `UserType`, `UserName`, `Hash`, `DisplayName`, `Email`, `Mobile`, `DateOfBirth`, `Author`, `Editor`) 
-VALUES (uuid(), 'USER','bale', 'QGRtaW4=', 'Gareth Bale','bale@real.com','001 852741963','1980-02-02','SYSTEM','SYSTEM');
+VALUES (uuid(), 'USER','rice', 'QGRtaW4=', 'Coldoleeza Rice','rice@secretary.com','001 852741963','1980-02-02','SYSTEM','SYSTEM');
 
 INSERT INTO `User` (`UserKey`, `UserType`, `UserName`, `Hash`, `DisplayName`, `Email`, `Mobile`, `DateOfBirth`, `Author`, `Editor`) 
 VALUES (uuid(), 'USER','ronaldo', 'QGRtaW4=', 'Cris Ronaldo','ronaldo@mu.com','001 852741963','1980-02-02','SYSTEM','SYSTEM');
