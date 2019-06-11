@@ -873,6 +873,75 @@ VALUES (uuid(),'Nike Shoes','8/8.5/9.5/10/11','Nike Shoes',2,50,'Pink','NEW','Co
 INSERT INTO `Product`(`ProductKey`,`ProductName`,`SizeList`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`ProductImage`,`Author`,`Editor`)
 VALUES (uuid(),'Buma Shoes','8/8.5/9.5/10/11','Nike Shoes',2,50,'Pink','NEW','Cool','product09.jpg','SYSTEM','SYSTEM');
 
+INSERT INTO `Product`(`ProductKey`,`ProductName`,`SizeList`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`ProductImage`,`Author`,`Editor`)
+VALUES (uuid(),'Buma Shoes 2000','2/2.5/9.5/10/11','Nike Shoes',2,50,'Pink','NEW','Great','product09.jpg','SYSTEM','SYSTEM');
+
+INSERT INTO `Product`(`ProductKey`,`ProductName`,`SizeList`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`ProductImage`,`Author`,`Editor`)
+VALUES (uuid(),'Buma Shoes 2001','8/8.5/9.5/10/11','Nike Shoes',2,50,'Pink','NEW','Cool','product09.jpg','SYSTEM','SYSTEM');
+
+INSERT INTO `Product`(`ProductKey`,`ProductName`,`SizeList`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`ProductImage`,`Author`,`Editor`)
+VALUES (uuid(),'Buma Shoes 2002','8/8.5/9.5/10/11','Nike Shoes',2,50,'Pink','NEW','Cool','product09.jpg','SYSTEM','SYSTEM');
+
+INSERT INTO `Product`(`ProductKey`,`ProductName`,`SizeList`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`ProductImage`,`Author`,`Editor`)
+VALUES (uuid(),'Buma Shoes 2003','8/8.5/9.5/10/11','Nike Shoes',2,50,'Pink','NEW','Cool','product09.jpg','SYSTEM','SYSTEM');
+
+INSERT INTO `Product`(`ProductKey`,`ProductName`,`SizeList`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`ProductImage`,`Author`,`Editor`)
+VALUES (uuid(),'Buma Shoes 2004','8/8.5/9.5/10/11','Nike Shoes',2,50,'Pink','NEW','Cool','product09.jpg','SYSTEM','SYSTEM');
+
+INSERT INTO `Product`(`ProductKey`,`ProductName`,`SizeList`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`ProductImage`,`Author`,`Editor`)
+VALUES (uuid(),'Buma Shoes 2005','8/8.5/9.5/10/11','Nike Shoes',2,50,'Pink','NEW','Cool','product09.jpg','SYSTEM','SYSTEM');
+
+INSERT INTO `Product`(`ProductKey`,`ProductName`,`SizeList`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`ProductImage`,`Author`,`Editor`)
+VALUES (uuid(),'Buma Shoes 2006','8/8.5/9.5/10/11','Nike Shoes',2,50,'Pink','NEW','Cool','product09.jpg','SYSTEM','SYSTEM');
+
+INSERT INTO `Product`(`ProductKey`,`ProductName`,`SizeList`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`ProductImage`,`Author`,`Editor`)
+VALUES (uuid(),'Buma Shoes 2007','8/8.5/9.5/10/11','Nike Shoes',2,50,'Pink','NEW','Cool','product09.jpg','SYSTEM','SYSTEM');
+
+INSERT INTO `Product`(`ProductKey`,`ProductName`,`SizeList`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`ProductImage`,`Author`,`Editor`)
+VALUES (uuid(),'Buma Shoes 2008','8/8.5/9.5/10/11','Nike Shoes',2,50,'Pink','NEW','Cool','product09.jpg','SYSTEM','SYSTEM');
+
+INSERT INTO `Product`(`ProductKey`,`ProductName`,`SizeList`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`ProductImage`,`Author`,`Editor`)
+VALUES (uuid(),'Buma Shoes 2009','8/8.5/9.5/10/11','Nike Shoes',2,50,'Pink','NEW','Cool','product09.jpg','SYSTEM','SYSTEM');
+
+INSERT INTO `Product`(`ProductKey`,`ProductName`,`SizeList`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`ProductImage`,`Author`,`Editor`)
+VALUES (uuid(),'Buma Shoes 2010','8/8.5/9.5/10/11','Nike Shoes',2,50,'Pink','NEW','Cool','product09.jpg','SYSTEM','SYSTEM');
+
+INSERT INTO `Product`(`ProductKey`,`ProductName`,`SizeList`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`ProductImage`,`Author`,`Editor`)
+VALUES (uuid(),'Buma Shoes 2011','8/8.5/9.5/10/11','Nike Shoes',2,50,'Pink','NEW','Cool','product09.jpg','SYSTEM','SYSTEM');
+
+INSERT INTO `Product`(`ProductKey`,`ProductName`,`SizeList`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`ProductImage`,`Author`,`Editor`)
+VALUES (uuid(),'Buma Shoes 2012','8/8.5/9.5/10/11','Nike Shoes',2,50,'Pink','NEW','Cool','product09.jpg','SYSTEM','SYSTEM');
+
+INSERT INTO `Product`(`ProductKey`,`ProductName`,`SizeList`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`ProductImage`,`Author`,`Editor`)
+VALUES (uuid(),'Buma Shoes 2013','8/8.5/9.5/10/11','Nike Shoes',2,50,'Pink','NEW','Cool','product09.jpg','SYSTEM','SYSTEM');
+
+INSERT INTO `Product`(`ProductKey`,`ProductName`,`SizeList`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`ProductImage`,`Author`,`Editor`)
+VALUES (uuid(),'Buma Shoes 2014','8/8.5/9.5/10/11','Nike Shoes',2,50,'Pink','NEW','Cool','product09.jpg','SYSTEM','SYSTEM');
+
+INSERT INTO `Product`(`ProductKey`,`ProductName`,`SizeList`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`ProductImage`,`Author`,`Editor`)
+VALUES (uuid(),'Buma Shoes 2015','8/8.5/9.5/10/11','Nike Shoes',2,50,'Pink','NEW','Cool','product09.jpg','SYSTEM','SYSTEM');
+
+INSERT INTO `Product`(`ProductKey`,`ProductName`,`SizeList`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`ProductImage`,`Author`,`Editor`)
+VALUES (uuid(),'Buma Shoes 2016','8/8.5/9.5/10/11','Nike Shoes',2,50,'Pink','NEW','Cool','product09.jpg','SYSTEM','SYSTEM');
+
+INSERT INTO `Product`(`ProductKey`,`ProductName`,`SizeList`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`ProductImage`,`Author`,`Editor`)
+VALUES (uuid(),'Buma Shoes 2017','8/8.5/9.5/10/11','Nike Shoes',2,50,'Pink','NEW','Cool','product09.jpg','SYSTEM','SYSTEM');
+
+INSERT INTO `Product`(`ProductKey`,`ProductName`,`SizeList`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`ProductImage`,`Author`,`Editor`)
+VALUES (uuid(),'Buma Shoes 2018','8/8.5/9.5/11/11','Nike Shoes',2,50,'Pink','NEW','Cool','product09.jpg','SYSTEM','SYSTEM');
+
+INSERT INTO `Product`(`ProductKey`,`ProductName`,`SizeList`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`ProductImage`,`Author`,`Editor`)
+VALUES (uuid(),'Buma Shoes 2019','8/8.5/9.5/10/11','Nike Shoes',2,50,'Pink','NEW','Cool','product09.jpg','SYSTEM','SYSTEM');
+
+INSERT INTO `Product`(`ProductKey`,`ProductName`,`SizeList`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`ProductImage`,`Author`,`Editor`)
+VALUES (uuid(),'Buma Shoes 2020','8/8.5/9.5/10/11','Nike Shoes',2,50,'Pink','NEW','Cool','product09.jpg','SYSTEM','SYSTEM');
+
+INSERT INTO `Product`(`ProductKey`,`ProductName`,`SizeList`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`ProductImage`,`Author`,`Editor`)
+VALUES (uuid(),'Buma Shoes 2021','8/8.5/9.5/10/11','Nike Shoes',2,50,'Pink','NEW','Cool','product09.jpg','SYSTEM','SYSTEM');
+
+INSERT INTO `Product`(`ProductKey`,`ProductName`,`SizeList`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`ProductImage`,`Author`,`Editor`)
+VALUES (uuid(),'Buma Shoes 2022','8/8.5/9.5/10/22','Nike Shoes',2,50,'Pink','NEW','Cool','product09.jpg','SYSTEM','SYSTEM');
+
 -- update images later
 INSERT INTO `Product`(`ProductKey`,`ProductName`,`SizeList`,`Description`,`BrandId`,`Price`,`ColorCode`,`Status`,`LatestReviewInfo`,`ProductImage`,`Author`,`Editor`)
 VALUES (uuid(),'Microsoft Surface','8/8.5/9.5/10/11','Microsoft Surface',12,50,'Silver','NEW','Cool','product09.jpg','SYSTEM','SYSTEM');
