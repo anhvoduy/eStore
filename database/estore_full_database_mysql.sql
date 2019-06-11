@@ -724,7 +724,6 @@ DROP TABLE IF EXISTS `Category`;
 CREATE TABLE `Category` (
   `CategoryId` INT(11) NOT NULL AUTO_INCREMENT,
   `CategoryKey` VARCHAR(50) NOT NULL,
-  `BrandId` INT(11) NOT NULL DEFAULT 0,
   `CategoryName` VARCHAR(50) NOT NULL,
   `Description` VARCHAR(250) DEFAULT NULL,
   `Created` DATETIME DEFAULT NULL,
@@ -739,29 +738,26 @@ CREATE TABLE `Category` (
 --
 -- Sample data for table `Category`
 --
-INSERT INTO `Category` (`CategoryKey`,`BrandId`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),12,'Samsung Laptop','Samsung Laptop','SYSTEM','SYSTEM');
-INSERT INTO `Category` (`CategoryKey`,`BrandId`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),12,'Samsung Smart Phone','Samsung Smart Phone','SYSTEM','SYSTEM');
-INSERT INTO `Category` (`CategoryKey`,`BrandId`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),12,'Samsung Smart Glasses','Samsung Smart Glasses','SYSTEM','SYSTEM');
-INSERT INTO `Category` (`CategoryKey`,`BrandId`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),12,'Samsung Smart Watch','Samsung Smart Watch','SYSTEM','SYSTEM');
-INSERT INTO `Category` (`CategoryKey`,`BrandId`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),12,'Samsung Robocon','Samsung Robocon','SYSTEM','SYSTEM');
-INSERT INTO `Category` (`CategoryKey`,`BrandId`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),12,'Samsung Wearable','Samsung Wearable','SYSTEM','SYSTEM');
+INSERT INTO `Category` (`CategoryKey`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Laptop','Laptop','SYSTEM','SYSTEM');
+INSERT INTO `Category` (`CategoryKey`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Mobile Phone','Mobile Phone','SYSTEM','SYSTEM');
+INSERT INTO `Category` (`CategoryKey`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Smart Glasses','Smart Glasses','SYSTEM','SYSTEM');
+INSERT INTO `Category` (`CategoryKey`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Smart Watch','Smart Watch','SYSTEM','SYSTEM');
+INSERT INTO `Category` (`CategoryKey`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Robocon','Robocon','SYSTEM','SYSTEM');
+INSERT INTO `Category` (`CategoryKey`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Wearable','Wearable','SYSTEM','SYSTEM');
+INSERT INTO `Category` (`CategoryKey`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Desktop','Desktop','SYSTEM','SYSTEM');
+INSERT INTO `Category` (`CategoryKey`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Men Shoes','Men Shoes','SYSTEM','SYSTEM');
+INSERT INTO `Category` (`CategoryKey`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Women Shoes','Women Shoes','SYSTEM','SYSTEM');
+INSERT INTO `Category` (`CategoryKey`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Traditional Watch','Traditional Watch','SYSTEM','SYSTEM');
+INSERT INTO `Category` (`CategoryKey`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Balo','Balo','SYSTEM','SYSTEM');
+INSERT INTO `Category` (`CategoryKey`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Handbadge','Handbadge','SYSTEM','SYSTEM');
 
-INSERT INTO `Category` (`CategoryKey`,`BrandId`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),15,'Sony Laptop','Sony Laptop','SYSTEM','SYSTEM');
-INSERT INTO `Category` (`CategoryKey`,`BrandId`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),15,'Sony Xperia Phone','Sony Xperia Phone','SYSTEM','SYSTEM');
-INSERT INTO `Category` (`CategoryKey`,`BrandId`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),15,'Sony Smart Glasses','Sony Smart Glasses','SYSTEM','SYSTEM');
-INSERT INTO `Category` (`CategoryKey`,`BrandId`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),15,'Sony Smart Watch','Sony Smart Watch','SYSTEM','SYSTEM');
-INSERT INTO `Category` (`CategoryKey`,`BrandId`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),15,'Sony Ericsson','Sony Ericsson','SYSTEM','SYSTEM');
-INSERT INTO `Category` (`CategoryKey`,`BrandId`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),15,'Sony Wearable','Sony Wearable','SYSTEM','SYSTEM');
-
-INSERT INTO `Category` (`CategoryKey`,`BrandId`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),12,'Microsoft Laptop','Microsoft Laptop','SYSTEM','SYSTEM');
-INSERT INTO `Category` (`CategoryKey`,`BrandId`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),12,'Microsoft Phone','Microsoft Phone','SYSTEM','SYSTEM');
-
-INSERT INTO `Category` (`CategoryKey`,`BrandId`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),14,'Apple Laptop','Apple Laptop','SYSTEM','SYSTEM');
-INSERT INTO `Category` (`CategoryKey`,`BrandId`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),14,'Apple Phone','Apple Phone','SYSTEM','SYSTEM');
-
-INSERT INTO `Category` (`CategoryKey`,`BrandId`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),28,'LG Phone','LG Phone','SYSTEM','SYSTEM');
-INSERT INTO `Category` (`CategoryKey`,`BrandId`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),29,'Nokia Phone','Nokia Phone','SYSTEM','SYSTEM');
-INSERT INTO `Category` (`CategoryKey`,`BrandId`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),30,'Xiaomi Smart Phone','Xiaomi Smart Phone','SYSTEM','SYSTEM');
+INSERT INTO `Category` (`CategoryKey`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Microsoft Laptop','Microsoft Laptop','SYSTEM','SYSTEM');
+INSERT INTO `Category` (`CategoryKey`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Microsoft Phone','Microsoft Phone','SYSTEM','SYSTEM');
+INSERT INTO `Category` (`CategoryKey`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Apple Laptop','Apple Laptop','SYSTEM','SYSTEM');
+INSERT INTO `Category` (`CategoryKey`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Apple Phone','Apple Phone','SYSTEM','SYSTEM');
+INSERT INTO `Category` (`CategoryKey`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'LG Phone','LG Phone','SYSTEM','SYSTEM');
+INSERT INTO `Category` (`CategoryKey`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Nokia Phone','Nokia Phone','SYSTEM','SYSTEM');
+INSERT INTO `Category` (`CategoryKey`,`CategoryName`,`Description`,`Author`, `Editor`) VALUES (uuid(),'Xiaomi Smart Phone','Xiaomi Smart Phone','SYSTEM','SYSTEM');
 
 
 
@@ -976,10 +972,10 @@ INSERT INTO `User` (`UserKey`, `UserType`, `UserName`, `Hash`, `DisplayName`, `E
 VALUES (uuid(), 'USER','anhvod', 'QGRtaW4=', 'Vo Duy Anh','anhvod@sharepoint.org','084 852741963','1984-12-24','SYSTEM','SYSTEM');
 
 INSERT INTO `User` (`UserKey`, `UserType`, `UserName`, `Hash`, `DisplayName`, `Email`, `Mobile`, `DateOfBirth`, `Author`, `Editor`) 
-VALUES (uuid(), 'USER','lukaku', 'QGRtaW4=', 'Lukaku','lukaku@mu.com','001 852741963','1980-06-06','SYSTEM','SYSTEM');
+VALUES (uuid(), 'USER','romney', 'QGRtaW4=', 'Mitt Romney','romney@president.com','001 852741963','1980-06-06','SYSTEM','SYSTEM');
 
 INSERT INTO `User` (`UserKey`, `UserType`, `UserName`, `Hash`, `DisplayName`, `Email`, `Mobile`, `DateOfBirth`, `Author`, `Editor`) 
-VALUES (uuid(), 'USER','pogba', 'QGRtaW4=', 'Pogba','pogba@mu.com','001 852741963','1980-06-06','SYSTEM','SYSTEM');
+VALUES (uuid(), 'USER','obama', 'QGRtaW4=', 'obama','obama@president.com','001 852741963','1980-06-06','SYSTEM','SYSTEM');
 
 INSERT INTO `User` (`UserKey`, `UserType`, `UserName`, `Hash`, `DisplayName`, `Email`, `Mobile`, `DateOfBirth`, `Author`, `Editor`) 
 VALUES (uuid(), 'USER','thanglt', 'QGRtaW4=', 'Le Tat Thang','thanglt@fpt.com.vn','001 852741963','1980-08-08','SYSTEM','SYSTEM');
@@ -994,7 +990,7 @@ INSERT INTO `User` (`UserKey`, `UserType`, `UserName`, `Hash`, `DisplayName`, `E
 VALUES (uuid(), 'USER','messi', 'QGRtaW4=', 'Lionel Messi','messi@barca.com','001 852741963','1980-02-02','SYSTEM','SYSTEM');
 
 INSERT INTO `User` (`UserKey`, `UserType`, `UserName`, `Hash`, `DisplayName`, `Email`, `Mobile`, `DateOfBirth`, `Author`, `Editor`) 
-VALUES (uuid(), 'USER','bale', 'QGRtaW4=', 'Gareth Bale','bale@real.com','001 852741963','1980-02-02','SYSTEM','SYSTEM');
+VALUES (uuid(), 'USER','rice', 'QGRtaW4=', 'Coldoleeza Rice','rice@secretary.com','001 852741963','1980-02-02','SYSTEM','SYSTEM');
 
 INSERT INTO `User` (`UserKey`, `UserType`, `UserName`, `Hash`, `DisplayName`, `Email`, `Mobile`, `DateOfBirth`, `Author`, `Editor`) 
 VALUES (uuid(), 'USER','ronaldo', 'QGRtaW4=', 'Cris Ronaldo','ronaldo@mu.com','001 852741963','1980-02-02','SYSTEM','SYSTEM');

@@ -1,5 +1,4 @@
 ﻿'use strict';
-// TO DO: clean up this file
 
 /*
 200 OK Standard response for successful HTTP requests
@@ -16,7 +15,7 @@
 503 Service Unavailable Server is currently unavailable
 */
 
-const CONSTANT = {
+const CONSTANTS = {
 	/** ------------- Unchange -------------*/
 	TRANSACTIONTYPE: {
 		CASHIN	: 'CASHIN',
@@ -169,4 +168,4 @@ const CONSTANT = {
 	INVALID_FIELD_CUSTOMER_KEY: { code: 'INVALID_FIELD_CUSTOMER_KEY', message: 'invalid field Customer Key.' }
 };
 
-module.exports = CONSTANT;
+module.exports = CONSTANTS;

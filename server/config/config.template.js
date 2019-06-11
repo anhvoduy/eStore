@@ -7,35 +7,30 @@ var mySql = {
 	debugMode: true
 };
 
-var azure = {
-    provider: "azureblob",
-    azureblob: {
-        container: "estore",
+var storage = {
+    fs: {
+        provider: "fs",
+        destination: "./uploads"
+    },
+    azure: {
+        provider: "azureblob",
+        container: "container",
         accountName: "accountName",
-        host: "estore.blob.core.windows.net",
-        accessKey: "accessKey"
-    }
-};
-
-var aws = {
-    provider: "s3",
-    s3: {
+        host: "host.blob.core.windows.net",
+        accessKey: "accessKey"      
+    },
+    aws: {
+        provider: "s3",
         accessKeyId: "accessKeyId",
         secretAccessKey: "secretAccessKey",
-        bucket: "estore"
+        bucket: "bucket",
+        region: "region"
     }
-};
-
-var fs = {
-    provider: 'fs',
-    destination: './uploads'
 };
 
 module.exports = {
     mySql: mySql,
-    azure: azure,
-    aws: aws,
-    fs: fs,
-    default: 'fs',
+    storage: storage,
+    azureAuthenticate: true, // false
     secretKey: 'ilovejavascript'
 };
