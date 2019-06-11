@@ -20,11 +20,11 @@ router.post('/add', function (req, res, next) {
     Q.when()
         .then(function () {
             if (!common.validateRating(review.Rating)) {
-                throw CONSTANTS.ERROR_INVALID_RATING;
+                throw { code: 'INVALID_RATING', message: "Rating is invalid" };
             };
         }).then(function () {
             if (!common.validateEmail(review.Email)) {
-                throw CONSTANTS.ERROR_INVALID_EMAIL;
+                throw { code: 'INVALID_EMAIL', message: 'Invalid Email Address' };
             };
         }).then(function () {
             return dbContext.getConnection().then(function(con){
@@ -36,7 +36,7 @@ router.post('/add', function (req, res, next) {
 			if (users.length > 0) {
 				review.UserName = users[0].UserName; // set UserName if User is existed
 			}else {
-				throw CONSTANTS.ERROR_NOT_EXIST_EMAIL;
+				throw { code: 'INVALID_EMAIL', message: 'Invalid Email Address' };
 			}
         }).then(function () {
             return productService.createReview(ctx, review);
