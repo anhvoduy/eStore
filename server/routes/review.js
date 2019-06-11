@@ -9,13 +9,12 @@ var userService = require('../services/userService');
 router.post('/add', function (req, res, next) {
     var ctx = {};
     var review = {
-        Rating: req.body.rating,
-        Comment: req.body.comment,
-        ProductId: req.body.productId,
-        Email: req.body.email,
-        Name: req.body.name
+        Rating: req.body.Rating,
+        Comment: req.body.Comment,
+        ProductId: req.body.ProductId,
+        Email: req.body.Email
     }
-
+    
     Q.when()
         .then(function () {
             if (!common.validateRating(review.Rating)) {
@@ -29,8 +28,8 @@ router.post('/add', function (req, res, next) {
             return dbContext.getConnection().then(function(con){
                 ctx = con;
             });
-        }).then(function () {            
-            return userService.getUserByEmail(ctx, review.Email);
+        }).then(function () {
+            return userService.getUserByEmail(review.Email);
         }).then(function (users) {
 			if (users.length > 0) {
 				review.UserName = users[0].UserName; // set UserName if User is existed
@@ -38,7 +37,7 @@ router.post('/add', function (req, res, next) {
 				throw { code: 'INVALID_EMAIL', message: 'Invalid Email Address' };
 			}
         }).then(function () {
-            return productService.createReview(ctx, review);
+            return productService.createReview(review);
         }).then(function () {            
             return res.status(200).json({ 
                 code: 'CREATE_REVIEW_SUCCESS', 

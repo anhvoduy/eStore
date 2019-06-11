@@ -142,16 +142,30 @@ Factory.prototype.getProductsByBrand = async function (query) {
     }
 }
 
-Factory.prototype.createReview = function (review) {
-    var sqlCreateReview = `
-        INSERT INTO Review(Name, Rating, Comment, ProductId, Email, Author, Editor)
-        VALUES(:Name, :Rating, :Comment, :ProductId, :Email, :Author, :Editor)
-    `;
+Factory.prototype.createReview = async function (review) {
+    try
+    {
+        var sqlCreateReview = `
+            INSERT INTO Review(Name, Rating, Comment, ProductId, Email, Author, Editor)
+            VALUES(:Name, :Rating, :Comment, :ProductId, :Email, :Author, :Editor)
+        `;
 
-    var sqlUpdateProduct = `
-        UPDATE Product SET LatestReviewInfo =:Comment WHERE ProductId =:ProductId 
-    `;
-    return true;
+        // var sqlUpdateProduct = `
+        //     UPDATE Product SET LatestReviewInfo =:Comment WHERE ProductId =:ProductId 
+        // `;
+        return dbContext.queryExecute(sqlCreateReview, {
+            Name: review.UserName,
+            Rating: review.Rating, 
+            Comment: review.Comment, 
+            ProductId: review.ProductId, 
+            Email: review.Email, 
+            Author: review.UserName,
+            Editor: review.UserName
+        });
+    }
+    catch(err){
+        throw err;
+    }
 }
 
 Factory.prototype.create = async function (product) {

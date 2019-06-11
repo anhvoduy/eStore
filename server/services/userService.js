@@ -53,13 +53,13 @@ Factory.prototype.getUserByName = function (query) {
 	return dbContext.queryItem(sql, { UserName: query.UserName });
 }
 
-Factory.prototype.getUserByEmail = function (query) {
+Factory.prototype.getUserByEmail = function (email) {
 	let sql = `
 		SELECT UserId, UserKey, UserType, UserName, DisplayName, Email, Mobile, Title, Description, DateOfBirth
 		FROM User 
 		WHERE Email =:Email
 	`;
-	return dbContext.queryItem(sql, { Email: query.Email });	
+	return dbContext.queryItem(sql, { Email: email });	
 }
 
 
