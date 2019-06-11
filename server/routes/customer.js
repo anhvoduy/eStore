@@ -1,8 +1,7 @@
 const router = require('express').Router();
 const _ = require('lodash');
 const auth = require('../config/auth');
-const CONSTANT = require('../lib/constant');
-const dbContext = require('../lib/dbContext');
+const CONSTANTS = require('../lib/constants');
 const customerService = require('../services/customerService');
 
 // Router
@@ -46,13 +45,13 @@ router.post('/create', auth.checkAuthentication(), async function (req, res, nex
 		let customer = _.pick(req.body, ["CustomerName","Description","Email","Mobile","Tel","Fax","Representative","Title","Address","ImageKey"]);
 		
 		if(!customer.CustomerName)
-			throw CONSTANT.MISSING_FIELD_CUSTOMER_NAME;
+			throw CONSTANTS.MISSING_FIELD_CUSTOMER_NAME;
 
 		if(!customer.Address)
-			throw CONSTANT.MISSING_FIELD_CUSTOMER_ADDRESS;
+			throw CONSTANTS.MISSING_FIELD_CUSTOMER_ADDRESS;
 		
 		if(!customer.Email)
-			throw CONSTANT.MISSING_FIELD_CUSTOMER_EMAIL;
+			throw CONSTANTS.MISSING_FIELD_CUSTOMER_EMAIL;
 
 		let result = await customerService.create(customer);		
 		if(result.affectedRows > 0) 
@@ -71,21 +70,21 @@ router.post('/update', auth.checkAuthentication(), async function (req, res, nex
 		let customer = _.pick(req.body, ["CustomerId","CustomerKey","CustomerName","Description","Email","Mobile","Tel","Fax","Representative","Title","Address","ImageKey"]);
 		
 		if(!customer.CustomerKey)
-			throw CONSTANT.MISSING_FIELD_CUSTOMER_KEY;
+			throw CONSTANTS.MISSING_FIELD_CUSTOMER_KEY;
 
 		if(!customer.CustomerName)
-			throw CONSTANT.MISSING_FIELD_CUSTOMER_NAME;
+			throw CONSTANTS.MISSING_FIELD_CUSTOMER_NAME;
 
 		if(!customer.Address)
-			throw CONSTANT.MISSING_FIELD_CUSTOMER_ADDRESS;
+			throw CONSTANTS.MISSING_FIELD_CUSTOMER_ADDRESS;
 		
 		if(!customer.Email)
-			throw CONSTANT.MISSING_FIELD_CUSTOMER_EMAIL;
+			throw CONSTANTS.MISSING_FIELD_CUSTOMER_EMAIL;
 
 		if(!customer.CustomerId){
 			let cus = await customerService.getCustomerByKey(customer);
 			if(!cus)
-				throw CONSTANT.INVALID_FIELD_CUSTOMER_KEY;
+				throw CONSTANTS.INVALID_FIELD_CUSTOMER_KEY;
 			else 
 				customer.CustomerId = cus.CustomerId;
 		}
