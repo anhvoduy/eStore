@@ -16,6 +16,16 @@
     color: white;
 }
 
+.navbar-nav .dropdown .display-info>i {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.navbar-nav .dropdown .display-info .caret {
+    margin-left: 5px;
+    margin-right: 5px;
+    width: 8px;
+}
+
 .main-content {
     padding-top: 80px;
     padding-left: 30px;
