@@ -272,10 +272,8 @@ router.post('/delete', auth.checkAuthentication(), async function (req, res, nex
 
 		if(!product.ProductId){
 			let prod = await productService.getProductByKey(product);
-			if(!prod)
-				throw { code: 'INVALID_FIELD', message: 'Invalid field: ProductKey' }
-			else 
-				product.ProductId = prod.ProductId;
+			if(!prod) throw { code: 'INVALID_FIELD', message: 'Invalid field: ProductKey' }
+			else product.ProductId = prod.ProductId;
 		}
 
 		let result = await productService.delete(product.ProductId);

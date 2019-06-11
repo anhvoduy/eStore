@@ -83,10 +83,8 @@ router.post('/update', auth.checkAuthentication(), async function (req, res, nex
 
 		if(!customer.CustomerId){
 			let cus = await customerService.getCustomerByKey(customer);
-			if(!cus)
-				throw { code: 'INVALID_FIELD', message: 'Invalid field: Customer Key' };
-			else 
-				customer.CustomerId = cus.CustomerId;
+			if(!cus) throw { code: 'INVALID_FIELD', message: 'Invalid field: Customer Key' };
+			else customer.CustomerId = cus.CustomerId;
 		}
 
 		let result = await customerService.update(customer);
