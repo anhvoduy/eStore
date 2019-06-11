@@ -1,13 +1,11 @@
 ﻿var router = require('express').Router();
 var Q = require('q');
-var dbContext = require('../lib/dbContext');
 var common = require('../lib/commonlib');
 var productService = require('../services/productService');
 var userService = require('../services/userService');
 
 // Router
 router.post('/add', function (req, res, next) {
-    var ctx = {};
     var review = {
         Rating: req.body.Rating,
         Comment: req.body.Comment,
@@ -25,14 +23,10 @@ router.post('/add', function (req, res, next) {
                 throw { code: 'INVALID_EMAIL', message: 'Invalid Email Address' };
             };
         }).then(function () {
-            return dbContext.getConnection().then(function(con){
-                ctx = con;
-            });
-        }).then(function () {
             return userService.getUserByEmail(review.Email);
-        }).then(function (users) {
-			if (users.length > 0) {
-				review.UserName = users[0].UserName; // set UserName if User is existed
+        }).then(function (user) {
+			if (user && user.UserName) {
+				review.UserName = user.UserName; // set UserName if User is existed
 			}else {
 				throw { code: 'INVALID_EMAIL', message: 'Invalid Email Address' };
 			}
@@ -48,5 +42,4 @@ router.post('/add', function (req, res, next) {
         });
 })
 
-// return Router
 module.exports = router;
