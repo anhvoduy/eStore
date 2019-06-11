@@ -22,7 +22,7 @@
                                 <th>Status</th>
                                 <th>Description</th>
                                 <th>Edit</th>
-                                <th>Add Review</th>
+                                <th>Review</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -34,7 +34,7 @@
                                 <td>{{ p.Status }}</td>
                                 <td>{{ p.Description }}</td>
                                 <td><a ui-sref="productEdit({ productId: p.ProductId })">Edit</a></td>
-                                <td><a ui-sref="productReview({ productId: p.ProductId })">Add Review</a></td>
+                                <td><a ui-sref="productReview({ productId: p.ProductId })">Review</a></td>
                             </tr>
                         </tbody>
                     </table>
