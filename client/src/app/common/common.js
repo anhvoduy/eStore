@@ -26,9 +26,9 @@
             hitsTotal: 100,
             pageTotal: 10,
 			pageCurrent: 1,
-			pageSize: 10,
+			pageSize: 50,
 			maxSize: 5,
-			lstPageSize: [10, 50, 100]
+			lstPageSize: [50, 100, 200]
         };
 
         appCommon.prototype.accountTypeList = [
