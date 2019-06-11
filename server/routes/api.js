@@ -73,7 +73,6 @@ router.post('/upload', auth.checkAuthentication(), uploadProductImageFS, async f
 		product.ProductImage = fileName;
 		
 		if(product){
-			console.log(product);
 			res.status(200).json({ success: true, data: product });
 		}
 		else{
