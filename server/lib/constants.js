@@ -92,45 +92,10 @@ const CONSTANTS = {
 		message: 'Logout is success.' 
 	},
 
-	SUCCESS_ACCOUNT_CREATE: { code: 'SUCCESS_ACCOUNT_CREATE', message: 'Create Account is success.' },
-	SUCCESS_ACCOUNT_UPDATE: { code: 'SUCCESS_ACCOUNT_UPDATE', message: 'Update Account is success.' },
-	SUCCESS_ACCOUNT_DELETE: { code: 'SUCCESS_ACCOUNT_DELETE', message: 'Delete Account is success.' },
-
-	SUCCESS_CASH_CREATE: { code: 'SUCCESS_CASH_CREATE', message: 'Create Cash is success.' },
-	SUCCESS_CASH_UPDATE: { code: 'SUCCESS_CASH_UPDATE', message: 'Update Cash is success.' },
-	SUCCESS_CASH_DELETE: { code: 'SUCCESS_CASH_DELETE', message: 'Delete Cash is success.' },
-
-	SUCCESS_STOCKIN_CREATE: { code: 'SUCCESS_STOCKIN_CREATE', message: 'Create StockIn is success.' },
-	SUCCESS_STOCKIN_UPDATE: { code: 'SUCCESS_STOCKIN_UPDATE', message: 'Update StockIn is success.' },
-	SUCCESS_STOCKIN_DELETE: { code: 'SUCCESS_STOCKIN_DELETE', message: 'Delete StockIn is success.' },
-
-	SUCCESS_STOCKOUT_CREATE: { code: 'SUCCESS_STOCKOUT_CREATE', message: 'Create StockOut is success.' },
-	SUCCESS_STOCKOUT_UPDATE: { code: 'SUCCESS_STOCKOUT_UPDATE', message: 'Update StockOut is success.' },
-	SUCCESS_STOCKOUT_DELETE: { code: 'SUCCESS_STOCKOUT_DELETE', message: 'Delete StockOut is success.' },
-
-	SUCCESS_BRAND_CREATE: { code: 'SUCCESS_BRAND_CREATE', message: 'Create Brand is success.' },
-	SUCCESS_BRAND_UPDATE: { code: 'SUCCESS_BRAND_UPDATE', message: 'Update Brand is success.' },
-	SUCCESS_BRAND_DELETE: { code: 'SUCCESS_BRAND_DELETE', message: 'Delete Brand is success.' },
-
-	SUCCESS_PRODUCT_CREATE: { code: 'SUCCESS_PRODUCT_CREATE', message: 'Create Product is success.' },
-	SUCCESS_PRODUCT_UPDATE: { code: 'SUCCESS_PRODUCT_UPDATE', message: 'Update Product is success.' },
-	SUCCESS_PRODUCT_DELETE: { code: 'SUCCESS_PRODUCT_DELETE', message: 'Delete Product is success.' },
-
-	SUCCESS_USER_CREATE: { code: 'SUCCESS_USER_CREATE', message: 'Create User is success.' },
-	SUCCESS_USER_UPDATE: { code: 'SUCCESS_USER_UPDATE', message: 'Update User is success.' },
-	SUCCESS_USER_DELETE: { code: 'SUCCESS_USER_DELETE', message: 'Delete User is success.' },
-
 	/** -------------Error Handle -------------*/
 	ERROR_UNAUTHORIZED: { code: 'ERROR_UNAUTHORIZED', message: 'User is not authorized.' },
 	ERROR_UNAUTHENTICATION: { code: 'ERROR_UNAUTHENTICATION', message: 'Username and Password is invalid.' },
-	ERROR_CONNECTION: { code: 'ERROR_CONNECTION', message: 'Error: the current connection is closed or undefined.' },
-	ERROR_NOT_EXIST_TRANSACTIONID: { code: 'ERROR_NOT_EXIST_TRANSACTIONID', message: 'Cash Id does not existed.' },
-	ERROR_NOT_EXIST_BRANDID: { code: 'ERROR_NOT_EXIST_BRANDID', message: 'Brand Id does not existed.' },
-	ERROR_NOT_EXIST_PRODUCTID: { code: 'ERROR_NOT_EXIST_PRODUCTID', message: 'Product Id does not existed.' },
-	ERROR_NOT_EXIST_USERID: { code: 'ERROR_NOT_EXIST_USERID', message: 'User Id does not existed.' },
-	ERROR_NOT_EXIST_EMAIL: { code: 'ERROR_NOT_EXIST_EMAIL', message: 'Email Account does not existed.' },
-	ERROR_INVALID_RATING: { code: 'ERROR_INVALID_RATING', message: "Rating is invalid" },
-	ERROR_INVALID_EMAIL: { code: 'ERROR_INVALID_EMAIL', message: "Email is invalid" },
+	
 
 	// User
 	MISSING_FIELD_USERKEY: { code: 'MISSING_FIELD_USERKEY', message: 'missing field UserKey.' },
@@ -144,13 +109,6 @@ const CONSTANTS = {
 	MISSING_FIELD_PRODUCTCODE: { code: 'MISSING_FIELD_PRODUCTCODE', message: 'missing field ProductCode.' },
 	MISSING_FIELD_PRODUCTNAME: { code: 'MISSING_FIELD_PRODUCTNAME', message: 'missing field ProductName.' },
 	INVALID_FIELD_PRODUCTKEY: { code: 'INVALID_FIELD_PRODUCTKEY', message: 'invalid field ProductKey.' },
-
-	// Account
-	MISSING_FIELD_ACCOUNTKEY: { code: 'MISSING_FIELD_ACCOUNTKEY', message: 'missing field AccountKey.' },
-	MISSING_FIELD_ACCOUNTNO: { code: 'MISSING_FIELD_ACCOUNTNO', message: 'missing field AccountNo.' },
-	MISSING_FIELD_ACCOUNTNAME: { code: 'MISSING_FIELD_ACCOUNTNAME', message: 'missing field AccountName.' },
-	MISSING_FIELD_DEBITORCREDIT: { code: 'MISSING_FIELD_DEBITORCREDIT', message: 'missing field DebitOrCredit.' },
-	INVALID_FIELD_ACCOUNTKEY: { code: 'INVALID_FIELD_ACCOUNTKEY', message: 'invalid field AccountKey.' },
 
 	// Customer
 	MISSING_FIELD_CUSTOMER_KEY: { code: 'MISSING_FIELD_CUSTOMER_KEY', message: 'missing field Customer Key.' },

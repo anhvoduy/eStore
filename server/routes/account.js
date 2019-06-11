@@ -71,7 +71,7 @@ router.post('/update', auth.checkAuthentication(), async function (req, res, nex
 		if(!account.AccountId){
 			let acct = await accountService.getAccountById(account);
 			if(!acct)
-				throw { code: 'INVALID_FIELD_ACCOUNTKEY', message: 'Invalid field: AccountKey' };
+				throw { code: 'INVALID_FIELD', message: 'Invalid field: AccountKey' };
 			else 
 				account.AccountId = acct.AccountId;
 		}
