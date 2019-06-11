@@ -3,15 +3,9 @@ const router = express.Router();
 const cors = require('cors')
 const jwt = require('jsonwebtoken');
 const passport = require('passport');
-const LocalStrategy = require('passport-local').Strategy;
 const multer = require('multer');
 const auth = require('../config/auth');
 const config = require('../config/config');
-const CONSTANT = require('../lib/constant');
-
-
-
-
 
 // routers for testing
 router.get('/', function (req, res, next) {
@@ -68,7 +62,6 @@ router.post('/login', function (req, res, next) {
 
 router.get('/logout', function (req, res, next) {
 	// TO DO: force logout 404
-	// console.log('Log out current user ...');	
 	next();
 });
 

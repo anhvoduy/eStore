@@ -87,15 +87,4 @@ router.post('/update', auth.checkAuthentication(), async function (req, res, nex
 	}
 });
 
-router.post('/delete', auth.checkAuthentication(), async function (req, res, next) {
-	try
-	{
-		res.status(200).json(true);
-	}
-	catch(err){
-		next(err);
-	}
-});
-
-// return Router
 module.exports = router;
