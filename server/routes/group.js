@@ -1,7 +1,6 @@
 ﻿const router = require('express').Router();
 const _ = require('lodash');
 const auth = require('../config/auth');
-const dbContext = require('../lib/dbContext');
 const groupService = require('../services/groupService');
 
 // Routers
