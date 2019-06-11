@@ -191,11 +191,11 @@ router.get('/brand/items',
 		}
 		
 		if(!query.BrandKey && !query.BrandId)
-			throw CONSTANTS.MISSING_FIELD_BRANDID_BRANDKEY;
+			throw { code: 'MISSING_REQUIRED_FIELD', message: 'Missing required field: BrandId or BrandKey.' };
 
 		if(query.BrandKey){
 			let brand = await brandService.getBrandByKey({ BrandKey: query.BrandKey });
-			if(!brand || !brand.BrandId) throw CONSTANTS.INVALID_FIELD_BRANDKEY;
+			if(!brand || !brand.BrandId) throw { code: 'INVALID_DATA', message: 'Invalid data' };
 			else query.BrandId = brand.BrandId;
 		}
 

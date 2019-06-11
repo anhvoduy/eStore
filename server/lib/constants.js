@@ -138,14 +138,6 @@ const CONSTANTS = {
 	MISSING_FIELD_PASSWORD: { code: 'MISSING_FIELD_PASSWORD', message: 'missing field Password.' },
 	INVALID_FIELD_USERKEY: { code: 'INVALID_FIELD_USERKEY', message: 'invalid field UserKey.' },
 
-	// Brand
-	MISSING_FIELD_BRANDID_BRANDKEY: { code: 'MISSING_FIELD_BRANDID_BRANDKEY', message: 'missing field BrandId or BrandKey.' },
-	MISSING_FIELD_BRANDID: { code: 'MISSING_FIELD_BRANDID', message: 'missing field BrandId.' },
-	MISSING_FIELD_BRANDKEY: { code: 'MISSING_FIELD_BRANDKEY', message: 'missing field BrandKey.' },
-	MISSING_FIELD_BRANDNAME: { code: 'MISSING_FIELD_BRANDNAME', message: 'missing field BrandName.' },
-
-	INVALID_FIELD_BRANDKEY: { code: 'INVALID_FIELD_BRANDKEY', message: 'invalid field BrandKey.' },
-
 	// Product
 	MISSING_FIELD_PRODUCTID: { code: 'MISSING_FIELD_PRODUCTID', message: 'missing field ProductId.' },
 	MISSING_FIELD_PRODUCTKEY: { code: 'MISSING_FIELD_PRODUCTKEY', message: 'missing field ProductKey.' },
