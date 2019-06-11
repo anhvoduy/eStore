@@ -16,7 +16,6 @@
 */
 
 const CONSTANTS = {
-	/** ------------- Unchange -------------*/
 	TRANSACTIONTYPE: {
 		CASHIN	: 'CASHIN',
 		CASHOUT	: 'CASHOUT',
@@ -77,24 +76,6 @@ const CONSTANTS = {
 		{ ColorCode: 'Platinum', ColorName: 'Platinum' },
 		{ ColorCode: 'MultiColor', ColorName: 'Multiple Color' }
 	],
-
-	/** ------------- Authentication -------------*/
-	SUCCESS_AUTHENTICATION: { 
-		code: 'SUCCESS_AUTHENTICATION', 
-		message: 'Authentication is success.' 
-	},
-	SUCCESS_LOGIN: { 
-		code: 'SUCCESS_LOGIN', 
-		message: 'Login is success.' 
-	},
-	SUCCESS_LOGOUT: { 
-		code: 'SUCCESS_LOGOUT', 
-		message: 'Logout is success.' 
-	},
-
-	/** -------------Error Handle -------------*/
-	ERROR_UNAUTHORIZED: { code: 'ERROR_UNAUTHORIZED', message: 'User is not authorized.' },
-	ERROR_UNAUTHENTICATION: { code: 'ERROR_UNAUTHENTICATION', message: 'Username and Password is invalid.' },
 };
 
 module.exports = CONSTANTS;
