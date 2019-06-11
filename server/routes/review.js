@@ -1,8 +1,6 @@
 ﻿var router = require('express').Router();
 var Q = require('q');
-var _ = require('lodash');
-var auth = require('../config/auth');
-var CONSTANT = require('../lib/constant');
+var CONSTANTS = require('../lib/constants');
 var dbContext = require('../lib/dbContext');
 var common = require('../lib/commonlib');
 var productService = require('../services/productService');
@@ -22,11 +20,11 @@ router.post('/add', function (req, res, next) {
     Q.when()
         .then(function () {
             if (!common.validateRating(review.Rating)) {
-                throw CONSTANT.ERROR_INVALID_RATING;
+                throw CONSTANTS.ERROR_INVALID_RATING;
             };
         }).then(function () {
             if (!common.validateEmail(review.Email)) {
-                throw CONSTANT.ERROR_INVALID_EMAIL;
+                throw CONSTANTS.ERROR_INVALID_EMAIL;
             };
         }).then(function () {
             return dbContext.getConnection().then(function(con){
@@ -38,7 +36,7 @@ router.post('/add', function (req, res, next) {
 			if (users.length > 0) {
 				review.UserName = users[0].UserName; // set UserName if User is existed
 			}else {
-				throw CONSTANT.ERROR_NOT_EXIST_EMAIL;
+				throw CONSTANTS.ERROR_NOT_EXIST_EMAIL;
 			}
         }).then(function () {
             return productService.createReview(ctx, review);
