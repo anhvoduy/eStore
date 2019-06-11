@@ -1,15 +1,13 @@
 const router = require('express').Router();
 const _ = require('lodash');
 const auth = require('../config/auth');
-const CONSTANT = require('../lib/constant');
-const dbContext = require('../lib/dbContext');
 const accountService = require('../services/accountService');
 
 // Router
 router.get('/items', auth.checkAuthentication(), async function (req, res, next) {
 	try 
 	{
-		let query = _.pick(req.query, ['PageCurrent', 'PageSize']);
+		let query = _.pick(req.query,['PageCurrent', 'PageSize']);
 		let data = await accountService.getList(query);
 		res.status(200).json(data);
 	}
@@ -35,13 +33,13 @@ router.post('/create', auth.checkAuthentication(), async function (req, res, nex
 	{
 		let account = _.pick(req.body,['AccountNo', 'AccountName', 'Description', 'DebitOrCredit']);
 		if(!account.AccountNo)
-			throw CONSTANT.MISSING_FIELD_ACCOUNTNO;
+			throw { code: 'MISSING_REQUIRED_FIELD', message: 'Missing required field: AccountNo' }
 		
 		if(!account.AccountName)
-			throw CONSTANT.MISSING_FIELD_ACCOUNTNAME;
+			throw { code: 'MISSING_REQUIRED_FIELD', message: 'Missing required field: AccountName' }
 
 		if(!account.DebitOrCredit)
-			throw CONSTANT.MISSING_FIELD_DEBITORCREDIT;
+			throw { code: 'MISSING_REQUIRED_FIELD', message: 'Missing required field: DebitOrCredit' }
 		
 		let result = await accountService.create(account);
 		if(result.affectedRows > 0) 
@@ -59,30 +57,30 @@ router.post('/update', auth.checkAuthentication(), async function (req, res, nex
 	{
 		let account = _.pick(req.body,['AccountId', 'AccountKey', 'AccountNo', 'AccountName', 'Description', 'DebitOrCredit']);		
 		if(!account.AccountKey)
-			throw CONSTANT.MISSING_FIELD_ACCOUNTKEY;
+			throw { code: 'MISSING_REQUIRED_FIELD', message: 'Missing required field: AccountKey' }
 
 		if(!account.AccountNo)
-			throw CONSTANT.MISSING_FIELD_ACCOUNTNO;
+			throw { code: 'MISSING_REQUIRED_FIELD', message: 'Missing required field: AccountNo' }
 		
 		if(!account.AccountName)
-			throw CONSTANT.MISSING_FIELD_ACCOUNTNAME;
+			throw { code: 'MISSING_REQUIRED_FIELD', message: 'Missing required field: AccountName' }
 
 		if(!account.DebitOrCredit)
-			throw CONSTANT.MISSING_FIELD_DEBITORCREDIT;
+			throw { code: 'MISSING_REQUIRED_FIELD', message: 'Missing required field: DebitOrCredit' }
 
 		if(!account.AccountId){
 			let acct = await accountService.getAccountById(account);
 			if(!acct)
-				throw CONSTANT.INVALID_FIELD_ACCOUNTKEY;
+				throw { code: 'INVALID_FIELD_ACCOUNTKEY', message: 'Invalid field: AccountKey' };
 			else 
 				account.AccountId = acct.AccountId;
 		}
 
 		let result = await accountService.update(account);
-		if(result.affectedRows > 0) 
+		if(result.affectedRows > 0)
 			res.status(200).json({ success: true });
-		else 
-			res.status(500).json({ success: false });		
+		else
+			res.status(500).json({ success: false });
 	}
 	catch(err){
 		next(err);

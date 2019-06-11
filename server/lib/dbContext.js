@@ -1,7 +1,5 @@
 'use strict';
 var Q = require('q');
-var _ = require('lodash');
-var path = require('path');
 var mysql = require('mysql');
 var config = require('../config/config').mySql;
 var CONSTANT = require('./constant');

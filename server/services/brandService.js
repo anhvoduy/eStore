@@ -8,8 +8,6 @@ const Factory = function(){
 Factory.prototype.getList = async function (query) {
 	try
 	{
-		let TotalSize = 0;
-        let PageTotal = 0;
         let PageCurrent = parseInt(query.PageCurrent) - 1;
         let PageSize = parseInt(query.PageSize);
 		let PageOffset = PageCurrent * PageSize;
@@ -53,7 +51,7 @@ Factory.prototype.getList = async function (query) {
 Factory.prototype.getTopBrands = async function () {
 	try
 	{
-		let topBrands = [12,14,15,28,29,30]; // top 5 brands
+		// top 5 brands
 		let sqlQuery = `
 			SELECT BrandId, BrandKey, BrandName, Description
 			FROM Brand

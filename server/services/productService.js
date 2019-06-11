@@ -211,5 +211,17 @@ Factory.prototype.delete = async function (productId) {
     }
 }
 
+Factory.prototype.getCategories = async function () {
+    try
+    {
+        const sql = `SELECT * FROM Category WHERE Deleted <> 1`;
+        const data = await dbContext.queryList(sql);
+        return data;
+    }
+    catch(err){
+        throw err;
+    }	
+}
+
 // Export
 module.exports = new Factory;
