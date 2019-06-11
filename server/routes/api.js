@@ -69,18 +69,6 @@ router.get('/logout', function (req, res, next) {
 	next();
 });
 
-// sample file upload
-const multerConfig = {
-	dest: './uploads/sample',
-	limits: { fileSize: 1048576 }
-};
-const uploadProductImage = multer(multerConfig).single('ProductImage');
-
-router.post('/upload', auth.checkAuthentication(), uploadProductImage, async function(req, res, next){
-router.post('/changepassword', function (req, res, next) {
-	next();
-});
-
 router.post('/upload', auth.checkAuthentication(), uploadProductImageFS, async function(req, res, next){
 	try
 	{
