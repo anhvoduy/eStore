@@ -37,7 +37,7 @@ router.post('/create', auth.checkAuthentication(), async function (req, res, nex
     {
         let group = _.pick(req.body, ['GroupName','Description']);
         if(!group.GroupName)
-            throw CONSTANT.MISSING_FIELD_USERNAME;              
+            throw { code: 'MISSING_REQUIRED_FIELD', message: 'missing required field: GroupName' }      
 
         let result = await groupService.create(group);
         if(result.affectedRows > 0) 
