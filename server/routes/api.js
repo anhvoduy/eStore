@@ -65,7 +65,6 @@ router.post('/login', function (req, res, next) {
 
 router.get('/logout', function (req, res, next) {
 	// TO DO: force logout 404
-	// console.log('Log out current user ...');	
 	next();
 });
 

@@ -87,5 +87,4 @@ router.post('/update', auth.checkAuthentication(), async function (req, res, nex
 	}
 });
 
-// return Router
 module.exports = router;
