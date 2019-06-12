@@ -6,7 +6,7 @@ const OIDCStrategy = require('passport-azure-ad').OIDCStrategy;
 
 const auth = require('../config/auth');
 const config = require('../config/config');
-const credential = require('../config/credential');
+const aadConfig = require('../config/aadConfig');
 const { uploadProductImageFS } = require('../lib/uploadFile');
 
 // routes for testing
@@ -106,24 +106,24 @@ var findByOid = function(oid, fn) {
 // To do prototype (6), passReqToCallback must be set to true in the config.
 //-----------------------------------------------------------------------------
 passport.use(new OIDCStrategy({
-		identityMetadata: credential.identityMetadata,
-		clientID: credential.clientID,
-		responseType: credential.responseType,
-		responseMode: credential.responseMode,
-		redirectUrl: credential.redirectUrl,
-		allowHttpForRedirectUrl: credential.allowHttpForRedirectUrl,
-		clientSecret: credential.clientSecret,
-		validateIssuer: credential.validateIssuer,
-		isB2C: credential.isB2C,
-		issuer: credential.issuer,
-		passReqToCallback: credential.passReqToCallback,
-		scope: credential.scope,
-		loggingLevel: credential.loggingLevel,
-		nonceLifetime: credential.nonceLifetime,
-		nonceMaxAmount: credential.nonceMaxAmount,
-		useCookieInsteadOfSession: credential.useCookieInsteadOfSession,
-		cookieEncryptionKeys: credential.cookieEncryptionKeys,
-		clockSkew: credential.clockSkew,
+		identityMetadata: aadConfig.creds.identityMetadata,
+		clientID: aadConfig.creds.clientID,
+		responseType: aadConfig.creds.responseType,
+		responseMode: aadConfig.creds.responseMode,
+		redirectUrl: aadConfig.creds.redirectUrl,
+		allowHttpForRedirectUrl: aadConfig.creds.allowHttpForRedirectUrl,
+		clientSecret: aadConfig.creds.clientSecret,
+		validateIssuer: aadConfig.creds.validateIssuer,
+		isB2C: aadConfig.creds.isB2C,
+		issuer: aadConfig.creds.issuer,
+		passReqToCallback: aadConfig.creds.passReqToCallback,
+		scope: aadConfig.creds.scope,
+		loggingLevel: aadConfig.creds.loggingLevel,
+		nonceLifetime: aadConfig.creds.nonceLifetime,
+		nonceMaxAmount: aadConfig.creds.nonceMaxAmount,
+		useCookieInsteadOfSession: aadConfig.creds.useCookieInsteadOfSession,
+		cookieEncryptionKeys: aadConfig.creds.cookieEncryptionKeys,
+		clockSkew: aadConfig.creds.clockSkew,
   	},
   	function(iss, sub, profile, accessToken, refreshToken, done) {
 		if (!profile.oid) {
@@ -149,7 +149,7 @@ passport.use(new OIDCStrategy({
 router.post('/login', function (req, res, next) {
 	passport.authenticate('azuread-openidconnect', {
         response: res,
-        resourceURL: credential.resourceURL,
+        resourceURL: aadConfig.resourceURL,
         customState: 'my_state',
         failureRedirect: '/'
     })(req, res, next);
