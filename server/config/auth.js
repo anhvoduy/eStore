@@ -6,6 +6,7 @@ const userService = require('../services/userService');
 
 const auth = {};
 auth.setup = function (app) {
+    console.log('- Azure AD Authenticate:', config.azureAuthenticate);
 
     app.use(passport.initialize());
 
@@ -44,10 +45,6 @@ auth.checkAuthentication = function () {
             return res.status(403).send({ success: false, message: 'No token provided.' });
         }      
     };
-};
-
-auth.checkSelf = function(){
-    return true;
 };
 
 module.exports = auth;

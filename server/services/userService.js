@@ -1,4 +1,4 @@
-﻿const common = require('../lib/commonlib');
+const common = require('../lib/commonlib');
 const CONSTANTS = require('../lib/constants');
 const dbContext = require('../lib/dbContext');
 
@@ -116,7 +116,7 @@ Factory.prototype.create = async function (user) {
 	}
 	catch(err){
 		throw err;
-	}	
+	}
 }
 
 Factory.prototype.update = async function (user) {
