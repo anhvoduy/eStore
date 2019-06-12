@@ -1,19 +1,23 @@
 ﻿var express = require('express');
+var expressSession = require('express-session');
 var path = require("path");
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
+var methodOverride = require('method-override');
 var auth = require('./config/auth');
 var config = require('./config/config');
 var common = require('./lib/commonlib');
 
 // Express
 var server = express();
+//auth.setup(server); // setup server authenticate
+
 server.use(cookieParser()); // read cookies (needed for auth)
+server.use(methodOverride());
 server.use(bodyParser.urlencoded({ extended: true }));
 server.use(bodyParser.json());
+server.use(expressSession({ secret: config.secretKey, resave: true, saveUninitialized: false }));
 
-// setup Server
-auth.setup(server);
 server.set('port', process.env.PORT || 8000);
 server.set('secretKey', config.secretKey);
 
