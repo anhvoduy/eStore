@@ -158,7 +158,7 @@ router.post('/login', function (req, res, next) {
     res.redirect('/');
 });
 
-app.get('/auth/openid/return', function(req, res, next) {
+router.get('/auth/openid/return', function(req, res, next) {
     passport.authenticate('azuread-openidconnect', {
 		response: res,
 		failureRedirect: '/'  
