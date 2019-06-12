@@ -181,7 +181,7 @@ router.post('/auth/openid/return', function(req, res, next) {
 router.get('/logout', function(req, res) {
 	req.session.destroy(function(err) {
 		req.logOut();
-		res.redirect(config.destroySessionUrl);
+		res.redirect(aadConfig.destroySessionUrl);
 	});
 });
 
