@@ -6,9 +6,9 @@ const userService = require('../services/userService');
 
 const auth = {};
 auth.setup = function (app) {
-    console.log('- Azure AD Authenticate:', config.azureAuthenticate);
 
     app.use(passport.initialize());
+    app.use(passport.session());
 
     passport.use(new LocalStrategy(
         async function (username, password, done) {
