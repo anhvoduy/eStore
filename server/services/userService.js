@@ -5,16 +5,6 @@ const dbContext = require('../lib/dbContext');
 const Factory = function () {
 }
 
-Factory.prototype.myProfile = function(){
-	return {
-		firstName: 'Eric',
-		lastName: 'Cantona',
-		number: '7',
-		fullName: 'Eric Cantona',
-		club: 'Manchester United'
-	}
-}
-
 Factory.prototype.getUsers = function(query){
 	// No need pagination
 	let sql = `
@@ -185,11 +175,6 @@ Factory.prototype.getMenu = function () {
 				{ code: 'group', name: 'Group' }
 			]
 		},
-		// {
-		// 	code: 'search',
-		// 	name: 'Search',
-		// 	clickable: true
-		// },
 		{
 			code: 'help',
 			name: 'Help',
