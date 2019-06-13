@@ -3,7 +3,7 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const OIDCStrategy = require('passport-azure-ad').OIDCStrategy;
 const config = require('./config');
-const aadConfig = require('./aadConfig');
+const adConfig = require('./adConfig');
 const userService = require('../services/userService');
 
 passport.serializeUser(function(user, done) {
@@ -72,24 +72,24 @@ auth.setup = function (app) {
         // To do prototype (6), passReqToCallback must be set to true in the config.
         //-----------------------------------------------------------------------------
         passport.use(new OIDCStrategy({
-            identityMetadata: aadConfig.creds.identityMetadata,
-            clientID: aadConfig.creds.clientID,
-            responseType: aadConfig.creds.responseType,
-            responseMode: aadConfig.creds.responseMode,
-            redirectUrl: aadConfig.creds.redirectUrl,
-            allowHttpForRedirectUrl: aadConfig.creds.allowHttpForRedirectUrl,
-            clientSecret: aadConfig.creds.clientSecret,
-            validateIssuer: aadConfig.creds.validateIssuer,
-            isB2C: aadConfig.creds.isB2C,
-            issuer: aadConfig.creds.issuer,
-            passReqToCallback: aadConfig.creds.passReqToCallback,
-            scope: aadConfig.creds.scope,
-            loggingLevel: aadConfig.creds.loggingLevel,
-            nonceLifetime: aadConfig.creds.nonceLifetime,
-            nonceMaxAmount: aadConfig.creds.nonceMaxAmount,
-            useCookieInsteadOfSession: aadConfig.creds.useCookieInsteadOfSession,
-            cookieEncryptionKeys: aadConfig.creds.cookieEncryptionKeys,
-            clockSkew: aadConfig.creds.clockSkew,
+            identityMetadata: adConfig.creds.identityMetadata,
+            clientID: adConfig.creds.clientID,
+            responseType: adConfig.creds.responseType,
+            responseMode: adConfig.creds.responseMode,
+            redirectUrl: adConfig.creds.redirectUrl,
+            allowHttpForRedirectUrl: adConfig.creds.allowHttpForRedirectUrl,
+            clientSecret: adConfig.creds.clientSecret,
+            validateIssuer: adConfig.creds.validateIssuer,
+            isB2C: adConfig.creds.isB2C,
+            issuer: adConfig.creds.issuer,
+            passReqToCallback: adConfig.creds.passReqToCallback,
+            scope: adConfig.creds.scope,
+            loggingLevel: adConfig.creds.loggingLevel,
+            nonceLifetime: adConfig.creds.nonceLifetime,
+            nonceMaxAmount: adConfig.creds.nonceMaxAmount,
+            useCookieInsteadOfSession: adConfig.creds.useCookieInsteadOfSession,
+            cookieEncryptionKeys: adConfig.creds.cookieEncryptionKeys,
+            clockSkew: adConfig.creds.clockSkew,
         },
         function(iss, sub, profile, accessToken, refreshToken, done) {
             if (!profile.oid) {

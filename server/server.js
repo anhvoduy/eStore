@@ -8,7 +8,7 @@ var passport = require('passport');
 
 var auth = require('./config/auth');
 var config = require('./config/config');
-var aadConfig = require('./config/aadConfig');
+var adConfig = require('./config/adConfig');
 var common = require('./lib/commonlib');
 
 // Express
@@ -91,7 +91,7 @@ server.use('/libs', express.static(path.join(pathAdmin, 'libs')));
 server.get('/loginad', function (req, res, next) {
 	passport.authenticate('azuread-openidconnect', {
         response: res,
-        resourceURL: aadConfig.resourceURL,
+        resourceURL: adConfig.resourceURL,
         customState: 'my_state',
         failureRedirect: '/'
     })(req, res, next);
@@ -122,7 +122,7 @@ server.post('/auth/openid/return', receivedAzureAD, responseAzureAD);
 server.get('/logout', function(req, res) {
 	req.session.destroy(function(err) {
 		req.logOut();
-		res.redirect(aadConfig.destroySessionUrl);
+		res.redirect(adConfig.destroySessionUrl);
 	});
 });
 
