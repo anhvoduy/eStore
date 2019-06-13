@@ -106,27 +106,25 @@ server.get('/loginad', function (req, res, next) {
     res.redirect('/');
 });
 
-server.get('/auth/openid/return', function(req, res, next) {
+const receivedAzureAD = function(req, res, next) {
     passport.authenticate('azuread-openidconnect', {
 		response: res,
-		failureRedirect: '/'  
+		failureRedirect: '/'
     })(req, res, next);
-}, function(req, res) {
-    console.log('We received a return from AzureAD.');
-	res.redirect('/');
-});
+};
 
-server.post('/auth/openid/return', function(req, res, next) {
-    passport.authenticate('azuread-openidconnect', {
-		response: res,
-        failureRedirect: '/'
-    })(req, res, next);
-}, function(req, res) {
-	console.log('We received a return from AzureAD.');
-	// console.log('- body:', res.req.body);
-	// console.log('- user:', res.req.user);
-	res.redirect('/');
-});
+const responseAzureAD = function(req, res) {
+    console.log('We received a return from AzureAD.');
+	res.status(200).json({
+		success: true,
+		body: res.req.body,
+		user: res.req.user
+	});
+	//res.redirect('/');
+};
+
+server.get('/auth/openid/return', receivedAzureAD, responseAzureAD);
+server.post('/auth/openid/return', receivedAzureAD, responseAzureAD);
 
 server.get('/logout', function(req, res) {
 	req.session.destroy(function(err) {
