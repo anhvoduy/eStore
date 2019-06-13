@@ -24,6 +24,8 @@ server.use(bodyParser.urlencoded({ extended: true }));
 server.use(bodyParser.json());
 server.use(expressSession({ secret: config.secretKey, resave: true, saveUninitialized: false }));
 
+// setup Server
+auth.setup(server);
 server.set('port', process.env.PORT || 3000);
 server.set('secretKey', config.secretKey);
 
