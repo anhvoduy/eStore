@@ -115,13 +115,13 @@ Factory.prototype.update = async function (user) {
 		var sql = `
 			UPDATE User
 			SET UserName=:UserName,
-				DisplayName=:DisplayName, 
-				Email=:Email, 
-				Mobile=:Mobile, 				
-				Title=:Title, 
+				DisplayName=:DisplayName,
+				Email=:Email,
+				Mobile=:Mobile,
+				Title=:Title,
 				DateOfBirth=:DateOfBirth,
 				Description=:Description
-			WHERE UserId=:UserId			
+			WHERE UserId=:UserId
 		`;
 		return dbContext.queryExecute(sql, user);
 	}
@@ -141,7 +141,7 @@ Factory.prototype.delete = async function (userId) {
 	}
 }
 
-
+/** TO DO: deprecated this function */
 Factory.prototype.getMenu = function () {
 	var navigation = [
 		{
