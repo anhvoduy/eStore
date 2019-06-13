@@ -96,7 +96,8 @@
         <form name="form" ng-submit="login()" role="form">
             <input type="text" name="username" placeholder="UserName" ng-model="username" required />
             <input type="password" name="password" placeholder="Password" ng-model="password" required />
-            <button type="submit" class="btn btn-primary btn-block btn-large" ng-disabled="form.$invalid || dataLoading">Let me in.</button>            
+            <button type="submit" class="btn btn-primary btn-block btn-large" ng-disabled="form.$invalid || dataLoading">Let me in.</button>
+            <a href="/loginad" class="btn btn-primary btn-block btn-large">Login by Azure AD</a>
         </form>
         <h3><a href="/">Back to Home Page</a></h3>
     </div>
