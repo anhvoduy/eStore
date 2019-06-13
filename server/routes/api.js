@@ -2,7 +2,6 @@ const router = require('express').Router();
 const cors = require('cors')
 const jwt = require('jsonwebtoken');
 const passport = require('passport');
-const OIDCStrategy = require('passport-azure-ad').OIDCStrategy;
 
 const auth = require('../config/auth');
 const config = require('../config/config');
