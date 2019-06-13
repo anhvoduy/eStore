@@ -97,7 +97,7 @@ server.get('/loginad', function (req, res, next) {
     })(req, res, next);
 }, function(req, res){
 	console.log('Login was called in the Sample');
-    res.redirect('/');
+	res.redirect('/');
 });
 
 const receivedAzureAD = function(req, res, next) {
