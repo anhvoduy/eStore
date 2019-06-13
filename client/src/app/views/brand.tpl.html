@@ -31,11 +31,11 @@
                     </table>
                 </div>
                 <div class="row">
-                    <div class="message-error" ng-show='(messageError.length > 0)'>
-                        <div ng-repeat="msg in messageError">{{ msg }}</div>
+                    <div class="message-error" ng-show='(messageError && messageError != "")'>
+                        {{ messageError }}
                     </div>
-                    <div class="message-success" ng-show='(messageSuccess.length > 0)'>
-                        <div ng-repeat="msg in messageSuccess">{{ msg }}</div>
+                    <div class="message-success" ng-show='(messageSuccess && messageSuccess != "")'>
+                        {{ messageSuccess }}
                     </div>
                 </div>
             </div>
