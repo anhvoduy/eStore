@@ -29,8 +29,8 @@ router.get('/newsfeed', cors(), function (req, res, next){
 });
 
 
-// routers: use to login/logout
-router.post('/login', function (req, res, next) {
+// routers: use to login/logout by DB
+router.post('/authenticate', function (req, res, next) {
 	return passport.authenticate('local', async function (err, result) {
 		try
 		{
@@ -55,11 +55,6 @@ router.post('/login', function (req, res, next) {
 			next(err);
 		}
 	})(req, res, next);
-});
-
-router.get('/logout', function (req, res, next) {
-	// TO DO: force logout 404
-	next();
 });
 
 router.post('/upload', auth.checkAuthentication(), uploadProductImageFS, async function(req, res, next){
