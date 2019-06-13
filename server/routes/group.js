@@ -3,7 +3,6 @@ const _ = require('lodash');
 const auth = require('../config/auth');
 const groupService = require('../services/groupService');
 
-// Routers
 router.get('/items', auth.checkAuthentication(), async function (req, res, next) {
     try
     {
@@ -79,16 +78,4 @@ router.post('/update', auth.checkAuthentication(), async function (req, res, nex
     }
 });
 
-router.post('/delete', auth.checkAuthentication(), async function (req, res, next) {
-    try
-    {
-        let group = _.pick(req.body, ['GroupId']);
-        res.status(200).json(true);
-    }
-    catch(err){
-        next(err);
-    }	
-});
-
-// Export
 module.exports = router;

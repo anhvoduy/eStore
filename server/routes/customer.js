@@ -4,7 +4,6 @@ const auth = require('../config/auth');
 const CONSTANTS = require('../lib/constants');
 const customerService = require('../services/customerService');
 
-// Router
 router.get('/items', async function (req, res, next) {
 	try
 	{
@@ -98,15 +97,4 @@ router.post('/update', auth.checkAuthentication(), async function (req, res, nex
 	}
 });
 
-router.get('/delete', async function (req, res, next) {
-	try
-	{
-		res.status(200).json(true);
-	}
-	catch(err){
-		next(err);
-	}
-});
-
-// Export
 module.exports = router;
