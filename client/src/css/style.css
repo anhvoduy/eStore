@@ -164,4 +164,12 @@ select.form-control.es-control {
     width: 100%;
 }
 
+/* dropdown menu */
+.dropdown-menu>li>a {
+    padding: 3px 10px;
+}
+.dropdown-menu>li>a>i {
+    margin-left: 5px;
+    margin-right: 5px;
+}
 /*-------------------------------------------------------------------------------------------------------------------------------------*/
