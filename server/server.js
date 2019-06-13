@@ -7,19 +7,13 @@ var methodOverride = require('method-override');
 var passport = require('passport');
 
 var auth = require('./config/auth');
-var authAD = require('./config/authAD');
 var config = require('./config/config');
 var aadConfig = require('./config/aadConfig');
 var common = require('./lib/commonlib');
 
 // Express
 var server = express();
-
-if(!config.azureAuthenticate) {
-	auth.setup(server); // setup server authenticate by DB
-} else {
-	authAD.setup(server); // setup server authenticate by AD
-}
+auth.setup(server); // setup server authenticate
 
 server.use(cookieParser()); // read cookies (needed for auth)
 server.use(methodOverride());
@@ -114,7 +108,6 @@ const receivedAzureAD = function(req, res, next) {
 };
 
 const responseAzureAD = function(req, res) {
-    console.log('We received a return from AzureAD.');
 	res.status(200).json({
 		success: true,
 		body: res.req.body,
