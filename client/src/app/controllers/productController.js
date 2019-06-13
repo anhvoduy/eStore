@@ -5,10 +5,9 @@
 	function productController(FileSaver, Blob, $scope, appCommon, productService) {
 		/* view-model */
 		$scope.pagination = appCommon.defaultPagination;
-		$scope.messageSuccess = [];
-		$scope.messageError = [];
+		$scope.messageSuccess = null;
+		$scope.messageError = null;
 
-		
 		/* functions */
 		var activate = function () {
 			$scope.getProducts();
@@ -16,8 +15,8 @@
 		};
 
 		function cleanSuccessErrors() {
-			$scope.messageSuccess = [];
-			$scope.messageError = [];
+			$scope.messageSuccess = null;
+			$scope.messageError = null;
 		};
 
 		$scope.getProducts = function(){
@@ -30,9 +29,9 @@
 				$scope.pagination.hitsTotal = data.HitsTotal;
 				$scope.pagination.maxSize = Math.ceil(data.HitsTotal/data.PageSize);
 				// message
-				$scope.messageSuccess.push(String.format("Get Products is successful. Total: {0} rows", $scope.products.length));
+				$scope.messageSuccess = String.format("Make request is successful. Total: {0} product(s)", $scope.pagination.hitsTotal);
 			}, function (error) {
-				$scope.messageError.push(error);
+				$scope.messageError = error;
 			});
 		};
 
@@ -44,7 +43,7 @@
 				});
 				FileSaver.saveAs(blob, 'export_file' + moment(new Date()).format('YYYYMMDDHHmmss') + '.xlsx');
 			}, function(error){
-				$scope.messageError.push(error);
+				$scope.messageError = error;
 			})
 		}
 		

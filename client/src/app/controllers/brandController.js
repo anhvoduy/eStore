@@ -5,8 +5,8 @@
 	function brandController($scope, appCommon, brandService) {
 		/* view-model */
 		$scope.pagination = appCommon.defaultPagination;
-		$scope.messageSuccess = [];
-		$scope.messageError = [];
+		$scope.messageSuccess = null;
+		$scope.messageError = null;
 		
 		/* functions */
 		function activate() {
@@ -14,8 +14,8 @@
 		};
 
 		function cleanSuccessErrors() {
-			$scope.messageSuccess = [];
-			$scope.messageError = [];
+			$scope.messageSuccess = null;
+			$scope.messageError = null;
 		};
 
 		$scope.getBrands = function() {
@@ -29,9 +29,9 @@
 				$scope.pagination.hitsTotal = data.HitsTotal;
 				$scope.pagination.maxSize = Math.ceil(data.HitsTotal/data.PageSize);
 				// message
-				$scope.messageSuccess.push(String.format("Get Brands is successful. Total: {0} rows", $scope.brands.length));
+				$scope.messageSuccess = String.format("Get Brands is successful. Total: {0} rows", $scope.pagination.hitsTotal);
 			}, function (error) {
-				$scope.messageError.push(error);
+				$scope.messageError = error;
 			});
 		};
 		
