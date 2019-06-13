@@ -292,16 +292,6 @@ app.config(function ($stateProvider) {
 			}
 		}
 	})
-	.state("password", {
-		url: "/password",
-		views: {
-			"view": {
-				templateUrl: "/app/views/password.tpl.html",
-				controller: "passwordController",
-				controllerAs: 'vm'
-			}
-		}
-	})
 	.state("search", {
 		url: "/search",
 		views: {

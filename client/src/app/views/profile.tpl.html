@@ -1,12 +1,80 @@
 ﻿<div class="container">
-    <div class="panel panel-default">        
-        <div class="panel-body">                
-            <div class="container" ng-cloak>
-                <h3>My Profile</h3>
-                <p>Technology: Angular + Express + MySQL<p>
-                <p>Author: Vo Duy Anh<p>
-                <p>Copy Right: @2016<p>
-            </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Profile Information</h3>
+        </div>
+        <div class="panel-body">
+            <form name="frmProfile" class="form-horizontal">
+                <div class="form-group">
+                    <label for="UserKey" class="col-sm-2 control-label">User Key</label>
+                    <div class="col-sm-6">
+                        <input type="text" name="UserKey" class="form-control" placeholder="User Key" ng-model="vm.profile.UserKey" readonly/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="DisplayName" class="col-sm-2 control-label">Display Name</label>
+                    <div class="col-sm-6">
+                        <input type="text" name="DisplayName" class="form-control" placeholder="Display Name" ng-model="vm.profile.DisplayName" readonly/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="Email" class="col-sm-2 control-label">Email</label>
+                    <div class="col-sm-6">
+                        <input type="text" name="Email" class="form-control" placeholder="Email" ng-model="vm.profile.Email" readonly/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="Mobile" class="col-sm-2 control-label">Mobile Phone</label>
+                    <div class="col-sm-6">
+                        <input type="text" name="Mobile" class="form-control" placeholder="Mobile" ng-model="vm.profile.Mobile" readonly/>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="panel-footer">
+            <div>Author: Vo Duy Anh, Copy Right: @2016, Technology: Angular + Express + MySQL</div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Change Password</h3>
+        </div>
+        <div class="panel-body" ng-cloak>
+            <form name="frmPassword" class="form-horizontal">
+                <div class="form-group">
+                    <label for="OldPassword" class="col-sm-2 control-label">Old Password</label>
+                    <div class="col-sm-6">
+                        <input type="password" name="OldPassword" class="form-control" placeholder="**********" ng-model="vm.user.OldPassword" maxlength="20" required/>
+                    </div>
+                    <div class='control-label col-sm-8 message-error'
+                         ng-show='frmPassword.OldPassword.$dirty && frmPassword.OldPassword.$invalid'>Please input Old Password</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="NewPassword" class="col-sm-2 control-label">New Password</label>
+                    <div class="col-sm-6">
+                        <input type="password" name="NewPassword" class="form-control" placeholder="**********" ng-model="vm.user.NewPassword" maxlength="20" required/>
+                    </div>
+                    <div class='control-label col-sm-8 message-error'
+                         ng-show='frmPassword.NewPassword.$dirty && frmPassword.NewPassword.$invalid'>Please input Old Password</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="ConfirmNewPassword" class="col-sm-2 control-label">Confirm New Password</label>
+                    <div class="col-sm-6">
+                        <input type="password" name="ConfirmNewPassword" class="form-control" placeholder="**********" ng-model="vm.user.ConfirmNewPassword" maxlength="20" required/>
+                    </div>
+                    <div class='control-label col-sm-8 message-error'
+                         ng-show='frmPassword.ConfirmNewPassword.$dirty && frmPassword.ConfirmNewPassword.$invalid'>Please input Old Password</div>
+                </div>
+            </form>
+        </div>
+        <div class="panel-footer">
+            <input type="button" class="btn btn-primary" value="Save" 
+                ng-click="save(vm.user)" ng-disabled="(frmPassword.$invalid || isSubmitting)"/>
+            <input type="button" class="btn btn-danger" value="Cancel" 
+                ng-click="cancel()" ng-disabled="(isSubmitted || isSubmitting)"/>           
         </div>
     </div>
 </div>

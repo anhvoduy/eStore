@@ -1,19 +1,16 @@
 (function () {
 	'use strict';
     app.controller('profileController', profileController);
-	profileController.$inject = ['$rootScope', 'userService'];	
-	function profileController($rootScope, userService) {
-		/* models */
+	profileController.$inject = ['$rootScope'];	
+	function profileController($rootScope) {
 		var vm = this;
 
-		
-		/* functions */
 		function activate(){
-
+			if($rootScope.settings && $rootScope.settings.profile) {
+				vm.profile = $rootScope.settings.profile;
+			}
 		};
 		
-
-		/* start */
 		activate();
 	}
 })();
