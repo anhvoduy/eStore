@@ -15,8 +15,8 @@ For start review:
 - open command line:
 	npm install or yarn install
 	npm run start or npm run dev (with nodemon)
-- public site: http://localhost:8000/
-- admin  site: http://localhost:8000/admin/
+- public site: http://localhost:3000/
+- admin  site: http://localhost:3000/admin/
 
 
 For docker: 
