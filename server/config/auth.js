@@ -8,6 +8,7 @@ const auth = {};
 auth.setup = function (app) {
 
     app.use(passport.initialize());
+    app.use(passport.session());
 
     passport.use(new LocalStrategy(
         async function (username, password, done) {
@@ -44,10 +45,6 @@ auth.checkAuthentication = function () {
             return res.status(403).send({ success: false, message: 'No token provided.' });
         }      
     };
-};
-
-auth.checkSelf = function(){
-    return true;
 };
 
 module.exports = auth;
