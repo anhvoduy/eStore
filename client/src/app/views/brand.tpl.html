@@ -15,10 +15,9 @@
                         <thead>
                             <tr>
                                 <th>Id</th>
-                                <th>Brand Name</th>                    
+                                <th>Brand Name</th>
                                 <th>Description</th>
-                                <th>Edit</th>                    
-                                <!-- <th>Delete</th> -->
+                                <th>Edit</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -27,17 +26,16 @@
                                 <td>{{ brand.BrandName }}</td>
                                 <td>{{ brand.Description }}</td>                                
                                 <td><a ui-sref="brandEdit({ brandKey: brand.BrandKey })">Edit</a></td>
-                                <!-- <td><a ng-click="deleteBrand(brand.BrandId)">Delete</a></td> -->
                             </tr>
                         </tbody>
                     </table>
                 </div>
                 <div class="row">
                     <div class="message-error" ng-show='(messageError.length > 0)'>
-                        <span ng-repeat="msg in messageError">{{ msg }}</span>
+                        <div ng-repeat="msg in messageError">{{ msg }}</div>
                     </div>
                     <div class="message-success" ng-show='(messageSuccess.length > 0)'>
-                        <span ng-repeat="msg in messageSuccess">{{ msg }}</span>
+                        <div ng-repeat="msg in messageSuccess">{{ msg }}</div>
                     </div>
                 </div>
             </div>
