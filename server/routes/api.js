@@ -5,7 +5,6 @@ const passport = require('passport');
 
 const auth = require('../config/auth');
 const config = require('../config/config');
-const aadConfig = require('../config/aadConfig');
 const { uploadProductImageFS } = require('../lib/uploadFile');
 
 // routes for testing
