@@ -1,7 +1,6 @@
 const router = require('express').Router();
 const productService = require('../services/productService');
 
-// Router
 router.get('/items', async function (req, res, next) {
 	try
 	{
