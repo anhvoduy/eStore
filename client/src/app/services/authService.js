@@ -1,16 +1,15 @@
 (function () {
     'use strict';
     app.factory('authService', authService);
-    authService.$inject = ['$http', '$rootScope', '$q', '$cookieStore', 'Base64'];
-    function authService($http, $rootScope, $q, $cookieStore, Base64) {
-        // constructor
+    authService.$inject = ['$http', '$rootScope', '$q', '$cookieStore'];
+    function authService($http, $rootScope, $q, $cookieStore) {
         var authService = function () {
-        }        
+        }
 
-        authService.prototype.login = function (username, password) {           
-            /* Use this for test at server side: /api/user/authenticate */
-            var q = $q.defer();            
-            $http.post('/api/login', { username: username, password: password }).success(function (result) {
+        authService.prototype.authenticate = function (username, password) {
+            var q = $q.defer();
+            $http.post('/api/authenticate', { username: username, password: password })
+            .success(function (result) {
                 q.resolve(result);
             }).error(function (result) {
                 q.reject(result);

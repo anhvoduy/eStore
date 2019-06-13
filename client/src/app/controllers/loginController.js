@@ -10,7 +10,7 @@
 
 		$scope.login = function () {
 			$scope.dataLoading = true;
-			authService.login($scope.username, $scope.password).then(function (result) {
+			authService.authenticate($scope.username, $scope.password).then(function (result) {
                 if (result.success) {
                     authService.setCredentials(result.user);
                     $location.path('/');
