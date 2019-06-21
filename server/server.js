@@ -18,7 +18,7 @@ server.use(expressSession({ secret: config.secretKey, resave: true, saveUninitia
 
 // setup Server
 auth.setup(server);
-server.set('port', process.env.PORT || 3000);
+server.set('port', process.env.PORT || 80);
 server.set('secretKey', config.secretKey);
 
 // Register APIs
