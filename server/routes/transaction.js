@@ -3,7 +3,9 @@ var _ = require('lodash');
 var transactionService = require('../services/transactionService');
 
 
-/* --- CashIn  ---*/
+/**
+ * Cash In
+ */
 router.get('/cashin/items', async function (req, res, next) {
     try
     {
@@ -16,25 +18,9 @@ router.get('/cashin/items', async function (req, res, next) {
     }
 });
 
-router.get('/cashin/item', function (req, res, next) {
-    res.status(200).json(true);
-});
-
-router.post('/cashin/create', function (req, res, next) {
-    res.status(200).json(true);
-});
-
-router.post('/cashin/update', function (req, res, next) {
-    res.status(200).json(true);
-});
-
-router.post('/cashin/delete', function (req, res, next) {
-    res.status(200).json(true);
-});
-
-
-
-/* --- CashOut ---*/
+/**
+ * Cash Out
+ */
 router.get('/cashout/items', async function (req, res, next) {
     try
     {
@@ -47,21 +33,4 @@ router.get('/cashout/items', async function (req, res, next) {
     }
 });
 
-router.get('/cashout/item', function (req, res, next) {
-    res.status(200).json(true);
-});
-
-router.post('/cashout/create', function (req, res, next) {
-    res.status(200).json(true);
-});
-
-router.post('/cashout/update', function (req, res, next) {
-    res.status(200).json(true);
-});
-
-router.post('/cashout/delete', function (req, res, next) {
-    res.status(200).json(true);
-});
-
-// Export
 module.exports = router;

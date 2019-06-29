@@ -1,7 +1,6 @@
 const router = require('express').Router();
 const _ = require('lodash');
 const auth = require('../config/auth');
-const CONSTANTS = require('../lib/constants');
 const customerService = require('../services/customerService');
 
 router.get('/items', async function (req, res, next) {
