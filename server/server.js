@@ -10,7 +10,7 @@ var common = require('./lib/commonlib');
 
 // Express
 var server = express();
-server.use(cookieParser()); // read cookies (needed for auth)
+server.use(cookieParser()); // read cookies (for auth)
 server.use(methodOverride());
 server.use(bodyParser.urlencoded({ extended: true }));
 server.use(bodyParser.json());
