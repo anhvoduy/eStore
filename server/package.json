@@ -1,6 +1,6 @@
 {
   "name": "estore",
-  "version": "2.2.3",
+  "version": "2.2.4",
   "description": "estore: Full-Stack JavaScript with AngularJs, NodeJs, ExpressJs, and MySql",
   "main": "app.js",
   "author": {
@@ -8,7 +8,7 @@
     "email": "voduyanh1984@yahoo.com"
   },
   "engines": {
-    "node": "^8.11.1"
+    "node": "12.15.0"
   },
   "scripts": {
     "test": "mocha",
