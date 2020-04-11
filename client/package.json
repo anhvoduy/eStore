@@ -1,6 +1,6 @@
 {
   "name": "gulp-setup-env",
-  "version": "2.2.2",
+  "version": "2.2.5",
   "description": "Gulp Automation Build - Admin Site",
   "main": "index.js",
   "scripts": {
