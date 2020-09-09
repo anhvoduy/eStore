@@ -40,7 +40,23 @@
                 q.reject(error);
             });
             return q.promise;
-        }                
+        }
+        
+        // PUT()
+        baseService.prototype.putData = function (url, data) {
+            var q = $q.defer();
+            $http({
+                url: url,
+                method: 'PUT',
+                data: data
+            }).success(function (result) {
+                q.resolve(result);               
+			}).error(function (error, status) {
+				writeLogs(error, status);
+                q.reject(error);
+            });
+            return q.promise;
+        }
 
         // Write Logs
         var writeLogs = function (error, status) {

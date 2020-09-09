@@ -41,7 +41,7 @@
 				var blob = new Blob([result], {
 					type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=utf-8"
 				});
-				FileSaver.saveAs(blob, 'export_file' + moment(new Date()).format('YYYYMMDDHHmmss') + '.xlsx');
+				FileSaver.saveAs(blob, 'export_product_' + moment(new Date()).format('YYYYMMDDHHmmss') + '.xlsx');
 			}, function(error){
 				$scope.messageError = error;
 			})
