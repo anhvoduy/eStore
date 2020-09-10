@@ -1,0 +1,66 @@
+﻿<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">{{ formTitle }}</h3>
+        </div>    
+        <div class="panel-body" ng-cloak>
+            <form name="frmAccount" class="form-horizontal">
+                <div class="form-group">
+                    <label for="AccountNo" class="col-sm-2 control-label">Account No</label>
+                    <div class="col-sm-6">
+                        <input name="AccountNo" class="form-control" placeholder="Account No" ng-model="account.AccountNo" maxlength="20" required/>
+                    </div>
+                    <div class='control-label col-sm-8 message-error'
+                        ng-show='frmAccount.AccountNo.$dirty && frmAccount.AccountNo.$invalid'>Please input Account No</div>
+                </div>
+        
+                <div class="form-group">
+                    <label for="AccountName" class="col-sm-2 control-label">Account Name</label>
+                    <div class="col-sm-6">
+                        <input name="AccountName" class="form-control" placeholder="Account Name" ng-model="account.AccountName" maxlength="50" required/>
+                    </div>
+                    <div class='control-label col-sm-8 message-error'
+                        ng-show='frmAccount.AccountName.$dirty && frmAccount.AccountName.$invalid'>Please input Account Name</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="DebitOrCredit" class="col-sm-2 control-label">Debit or Credit</label>
+                    <div class="col-sm-6">
+                        <select name="DebitOrCredit" 
+                                class="form-control"
+                                ng-init="account.DebitOrCredit = accountTypeList[0].Key"
+                                ng-model="account.DebitOrCredit"
+                                ng-change="changeSelectedDebitOrCredit(item)"
+                                ng-options="item.Key as item.Value for item in accountTypeList">
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="Description" class="col-sm-2 control-label">Description</label>
+                    <div class="col-sm-6">
+                        <textarea name="Description" class="form-control" placeholder="Description" ng-model="account.Description" maxlength="250"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class='control-label col-sm-8 message-error' ng-show='(messageError.length > 0)'>
+                        <span ng-repeat="msg in messageError">{{ msg }}</span>
+                    </div>                        
+                    <div class='control-label col-sm-8 message-success' ng-show='(messageSuccess.length > 0)'>
+                        <span ng-repeat="msg in messageSuccess">{{ msg }}</span>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="panel-footer">
+            <input type="button" class="btn btn-primary" value="Save" 
+                ng-click="save(account)" ng-disabled="(frmAccount.$invalid || isSubmitting)" />
+            <input type="button" class="btn btn-danger" value="Cancel" 
+                ng-click="cancel()" ng-disabled="(isSubmitted || isSubmitting)" />
+            <span ng-show="isSubmitting">
+                <img ng-if="isSubmitting" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+            </span>
+        </div>
+    </div>
+</div>   

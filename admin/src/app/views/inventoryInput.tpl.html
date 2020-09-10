@@ -1,0 +1,47 @@
+﻿<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Input Goods</h3>
+        </div>
+        <div class="panel-body">
+            <p><a ui-sref="inventoryInputEdit({ stockKey: null })">Add new item</a></p>
+            <div class="container" ng-cloak>
+                <div class="row row-table table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Stock No</th>
+                                <th>Stock Date</th>                    
+                                <th>Customer Name</th>
+                                <th>Currency</th>
+                                <th>Total Amount</th>
+                                <th>Edit</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="stock in stocks">
+                                <td>{{ ($index + 1) }}</td>
+                                <td>{{ stock.StockNo }}</td>
+                                <td>{{ stock.StockDate }}</td>
+                                <th>{{ stock.CustomerName }}</th>
+                                <td>{{ stock.Currency }}</td>
+                                <td>{{ stock.TotalAmount }}</td>
+                                <td><a ui-sref="inventoryInputEdit({ stockKey: stock.StockKey })">Edit</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row">
+                    <div class="message-error" ng-show='(messageError.length > 0)'>
+                        <span ng-repeat="msg in messageError">{{ msg }}</span>
+                    </div>
+                    <div class="message-success" ng-show='(messageSuccess.length > 0)'>
+                        <span ng-repeat="msg in messageSuccess">{{ msg }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-footer">ng-paginator</div>
+    </div>    
+</div>

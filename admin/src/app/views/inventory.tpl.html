@@ -1,0 +1,51 @@
+﻿<div class="panel-group">
+    <div class="panel panel-default">
+        <div class="panel-heading estore-panel-heading">
+            <div class="panel-title estore-panel-title">
+                <label>All Inventories</label>
+            </div>
+        </div>
+        <div class="panel-body" ng-cloak>
+            <div class="row estore-form-row">
+                <!-- <a ui-sref="inventoryEdit({ inventoryKey: null })">Add new inventory</a> -->
+            </div>
+            <div class="row estore-form-row">
+                <div class="row">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Inventory Name</th>
+                                <th>Location</th>
+                                <th>Description</th>
+                                <th>Edit</th>
+                                <!-- <th>Delete</th> -->
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="inv in inventories">
+                                <td>{{ ($index + 1) }}</td>
+                                <td>{{ inv.InventoryName }}</td>
+                                <td>{{ inv.Location }}</td>
+                                <td>{{ inv.Description }}</td>                                
+                                <td><a ui-sref="inventoryEdit({ inventoryKey: inv.InventoryKey })">Edit</a></td>
+                                <!-- <td><a ng-click="deleteInventory(inv.InventoryId)">Delete</a></td> -->
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row">
+                    <div class="message-error" ng-show='(messageError.length > 0)'>
+                        <span ng-repeat="msg in messageError">{{ msg }}</span>
+                    </div>
+                    <div class="message-success" ng-show='(messageSuccess.length > 0)'>
+                        <span ng-repeat="msg in messageSuccess">{{ msg }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-footer estore-panel-footer">
+            ng-paginator
+        </div>
+    </div>
+</div>

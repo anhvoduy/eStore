@@ -1,0 +1,120 @@
+/* .menu-multi-level */
+.menu-multi-level .dropdown .dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.menu-multi-level .dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.menu-multi-level .dropdown .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.menu-multi-level .dropdown .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.menu-multi-level .dropdown .dropdown-content a:hover {   
+    background-color: #f1f1f1   
+}
+
+.menu-multi-level .dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.menu-multi-level .dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+}
+
+
+/* main-nav-level */
+/* Set the parent <li>’s CSS position property to ‘relative’ */
+.main-nav-level ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background: #1bc2a2;
+}
+  
+.main-nav-level ul li {
+  display: block;
+  position: relative;
+  float: left;
+  background: #1bc2a2;
+  max-width: 125px;
+}
+
+/* The CSS to hide the sub menus. */
+.main-nav-level ul li ul { 
+    display: none; 
+}
+
+.main-nav-level ul li a {
+    display: block;
+    padding: 1em;
+    text-decoration: none;
+    white-space: nowrap;
+    color: #fff;
+}
+  
+.main-nav-level ul li a:hover  { 
+    /* background: #2c3e50; */
+    background:  #117563;
+    color: white;
+    text-decoration: none;
+}
+
+/* Displays the dropdown menu on hover. */
+.main-nav-level li:hover > ul {
+    display: block;
+    position: absolute;
+}
+  
+.main-nav-level li:hover li { float: none; }
+  
+.main-nav-level li:hover a { 
+    background: #1bc2a2; 
+}
+  
+.main-nav-level li:hover li a:hover { 
+    /* background: #2c3e50; */
+    background:  #117563;
+    color: white;
+}
+  
+.main-nav-level li ul li { border-top: 0; }
+
+/* Displays second level dropdown menus to the right of the first level dropdown menu. */
+.main-nav-level ul ul ul {
+    left: 100%;
+    top: 0;
+}
+
+/* Simple clearfix. */
+ul:before, ul:after {
+  content: " "; /* 1 */
+  display: table; /* 2 */
+}
+ul:after { clear: both; }
+
+/* display caret to right */
+b.caret.caret-right {
+    transform:rotate(-90deg);
+    transition:all 0.3s ease-in-out;
+}
+

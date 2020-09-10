@@ -1,0 +1,56 @@
+﻿<div class="panel-group">
+    <div class="panel panel-default">
+        <div class="panel-heading estore-panel-heading">
+            <div class="panel-title estore-panel-title">
+                <label>All Products</label>
+            </div>
+        </div>
+        <div class="panel-body" ng-cloak>
+            <div class="row estore-form-row">
+                <a ui-sref="productEdit({ productId: null })">Add product</a>
+                <a class="export-file" href ng-click="exportFile()">Export File</a>
+            </div>
+            <div class="row estore-form-row">
+                <div class="row">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>Name</th>
+                                <th>Price</th>
+                                <th>Color</th>
+                                <th>Status</th>
+                                <th>Description</th>
+                                <th>Edit</th>
+                                <th>Review</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="p in products">
+                                <td>{{ ($index +1) }}</td>
+                                <td>{{ p.ProductName }}</td>
+                                <td>{{ p.Price }}</td>
+                                <td>{{ p.ColorCode }}</td>
+                                <td>{{ p.Status }}</td>
+                                <td>{{ p.Description }}</td>
+                                <td><a ui-sref="productEdit({ productId: p.ProductId })">Edit</a></td>
+                                <td><a ui-sref="productReview({ productId: p.ProductId })">Review</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>                
+                <div class="row">
+                    <div class="message-error" ng-show='(messageError && messageError != "")'>
+                        {{ messageError }}
+                    </div>
+                    <div class="message-success" ng-show='(messageSuccess && messageSuccess != "")'>
+                        {{ messageSuccess }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-footer estore-panel-footer">
+            <ng-pagination pagination="pagination" on-get-data="getProducts()" />
+        </div>
+    </div>
+</div>

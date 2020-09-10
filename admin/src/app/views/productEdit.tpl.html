@@ -1,0 +1,122 @@
+﻿<div class="panel-group">
+    <div class="panel panel-default">
+        <div class="panel-heading estore-panel-heading">
+            <div class="panel-title estore-panel-title">
+                <label>{{ formTitle }}</label>
+            </div>
+        </div>
+        <div class="panel-body" ng-cloak>
+            <form name="frmProduct" class="form-horizontal">
+                <div class="form-group">
+                    <label for="productName" class="col-sm-2 control-label estore-label-mandatory">Product</label>
+                    <div class="col-sm-6">
+                        <input id="productName" class="form-control" placeholder="product name" ng-model="product.ProductName" maxlength="50" required/>
+                    </div>
+                </div>
+        
+                <div class="form-group">
+                    <label for="BrandId" class="col-sm-2 control-label">Brand</label>
+                    <div class="col-sm-6">
+                        <select name="BrandId" 
+                                class="form-control"
+                                ng-model="product.BrandId"
+                                ng-change="changeSelectedBrand()"
+                                ng-options="item.BrandId as item.BrandName for item in brands"
+                                required>
+                            <option value="">---Please select---</option>
+                        </select>
+                    </div>
+                </div>
+        
+                <div class="form-group">
+                    <label for="Price" class="col-sm-2 control-label estore-label-mandatory">Price</label>
+                    <div class="col-sm-6">
+                        <input id="Price" ng-model="product.Price" class="form-control" placeholder="Price" ng-input-number-only />
+                    </div>
+                </div>
+        
+                <div class="form-group">
+                    <label for="Colour" class="col-sm-2 control-label">Color</label>
+                    <div class="col-sm-6">
+                        <select name="ColorCode" 
+                                class="form-control"
+                                ng-init="product.ColorCode = colorList[0].ColorCode"
+                                ng-model="product.ColorCode"
+                                ng-change="changeSelectedColor(item)"
+                                ng-options="item.ColorCode as item.ColorName for item in colorList"
+                                required>
+                        </select>
+                    </div>
+                </div>
+        
+                <!-- 
+                <div class="form-group">
+                    <label for="Colour" class="col-sm-2 control-label">Status</label>
+                    <div class="col-sm-6">
+                        <input id="Status" ng-model="product.Status" class="form-control" placeholder="Status"/>
+                    </div>
+                </div> 
+                -->
+
+                <div class="form-group">
+                    <label for="productDescription" class="col-sm-2 control-label">Description</label>
+                    <div class="col-sm-6">
+                        <textarea id="productDescription" class="form-control" placeholder="description" ng-model="product.Description" rows="3" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="ProductImage" class="col-sm-2 control-label">Image</label>
+                    <div class="col-sm-6">
+                        <button class="btn btn-default btn-file" 
+                            ngf-select="(fileSelected = true) && (loading = false)"
+                            ng-model="picFile" accept="image/*" 
+                            ngf-before-model-change="loading = true"
+                            ngf-resize="{ width: 600, height: 400 }" 
+                            ngf-resize-if="$width > 600 || $height > 400">
+                            Select Picture
+                        </button>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="ProductImage" class="col-sm-2 control-label"></label>
+                    <div class="col-sm-6" ng-show="loading">
+                        <img ng-src="/img/loaders/loader.gif" height="50" width="50" alt="Loading image..." />
+                    </div>
+                    <div class="col-sm-6" ng-show="!loading">
+                        <img ngf-src="fileSelected ? picFile : product.ProductImageUrl" alt="{{ product.ProductName }}" class="img-thumbnail estore-product-image" ngf-drop />
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="ProductImage" class="col-sm-2 control-label"></label>
+                    <div class="col-sm-6" ng-show="fileSelected">
+                        <button class="btn btn-success" ng-click="upload(picFile, product.ProductId)" 
+                            ng-disabled="(frmProduct.$invalid || isSubmitting)">Use This Picture</button>
+                        <button class="btn btn-warning" ng-click="fileSelected = false"
+                            ng-disabled="(frmProduct.$invalid || isSubmitting)">Cancel</button>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <div class="control-label col-sm-8 message-error" ng-show='(messageError.length > 0)'>
+                        <span ng-repeat="msg in messageError">{{ msg }}</span>
+                    </div>
+                    <div class="control-label col-sm-8 message-success" ng-show='(messageSuccess.length > 0)'>
+                        <span ng-repeat="msg in messageSuccess">{{ msg }}</span>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="panel-footer estore-panel-footer">            
+            <input type="button" class="btn btn-primary" value="Save" 
+                ng-click="save(product)" ng-disabled="(frmProduct.$invalid || isSubmitting)"/>
+            <input type="button" class="btn btn-danger" value="Cancel" 
+                ng-click="cancel()" ng-disabled="(isSubmitted || isSubmitting)"/>
+            <span ng-show="isSubmitting">                
+                <img ng-if="isSubmitting" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+            </span>
+        </div>
+    </div>
+</div>        

@@ -1,0 +1,135 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>eAccouting Demo</title>
+    <link rel="icon" href="img/favicon.ico" type="image/ico" sizes="16x16">
+	
+    <!--fonts-->
+    <link href="fonts/font-awesome.min.css" rel="stylesheet" />
+
+    <!--style-->
+    <link href="libs/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="libs/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" />
+    <!--yamm-->
+    <link href="css/yamm.css" rel="stylesheet" />
+    <!--site: sample jtc style-->
+    <link href="css/site.css" rel="stylesheet" />
+    <!--menuMultiLevel: sample multi level menu-->
+    <link href="css/menuMultiLevel.css" rel="stylesheet" />
+    <!--style-->
+    <link href="css/style.css" rel="stylesheet" />
+
+
+    <!--jquery-->
+    <script src="libs/jquery/jquery.js"></script>
+    
+    <!--bootstrap-->
+    <script src="libs/bootstrap/js/bootstrap.min.js"></script>
+
+    <!--prefixfree-->
+    <script src="/libs/prefixfree/prefixfree.min.js"></script>
+    
+    <!--moment-->
+    <script src="libs/moment/moment.min.js"></script>
+
+    <!--angular-->
+    <script src="libs/angular/angular.min.js"></script>
+    <script src="libs/angular/angular-sanitize.min.js"></script>
+    <script src="libs/angular/angular-messages.min.js"></script>
+    <script src="libs/angular/angular-cookies.min.js"></script>
+    <script src="libs/angular/angular-loader.min.js"></script>
+    <script src="libs/angular/angular-ui-router.min.js"></script>
+    <script src="libs/angular-mega-menu/angular-mega-menu.js"></script>
+    <script src="libs/angular-ui/ui-bootstrap-tpls.min.js"></script>
+    <script src="libs/ng-file-upload/ng-file-upload-all.min.js"></script>
+    <script src="libs/angular-file-saver/angular-file-saver.bundle.min.js"></script>
+</head>
+<body ng-app="cargo">
+    <!--menu-->
+    <div mega-menu></div>
+
+    <!-- views-->
+    <div class="body-content main-content">
+        <div class="body-view">
+            <div ui-view="view"></div>
+        </div>
+    </div>
+
+    <!-- Application -->
+    <script src="app/config.js"></script>
+    <script src="app/app.js"></script>    
+
+    <!-- common -->
+    <script src="app/common/common.js"></script>
+    
+    <!-- directives -->
+    <script src="app/directives/directives.js"></script> 
+    <script src="app/directives/megaMenu.js"></script>
+    <script src="app/directives/menuMultiLevel.js"></script>
+    <script src="app/directives/footer.js"></script>
+    <script src="app/directives/pagination.js"></script>
+    
+    <!-- services -->
+    <script src="app/services/baseService.js"></script>
+    <script src="app/services/authService.js"></script>
+    <script src="app/services/brandService.js"></script>
+    <script src="app/services/customerService.js"></script>
+    <script src="app/services/userService.js"></script>
+    <script src="app/services/groupService.js"></script>
+    <script src="app/services/accountService.js"></script>
+    <script src="app/services/cashService.js"></script>
+    <script src="app/services/productService.js"></script>
+    <script src="app/services/reviewService.js"></script>
+    <script src="app/services/inventoryService.js"></script>
+    <script src="app/services/searchService.js"></script>
+    <script src="app/services/reportService.js"></script>
+	
+    <!-- controller -->    
+    <script src="app/controllers/sampleController.js"></script>
+    <script src="app/controllers/loginController.js"></script>
+    <script src="app/controllers/profileController.js"></script>
+
+	<script src="app/controllers/brandController.js"></script>
+    <script src="app/controllers/brandEditController.js"></script>
+    
+    <script src="app/controllers/customerController.js"></script>
+    <script src="app/controllers/customerEditController.js"></script>
+
+    <script src="app/controllers/userController.js"></script>
+    <script src="app/controllers/userEditController.js"></script>
+
+    <script src="app/controllers/groupController.js"></script>
+    <script src="app/controllers/groupEditController.js"></script>
+    
+    <script src="app/controllers/accountController.js"></script>
+    <script src="app/controllers/accountEditController.js"></script>
+    
+    <script src="app/controllers/cashInController.js"></script>
+    <script src="app/controllers/cashInEditController.js"></script>
+    
+    <script src="app/controllers/cashOutController.js"></script>
+    <script src="app/controllers/cashOutEditController.js"></script>    
+    
+    <script src="app/controllers/productController.js"></script>
+    <script src="app/controllers/productEditController.js"></script>
+    <script src="app/controllers/productReviewController.js"></script>
+    
+    <script src="app/controllers/inventoryController.js"></script>
+    <script src="app/controllers/inventoryEditController.js"></script>
+
+    <script src="app/controllers/inventoryInputController.js"></script>
+    <script src="app/controllers/inventoryInputEditController.js"></script>
+    
+    <script src="app/controllers/inventoryOutputController.js"></script>
+    <script src="app/controllers/inventoryOutputEditController.js"></script>
+    
+    <!-- report -->
+    <script src="app/controllers/cashReportController.js"></script>
+    <script src="app/controllers/inventoryReportController.js"></script>
+    
+    <!-- search -->
+    <script src="app/controllers/searchController.js"></script>
+</body>
+</html>

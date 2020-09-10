@@ -1,0 +1,89 @@
+﻿<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">{{ formTitle }}</h3>
+        </div>
+        <div class="panel-body" ng-cloak>
+            <form name="frmBrand" class="form-horizontal">
+                <div class="form-group">
+                    <label for="BrandName" class="col-sm-2 control-label">Brand Name</label>
+                    <div class="col-sm-6">
+                        <input name="BrandName" class="form-control" placeholder="name" 
+                            ng-model="brand.BrandName" maxlength="20" required/>
+                    </div>
+                    <div class='control-label col-sm-8 message-error'
+                         ng-show='frmBrand.BrandName.$dirty && frmBrand.BrandName.$invalid'>Please input brand name</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="Description" class="col-sm-2 control-label">Description</label>
+                    <div class="col-sm-6">
+                        <textarea name="Description" class="form-control" placeholder="Description" ng-model="brand.Description" maxlength="250" />
+                    </div>                    
+                </div>
+                                
+                <div class="form-group">
+                    <div class="control-label col-sm-8 message-error" ng-show='(messageError.length > 0)'>
+                        <span ng-repeat="msg in messageError">{{ msg }}</span>
+                    </div>
+                    <div class="control-label col-sm-8 message-success" ng-show='(messageSuccess.length > 0)'>
+                        <span ng-repeat="msg in messageSuccess">{{ msg }}</span>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="panel-footer">
+            <input type="button" class="btn btn-primary" value="Save" 
+                ng-click="save(brand)" ng-disabled="(frmBrand.$invalid || isSubmitting)"/>
+            <input type="button" class="btn btn-danger" value="Cancel" 
+                ng-click="cancel()" ng-disabled="(isSubmitted || isSubmitting)"/>
+            <span ng-show="isSubmitting">                
+                <img ng-if="isSubmitting" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+            </span>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Products</h3>
+        </div>
+        <div class="panel-body">
+            <div class="container" ng-cloak>
+                <div class="row row-table">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Id</th>                                
+                                <th>Product Name</th>
+                                <th>Description</th>
+                                <th>Price</th>
+                                <th>Color</th>
+                                <th>Last Review</th>                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="p in products">
+                                <td>{{ $index + 1 }}</td>
+                                <td>{{ p.ProductName }}</td>
+                                <td>{{ p.Description }}</td>
+                                <td>{{ p.Price }}</td>
+                                <td>{{ p.ColorCode }}</td>
+                                <td>{{ p.LatestReviewInfo }}</td>                                
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row">
+                    <div class="message-error" ng-show='(messageProductError.length > 0)'>
+                        <span ng-repeat="msg in messageProductError">{{ msg }}</span>
+                    </div>
+                    <div class="message-success" ng-show='(messageProductSuccess.length > 0)'>
+                        <span ng-repeat="msg in messageProductSuccess">{{ msg }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>        
+    </div>    
+</div>

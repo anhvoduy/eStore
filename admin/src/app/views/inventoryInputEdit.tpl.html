@@ -1,0 +1,130 @@
+﻿<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">{{ formTitle }}</h3>
+        </div>    
+        <div class="panel-body" ng-cloak>
+            <form name="frmStock" class="form-horizontal">
+                <div class="form-group form-inline">
+                    <div class="form-group col-sm-6">
+                        <label for="StockNo" class="control-label col-sm-4">Stock No</label>
+                        <div class="col-sm-8">
+                            <input name="StockNo" class="form-control es-control" placeholder="Stock No" ng-model="stock.StockNo" ng-disabled="true"/>
+                            <div class='control-label es-control message-error' ng-show='frmStock.StockNo.$dirty && frmStock.StockNo.$invalid'>Please input Stock No</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-sm-6">
+                        <label for="StockDate" class="control-label col-sm-4">Stock Date</label>
+                        <div class="col-sm-8">
+                            <ng-input-date name='StockDate' value='stock.StockDate' format='dd/MM/yyyy' required />
+                            <div class='control-label es-control message-error' ng-show='frmStock.StockDate.$dirty && frmStock.StockDate.$invalid'>Please input Stock Date</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group form-inline">
+                    <div class="form-group col-sm-6">
+                        <label for="CustomerId" class="control-label col-sm-4">Customer</label>
+                        <div class="col-sm-8">
+                            <select name="CustomerId" class="form-control es-control"
+                                    ng-model="stock.CustomerId"
+                                    ng-change="changeSelectedCustomer()"
+                                    ng-options="item.CustomerId as item.CustomerName for item in customers"
+                                    required>
+                                <option value="">---Please select---</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-sm-6">
+                        <label for="InvoiceNo" class="control-label col-sm-4">Invoice No</label>
+                        <div class="col-sm-6">
+                            <input name="InvoiceNo" class="form-control es-control" placeholder="Invoice No" ng-model="stock.InvoiceNo"/>
+                            <div class='control-label es-control message-error' ng-show='frmStock.InvoiceNo.$dirty && frmStock.InvoiceNo.$invalid'>Please input Invoice No</div>
+                        </div>
+                    </div>
+                </div>                
+
+                <div class="form-group form-inline">
+                    <div class="form-group col-sm-6">
+                        <label for="CustomerName" class="control-label col-sm-4">Customer Name</label>
+                        <div class="col-sm-8">
+                            <input name="CustomerName" class="form-control es-control" placeholder="Customer Name" ng-model="stock.CustomerName" ng-disabled="true"/>
+                        </div>                        
+                    </div>
+
+                    <div class="form-group col-sm-6">
+                        <label for="InvoiceDate" class="control-label col-sm-4">Invoice Date</label>
+                        <div class="col-sm-8">
+                            <ng-input-date name='InvoiceDate' value='stock.InvoiceDate' format='dd/MM/yyyy'/>
+                            <div class='control-label es-control message-error' ng-show='frmStock.InvoiceDate.$dirty && frmStock.InvoiceDate.$invalid'>Please input Invoice Date</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group form-inline">
+                    <div class="form-group col-sm-12">
+                        <label for="InvoiceNo" class="control-label col-sm-2">Description</label>
+                        <div class="col-sm-8">
+                            <textarea name="Description" class="form-control es-control" placeholder="Description" ng-model="stock.Description" rows="5"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group form-inline">
+                    <div class="form-group col-sm-6">
+                        <label for="TotalAmount" class="control-label col-sm-4">Total Amount</label>
+                        <div class="col-sm-8">
+                            <input name="TotalAmount" class="form-control es-control" ng-model="stock.TotalAmount" ng-disabled="true"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-sm-6">                        
+                    </div>
+                </div>
+
+                <div class="form-group form-inline">
+                    <div class='control-label col-sm-6 message-error' ng-show='(messageError.length > 0)'>
+                        <span ng-repeat="msg in messageError">{{ msg }}</span>
+                    </div>                        
+                    <div class='control-label col-sm-6 message-success' ng-show='(messageSuccess.length > 0)'>
+                        <span ng-repeat="msg in messageSuccess">{{ msg }}</span>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="panel-body" ng-cloak>
+            <div class="container" ng-cloak>
+                <div class="row row-table table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Id</th>                                
+                                <th>Product Name</th>
+                                <th>Description</th>
+                                <th>Quantity</th>
+                                <th>Price</th>
+                                <th>Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="row in stockDetail">
+                                <td>{{ ($index + 1) }}</td>                                
+                                <td>{{ row.ProductName }}</td>
+                                <td>{{ row.Description }}</td>
+                                <td>{{ row.Quantity }}</td>
+                                <th>{{ row.Price }}</th>
+                                <td>{{ row.Amount }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>                        
+            </div>
+        </div>
+        <div class="panel-footer">
+            <input type="button" class="btn btn-primary" value="Save" ng-click="submit(stock, stockDetail)"/>
+            <input type="button" class="btn btn-danger" value="Cancel" ng-click="cancel()"/>          
+        </div>
+    </div>
+</div>

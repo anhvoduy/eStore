@@ -1,0 +1,511 @@
+﻿<div class="tab-content jim-tab-content" style="margin: 1%">
+    <div class="tab-pane active" id="TabsId-1">
+        <div class="panel-group jim-acc-group" id="accordion" close-others="false">
+            <div class="panel jim-acc-panel">
+                <div class="panel-heading jim-acc-heading">
+                    <div class="jim-acc-heading-middle" data-toggle="collapse" data-parent="#DataCorrection" href="#collapse1">
+                        <a>
+                            <label>
+                                Project Information
+                            </label>
+                            <label class="pull-right jim-padding-right">
+                                Section 1 of 3
+                            </label>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="collapse1" class="panel-collapse jim-acc-collapse collapse in">
+                    <div class="panel-body jim-acc-body">
+                        <div class="jim-form-row row">										
+                            <div class="col-sm-6">
+                                <div class="jim-form-row row">
+                                    <label class="col-sm-4 col-xs-4 jim-control-label-mandatory">Project Name</label>
+                                    <select class=" jim-form-control col-sm-8 col-xs-8"
+                                            ng-model="projectInformation.selectedProjectName"
+                                            ng-change="selectedProjectNameChange()"
+                                            ng-options="item.Key as item.Text for item in projectNames"></select>
+                                </div>												
+
+                                <div class="jim-form-row row">
+                                    <label class="col-sm-4 col-xs-4">Project Name Flag</label>
+                                    <div class="col-sm-8 col-xs-8 jim-no-padding">
+                                        <div class="jim-checkbox-container checkbox">
+                                            <label class="jim-checkbox-label">
+                                                <input type="checkbox" value="true" ng-model="projectInformation.projectNameFlag" />
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="jim-form-row row">
+                                    <label class="col-sm-4 col-xs-4 jim-control-label-mandatory">MKTS No.</label>
+                                    <input type="text"
+                                           name="mktsNo"
+                                           ng-model="projectInformation.mktsNo"
+                                           maxlength="4"
+                                           required
+                                           class="jim-form-control col-sm-8 col-xs-8"
+                                           ng-class="{ 'has-error' : (formInput.mktsNo.$invalid && !formInput.mktsNo.$pristine ) }">
+                                    
+                                    <span class="col-sm-4 col-xs-4"></span>
+                                    <div ng-messages="formInput.mktsNo.$error"
+                                         ng-if="(submitted || formInput.mktsNo.$dirty)"
+                                         class="col-sm-8 col-xs-8 jim-no-padding"
+                                         messengers>
+                                    </div>
+                                </div>
+
+                                <div class="jim-form-row row">
+                                    <label class="col-sm-4 col-xs-4 jim-control-label-mandatory">Lot No.</label>
+                                    <input type="text"
+                                           name="lotNo"
+                                           ng-model="projectInformation.lotNo"
+                                           maxlength="100"
+                                           required
+                                           class="jim-form-control col-sm-8 col-xs-8"
+                                           ng-class="{ 'has-error' : (formInput.lotNo.$invalid && !formInput.lotNo.$pristine ) }">
+                                    
+                                    <span class="col-sm-4 col-xs-4"></span>
+                                    <div ng-messages="formInput.lotNo.$error"
+                                         ng-if="(submitted || formInput.lotNo.$dirty)"
+                                         class="col-sm-8 col-xs-8 jim-no-padding"
+                                         messengers>
+                                    </div>
+                                </div>
+
+                                <div class="jim-form-row row">
+                                    <label class="col-sm-4 col-xs-4 jim-control-label-mandatory">BP No.</label>
+                                    <input type="text"
+                                           name="buildingPlanNo"
+                                           ng-model="projectInformation.buildingPlanNo"
+                                           maxlength="10"
+                                           required
+                                           class="jim-form-control col-sm-8 col-xs-8"
+                                           ng-class="{ 'has-error' : (formInput.buildingPlanNo.$invalid && !formInput.buildingPlanNo.$pristine ) }">
+                                    
+                                    <span class="col-sm-4 col-xs-4"></span>
+                                    <div ng-messages="formInput.buildingPlanNo.$error"
+                                         ng-if="(submitted || formInput.buildingPlanNo.$dirty)"
+                                         class="col-sm-8 col-xs-8 jim-no-padding"
+                                         messengers>
+                                    </div>
+                                </div>
+
+                                <div class="jim-form-row row">
+                                    <label class="col-sm-4 col-xs-4 jim-control-label-mandatory">Planning Area</label>
+                                    <select class=" jim-form-control col-sm-8 col-xs-8" ng-model="projectInformation.selectedPlanningArea" ng-options="item.Key as item.Text for item in planningArea"></select>
+                                </div>
+
+                                <div class="jim-form-row row">
+                                    <label class="col-sm-4 col-xs-4">Planning Region</label>
+                                    <select class=" jim-form-control col-sm-8 col-xs-8" ng-model="projectInformation.selectedPlanningRegion" 		ng-options="item.Key as item.Text for item in planningRegion">
+                                    </select>
+                                </div>
+
+                                <div class="jim-form-row row">
+                                    <label class="col-sm-4 col-xs-4">Planning Region Subzone</label>
+                                    <select class=" jim-form-control col-sm-8 col-xs-8" ng-model="projectInformation.selectedPlanningRegionSubZones" ng-options="item.Key as item.Text for item in planningRegionSubZones"></select>
+                                </div>
+                                <div class="jim-no-margin row">
+                                    <label class="col-sm-4 col-xs-4 jim-control-label-mandatory">4D Postal Code</label>
+                                    <input type="text"
+                                           name="postalCode4"
+                                           ng-model="projectInformation.postalCode4"
+                                           maxlength="4"
+                                           required
+                                           class="jim-form-control col-sm-8 col-xs-8"
+                                           ng-class="{ 'has-error' : (formInput.postalCode4.$invalid && !formInput.postalCode4.$pristine ) }">
+                                    
+                                    <span class="col-sm-4 col-xs-4"></span>
+                                    <div ng-messages="formInput.postalCode4.$error"
+                                         ng-if="(submitted || formInput.postalCode4.$dirty)"
+                                         class="col-sm-8 col-xs-8 jim-no-padding"
+                                         messengers>
+                                    </div>
+                                </div>
+                            </div>
+                                
+                            <div class="col-sm-6">
+                                <div class="jim-form-row row">
+                                    <label class="col-sm-4 col-xs-4 jim-control-label-mandatory">Land Parcel:</label>
+                                    <input type="text"
+                                           name="landParseNo"
+                                           ng-model="projectInformation.landParseNo"
+                                           maxlength="30"
+                                           required
+                                           class="jim-form-control col-sm-8 col-xs-8"
+                                           ng-class="{ 'has-error' : (formInput.landParseNo.$invalid && !formInput.landParseNo.$pristine ) }" />
+                                    
+                                    <span class="col-sm-4 col-xs-4"></span>
+                                    <div ng-messages="formInput.landParseNo.$error"
+                                         ng-if="(submitted || formInput.landParseNo.$dirty)"
+                                         class="col-sm-8 col-xs-8 jim-no-padding"
+                                         messengers>
+                                    </div>
+                                </div>                                        
+
+                                <div class="jim-form-row row">
+                                    <label class="col-sm-4 col-xs-4">Land Use Zoning</label>
+                                    <select class="jim-form-control col-sm-8 col-xs-8" ng-model="projectInformation.selectedLandUseZoningField">
+                                        <option ng-repeat="item in landUseZoningField" value="{{item.Key}}">{{item.Text}}</option>
+                                    </select>
+                                </div>
+
+                                <div class="jim-form-row row">
+                                    <label class="col-sm-4 col-xs-4 jim-control-label-mandatory">Industrial Name</label>
+                                    <input type="text"
+                                           name="industrialName"
+                                           ng-model="projectInformation.industrialName"
+                                           maxlength="100"
+                                           required
+                                           class="jim-form-control col-sm-8 col-xs-8"
+                                           ng-class="{ 'has-error' : (formInput.indlName.$invalid && !formInput.industrialName.$pristine ) }">
+                                    
+                                    <span class="col-sm-4 col-xs-4"></span>
+                                    <div ng-messages="formInput.industrialName.$error"
+                                         ng-if="(submitted || formInput.industrialName.$dirty)"
+                                         class="col-sm-8 col-xs-8 jim-no-padding"
+                                         messengers>
+                                    </div>
+                                </div>
+
+                                <div class="jim-form-row row">
+                                    <label class="col-sm-4 col-xs-4 jim-control-label-mandatory">Block No.</label>
+                                    <input type="text"
+                                           name="blockNo"
+                                           ng-model="projectInformation.blockNo"
+                                           maxlength="50"
+                                           required
+                                           class="jim-form-control col-sm-8 col-xs-8"
+                                           ng-class="{ 'has-error' : (formInput.blockNo.$invalid && !formInput.blockNo.$pristine ) }">
+                                    
+                                    <span class="col-sm-4 col-xs-4"></span>
+                                    <div ng-messages="formInput.blockNo.$error"
+                                         ng-if="(submitted || formInput.blockNo.$dirty)"
+                                         class="col-sm-8 col-xs-8 jim-no-padding"
+                                         messengers>
+                                    </div>
+                                </div>
+
+                                <div class="jim-form-row row">
+                                    <label class="col-sm-4 col-xs-4">Street Code</label>
+                                    <select class=" jim-form-control col-sm-8 col-xs-8"
+                                            ng-model="projectInformation.selectedStreetCode"
+                                            ng-change="selectedStreetCodeChange()"
+                                            ng-options="item.Key as item.Key for item in streetNames"></select>
+                                </div>
+
+                                <div class="jim-form-row row">
+                                    <label class="col-sm-4 col-xs-4">Street Name</label>
+                                    <input type="text" class="jim-form-control col-sm-8 col-xs-8" ng-model="projectInformation.streetName" disabled>
+                                </div>
+
+                                <div class="jim-form-row row">
+                                    <label class="col-sm-4 col-xs-4">Planning Area Subzone</label>
+                                    <select class=" jim-form-control col-sm-8 col-xs-8" ng-model="projectInformation.selectedPlanningAreaSubZones" ng-options="item.Key as item.Text for item in planningAreaSubZones"></select>
+                                </div>
+
+                                <div class="jim-form-row row">
+                                    <label class="col-sm-4 col-xs-4 jim-control-label-mandatory">Postal Code</label>
+                                    <input type="text"
+                                           name="postalCode6"
+                                           ng-model="projectInformation.postalCode6"
+                                           maxlength="6"
+                                           required
+                                           class="jim-form-control col-sm-8 col-xs-8"
+                                           ng-class="{ 'has-error' : (formInput.postalCode6.$invalid && !formInput.postalCode6.$pristine ) }" />
+                                    
+                                    <span class="col-sm-4 col-xs-4"></span>
+                                    <div ng-messages="formInput.postalCode6.$error"
+                                         ng-if="(submitted || formInput.postalCode6.$dirty)"
+                                         class="col-sm-8 col-xs-8 jim-no-padding"
+                                         messengers>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="jim-form-row-one-column row">
+                            <label class="col-sm-2 col-xs-2 jim-control-label-mandatory">Remarks</label>
+                            <textarea name="remarks"
+                                      ng-model="projectInformation.remarks"                                             
+                                      maxlength="100"
+                                      required
+                                      class="jim-form-control col-sm-10 col-xs-10"
+                                      ng-class="{ 'has-error' : (formInput.remarks.$invalid && !formInput.remarks.$pristine ) }"></textarea>
+
+                            <span class="col-sm-2 col-xs-2"></span>
+                            <div ng-messages="formInput.remarks.$error"
+                                 ng-if="(submitted || formInput.remarks.$dirty)"
+                                 class="col-sm-10 col-xs-10 jim-no-padding"
+                                 messengers>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel jim-acc-panel">
+                <div class="panel-heading jim-acc-heading">
+                    <div class="jim-acc-heading-middle in" data-toggle="collapse" data-parent="#DataCorrection" href="#collapse2">
+                        <a>
+                            <label>
+                                Properties
+                            </label>
+                            <label class="pull-right jim-padding-right">
+                                Section 2 of 3
+                            </label>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="collapse2" class="panel-collapse jim-acc-collapse in">
+                    <div class="panel-body">
+                        <div class="jim-no-margin row">										
+                            <div class="col-sm-6">
+                                <div class="jim-form-row row">
+                                    <label class="col-sm-4 col-xs-4">Project Status</label>
+                                    <select class=" jim-form-control col-sm-8 col-xs-8" ng-model="projectInformation.selectedProjectStatus">
+                                        <option ng-repeat="item in projectStatus" value="{{item.Key}}">{{item.Text}}</option>
+                                    </select>
+                                </div>
+
+                                <div class="jim-form-row row">
+                                    <label class="col-sm-4 col-xs-4 jim-control-label-mandatory">Project Status Date</label>
+                                    <div class="col-sm-8 col-xs-8 jim-no-padding">
+                                        <div class="jim-no-margin row">
+                                            <inputdate name="txtProjectStatusDate"
+                                                       data="projectInformation.projectStatusDate"
+                                                       opencalendar="openCalendarTemplate(name)"
+                                                       selectedpicker="selectedPicker"
+                                                       required>                                                        
+                                            </inputdate>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="jim-form-row row">
+                                    <label class="col-sm-4 col-xs-4 jim-control-label-mandatory">Project Type</label>
+                                    <select class="jim-form-control col-sm-8 col-xs-8" ng-model="projectInformation.selectedProjectType">
+                                        <option ng-repeat="item in projectType" value="{{item.Key}}">{{item.Text}}</option>
+                                    </select>
+                                </div>
+
+                                <div class="jim-form-row row">
+                                    <label class="col-sm-4 col-xs-4 jim-control-label-mandatory">Application Type</label>
+                                    <select class="jim-form-control col-sm-8 col-xs-8" ng-model="projectInformation.selectedApplicationType">
+                                        <option ng-repeat="item in applicationType" value="{{item.Key}}">{{item.Text}}</option>
+                                    </select>
+                                </div>
+
+                                <div class="jim-form-row row">
+                                    <label class="col-sm-4 col-xs-4 jim-control-label-mandatory">Development Type</label>
+                                    <select class="jim-form-control col-sm-8 col-xs-8" ng-model="projectInformation.selectedDevelopmentType">
+                                        <option ng-repeat="item in devType" value="{{item.Key}}">{{item.Text}}</option>
+                                    </select>
+                                </div>
+
+                                <div class="jim-form-row row">
+                                    <label class="col-sm-4 col-xs-4">Sector</label>
+                                    <select class=" jim-form-control col-sm-8 col-xs-8"
+                                            ng-model="projectInformation.selectedSector"
+                                            ng-options="item.Key as item.Text for item in sectors"></select>
+                                </div>
+                            </div>
+                            
+                            <div class="col-sm-6">
+                                <div class="jim-form-row row">
+                                    <label class="col-sm-4 col-xs-4 jim-control-label-mandatory">Site Area (sqm)</label>
+                                    <inputnumber name="siteArea"
+                                                 data="projectInformation.siteArea"
+                                                 maxlength="10"
+                                                 decimals="2"
+                                                 required
+                                                 css="jim-form-control col-sm-8 col-xs-8 text-right"                                                         
+                                                 ng-class="{ 'has-error' : (formInput.siteArea.$invalid && !formInput.siteArea.$pristine ) }"></inputnumber>
+                                    
+                                    <span class="col-sm-4 col-xs-4"></span>
+                                    <div ng-messages="formInput.siteArea.$error"
+                                         ng-if="(submitted || formInput.siteArea.$dirty)"
+                                         class="col-sm-8 col-xs-8 jim-no-padding"
+                                         messengers>
+                                    </div>
+                                </div>
+
+                                <div class="jim-form-row row">
+                                    <label class="col-sm-4 col-xs-4 jim-control-label-mandatory">Plot Ratio</label>
+                                    <inputnumber name="plotRatio"
+                                                 data="projectInformation.plotRatio"
+                                                 maxlength="2"
+                                                 decimals="2"
+                                                 required
+                                                 css="jim-form-control col-sm-8 col-xs-8 text-right"
+                                                 ng-class="{ 'has-error' : (formInput.plotRatio.$invalid && !formInput.plotRatio.$pristine ) }"></inputnumber>
+                                    
+                                    <span class="col-sm-4 col-xs-4"></span>
+                                    <div ng-messages="formInput.plotRatio.$error"
+                                         ng-if="(submitted || formInput.plotRatio.$dirty)"
+                                         class="col-sm-8 col-xs-8 jim-no-padding"
+                                         messengers>
+                                    </div>
+                                </div>
+
+                                <div class="jim-form-row row">
+                                    <label class="col-sm-4 col-xs-4">Land Tenure</label>
+                                    <select class="jim-form-control col-sm-8 col-xs-8" ng-model="projectInformation.selectedTenure">
+                                        <option ng-repeat="item in tenures" value="{{item.Key}}">{{item.Text}}</option>
+                                    </select>
+                                </div>
+
+                                <div class="jim-form-row row">
+                                    <label class="col-sm-4 col-xs-4">Land Owner Type</label>
+                                    <select class="jim-form-control col-sm-8 col-xs-8" ng-model="projectInformation.selectedLandOwnerType">
+                                        <option ng-repeat="item in landOwnerTypes" value="{{item.Key}}">{{item.Text}}</option>
+                                    </select>
+                                </div>
+
+                                <div class="jim-form-row">
+                                    <label class="col-sm-4 col-xs-4">DC Expiry Date</label>
+                                    <div class="col-sm-8 col-xs-8 jim-no-padding">
+                                        <div class="jim-form-row row">
+                                            <inputdate name="txtExpiryDate"
+                                                       data="projectInformation.expiryDate"
+                                                       opencalendar="openCalendarTemplate(name)"
+                                                       selectedpicker="selectedPicker"
+                                                       required></inputdate>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="jim-form-row">
+                                    <label class="col-sm-4 col-xs-4">Commencement Date</label>
+                                    <div class="col-sm-8 col-xs-8 jim-no-padding">
+                                        <div class="jim-form-row row">
+                                            <inputdate name="txtCommencementDate"
+                                                       data="projectInformation.commencementDate"
+                                                       opencalendar="openCalendarTemplate(name)"
+                                                       selectedpicker="selectedPicker"
+                                                       required></inputdate>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel jim-acc-panel">
+                <div class="panel-heading jim-acc-heading">
+                    <div class="jim-acc-heading-middle in" data-toggle="collapse" data-parent="#DataCorrection" href="#collapse3">
+                        <a>
+                            <label>
+                                Developer and Architect
+                            </label>
+                            <label class="pull-right jim-padding-right">
+                                Section 3 of 3
+                            </label>
+                        </a>
+                    </div>
+                </div>
+                    
+                    <div class="panel-body">
+                        <div class="jim-form-row row">
+                            @* Left Column *@
+                            <div class="col-sm-6">
+                                <div class="jim-form-row row">
+                                    <label class="col-sm-4 col-xs-4">Developer</label>
+                                    <input class=" jim-form-control col-sm-8 col-xs-8" ng-model="projectInformation.developer">
+                                </div>
+
+                                <div class="jim-form-row row">
+                                    <label class="col-sm-4 col-xs-4">Architect</label>
+                                    <input class=" jim-form-control col-sm-8 col-xs-8" ng-model="projectInformation.architect">
+                                </div>
+
+                                <div class="jim-form-row row">
+                                    <label class="col-sm-4 col-xs-4">Developer's Contact</label>
+                                    <input class=" jim-form-control col-sm-8 col-xs-8" ng-model="projectInformation.developerContact">
+                                </div>
+
+                                <div class="jim-form-row row">
+                                    <label class="col-sm-4 col-xs-4">Architect's Contact</label>
+                                    <input class=" jim-form-control col-sm-8 col-xs-8" ng-model="projectInformation.architectContact">
+                                </div>
+
+                                <div class="jim-no-margin row">
+                                    <label class="col-sm-4 col-xs-4">Mixed Use</label>
+                                    <div class="col-sm-8 col-xs-8 jim-no-padding">
+                                        <div class="jim-checkbox-container checkbox">
+                                            <label class="jim-checkbox-label">
+                                                <input type="checkbox" />
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            @* Right Column *@
+                            <div class="col-sm-6">
+                                <div class="jim-form-row row">
+                                    <label class="col-sm-4 col-xs-4">Developer’s Consent</label>
+
+                                    <div class="col-sm-8 col-xs-8 jim-no-padding">
+                                        <div class="jim-border-box">
+                                            <ul class="jim-radio-list">
+                                                <li>
+                                                    <div class="jim-radio-container radio">
+                                                        <label class="jim-radio-label">
+                                                            <input type="radio" id="cb1" name="consent" />
+                                                            <label for="cb1">Developer cannot be contacted</label>
+                                                        </label>
+                                                    </div>
+                                                </li>
+
+                                                <li>
+                                                    <div class="jim-radio-container radio">
+                                                        <label class="jim-radio-label">
+                                                            <input type="radio" id="cb2" name="consent" />
+                                                            <label for="cb2">Developer has been contacted and given consent</label>
+                                                        </label>
+                                                    </div>
+                                                </li>
+
+                                                <li>
+                                                    <div class="jim-radio-container radio">
+                                                        <label class="jim-radio-label">
+                                                            <input type="radio" id="cb3" name="consent" />
+                                                            <label for="cb3">Developer has been contacted and consent is pending</label>
+                                                        </label>
+                                                    </div>
+                                                </li>
+
+                                                <li>
+                                                    <div class="jim-radio-container radio">
+                                                        <label class="jim-radio-label">
+                                                            <input type="radio" id="cb4" name="consent" />
+                                                            <label for="cb4">Developer has been contacted and declined consent</label>
+                                                        </label>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="jim-no-margin row">
+            <div class="pull-right">
+                <button class="btn jim-button" type="button" ng-click="Save()">Save</button>
+                <button class="btn jim-button" type="button">Cancel</button>
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane" id="TabsId-2"></div>
+</div>
