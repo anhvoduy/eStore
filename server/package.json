@@ -3,12 +3,14 @@
   "version": "2.2.5",
   "description": "estore: Full-Stack JavaScript with AngularJs, NodeJs, ExpressJs, and MySql",
   "main": "app.js",
+  "license": "MIT"
   "author": {
     "name": "voduyanh",
     "email": "voduyanh1984@yahoo.com"
   },
   "engines": {
-    "node": "12.15.0"
+    "node": "12.15.0",
+	"npm": "6.13.4"
   },
   "scripts": {
     "test": "mocha",
