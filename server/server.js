@@ -76,7 +76,7 @@ server.use('/product/:productKey', express.static(pathPublic, { index: 'productd
 server.use('/search', express.static(pathPublic, { index: 'search.html' }));
 server.use('/contact', express.static(pathPublic, { index: 'contact.html' }));
 
-var pathAdmin = path.join(__dirname, '../client/src/');
+var pathAdmin = path.join(__dirname, '../admin/src/');
 server.use('/admin', express.static(pathAdmin, { index: 'index.html' }));
 server.use('/app', express.static(path.join(pathAdmin, 'app')));
 server.use('/img', express.static(path.join(pathAdmin, 'img')));
