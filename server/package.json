@@ -1,6 +1,6 @@
 {
   "name": "estore",
-  "version": "2.2.5",
+  "version": "2.2.6",
   "description": "estore: Full-Stack JavaScript with AngularJs, NodeJs, ExpressJs, and MySql",
   "main": "app.js",
   "license": "MIT"
