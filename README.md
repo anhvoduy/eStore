@@ -5,11 +5,11 @@
 - database      : estore
 - storage       : fs or azure blob or amazone s3
 - config info   : "/server/config/config.js" to setup: username & password & database name
-- hosting       : http://ec2-52-91-195-178.compute-1.amazonaws.com/
+- hosting       : http://ec2-xx-yy-hhh-kkk.compute-1.amazonaws.com/
 - user/password : admin/@dmin
 
 
-For start review:
+For running:
 - install mysql  5.7
 - install nodejs 8.11.1
 - open command line:
